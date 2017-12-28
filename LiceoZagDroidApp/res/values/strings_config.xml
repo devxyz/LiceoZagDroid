@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="nome_actionbar">""IIS Borsellino Falcone"</string>
+
+    <string name="email_scuola">rmis077005@istruzione.it</string>
+    <string name="tel_scuola">06121128225</string>
+
+    <string name="nome_scuola_tipologia">Liceo Scientifico - IPIA</string>
+    <string name="nome_scuola_denominazione_lunga">""I.I.S. Paolo Borsellino e Giovanni Falcone" di Zagarolo (RM)</string>
+    <string name="nome_scuola_denominazione_breve">""P.Borsellino G.Falcone Zagarolo (RM)"</string>
+    <string name="nome_scuola">IIS "Paolo Borsellino Giovanni Falcone"</string>
+    <string name="nome_scuola_comune">"Zagarolo (RM)"</string>
+    <string name="url_website_scuola">http://www.scuolesuperioridizagarolo.gov.it/pasw4/</string>
+    <string name="contatto_scuola">
+        #I#Via Colle dei Frati, 5 - Zagarolo (RM)#I#\n
+        \n
+        Distretto scolastico 39\n
+        Tel. #T#06121128225#T#\n
+        email: #E#rmis077005@istruzione.it#E#\n
+    </string>
+
+    <string name="contatto_scuola_plain">
+        Via Colle dei Frati, 5 - Zagarolo (RM)\n
+        \n
+        Distretto scolastico 39\n
+        Tel. 06121128225\n
+        email: rmis077005@istruzione.it\n
+    </string>
+
+    <string name="intent_maps">geo:41.832611,12.835294?q=41.832611,12.835294(IIS "Paolo Borsellino Giovanni Falcone" Zagarolo (RM))</string>
+
+    <!--<string name="url_rss_notizie">http://xml.corriereobjects.it/rss/sport.xml</string>-->
+    <string name="url_libri_testo_liceo">http://consultazione.adozioniaie.it/MappaClassi.cgi?ID0=RMPS07701G</string>
+    <string name="url_libri_testo_ipia">http://consultazione.adozioniaie.it/MappaClassi.cgi?ID0=RMRI07701R</string>
+    <string name="url_iscrizioni">http://www.istruzione.it/iscrizionionline/</string>
+
+
+
+    <string name="label_long_click">Click lungo per accedere alle opzioni</string>
+
+
+
+
+
+    <string name="url_re_docenti">https://re23.axioscloud.it/Secret/REStart.aspx?Customer_ID=93015960581</string>
+    <string name="url_re_famiglie">https://family.axioscloud.it/Secret/REStart.aspx?Customer_ID=93015960581</string>
+
+    <string name="url_rss_feed_circolari">http://www.scuolesuperioridizagarolo.gov.it/pasw4/index.php/circolari2?format=feed&amp;type=rss&amp;limitstart=XXX</string>
+    <string name="url_timetable_index">http://www.scuolesuperioridizagarolo.gov.it/orario/timetables.txt</string>
+
+
+    <!--Tempo in secondi di scadenza della cache-->
+    <integer name="cache_seconds">300</integer>
+
+
+<!--deprecated-->
+    <string name="prefix_url_circolari">http://www.fermitivoli.gov.it</string>
+    <string name="url_data_json">http://efermi-tivoli.appspot.com/JSonDataServlet</string>
+
+</resources>

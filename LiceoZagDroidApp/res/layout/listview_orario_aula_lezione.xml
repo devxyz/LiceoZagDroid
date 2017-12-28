@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="2dp" android:id="@+id/layout">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A3"
+            android:id="@+id/textViewAula" android:gravity="center_horizontal" android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/color_white"
+            android:background="@color/color_blue_scurissimo"
+            android:width="80dp"
+            android:layout_alignTop="@+id/textViewOra" android:layout_toEndOf="@+id/textViewFasciaOraria"
+            android:textSize="25dp"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Docente: Classe:"
+              android:id="@+id/textViewDocenteClasse"
+              android:layout_gravity="right"
+              android:layout_below="@+id/textViewAula" android:layout_toEndOf="@+id/textViewFasciaOraria"
+              android:padding="5dp" android:textSize="20dp" android:textStyle="bold"
+              android:gravity="center_horizontal" android:textColor="@color/color_blue"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lezione: xxx"
+            android:id="@+id/textViewLezione" android:gravity="left|center_vertical"
+            android:textStyle="bold"
+            android:paddingLeft="5dp" android:paddingTop="5dp" android:paddingRight="5dp" android:paddingBottom="5dp"
+            android:layout_alignParentTop="true" android:layout_toEndOf="@+id/textViewAula"
+            android:layout_alignBottom="@+id/textViewAula" android:textSize="20dp"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceLarge" android:text="1° ora"
+              android:id="@+id/textViewOra" android:gravity="center_horizontal" android:padding="5dp"
+              android:textStyle="bold"
+              android:layout_alignParentTop="true" android:layout_alignParentStart="false"
+              android:textIsSelectable="false"
+              android:layout_alignParentLeft="true" android:layout_alignEnd="@+id/textViewFasciaOraria"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8.10 - 9.10"
+              android:id="@+id/textViewFasciaOraria" android:padding="5dp"
+              android:gravity="center_vertical|center_horizontal"
+              android:width="100dp"
+              android:layout_below="@+id/textViewOra" android:layout_alignParentStart="true"/>
+</RelativeLayout>

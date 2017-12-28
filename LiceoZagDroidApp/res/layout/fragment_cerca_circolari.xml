@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:orientation="vertical"
+        >
+
+    <MultiAutoCompleteTextView
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:inputType="textFilter"
+            android:id="@+id/searchTextView"
+            android:layout_alignParentTop="true" android:layout_toLeftOf="@+id/imageButtonSearch"
+            android:layout_alignBottom="@+id/imageButtonSearch"
+            android:textColor="@color/color_blue_scurissimo"
+            android:paddingLeft="5dp" android:paddingRight="5dp" android:hint="Inserire i termini da cercare"
+            android:layout_marginTop="5dp" android:layout_marginRight="5dp"
+            android:layout_toEndOf="@+id/imageButtonPlus" android:layout_toRightOf="@+id/imageButtonPlus"/>
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+            android:layout_below="@+id/textView16"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButtonSearch" android:layout_alignParentTop="true" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" android:src="@drawable/search_button_50x50"
+            android:background="@color/color_transparent"
+            android:layout_marginTop="5dp" android:layout_marginRight="5dp"/>
+    <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Nessuna circolare disponibile"
+                android:id="@+id/textViewListaVuota"
+                android:gravity="center_horizontal" android:longClickable="true" android:paddingTop="10dp"
+                android:layout_alignTop="@+id/listView" android:layout_alignRight="@+id/listView"
+                android:layout_alignEnd="@+id/listView" android:textColor="@color/color_blue_scurissimo"
+                android:layout_margin="50dp"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButtonPlus"
+                android:layout_alignBottom="@+id/searchTextView" android:layout_alignLeft="@+id/listView"
+                android:layout_alignStart="@+id/listView" android:layout_alignTop="@+id/searchTextView"
+                android:src="@drawable/plus_blu_48x48" android:background="@color/color_transparent"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_long_click"
+            android:id="@+id/textView16"
+            android:layout_below="@+id/searchTextView" android:layout_alignLeft="@+id/listView"
+            android:layout_alignStart="@+id/listView" android:gravity="right"/>
+</RelativeLayout>
+

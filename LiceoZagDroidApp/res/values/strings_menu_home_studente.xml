@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- per ogni menu, l'icona -->
+    <array name="menu_home_studente">
+        <item>912</item>
+        <item>Apri Menu</item>
+        <item>Apri Menu</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.OpenMenuAction</item>
+        <item>@drawable/_menu_openmenu_48x48</item>
+        <item></item>
+        <item>END-ITEM</item>
+
+
+
+
+
+    </array>
+
+</resources>

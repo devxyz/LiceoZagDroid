@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nome_scuola_denominazione_lunga"
+            android:id="@+id/textViewGiorni"
+            android:gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+            android:padding="5dp" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:enabled="true"
+            android:textAppearance="?android:attr/textAppearanceLarge" android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:textSize="30dp"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" android:id="@+id/linearLayout"
+            android:paddingBottom="5dp" android:paddingTop="5dp" android:layout_below="@+id/textViewGiorni"
+            android:layout_alignParentStart="true" android:layout_marginTop="30dp">
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButtonEmail" android:src="@drawable/_contatti_email_60x60" android:background="#00fbffff"
+                android:paddingRight="5dp"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButtonTelefono" android:src="@drawable/_contatti_phone_60x60" android:background="#00ffffff"
+                android:paddingLeft="10dp" android:paddingRight="10dp"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButtonWWW" android:src="@drawable/_contatti_web_60x60" android:background="#00ffffff"
+                android:paddingLeft="10dp" android:paddingRight="10dp"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButtonMap" android:background="@color/color_transparent"
+                android:src="@drawable/_contatti_maps_60x60" android:paddingLeft="5dp"/>
+    </LinearLayout>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/contatto_scuola"
+            android:id="@+id/textView2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:paddingLeft="5dp" android:paddingRight="5dp"
+            android:layout_below="@+id/linearLayout"
+            android:gravity="center_horizontal" android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginTop="20dp"/>
+
+
+</RelativeLayout>

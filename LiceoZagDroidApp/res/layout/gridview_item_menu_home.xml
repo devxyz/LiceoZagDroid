@@ -1,0 +1,26 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:padding="10dp" android:id="@+id/layout">
+
+    <ImageView
+            android:id="@+id/thumb"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_alignParentLeft="false"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/_menu_teaching_48x48" android:layout_alignParentTop="true"/>
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="titolo"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_below="@+id/thumb" android:layout_alignParentStart="true"
+            android:layout_alignEnd="@+id/thumb" android:padding="2dp" android:textStyle="bold"/>
+
+</RelativeLayout>

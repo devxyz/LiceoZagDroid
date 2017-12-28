@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Dada-orario-utilities/Dada-orario-utilities.iml" filepath="$PROJECT_DIR$/../Dada-orario-utilities/Dada-orario-utilities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LiceoZagDroidApp/LiceoZagDroidApp.iml" filepath="$PROJECT_DIR$/LiceoZagDroidApp/LiceoZagDroidApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LiceoZagDroidCodeUtilities/LiceoZagDroidCodeUtilities.iml" filepath="$PROJECT_DIR$/LiceoZagDroidCodeUtilities/LiceoZagDroidCodeUtilities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LiceoZagDroidCommon/LiceoZagDroidCommon.iml" filepath="$PROJECT_DIR$/LiceoZagDroidCommon/LiceoZagDroidCommon.iml" />
+    </modules>
+  </component>
+</project>
