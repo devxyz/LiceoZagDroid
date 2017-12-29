@@ -18,7 +18,13 @@ public class TimetableDB {
     @Index
     private String url;
 
+    @Unique
+    @Index
+    private int timestamp;
+
     @NotNull
+    @Unique
+    @Index
     private String filename;
 
     @NotNull
@@ -28,7 +34,7 @@ public class TimetableDB {
     private java.util.Date end_date;
 
     @NotNull
-    private byte[] zip_file;
+    private byte[] filedata;
 
     @Generated
     public TimetableDB() {
@@ -39,13 +45,14 @@ public class TimetableDB {
     }
 
     @Generated
-    public TimetableDB(Long id, String url, String filename, java.util.Date start_date, java.util.Date end_date, byte[] zip_file) {
+    public TimetableDB(Long id, String url, int timestamp, String filename, java.util.Date start_date, java.util.Date end_date, byte[] filedata) {
         this.id = id;
         this.url = url;
+        this.timestamp = timestamp;
         this.filename = filename;
         this.start_date = start_date;
         this.end_date = end_date;
-        this.zip_file = zip_file;
+        this.filedata = filedata;
     }
 
     public Long getId() {
@@ -64,6 +71,14 @@ public class TimetableDB {
     /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setUrl(@NotNull String url) {
         this.url = url;
+    }
+
+    public int getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(int timestamp) {
+        this.timestamp = timestamp;
     }
 
     @NotNull
@@ -97,13 +112,13 @@ public class TimetableDB {
     }
 
     @NotNull
-    public byte[] getZip_file() {
-        return zip_file;
+    public byte[] getFiledata() {
+        return filedata;
     }
 
     /** Not-null value; ensure this value is available before it is saved to the database. */
-    public void setZip_file(@NotNull byte[] zip_file) {
-        this.zip_file = zip_file;
+    public void setFiledata(@NotNull byte[] filedata) {
+        this.filedata = filedata;
     }
 
 }

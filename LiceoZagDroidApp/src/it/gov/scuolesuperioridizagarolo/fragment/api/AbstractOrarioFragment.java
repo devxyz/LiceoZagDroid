@@ -18,6 +18,7 @@ import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_orario_classe_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
+import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
 
@@ -138,16 +139,18 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         });
 
 
-        LAYOUT_OBJs.textViewClasse.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
+        final OnClickListenerViewErrorCheck clickFiltro = new OnClickListenerViewErrorCheck(getMainActivity()) {
             @Override
             protected void onClickImpl(View v) throws Throwable {
                 final boolean cancellable = true;
 
                 openDialogChooseFilter(cancellable);
             }
-        });
+        };
+        LAYOUT_OBJs.textViewFiltro.setOnClickListener(clickFiltro);
+        LAYOUT_OBJs.imageViewFiltro.setOnClickListener(clickFiltro);
 
-        LAYOUT_OBJs.textViewGiorni.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
+        final OnClickListenerViewErrorCheck clickGiorno = new OnClickListenerViewErrorCheck(getMainActivity()) {
             @Override
             protected void onClickImpl(View v) throws Throwable {
                 final EGiorno[] values = EGiorno.values();
@@ -180,7 +183,9 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                         }
                 );
             }
-        });
+        };
+        LAYOUT_OBJs.textViewGiorni.setOnClickListener(clickGiorno);
+        LAYOUT_OBJs.imageViewGiorno.setOnClickListener(clickGiorno);
 
 
         //controlla le gesture della listview
@@ -308,6 +313,8 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         }
     }
 
+    protected abstract boolean normalizeFilterName();
+
     protected abstract void updateAdapter(String filter);
 
     protected abstract String getFilterDialogLabel();
@@ -315,13 +322,13 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
     protected abstract String getFilterAppLabel();
 
     private void updateView() {
-        if (giornoCorrente == EGiorno.getToday()) {
+        /*if (giornoCorrente == EGiorno.getToday()) {
             LAYOUT_OBJs.textViewGiorni.setBackgroundColor(getResources().getColor(R.color.color_red));
             LAYOUT_OBJs.textViewClasse.setBackgroundColor(getResources().getColor(R.color.color_red));
         } else {
             LAYOUT_OBJs.textViewGiorni.setBackgroundColor(getResources().getColor(R.color.color_blue));
             LAYOUT_OBJs.textViewClasse.setBackgroundColor(getResources().getColor(R.color.color_blue));
-        }
+        }*/
 
 
         //orarioAdapter.setClasse(classeCorrente);
@@ -329,7 +336,12 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         orarioAdapter.setGiorno(giornoCorrente);
 
         LAYOUT_OBJs.textViewGiorni.setText(giornoCorrente.getNome());
-        LAYOUT_OBJs.textViewClasse.setText((getFilterAppLabel() + " " + filtro).trim());
+
+        if (!normalizeFilterName()) {
+            LAYOUT_OBJs.textViewFiltro.setText((getFilterAppLabel() + " " + filtro).trim());
+        } else {
+            LAYOUT_OBJs.textViewFiltro.setText((getFilterAppLabel() + " " + C_TextUtil.capitalize(filtro)).trim());
+        }
 
         visualizzaOraCorrente();
     }

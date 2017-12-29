@@ -25,10 +25,11 @@ public class GreenDaoGenerator {
         {
             timetableFile.addIdProperty().autoincrement();
             timetableFile.addStringProperty("url").notNull().unique().index();
-            timetableFile.addStringProperty("filename").notNull();
+            timetableFile.addIntProperty("timestamp").notNull().unique().index();
+            timetableFile.addStringProperty("filename").notNull().unique().index();
             timetableFile.addDateProperty("start_date").notNull();
             timetableFile.addDateProperty("end_date").notNull();
-            timetableFile.addByteArrayProperty("zip_file").notNull();
+            timetableFile.addByteArrayProperty("filedata").notNull();
         }
 
 

@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
-import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_item_menu_home_xml;
+import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_gridview_item_menu_home_xml;
 import it.gov.scuolesuperioridizagarolo.model.AppUserType;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoType;
@@ -122,8 +122,8 @@ public class MenuHomeListAdapter extends BaseAdapter implements IMenuListAdapter
             listItem = layoutInflater.inflate(R.layout.gridview_item_menu_home, null);
         }
 
-        LayoutObjs_listview_item_menu_home_xml LAYOUT_OBJs;   //***************************
-        LAYOUT_OBJs = new LayoutObjs_listview_item_menu_home_xml(listItem);
+        LayoutObjs_gridview_item_menu_home_xml LAYOUT_OBJs;   //***************************
+        LAYOUT_OBJs = new LayoutObjs_gridview_item_menu_home_xml(listItem);
         // Initialize the views in the layout
         ImageView iv = LAYOUT_OBJs.thumb;
         TextView tvTitle = LAYOUT_OBJs.title;

@@ -9,7 +9,7 @@
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginRight="12dp"
         android:contentDescription=""
         android:src="@drawable/_menu_home"

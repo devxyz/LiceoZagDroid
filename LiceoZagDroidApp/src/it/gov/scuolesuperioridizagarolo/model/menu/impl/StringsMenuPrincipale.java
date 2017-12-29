@@ -1,7 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.model.menu.impl;
 import it.gov.scuolesuperioridizagarolo.R;
 
-import it.gov.scuolesuperioridizagarolo.fragment.SitoWebFragment;
 import it.gov.scuolesuperioridizagarolo.model.menu.*;
 public class StringsMenuPrincipale{
      public static final DataMenuInfo HOME_1= new DataMenuInfo(
@@ -12,28 +11,20 @@ it.gov.scuolesuperioridizagarolo.fragment.HomeFragment.class,
 R.drawable._menu_home,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.HomeFragment.class),
 null);
-     public static final DataMenuInfo SITO_WEB_912= new DataMenuInfo(
-912,
+     public static final DataMenuInfo SITO_WEB_913= new DataMenuInfo(
+913,
 "Sito WEB",
 "IIS Borsellino Falcone - Zagarolo",
-it.gov.scuolesuperioridizagarolo.action.SitoWebScuolaAction.class,
-R.drawable._contatti_web_60x60,
-DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.action.SitoWebScuolaAction.class),
-null);
-     public static final DataMenuInfo SITO_WEB_2_913= new DataMenuInfo(
-913,
-"Sito WEB 2",
-"IIS Borsellino Falcone - Zagarolo",
-SitoWebFragment.class,
-R.drawable._contatti_web_60x60,
-DataMenuInfoType.search(SitoWebFragment.class),
+it.gov.scuolesuperioridizagarolo.fragment.SitoWebFragment.class,
+R.drawable._menu_web_48x48,
+DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.SitoWebFragment.class),
 null);
      public static final DataMenuInfo CONTATTI_2= new DataMenuInfo(
 2,
 "Contatti",
 "Contatta la scuola",
 it.gov.scuolesuperioridizagarolo.fragment.ContattiFragment.class,
-R.drawable.icon_info_48x48,
+R.drawable._menu_contatti_48x48,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.ContattiFragment.class),
 null);
      public static final DataMenuInfo ORARIO_CLASSI_302= new DataMenuInfo(
@@ -41,7 +32,7 @@ null);
 "Orario Classi",
 "Orario Classi",
 it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment.class,
-R.drawable._menu_orari_48x48,
+R.drawable._menu_student_48x48,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment.class),
 null);
      public static final DataMenuInfo ORARIO_DOCENTI_303= new DataMenuInfo(
@@ -49,7 +40,7 @@ null);
 "Orario Docenti",
 "Orario Docenti",
 it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteFragment.class,
-R.drawable._menu_orari_48x48,
+R.drawable._menu_teaching_48x48,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteFragment.class),
 null);
      public static final DataMenuInfo FOTO_TODO_8= new DataMenuInfo(

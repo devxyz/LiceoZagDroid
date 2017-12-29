@@ -10,7 +10,7 @@ import it.gov.scuolesuperioridizagarolo2.backoffice.utilities.greendao.GreenDaoG
 public class GenerateAllCode {
     public static void main(String[] args) throws Exception {
         BatchCodeGenerator_forLayout.main(args);
-        //GreenDaoGenerator.main(args);
+        GreenDaoGenerator.main(args);
         MenuAndroidGenerator.main(args);
     }
 }

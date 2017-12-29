@@ -35,6 +35,11 @@ public class OrarioDocenteFragment extends AbstractOrarioFragment<OrarioDocenteL
     }
 
     @Override
+    protected boolean normalizeFilterName() {
+        return true;
+    }
+
+    @Override
     protected void updateAdapter(String filter) {
         orarioAdapter.setDocente(filter);
     }

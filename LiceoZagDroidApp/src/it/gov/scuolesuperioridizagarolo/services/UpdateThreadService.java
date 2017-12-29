@@ -6,10 +6,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
-import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
-import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDBHelperRun;
-import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
-import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelperCallable;
+import it.gov.scuolesuperioridizagarolo.dao.*;
 import it.gov.scuolesuperioridizagarolo.db.ManagerCircolare;
 import it.gov.scuolesuperioridizagarolo.db.ManagerNews;
 import it.gov.scuolesuperioridizagarolo.model.C_JSonCircolariDeltaServletRequest;
@@ -17,7 +14,7 @@ import it.gov.scuolesuperioridizagarolo.model.C_JSonCircolariDeltaServletRespons
 import it.gov.scuolesuperioridizagarolo.notification.NotificationMessage;
 import it.gov.scuolesuperioridizagarolo.notification.NotificationUtil;
 import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
-import it.gov.scuolesuperioridizagarolo.util.StreamAndroid;
+import it.gov.scuolesuperioridizagarolo.util.StreamAndroidUtil;
 import it.gov.scuolesuperioridizagarolo.util.ThreadUtil;
 
 import java.io.*;
@@ -38,6 +35,7 @@ class UpdateThreadService implements Runnable {
     public UpdateThreadService(UpdateService updateService) {
         this.updateService = updateService;
     }
+
 
     /**
      * richiesta al server
@@ -112,7 +110,7 @@ class UpdateThreadService implements Runnable {
         ZipInputStream in = new ZipInputStream(new BufferedInputStream(con.getInputStream()));
         final ZipEntry nextEntry = in.getNextEntry();
 
-        final String content = StreamAndroid.loadFileContent(in);
+        final String content = StreamAndroidUtil.loadFileContentString(in);
         in.close();
 
         return g.fromJson(content, C_JSonCircolariDeltaServletResponse.class);

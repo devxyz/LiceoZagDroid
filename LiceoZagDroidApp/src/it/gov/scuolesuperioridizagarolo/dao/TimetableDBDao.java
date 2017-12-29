@@ -24,10 +24,11 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Url = new Property(1, String.class, "url", false, "URL");
-        public final static Property Filename = new Property(2, String.class, "filename", false, "FILENAME");
-        public final static Property Start_date = new Property(3, java.util.Date.class, "start_date", false, "START_DATE");
-        public final static Property End_date = new Property(4, java.util.Date.class, "end_date", false, "END_DATE");
-        public final static Property Zip_file = new Property(5, byte[].class, "zip_file", false, "ZIP_FILE");
+        public final static Property Timestamp = new Property(2, int.class, "timestamp", false, "TIMESTAMP");
+        public final static Property Filename = new Property(3, String.class, "filename", false, "FILENAME");
+        public final static Property Start_date = new Property(4, java.util.Date.class, "start_date", false, "START_DATE");
+        public final static Property End_date = new Property(5, java.util.Date.class, "end_date", false, "END_DATE");
+        public final static Property Filedata = new Property(6, byte[].class, "filedata", false, "FILEDATA");
     }
 
 
@@ -45,13 +46,18 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"TIMETABLE_DB\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"URL\" TEXT NOT NULL UNIQUE ," + // 1: url
-                "\"FILENAME\" TEXT NOT NULL ," + // 2: filename
-                "\"START_DATE\" INTEGER NOT NULL ," + // 3: start_date
-                "\"END_DATE\" INTEGER NOT NULL ," + // 4: end_date
-                "\"ZIP_FILE\" BLOB NOT NULL );"); // 5: zip_file
+                "\"TIMESTAMP\" INTEGER NOT NULL UNIQUE ," + // 2: timestamp
+                "\"FILENAME\" TEXT NOT NULL UNIQUE ," + // 3: filename
+                "\"START_DATE\" INTEGER NOT NULL ," + // 4: start_date
+                "\"END_DATE\" INTEGER NOT NULL ," + // 5: end_date
+                "\"FILEDATA\" BLOB NOT NULL );"); // 6: filedata
         // Add Indexes
         db.execSQL("CREATE INDEX " + constraint + "IDX_TIMETABLE_DB_URL ON \"TIMETABLE_DB\"" +
                 " (\"URL\");");
+        db.execSQL("CREATE INDEX " + constraint + "IDX_TIMETABLE_DB_TIMESTAMP ON \"TIMETABLE_DB\"" +
+                " (\"TIMESTAMP\");");
+        db.execSQL("CREATE INDEX " + constraint + "IDX_TIMETABLE_DB_FILENAME ON \"TIMETABLE_DB\"" +
+                " (\"FILENAME\");");
     }
 
     /** Drops the underlying database table. */
@@ -69,10 +75,11 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
             stmt.bindLong(1, id);
         }
         stmt.bindString(2, entity.getUrl());
-        stmt.bindString(3, entity.getFilename());
-        stmt.bindLong(4, entity.getStart_date().getTime());
-        stmt.bindLong(5, entity.getEnd_date().getTime());
-        stmt.bindBlob(6, entity.getZip_file());
+        stmt.bindLong(3, entity.getTimestamp());
+        stmt.bindString(4, entity.getFilename());
+        stmt.bindLong(5, entity.getStart_date().getTime());
+        stmt.bindLong(6, entity.getEnd_date().getTime());
+        stmt.bindBlob(7, entity.getFiledata());
     }
 
     @Override
@@ -84,10 +91,11 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
             stmt.bindLong(1, id);
         }
         stmt.bindString(2, entity.getUrl());
-        stmt.bindString(3, entity.getFilename());
-        stmt.bindLong(4, entity.getStart_date().getTime());
-        stmt.bindLong(5, entity.getEnd_date().getTime());
-        stmt.bindBlob(6, entity.getZip_file());
+        stmt.bindLong(3, entity.getTimestamp());
+        stmt.bindString(4, entity.getFilename());
+        stmt.bindLong(5, entity.getStart_date().getTime());
+        stmt.bindLong(6, entity.getEnd_date().getTime());
+        stmt.bindBlob(7, entity.getFiledata());
     }
 
     @Override
@@ -100,10 +108,11 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
         TimetableDB entity = new TimetableDB( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.getString(offset + 1), // url
-            cursor.getString(offset + 2), // filename
-            new java.util.Date(cursor.getLong(offset + 3)), // start_date
-            new java.util.Date(cursor.getLong(offset + 4)), // end_date
-            cursor.getBlob(offset + 5) // zip_file
+            cursor.getInt(offset + 2), // timestamp
+            cursor.getString(offset + 3), // filename
+            new java.util.Date(cursor.getLong(offset + 4)), // start_date
+            new java.util.Date(cursor.getLong(offset + 5)), // end_date
+            cursor.getBlob(offset + 6) // filedata
         );
         return entity;
     }
@@ -112,10 +121,11 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
     public void readEntity(Cursor cursor, TimetableDB entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setUrl(cursor.getString(offset + 1));
-        entity.setFilename(cursor.getString(offset + 2));
-        entity.setStart_date(new java.util.Date(cursor.getLong(offset + 3)));
-        entity.setEnd_date(new java.util.Date(cursor.getLong(offset + 4)));
-        entity.setZip_file(cursor.getBlob(offset + 5));
+        entity.setTimestamp(cursor.getInt(offset + 2));
+        entity.setFilename(cursor.getString(offset + 3));
+        entity.setStart_date(new java.util.Date(cursor.getLong(offset + 4)));
+        entity.setEnd_date(new java.util.Date(cursor.getLong(offset + 5)));
+        entity.setFiledata(cursor.getBlob(offset + 6));
      }
     
     @Override

@@ -78,112 +78,170 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
         final EOra ora = EOra.values()[position];
 
-        o.textViewOra.setText(ora.getProgressivOra() + "° ora");
+
+        //RESTORE
+        {
+            o.textViewFasciaOraria.setText("");
+            o.textViewLezione.setText("");
+            o.textViewDocenteClasse.setText("");
+            o.textViewOra.setText("");
+            o.textViewAula.setText("");
+
+            o.textViewDocenteClasse.setVisibility(View.VISIBLE);
+            o.textViewFasciaOraria.setVisibility(View.VISIBLE);
+            o.textViewLezione.setVisibility(View.VISIBLE);
+            o.textViewOra.setVisibility(View.VISIBLE);
+            o.textViewAula.setVisibility(View.VISIBLE);
+
+            o.textViewLezione.setBackgroundColor(a.getResources().getColor(R.color.color_transparent));
+        }
 
 
-        o.textViewFasciaOraria.setText(ora.fascia());
+        if (!ora.flagOraDiLezione()) {
+            //NON ORA DI LEZIONE ma inizio/fine giornata
+
+
+            o.textViewLezione.setText("" + ora.name() + " alle ore " + ora.printOra());
+            o.textViewLezione.setTextColor(a.getResources().getColor(R.color.color_red));
+
+            o.textViewDocenteClasse.setVisibility(View.GONE);
+            o.textViewFasciaOraria.setVisibility(View.GONE);
+            o.textViewOra.setVisibility(View.GONE);
+            o.textViewAula.setVisibility(View.GONE);
+
+            if (ora.isActive() && giorno.isToday()) {
+                //o.textViewOra.setTextColor(a.getResources().getColor(R.color.color_red));
+                o.textViewLezione.setBackgroundColor(a.getResources().getColor(R.color.color_ora_corrente));
+            }
+
+
+        } else {
+
+            if (ora.isActive() && giorno.isToday()) {
+                //o.textViewOra.setTextColor(a.getResources().getColor(R.color.color_red));
+                o.textViewOra.setBackgroundColor(a.getResources().getColor(R.color.color_ora_corrente));
+            }
+
+            if (item == null) {
+                //se ora NULLA
+                o.textViewOra.setText(ora.getProgressivOra() + "° ora");
+                o.textViewFasciaOraria.setText(ora.fascia());
+                o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_transparent));
+
+            } else if (item.getTipoLezione() == BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
+                //SE ORA DISPOSIZIONE
+                o.textViewOra.setText(ora.getProgressivOra() + "° ora");
+                o.textViewFasciaOraria.setText(ora.fascia());
+
+                o.textViewDocenteClasse.setText("");
+                o.textViewLezione.setText(C_TextUtil.capitalize("Disposizione"));
+                o.textViewAula.setText(C_TextUtil.capitalize("DISP"));
+
+                o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_black));
+                o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_white));
+
+
+            } else {
+                //ORA NORMALE
+                o.textViewOra.setText(ora.getProgressivOra() + "° ora");
+                o.textViewFasciaOraria.setText(ora.fascia());
+
+
+                String classe = item.getClasse();
+                String insegnanti;
+
+
+                if (item.getDocenteCompresenza() != null)
+                    insegnanti = C_TextUtil.capitalize(item.getDocentePrincipale() + " - " + item.getDocenteCompresenza());
+                else
+                    insegnanti = C_TextUtil.capitalize(item.getDocentePrincipale());
+
+                StringBuilder sb = new StringBuilder();
+                if (item.getTipoLezione() != BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
+                    if (printClasse) {
+                        if (sb.length() > 0)
+                            sb.append(" - ");
+                        sb.append(classe);
+                    }
+                    if (printInsegnante || (item.getDocenteCompresenza() != null && printInsegnanteSeCompresenza)) {
+                        if (sb.length() > 0)
+                            sb.append(" - ");
+                        sb.append(insegnanti);
+                    }
+
+                    o.textViewDocenteClasse.setText(sb.toString().trim());
+                    o.textViewLezione.setText(C_TextUtil.capitalize(item.getMateriaPrincipale().replace("_", " ")));
+                }
+
+
+                //disegno aula
+                String nomeAula = item.getNomeAula();
+                final RoomData room;
+                if (nomeAula == null || nomeAula.length() == 0) {
+
+
+                    o.textViewAula.setText("");
+                    o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_white));
+                    o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_white));
+
+
+                } else {
+                    room = ClassesAndRoomContainer.getRoom(nomeAula);
+                    o.textViewAula.setText(nomeAula.split("_")[0]);
+                    switch (room.location) {
+                        case AREA_A: {
+                            o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_aule_a_background));
+                            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_a_foreground));
+                            break;
+                        }
+                        case AREA_B: {
+                            o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_aule_b_background));
+                            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_b_foreground));
+                            break;
+                        }
+                        case AREA_C: {
+                            o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_aule_c_background));
+                            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_c_foreground));
+                            break;
+                        }
+                        case AREA_D: {
+                            o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_aule_d_background));
+                            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_d_foreground));
+                            break;
+                        }
+                        case AREA_E: {
+                            o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_aule_e_background));
+                            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_e_foreground));
+                            break;
+                        }
+                        case AREA_F: {
+                            o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_aule_f_background));
+                            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_f_foreground));
+                            break;
+                        }
+                        default: {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+
+/*
+        if (ora.isActive() && giorno.isToday()) {
+            o.layout.setBackgroundColor(a.getResources().getColor(R.color.color_ora_corrente));
+            o.textViewOra.setTextColor(a.getResources().getColor(R.color.color_red));
+            o.textViewFasciaOraria.setTextColor(a.getResources().getColor(R.color.color_red));
+        } else {
+            o.layout.setBackgroundColor(a.getResources().getColor(R.color.color_white));
+            o.textViewOra.setTextColor(a.getResources().getColor(R.color.color_black));
+            o.textViewFasciaOraria.setTextColor(a.getResources().getColor(R.color.color_black));
+        }
 
 
         if (item != null) {
 
-            String classe = item.getClasse();
-            String insegnanti;
-
-
-            if (item.getDocenteCompresenza() != null)
-                insegnanti = C_TextUtil.capitalize(item.getDocentePrincipale() + " - " + item.getDocenteCompresenza());
-            else
-                insegnanti = C_TextUtil.capitalize(item.getDocentePrincipale());
-
-            StringBuilder sb = new StringBuilder();
-            if (item.getTipoLezione() != BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
-                if (printClasse) {
-                    if (sb.length() > 0)
-                        sb.append(" - ");
-                    sb.append(classe);
-                }
-                if (printInsegnante || (item.getDocenteCompresenza() != null && printInsegnanteSeCompresenza)) {
-                    if (sb.length() > 0)
-                        sb.append(" - ");
-                    sb.append(insegnanti);
-                }
-
-                o.textViewDocenteClasse.setText(sb.toString().trim());
-                o.textViewLezione.setText(C_TextUtil.capitalize(item.getMateriaPrincipale().replace("_", " ")));
-            } else {
-                o.textViewDocenteClasse.setText("");
-                o.textViewLezione.setText(C_TextUtil.capitalize("Disposizione"));
-            }
-
-
-            //disegno aula
-            String nomeAula = item.getNomeAula();
-            final RoomData room;
-            if (nomeAula == null || nomeAula.length() == 0) {
-
-                if (item.getTipoLezione() == BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
-                    o.textViewAula.setText("#");
-                    o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_black));
-                    o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_white));
-                } else {
-                    o.textViewAula.setText("");
-                    o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_white));
-                    o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_white));
-                }
-
-
-            } else {
-                room = ClassesAndRoomContainer.getRoom(nomeAula);
-                o.textViewAula.setText(nomeAula.split("_")[0]);
-                switch (room.location) {
-                    case AREA_A: {
-                        o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_aule_a_background));
-                        o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_a_foreground));
-                        break;
-                    }
-                    case AREA_B: {
-                        o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_aule_b_background));
-                        o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_b_foreground));
-                        break;
-                    }
-                    case AREA_C: {
-                        o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_aule_c_background));
-                        o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_c_foreground));
-                        break;
-                    }
-                    case AREA_D: {
-                        o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_aule_d_background));
-                        o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_d_foreground));
-                        break;
-                    }
-                    case AREA_E: {
-                        o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_aule_e_background));
-                        o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_e_foreground));
-                        break;
-                    }
-                    case AREA_F: {
-                        o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_aule_f_background));
-                        o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_f_foreground));
-                        break;
-                    }
-                    default: {
-                        break;
-                    }
-                }
-
-
-            }
-
-
-            if (ora.isActive() && giorno.isToday()) {
-                o.layout.setBackgroundColor(a.getResources().getColor(R.color.color_ora_corrente));
-                o.textViewOra.setTextColor(a.getResources().getColor(R.color.color_red));
-                o.textViewFasciaOraria.setTextColor(a.getResources().getColor(R.color.color_red));
-            } else {
-                o.layout.setBackgroundColor(a.getResources().getColor(R.color.color_white));
-                o.textViewOra.setTextColor(a.getResources().getColor(R.color.color_black));
-                o.textViewFasciaOraria.setTextColor(a.getResources().getColor(R.color.color_black));
-            }
 
         } else {
             o.textViewOra.setTextColor(a.getResources().getColor(R.color.color_black));
@@ -225,7 +283,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
             o.textViewLezione.setTextColor(a.getResources().getColor(R.color.color_black));
         }
-
+*/
 
         return convertView;
     }
