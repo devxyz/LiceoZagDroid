@@ -15,6 +15,7 @@ public class StreamAndroidUtil {
             sb.append(buf, 0, amt);
             amt = r.read(buf);
         }
+        r.close();
         return sb.toString();
     }
 
@@ -27,6 +28,7 @@ public class StreamAndroidUtil {
             out.write(buf, 0, amt);
             amt = r.read(buf);
         }
+        r.close();
         return out.toByteArray();
     }
 

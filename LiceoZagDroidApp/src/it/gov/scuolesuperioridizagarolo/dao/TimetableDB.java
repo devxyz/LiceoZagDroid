@@ -20,7 +20,12 @@ public class TimetableDB {
 
     @Unique
     @Index
-    private int timestamp;
+    private long remoteId;
+
+    @NotNull
+    @Unique
+    @Index
+    private java.util.Date createDate;
 
     @NotNull
     @Unique
@@ -28,13 +33,13 @@ public class TimetableDB {
     private String filename;
 
     @NotNull
-    private java.util.Date start_date;
+    private java.util.Date startDate;
 
     @NotNull
-    private java.util.Date end_date;
+    private java.util.Date endDate;
 
     @NotNull
-    private byte[] filedata;
+    private byte[] data;
 
     @Generated
     public TimetableDB() {
@@ -45,14 +50,15 @@ public class TimetableDB {
     }
 
     @Generated
-    public TimetableDB(Long id, String url, int timestamp, String filename, java.util.Date start_date, java.util.Date end_date, byte[] filedata) {
+    public TimetableDB(Long id, String url, long remoteId, java.util.Date createDate, String filename, java.util.Date startDate, java.util.Date endDate, byte[] data) {
         this.id = id;
         this.url = url;
-        this.timestamp = timestamp;
+        this.remoteId = remoteId;
+        this.createDate = createDate;
         this.filename = filename;
-        this.start_date = start_date;
-        this.end_date = end_date;
-        this.filedata = filedata;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.data = data;
     }
 
     public Long getId() {
@@ -73,12 +79,22 @@ public class TimetableDB {
         this.url = url;
     }
 
-    public int getTimestamp() {
-        return timestamp;
+    public long getRemoteId() {
+        return remoteId;
     }
 
-    public void setTimestamp(int timestamp) {
-        this.timestamp = timestamp;
+    public void setRemoteId(long remoteId) {
+        this.remoteId = remoteId;
+    }
+
+    @NotNull
+    public java.util.Date getCreateDate() {
+        return createDate;
+    }
+
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setCreateDate(@NotNull java.util.Date createDate) {
+        this.createDate = createDate;
     }
 
     @NotNull
@@ -92,33 +108,33 @@ public class TimetableDB {
     }
 
     @NotNull
-    public java.util.Date getStart_date() {
-        return start_date;
+    public java.util.Date getStartDate() {
+        return startDate;
     }
 
     /** Not-null value; ensure this value is available before it is saved to the database. */
-    public void setStart_date(@NotNull java.util.Date start_date) {
-        this.start_date = start_date;
+    public void setStartDate(@NotNull java.util.Date startDate) {
+        this.startDate = startDate;
     }
 
     @NotNull
-    public java.util.Date getEnd_date() {
-        return end_date;
+    public java.util.Date getEndDate() {
+        return endDate;
     }
 
     /** Not-null value; ensure this value is available before it is saved to the database. */
-    public void setEnd_date(@NotNull java.util.Date end_date) {
-        this.end_date = end_date;
+    public void setEndDate(@NotNull java.util.Date endDate) {
+        this.endDate = endDate;
     }
 
     @NotNull
-    public byte[] getFiledata() {
-        return filedata;
+    public byte[] getData() {
+        return data;
     }
 
     /** Not-null value; ensure this value is available before it is saved to the database. */
-    public void setFiledata(@NotNull byte[] filedata) {
-        this.filedata = filedata;
+    public void setData(@NotNull byte[] data) {
+        this.data = data;
     }
 
 }

@@ -24,11 +24,12 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Url = new Property(1, String.class, "url", false, "URL");
-        public final static Property Timestamp = new Property(2, int.class, "timestamp", false, "TIMESTAMP");
-        public final static Property Filename = new Property(3, String.class, "filename", false, "FILENAME");
-        public final static Property Start_date = new Property(4, java.util.Date.class, "start_date", false, "START_DATE");
-        public final static Property End_date = new Property(5, java.util.Date.class, "end_date", false, "END_DATE");
-        public final static Property Filedata = new Property(6, byte[].class, "filedata", false, "FILEDATA");
+        public final static Property RemoteId = new Property(2, long.class, "remoteId", false, "REMOTE_ID");
+        public final static Property CreateDate = new Property(3, java.util.Date.class, "createDate", false, "CREATE_DATE");
+        public final static Property Filename = new Property(4, String.class, "filename", false, "FILENAME");
+        public final static Property StartDate = new Property(5, java.util.Date.class, "startDate", false, "START_DATE");
+        public final static Property EndDate = new Property(6, java.util.Date.class, "endDate", false, "END_DATE");
+        public final static Property Data = new Property(7, byte[].class, "data", false, "DATA");
     }
 
 
@@ -46,16 +47,19 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"TIMETABLE_DB\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"URL\" TEXT NOT NULL UNIQUE ," + // 1: url
-                "\"TIMESTAMP\" INTEGER NOT NULL UNIQUE ," + // 2: timestamp
-                "\"FILENAME\" TEXT NOT NULL UNIQUE ," + // 3: filename
-                "\"START_DATE\" INTEGER NOT NULL ," + // 4: start_date
-                "\"END_DATE\" INTEGER NOT NULL ," + // 5: end_date
-                "\"FILEDATA\" BLOB NOT NULL );"); // 6: filedata
+                "\"REMOTE_ID\" INTEGER NOT NULL UNIQUE ," + // 2: remoteId
+                "\"CREATE_DATE\" INTEGER NOT NULL UNIQUE ," + // 3: createDate
+                "\"FILENAME\" TEXT NOT NULL UNIQUE ," + // 4: filename
+                "\"START_DATE\" INTEGER NOT NULL ," + // 5: startDate
+                "\"END_DATE\" INTEGER NOT NULL ," + // 6: endDate
+                "\"DATA\" BLOB NOT NULL );"); // 7: data
         // Add Indexes
         db.execSQL("CREATE INDEX " + constraint + "IDX_TIMETABLE_DB_URL ON \"TIMETABLE_DB\"" +
                 " (\"URL\");");
-        db.execSQL("CREATE INDEX " + constraint + "IDX_TIMETABLE_DB_TIMESTAMP ON \"TIMETABLE_DB\"" +
-                " (\"TIMESTAMP\");");
+        db.execSQL("CREATE INDEX " + constraint + "IDX_TIMETABLE_DB_REMOTE_ID ON \"TIMETABLE_DB\"" +
+                " (\"REMOTE_ID\");");
+        db.execSQL("CREATE INDEX " + constraint + "IDX_TIMETABLE_DB_CREATE_DATE ON \"TIMETABLE_DB\"" +
+                " (\"CREATE_DATE\");");
         db.execSQL("CREATE INDEX " + constraint + "IDX_TIMETABLE_DB_FILENAME ON \"TIMETABLE_DB\"" +
                 " (\"FILENAME\");");
     }
@@ -75,11 +79,12 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
             stmt.bindLong(1, id);
         }
         stmt.bindString(2, entity.getUrl());
-        stmt.bindLong(3, entity.getTimestamp());
-        stmt.bindString(4, entity.getFilename());
-        stmt.bindLong(5, entity.getStart_date().getTime());
-        stmt.bindLong(6, entity.getEnd_date().getTime());
-        stmt.bindBlob(7, entity.getFiledata());
+        stmt.bindLong(3, entity.getRemoteId());
+        stmt.bindLong(4, entity.getCreateDate().getTime());
+        stmt.bindString(5, entity.getFilename());
+        stmt.bindLong(6, entity.getStartDate().getTime());
+        stmt.bindLong(7, entity.getEndDate().getTime());
+        stmt.bindBlob(8, entity.getData());
     }
 
     @Override
@@ -91,11 +96,12 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
             stmt.bindLong(1, id);
         }
         stmt.bindString(2, entity.getUrl());
-        stmt.bindLong(3, entity.getTimestamp());
-        stmt.bindString(4, entity.getFilename());
-        stmt.bindLong(5, entity.getStart_date().getTime());
-        stmt.bindLong(6, entity.getEnd_date().getTime());
-        stmt.bindBlob(7, entity.getFiledata());
+        stmt.bindLong(3, entity.getRemoteId());
+        stmt.bindLong(4, entity.getCreateDate().getTime());
+        stmt.bindString(5, entity.getFilename());
+        stmt.bindLong(6, entity.getStartDate().getTime());
+        stmt.bindLong(7, entity.getEndDate().getTime());
+        stmt.bindBlob(8, entity.getData());
     }
 
     @Override
@@ -108,11 +114,12 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
         TimetableDB entity = new TimetableDB( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.getString(offset + 1), // url
-            cursor.getInt(offset + 2), // timestamp
-            cursor.getString(offset + 3), // filename
-            new java.util.Date(cursor.getLong(offset + 4)), // start_date
-            new java.util.Date(cursor.getLong(offset + 5)), // end_date
-            cursor.getBlob(offset + 6) // filedata
+            cursor.getLong(offset + 2), // remoteId
+            new java.util.Date(cursor.getLong(offset + 3)), // createDate
+            cursor.getString(offset + 4), // filename
+            new java.util.Date(cursor.getLong(offset + 5)), // startDate
+            new java.util.Date(cursor.getLong(offset + 6)), // endDate
+            cursor.getBlob(offset + 7) // data
         );
         return entity;
     }
@@ -121,11 +128,12 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
     public void readEntity(Cursor cursor, TimetableDB entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setUrl(cursor.getString(offset + 1));
-        entity.setTimestamp(cursor.getInt(offset + 2));
-        entity.setFilename(cursor.getString(offset + 3));
-        entity.setStart_date(new java.util.Date(cursor.getLong(offset + 4)));
-        entity.setEnd_date(new java.util.Date(cursor.getLong(offset + 5)));
-        entity.setFiledata(cursor.getBlob(offset + 6));
+        entity.setRemoteId(cursor.getLong(offset + 2));
+        entity.setCreateDate(new java.util.Date(cursor.getLong(offset + 3)));
+        entity.setFilename(cursor.getString(offset + 4));
+        entity.setStartDate(new java.util.Date(cursor.getLong(offset + 5)));
+        entity.setEndDate(new java.util.Date(cursor.getLong(offset + 6)));
+        entity.setData(cursor.getBlob(offset + 7));
      }
     
     @Override

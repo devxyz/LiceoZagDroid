@@ -2,33 +2,24 @@ package it.gov.scuolesuperioridizagarolo.services;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
-import com.google.gson.Gson;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
-import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDBHelperRun;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelperCallable;
-import it.gov.scuolesuperioridizagarolo.db.ManagerCircolare;
-import it.gov.scuolesuperioridizagarolo.db.ManagerNews;
+import it.gov.scuolesuperioridizagarolo.dao.TimetableDB;
 import it.gov.scuolesuperioridizagarolo.db.ManagerTimetables;
-import it.gov.scuolesuperioridizagarolo.model.C_JSonCircolariDeltaServletRequest;
-import it.gov.scuolesuperioridizagarolo.model.C_JSonCircolariDeltaServletResponse;
-import it.gov.scuolesuperioridizagarolo.notification.NotificationMessage;
-import it.gov.scuolesuperioridizagarolo.notification.NotificationUtil;
-import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 import it.gov.scuolesuperioridizagarolo.util.StreamAndroidUtil;
 import it.gov.scuolesuperioridizagarolo.util.ThreadUtil;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 
 /**
  * Created by stefano on 04/11/2016.
@@ -41,158 +32,66 @@ class UpdateThreadService implements Runnable {
         this.updateService = updateService;
     }
 
+    private int updateTimetables() throws IOException {
 
-    /**
-     * richiesta al server
-     *
-     * @return
-     * @throws IOException
-     */
-    @Deprecated
-    private C_JSonCircolariDeltaServletResponse requestData() throws IOException {
-        //prepara request
-        //-------------------------------------------
-        final C_JSonCircolariDeltaServletRequest req1 = new C_JSonCircolariDeltaServletRequest();
         final ScuolaAppDbHelper db = new ScuolaAppDbHelper(updateService.getApplicationContext());
-        try {
-            db.runInTransaction(new ScuolaAppDBHelperRun() {
-                @Override
-                public void run(DaoSession session, Context ctx) throws Throwable {
-                    ManagerCircolare m = new ManagerCircolare(session);
-                    req1.responseInZipFormat = true;
-                    req1.maxToken = m.maxToken();
-                }
-            });
 
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        } finally {
-            db.close();
-        }
-        final C_JSonCircolariDeltaServletRequest req = req1;
+        final ArrayList<String> remoteNameFile = getRemoteUrls();
 
-        //analizza la risposta
-        //-------------------------------------------
-        final String json = new Gson().toJson(req);
-        if (DebugUtil.DEBUG__SincronizzaCircolariAsync) {
-            Log.d("SINCRONIZZA CIRCOLARI", "xxx");
-            for (int i = 0; i < json.length(); i = i + 100) {
-                System.out.println(json.substring(i, Math.min(json.length(), i + 100)));
-            }
-        }
+        Set<String> localUrls = new HashSet<>();
+        {
 
-
-        //effettua chiamata post
-        //---------------------------------------------
-        String url = updateService.getResources().getString(R.string.url_data_json);
-        URL obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
-        //add reuqest header
-        con.setRequestMethod("POST");
-
-        String urlParameters = "param=" + URLEncoder.encode(json, "UTF-8");
-
-        // Send post request
-        con.setDoOutput(true);
-        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-        wr.writeBytes(urlParameters);
-        wr.flush();
-        wr.close();
-
-        //attede la risposta
-        //---------------------------------------------
-        int responseCode = con.getResponseCode();
-        if (DebugUtil.DEBUG__SincronizzaCircolariAsync) {
-            System.out.println("\nSending 'POST' request to URL : " + url);
-            System.out.println("Post parameters : " + urlParameters);
-            System.out.println("Response Code : " + responseCode);
-        }
-
-        //legge la risposta
-        //---------------------------------------------
-        Gson g = new Gson();
-        ZipInputStream in = new ZipInputStream(new BufferedInputStream(con.getInputStream()));
-        final ZipEntry nextEntry = in.getNextEntry();
-        final String content = StreamAndroidUtil.loadFileContentString(in);
-        in.close();
-        return g.fromJson(content, C_JSonCircolariDeltaServletResponse.class);
-    }
-
-    @Deprecated
-    private int syncLocalDB(final C_JSonCircolariDeltaServletResponse data) throws Throwable {
-
-        final Context activity = updateService.getApplicationContext();
-        try {
-            final ScuolaAppDbHelper db = new ScuolaAppDbHelper(activity);
             try {
-                db.runInTransaction(new ScuolaAppDbHelperCallable<Void>() {
+                localUrls = db.runInTransaction(new ScuolaAppDbHelperCallable<Set<String>>() {
                     @Override
-                    public Void call(DaoSession session, Context ctx) throws Throwable {
-
-                        //sync news
-                        {
-                            ManagerNews m = new ManagerNews(session);
-                            m.sincronizzaLista(data.newsDaAggiungereAggiornare, data.keyNewsDaRimuovere);
-                        }
-
-                        //sync circolari
-                        {
-                            ManagerCircolare m = new ManagerCircolare(session);
-                            for (String key : data.keyCircolariDaRimuovere) {
-                                m.rimuoveCircolare(key);
-                            }
-                            m.salva(data.circolariDaAggiungereAggiornare);
-                        }
-
-                        return null;
+                    public Set<String> call(DaoSession session, Context ctx) throws Throwable {
+                        ManagerTimetables m = new ManagerTimetables(session);
+                        return m.getAllUrls();
                     }
                 });
-            } finally {
-                db.close();
+
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
             }
-
-        } catch (Throwable e) {
-            e.printStackTrace();
-            throw new IllegalArgumentException(e);
         }
-        return data.newsDaAggiungereAggiornare.size() + data.circolariDaAggiungereAggiornare.size();
 
-    }
-
-
-    private void loadTimetables() throws IOException {
-        final ArrayList<String> remoteUrls = getRemoteUrls();
-
-        Set<String> localUrls = null;
-        final ScuolaAppDbHelper db = new ScuolaAppDbHelper(updateService.getApplicationContext());
-        try {
-            localUrls = db.runInTransaction(new ScuolaAppDbHelperCallable<Set<String>>() {
-                @Override
-                public Set<String> call(DaoSession session, Context ctx) throws Throwable {
-                    ManagerTimetables m = new ManagerTimetables(session);
-                    return m.getAllUrls();
-                }
-            });
-
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        } finally {
-            db.close();
-        }
+        int count = 0;
 
         //carica i soli orari non ancora nel database
-        for (String url : remoteUrls) {
-            /*if (){
+        for (final String nomeFile : remoteNameFile) {
+            if (!localUrls.contains(nomeFile)) {
+                final String fullUrl = updateService.getString(R.string.url_timetable_prefix) + nomeFile;
+                final byte[] remoteData = getRemoteData(fullUrl);
 
-            }*/
+                try {
+                    final TimetableDB timetableDB = db.runInTransaction(new ScuolaAppDbHelperCallable<TimetableDB>() {
+                        @Override
+                        public TimetableDB call(DaoSession session, Context ctx) throws Throwable {
+                            ManagerTimetables m = new ManagerTimetables(session);
+                            return m.createNew(fullUrl, nomeFile, remoteData);
+                        }
+                    });
+                    count++;
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            }
         }
-
-
+        db.close();
+        return count;
     }
+
+
+    private byte[] getRemoteData(String url) throws IOException {
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        return StreamAndroidUtil.loadFileContentByteArray(con.getInputStream());
+    }
+
 
     private ArrayList<String> getRemoteUrls() throws IOException {
         final String urlTimetableIndex = updateService.getApplicationContext().getString(R.string.url_timetable_index);
+
         URL obj = new URL(urlTimetableIndex);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -210,6 +109,13 @@ class UpdateThreadService implements Runnable {
 
     @Override
     public void run() {
+
+        {
+            Intent x = new Intent(MainMenuActivity.RECEIVER_ACTION_UPDATE);
+            x.putExtra("MESSAGE", "Avvio aggiornamento");
+            updateService.sendBroadcast(x);
+        }
+
         try {
             //se non richiesto l'update, skip
             if (!updateService.shouldUpdate())
@@ -230,17 +136,17 @@ class UpdateThreadService implements Runnable {
             //n.show(updateService);
 
 
-            final C_JSonCircolariDeltaServletResponse data = requestData();
-            final int num = syncLocalDB(data);
+            final int num = updateTimetables();
             //n.cancel(updateService);
 
             if (num > 0) {
                 //notifica_nuove_notizie nuove circolari aggiunte
                 //notifica_nuove_notizie(data);
-                final NotificationMessage notificationMessage = NotificationUtil.newDataAvailableMessage(data.circolariDaAggiungereAggiornare.size() + data.newsDaAggiungereAggiornare.size());
+                //final NotificationMessage notificationMessage = NotificationUtil.newDataAvailableMessage(data.circolariDaAggiungereAggiornare.size() + data.newsDaAggiungereAggiornare.size());
 
                 //aggiorna l'interfaccia grafica, se possibile
                 Intent x = new Intent(MainMenuActivity.RECEIVER_ACTION_UPDATE);
+                x.putExtra("MESSAGE", "Aggiornati " + num + " orari");
                 updateService.sendBroadcast(x);
             }
 
@@ -249,6 +155,9 @@ class UpdateThreadService implements Runnable {
             //NotificationUtil.updateProcessMessage().cancel(updateService);
             //NotificationUtil.errorMessage(throwable).cancel(updateService);
             throwable.printStackTrace();
+            Intent x = new Intent(MainMenuActivity.RECEIVER_ACTION_UPDATE);
+            x.putExtra("MESSAGE", "Errore durante l'aggiornamento");
+            updateService.sendBroadcast(x);
         }
 
 

@@ -12,27 +12,27 @@
             android:gravity="center_vertical|center_horizontal"
             android:textStyle="bold" android:textColor="@color/color_blue_scurissimo" android:textSize="26dp"
             android:layout_below="@+id/textView9"
-            android:layout_marginLeft="5dp" android:layout_marginRight="5dp"/>
+    />
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
               android:text="Continua >>" android:id="@+id/txtInfo"
-              android:background="@color/color_blue_scurissimo" android:textSize="22dp"
+              android:background="@drawable/background_pulsante_red" android:textSize="22dp"
               android:textColor="@color/color_white"
               android:gravity="center_horizontal"
               android:textStyle="bold"
               android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
               android:layout_alignParentStart="true"
               android:layout_marginBottom="5dp" android:layout_marginTop="5dp" android:padding="5dp"
-              android:layout_marginLeft="5dp" android:layout_marginRight="5dp"/>
+              android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:autoText="true"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Le notizie di oggi..."
+            android:text="Aggiornamento in corso . . ."
             android:id="@+id/textViewMsgUpdate"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginRight="15dp" android:layout_marginLeft="15dp"
-            android:background="@color/color_blue_scuro"
+            android:layout_marginRight="5dp" android:layout_marginLeft="5dp"
+            android:background="@color/color_blue"
             android:textStyle="bold"
             android:layout_below="@+id/txtNuoveCircolari" android:textColor="@color/color_white" android:padding="5dp"/>
     <TextView
@@ -49,14 +49,14 @@
               android:text="XXXXX" android:id="@+id/textView10" android:textSize="16dp"
               android:textColor="@color/color_red_scuro"
               android:layout_below="@+id/textViewOra" android:layout_centerHorizontal="true"
-              android:layout_marginLeft="15dp" android:layout_marginRight="15dp" android:paddingTop="10dp"
+              android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:paddingTop="10dp"
               android:enabled="false" android:gravity="right"/>
     <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/listViewCircolariDelGiorno" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" android:layout_below="@+id/textViewMsgUpdate"
-            android:choiceMode="singleChoice" android:layout_marginLeft="15dp" android:layout_marginRight="15dp"
+            android:choiceMode="singleChoice" android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
             android:layout_above="@+id/progressBar2"/>
     <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -69,14 +69,14 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nuove circolari: [...]"
+            android:text="LUNEDI&apos;"
             android:id="@+id/txtNuoveCircolari" android:layout_below="@+id/textView10"
-            android:layout_alignLeft="@+id/textViewMsgUpdate" android:layout_alignStart="@+id/textViewMsgUpdate"
-            android:layout_marginRight="15dp" android:textStyle="bold"
-            android:background="@color/color_blue_scuro"
+            android:layout_marginRight="5dp" android:textStyle="bold"
+            android:background="@color/color_blue"
             android:textColor="@color/color_white" android:padding="5dp"
             android:layout_marginBottom="15dp" android:textAppearance="?android:attr/textAppearanceMedium"
-            android:gravity="right"/>
+            android:gravity="center_horizontal" android:layout_marginLeft="5dp"
+            android:layout_alignStart="@+id/textView10" android:layout_alignParentStart="true"/>
 
 
 </RelativeLayout>

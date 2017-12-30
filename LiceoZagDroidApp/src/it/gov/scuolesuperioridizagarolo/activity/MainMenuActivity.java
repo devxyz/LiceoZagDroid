@@ -31,7 +31,6 @@ import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoFlag;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoLatestUsed;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoStack;
-import it.gov.scuolesuperioridizagarolo.notification.NotificationUtil;
 import it.gov.scuolesuperioridizagarolo.services.UpdateService;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 import it.gov.scuolesuperioridizagarolo.util.ThreadUtil;
@@ -119,8 +118,9 @@ public class MainMenuActivity extends AbstractActivity {
 
                 //elimina eventuali notifiche appese...
                 //NotificationUtil.errorMessage(null).cancel(getActivity());
-                NotificationUtil.newDataAvailableMessage(0).cancel(getActivity());
-
+                //NotificationUtil.newDataAvailableMessage(0).cancel(getActivity());
+                String message = intent.getExtras().getString("MESSAGE", "No message");
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 
                 ThreadUtil.runOnUiThreadAsync(MainMenuActivity.this, new Runnable() {
                     @Override

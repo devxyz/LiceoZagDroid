@@ -21,7 +21,7 @@ import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
  */
 public abstract class AbstractOrarioListAdapter extends BaseAdapter {
     protected final Activity a;
-    protected final BitOrarioGrigliaOrario orario;
+    protected  BitOrarioGrigliaOrario orario;
     private final boolean printInsegnante;
     private final boolean printInsegnanteSeCompresenza;
     private final boolean printClasse;
@@ -34,6 +34,10 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         this.printInsegnante = printInsegnante;
         this.printClasse = printClasse;
         this.printInsegnanteSeCompresenza = printInsegnanteSeCompresenza;
+    }
+
+    public void updateOrario(BitOrarioGrigliaOrario orario){
+        this.orario = orario;
     }
 
 

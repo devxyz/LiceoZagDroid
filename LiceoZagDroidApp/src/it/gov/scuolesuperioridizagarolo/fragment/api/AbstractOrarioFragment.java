@@ -1,13 +1,14 @@
 package it.gov.scuolesuperioridizagarolo.fragment.api;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 import dada.bitorario.data.BitOrarioGrigliaOrario;
 import dada.bitorario.data.BitOrarioOraLezione;
-import dada.bitorario.data.BitOrarioOraLezioneJSonConverter;
 import dada.bitorario.data.classes.ClassesAndRoomContainer;
 import dada.bitorario.data.classes.RoomData;
 import dada.bitorario.data.enum_values.EGiorno;
@@ -15,14 +16,16 @@ import dada.bitorario.data.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.adapter.api.AbstractOrarioListAdapter;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
+import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
+import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
+import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelperCallable;
+import it.gov.scuolesuperioridizagarolo.db.ManagerTimetables;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_orario_classe_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
-
-import java.io.*;
 
 public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter> extends AbstractFragment {
 
@@ -66,14 +69,20 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         //**************************
         //**************************
 
-        InputStream raw = getResources().openRawResource(R.raw.timetables);
-        Reader is = null;
+        final ScuolaAppDbHelper db = new ScuolaAppDbHelper(getMainActivity());
+        orario = new BitOrarioGrigliaOrario("no orario");
         try {
-            is = new BufferedReader(new InputStreamReader(raw, "UTF8"));
-        } catch (UnsupportedEncodingException e) {
-            throw new IllegalArgumentException(e);
+            orario = db.runInTransaction(new ScuolaAppDbHelperCallable<BitOrarioGrigliaOrario>() {
+                @Override
+                public BitOrarioGrigliaOrario call(DaoSession session, Context ctx) throws Throwable {
+                    return new ManagerTimetables(session).getActiveTimetable();
+                }
+            });
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
         }
-        orario = BitOrarioOraLezioneJSonConverter.fromJSon(is);
+
+        db.close();
 
         //**************************
         //caricamento dati
@@ -95,6 +104,10 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
             if (filtro == null) {
                 openDialogChooseFilter(false);
                 //filtro = getDefaultFiltrerValue();
+            }
+
+            if (filtro == null) {
+                filtro = "";
             }
 
             //================================
@@ -269,8 +282,33 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         }
     }
 
+    @Override
+    public void updateUI() {
+        Toast.makeText(getMainActivity(), "Aggiornamento dati ORARIO", Toast.LENGTH_LONG).show();
+        final ScuolaAppDbHelper db = new ScuolaAppDbHelper(getMainActivity());
+        try {
+            final BitOrarioGrigliaOrario bitOrarioGrigliaOrario = db.runInTransaction(new ScuolaAppDbHelperCallable<BitOrarioGrigliaOrario>() {
+                @Override
+                public BitOrarioGrigliaOrario call(DaoSession session, Context ctx) throws Throwable {
+                    ManagerTimetables m = new ManagerTimetables(session);
+                    return m.getActiveTimetable();
+                }
+            });
+            this.orario = bitOrarioGrigliaOrario;
+            this.orarioAdapter.updateOrario(bitOrarioGrigliaOrario);
+            this.orarioAdapter.notifyDataSetChanged();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        db.close();
+
+        updateView();
+    }
+
+
     private void openDialogChooseFilter(boolean cancellable) {
         final String[] etichette = new String[getFilterValues().length];
+        if (etichette.length==0)return;
 
         int i = 0;
         for (String c : getFilterValues()) {
