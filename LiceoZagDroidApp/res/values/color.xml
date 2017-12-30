@@ -33,10 +33,10 @@
     <color name="color_red_scuro">#992416</color>
     <color name="color_black">#000000</color>
 
-    <color name="color_aule_a_foreground">#ffffff</color>
-    <color name="color_aule_b_foreground">#ffffff</color>
-    <color name="color_aule_c_foreground">#ffffff</color>
-    <color name="color_aule_d_foreground">#ffffff</color>
+    <color name="color_aule_a_foreground">#000000</color>
+    <color name="color_aule_b_foreground">#000000</color>
+    <color name="color_aule_c_foreground">#000000</color>
+    <color name="color_aule_d_foreground">#000000</color>
     <color name="color_aule_e_foreground">#000000</color>
     <color name="color_aule_f_foreground">#000000</color>
 

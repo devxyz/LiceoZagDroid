@@ -12,7 +12,7 @@
             android:id="@+id/textViewAula" android:gravity="center_horizontal" android:padding="10dp"
             android:textStyle="bold"
             android:textColor="@color/color_white"
-            android:background="@color/color_blue_scurissimo"
+            android:background="@drawable/background_aule_a"
             android:width="80dp"
             android:layout_alignTop="@+id/textViewOra" android:layout_toEndOf="@+id/textViewFasciaOraria"
             android:textSize="25dp"/>

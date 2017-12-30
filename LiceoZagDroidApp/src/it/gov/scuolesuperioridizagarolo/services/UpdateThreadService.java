@@ -6,9 +6,13 @@ import android.util.Log;
 import com.google.gson.Gson;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
-import it.gov.scuolesuperioridizagarolo.dao.*;
+import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
+import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDBHelperRun;
+import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
+import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelperCallable;
 import it.gov.scuolesuperioridizagarolo.db.ManagerCircolare;
 import it.gov.scuolesuperioridizagarolo.db.ManagerNews;
+import it.gov.scuolesuperioridizagarolo.db.ManagerTimetables;
 import it.gov.scuolesuperioridizagarolo.model.C_JSonCircolariDeltaServletRequest;
 import it.gov.scuolesuperioridizagarolo.model.C_JSonCircolariDeltaServletResponse;
 import it.gov.scuolesuperioridizagarolo.notification.NotificationMessage;
@@ -22,6 +26,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -109,10 +114,8 @@ class UpdateThreadService implements Runnable {
         Gson g = new Gson();
         ZipInputStream in = new ZipInputStream(new BufferedInputStream(con.getInputStream()));
         final ZipEntry nextEntry = in.getNextEntry();
-
         final String content = StreamAndroidUtil.loadFileContentString(in);
         in.close();
-
         return g.fromJson(content, C_JSonCircolariDeltaServletResponse.class);
     }
 
@@ -159,9 +162,32 @@ class UpdateThreadService implements Runnable {
 
 
     private void loadTimetables() throws IOException {
-        ArrayList<String> url = getRemoteUrls();
+        final ArrayList<String> remoteUrls = getRemoteUrls();
 
-        System.out.println(url);
+        Set<String> localUrls = null;
+        final ScuolaAppDbHelper db = new ScuolaAppDbHelper(updateService.getApplicationContext());
+        try {
+            localUrls = db.runInTransaction(new ScuolaAppDbHelperCallable<Set<String>>() {
+                @Override
+                public Set<String> call(DaoSession session, Context ctx) throws Throwable {
+                    ManagerTimetables m = new ManagerTimetables(session);
+                    return m.getAllUrls();
+                }
+            });
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        } finally {
+            db.close();
+        }
+
+        //carica i soli orari non ancora nel database
+        for (String url : remoteUrls) {
+            /*if (){
+
+            }*/
+        }
+
 
     }
 
