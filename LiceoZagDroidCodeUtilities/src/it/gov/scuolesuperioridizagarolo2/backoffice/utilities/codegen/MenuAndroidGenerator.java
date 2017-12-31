@@ -87,22 +87,22 @@ public class MenuAndroidGenerator {
 
         int i = 0;
         while (i < ss.size()) {
-            String menuID = ss.get(i++);
+
             String menuLabel = ss.get(i++);
             String longLabel = ss.get(i++);
             String actionClass = ss.get(i++);
             String imageId = ss.get(i++);
             String x1 = ss.get(i++);
             String x2 = ss.get(i++);
-            String nomeCampo = menuLabel.replaceAll("[ .-]+", "_").toUpperCase().replace("(", "").replace(")", "") + "_" + menuID;
+            String nomeCampo = menuLabel.replaceAll("[ .-]+", "_").toUpperCase().replace("(", "").replace(")", "");
 
             //skip null
             if (actionClass.trim().length() == 0) continue;
 
             //final DataMenuInfoType type, Set<DataMenuInfoFlag > flags
-            final String s = MessageFormat.format("     public static final DataMenuInfo {0}= new DataMenuInfo(\n\"{1}\",\n\"{2}\",\n\"{3}\",\n{4}.class,\n{5},\nDataMenuInfoType.search({4}.class),\n{7});",
+            final String s = MessageFormat.format("     public static final DataMenuInfo {0}= new DataMenuInfo(\n\"{1}\",\n\"{2}\",\n{3}.class,\n{4},\nDataMenuInfoType.search({3}.class),\n{6});",
                     nomeCampo,
-                    menuID, menuLabel, longLabel.length() == 0 ? menuLabel : longLabel, actionClass, imageId.replace("@drawable/", "R.drawable."), "", "null");
+                     menuLabel, longLabel.length() == 0 ? menuLabel : longLabel, actionClass, imageId.replace("@drawable/", "R.drawable."), "", "null");
             //System.out.println(s);
             out.println(s);
         }

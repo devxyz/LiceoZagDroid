@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.view.Window;
-import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
+import android.webkit.CookieSyncManager;
+import android.webkit.WebView;
 import it.gov.scuolesuperioridizagarolo.R;
+import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.api.AbstractDialog;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_dialog_view_html_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
@@ -14,7 +16,7 @@ import it.gov.scuolesuperioridizagarolo.util.ScreenUtil;
 /**
  * Created by stefano on 25/02/15.
  */
-@Deprecated
+
 public class HtmlPageDialog extends AbstractDialog {
     private LayoutObjs_dialog_view_html_xml LAYOUT_OBJs;
 
@@ -30,6 +32,19 @@ public class HtmlPageDialog extends AbstractDialog {
         if (htmlText == null && url == null) {
             throw new NullPointerException("Specificare url o testo");
         }
+
+
+        CookieSyncManager.createInstance(this.getMainActivity());
+        CookieSyncManager.getInstance().startSync();
+        final WebView webview = LAYOUT_OBJs.textViewDescrizione;
+
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.getSettings().setSupportZoom(true);
+        webview.getSettings().setBuiltInZoomControls(true);
+        webview.setInitialScale(1);
+        webview.getSettings().setLoadWithOverviewMode(true);
+        webview.getSettings().setUseWideViewPort(true);
+
 
         setCancelable(true);
         setCanceledOnTouchOutside(true);

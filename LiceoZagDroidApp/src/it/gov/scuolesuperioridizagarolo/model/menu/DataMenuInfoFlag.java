@@ -9,7 +9,8 @@ import java.util.TreeSet;
  */
 public enum DataMenuInfoFlag implements Serializable{
     DONT_SHOW_IN_HOME,
-    SUB_ITEM
+    SUB_ITEM,
+    NOT_ACTIVE//se nascosto
     ,;
 
     public static Set<DataMenuInfoFlag> valueOf(String[] ss) {

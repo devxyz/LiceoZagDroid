@@ -9,32 +9,30 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Title"
             android:id="@+id/textViewTitle"
-            android:textStyle="bold" android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:textStyle="bold"
             android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" android:layout_toLeftOf="@+id/buttonClose"
             android:layout_toStartOf="@+id/buttonClose" android:layout_alignBottom="@+id/buttonClose"
             android:gravity="center_vertical|center_horizontal"
-            android:background="@color/color_dialog_title_background"/>
+    />
         <WebView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Descrizione"
                 android:id="@+id/textViewDescrizione"
-                android:layout_below="@+id/textViewTitle"
                 android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
                 android:layout_above="@+id/linearLayout2"
-                android:layout_marginLeft="5dp" android:layout_marginTop="5dp" android:layout_marginRight="5dp"/>
+                android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+                android:layout_below="@+id/progressBar7"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonClose"
             android:src="@drawable/right_arrow2_30x30"
-            android:background="@color/color_dialog_title_background"
 
             android:layout_alignParentTop="true" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true" android:background="@drawable/background_pulsante_red"/>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -45,16 +43,16 @@
                 <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="OK"
+                        android:text="Chiudi"
                         android:id="@+id/buttonOK" android:textStyle="bold"
-                        android:width="100dp"/>
+                        android:width="100dp" android:background="@drawable/background_pulsante_red"
+                        android:layout_margin="5dp"/>
         </LinearLayout>
         <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/progressBar7"
-                android:layout_above="@+id/textViewDescrizione" android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" android:layout_toLeftOf="@+id/buttonClose"
-                android:layout_toStartOf="@+id/buttonClose" android:background="@color/color_dialog_title_background"/>
+                android:layout_below="@+id/textViewTitle"
+                android:layout_alignStart="@+id/textViewDescrizione"/>
 </RelativeLayout>

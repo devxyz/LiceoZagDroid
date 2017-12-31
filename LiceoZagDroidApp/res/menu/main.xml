@@ -86,8 +86,13 @@
                         android:id="@+id/action_view_stack"
                         android:orderInCategory="100"
                         android:showAsAction="never"
-                        android:title="Visualizza Stack"/>
+                        android:title="Visualizza Stack Fragment"/>
 
+                <item
+                        android:id="@+id/action_view_preferences"
+                        android:orderInCategory="100"
+                        android:showAsAction="never"
+                        android:title="Visualizza SharedPrefs"/>
                 <item
                         android:id="@+id/action_view_timetables"
                         android:orderInCategory="100"

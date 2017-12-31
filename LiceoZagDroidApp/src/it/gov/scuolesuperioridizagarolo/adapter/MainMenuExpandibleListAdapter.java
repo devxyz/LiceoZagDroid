@@ -29,12 +29,15 @@ public class MainMenuExpandibleListAdapter extends BaseAdapter implements IMenuL
 
     public DataMenuInfo getDataMenuInfoByMenuID(String id){
         for (DataMenuInfo x : original) {
-            if (x.getMenuID()==id)return x;
+            if (x.getMenuID().equals(id))return x;
         }
         return null;
     }
 
     public MainMenuExpandibleListAdapter(Context context, List<DataMenuInfo> navDrawerItems) {
+
+
+
 
         mInflater = (LayoutInflater)
                 context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);

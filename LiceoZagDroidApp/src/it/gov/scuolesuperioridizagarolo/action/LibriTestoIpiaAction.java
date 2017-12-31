@@ -10,7 +10,6 @@ import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
 /**
  * Created by stefano on 06/04/15.
  */
-
 public class LibriTestoIpiaAction implements ActivityAction {
     @Override
     public void doTask(MainMenuActivity activity, DataMenuInfo item) {

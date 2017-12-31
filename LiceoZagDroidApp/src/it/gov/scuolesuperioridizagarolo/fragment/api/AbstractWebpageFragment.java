@@ -77,7 +77,7 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
 
                 LAYOUT_OBJs.progressBarLoad.setProgress(progress);
                 if (progress >= 100) {
-                    LAYOUT_OBJs.progressBarLoad.setVisibility(View.GONE);
+                    LAYOUT_OBJs.progressBarLoad.setVisibility(View.INVISIBLE);
                     LAYOUT_OBJs.textViewTitolo.setText(getTitile());
                 } else {
                     LAYOUT_OBJs.progressBarLoad.setVisibility(View.VISIBLE);
@@ -93,6 +93,12 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (url.endsWith(".pdf")) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    // if want to download pdf manually create AsyncTask here
+                    // and download file
+                    return true;
+                }
                 view.loadUrl(url);
                 return true;
             }

@@ -3,7 +3,6 @@
 
     <!-- per ogni menu, l'icona -->
     <array name="menu_home_studente">
-        <item>912</item>
         <item>Apri Menu</item>
         <item>Apri Menu</item>
         <item>it.gov.scuolesuperioridizagarolo.action.OpenMenuAction</item>
@@ -12,7 +11,36 @@
         <item>END-ITEM</item>
 
 
+        <item>Sito WEB</item>
+        <item>IIS Borsellino Falcone - Zagarolo</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.SitoWebFragment</item>
+        <item>@drawable/_menu_web_48x48</item>
+        <item></item>
+        <item>END-ITEM</item>
 
+
+        <item>Orario Classi</item>
+        <item>Orario Classi</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment</item>
+        <item>@drawable/_menu_student_48x48</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
+
+
+        <item>R.E. Famiglie</item>
+        <item>Registro elettronico famiglie</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.ReStudentiAction</item>
+        <item>@drawable/logo_re_famiglie_45x45</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
+
+
+        <item>Aggiorna</item>
+        <item>Aggiorna i dati</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.UpdateAction</item>
+        <item>@drawable/_menu_update_service_60x60</item>
+        <item></item>
+        <item>END-ITEM</item>
 
 
     </array>

@@ -4,7 +4,6 @@
     <!-- per ogni menu, l'icona -->
     <array name="menu_home_famiglia">
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
-        <item>912</item>
         <item>Apri Menu</item>
         <item>Apri Menu</item>
         <item>it.gov.scuolesuperioridizagarolo.action.OpenMenuAction</item>
@@ -13,9 +12,64 @@
         <item>END-ITEM</item>
 
 
+        <item>Sito WEB</item>
+        <item>IIS Borsellino Falcone - Zagarolo</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.SitoWebFragment</item>
+        <item>@drawable/_menu_web_48x48</item>
+        <item></item>
+        <item>END-ITEM</item>
+
+
+        <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
+
+        <item>Contatti</item>
+        <item>Contatta la scuola</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.ContattiFragment</item>
+        <item>@drawable/_menu_contatti_48x48</item>
+        <item></item>
+        <item>END-ITEM</item>
+
+        <item>R.E. Famiglie</item>
+        <item>Registro elettronico famiglie</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.ReStudentiAction</item>
+        <item>@drawable/logo_re_famiglie_45x45</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
 
 
 
+        <item>Libri LICEO</item>
+        <item>Libri LICEO</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.LibriTestoLiceoAction</item>
+        <item>@drawable/library_icon</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
+
+
+        <item>Libri IPIA</item>
+        <item>Libri IPIA</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.LibriTestoIpiaAction</item>
+        <item>@drawable/library_icon</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
+
+
+
+        <item>Iscrizione Online</item>
+        <item>Iscrizione Online</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.IscrizioneOnlineAction</item>
+        <item>@drawable/logo_iscrizioni_online_50x50</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
+
+        <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
+
+        <item>Aggiorna</item>
+        <item>Aggiorna i dati</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.UpdateAction</item>
+        <item>@drawable/_menu_update_service_60x60</item>
+        <item></item>
+        <item>END-ITEM</item>
     </array>
 
 </resources>

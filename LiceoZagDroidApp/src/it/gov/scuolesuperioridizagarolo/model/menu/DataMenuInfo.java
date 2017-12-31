@@ -25,8 +25,8 @@ public class DataMenuInfo implements Serializable {
     private final DataMenuInfoBuilder action;
     private final Set<DataMenuInfoFlag> flags;
 
-    public DataMenuInfo(String menuID, String menuLabel, String longLabel, final Class actionClass, Integer imageId, final DataMenuInfoType type, Set<DataMenuInfoFlag> flags) {
-        this(menuID, menuLabel, longLabel, imageId, new DataMenuInfoBuilder() {
+    public DataMenuInfo(String menuLabel, String longLabel, final Class actionClass, Integer imageId, final DataMenuInfoType type, Set<DataMenuInfoFlag> flags) {
+        this(menuLabel, longLabel, imageId, new DataMenuInfoBuilder() {
             @Override
             public DataMenuInfoType type() {
                 return type;
@@ -43,8 +43,8 @@ public class DataMenuInfo implements Serializable {
         }, flags);
     }
 
-    public DataMenuInfo(String menuID, String menuLabel, String longLabel, Integer imageId, DataMenuInfoBuilder action, Set<DataMenuInfoFlag> flags) {
-        this.menuID = menuLabel + "_" + menuID;
+    public DataMenuInfo(String menuLabel, String longLabel, Integer imageId, DataMenuInfoBuilder action, Set<DataMenuInfoFlag> flags) {
+        this.menuID = menuLabel.replaceAll("[ .-]+", "_").toUpperCase().replace("(", "").replace(")", "");
         if (flags != null)
             this.flags = new TreeSet<>(flags);
         else
@@ -55,8 +55,8 @@ public class DataMenuInfo implements Serializable {
         this.imageId = imageId;
     }
 
-    public DataMenuInfo(String menuID, String menuLabel, String longLabel, Class actionClass, DataMenuInfoType type, Set<DataMenuInfoFlag> flags) {
-        this(menuID, menuLabel, longLabel, actionClass, null, type, flags);
+    public DataMenuInfo(String menuLabel, String longLabel, Class actionClass, DataMenuInfoType type, Set<DataMenuInfoFlag> flags) {
+        this( menuLabel, longLabel, actionClass, null, type, flags);
     }
 
     //indica se si tratta di un comando o di un fragment

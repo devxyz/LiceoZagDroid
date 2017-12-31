@@ -4,7 +4,7 @@
     <!-- per ogni menu, l'icona -->
     <array name="menu_principale">
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
-        <item>ID</item>
+
         <item>Home</item>
         <item>IIS Borsellino Falcone - Zagarolo</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.HomeFragment</item>
@@ -12,7 +12,7 @@
         <item>DONT_SHOW_IN_HOME</item>
         <item>END-ITEM</item>
 
-        <item>ID</item>
+
         <item>Sito WEB</item>
         <item>IIS Borsellino Falcone - Zagarolo</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.SitoWebFragment</item>
@@ -22,7 +22,7 @@
 
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
-        <item>ID</item>
+
         <item>Contatti</item>
         <item>Contatta la scuola</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.ContattiFragment</item>
@@ -32,15 +32,15 @@
 
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
-        <item>ID</item>
+
         <item>Orario delle lezioni</item>
         <item></item>
         <item></item>
         <item>@drawable/_menu_orari_48x48</item>
-        <item>DONT_SHOW_IN_HOME</item>
+        <item></item>
         <item>END-ITEM</item>
 
-        <item>ID</item>
+
         <item>Orario Classi</item>
         <item>Orario Classi</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment</item>
@@ -49,7 +49,7 @@
         <item>END-ITEM</item>
 
 
-        <item>ID</item>
+
         <item>Orario Docenti</item>
         <item>Orario Docenti</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteFragment</item>
@@ -59,25 +59,25 @@
 
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
-        <item>ID</item>
+
         <item>La scuola</item>
         <item></item>
         <item></item>
         <item>@drawable/_menu_school_48x48</item>
-        <item>DONT_SHOW_IN_HOME</item>
+        <item></item>
         <item>END-ITEM</item>
 
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
-        <item>ID</item>
+
         <item>Foto (TODO)</item>
         <item>Foto Gallery</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.PhotosExpandibleFragment</item>
         <item>@drawable/_menu_photos</item>
-        <item>SUB_ITEM</item>
+        <item>SUB_ITEM,NOT_ACTIVE</item>
         <item>END-ITEM</item>
 
-        <item>ID</item>
+
         <item>Libri di testo LICEO</item>
         <item>Libri di testo LICEO</item>
         <item>it.gov.scuolesuperioridizagarolo.action.LibriTestoLiceoAction</item>
@@ -85,7 +85,7 @@
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
-        <item>ID</item>
+
         <item>Libri di testo IPIA</item>
         <item>Libri di testo IPIA</item>
         <item>it.gov.scuolesuperioridizagarolo.action.LibriTestoIpiaAction</item>
@@ -94,7 +94,7 @@
         <item>END-ITEM</item>
 
 
-        <item>ID</item>
+
         <item>Iscrizione Online</item>
         <item>Iscrizione Online</item>
         <item>it.gov.scuolesuperioridizagarolo.action.IscrizioneOnlineAction</item>
@@ -104,43 +104,43 @@
 
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
-        <item>ID</item>
+
         <item>Deprecated</item>
         <item></item>
         <item></item>
         <item>@drawable/pict_news</item>
-        <item>DONT_SHOW_IN_HOME</item>
+        <item>DONT_SHOW_IN_HOME,NOT_ACTIVE</item>
         <item>END-ITEM</item>
 
         <!-- .................................. -->
-        <item>ID</item>
+
         <item>In evidenza oggi</item>
         <item>Circolari del Giorno</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.CircolariGiornaliereFragment</item>
         <item>@drawable/calendar_preferences_50x50</item>
-        <item>SUB_ITEM</item>
+        <item>SUB_ITEM,NOT_ACTIVE</item>
         <item>END-ITEM</item>
 
         <!-- .................................. -->
-        <item>ID</item>
+
         <item>News</item>
         <item>Ultime Notizie dalla scuola</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.NewsFragmentRss</item>
         <item>@drawable/id_tab_news</item>
-        <item>SUB_ITEM</item>
+        <item>SUB_ITEM,NOT_ACTIVE</item>
         <item>END-ITEM</item>
         <!-- .................................. -->
-        <item>ID</item>
+
         <item>Circolari</item>
         <item>Circolari scolastiche</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.CircolariSearchFragment</item>
         <item>@drawable/file_search</item>
-        <item>SUB_ITEM</item>
+        <item>SUB_ITEM,NOT_ACTIVE</item>
         <item>END-ITEM</item>
 
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
-        <item>ID</item>
+
         <item>Registro elettronico</item>
         <item></item>
         <item></item>
@@ -148,7 +148,7 @@
         <item>DONT_SHOW_IN_HOME</item>
         <item>END-ITEM</item>
 
-        <item>ID</item>
+
         <item>R.E. Docenti</item>
         <item>Registro elettronico docenti</item>
         <item>it.gov.scuolesuperioridizagarolo.action.ReDocentiAction</item>
@@ -156,7 +156,7 @@
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
-        <item>ID</item>
+
         <item>R.E. Famiglie</item>
         <item>Registro elettronico famiglie</item>
         <item>it.gov.scuolesuperioridizagarolo.action.ReStudentiAction</item>
@@ -165,7 +165,7 @@
         <item>END-ITEM</item>
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
-        <item>ID</item>
+
         <item>Aggiorna</item>
         <item>Aggiorna i dati</item>
         <item>it.gov.scuolesuperioridizagarolo.action.UpdateAction</item>
@@ -174,7 +174,7 @@
         <item>END-ITEM</item>
 
 
-        <item>ID</item>
+
         <item>Chiudi</item>
         <item>Chiudi</item>
         <item>it.gov.scuolesuperioridizagarolo.action.CloseAction</item>

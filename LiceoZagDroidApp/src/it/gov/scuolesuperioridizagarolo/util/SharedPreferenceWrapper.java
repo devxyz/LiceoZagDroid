@@ -72,7 +72,7 @@ public class SharedPreferenceWrapper {
 
     public void setLastDataUpdate(Date d) {
         SharedPreferences.Editor e = preferences.edit();
-        e.putLong(KEY_LAST_USED_MENU, d.getTime());
+        e.putLong(KEY_DATA_UPDATE, d.getTime());
         e.apply();
     }
 

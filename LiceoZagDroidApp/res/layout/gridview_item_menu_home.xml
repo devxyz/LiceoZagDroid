@@ -5,8 +5,8 @@
 
     <ImageView
             android:id="@+id/thumb"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:layout_alignParentLeft="false"
             android:layout_centerVertical="true"
             android:contentDescription="@string/app_name"

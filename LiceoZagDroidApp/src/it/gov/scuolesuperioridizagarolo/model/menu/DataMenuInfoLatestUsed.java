@@ -3,6 +3,7 @@ package it.gov.scuolesuperioridizagarolo.model.menu;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by stefano on 07/09/15.
@@ -17,9 +18,8 @@ public class DataMenuInfoLatestUsed {
 
     public void add(String item) {
         //aggiunge in testa (rimuovendolo se gia' presente)
-        menuIdSortByUse.remove((Object) item);
+        menuIdSortByUse.remove(item);
         menuIdSortByUse.addFirst(item);
-
     }
 
     public void add(DataMenuInfo item) {
@@ -30,7 +30,7 @@ public class DataMenuInfoLatestUsed {
 
     private DataMenuInfo _find(List<DataMenuInfo> ll, String id) {
         for (DataMenuInfo l : ll) {
-            if (l.getMenuID() == id) return l;
+            if (Objects.equals(l.getMenuID(), id)) return l;
         }
         return null;
     }

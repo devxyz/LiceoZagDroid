@@ -23,6 +23,7 @@ import it.gov.scuolesuperioridizagarolo.adapter.MainMenuExpandibleListAdapter;
 import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.dao.*;
+import it.gov.scuolesuperioridizagarolo.dialog.HtmlPageDialog;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoFlag;
@@ -31,6 +32,7 @@ import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoStack;
 import it.gov.scuolesuperioridizagarolo.services.UpdateService;
 import it.gov.scuolesuperioridizagarolo.util.C_DateUtil;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
+import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
 import it.gov.scuolesuperioridizagarolo.util.ThreadUtil;
 
 import java.io.File;
@@ -286,29 +288,17 @@ public class MainMenuActivity extends AbstractActivity {
                 finish();
                 return true;
             case R.id.action_view_timetables: {
-                final ScuolaAppDbHelper db = new ScuolaAppDbHelper(this);
-                try {
-                    ArrayList<String> messaggi = db.runInTransaction(new ScuolaAppDbHelperCallable<ArrayList<String>>() {
-                        @Override
-                        public ArrayList<String> call(DaoSession session, Context ctx) throws Throwable {
-                            final List<TimetableDB> list = session.getTimetableDBDao().queryBuilder().orderAsc(TimetableDBDao.Properties.RemoteId).list();
-                            ArrayList<String> ris = new ArrayList<String>();
-                            for (TimetableDB x : list) {
-                                String s =
-                                        x.getRemoteId() + " " +
-                                                x.getFilename() + " " +
-                                                C_DateUtil.toDDMMYYY(x.getStartDate()) + "-" + C_DateUtil.toDDMMYYY(x.getEndDate());
-                                ris.add(s);
-                            }
 
-                            return ris;
-                        }
-                    });
-                    DialogUtil.openInfoDialog(this, "Database", messaggi);
+                final StringBuilder sb = new StringBuilder();
+
+                try {
+                    _composeReportOrariScaricati(sb);
+                    HtmlPageDialog d = new HtmlPageDialog(this, "Report orari", sb.toString(), null);
+                    d.show();
                 } catch (Throwable throwable) {
                     throwable.printStackTrace();
                 }
-                db.close();
+
                 return true;
             }
             case R.id.action_usertype:
@@ -320,52 +310,7 @@ public class MainMenuActivity extends AbstractActivity {
                 });
                 return true;
             case R.id.action_reset: {
-
-                File[] files = getCache().getFiles();
-                final int countFiles = files.length;
-                long size = 0;
-                for (File f : files) {
-                    size += f.length();
-                    f.delete();
-                }
-                final long totalSize = size;
-
-                getSharedPreferences().clear();
-
-                ScuolaAppDbHelper.runOneTransactionAsync(this, new ScuolaAppDBHelperRunAsync() {
-                    long numCircolari, numTermini, numFileCache, numNews;
-
-                    @Override
-                    public void run(DaoSession session, Context ctx) throws Throwable {
-                        numCircolari = session.getCircolareDBDao().queryBuilder().count();
-                        numTermini = session.getTermineDBDao().queryBuilder().count();
-                        numFileCache = session.getCacheFileDBDao().queryBuilder().count();
-                        numFileCache = session.getNewsDBDao().queryBuilder().count();
-
-                        session.getCircolareDBDao().deleteAll();
-                        session.getTermineDBDao().deleteAll();
-                        session.getCircolareContieneTermineDBDao().deleteAll();
-                        session.getCacheFileDBDao().deleteAll();
-                        session.getNewsDBDao().deleteAll();
-                    }
-
-                    @Override
-                    public void onPostExecuteRunUI_OnError(Throwable e) {
-                        DialogUtil.openErrorDialog(getActivity(), "Errore", "Impossibile cancellare i file del database", e);
-                    }
-
-                    @Override
-                    public void onPostExecuteRunUI_OnSuccess() {
-/*                        DialogUtil.openInfoDialog(getActivity(), "Successo", "Dati cancellati correttamente dal database.\nCircolari: " + numCircolari + "\nNotizie: " + numNews +
-                                "\nTermini: " + numTermini + "\nFile cache: " + numFileCache + "\nDimensione tot: " + totalSize + "\nNum files:" + countFiles);*/
-                    }
-
-                    @Override
-                    public void onCancelledRunUI() {
-
-                    }
-                }, "Azzeramento", "Cancellazione");
-
+                _doResetApplication();
                 finish();
                 return true;
             }
@@ -378,6 +323,23 @@ public class MainMenuActivity extends AbstractActivity {
                 DialogUtil.openInfoDialog(this, "Stack fragment", sb.toString());
                 return true;
             }
+            case R.id.action_view_preferences: {
+                final SharedPreferenceWrapper commonInstance = SharedPreferenceWrapper.getCommonInstance(getActivity());
+                final Map<String, ?> all = commonInstance.getPreferences().getAll();
+                StringBuilder sb = new StringBuilder();
+
+                sb.append("<html><body><table border=1>");
+                sb.append("<tr><td>key</td><td>Value</td>");
+                for (Map.Entry<String, ?> e : all.entrySet()) {
+                    sb.append("<tr><td>" + e.getKey() + "</td><td>" + e.getValue() + "</td>");
+                }
+                sb.append("</table></body></html>");
+                HtmlPageDialog d = new HtmlPageDialog(this, "Report shared prefs", sb.toString(), null);
+                d.show();
+
+                return true;
+            }
+
             case R.id.action_utilizzo_cache: {
                 File[] files = getCache().getFiles();
                 long size = 0;
@@ -418,6 +380,80 @@ public class MainMenuActivity extends AbstractActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    private void _doResetApplication() {
+        File[] files = getCache().getFiles();
+        final int countFiles = files.length;
+        long size = 0;
+        for (File f : files) {
+            size += f.length();
+            f.delete();
+        }
+        final long totalSize = size;
+
+        getSharedPreferences().clear();
+
+
+        ScuolaAppDbHelper.runOneTransactionAsync(this, new ScuolaAppDBHelperRunAsync() {
+            long numCircolari, numTermini, numFileCache, numNews;
+
+            @Override
+            public void run(DaoSession session, Context ctx) throws Throwable {
+                numCircolari = session.getCircolareDBDao().queryBuilder().count();
+                numTermini = session.getTermineDBDao().queryBuilder().count();
+                numFileCache = session.getCacheFileDBDao().queryBuilder().count();
+                numFileCache = session.getNewsDBDao().queryBuilder().count();
+
+                session.getCircolareDBDao().deleteAll();
+                session.getTermineDBDao().deleteAll();
+                session.getCircolareContieneTermineDBDao().deleteAll();
+                session.getCacheFileDBDao().deleteAll();
+                session.getNewsDBDao().deleteAll();
+            }
+
+            @Override
+            public void onPostExecuteRunUI_OnError(Throwable e) {
+                DialogUtil.openErrorDialog(getActivity(), "Errore", "Impossibile cancellare i file del database", e);
+            }
+
+            @Override
+            public void onPostExecuteRunUI_OnSuccess() {
+/*                        DialogUtil.openInfoDialog(getActivity(), "Successo", "Dati cancellati correttamente dal database.\nCircolari: " + numCircolari + "\nNotizie: " + numNews +
+                        "\nTermini: " + numTermini + "\nFile cache: " + numFileCache + "\nDimensione tot: " + totalSize + "\nNum files:" + countFiles);*/
+            }
+
+            @Override
+            public void onCancelledRunUI() {
+
+            }
+        }, "Azzeramento", "Cancellazione");
+    }
+
+    private void _composeReportOrariScaricati(final StringBuilder sb) throws Throwable {
+        sb.append("<html><body><table border=1>");
+        sb.append("<tr><td>Id</td><td>Data Inizio</td><td>Data Fine</td><td>Nome File</td><td>Size</td><td>Download date</td>");
+        final ScuolaAppDbHelper db = new ScuolaAppDbHelper(this);
+        db.runInTransaction(new ScuolaAppDbHelperCallable<ArrayList<String>>() {
+            @Override
+            public ArrayList<String> call(DaoSession session, Context ctx) throws Throwable {
+                final List<TimetableDB> list = session.getTimetableDBDao().queryBuilder().orderAsc(TimetableDBDao.Properties.RemoteId).list();
+                ArrayList<String> ris = new ArrayList<String>();
+                for (TimetableDB x : list) {
+
+                    sb.append("<tr><td>" + x.getRemoteId() + "</td><td>" + C_DateUtil.toDDMMYYY(x.getStartDate()) + "</td>" +
+                            "<td>" + C_DateUtil.toDDMMYYY(x.getEndDate()) + "</td>" +
+                            "<td>" + x.getFilename() + "</td>" +
+                            "<td>" + x.getData().length + "</td>" +
+                            "<td>" + x.getCreateDate() + "</td>");
+                }
+
+                return ris;
+            }
+        });
+        db.close();
+
+        sb.append("</table></body></html>");
     }
 
     public int howManyRunningInstances(Context ctx) {

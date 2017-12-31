@@ -13,7 +13,6 @@ import it.gov.scuolesuperioridizagarolo.util.ThreadUtil;
 public abstract class AbstractActivity extends Activity {
     private UrlFileCache cache;
     private ScuolaAppDbHelper database;
-    private SharedPreferenceWrapper sharedpreferences;
 
     public AbstractActivity() {
     }
@@ -23,7 +22,7 @@ public abstract class AbstractActivity extends Activity {
     }
 
     public final SharedPreferenceWrapper getSharedPreferences() {
-        return sharedpreferences;
+        return SharedPreferenceWrapper.getCommonInstance(getActivity());
     }
 
     public final Activity getActivity() {
@@ -42,7 +41,6 @@ public abstract class AbstractActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         cache = new UrlFileCache(this);
-        sharedpreferences = SharedPreferenceWrapper.getCommonInstance(getActivity());
         database = new ScuolaAppDbHelper(getActivity());
 
     }
