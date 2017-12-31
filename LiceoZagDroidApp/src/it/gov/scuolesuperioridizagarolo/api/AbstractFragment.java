@@ -27,7 +27,7 @@ public abstract class AbstractFragment extends Fragment {
      */
     public void updateUI() {
         //DialogUtil.openInfoDialog(getMainActivity(), "Aggiornamento", "Test di aggiornamento");
-        Toast.makeText(getMainActivity(), "Aggiornamento dati", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getMainActivity(), "Aggiornamento dati", Toast.LENGTH_LONG).show();
     }
 
     @Override

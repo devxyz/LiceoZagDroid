@@ -115,10 +115,6 @@ class UpdateThreadService implements Runnable {
     @Override
     public void run() {
 
-        //se non richiesto l'update, skip
-        if (!updateService.shouldUpdate())
-            return;
-
 
         sendMessageToMainActivity("Aggiornamento dati in corso", false);
 
@@ -161,6 +157,10 @@ class UpdateThreadService implements Runnable {
             throwable.printStackTrace();
             sendMessageToMainActivity("Errore durante l'aggiornamento", false);
         }
+
+
+        //set lastuupdate timestamp
+        UpdateService.updateDone(updateService);
 
 
     }

@@ -5,39 +5,40 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import it.gov.scuolesuperioridizagarolo.R;
 
-public class LayoutObjs_listview_photolist_item_xml {
+public class LayoutObjs_gridview_item_menu_home_xml {
+    public final RelativeLayout layout;
     public final ImageView thumb;
     public final TextView title;
-    public final ImageView arrow;
 
-    public LayoutObjs_listview_photolist_item_xml(Fragment f) {
+    public LayoutObjs_gridview_item_menu_home_xml(Fragment f) {
         View view = f.getView();
+        layout = (RelativeLayout) view.findViewById(R.id.layout);
         thumb = (ImageView) view.findViewById(R.id.thumb);
         title = (TextView) view.findViewById(R.id.title);
-        arrow = (ImageView) view.findViewById(R.id.arrow);
     }
 
-    public LayoutObjs_listview_photolist_item_xml(Activity view) {
+    public LayoutObjs_gridview_item_menu_home_xml(Activity view) {
+        layout = (RelativeLayout) view.findViewById(R.id.layout);
         thumb = (ImageView) view.findViewById(R.id.thumb);
         title = (TextView) view.findViewById(R.id.title);
-        arrow = (ImageView) view.findViewById(R.id.arrow);
-
-    }
-
-    public LayoutObjs_listview_photolist_item_xml(View view) {
-        thumb = (ImageView) view.findViewById(R.id.thumb);
-        title = (TextView) view.findViewById(R.id.title);
-        arrow = (ImageView) view.findViewById(R.id.arrow);
 
     }
 
-    public LayoutObjs_listview_photolist_item_xml(Dialog view) {
+    public LayoutObjs_gridview_item_menu_home_xml(View view) {
+        layout = (RelativeLayout) view.findViewById(R.id.layout);
         thumb = (ImageView) view.findViewById(R.id.thumb);
         title = (TextView) view.findViewById(R.id.title);
-        arrow = (ImageView) view.findViewById(R.id.arrow);
+
+    }
+
+    public LayoutObjs_gridview_item_menu_home_xml(Dialog view) {
+        layout = (RelativeLayout) view.findViewById(R.id.layout);
+        thumb = (ImageView) view.findViewById(R.id.thumb);
+        title = (TextView) view.findViewById(R.id.title);
 
     }
 }

@@ -27,7 +27,7 @@ public class MainMenuExpandibleListAdapter extends BaseAdapter implements IMenuL
     private DataMenuInfo lastOpen = null;
     private LayoutInflater mInflater;
 
-    public DataMenuInfo getDataMenuInfoByMenuID(int id){
+    public DataMenuInfo getDataMenuInfoByMenuID(String id){
         for (DataMenuInfo x : original) {
             if (x.getMenuID()==id)return x;
         }
@@ -122,7 +122,7 @@ public class MainMenuExpandibleListAdapter extends BaseAdapter implements IMenuL
         notifyDataSetChanged();
     }
 
-    public DataMenuInfo searchByMenuID(int menuID) {
+    public DataMenuInfo searchByMenuID(String menuID) {
         for (DataMenuInfo m : currentVisibleItems) {
             if (m.getMenuID() == menuID) return m;
         }

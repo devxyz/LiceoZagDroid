@@ -21,7 +21,7 @@ public class UpdateService extends Service {
     public static final String KEY_MESSAGGIO_UPDATE = "KEY_MESSAGGIO_UPDATE";
     public static final String KEY_SHOULD_UPDATE = "KEY_STATO_UPDATE";
 
-    private static final int UPDATE_MINUTE = 5;
+    private static final int UPDATE_MINUTE = 50;
     final ScheduledExecutorService scheduledExecutorService;
 
     public UpdateService() {
@@ -36,11 +36,18 @@ public class UpdateService extends Service {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    public synchronized boolean shouldUpdate() {
-        final SharedPreferenceWrapper e = SharedPreferenceWrapper.getCommonInstance(getApplication());
+    //ha senso avviare in automatico solo dopo 50 minuti
+    public static boolean shouldRunUpdateServiceAutomatically(Context a) {
+        final SharedPreferenceWrapper e = SharedPreferenceWrapper.getCommonInstance(a);
         final Date d = e.getLastDataUpdate();
         long minutes = ((System.currentTimeMillis() - d.getTime()) / 1000 / 60);
         return (minutes >= UPDATE_MINUTE);
+    }
+
+    //memorizza l'ora dell'ultimo update
+    public static void updateDone(Context a) {
+        final SharedPreferenceWrapper e = SharedPreferenceWrapper.getCommonInstance(a);
+        e.setLastDataUpdate(new Date());
     }
 
     public synchronized void updatedNow() {

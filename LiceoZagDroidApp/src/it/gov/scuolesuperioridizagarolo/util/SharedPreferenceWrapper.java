@@ -81,19 +81,19 @@ public class SharedPreferenceWrapper {
     }
 
 
-    public List<Integer> getLastUsedMenuId() {
+    public List<String> getLastUsedMenuId() {
         final String string = preferences.getString(KEY_LAST_USED_MENU, "");
         final String[] split = string.split("[, ]+");
 
-        List<Integer> ris = new ArrayList<>(split.length);
+        List<String> ris = new ArrayList<>(split.length);
         for (String s : split) {
             if (s.trim().length() > 0)
-                ris.add(Integer.parseInt(s.trim()));
+                ris.add(s.trim());
         }
         return ris;
     }
 
-    public void setLastUsedMenuId(List<Integer> ll) {
+    public void setLastUsedMenuId(List<String> ll) {
         final String s = ll.toString().replace("[", "").replace("]", "");
         SharedPreferences.Editor e = preferences.edit();
         e.putString(KEY_LAST_USED_MENU, s);

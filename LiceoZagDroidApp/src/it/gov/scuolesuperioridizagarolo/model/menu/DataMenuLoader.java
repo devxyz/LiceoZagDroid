@@ -16,7 +16,7 @@ public class DataMenuLoader {
         }
 
         for (int i = 0; i < navMenuInfo.length(); ) {
-            int menuID = Integer.parseInt(navMenuInfo.getString(i));
+            String menuID = (navMenuInfo.getString(i));
             i++;
             String label = navMenuInfo.getString(i);
             i++;

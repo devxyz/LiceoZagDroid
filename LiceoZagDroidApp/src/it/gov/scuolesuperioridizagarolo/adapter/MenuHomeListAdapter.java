@@ -80,7 +80,7 @@ public class MenuHomeListAdapter extends BaseAdapter implements IMenuListAdapter
         super.notifyDataSetChanged();
     }
 
-    public DataMenuInfo searchByMenuID(int menuID) {
+    public DataMenuInfo searchByMenuID(String menuID) {
         for (DataMenuInfo m : items) {
             if (m.getMenuID() == menuID) return m;
         }

@@ -62,7 +62,7 @@ public class MainMenuActivity extends AbstractActivity {
     public static void startMainActivity(Context ctx, DataMenuInfo m) {
         Intent i = new Intent(ctx, MainMenuActivity.class);
         if (m != null) {
-            final int menuID = m.getMenuID();
+            final String menuID = m.getMenuID();
             i.putExtra(KEY_MENU_ID_INTENT, menuID);
         }
         ctx.startActivity(i);
@@ -142,9 +142,11 @@ public class MainMenuActivity extends AbstractActivity {
         // we never want this to happen. Instead, we check if we are the root and if not, we finish.
 
 
-        //start service
-        Intent serviceIntent = new Intent(this, UpdateService.class);
-        startService(serviceIntent);
+        //start service automatically
+        if (UpdateService.shouldRunUpdateServiceAutomatically(getActivity())) {
+            Intent serviceIntent = new Intent(this, UpdateService.class);
+            startService(serviceIntent);
+        }
 
         lastUsedMenu = new DataMenuInfoLatestUsed(getSharedPreferences().getLastUsedMenuId());
 
@@ -208,7 +210,7 @@ public class MainMenuActivity extends AbstractActivity {
             //controlla se è stato specificato un menu particolare
             final Intent intent1 = getIntent();
             if (intent1 != null && intent1.getExtras() != null && intent1.getExtras().getInt(KEY_MENU_ID_INTENT, -1) > 0) {
-                final DataMenuInfo m = menuMainAdapter.getDataMenuInfoByMenuID(intent1.getExtras().getInt(KEY_MENU_ID_INTENT, -1));
+                final DataMenuInfo m = menuMainAdapter.getDataMenuInfoByMenuID(intent1.getExtras().getString(KEY_MENU_ID_INTENT, ""));
                 if (m != null) {
                     doAction(0);
                     doAction(m);

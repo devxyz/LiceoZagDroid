@@ -9,13 +9,13 @@ import java.util.List;
  */
 public class DataMenuInfoLatestUsed {
 
-    private final LinkedList<Integer> menuIdSortByUse;
+    private final LinkedList<String> menuIdSortByUse;
 
-    public DataMenuInfoLatestUsed(List<Integer> value) {
+    public DataMenuInfoLatestUsed(List<String> value) {
         menuIdSortByUse = new LinkedList<>(value);
     }
 
-    public void add(int item) {
+    public void add(String item) {
         //aggiunge in testa (rimuovendolo se gia' presente)
         menuIdSortByUse.remove((Object) item);
         menuIdSortByUse.addFirst(item);
@@ -28,7 +28,7 @@ public class DataMenuInfoLatestUsed {
             add(item.getMenuID());
     }
 
-    private DataMenuInfo _find(List<DataMenuInfo> ll, int id) {
+    private DataMenuInfo _find(List<DataMenuInfo> ll, String id) {
         for (DataMenuInfo l : ll) {
             if (l.getMenuID() == id) return l;
         }
@@ -37,7 +37,7 @@ public class DataMenuInfoLatestUsed {
 
     public List<DataMenuInfo> filter(List<DataMenuInfo> ll) {
         List<DataMenuInfo> ris = new ArrayList<>(ll.size());
-        for (Integer id : menuIdSortByUse) {
+        for (String id : menuIdSortByUse) {
             final DataMenuInfo m = _find(ll, id);
 
             if (m != null)
@@ -49,7 +49,7 @@ public class DataMenuInfoLatestUsed {
     }
 
 
-    public LinkedList<Integer> getMenuIdSortByUse() {
+    public LinkedList<String> getMenuIdSortByUse() {
         return menuIdSortByUse;
     }
 }

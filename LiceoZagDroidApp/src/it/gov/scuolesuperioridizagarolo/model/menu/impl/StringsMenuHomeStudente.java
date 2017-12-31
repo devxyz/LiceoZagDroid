@@ -4,7 +4,7 @@ import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.model.menu.*;
 public class StringsMenuHomeStudente{
      public static final DataMenuInfo APRI_MENU_912= new DataMenuInfo(
-912,
+"912",
 "Apri Menu",
 "Apri Menu",
 it.gov.scuolesuperioridizagarolo.action.OpenMenuAction.class,

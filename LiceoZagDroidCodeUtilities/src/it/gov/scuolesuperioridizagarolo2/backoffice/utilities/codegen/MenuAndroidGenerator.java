@@ -100,7 +100,7 @@ public class MenuAndroidGenerator {
             if (actionClass.trim().length() == 0) continue;
 
             //final DataMenuInfoType type, Set<DataMenuInfoFlag > flags
-            final String s = MessageFormat.format("     public static final DataMenuInfo {0}= new DataMenuInfo(\n{1},\n\"{2}\",\n\"{3}\",\n{4}.class,\n{5},\nDataMenuInfoType.search({4}.class),\n{7});",
+            final String s = MessageFormat.format("     public static final DataMenuInfo {0}= new DataMenuInfo(\n\"{1}\",\n\"{2}\",\n\"{3}\",\n{4}.class,\n{5},\nDataMenuInfoType.search({4}.class),\n{7});",
                     nomeCampo,
                     menuID, menuLabel, longLabel.length() == 0 ? menuLabel : longLabel, actionClass, imageId.replace("@drawable/", "R.drawable."), "", "null");
             //System.out.println(s);

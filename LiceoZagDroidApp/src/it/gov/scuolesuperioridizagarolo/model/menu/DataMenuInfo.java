@@ -11,9 +11,9 @@ import java.util.TreeSet;
 /**
  * Created by stefano on 18/03/15.
  */
-public class DataMenuInfo implements Serializable{
+public class DataMenuInfo implements Serializable {
     //etichetta menu
-    private final int menuID;
+    private final String menuID;
     //etichetta menu
     private final String menuLabel;
     //etichetta lunga
@@ -25,7 +25,7 @@ public class DataMenuInfo implements Serializable{
     private final DataMenuInfoBuilder action;
     private final Set<DataMenuInfoFlag> flags;
 
-    public DataMenuInfo(int menuID, String menuLabel, String longLabel, final Class actionClass, Integer imageId, final DataMenuInfoType type, Set<DataMenuInfoFlag> flags) {
+    public DataMenuInfo(String menuID, String menuLabel, String longLabel, final Class actionClass, Integer imageId, final DataMenuInfoType type, Set<DataMenuInfoFlag> flags) {
         this(menuID, menuLabel, longLabel, imageId, new DataMenuInfoBuilder() {
             @Override
             public DataMenuInfoType type() {
@@ -43,8 +43,8 @@ public class DataMenuInfo implements Serializable{
         }, flags);
     }
 
-    public DataMenuInfo(int menuID, String menuLabel, String longLabel, Integer imageId, DataMenuInfoBuilder action, Set<DataMenuInfoFlag> flags) {
-        this.menuID = menuID;
+    public DataMenuInfo(String menuID, String menuLabel, String longLabel, Integer imageId, DataMenuInfoBuilder action, Set<DataMenuInfoFlag> flags) {
+        this.menuID = menuLabel + "_" + menuID;
         if (flags != null)
             this.flags = new TreeSet<>(flags);
         else
@@ -55,7 +55,7 @@ public class DataMenuInfo implements Serializable{
         this.imageId = imageId;
     }
 
-    public DataMenuInfo(int menuID, String menuLabel, String longLabel, Class actionClass, DataMenuInfoType type, Set<DataMenuInfoFlag> flags) {
+    public DataMenuInfo(String menuID, String menuLabel, String longLabel, Class actionClass, DataMenuInfoType type, Set<DataMenuInfoFlag> flags) {
         this(menuID, menuLabel, longLabel, actionClass, null, type, flags);
     }
 
@@ -72,7 +72,7 @@ public class DataMenuInfo implements Serializable{
         return flags;
     }
 
-    public int getMenuID() {
+    public String getMenuID() {
         return menuID;
     }
 
@@ -103,7 +103,7 @@ public class DataMenuInfo implements Serializable{
 
     @Override
     public int hashCode() {
-        int result = menuID;
+        int result = menuID.hashCode();
         result = 31 * result + (menuLabel != null ? menuLabel.hashCode() : 0);
         result = 31 * result + (action != null ? action.hashCode() : 0);
         return result;
