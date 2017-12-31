@@ -88,6 +88,12 @@
                         android:showAsAction="never"
                         android:title="Visualizza Stack"/>
 
+                <item
+                        android:id="@+id/action_view_timetables"
+                        android:orderInCategory="100"
+                        android:showAsAction="never"
+                        android:title="Visualizza Orari Locali"/>
+
             </menu>
             <item
                     android:id="@+id/action_esci"

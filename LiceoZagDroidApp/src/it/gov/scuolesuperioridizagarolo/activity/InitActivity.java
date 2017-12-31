@@ -1,27 +1,22 @@
 package it.gov.scuolesuperioridizagarolo.activity;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_activity_splash_update2_xml;
 import it.gov.scuolesuperioridizagarolo.model.AppUserType;
-import it.gov.scuolesuperioridizagarolo.model.menu.impl.StringsMenuPrincipale;
-import it.gov.scuolesuperioridizagarolo.services.UpdateService;
 import it.gov.scuolesuperioridizagarolo.util.C_DateUtil;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
-import it.gov.scuolesuperioridizagarolo.util.ThreadUtil;
 
 /**
  * Created by stefano on 10/09/15.
  */
 
-public class SplashUpdateActivity extends AbstractActivity {
+public class InitActivity extends AbstractActivity {
     private LayoutObjs_activity_splash_update2_xml obj;
     private boolean closed = false;
 
@@ -70,18 +65,12 @@ public class SplashUpdateActivity extends AbstractActivity {
         setContentView(R.layout.activity_splash_update2);
         obj = new LayoutObjs_activity_splash_update2_xml(this);
 
-
         obj.txtInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startMainMenuActivity();
             }
         });
-
-
-        //start service
-        Intent serviceIntent = new Intent(this, UpdateService.class);
-        startService(serviceIntent);
 
         final SharedPreferenceWrapper e = SharedPreferenceWrapper.getCommonInstance(getApplication());
         obj.textView10.setText("Ultimo aggiornamento: " + C_DateUtil.toDDMMYYY_HHMMSS(e.getLastDataUpdate()));
@@ -98,6 +87,9 @@ public class SplashUpdateActivity extends AbstractActivity {
                 }
             });
         } else {
+            startMainMenuActivity();
+
+            /*
             //attende 15 secondi
             final int SECONDS = 10;
             obj.progressBar2.setIndeterminate(false);
@@ -125,13 +117,13 @@ public class SplashUpdateActivity extends AbstractActivity {
             };
 
 
-            t.start();
+            t.start();*/
         }
     }
 
 
     private void startMainMenuActivity() {
-        MainMenuActivity.startMainActivity(SplashUpdateActivity.this);
+        MainMenuActivity.startMainActivity(InitActivity.this);
         closed = true;
         finish();
     }

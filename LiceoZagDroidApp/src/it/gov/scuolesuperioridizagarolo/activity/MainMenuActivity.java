@@ -22,16 +22,14 @@ import it.gov.scuolesuperioridizagarolo.action.api.ActivityAction;
 import it.gov.scuolesuperioridizagarolo.adapter.MainMenuExpandibleListAdapter;
 import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
-import it.gov.scuolesuperioridizagarolo.dao.DaoMaster;
-import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
-import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDBHelperRunAsync;
-import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
+import it.gov.scuolesuperioridizagarolo.dao.*;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoFlag;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoLatestUsed;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoStack;
 import it.gov.scuolesuperioridizagarolo.services.UpdateService;
+import it.gov.scuolesuperioridizagarolo.util.C_DateUtil;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 import it.gov.scuolesuperioridizagarolo.util.ThreadUtil;
 
@@ -119,17 +117,21 @@ public class MainMenuActivity extends AbstractActivity {
                 //elimina eventuali notifiche appese...
                 //NotificationUtil.errorMessage(null).cancel(getActivity());
                 //NotificationUtil.newDataAvailableMessage(0).cancel(getActivity());
-                String message = intent.getExtras().getString("MESSAGE", "No message");
+                String message = intent.getExtras().getString(UpdateService.KEY_MESSAGGIO_UPDATE, "No message");
+                boolean shouldUpdate = intent.getExtras().getBoolean(UpdateService.KEY_SHOULD_UPDATE, false);
+
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 
-                ThreadUtil.runOnUiThreadAsync(MainMenuActivity.this, new Runnable() {
-                    @Override
-                    public void run() {
-                        if (currentFragment != null) {
-                            currentFragment.updateUI();
+                if (shouldUpdate) {
+                    ThreadUtil.runOnUiThreadAsync(MainMenuActivity.this, new Runnable() {
+                        @Override
+                        public void run() {
+                            if (currentFragment != null) {
+                                currentFragment.updateUI();
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         };
         registerReceiver(receiver, new IntentFilter(RECEIVER_ACTION_UPDATE));
@@ -281,8 +283,34 @@ public class MainMenuActivity extends AbstractActivity {
             case R.id.action_esci:
                 finish();
                 return true;
+            case R.id.action_view_timetables: {
+                final ScuolaAppDbHelper db = new ScuolaAppDbHelper(this);
+                try {
+                    ArrayList<String> messaggi = db.runInTransaction(new ScuolaAppDbHelperCallable<ArrayList<String>>() {
+                        @Override
+                        public ArrayList<String> call(DaoSession session, Context ctx) throws Throwable {
+                            final List<TimetableDB> list = session.getTimetableDBDao().queryBuilder().orderAsc(TimetableDBDao.Properties.RemoteId).list();
+                            ArrayList<String> ris = new ArrayList<String>();
+                            for (TimetableDB x : list) {
+                                String s =
+                                        x.getRemoteId() + " " +
+                                                x.getFilename() + " " +
+                                                C_DateUtil.toDDMMYYY(x.getStartDate()) + "-" + C_DateUtil.toDDMMYYY(x.getEndDate());
+                                ris.add(s);
+                            }
+
+                            return ris;
+                        }
+                    });
+                    DialogUtil.openInfoDialog(this, "Database", messaggi);
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+                db.close();
+                return true;
+            }
             case R.id.action_usertype:
-                SplashUpdateActivity.chooseUserType(this, new OnClickListenerDialogErrorCheck(this) {
+                InitActivity.chooseUserType(this, new OnClickListenerDialogErrorCheck(this) {
                     @Override
                     protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
                         MainMenuActivity.this.doAction(0);
@@ -438,10 +466,11 @@ public class MainMenuActivity extends AbstractActivity {
         //cancella
         //cache.clear(DateUtil.sottraiGiorni(new Date(), 2));
 
-/*        //stop service
+        //stop service
         Intent serviceIntent = new Intent(this, UpdateService.class);
         stopService(serviceIntent);
-*/
+
+
         getCache().closeAsync();
         getDatabase().close();
 

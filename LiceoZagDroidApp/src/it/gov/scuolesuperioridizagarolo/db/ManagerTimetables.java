@@ -78,8 +78,8 @@ public class ManagerTimetables {
 
         final QueryBuilder<TimetableDB> q = session.getTimetableDBDao().queryBuilder();
         q.orderDesc(TimetableDBDao.Properties.RemoteId);
-        q.where(TimetableDBDao.Properties.StartDate.ge(now));
-        q.where(TimetableDBDao.Properties.EndDate.le(now));
+        q.where(TimetableDBDao.Properties.StartDate.le(now));
+        q.where(TimetableDBDao.Properties.EndDate.ge(now));
         q.limit(1);
         final TimetableDB list = q.unique();
         if (list == null) {

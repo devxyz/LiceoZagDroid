@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.services;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
@@ -28,6 +29,7 @@ class UpdateThreadService implements Runnable {
 
     private UpdateService updateService;
 
+
     public UpdateThreadService(UpdateService updateService) {
         this.updateService = updateService;
     }
@@ -38,9 +40,11 @@ class UpdateThreadService implements Runnable {
 
         final ArrayList<String> remoteNameFile = getRemoteUrls();
 
+        Log.e(getClass().getSimpleName(), "Elenco nomi remoti: " + remoteNameFile);
+
         Set<String> localUrls = new HashSet<>();
         {
-
+            Log.e(getClass().getSimpleName(), "UPDATE 1");
             try {
                 localUrls = db.runInTransaction(new ScuolaAppDbHelperCallable<Set<String>>() {
                     @Override
@@ -55,6 +59,8 @@ class UpdateThreadService implements Runnable {
             }
         }
 
+        Log.e(getClass().getSimpleName(), "Elenco url locali: " + localUrls);
+
         int count = 0;
 
         //carica i soli orari non ancora nel database
@@ -62,6 +68,7 @@ class UpdateThreadService implements Runnable {
             if (!localUrls.contains(nomeFile)) {
                 final String fullUrl = updateService.getString(R.string.url_timetable_prefix) + nomeFile;
                 final byte[] remoteData = getRemoteData(fullUrl);
+                Log.e(getClass().getSimpleName(), "UPDATE 2 " + fullUrl);
 
                 try {
                     final TimetableDB timetableDB = db.runInTransaction(new ScuolaAppDbHelperCallable<TimetableDB>() {
@@ -81,13 +88,11 @@ class UpdateThreadService implements Runnable {
         return count;
     }
 
-
     private byte[] getRemoteData(String url) throws IOException {
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         return StreamAndroidUtil.loadFileContentByteArray(con.getInputStream());
     }
-
 
     private ArrayList<String> getRemoteUrls() throws IOException {
         final String urlTimetableIndex = updateService.getApplicationContext().getString(R.string.url_timetable_index);
@@ -110,19 +115,18 @@ class UpdateThreadService implements Runnable {
     @Override
     public void run() {
 
-        {
-            Intent x = new Intent(MainMenuActivity.RECEIVER_ACTION_UPDATE);
-            x.putExtra("MESSAGE", "Avvio aggiornamento");
-            updateService.sendBroadcast(x);
-        }
+        //se non richiesto l'update, skip
+        if (!updateService.shouldUpdate())
+            return;
+
+
+        sendMessageToMainActivity("Aggiornamento dati in corso", false);
+
 
         try {
-            //se non richiesto l'update, skip
-            if (!updateService.shouldUpdate())
-                return;
 
 
-            System.out.println("UPDATE");
+            Log.e(getClass().getSimpleName(), "UPDATE");
 
             //attende che la rete dati sia disponibile
             int i = 0;
@@ -145,9 +149,9 @@ class UpdateThreadService implements Runnable {
                 //final NotificationMessage notificationMessage = NotificationUtil.newDataAvailableMessage(data.circolariDaAggiungereAggiornare.size() + data.newsDaAggiungereAggiornare.size());
 
                 //aggiorna l'interfaccia grafica, se possibile
-                Intent x = new Intent(MainMenuActivity.RECEIVER_ACTION_UPDATE);
-                x.putExtra("MESSAGE", "Aggiornati " + num + " orari");
-                updateService.sendBroadcast(x);
+                sendMessageToMainActivity("Aggiornamento completato: " + num + " file scaricati", true);
+            } else {
+                sendMessageToMainActivity("Nessun nuovo aggiornamento trovato", true);
             }
 
         } catch (Throwable throwable) {
@@ -155,11 +159,16 @@ class UpdateThreadService implements Runnable {
             //NotificationUtil.updateProcessMessage().cancel(updateService);
             //NotificationUtil.errorMessage(throwable).cancel(updateService);
             throwable.printStackTrace();
-            Intent x = new Intent(MainMenuActivity.RECEIVER_ACTION_UPDATE);
-            x.putExtra("MESSAGE", "Errore durante l'aggiornamento");
-            updateService.sendBroadcast(x);
+            sendMessageToMainActivity("Errore durante l'aggiornamento", false);
         }
 
 
+    }
+
+    private void sendMessageToMainActivity(String value, boolean shouldUpdateUI) {
+        Intent x = new Intent(MainMenuActivity.RECEIVER_ACTION_UPDATE);
+        x.putExtra(UpdateService.KEY_MESSAGGIO_UPDATE, value);
+        x.putExtra(UpdateService.KEY_SHOULD_UPDATE, shouldUpdateUI);
+        updateService.sendBroadcast(x);
     }
 }

@@ -308,7 +308,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
     private void openDialogChooseFilter(boolean cancellable) {
         final String[] etichette = new String[getFilterValues().length];
-        if (etichette.length==0)return;
+        if (etichette.length == 0) return;
 
         int i = 0;
         for (String c : getFilterValues()) {
@@ -372,8 +372,10 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         //orarioAdapter.setClasse(classeCorrente);
         updateAdapter(filtro);
         orarioAdapter.setGiorno(giornoCorrente);
-
-        LAYOUT_OBJs.textViewGiorni.setText(giornoCorrente.getNome());
+        if (giornoCorrente == EGiorno.getToday())
+            LAYOUT_OBJs.textViewGiorni.setText("Oggi");
+        else
+            LAYOUT_OBJs.textViewGiorni.setText(C_TextUtil.capitalize(giornoCorrente.getNome()));
 
         if (!normalizeFilterName()) {
             LAYOUT_OBJs.textViewFiltro.setText((getFilterAppLabel() + " " + filtro).trim());
