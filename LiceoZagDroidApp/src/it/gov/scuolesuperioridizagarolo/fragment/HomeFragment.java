@@ -1,30 +1,23 @@
 package it.gov.scuolesuperioridizagarolo.fragment;
 
-import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import it.gov.scuolesuperioridizagarolo.R;
+import it.gov.scuolesuperioridizagarolo.activity.InitActivity;
 import it.gov.scuolesuperioridizagarolo.adapter.MenuHomeListAdapter;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
-import it.gov.scuolesuperioridizagarolo.dao.*;
-import it.gov.scuolesuperioridizagarolo.db.ManagerCircolare;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_home_xml;
+import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
-import org.greenrobot.greendao.query.QueryBuilder;
-
-import java.util.Date;
-import java.util.List;
 
 public class HomeFragment extends AbstractFragment {
 
     private LayoutObjs_fragment_home_xml LAYOUT_OBJs;   //***************************
-    private int numNotizieNonLette = 0;
-    private int numCircolariNonLette = 0;
-    private int numCircolariInEvidenzaOggi = 0;
 
     public HomeFragment() {
     }
@@ -57,32 +50,21 @@ public class HomeFragment extends AbstractFragment {
             }
         });
 
-        ScuolaAppDbHelper f = new ScuolaAppDbHelper(getMainActivity());
-        try {
-            f.runInTransaction(new ScuolaAppDBHelperRun() {
-                @Override
-                public void run(DaoSession session, Context ctx) throws Throwable {
-                    QueryBuilder<NewsDB> q1 = session.getNewsDBDao().queryBuilder().where(NewsDBDao.Properties.FlagContenutoLetto.eq(false));
-                    QueryBuilder<CircolareDB> q2 = session.getCircolareDBDao().queryBuilder().where(CircolareDBDao.Properties.FlagContenutoLetto.eq(false));
-                    ManagerCircolare c = new ManagerCircolare(session);
-                    final List<CircolareDB> circolariDiOggi = c.circolariByDate(new Date());
-
-                    numNotizieNonLette = q1.list().size();
-                    numCircolariNonLette = q2.list().size();
-                    numCircolariInEvidenzaOggi = circolariDiOggi.size();
-                }
-            });
-        } catch (Throwable e) {
-
-        } finally {
-            f.close();
-        }
-
-
         LAYOUT_OBJs.textViewTipoUtente.setText(getMainActivity().getSharedPreferences().getUserType().getDescrizione());
+        LAYOUT_OBJs.textViewTipoUtente.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
+            @Override
+            protected void onClickImpl(View v) throws Throwable {
+                InitActivity.chooseUserType(getMainActivity(), new OnClickListenerDialogErrorCheck(getMainActivity()) {
+                    @Override
+                    protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
+                        getMainActivity().doAction(0);
+                    }
+                }, true);
+            }
+        });
 
 
-        final MenuHomeListAdapter adapter = new MenuHomeListAdapter(getMainActivity(), numCircolariNonLette, numNotizieNonLette, numCircolariInEvidenzaOggi);
+        final MenuHomeListAdapter adapter = new MenuHomeListAdapter(getMainActivity());
         LAYOUT_OBJs.listView4.setAdapter(adapter);
 
         LAYOUT_OBJs.listView4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -94,8 +76,6 @@ public class HomeFragment extends AbstractFragment {
 
             }
         });
-
-
 
 
         //Ist.+Tec.+Stat.+E.+Fermi/@41.956178,12.806626

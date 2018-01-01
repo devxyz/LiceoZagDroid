@@ -109,7 +109,7 @@ public class DialogUtil {
     }
 
 
-    public static void openChooseDialog(final Activity coontext, final String title, boolean cancelable, final CharSequence[] values, String selectedItem,
+    public static void openChooseDialog(final Activity coontext, final String title, boolean cancelable, final CharSequence[] values, CharSequence selectedItem,
                                         final DialogInterface.OnClickListener onClickListener
     ) {
         AlertDialog.Builder builder = new AlertDialog.Builder(coontext);
@@ -130,7 +130,13 @@ public class DialogUtil {
         }
 
 
-        builder.setSingleChoiceItems(values, selected, onClickListener);
+        builder.setSingleChoiceItems(values, selected, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                onClickListener.onClick(dialog, which);
+            }
+        });
 
         if (cancelable) {
             builder.setNegativeButton("Annulla",

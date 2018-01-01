@@ -18,6 +18,7 @@ import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuLoader;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by stefano on 04/03/15.
@@ -25,17 +26,11 @@ import java.util.List;
 public class MenuHomeListAdapter extends BaseAdapter implements IMenuListAdapter {
 
     private final List<DataMenuInfo> items;
-    private final int circolariNonLette;
-    private final int newsNonLette;
-    private final int numCircolariInEvidenzaOggi;
 
     private MainMenuActivity activity;
     private LayoutInflater layoutInflater;
 
-    public MenuHomeListAdapter(MainMenuActivity f, int circolariNonLette, int newsNonLette,int numCircolariInEvidenzaOggi) {
-        this.circolariNonLette = circolariNonLette;
-        this.newsNonLette = newsNonLette;
-        this.numCircolariInEvidenzaOggi = numCircolariInEvidenzaOggi;
+    public MenuHomeListAdapter(MainMenuActivity f) {
         items = new ArrayList<>();
         activity = f;
         layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -82,7 +77,7 @@ public class MenuHomeListAdapter extends BaseAdapter implements IMenuListAdapter
 
     public DataMenuInfo searchByMenuID(String menuID) {
         for (DataMenuInfo m : items) {
-            if (m.getMenuID() == menuID) return m;
+            if (Objects.equals(m.getMenuID(), menuID)) return m;
         }
         return null;
     }
@@ -129,22 +124,6 @@ public class MenuHomeListAdapter extends BaseAdapter implements IMenuListAdapter
         TextView tvTitle = LAYOUT_OBJs.title;
 
         String menuLabel = items.get(pos).getMenuLabel();
-        if (circolariNonLette > 0)
-            menuLabel = menuLabel.replace("#c#", " (" + circolariNonLette + ")");
-        else
-            menuLabel = menuLabel.replace("#c#", "");
-
-        if (newsNonLette > 0)
-            menuLabel = menuLabel.replace("#n#", " (" + newsNonLette + ")");
-        else
-            menuLabel = menuLabel.replace("#n#", "");
-
-        if (numCircolariInEvidenzaOggi > 0)
-            menuLabel = menuLabel.replace("#e#", " (" + numCircolariInEvidenzaOggi + ")");
-        else
-            menuLabel = menuLabel.replace("#e#", "");
-
-
         final Integer imageId = items.get(pos).getImageId();
 
 

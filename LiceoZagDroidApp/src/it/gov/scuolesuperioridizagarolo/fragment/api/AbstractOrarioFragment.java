@@ -96,11 +96,27 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         //caricamento dati
         //**************************
         {
+
+
+            //================================
+            giornoCorrente = null;
+            if (giornoCorrente == null) {
+                if (savedInstanceState != null && savedInstanceState.containsKey(KEY_DATA)) {
+                    giornoCorrente = new OnlyDate(savedInstanceState.getLong(KEY_DATA));
+                }
+            }
+            if (giornoCorrente == null) {
+                //scelta giorno corrente
+                giornoCorrente = new OnlyDate();
+            }
+            updateOrarioCorrente();
+
+
+            //================================
+            //================================
+
             filtro = null;
-
-
             final SharedPreferenceWrapper p = SharedPreferenceWrapper.getCommonInstance(getMainActivity());
-
             if (filtro == null) {
                 if (savedInstanceState != null && savedInstanceState.containsKey(KEY_FILTRO)) {
                     filtro = savedInstanceState.getString(KEY_FILTRO);
@@ -117,19 +133,6 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
             if (filtro == null) {
                 filtro = "";
             }
-
-            //================================
-            giornoCorrente = null;
-            if (giornoCorrente == null) {
-                if (savedInstanceState != null && savedInstanceState.containsKey(KEY_DATA)) {
-                    giornoCorrente = new OnlyDate(savedInstanceState.getLong(KEY_DATA));
-                }
-            }
-            if (giornoCorrente == null) {
-                //scelta giorno corrente
-                giornoCorrente = new OnlyDate();
-            }
-            updateOrarioCorrente();
         }
         //**************************
         //**************************
@@ -353,7 +356,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         for (String c : getFilterValues()) {
 
             if (c.equals(filtro))
-                etichette[i] = c + " **";
+                etichette[i] = c;
             else
                 etichette[i] = c;
             i++;
@@ -395,7 +398,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         updateAdapter(filtro);
         orarioAdapter.setGiorno(giornoCorrente);
         if (giornoCorrente.isToday())
-            LAYOUT_OBJs.textViewGiorni.setText("Oggi");
+            LAYOUT_OBJs.textViewGiorni.setText("Oggi " + giornoCorrente.getGiorno().shortName());
         else
             LAYOUT_OBJs.textViewGiorni.setText(giornoCorrente.getGiorno().shortName() + " - " + giornoCorrente.toDDMMYY());
 

@@ -20,20 +20,26 @@ public class InitActivity extends AbstractActivity {
     private boolean closed = false;
 
     public static void chooseUserType(final AbstractActivity e, final DialogInterface.OnClickListener onClickListener, boolean cancelable) {
+//DOCENTE("Docente"), STUDENTE("Studente"), FAMIGLIA("Genitore"), ALTRO("Visitatore");
+        final AppUserType userType = SharedPreferenceWrapper.getCommonInstance(e).getUserType();
+        final CharSequence[] values = {"Sono un docente", "Sono uno studente", "Sono un genitore"};
+        CharSequence selectedValue = null;
+        if (userType != null) {
+            selectedValue = values[userType.ordinal()];
+        }
 
 
-        DialogUtil.openChooseDialog(e, "Scegli il profilo piu' adatto a te.", cancelable, new CharSequence[]
-                        {"Sono uno studente", "Sono un docente", "Sono un genitore", "Visitatore"}, null,
+        DialogUtil.openChooseDialog(e, "Scegli il profilo piu' adatto a te.", cancelable, values, selectedValue,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // The 'which' argument contains the index position
                         // of the selected item
                         switch (which) {
                             case 0:
-                                e.getSharedPreferences().setUserType(AppUserType.STUDENTE);
+                                e.getSharedPreferences().setUserType(AppUserType.DOCENTE);
                                 break;
                             case 1:
-                                e.getSharedPreferences().setUserType(AppUserType.DOCENTE);
+                                e.getSharedPreferences().setUserType(AppUserType.STUDENTE);
                                 break;
                             case 2:
                                 e.getSharedPreferences().setUserType(AppUserType.FAMIGLIA);

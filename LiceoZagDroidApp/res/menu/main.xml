@@ -11,6 +11,13 @@
                 android:icon="@drawable/arrow_next"
                 android:title="Help"/>
 
+        <item
+                android:id="@+id/action_menu"
+                android:orderInCategory="100"
+                android:showAsAction="never"
+                android:icon="@drawable/arrow_next"
+                android:title="Visualizza il menu"/>
+
 
         <item
                 android:id="@+id/action_usertype"
@@ -20,11 +27,11 @@
                 android:title="Cambia tipo di profilo"/>
 
         <item
-                android:id="@+id/action_menu"
+                android:id="@+id/action_update"
                 android:orderInCategory="100"
                 android:showAsAction="never"
                 android:icon="@drawable/arrow_next"
-                android:title="Visualizza il menu"/>
+                android:title="Aggiorna Dati"/>
 
         <item
                 android:id="@+id/action_informazioni"
@@ -33,12 +40,7 @@
                 android:icon="@drawable/arrow_next"
                 android:title="Informazioni"/>
 
-        <item
-                android:id="@+id/action_update"
-                android:orderInCategory="100"
-                android:showAsAction="never"
-                android:icon="@drawable/arrow_next"
-                android:title="Aggiorna Dati"/>
+
 
         <item
                 android:visible="false"
@@ -53,7 +55,7 @@
               android:showAsAction="never"
               android:icon="@drawable/arrow_next"
 
-              android:visible="true"
+              android:visible="false"
               android:title="Opzioni avanzate>">
 
             <menu>
