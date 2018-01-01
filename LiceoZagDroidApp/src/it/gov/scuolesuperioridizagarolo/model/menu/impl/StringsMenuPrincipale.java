@@ -48,16 +48,16 @@ null);
      public static final DataMenuInfo LIBRI_DI_TESTO_LICEO= new DataMenuInfo(
 "Libri di testo LICEO",
 "Libri di testo LICEO",
-it.gov.scuolesuperioridizagarolo.fragment.LibriTestoLiceoFragment.class,
+it.gov.scuolesuperioridizagarolo.action.LibriTestoLiceoAction.class,
 R.drawable.library_icon,
-DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.LibriTestoLiceoFragment.class),
+DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.action.LibriTestoLiceoAction.class),
 null);
      public static final DataMenuInfo LIBRI_DI_TESTO_IPIA= new DataMenuInfo(
 "Libri di testo IPIA",
 "Libri di testo IPIA",
-it.gov.scuolesuperioridizagarolo.fragment.LibriTestoIpiaFragment.class,
+it.gov.scuolesuperioridizagarolo.action.LibriTestoIpiaAction.class,
 R.drawable.library_icon,
-DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.LibriTestoIpiaFragment.class),
+DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.action.LibriTestoIpiaAction.class),
 null);
      public static final DataMenuInfo ISCRIZIONE_ONLINE= new DataMenuInfo(
 "Iscrizione Online",

@@ -52,4 +52,11 @@ it.gov.scuolesuperioridizagarolo.action.UpdateAction.class,
 R.drawable._menu_update_service_60x60,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.action.UpdateAction.class),
 null);
+     public static final DataMenuInfo BARCODE= new DataMenuInfo(
+"Barcode",
+"Barcode",
+it.gov.scuolesuperioridizagarolo.fragment.BarCodeFragment.class,
+R.drawable._menu_update_service_60x60,
+DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.BarCodeFragment.class),
+null);
 }
