@@ -94,6 +94,11 @@
                         android:showAsAction="never"
                         android:title="Visualizza SharedPrefs"/>
                 <item
+                        android:id="@+id/action_view_debug_fragment"
+                        android:orderInCategory="100"
+                        android:showAsAction="never"
+                        android:title="Visualizza Debug Fragment"/>
+                <item
                         android:id="@+id/action_view_timetables"
                         android:orderInCategory="100"
                         android:showAsAction="never"

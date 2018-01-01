@@ -2,7 +2,6 @@ package it.gov.scuolesuperioridizagarolo.activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
@@ -20,11 +19,11 @@ public class InitActivity extends AbstractActivity {
     private LayoutObjs_activity_splash_update2_xml obj;
     private boolean closed = false;
 
-    public static void chooseUserType(final AbstractActivity e, final DialogInterface.OnClickListener onClickListener) {
+    public static void chooseUserType(final AbstractActivity e, final DialogInterface.OnClickListener onClickListener, boolean cancelable) {
 
 
-        DialogUtil.openChooseDialog(e, "Scegli il profilo piu' adatto a te.", false, new CharSequence[]
-                        {"Sono uno studente", "Sono un docente", "Sono un genitore", "Visitatore"},
+        DialogUtil.openChooseDialog(e, "Scegli il profilo piu' adatto a te.", cancelable, new CharSequence[]
+                        {"Sono uno studente", "Sono un docente", "Sono un genitore", "Visitatore"}, null,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // The 'which' argument contains the index position
@@ -45,13 +44,6 @@ public class InitActivity extends AbstractActivity {
                         }
 
                         onClickListener.onClick(dialog, which);
-                    }
-                }, new DialogInterface.OnKeyListener() {
-                    @Override
-                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-                        if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        }
-                        return true;
                     }
                 });
 
@@ -85,7 +77,7 @@ public class InitActivity extends AbstractActivity {
                         startMainMenuActivity();
                     }
                 }
-            });
+            }, false);
         } else {
             startMainMenuActivity();
 

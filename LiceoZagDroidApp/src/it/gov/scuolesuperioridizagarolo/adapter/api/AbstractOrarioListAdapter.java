@@ -10,10 +10,11 @@ import dada.bitorario.data.BitOrarioOraEnumTipoLezione;
 import dada.bitorario.data.BitOrarioOraLezione;
 import dada.bitorario.data.classes.ClassesAndRoomContainer;
 import dada.bitorario.data.classes.RoomData;
-import dada.bitorario.data.enum_values.EGiorno;
 import dada.bitorario.data.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_orario_aula_lezione_xml;
+import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
+import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
 import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
 
 /**
@@ -21,36 +22,39 @@ import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
  */
 public abstract class AbstractOrarioListAdapter extends BaseAdapter {
     protected final Activity a;
-    protected  BitOrarioGrigliaOrario orario;
     private final boolean printInsegnante;
     private final boolean printInsegnanteSeCompresenza;
     private final boolean printClasse;
-    protected EGiorno giorno;
+    protected BitOrarioGrigliaOrarioContainer containerOrari;
+    protected BitOrarioGrigliaOrario orario;
+    protected OnlyDate giorno;
 
-    public AbstractOrarioListAdapter(Activity a, BitOrarioGrigliaOrario orario, EGiorno giorno, boolean printInsegnante, boolean printClasse, boolean printInsegnanteSeCompresenza) {
+    public AbstractOrarioListAdapter(Activity a, BitOrarioGrigliaOrarioContainer containerOrari, OnlyDate giorno, boolean printInsegnante, boolean printClasse, boolean printInsegnanteSeCompresenza) {
         this.a = a;
-        this.orario = orario;
+        this.containerOrari = containerOrari;
         this.giorno = giorno;
         this.printInsegnante = printInsegnante;
         this.printClasse = printClasse;
         this.printInsegnanteSeCompresenza = printInsegnanteSeCompresenza;
+        this.orario = containerOrari.getOrario(giorno);
     }
 
-    public void updateOrario(BitOrarioGrigliaOrario orario){
-        this.orario = orario;
+    public void updateOrario(BitOrarioGrigliaOrarioContainer orario) {
+        this.containerOrari = orario;
     }
 
 
-    public final BitOrarioGrigliaOrario getOrario() {
-        return orario;
+    public final BitOrarioGrigliaOrarioContainer getContainerOrari() {
+        return containerOrari;
     }
 
-    public EGiorno getGiorno() {
+    public OnlyDate getGiorno() {
         return giorno;
     }
 
-    public final void setGiorno(EGiorno g) {
+    public final void setGiorno(OnlyDate g) {
         giorno = g;
+        orario=containerOrari.getOrario(g);
         super.notifyDataSetChanged();
     }
 

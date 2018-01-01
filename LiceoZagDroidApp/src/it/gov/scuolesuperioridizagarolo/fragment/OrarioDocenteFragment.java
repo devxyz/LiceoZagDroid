@@ -12,7 +12,7 @@ import java.util.TreeSet;
 public class OrarioDocenteFragment extends AbstractOrarioFragment<OrarioDocenteListAdapter> {
     @Override
     protected OrarioDocenteListAdapter createAbstractOrarioListAdapter() {
-        return new OrarioDocenteListAdapter(getMainActivity(), filtro, orario, giornoCorrente);
+        return new OrarioDocenteListAdapter(getMainActivity(), filtro, containerOrari, giornoCorrente);
     }
 
     @Override

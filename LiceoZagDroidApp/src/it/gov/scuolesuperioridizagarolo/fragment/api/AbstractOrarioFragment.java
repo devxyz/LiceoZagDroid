@@ -1,17 +1,17 @@
 package it.gov.scuolesuperioridizagarolo.fragment.api;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.AdapterView;
+import android.widget.DatePicker;
 import android.widget.ListView;
-import android.widget.Toast;
 import dada.bitorario.data.BitOrarioGrigliaOrario;
 import dada.bitorario.data.BitOrarioOraLezione;
 import dada.bitorario.data.classes.ClassesAndRoomContainer;
 import dada.bitorario.data.classes.RoomData;
-import dada.bitorario.data.enum_values.EGiorno;
 import dada.bitorario.data.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.adapter.api.AbstractOrarioListAdapter;
@@ -23,6 +23,8 @@ import it.gov.scuolesuperioridizagarolo.db.ManagerTimetables;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_orario_classe_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
+import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
+import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
 import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
@@ -31,14 +33,33 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
 
     protected static final String KEY_FILTRO = "KEY_FILTRO";
-    protected static final String KEY_GIORNO = "KEY_ULTIM_GIORNO";
+    protected static final String KEY_DATA = "KEY_DATA";
     protected LayoutObjs_fragment_orario_classe_xml LAYOUT_OBJs;   //***************************
-    protected EGiorno giornoCorrente;
+    protected OnlyDate giornoCorrente;
     protected String filtro;
     protected A orarioAdapter;
+    protected BitOrarioGrigliaOrarioContainer containerOrari;
     protected BitOrarioGrigliaOrario orario;
 
     public AbstractOrarioFragment() {
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Orario corrente: " + orario.getTitolo()).append("\n");
+        sb.append("Data corrente: " + giornoCorrente).append("\n");
+
+
+        final BitOrarioGrigliaOrarioContainer.BitOrarioGrigliaOrarioItem details = containerOrari.getOrarioDetails(giornoCorrente);
+        sb.append("ID: " + details.remoteId).append("\n");
+        sb.append("Inizio: " + details.startDate).append("\n");
+        sb.append("Fine: " + details.endDate).append("\n");
+        sb.append("Collezione: " + containerOrari.toString()).append("\n");
+        return sb.toString();
+    }
+
+    protected void updateOrarioCorrente() {
+        orario = containerOrari.getOrario(giornoCorrente);
     }
 
     protected abstract A createAbstractOrarioListAdapter();
@@ -47,7 +68,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(KEY_FILTRO, filtro);
-        outState.putString(KEY_GIORNO, giornoCorrente.name());
+        outState.putLong(KEY_DATA, giornoCorrente.getTime());
     }
 
     protected abstract String[] getFilterValues();
@@ -69,20 +90,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         //**************************
         //**************************
 
-        final ScuolaAppDbHelper db = new ScuolaAppDbHelper(getMainActivity());
-        orario = new BitOrarioGrigliaOrario("no orario");
-        try {
-            orario = db.runInTransaction(new ScuolaAppDbHelperCallable<BitOrarioGrigliaOrario>() {
-                @Override
-                public BitOrarioGrigliaOrario call(DaoSession session, Context ctx) throws Throwable {
-                    return new ManagerTimetables(session).getActiveTimetable();
-                }
-            });
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-
-        db.close();
+        _loadData();
 
         //**************************
         //caricamento dati
@@ -113,13 +121,15 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
             //================================
             giornoCorrente = null;
             if (giornoCorrente == null) {
-                if (savedInstanceState != null && savedInstanceState.containsKey(KEY_GIORNO)) {
-                    giornoCorrente = EGiorno.valueOf(savedInstanceState.getString(KEY_GIORNO));
+                if (savedInstanceState != null && savedInstanceState.containsKey(KEY_DATA)) {
+                    giornoCorrente = new OnlyDate(savedInstanceState.getLong(KEY_DATA));
                 }
             }
             if (giornoCorrente == null) {
-                giornoCorrente = calcolaGiornoCorrente();
+                //scelta giorno corrente
+                giornoCorrente = new OnlyDate();
             }
+            updateOrarioCorrente();
         }
         //**************************
         //**************************
@@ -166,7 +176,19 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         final OnClickListenerViewErrorCheck clickGiorno = new OnClickListenerViewErrorCheck(getMainActivity()) {
             @Override
             protected void onClickImpl(View v) throws Throwable {
-                final EGiorno[] values = EGiorno.values();
+
+                final DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        giornoCorrente = new OnlyDate(dayOfMonth, monthOfYear, year);
+                        updateOrarioCorrente();
+                        updateView();
+                    }
+                }, giornoCorrente.getAAAA(), giornoCorrente.getMM(), giornoCorrente.getGG());
+
+                datePickerDialog.show();
+
+                /*final EGiorno[] values = EGiorno.values();
                 String[] giorni = new String[values.length];
                 for (int i = 0; i < values.length; i++) {
                     EGiorno value = values[i];
@@ -194,10 +216,17 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
                             }
                         }
-                );
+                );*/
             }
         };
-        LAYOUT_OBJs.textViewGiorni.setOnClickListener(clickGiorno);
+        LAYOUT_OBJs.textViewGiorni.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
+            @Override
+            protected void onClickImpl(View v) throws Throwable {
+                giornoCorrente = new OnlyDate();
+                updateOrarioCorrente();
+                updateView();
+            }
+        });
         LAYOUT_OBJs.imageViewGiorno.setOnClickListener(clickGiorno);
 
 
@@ -237,7 +266,8 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
                 //verso sinistra, torna indietro nei giorni
                 if (e1.getX() - e2.getX() > 100) {
-                    giornoCorrente = giornoCorrente.next();
+                    giornoCorrente = giornoCorrente.nextDay();
+                    updateOrarioCorrente();
                     updateView();
                     System.err.println("SINISTRA");
                     return true;
@@ -245,7 +275,8 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
                 //verso destra
                 if (e2.getX() - e1.getX() > 100) {
-                    giornoCorrente = giornoCorrente.prev();
+                    giornoCorrente = giornoCorrente.prevDay();
+                    updateOrarioCorrente();
                     updateView();
                     System.err.println("DESTRA");
                     return true;
@@ -272,6 +303,23 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         return rootView;
     }
 
+    private void _loadData() {
+        final ScuolaAppDbHelper db = new ScuolaAppDbHelper(getMainActivity());
+        containerOrari = new BitOrarioGrigliaOrarioContainer();
+        try {
+            containerOrari = db.runInTransaction(new ScuolaAppDbHelperCallable<BitOrarioGrigliaOrarioContainer>() {
+                @Override
+                public BitOrarioGrigliaOrarioContainer call(DaoSession session, Context ctx) throws Throwable {
+                    return new ManagerTimetables(session).loadBitOrarioGrigliaOrarioContainer();
+                }
+            });
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+
+        db.close();
+    }
+
     private void visualizzaOraCorrente() {
         if (giornoCorrente.isToday()) {
             for (EOra v : EOra.values()) {
@@ -284,23 +332,14 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
     @Override
     public void updateUI() {
-        Toast.makeText(getMainActivity(), "Aggiornamento dati ORARIO", Toast.LENGTH_LONG).show();
-        final ScuolaAppDbHelper db = new ScuolaAppDbHelper(getMainActivity());
+        //Toast.makeText(getMainActivity(), "Aggiornamento dati ORARIO", Toast.LENGTH_LONG).show();
         try {
-            final BitOrarioGrigliaOrario bitOrarioGrigliaOrario = db.runInTransaction(new ScuolaAppDbHelperCallable<BitOrarioGrigliaOrario>() {
-                @Override
-                public BitOrarioGrigliaOrario call(DaoSession session, Context ctx) throws Throwable {
-                    ManagerTimetables m = new ManagerTimetables(session);
-                    return m.getActiveTimetable();
-                }
-            });
-            this.orario = bitOrarioGrigliaOrario;
-            this.orarioAdapter.updateOrario(bitOrarioGrigliaOrario);
+            _loadData();
+            this.orarioAdapter.updateOrario(containerOrari);
             this.orarioAdapter.notifyDataSetChanged();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-        db.close();
 
         updateView();
     }
@@ -321,7 +360,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         }
 
 
-        DialogUtil.openChooseDialog(getMainActivity(), "Seleziona " + getFilterDialogLabel(), cancellable, etichette,
+        DialogUtil.openChooseDialog(getMainActivity(), "Seleziona " + getFilterDialogLabel(), cancellable, etichette, filtro,
                 new OnClickListenerDialogErrorCheck(getMainActivity()) {
                     @Override
                     protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
@@ -329,26 +368,9 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                         saveFiltrerValue(filtro);
                         updateView();
                     }
-                },
-                new DialogInterface.OnKeyListener() {
-                    @Override
-                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-                        if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        }
-                        return true;
-
-                    }
                 }
-        );
-    }
 
-    private EGiorno calcolaGiornoCorrente() {
-        //scelta giorno corrente
-        if (EGiorno.getToday() == null) {
-            return EGiorno.LUNEDI;
-        } else {
-            return EGiorno.getToday();
-        }
+        );
     }
 
     protected abstract boolean normalizeFilterName();
@@ -372,10 +394,10 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         //orarioAdapter.setClasse(classeCorrente);
         updateAdapter(filtro);
         orarioAdapter.setGiorno(giornoCorrente);
-        if (giornoCorrente == EGiorno.getToday())
+        if (giornoCorrente.isToday())
             LAYOUT_OBJs.textViewGiorni.setText("Oggi");
         else
-            LAYOUT_OBJs.textViewGiorni.setText(C_TextUtil.capitalize(giornoCorrente.getNome()));
+            LAYOUT_OBJs.textViewGiorni.setText(giornoCorrente.getGiorno().shortName() + " - " + giornoCorrente.toDDMMYY());
 
         if (!normalizeFilterName()) {
             LAYOUT_OBJs.textViewFiltro.setText((getFilterAppLabel() + " " + filtro).trim());

@@ -84,7 +84,22 @@ class UpdateThreadService implements Runnable {
                 }
             }
         }
+
+        //rimuove orai non piu' validi
+        try {
+            count += db.runInTransaction(new ScuolaAppDbHelperCallable<Integer>() {
+                @Override
+                public Integer call(DaoSession session, Context ctx) throws Throwable {
+                    return new ManagerTimetables(session).removeTimetablesWithNameNotInCollection(remoteNameFile);
+                }
+            });
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+
         db.close();
+
+
         return count;
     }
 
@@ -137,6 +152,7 @@ class UpdateThreadService implements Runnable {
 
 
             final int num = updateTimetables();
+
             //n.cancel(updateService);
 
             if (num > 0) {

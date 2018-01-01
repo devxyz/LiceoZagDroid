@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.text.Html;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import it.gov.scuolesuperioridizagarolo.R;
@@ -108,18 +109,53 @@ public class DialogUtil {
     }
 
 
-    public static void openChooseDialog(final Activity coontext, final String title, boolean cancelable, final CharSequence[] values,
-                                        final DialogInterface.OnClickListener onClickListener,
-                                        final Dialog.OnKeyListener keyListener) {
+    public static void openChooseDialog(final Activity coontext, final String title, boolean cancelable, final CharSequence[] values, String selectedItem,
+                                        final DialogInterface.OnClickListener onClickListener
+    ) {
         AlertDialog.Builder builder = new AlertDialog.Builder(coontext);
         builder.setTitle(title);
         //builder.setMessage("L'applicazione impostera' le viste in modo adeguato alla scelta fatta. Potrai sempre cambiare modalita' dal menu.");
 
         builder.setCancelable(cancelable);
-        builder.setItems(values, onClickListener);
+
+        int selected = 0;
+        if (selectedItem != null) {
+            for (int i = 0; i < values.length; i++) {
+                CharSequence x = values[i];
+                if (x.equals(selectedItem)) {
+                    selected = i;
+                    break;
+                }
+            }
+        }
+
+
+        builder.setSingleChoiceItems(values, selected, onClickListener);
+
+        if (cancelable) {
+            builder.setNegativeButton("Annulla",
+                    new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            builder.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                @Override
+                public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK) {
+                        dialog.cancel();
+                    }
+                    return true;
+
+                }
+            });
+        }
+
+
         final AlertDialog dialog = builder.create();
-        if (keyListener != null)
-            dialog.setOnKeyListener(keyListener);
+
         dialog.show();
     }
 

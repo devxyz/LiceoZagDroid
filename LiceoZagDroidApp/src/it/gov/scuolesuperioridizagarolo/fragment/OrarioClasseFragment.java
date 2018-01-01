@@ -10,7 +10,7 @@ public class OrarioClasseFragment extends AbstractOrarioFragment<OrarioClasseLis
 
     @Override
     protected OrarioClasseListAdapter createAbstractOrarioListAdapter() {
-        return new OrarioClasseListAdapter(getMainActivity(), filtro, orario, giornoCorrente);
+        return new OrarioClasseListAdapter(getMainActivity(), filtro, containerOrari, giornoCorrente);
     }
 
     @Override

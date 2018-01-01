@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageViewGiorno"
-            android:src="@drawable/_menu_home"
+            android:src="@drawable/calendario_48x48"
             android:layout_alignParentTop="true" android:layout_alignParentEnd="true"/>
     <ImageView
             android:layout_width="wrap_content"

@@ -24,6 +24,7 @@ import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 
 import java.util.*;
+
 @Deprecated
 public class CircolariSearchFragment extends AbstractFragment {
 
@@ -160,12 +161,12 @@ public class CircolariSearchFragment extends AbstractFragment {
                 String[] valori = classi.toArray(new String[classi.size()]);
 
 
-                DialogUtil.openChooseDialog(activity, "Scegli la classe", false, valori, new DialogInterface.OnClickListener() {
+                DialogUtil.openChooseDialog(activity, "Scegli la classe", false, valori, null, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
-                }, null);
+                });
             }
         });
 
@@ -323,7 +324,7 @@ public class CircolariSearchFragment extends AbstractFragment {
                             "Segna circolare corrente da leggere",
                             "Segna circolare corrente letta",
                             "Informazioni"
-                    }, new DialogInterface.OnClickListener() {
+                    }, null, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
@@ -354,7 +355,7 @@ public class CircolariSearchFragment extends AbstractFragment {
 
                         }
                     }
-                    , null);
+            );
 
             return true;
         }

@@ -275,6 +275,14 @@ public class MainMenuActivity extends AbstractActivity {
             case R.id.action_menu:
                 openMenu();
                 return true;
+            case R.id.action_view_debug_fragment:
+                if (currentFragment != null) {
+                    final String htmlText = "<html><body>" + currentFragment.toString().replace("\n", "<br>") + "</body></html>";
+                    HtmlPageDialog d = new HtmlPageDialog(this, "Report Fragment", htmlText, null);
+                    d.show();
+
+                }
+                return true;
             case R.id.action_update:
                 //start service
                 Intent serviceIntent = new Intent(this, UpdateService.class);
@@ -307,7 +315,7 @@ public class MainMenuActivity extends AbstractActivity {
                     protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
                         MainMenuActivity.this.doAction(0);
                     }
-                });
+                }, true);
                 return true;
             case R.id.action_reset: {
                 _doResetApplication();

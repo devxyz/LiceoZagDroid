@@ -33,10 +33,21 @@ public class C_DateUtil {
     }
 
     public static String toDDMMYYY(Date d) {
-        if (d == null) return "--/--/---";
+        if (d == null) return "--/--/----";
         // Create an instance of SimpleDateFormat used for formatting
         // the string representation of date (month/day/year)
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALIAN);
+
+        // Using DateFormat format method we can create a string
+        // representation of a date with the defined format.
+        return df.format(d);
+    }
+
+    public static String toDDMMY(Date d) {
+        if (d == null) return "--/--/--";
+        // Create an instance of SimpleDateFormat used for formatting
+        // the string representation of date (month/day/year)
+        DateFormat df = new SimpleDateFormat("dd/MM/yy", Locale.ITALIAN);
 
         // Using DateFormat format method we can create a string
         // representation of a date with the defined format.
@@ -75,7 +86,14 @@ public class C_DateUtil {
     public static Date sottraiGiorni(Date d, int giorni) {
         Calendar c = Calendar.getInstance();
         c.setTime(d);
-        c.add(Calendar.DAY_OF_YEAR, -giorni);
+        c.add(Calendar.DAY_OF_MONTH, -giorni);
+        return c.getTime();
+    }
+
+    public static Date aggiungiGiorni(Date d, int giorni) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(d);
+        c.add(Calendar.DAY_OF_MONTH, giorni);
         return c.getTime();
     }
 
@@ -108,5 +126,27 @@ public class C_DateUtil {
         return c.getTime();
     }
 
+
+    public static Date newDate(int g, int m, int a) {
+        final Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        c.set(Calendar.DAY_OF_MONTH, g);
+        c.set(Calendar.MONTH, m);
+        c.set(Calendar.YEAR, a);
+        return c.getTime();
+    }
+
+    public static Date deleteTimeFromDate(Date d) {
+        final Calendar c = Calendar.getInstance();
+        c.setTime(d);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        return c.getTime();
+    }
 
 }

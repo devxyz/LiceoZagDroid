@@ -196,7 +196,7 @@ public class NewsFragmentRss extends AbstractFragment {
                             "Segna tutte lette",
                             "Segna notizia corrente da leggere",
                             "Segna notizia corrente letta"
-                    }, new DialogInterface.OnClickListener() {
+                    },null, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
@@ -223,7 +223,7 @@ public class NewsFragmentRss extends AbstractFragment {
 
                         }
                     }
-                    , null);
+                    );
 
             return true;
         }
