@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.Toast;
 import it.gov.scuolesuperioridizagarolo.activity.HelpActivity;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.cache.AsyncUrlLoaderCallback;
@@ -18,8 +17,19 @@ import java.util.ArrayList;
 public abstract class AbstractFragment extends Fragment {
     private final ArrayList<AsyncTask> task1 = new ArrayList<AsyncTask>();
     private final ArrayList<AsyncUrlLoaderCallback> task2 = new ArrayList<AsyncUrlLoaderCallback>();
+    private Bundle extraParameters = new Bundle();
 
     protected AbstractFragment() {
+
+    }
+
+    protected Bundle getExtraParameters() {
+        return extraParameters;
+    }
+
+    public void putExtras(Bundle b) {
+
+        this.extraParameters = b;
     }
 
     /**

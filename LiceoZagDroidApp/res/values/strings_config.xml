@@ -38,6 +38,7 @@
 
 
     <string name="label_long_click">Click lungo per accedere alle opzioni</string>
+    <string name="package_barcode_app">com.google.zxing.client.android</string>
 
 
 

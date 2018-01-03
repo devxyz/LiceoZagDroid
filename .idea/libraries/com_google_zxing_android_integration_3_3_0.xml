@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="com.google.zxing:android-integration:3.3.0" type="repository">
+    <properties maven-id="com.google.zxing:android-integration:3.3.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib-tmp/android-integration-3.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tmp/android-4.1.1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tmp/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tmp/httpclient-4.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tmp/httpcore-4.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tmp/commons-codec-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tmp/opengl-api-gl1.1-android-2.1_r1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tmp/xmlParserAPIs-2.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tmp/xpp3-1.1.4c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tmp/json-20080701.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
