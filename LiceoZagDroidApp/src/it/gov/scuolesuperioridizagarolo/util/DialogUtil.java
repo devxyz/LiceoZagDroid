@@ -6,9 +6,11 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.text.Html;
+import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
@@ -201,6 +203,36 @@ public class DialogUtil {
         alert11.show();
     }
 
+    public static void openInputDialog(final Activity context, final String title, final String message, final InputDialogResult result) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+        // Set up the input
+        final EditText input = new EditText(context);
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                result.onResult(input.getText().toString());
+                dialog.cancel();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                result.onCancel();
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
     public static void openAskDialog(final Activity context, final String title, final String message, final Runnable yes, final Runnable no) {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
@@ -295,8 +327,10 @@ public class DialogUtil {
 
     }
 
-    private static class MyContainer<T> {
-        volatile T value;
+    public static interface InputDialogResult {
+        public void onResult(String s);
+
+        public void onCancel();
     }
 
 

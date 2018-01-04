@@ -28,11 +28,29 @@ public class ProdottiBarExpandibleListAdapter extends BaseExpandableListAdapter 
     // child data in format of header title, child title
     private HashMap<String, List<ProdottoBar>> _prodottiPerUtente;
     private HashMap<String, List<View>> _viewPerUtente;
+
+
     public ProdottiBarExpandibleListAdapter(Context context) {
         this.a = context;
         this._nomeUtenti = new ArrayList<>();
         this._prodottiPerUtente = new HashMap<>();
         _viewPerUtente = new HashMap<>();
+    }
+
+    public List<ProdottoBar> getAllItem() {
+        List<ProdottoBar> ris = new ArrayList<>();
+        for (int i = 0; i < getGroupCount(); i++) {
+            final String nome = getGroup(i);
+            ris.addAll(_prodottiPerUtente.get(nome));
+        }
+        return ris;
+    }
+
+    public void updateAll(List<ProdottoBar> p) {
+        _nomeUtenti.clear();
+        _prodottiPerUtente.clear();
+        _viewPerUtente.clear();
+        add(p);
     }
 
     public void add(List<ProdottoBar> p) {
@@ -122,6 +140,13 @@ public class ProdottiBarExpandibleListAdapter extends BaseExpandableListAdapter 
         obj.number_picker.setValue(item.quantita);
         obj.textView_Prezzo.setText("Prezzo " + C_TextUtil.currency(item.prezzounitario));
         obj.textView_Titolo.setText(item.nomeProdotto);
+
+        if (item.quantita > 0) {
+            obj.textView_Titolo.setBackground(a.getResources().getDrawable(R.drawable.background_pulsante_yellow));
+        } else {
+            obj.textView_Titolo.setBackgroundColor(a.getResources().getColor(R.color.color_transparent));
+        }
+
 
         return convertView;
     }

@@ -18,7 +18,8 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Prezzo: 1,50 euro"
             android:id="@+id/textView_Prezzo"
-            android:layout_below="@+id/textView_Titolo" android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_alignEnd="@+id/textView_Titolo" android:layout_below="@+id/textView_Titolo"/>
 
     <com.travijuu.numberpicker.library.NumberPicker
             android:id="@+id/number_picker"
@@ -30,5 +31,5 @@
             numberpicker:unit="1"
             numberpicker:focusable="false"
             numberpicker:custom_layout="@layout/component_number_picker"
-            android:layout_alignTop="@+id/textView_Prezzo" android:layout_alignParentEnd="true"/>
+            android:layout_below="@+id/textView_Titolo" android:layout_alignParentStart="true"/>
 </RelativeLayout>
