@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <color name="colorPrimary">#FD4A08</color>
+    <color name="colorLightGray">#D8D8D8</color>
+
+
+
+
     <!--
     <color name="menu_list_item_title">#fff</color>
     <color name="menu_list_background">#303030</color>

@@ -3,7 +3,7 @@
 
     <!-- per ogni menu, l'icona -->
     <array name="menu_home_docente">
-        
+
         <item>Apri Menu</item>
         <item>Apri Menu</item>
         <item>it.gov.scuolesuperioridizagarolo.action.OpenMenuAction</item>
@@ -11,7 +11,7 @@
         <item></item>
         <item>END-ITEM</item>
 
-        
+
         <item>Sito WEB</item>
         <item>IIS Borsellino Falcone - Zagarolo</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.SitoWebFragment</item>
@@ -21,7 +21,7 @@
 
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
-        
+
         <item>Contatti</item>
         <item>Contatta la scuola</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.ContattiFragment</item>
@@ -30,7 +30,6 @@
         <item>END-ITEM</item>
 
 
-        
         <item>Orario Docenti</item>
         <item>Orario Docenti</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteFragment</item>
@@ -39,7 +38,6 @@
         <item>END-ITEM</item>
 
 
-        
         <item>Orario Classi</item>
         <item>Orario Classi</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment</item>
@@ -48,7 +46,6 @@
         <item>END-ITEM</item>
 
 
-        
         <item>R.E. Docenti</item>
         <item>Registro elettronico docenti</item>
         <item>it.gov.scuolesuperioridizagarolo.action.ReDocentiAction</item>
@@ -57,8 +54,6 @@
         <item>END-ITEM</item>
 
 
-
-        
         <item>Aggiorna Dati</item>
         <item>Aggiorna i dati</item>
         <item>it.gov.scuolesuperioridizagarolo.action.UpdateAction</item>
@@ -70,7 +65,14 @@
         <item>Barcode</item>
         <item>Barcode</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.BarCodeFragment</item>
-        <item>@drawable/_menu_update_service_60x60</item>
+        <item>@drawable/close_48x48</item>
+        <item></item>
+        <item>END-ITEM</item>
+
+        <item>BAR</item>
+        <item>BAR</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.ProdottiBarFragment</item>
+        <item>@drawable/close_48x48</item>
         <item></item>
         <item>END-ITEM</item>
 

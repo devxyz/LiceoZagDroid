@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Totale:"
+            android:id="@+id/textView_titolo"
+            android:layout_alignParentTop="true" android:layout_toEndOf="@+id/linearLayout5"/>
+    <ExpandableListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listView_ordini" android:layout_below="@+id/textView_titolo"
+            android:paddingLeft="5dp" android:paddingRight="5dp" android:paddingTop="5dp" android:paddingBottom="5dp"
+            android:layout_toEndOf="@+id/linearLayout5"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" android:id="@+id/linearLayout5">
+        <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton_plus" android:layout_alignParentTop="true" android:layout_alignParentEnd="true"
+                android:src="@drawable/button_add_48x48" android:background="@color/color_transparent"
+                android:layout_marginLeft="5dp" android:layout_marginTop="10dp" android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"/>
+        <ImageButton android:layout_width="match_parent" android:layout_height="wrap_content"
+                     android:id="@+id/imageButton_Filter" android:layout_alignParentTop="true"
+                     android:layout_alignParentEnd="true" android:src="@drawable/filter_48x48"
+                     android:layout_marginLeft="5dp"
+                     android:layout_marginTop="5dp" android:layout_marginRight="5dp"
+                     android:background="@color/color_transparent"/>
+        <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButtonPeople" android:src="@drawable/_menu_student_48x48"
+                android:background="@color/color_transparent"
+                android:layout_margin="5dp"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="(3)"
+                android:id="@+id/textViewNumeroUtenti" android:gravity="center_horizontal"/>
+    </LinearLayout>
+</RelativeLayout>

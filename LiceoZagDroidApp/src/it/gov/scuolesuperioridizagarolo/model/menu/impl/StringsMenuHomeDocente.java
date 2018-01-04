@@ -56,7 +56,14 @@ null);
 "Barcode",
 "Barcode",
 it.gov.scuolesuperioridizagarolo.fragment.BarCodeFragment.class,
-R.drawable._menu_update_service_60x60,
+R.drawable.close_48x48,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.BarCodeFragment.class),
+null);
+     public static final DataMenuInfo BAR= new DataMenuInfo(
+"BAR",
+"BAR",
+it.gov.scuolesuperioridizagarolo.fragment.ProdottiBarFragment.class,
+R.drawable.close_48x48,
+DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.ProdottiBarFragment.class),
 null);
 }

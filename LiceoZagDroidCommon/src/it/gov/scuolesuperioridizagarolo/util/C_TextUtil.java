@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Formatter;
 
 /**
  * Created by stefano on 11/03/15.
@@ -176,6 +177,10 @@ public class C_TextUtil {
             if (!s.contains(value)) return false;
         }
         return true;
+    }
+
+    public static String currency(double d) {
+        return new Formatter().format("%.02f €", d).toString();
     }
 
     private static boolean startWithLowercase(String s) {
