@@ -245,15 +245,18 @@ public class DialogUtil {
 
                     case DialogInterface.BUTTON_NEGATIVE:
                         //No button clicked
+
                         no.run();
                         break;
                     default:
                         no.run();
                 }
+                dialog.cancel();
             }
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setCancelable(false);
         builder.setMessage(message).setTitle(title).setPositiveButton("Si", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
     }

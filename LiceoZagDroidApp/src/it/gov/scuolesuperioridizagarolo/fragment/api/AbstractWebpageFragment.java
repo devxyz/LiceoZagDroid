@@ -43,8 +43,8 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState, Bundle p) {
+    public View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState, Bundle p) {
 
         View rootView = inflater.inflate(R.layout.fragment_webpage, container, false);
         currentUrl = getURL();
@@ -120,7 +120,7 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceStateImpl(Bundle outState) {
         currentUrl = LAYOUT_OBJs.webViewHtml.getUrl();
         outState.putString(KEY_URL, currentUrl);
     }

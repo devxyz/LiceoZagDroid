@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,15 +28,30 @@ public abstract class AbstractFragment extends Fragment {
 
     }
 
-    public abstract View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                      Bundle savedInstanceState, Bundle p);
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putBundle(KEY_AbstractFragment_BUNDLE, parameter);
+        onSaveInstanceStateImpl(outState);
+        Log.e(getClass().getSimpleName(), "SAVE STATE FRAGMENT " + getClass().getSimpleName());
+    }
+
+    protected void onSaveInstanceStateImpl(Bundle outState) {
+
+    }
+
+    protected abstract View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
+                                             Bundle savedInstanceState, Bundle p);
+
+    @Override
     public final View onCreateView(LayoutInflater inflater, ViewGroup container,
                                    Bundle savedInstanceState) {
-        if (parameter == null)
+        if (parameter == null && savedInstanceState != null)
             parameter = savedInstanceState.getBundle(KEY_AbstractFragment_BUNDLE);
 
-        return onCreateView(inflater, container, savedInstanceState, getParameter());
+        Log.e(getClass().getSimpleName(), "RESTORE STATE FRAGMENT " + getClass().getSimpleName() + " bundle:" + savedInstanceState);
+
+        return onCreateViewImpl(inflater, container, savedInstanceState, getParameter());
     }
 
     protected Bundle getParameter() {

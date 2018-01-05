@@ -96,8 +96,11 @@ public class MainMenuActivity extends AbstractActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);//NECESSARIO per salvare i dati dei fragment!!!!
         outState.putSerializable(KEY_STACK, stack);
+        if (currentFragment != null) {
+            //currentFragment.onSaveInstanceState(outState);
+        }
     }
 
     @Override
@@ -222,6 +225,13 @@ public class MainMenuActivity extends AbstractActivity {
                 doAction(0, null);
                 //openMenu();
             }
+        } else {
+            //restore in caso di rotazione schermo NON FACCIO NULLA, il restore lo fa il motore android
+            /*final DataMenuInfoStack.DataMenuInfoCall back = stack.last();
+            if (back != null)
+                doAction(back.menu, back.parameter);
+            else
+                doAction(0, null);*/
         }
 
 
@@ -479,11 +489,28 @@ public class MainMenuActivity extends AbstractActivity {
 
     @Override
     public void onBackPressed() {
-        final DataMenuInfoStack.DataMenuInfoCall last = stack.back();
-        if (last == null)
-            finish();
-        else
-            doAction(last.menu, last.parameter);
+        if (stack.getStack().size() <= 1) {
+            DialogUtil.openAskDialog(this, "Chiusura applicazione", "Vuoi chiudere l'applicazione?", new Runnable() {
+                        @Override
+                        public void run() {
+                            finish();
+                        }
+                    },
+                    new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    }
+            );
+
+        } else {
+            final DataMenuInfoStack.DataMenuInfoCall last = stack.back();
+            if (last != null)
+                doAction(last.menu, last.parameter);
+            else
+                finish();
+        }
         //Toast.makeText(getActivity(), "BACK", Toast.LENGTH_LONG).show();
     }
 

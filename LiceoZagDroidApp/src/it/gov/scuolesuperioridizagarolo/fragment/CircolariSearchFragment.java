@@ -135,8 +135,8 @@ public class CircolariSearchFragment extends AbstractFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState,Bundle p) {
+    public View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState, Bundle p) {
         View rootView = inflater.inflate(R.layout.fragment_cerca_circolari, container, false);
         //ON CREATE method
         //**************************
@@ -239,11 +239,6 @@ public class CircolariSearchFragment extends AbstractFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
     }
 
 

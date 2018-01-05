@@ -25,6 +25,7 @@ public class DataMenuInfoStack implements Serializable {
         stack.add(m);
     }
 
+
     public DataMenuInfoCall back() {
         //rimuove l'ultimo e il penultimo
         if (stack.size() > 0)
@@ -35,7 +36,14 @@ public class DataMenuInfoStack implements Serializable {
         return null;
     }
 
-    public static class DataMenuInfoCall {
+    public DataMenuInfoCall last() {
+        //rimuove solo l'ultimo (cosi' poi si puo' nuovamente aggiungere)
+        if (stack.size() > 0)
+            return stack.remove(stack.size() - 1);
+        return null;
+    }
+
+    public static class DataMenuInfoCall implements Serializable {
         public final DataMenuInfo menu;
         public final Bundle parameter;
 

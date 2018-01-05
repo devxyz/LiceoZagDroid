@@ -139,8 +139,8 @@ public class NewsFragmentRss extends AbstractFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState,Bundle p) {
+    public View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState, Bundle p) {
         View rootView = inflater.inflate(R.layout.fragment_news_rss, container, false);
         //ON CREATE method
         //**************************

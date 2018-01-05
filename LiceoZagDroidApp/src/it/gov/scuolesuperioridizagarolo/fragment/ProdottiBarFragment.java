@@ -33,14 +33,14 @@ public class ProdottiBarFragment extends AbstractFragment {
     private ProdottoBarContainer prodotti = null;
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+    public void onSaveInstanceStateImpl(Bundle outState) {
+
         outState.putSerializable(KEY_BUNDLE_PRODOTTI, prodotti);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState, Bundle p) {
+    public View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState, Bundle p) {
 
         if (savedInstanceState != null) {
             prodotti = (ProdottoBarContainer) savedInstanceState.getSerializable(KEY_BUNDLE_PRODOTTI);

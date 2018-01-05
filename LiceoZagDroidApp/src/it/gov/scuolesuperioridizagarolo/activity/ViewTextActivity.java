@@ -11,6 +11,7 @@ import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 /**
  * Created by stefano on 04/07/15.
  */
+@Deprecated
 public class ViewTextActivity extends Activity {
 
     public static final String KEY_TITLE = "TITLE";

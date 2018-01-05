@@ -65,8 +65,8 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
     protected abstract A createAbstractOrarioListAdapter();
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+    public void onSaveInstanceStateImpl(Bundle outState) {
+
         outState.putString(KEY_FILTRO, filtro);
         outState.putLong(KEY_DATA, giornoCorrente.getTime());
     }
@@ -78,8 +78,8 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
     protected abstract String getSavedFiltrerValue();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState, Bundle param) {
+    public View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState, Bundle param) {
 
 
         View rootView = inflater.inflate(R.layout.fragment_orario_classe, container, false);
