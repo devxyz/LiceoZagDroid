@@ -1,9 +1,11 @@
 package it.gov.scuolesuperioridizagarolo.model;
 
+import java.io.Serializable;
+
 /**
  * Created by stefano on 03/01/2018.
  */
-public class ProdottoBar {
+public class ProdottoBar implements Serializable {
     public final int id;
     public final String nomeUtente;
     public final String nomeProdotto;

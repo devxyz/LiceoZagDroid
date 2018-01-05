@@ -1,5 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.action;
 
+import android.os.Bundle;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.action.api.ActivityAction;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
@@ -10,7 +11,7 @@ import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
 public class OpenMenuAction implements ActivityAction {
 
     @Override
-    public void doTask(MainMenuActivity activity, DataMenuInfo item) {
+    public void doTask(MainMenuActivity activity, DataMenuInfo item, Bundle bundle) {
         activity.openMenu();
 
     }

@@ -4,6 +4,9 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import it.gov.scuolesuperioridizagarolo.activity.HelpActivity;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.cache.AsyncUrlLoaderCallback;
@@ -15,22 +18,34 @@ import java.util.ArrayList;
  * Created by stefano on 18/03/15.
  */
 public abstract class AbstractFragment extends Fragment {
+    private static final String KEY_AbstractFragment_BUNDLE = "KEY_AbstractFragment_BUNDLE";
     private final ArrayList<AsyncTask> task1 = new ArrayList<AsyncTask>();
     private final ArrayList<AsyncUrlLoaderCallback> task2 = new ArrayList<AsyncUrlLoaderCallback>();
-    private Bundle extraParameters = new Bundle();
+    private Bundle parameter = null;
 
     protected AbstractFragment() {
 
     }
 
-    protected Bundle getExtraParameters() {
-        return extraParameters;
+    public abstract View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                      Bundle savedInstanceState, Bundle p);
+
+    public final View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                   Bundle savedInstanceState) {
+        if (parameter == null)
+            parameter = savedInstanceState.getBundle(KEY_AbstractFragment_BUNDLE);
+
+        return onCreateView(inflater, container, savedInstanceState, getParameter());
     }
 
-    public void putExtras(Bundle b) {
-
-        this.extraParameters = b;
+    protected Bundle getParameter() {
+        return parameter;
     }
+
+    public void setParameters(Bundle p) {
+        this.parameter = p;
+    }
+
 
     /**
      * chiamato quando è opportuno aggiornare l'interfaccia grafica per nuovi dati disponibili

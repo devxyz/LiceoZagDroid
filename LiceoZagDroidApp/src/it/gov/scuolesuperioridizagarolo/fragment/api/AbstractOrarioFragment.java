@@ -79,7 +79,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState, Bundle param) {
 
 
         View rootView = inflater.inflate(R.layout.fragment_orario_classe, container, false);

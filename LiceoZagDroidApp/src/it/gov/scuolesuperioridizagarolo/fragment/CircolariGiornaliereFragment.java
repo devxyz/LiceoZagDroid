@@ -84,7 +84,7 @@ public class CircolariGiornaliereFragment extends AbstractFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState,Bundle p) {
         currentDate = new Date();
 
         View rootView = inflater.inflate(R.layout.fragment_cerca_circolari_by_date, container, false);

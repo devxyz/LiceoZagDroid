@@ -28,6 +28,10 @@ public class ProdottoBarContainer implements Serializable {
         lista.addAll(b);
     }
 
+    public String[] getNomiUtentiArray() {
+        final LinkedHashSet<String> a = getNomiUtenti();
+        return a.toArray(new String[a.size()]);
+    }
     public LinkedHashSet<String> getNomiUtenti() {
         LinkedHashSet<String> ris = new LinkedHashSet<>();
         for (ProdottoBar x : lista) {

@@ -29,7 +29,7 @@ public class HomeFragment extends AbstractFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState, Bundle p) {
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -57,7 +57,7 @@ public class HomeFragment extends AbstractFragment {
                 InitActivity.chooseUserType(getMainActivity(), new OnClickListenerDialogErrorCheck(getMainActivity()) {
                     @Override
                     protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
-                        getMainActivity().doAction(0);
+                        getMainActivity().doAction(0, null);
                     }
                 }, true);
             }
@@ -71,7 +71,7 @@ public class HomeFragment extends AbstractFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final DataMenuInfo dataMenuInfo = adapter.getDataMenuInfo(position);
-                getMainActivity().doAction(dataMenuInfo);
+                getMainActivity().doAction(dataMenuInfo, null);
                 adapter.update();
 
             }

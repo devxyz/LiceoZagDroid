@@ -9,7 +9,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Totale:"
             android:id="@+id/textView_titolo"
-            android:layout_alignParentTop="true" android:layout_toEndOf="@+id/linearLayout5"/>
+            android:layout_alignParentTop="true" android:layout_toEndOf="@+id/linearLayout5" android:textStyle="bold"
+            android:padding="5dp"/>
     <ExpandableListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,7 +21,8 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" android:id="@+id/linearLayout5">
+            android:layout_alignParentStart="true" android:id="@+id/linearLayout5"
+            android:background="@color/color_light_gray">
         <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -29,22 +31,28 @@
                 android:layout_marginLeft="5dp" android:layout_marginTop="10dp" android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"/>
         <ImageButton android:layout_width="match_parent" android:layout_height="wrap_content"
-                     android:id="@+id/imageButton_Filter" android:layout_alignParentTop="true"
-                     android:layout_alignParentEnd="true" android:src="@drawable/filter_48x48"
-                     android:layout_marginLeft="5dp"
-                     android:layout_marginTop="5dp" android:layout_marginRight="5dp"
-                     android:background="@color/color_transparent"/>
+                     android:id="@+id/imageButton_Minus" android:layout_alignParentTop="true"
+                     android:layout_alignParentEnd="true" android:src="@drawable/button_minus_48x48"
+                     android:background="@color/color_transparent" android:layout_marginLeft="5dp"
+                     android:layout_marginTop="10dp" android:layout_marginRight="5dp"
+                     android:layout_marginBottom="5dp"/>
         <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButtonPeople" android:src="@drawable/_menu_student_48x48"
+                android:id="@+id/imageButton_people" android:src="@drawable/_menu_student_48x48"
                 android:background="@color/color_transparent"
                 android:layout_margin="5dp"/>
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="(3)"
-                android:id="@+id/textViewNumeroUtenti" android:gravity="center_horizontal"/>
+                android:id="@+id/textViewNumeroUtenti" android:gravity="center_horizontal" android:textStyle="bold"/>
+        <ImageButton android:layout_width="match_parent" android:layout_height="wrap_content"
+                     android:id="@+id/imageButton_Filter" android:layout_alignParentTop="true"
+                     android:layout_alignParentEnd="true" android:src="@drawable/filter_48x48"
+                     android:layout_marginLeft="5dp"
+                     android:layout_marginTop="5dp" android:layout_marginRight="5dp"
+                     android:background="@color/color_transparent"/>
     </LinearLayout>
 </RelativeLayout>

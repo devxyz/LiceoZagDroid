@@ -58,11 +58,14 @@ public class ProdottiBarExpandibleListAdapter extends BaseExpandableListAdapter 
             _add(prodottoBar);
         }
         notifyDataSetChanged();
+        listener.dataChanged(_prodottiPerUtente, 0, 0);
+
     }
 
     public void add(ProdottoBar p) {
         _add(p);
         notifyDataSetChanged();
+        listener.dataChanged(_prodottiPerUtente, 0, 0);
     }
 
     private void _add(ProdottoBar p) {
@@ -125,11 +128,9 @@ public class ProdottiBarExpandibleListAdapter extends BaseExpandableListAdapter 
                     if (ProdottiBarExpandibleListAdapter.this.listener != null) {
                         ProdottiBarExpandibleListAdapter.this.listener.dataChanged(_prodottiPerUtente, groupPosition, childPosition);
                     }
-                    if (p.quantita > 0) {
-                        obj.textView_Titolo.setBackground(a.getResources().getDrawable(R.drawable.background_pulsante_yellow));
-                    } else {
-                        obj.textView_Titolo.setBackgroundColor(a.getResources().getColor(R.color.color_transparent));
-                    }
+
+                    _controlloSelezionato(item, obj);
+
                 }
             });
         } else {
@@ -141,14 +142,18 @@ public class ProdottiBarExpandibleListAdapter extends BaseExpandableListAdapter 
         obj.textView_Prezzo.setText("Prezzo " + C_TextUtil.currency(item.prezzounitario));
         obj.textView_Titolo.setText(item.nomeProdotto);
 
-        if (item.quantita > 0) {
-            obj.textView_Titolo.setBackground(a.getResources().getDrawable(R.drawable.background_pulsante_yellow));
-        } else {
-            obj.textView_Titolo.setBackgroundColor(a.getResources().getColor(R.color.color_transparent));
-        }
+        _controlloSelezionato(item, obj);
 
 
         return convertView;
+    }
+
+    private void _controlloSelezionato(ProdottoBar item, LayoutObjs_listview_bar_prodotto_dettaglio_xml obj) {
+        if (item.quantita > 0) {
+            obj.layout.setBackground(a.getResources().getDrawable(R.drawable.background_pulsante_yellow));
+        } else {
+            obj.layout.setBackgroundColor(a.getResources().getColor(R.color.color_transparent));
+        }
     }
 
     @Override
@@ -200,6 +205,7 @@ public class ProdottiBarExpandibleListAdapter extends BaseExpandableListAdapter 
 
     public void setListener(ProdottiBarExpandibleListAdapterListener listener) {
         this.listener = listener;
+        listener.dataChanged(_prodottiPerUtente, 0, 0);
     }
 
     public static interface ProdottiBarExpandibleListAdapterListener {

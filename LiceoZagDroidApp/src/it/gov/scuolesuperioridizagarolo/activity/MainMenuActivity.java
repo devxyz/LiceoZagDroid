@@ -214,12 +214,12 @@ public class MainMenuActivity extends AbstractActivity {
             if (intent1 != null && intent1.getExtras() != null && intent1.getExtras().getInt(KEY_MENU_ID_INTENT, -1) > 0) {
                 final DataMenuInfo m = menuMainAdapter.getDataMenuInfoByMenuID(intent1.getExtras().getString(KEY_MENU_ID_INTENT, ""));
                 if (m != null) {
-                    doAction(0);
-                    doAction(m);
+                    doAction(0, null);
+                    doAction(m, null);
                 } else
-                    doAction(0);
+                    doAction(0, null);
             } else {
-                doAction(0);
+                doAction(0, null);
                 //openMenu();
             }
         }
@@ -313,7 +313,7 @@ public class MainMenuActivity extends AbstractActivity {
                 InitActivity.chooseUserType(this, new OnClickListenerDialogErrorCheck(this) {
                     @Override
                     protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
-                        MainMenuActivity.this.doAction(0);
+                        MainMenuActivity.this.doAction(0, null);
                     }
                 }, true);
                 return true;
@@ -324,9 +324,9 @@ public class MainMenuActivity extends AbstractActivity {
             }
             case R.id.action_view_stack: {
                 StringBuilder sb = new StringBuilder();
-                final ArrayList<DataMenuInfo> s = stack.getStack();
-                for (DataMenuInfo dataMenuInfo : s) {
-                    sb.append(dataMenuInfo.getMenuLabel()).append("\n");
+                final ArrayList<DataMenuInfoStack.DataMenuInfoCall> s = stack.getStack();
+                for (DataMenuInfoStack.DataMenuInfoCall dataMenuInfo : s) {
+                    sb.append(dataMenuInfo.menu.getMenuLabel() + " " + dataMenuInfo.parameter).append("\n");
                 }
                 DialogUtil.openInfoDialog(this, "Stack fragment", sb.toString());
                 return true;
@@ -479,11 +479,11 @@ public class MainMenuActivity extends AbstractActivity {
 
     @Override
     public void onBackPressed() {
-        final DataMenuInfo last = stack.back();
+        final DataMenuInfoStack.DataMenuInfoCall last = stack.back();
         if (last == null)
             finish();
         else
-            doAction(last);
+            doAction(last.menu, last.parameter);
         //Toast.makeText(getActivity(), "BACK", Toast.LENGTH_LONG).show();
     }
 
@@ -526,10 +526,10 @@ public class MainMenuActivity extends AbstractActivity {
 
     }
 
-    public void doAction(int position) {
+    public void doAction(int position, Bundle parameters) {
         DataMenuInfo menu = menuMainAdapter.getDataMenuInfo(position);
         Log.d("selectFromMainMenu", "Imposta menu " + position + " - fragment:" + menu.getAction());
-        doAction(menu);
+        doAction(menu, parameters);
     }
 
     private void selectMenu(int position) {
@@ -539,7 +539,7 @@ public class MainMenuActivity extends AbstractActivity {
         currentSelectionIndex = position;
     }
 
-    public void doAction(DataMenuInfo menu) {
+    public void doAction(DataMenuInfo menu, Bundle parameter) {
         //System.out.println("MENUUUUUUU " + menu.getMenuLabel());
 
         int posizione = menuMainAdapter.positionByMenu(menu);
@@ -553,7 +553,7 @@ public class MainMenuActivity extends AbstractActivity {
                 closeMenu();
                 try {
                     ActivityAction r = (ActivityAction) menu.getAction().build();
-                    __doTask_ActivityAction(r, menu);
+                    __doTask_ActivityAction(r, menu, parameter);
                 } catch (Exception e) {
                     throw new IllegalArgumentException(e);
                 }
@@ -571,6 +571,7 @@ public class MainMenuActivity extends AbstractActivity {
                 AbstractFragment fragment = null;
                 try {
                     fragment = (AbstractFragment) menu.getAction().build();
+                    fragment.setParameters(parameter);
                 } catch (Exception e) {
                     throw new IllegalArgumentException(e);
                 }
@@ -582,10 +583,10 @@ public class MainMenuActivity extends AbstractActivity {
                 setTitle(title);
                 setIcon(d);
 
-
+                //salva stack
                 {
 
-                    stack.add(menu);
+                    stack.add(menu, parameter);
                     final FragmentManager fm = getFragmentManager();
 
 
@@ -646,11 +647,11 @@ public class MainMenuActivity extends AbstractActivity {
         mDrawerList.clearChoices();
     }
 
-    private void __doTask_ActivityAction(final ActivityAction runnable, final DataMenuInfo menu) {
+    private void __doTask_ActivityAction(final ActivityAction runnable, final DataMenuInfo menu, final Bundle b) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                runnable.doTask(MainMenuActivity.this, menu);
+                runnable.doTask(MainMenuActivity.this, menu, b);
             }
         });
     }
@@ -702,7 +703,7 @@ public class MainMenuActivity extends AbstractActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position,
                                 long id) {
             // display view for selected nav drawer item
-            doAction(position);
+            doAction(position, null);
         }
     }
 
