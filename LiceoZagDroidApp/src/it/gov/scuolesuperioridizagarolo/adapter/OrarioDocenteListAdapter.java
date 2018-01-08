@@ -30,11 +30,11 @@ public class OrarioDocenteListAdapter extends AbstractOrarioListAdapter {
     }
 
     @Override
-    public BitOrarioOraLezione getItem(int position) {
+    public BitOrarioOraLezione getItem(BitOrarioGrigliaOrario o,int position) {
         int ora = position;
         //lezione
         final EOra ora1 = EOra.values()[ora];
-        final BitOrarioOraLezione lezioneInClasse = orario.getLezioneConDocente(ora1, giorno.getGiorno(), docente);
+        final BitOrarioOraLezione lezioneInClasse = o.getLezioneConDocente(ora1, giorno.getGiorno(), docente);
         return lezioneInClasse;
     }
 

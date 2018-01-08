@@ -28,13 +28,24 @@ public class ProdottiBarExpandibleListAdapter extends BaseExpandableListAdapter 
     // child data in format of header title, child title
     private HashMap<String, List<ProdottoBar>> _prodottiPerUtente;
     private HashMap<String, List<View>> _viewPerUtente;
-
+    private boolean flagHideEmpty = false;
 
     public ProdottiBarExpandibleListAdapter(Context context) {
         this.a = context;
         this._nomeUtenti = new ArrayList<>();
         this._prodottiPerUtente = new HashMap<>();
         _viewPerUtente = new HashMap<>();
+    }
+
+    public boolean isFlagHideEmpty() {
+        return flagHideEmpty;
+    }
+
+    public void setFlagHideEmpty(boolean flagHideEmpty) {
+        if (this.flagHideEmpty != flagHideEmpty) {
+            this.flagHideEmpty = flagHideEmpty;
+            notifyDataSetChanged();
+        }
     }
 
     public List<ProdottoBar> getAllItem() {
@@ -115,7 +126,6 @@ public class ProdottiBarExpandibleListAdapter extends BaseExpandableListAdapter 
             views.set(childPosition, convertView);
             obj = new LayoutObjs_listview_bar_prodotto_dettaglio_xml(convertView);
 
-
             obj.number_picker.setValueChangedListener(new ValueChangedListener() {
                 final int indexGroup = groupPosition;
                 final int indexChild = childPosition;
@@ -137,6 +147,17 @@ public class ProdottiBarExpandibleListAdapter extends BaseExpandableListAdapter 
             obj = new LayoutObjs_listview_bar_prodotto_dettaglio_xml(convertView);
         }
 
+
+        if (flagHideEmpty && obj.number_picker.getValue() == 0) {
+            obj.number_picker.setVisibility(View.GONE);
+            obj.textView_Prezzo.setVisibility(View.GONE);
+            obj.textView_Titolo.setVisibility(View.GONE);
+        }
+        else {
+            obj.number_picker.setVisibility(View.VISIBLE);
+            obj.textView_Prezzo.setVisibility(View.VISIBLE);
+            obj.textView_Titolo.setVisibility(View.VISIBLE);
+        }
 
         obj.number_picker.setValue(item.quantita);
         obj.textView_Prezzo.setText("Prezzo " + C_TextUtil.currency(item.prezzounitario));

@@ -17,6 +17,8 @@ import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
 import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
 import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
 
+import java.util.Objects;
+
 /**
  * Created by stefano on 17/12/2017.
  */
@@ -26,8 +28,9 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
     private final boolean printInsegnanteSeCompresenza;
     private final boolean printClasse;
     protected BitOrarioGrigliaOrarioContainer containerOrari;
-    protected BitOrarioGrigliaOrario orario;
     protected OnlyDate giorno;
+    private BitOrarioGrigliaOrario orario;
+    private BitOrarioGrigliaOrario orarioDefault;
 
     public AbstractOrarioListAdapter(Activity a, BitOrarioGrigliaOrarioContainer containerOrari, OnlyDate giorno, boolean printInsegnante, boolean printClasse, boolean printInsegnanteSeCompresenza) {
         this.a = a;
@@ -37,6 +40,37 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         this.printClasse = printClasse;
         this.printInsegnanteSeCompresenza = printInsegnanteSeCompresenza;
         this.orario = containerOrari.getOrario(giorno);
+    }
+
+    public String getDetails(int position) {
+        final BitOrarioOraLezione item = getItem(position);
+        final BitOrarioOraLezione itemDefault = getItem(orarioDefault, position);
+        final boolean cambioAula = !Objects.equals(item, itemDefault);
+        StringBuilder info = new StringBuilder();
+        if (item == null || item.getNomeAula() == null) {
+            if (cambioAula)
+                return ("ATTENZIONE: Questa lezione risulta modificata rispetto all'orario standard per esigenze didattiche/logistiche." +
+                        "\nLezione predefinita:" + (itemDefault == null ? null : itemDefault.toStringShort())
+                );
+            else
+                return null;
+        }
+
+
+        final RoomData room = ClassesAndRoomContainer.getRoom(item.getNomeAula());
+        if (room != null) {
+
+            info.append("Aula: ").append(room.name.split("_")[0]);
+            info.append("Tipologia: ").append(room.flagSpecial() ? "Aula Attrezzata" : "Aula didattica");
+            info.append("\nLIM: ").append(room.flagLIM ? "SI" : "NO");
+            info.append("\nDove si trova:").append(room.location == null ? "-" : room.location.description);
+            if (cambioAula) {
+                info.append("\n\nATTENZIONE: Questa lezione risulta modificata rispetto all'orario standard per esigenze didattiche/logistiche." + "\nLezione predefinita:").
+                        append(itemDefault == null ? null : itemDefault.toStringShort());
+            }
+            return info.toString();
+        }
+        return null;
     }
 
     public void updateOrario(BitOrarioGrigliaOrarioContainer orario) {
@@ -54,7 +88,8 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
     public final void setGiorno(OnlyDate g) {
         giorno = g;
-        orario=containerOrari.getOrario(g);
+        orario = containerOrari.getOrario(g);
+        orarioDefault = containerOrari.getOrarioDefault();
         super.notifyDataSetChanged();
     }
 
@@ -65,7 +100,11 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
     }
 
     @Override
-    public abstract BitOrarioOraLezione getItem(int position);
+    public final BitOrarioOraLezione getItem(int position) {
+        return getItem(orario, position);
+    }
+
+    protected abstract BitOrarioOraLezione getItem(BitOrarioGrigliaOrario o, int position);
 
     @Override
     public final long getItemId(int position) {
@@ -83,6 +122,10 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         }
         final LayoutObjs_listview_orario_aula_lezione_xml o = new LayoutObjs_listview_orario_aula_lezione_xml(convertView);
         final BitOrarioOraLezione item = getItem(position);
+        final BitOrarioOraLezione itemDefault = getItem(orarioDefault, position);
+
+        final boolean cambioAula = !Objects.equals(item, itemDefault);
+
 
         final EOra ora = EOra.values()[position];
 
@@ -103,7 +146,17 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
             o.textViewOra.setVisibility(View.VISIBLE);
             o.textViewAula.setVisibility(View.VISIBLE);
 
+
+            o.textViewOra.setTextColor(a.getResources().getColor(R.color.color_black));
+            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_black));
+
             o.textViewLezione.setBackgroundColor(a.getResources().getColor(R.color.color_transparent));
+            o.textViewLezione.setTextColor(a.getResources().getColor(R.color.color_black));
+        }
+
+        if (cambioAula) {
+            o.textViewOra.setTextColor(a.getResources().getColor(R.color.color_red));
+            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_red));
         }
 
 

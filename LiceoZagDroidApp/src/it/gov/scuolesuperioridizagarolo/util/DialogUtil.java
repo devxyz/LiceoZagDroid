@@ -55,6 +55,7 @@ public class DialogUtil {
                                 context);
 
                         TextView msg = new TextView(context);
+                        msg.setPadding(5,5,5,5);
                         msg.setText(Html.fromHtml("<html><b>" + strName + "</b><br> <i>" + message.get(strName) + "</i> </html>"));
                         //builderInner.setMessage(""+strName);
                         builderInner.setView(msg);

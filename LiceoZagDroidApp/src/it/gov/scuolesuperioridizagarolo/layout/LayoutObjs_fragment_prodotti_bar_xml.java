@@ -13,6 +13,8 @@ public class LayoutObjs_fragment_prodotti_bar_xml{
   public final ImageButton imageButton_people;
   public final TextView textViewNumeroUtenti;
   public final ImageButton imageButton_Filter;
+  public final ImageButton imageButton_qrcodegenerator;
+  public final ImageButton imageButton_qrcodeScanner;
 
 public LayoutObjs_fragment_prodotti_bar_xml(Fragment f){
   View view=f.getView();
@@ -24,6 +26,8 @@ public LayoutObjs_fragment_prodotti_bar_xml(Fragment f){
   imageButton_people= (ImageButton)view.findViewById(R.id.imageButton_people);
   textViewNumeroUtenti= (TextView)view.findViewById(R.id.textViewNumeroUtenti);
   imageButton_Filter= (ImageButton)view.findViewById(R.id.imageButton_Filter);
+  imageButton_qrcodegenerator= (ImageButton)view.findViewById(R.id.imageButton_qrcodegenerator);
+  imageButton_qrcodeScanner= (ImageButton)view.findViewById(R.id.imageButton_qrcodeScanner);
 }
 public LayoutObjs_fragment_prodotti_bar_xml(Activity view){
     textView_titolo= (TextView)view.findViewById(R.id.textView_titolo);
@@ -34,6 +38,8 @@ public LayoutObjs_fragment_prodotti_bar_xml(Activity view){
   imageButton_people= (ImageButton)view.findViewById(R.id.imageButton_people);
   textViewNumeroUtenti= (TextView)view.findViewById(R.id.textViewNumeroUtenti);
   imageButton_Filter= (ImageButton)view.findViewById(R.id.imageButton_Filter);
+  imageButton_qrcodegenerator= (ImageButton)view.findViewById(R.id.imageButton_qrcodegenerator);
+  imageButton_qrcodeScanner= (ImageButton)view.findViewById(R.id.imageButton_qrcodeScanner);
 
 }
 public LayoutObjs_fragment_prodotti_bar_xml(View view){
@@ -45,6 +51,8 @@ public LayoutObjs_fragment_prodotti_bar_xml(View view){
   imageButton_people= (ImageButton)view.findViewById(R.id.imageButton_people);
   textViewNumeroUtenti= (TextView)view.findViewById(R.id.textViewNumeroUtenti);
   imageButton_Filter= (ImageButton)view.findViewById(R.id.imageButton_Filter);
+  imageButton_qrcodegenerator= (ImageButton)view.findViewById(R.id.imageButton_qrcodegenerator);
+  imageButton_qrcodeScanner= (ImageButton)view.findViewById(R.id.imageButton_qrcodeScanner);
 
 }
 public LayoutObjs_fragment_prodotti_bar_xml(Dialog view){
@@ -56,6 +64,8 @@ public LayoutObjs_fragment_prodotti_bar_xml(Dialog view){
   imageButton_people= (ImageButton)view.findViewById(R.id.imageButton_people);
   textViewNumeroUtenti= (TextView)view.findViewById(R.id.textViewNumeroUtenti);
   imageButton_Filter= (ImageButton)view.findViewById(R.id.imageButton_Filter);
+  imageButton_qrcodegenerator= (ImageButton)view.findViewById(R.id.imageButton_qrcodegenerator);
+  imageButton_qrcodeScanner= (ImageButton)view.findViewById(R.id.imageButton_qrcodeScanner);
 
 }
 }

@@ -35,23 +35,23 @@ public class BitOrarioGrigliaOrarioContainer {
         }
 
         return sb.toString();
+    }
 
+    /**
+     * restituisce l'orario di default (quello con id minimo)
+     *
+     * @return
+     */
+    public BitOrarioGrigliaOrario getOrarioDefault() {
+        _sortIfNecessary();
 
+        if (sortByremoteIdDesc.size() == 0) return new BitOrarioGrigliaOrario("default");
+        return sortByremoteIdDesc.get(sortByremoteIdDesc.size() - 1).orario;
     }
 
     public BitOrarioGrigliaOrario getOrario(OnlyDate d) {
         Log.e(getClass().getSimpleName(), "INIZIO CALCOLO ORARIO CORRENTE per " + d);
-        if (!sort) {
-            Log.e(getClass().getSimpleName(), "xxxxx SORT");
-            Collections.sort(sortByremoteIdDesc, new Comparator<BitOrarioGrigliaOrarioItem>() {
-                @Override
-                public int compare(BitOrarioGrigliaOrarioItem a, BitOrarioGrigliaOrarioItem b) {
-
-                    return -new Long(a.remoteId).compareTo(b.remoteId);
-                }
-            });
-            sort = true;
-        }
+        _sortIfNecessary();
 
 
         for (BitOrarioGrigliaOrarioItem o : sortByremoteIdDesc) {
@@ -63,6 +63,20 @@ public class BitOrarioGrigliaOrarioContainer {
         }
         Log.e(getClass().getSimpleName(), "xxxxx NESSUN ORARIO TROVATO");
         return new BitOrarioGrigliaOrario("vuoto");
+    }
+
+    private void _sortIfNecessary() {
+        if (!sort) {
+            Log.e(getClass().getSimpleName(), "xxxxx SORT");
+            Collections.sort(sortByremoteIdDesc, new Comparator<BitOrarioGrigliaOrarioItem>() {
+                @Override
+                public int compare(BitOrarioGrigliaOrarioItem a, BitOrarioGrigliaOrarioItem b) {
+
+                    return -new Long(a.remoteId).compareTo(b.remoteId);
+                }
+            });
+            sort = true;
+        }
     }
 
     public BitOrarioGrigliaOrarioItem getOrarioDetails(OnlyDate d) {

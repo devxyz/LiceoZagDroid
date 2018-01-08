@@ -20,4 +20,15 @@ public class ProdottoBar implements Serializable {
         this.prezzounitario = prezzounitario;
         quantita = 0;
     }
+
+    @Override
+    public String toString() {
+        return "ProdottoBar{" +
+                "id=" + id +
+                ", nomeUtente='" + nomeUtente + '\'' +
+                ", nomeProdotto='" + nomeProdotto + '\'' +
+                ", prezzounitario=" + prezzounitario +
+                ", quantita=" + quantita +
+                '}';
+    }
 }

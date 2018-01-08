@@ -9,9 +9,6 @@ import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import dada.bitorario.data.BitOrarioGrigliaOrario;
-import dada.bitorario.data.BitOrarioOraLezione;
-import dada.bitorario.data.classes.ClassesAndRoomContainer;
-import dada.bitorario.data.classes.RoomData;
 import dada.bitorario.data.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.adapter.api.AbstractOrarioListAdapter;
@@ -146,20 +143,11 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                final BitOrarioOraLezione item = orarioAdapter.getItem(position);
-
-                if (item == null) return;
-                if (item.getNomeAula() == null) return;
-
-                final RoomData room = ClassesAndRoomContainer.getRoom(item.getNomeAula());
-                if (room != null) {
-                    StringBuilder info = new StringBuilder();
-                    info.append("Tipologia: ").append(room.flagSpecial() ? "Aula Attrezzata" : "Aula didattica");
-                    info.append("\nLIM: ").append(room.flagLIM ? "SI" : "NO");
-                    info.append("\n\n").append(room.location == null ? "-" : room.location.description);
+                final String details = orarioAdapter.getDetails(position);
 
 
-                    DialogUtil.openInfoDialog(getMainActivity(), "Aula " + item.getNomeAula().split("_")[0], info.toString());
+                if (details != null) {
+                    DialogUtil.openInfoDialog(getMainActivity(), "Dettagli", details);
                 }
             }
         });
@@ -191,35 +179,6 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
                 datePickerDialog.show();
 
-                /*final EGiorno[] values = EGiorno.values();
-                String[] giorni = new String[values.length];
-                for (int i = 0; i < values.length; i++) {
-                    EGiorno value = values[i];
-                    if (value.isToday())
-                        giorni[i] = value.getNome() + " **";
-                    else
-                        giorni[i] = value.getNome();
-                }
-
-
-                DialogUtil.openChooseDialog(getMainActivity(), "Giorno", true, giorni,
-                        new OnClickListenerDialogErrorCheck(getMainActivity()) {
-                            @Override
-                            protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
-                                giornoCorrente = EGiorno.values()[which];
-                                updateView();
-                            }
-                        },
-                        new DialogInterface.OnKeyListener() {
-                            @Override
-                            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-                                if (keyCode == KeyEvent.KEYCODE_BACK) {
-                                }
-                                return true;
-
-                            }
-                        }
-                );*/
             }
         };
         LAYOUT_OBJs.textViewGiorni.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
