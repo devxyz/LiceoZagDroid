@@ -21,7 +21,7 @@ public class UpdateService extends Service {
     public static final String KEY_MESSAGGIO_UPDATE = "KEY_MESSAGGIO_UPDATE";
     public static final String KEY_SHOULD_UPDATE = "KEY_STATO_UPDATE";
 
-    private static final int UPDATE_MINUTE = 50;
+    private static final int UPDATE_MINUTE = 120;
     final ScheduledExecutorService scheduledExecutorService;
 
     public UpdateService() {

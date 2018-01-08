@@ -267,9 +267,9 @@ public class AuleVuoteFragment extends AbstractFragment {
         //orarioAdapter.setClasse(classeCorrente);
         orarioAdapter.setGiorno(giornoCorrente);
         if (giornoCorrente.isToday())
-            LAYOUT_OBJs.textViewGiorni.setText("Oggi " + giornoCorrente.getGiorno().shortName());
+            LAYOUT_OBJs.textViewGiorni.setText("Oggi " + giornoCorrente.getGiorno().name());
         else
-            LAYOUT_OBJs.textViewGiorni.setText(giornoCorrente.getGiorno().shortName() + " - " + giornoCorrente.toDDMMYY());
+            LAYOUT_OBJs.textViewGiorni.setText(giornoCorrente.getGiorno().name() + " - " + giornoCorrente.toDDMMYY());
 
         visualizzaOraCorrente();
     }

@@ -1,16 +1,19 @@
 package it.gov.scuolesuperioridizagarolo.adapter.api;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 import dada.bitorario.data.BitOrarioGrigliaOrario;
 import dada.bitorario.data.BitOrarioOraEnumTipoLezione;
 import dada.bitorario.data.BitOrarioOraLezione;
 import dada.bitorario.data.classes.ClassesAndRoomContainer;
 import dada.bitorario.data.classes.RoomData;
 import dada.bitorario.data.enum_values.EOra;
+import dada.bitorario.data.enum_values.ERoomArea;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_orario_aula_lezione_xml;
 import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
@@ -42,6 +45,49 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         this.orario = containerOrari.getOrario(giorno);
     }
 
+    public static void coloraViewAula(TextView textViewAula, ERoomArea location, Context a) {
+        if (location == null) {
+            textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_white));
+            textViewAula.setTextColor(a.getResources().getColor(R.color.color_black));
+            return;
+        }
+        switch (location) {
+            case AREA_A: {
+                textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_a));
+                textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_a_foreground));
+                break;
+            }
+            case AREA_B: {
+                textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_b));
+                textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_b_foreground));
+                break;
+            }
+            case AREA_C: {
+                textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_c));
+                textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_c_foreground));
+                break;
+            }
+            case AREA_D: {
+                textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_d));
+                textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_d_foreground));
+                break;
+            }
+            case AREA_E: {
+                textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_e));
+                textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_e_foreground));
+                break;
+            }
+            case AREA_F: {
+                textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_f));
+                textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_f_foreground));
+                break;
+            }
+            default: {
+                break;
+            }
+        }
+    }
+
     public String getDetails(int position) {
         final BitOrarioOraLezione item = getItem(position);
         final BitOrarioOraLezione itemDefault = getItem(orarioDefault, position);
@@ -60,10 +106,10 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         final RoomData room = ClassesAndRoomContainer.getRoom(item.getNomeAula());
         if (room != null) {
 
-            info.append("Aula: ").append(room.name.split("_")[0]);
-            info.append("Tipologia: ").append(room.flagSpecial() ? "Aula Attrezzata" : "Aula didattica");
-            info.append("\nLIM: ").append(room.flagLIM ? "SI" : "NO");
-            info.append("\nDove si trova:").append(room.location == null ? "-" : room.location.description);
+            info.append("Aula: ").append(room.simpleName());
+            info.append("\nTipologia: ").append(room.usage);
+            info.append(room.flagLIM ? " con LIM" : "");
+            info.append("\nPosizione: ").append(room.location == null ? "-" : room.location.description);
             if (cambioAula) {
                 info.append("\n\nATTENZIONE: Questa lezione risulta modificata rispetto all'orario standard per esigenze didattiche/logistiche." + "\nLezione predefinita:").
                         append(itemDefault == null ? null : itemDefault.toStringShort());
@@ -80,7 +126,6 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
         notifyDataSetChanged();
     }
-
 
     public final BitOrarioGrigliaOrarioContainer getContainerOrari() {
         return containerOrari;
@@ -265,41 +310,8 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
                     room = ClassesAndRoomContainer.getRoom(nomeAula);
                     o.textViewAula.setText(nomeAula.split("_")[0]);
 
-                    switch (room.location) {
-                        case AREA_A: {
-                            o.textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_a));
-                            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_a_foreground));
-                            break;
-                        }
-                        case AREA_B: {
-                            o.textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_b));
-                            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_b_foreground));
-                            break;
-                        }
-                        case AREA_C: {
-                            o.textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_c));
-                            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_c_foreground));
-                            break;
-                        }
-                        case AREA_D: {
-                            o.textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_d));
-                            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_d_foreground));
-                            break;
-                        }
-                        case AREA_E: {
-                            o.textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_e));
-                            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_e_foreground));
-                            break;
-                        }
-                        case AREA_F: {
-                            o.textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_f));
-                            o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_f_foreground));
-                            break;
-                        }
-                        default: {
-                            break;
-                        }
-                    }
+                    final ERoomArea location = room.location;
+                    coloraViewAula(o.textViewAula, location, a);
 
 
                 }

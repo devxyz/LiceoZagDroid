@@ -14,6 +14,7 @@ import dada.bitorario.data.classes.ClassesAndRoomContainer;
 import dada.bitorario.data.classes.RoomData;
 import dada.bitorario.data.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.R;
+import it.gov.scuolesuperioridizagarolo.adapter.api.AbstractOrarioListAdapter;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_classivuote_detail_xml;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_classivuote_header_xml;
 import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
@@ -74,7 +75,8 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
         LayoutObjs_listview_classivuote_detail_xml obj = new LayoutObjs_listview_classivuote_detail_xml(convertView);
         obj.textView_aula.setText(item.simpleName());
         obj.textView_location.setText(item.location.description);
-        obj.textView5.setText("massimo " + item.maxStudents + " studenti ");
+        obj.textView5.setText(item.usage + " - " + item.maxStudents + " posti");
+        AbstractOrarioListAdapter.coloraViewAula(obj.textView_aula, item.location, a);
         return convertView;
     }
 

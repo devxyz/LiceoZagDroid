@@ -49,11 +49,17 @@
         <item>END-ITEM</item>
 
 
-
         <item>Orario Docenti</item>
         <item>Orario Docenti</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteFragment</item>
         <item>@drawable/_menu_teaching_48x48</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
+
+        <item>Aule Libere</item>
+        <item>Aule Libere</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.AuleVuoteFragment</item>
+        <item>@drawable/_menu_rooms_48x48</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
@@ -92,7 +98,6 @@
         <item>@drawable/library_icon</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
-
 
 
         <item>Iscrizione Online</item>
@@ -173,6 +178,19 @@
         <item></item>
         <item>END-ITEM</item>
 
+        <item>Barcode</item>
+        <item>Barcode</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.BarCodeFragment</item>
+        <item>@drawable/close_48x48</item>
+        <item>NOT_ACTIVE</item>
+        <item>END-ITEM</item>
+
+        <item>BAR</item>
+        <item>BAR</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.ProdottiBarFragment</item>
+        <item>@drawable/close_48x48</item>
+        <item>NOT_ACTIVE</item>
+        <item>END-ITEM</item>
 
 
         <item>Chiudi</item>
