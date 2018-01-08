@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:paddingLeft="40dp" android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="A4"
+            android:id="@+id/textView_aula" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+            android:textStyle="bold" android:padding="7dp" android:background="@drawable/background_pulsante_yellow"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Piano Terra Lato segreteria"
+            android:id="@+id/textView_location"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical" android:layout_alignTop="@+id/textView_aula"
+            android:layout_toEndOf="@+id/textView_aula"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Massimo 25 studenti"
+            android:id="@+id/textView5"
+            android:gravity="center_vertical|center_horizontal"
+            android:textStyle="bold"
+            android:layout_alignBottom="@+id/textView_aula" android:layout_alignStart="@+id/textView_location"/>
+</RelativeLayout>

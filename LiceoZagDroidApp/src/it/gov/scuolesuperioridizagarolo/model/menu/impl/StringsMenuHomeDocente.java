@@ -38,6 +38,13 @@ it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment.class,
 R.drawable._menu_student_48x48,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment.class),
 null);
+     public static final DataMenuInfo AULE_LIBERE= new DataMenuInfo(
+"Aule Libere",
+"Aule Libere",
+it.gov.scuolesuperioridizagarolo.fragment.AuleVuoteFragment.class,
+R.drawable._menu_rooms_48x48,
+DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.AuleVuoteFragment.class),
+null);
      public static final DataMenuInfo R_E_DOCENTI= new DataMenuInfo(
 "R.E. Docenti",
 "Registro elettronico docenti",

@@ -73,8 +73,12 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         return null;
     }
 
-    public void updateOrario(BitOrarioGrigliaOrarioContainer orario) {
-        this.containerOrari = orario;
+    public void updateOrario(BitOrarioGrigliaOrarioContainer o) {
+        this.containerOrari = o;
+        orario = containerOrari.getOrario(giorno);
+        orarioDefault = containerOrari.getOrarioDefault();
+
+        notifyDataSetChanged();
     }
 
 
@@ -172,7 +176,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
             o.textViewOra.setVisibility(View.GONE);
             o.textViewAula.setVisibility(View.GONE);
 
-            if (ora.isActive() && giorno.isToday()) {
+            if (ora.isNowHour() && giorno.isToday()) {
                 o.layout.setBackground(a.getResources().getDrawable(R.drawable.listview_orario_border_ora_corrente));
             }
 
@@ -181,7 +185,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
 
             if (item == null) {
-                if (ora.isActive() && giorno.isToday()) {
+                if (ora.isNowHour() && giorno.isToday()) {
                     o.layout.setBackground(a.getResources().getDrawable(R.drawable.listview_orario_border_ora_corrente_vuota));
                 }
 
@@ -192,7 +196,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
             } else if (item.getTipoLezione() == BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
 
-                if (ora.isActive() && giorno.isToday()) {
+                if (ora.isNowHour() && giorno.isToday()) {
                     o.layout.setBackground(a.getResources().getDrawable(R.drawable.listview_orario_border_ora_corrente));
                 }
 
@@ -210,7 +214,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
             } else {
 
-                if (ora.isActive() && giorno.isToday()) {
+                if (ora.isNowHour() && giorno.isToday()) {
                     o.layout.setBackground(a.getResources().getDrawable(R.drawable.listview_orario_border_ora_corrente));
                 }
 

@@ -1,89 +1,72 @@
-package it.gov.scuolesuperioridizagarolo.fragment.api;
+package it.gov.scuolesuperioridizagarolo.fragment;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.*;
-import android.widget.AdapterView;
 import android.widget.DatePicker;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
 import dada.bitorario.data.BitOrarioGrigliaOrario;
 import dada.bitorario.data.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.R;
-import it.gov.scuolesuperioridizagarolo.adapter.api.AbstractOrarioListAdapter;
+import it.gov.scuolesuperioridizagarolo.adapter.AuleVuoteExpandibleListAdapter;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelperCallable;
 import it.gov.scuolesuperioridizagarolo.db.ManagerTimetables;
-import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_orario_classe_xml;
-import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
+import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_classi_vuote_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
 import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
-import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
-import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
-import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
 
-public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter> extends AbstractFragment {
-
-
-    protected static final String KEY_FILTRO = "KEY_FILTRO";
+/**
+ * Created by stefano on 08/01/2018.
+ */
+public class AuleVuoteFragment extends AbstractFragment {
     protected static final String KEY_DATA = "KEY_DATA";
-    protected LayoutObjs_fragment_orario_classe_xml LAYOUT_OBJs;   //***************************
-    protected OnlyDate giornoCorrente;
-    protected String filtro;
-    protected A orarioAdapter;
     protected BitOrarioGrigliaOrarioContainer containerOrari;
+    protected LayoutObjs_fragment_classi_vuote_xml LAYOUT_OBJs;   //***************************
+    protected OnlyDate giornoCorrente;
     protected BitOrarioGrigliaOrario orario;
+    private AuleVuoteExpandibleListAdapter orarioAdapter;
 
-    public AbstractOrarioFragment() {
+
+    private void collapseAll() {
+        for (int i = 0; i < orarioAdapter.getGroupCount(); i++) {
+            LAYOUT_OBJs.listView.collapseGroup(i);
+        }
     }
 
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Orario corrente: " + orario.getTitolo()).append("\n");
-        sb.append("Data corrente: " + giornoCorrente).append("\n");
-
-
-        final BitOrarioGrigliaOrarioContainer.BitOrarioGrigliaOrarioItem details = containerOrari.getOrarioDetails(giornoCorrente);
-        sb.append("ID: " + details.remoteId).append("\n");
-        sb.append("Inizio: " + details.startDate).append("\n");
-        sb.append("Fine: " + details.endDate).append("\n");
-        sb.append("Collezione: " + containerOrari.toString()).append("\n");
-        return sb.toString();
+    private void expandAll() {
+        for (int i = 0; i < orarioAdapter.getGroupCount(); i++) {
+            LAYOUT_OBJs.listView.expandGroup(i);
+        }
     }
+
+    @Override
+    public void onSaveInstanceStateImpl(Bundle outState) {
+
+
+        outState.putLong(KEY_DATA, giornoCorrente.getTime());
+    }
+
 
     protected void updateOrarioCorrente() {
         orario = containerOrari.getOrario(giornoCorrente);
     }
 
-    protected abstract A createAbstractOrarioListAdapter();
-
-    @Override
-    public void onSaveInstanceStateImpl(Bundle outState) {
-
-        outState.putString(KEY_FILTRO, filtro);
-        outState.putLong(KEY_DATA, giornoCorrente.getTime());
-    }
-
-    protected abstract String[] getFilterValues();
-
-    protected abstract void saveFiltrerValue(String filtro);
-
-    protected abstract String getSavedFiltrerValue();
 
     @Override
     public View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState, Bundle param) {
 
 
-        View rootView = inflater.inflate(R.layout.fragment_orario_classe, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_classi_vuote, container, false);
 
         //ON CREATE method
         //**************************
-        LAYOUT_OBJs = new LayoutObjs_fragment_orario_classe_xml(rootView);
+        LAYOUT_OBJs = new LayoutObjs_fragment_classi_vuote_xml(rootView);
         //**************************
         //**************************
 
@@ -93,8 +76,6 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         //caricamento dati
         //**************************
         {
-
-
             //================================
             giornoCorrente = null;
             if (giornoCorrente == null) {
@@ -107,62 +88,13 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                 giornoCorrente = new OnlyDate();
             }
             updateOrarioCorrente();
-
-
-            //================================
-            //================================
-
-            filtro = null;
-            final SharedPreferenceWrapper p = SharedPreferenceWrapper.getCommonInstance(getMainActivity());
-            if (filtro == null) {
-                if (savedInstanceState != null && savedInstanceState.containsKey(KEY_FILTRO)) {
-                    filtro = savedInstanceState.getString(KEY_FILTRO);
-                }
-            }
-            if (filtro == null) {
-                filtro = getSavedFiltrerValue();
-            }
-            if (filtro == null) {
-                openDialogChooseFilter(false);
-                //filtro = getDefaultFiltrerValue();
-            }
-
-            if (filtro == null) {
-                filtro = "";
-            }
         }
-        //**************************
-        //**************************
+
+        orarioAdapter = new AuleVuoteExpandibleListAdapter(getMainActivity(), containerOrari, giornoCorrente);
+        final ExpandableListView gridView = LAYOUT_OBJs.listView;
 
 
-        final ListView gridView = LAYOUT_OBJs.listView;
-
-
-        orarioAdapter = createAbstractOrarioListAdapter(); //new OrarioClasseListAdapter(this.getMainActivity(), classeCorrente, orario, giornoCorrente);
         gridView.setAdapter(orarioAdapter);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-                final String details = orarioAdapter.getDetails(position);
-
-
-                if (details != null) {
-                    DialogUtil.openInfoDialog(getMainActivity(), "Dettagli", details);
-                }
-            }
-        });
-
-
-        final OnClickListenerViewErrorCheck clickFiltro = new OnClickListenerViewErrorCheck(getMainActivity()) {
-            @Override
-            protected void onClickImpl(View v) throws Throwable {
-                final boolean cancellable = true;
-
-                openDialogChooseFilter(cancellable);
-            }
-        };
-        LAYOUT_OBJs.textViewFiltro.setOnClickListener(clickFiltro);
-        LAYOUT_OBJs.imageViewFiltro.setOnClickListener(clickFiltro);
 
         final OnClickListenerViewErrorCheck clickGiorno = new OnClickListenerViewErrorCheck(getMainActivity()) {
             @Override
@@ -190,6 +122,19 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
             }
         });
         LAYOUT_OBJs.imageViewGiorno.setOnClickListener(clickGiorno);
+
+
+        LAYOUT_OBJs.listView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                for (int i = 0; i < orarioAdapter.getGroupCount(); i++) {
+                    if (i != groupPosition)
+                        LAYOUT_OBJs.listView.collapseGroup(i);
+                }
+
+            }
+        });
 
 
         //controlla le gesture della listview
@@ -262,8 +207,10 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
         updateView();
 
+
         return rootView;
     }
+
 
     private void _loadData() {
         final ScuolaAppDbHelper db = new ScuolaAppDbHelper(getMainActivity());
@@ -307,42 +254,6 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
     }
 
 
-    private void openDialogChooseFilter(boolean cancellable) {
-        final String[] etichette = new String[getFilterValues().length];
-        if (etichette.length == 0) return;
-
-        int i = 0;
-        for (String c : getFilterValues()) {
-
-            if (c.equals(filtro))
-                etichette[i] = c;
-            else
-                etichette[i] = c;
-            i++;
-        }
-
-
-        DialogUtil.openChooseDialog(getMainActivity(), "Seleziona " + getFilterDialogLabel(), cancellable, etichette, filtro,
-                new OnClickListenerDialogErrorCheck(getMainActivity()) {
-                    @Override
-                    protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
-                        filtro = getFilterValues()[which];
-                        saveFiltrerValue(filtro);
-                        updateView();
-                    }
-                }
-
-        );
-    }
-
-    protected abstract boolean normalizeFilterName();
-
-    protected abstract void updateAdapter(String filter);
-
-    protected abstract String getFilterDialogLabel();
-
-    protected abstract String getFilterAppLabel();
-
     private void updateView() {
         /*if (giornoCorrente == EGiorno.getToday()) {
             LAYOUT_OBJs.textViewGiorni.setBackgroundColor(getResources().getColor(R.color.color_red));
@@ -354,18 +265,11 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
 
         //orarioAdapter.setClasse(classeCorrente);
-        updateAdapter(filtro);
         orarioAdapter.setGiorno(giornoCorrente);
         if (giornoCorrente.isToday())
             LAYOUT_OBJs.textViewGiorni.setText("Oggi " + giornoCorrente.getGiorno().shortName());
         else
             LAYOUT_OBJs.textViewGiorni.setText(giornoCorrente.getGiorno().shortName() + " - " + giornoCorrente.toDDMMYY());
-
-        if (!normalizeFilterName()) {
-            LAYOUT_OBJs.textViewFiltro.setText((getFilterAppLabel() + " " + filtro).trim());
-        } else {
-            LAYOUT_OBJs.textViewFiltro.setText((getFilterAppLabel() + " " + C_TextUtil.capitalize(filtro)).trim());
-        }
 
         visualizzaOraCorrente();
     }
@@ -374,4 +278,5 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
     public void onDestroy() {
         super.onDestroy();
     }
+
 }

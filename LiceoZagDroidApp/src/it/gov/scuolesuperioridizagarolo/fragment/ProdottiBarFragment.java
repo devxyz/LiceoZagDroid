@@ -198,23 +198,6 @@ public class ProdottiBarFragment extends AbstractFragment {
                 }
 
                 DialogUtil.openInfoDialog(getMainActivity(), "Dettaglio ordini", mappa);
-
-
-                /*
-                final CharSequence[] values = prodotti.getNomiUtentiArray();
-                DialogUtil.openChooseDialog(getMainActivity(), "Apri scheda per utente", true, values, null,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, final int which) {
-                                if (which < 0) {
-                                    Toast.makeText(getMainActivity(), "Impossibile cancellare il proprio ordine", Toast.LENGTH_LONG).show();
-                                } else {
-                                    collapseAll();
-                                    LAYOUT_OBJs.listView_ordini.expandGroup(which);
-                                }
-                            }
-                        });
-*/
             }
         });
 

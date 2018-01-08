@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:paddingLeft="30dp" android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="1°ORA"
+            android:id="@+id/textView_ora" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+            android:textStyle="bold"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10.10-11.10"
+            android:id="@+id/textView_fascia"
+            android:layout_alignParentTop="true" android:layout_toEndOf="@+id/textView_ora"
+            android:layout_alignBottom="@+id/textView_ora" android:layout_marginLeft="10dp" android:gravity="bottom"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10 aule"
+            android:id="@+id/textView5" android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textView_fascia" android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginLeft="10dp" android:layout_alignBottom="@+id/textView_fascia"
+            android:gravity="center_vertical|center_horizontal" android:textColor="@color/color_red_scuro"
+            android:textStyle="bold"/>
+</RelativeLayout>

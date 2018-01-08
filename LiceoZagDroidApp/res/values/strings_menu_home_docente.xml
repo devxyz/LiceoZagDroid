@@ -45,6 +45,13 @@
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
+        <item>Aule Libere</item>
+        <item>Aule Libere</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.AuleVuoteFragment</item>
+        <item>@drawable/_menu_rooms_48x48</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
+
 
         <item>R.E. Docenti</item>
         <item>Registro elettronico docenti</item>
