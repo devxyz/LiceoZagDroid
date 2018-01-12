@@ -74,7 +74,7 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
         }
         LayoutObjs_listview_classivuote_detail_xml obj = new LayoutObjs_listview_classivuote_detail_xml(convertView);
         obj.textView_aula.setText(item.simpleName());
-        obj.textView_location.setText(item.location.description);
+        obj.textView_location.setText(item.location.description + (item.flagLIM ? " con LIM" : ""));
         obj.textView5.setText(item.usage + " - " + item.maxStudents + " posti");
         AbstractOrarioListAdapter.coloraViewAula(obj.textView_aula, item.location, a);
         return convertView;

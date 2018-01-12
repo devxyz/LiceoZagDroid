@@ -54,7 +54,7 @@
               android:showAsAction="never"
               android:icon="@drawable/arrow_next"
 
-              android:visible="true"
+              android:visible="false"
               android:title="Opzioni avanzate>">
 
             <menu>

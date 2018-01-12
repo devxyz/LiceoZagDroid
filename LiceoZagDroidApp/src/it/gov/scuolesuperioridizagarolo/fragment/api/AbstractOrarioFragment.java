@@ -284,10 +284,10 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         final BitOrarioOraLezione item = orarioAdapter.getItem(position);
 
 
-        final String choose_orario_docente_principale = "Orario del docente principale";
-        final String choose_orario_docente_compresenza = "Orario del docente compresenza";
-        final String choose_orario_classe = "Orario della classe";
-        final String choose_informazioni_aula = "Informazioni sull'aula";
+        final String choose_orario_docente_principale = "Orario del docente " + (item == null ? "" : item.getDocentePrincipale());
+        final String choose_orario_docente_compresenza = "Orario del docente in compresenza " + (item == null ? "" : item.getDocenteCompresenza());
+        final String choose_orario_classe = "Orario della classe " + (item == null ? "" : item.getClasse());
+        final String choose_informazioni_aula = "Informazioni sull'aula " + (item == null ? "" : item.getNomeAula());
         final String details = orarioAdapter.getDetails(position);
         ArrayList<String> funzioni = new ArrayList<>();
 
@@ -311,32 +311,41 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
             DialogUtil.openChooseDialog(getMainActivity(), "Dettagli", true, fun, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    switch (fun[which]) {
-                        case choose_informazioni_aula: {
-                            DialogUtil.openInfoDialog(getMainActivity(), "Informazioni", details);
-                            break;
-                        }
-                        case choose_orario_classe: {
-                            if (item!=null) {
-                                final DataMenuInfo orarioClassi = StringsMenuPrincipale.ORARIO_CLASSI;
-                                OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
-                                w.setPersistFlag(false);
-                                w.setData(giornoCorrente);
-                                w.setFiltro(item.getClasse());
-                                getMainActivity().doAction(orarioClassi, w.getBundle());
-                            }
-                            break;
-                        }
-                        case choose_orario_docente_principale: {
 
-                            break;
-                        }
-                        case choose_orario_docente_compresenza: {
 
-                            break;
+                    if (fun[which].equals(choose_informazioni_aula)) {
+                        DialogUtil.openInfoDialog(getMainActivity(), "Informazioni", details);
+
+                    } else if (fun[which].equals(choose_orario_classe)) {
+                        if (item != null) {
+                            final DataMenuInfo orarioClassi = StringsMenuPrincipale.ORARIO_CLASSI;
+                            OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
+                            w.setPersistFlag(false);
+                            w.setData(giornoCorrente);
+                            w.setFiltro(item.getClasse());
+                            getMainActivity().doAction(orarioClassi, w.getBundle());
                         }
-                        default:
-                            dialog.dismiss();
+
+                    } else if (fun[which].equals(choose_orario_docente_principale)) {
+                        if (item != null) {
+                            final DataMenuInfo orarioClassi = StringsMenuPrincipale.ORARIO_DOCENTI;
+                            OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
+                            w.setPersistFlag(false);
+                            w.setData(giornoCorrente);
+                            w.setFiltro(item.getDocentePrincipale());
+                            getMainActivity().doAction(orarioClassi, w.getBundle());
+                        }
+                    } else if (fun[which].equals(choose_orario_docente_compresenza)) {
+                        if (item != null) {
+                            final DataMenuInfo orarioClassi = StringsMenuPrincipale.ORARIO_DOCENTI;
+                            OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
+                            w.setPersistFlag(false);
+                            w.setData(giornoCorrente);
+                            w.setFiltro(item.getDocenteCompresenza());
+                            getMainActivity().doAction(orarioClassi, w.getBundle());
+                        }
+                    } else {
+                        dialog.dismiss();
                     }
                 }
             });
