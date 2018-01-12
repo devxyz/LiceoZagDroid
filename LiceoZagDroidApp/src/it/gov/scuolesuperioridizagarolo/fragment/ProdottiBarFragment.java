@@ -158,7 +158,7 @@ public class ProdottiBarFragment extends AbstractFragment {
             protected void onClickImpl(View v) throws Throwable {
 
                 final CharSequence[] values = prodotti.getNomiUtentiArray();
-                DialogUtil.openChooseDialog(getMainActivity(), "Cancella ordini per utente", true, values, null,
+                DialogUtil.openSingleChooseDialog(getMainActivity(), "Cancella ordini per utente", true, values, null,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, final int which) {

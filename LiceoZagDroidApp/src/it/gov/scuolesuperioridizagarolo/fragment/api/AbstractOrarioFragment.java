@@ -9,22 +9,29 @@ import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import dada.bitorario.data.BitOrarioGrigliaOrario;
+import dada.bitorario.data.BitOrarioOraLezione;
 import dada.bitorario.data.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.adapter.api.AbstractOrarioListAdapter;
+import it.gov.scuolesuperioridizagarolo.api.AbstractBundleWrapper;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelperCallable;
 import it.gov.scuolesuperioridizagarolo.db.ManagerTimetables;
+import it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment;
+import it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteFragment;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_orario_classe_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
 import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
+import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
+import it.gov.scuolesuperioridizagarolo.model.menu.impl.StringsMenuPrincipale;
 import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
-import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
+
+import java.util.ArrayList;
 
 public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter> extends AbstractFragment {
 
@@ -37,6 +44,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
     protected A orarioAdapter;
     protected BitOrarioGrigliaOrarioContainer containerOrari;
     protected BitOrarioGrigliaOrario orario;
+    protected OrarioFragmentBundleWrapper wrapperParameter;
 
     public AbstractOrarioFragment() {
     }
@@ -78,6 +86,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
     public View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState, Bundle param) {
 
+        wrapperParameter = new OrarioFragmentBundleWrapper(param);
 
         View rootView = inflater.inflate(R.layout.fragment_orario_classe, container, false);
 
@@ -97,6 +106,12 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
             //================================
             giornoCorrente = null;
+
+            if (wrapperParameter.getData() != null) {
+                giornoCorrente = wrapperParameter.getData();
+            }
+
+
             if (giornoCorrente == null) {
                 if (savedInstanceState != null && savedInstanceState.containsKey(KEY_DATA)) {
                     giornoCorrente = new OnlyDate(savedInstanceState.getLong(KEY_DATA));
@@ -113,13 +128,17 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
             //================================
 
             filtro = null;
-            final SharedPreferenceWrapper p = SharedPreferenceWrapper.getCommonInstance(getMainActivity());
+
+            if (wrapperParameter.getFiltro() != null) {
+                filtro = wrapperParameter.getFiltro();
+            }
+
             if (filtro == null) {
                 if (savedInstanceState != null && savedInstanceState.containsKey(KEY_FILTRO)) {
                     filtro = savedInstanceState.getString(KEY_FILTRO);
                 }
             }
-            if (filtro == null) {
+            if (filtro == null && wrapperParameter.getPersistFlag()) {
                 filtro = getSavedFiltrerValue();
             }
             if (filtro == null) {
@@ -143,12 +162,8 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                final String details = orarioAdapter.getDetails(position);
 
-
-                if (details != null) {
-                    DialogUtil.openInfoDialog(getMainActivity(), "Dettagli", details);
-                }
+                onSelectRow(position);
             }
         });
 
@@ -265,6 +280,71 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         return rootView;
     }
 
+    private void onSelectRow(int position) {
+        final BitOrarioOraLezione item = orarioAdapter.getItem(position);
+
+
+        final String choose_orario_docente_principale = "Orario del docente principale";
+        final String choose_orario_docente_compresenza = "Orario del docente compresenza";
+        final String choose_orario_classe = "Orario della classe";
+        final String choose_informazioni_aula = "Informazioni sull'aula";
+        final String details = orarioAdapter.getDetails(position);
+        ArrayList<String> funzioni = new ArrayList<>();
+
+        if (!this.getClass().equals(OrarioDocenteFragment.class) && item != null && item.getDocentePrincipale() != null) {
+            funzioni.add(choose_orario_docente_principale);
+        }
+        if (!this.getClass().equals(OrarioDocenteFragment.class) && item != null && item.getDocenteCompresenza() != null) {
+            funzioni.add(choose_orario_docente_compresenza);
+        }
+        if (!this.getClass().equals(OrarioClasseFragment.class) && item != null && item.getClasse() != null) {
+            funzioni.add(choose_orario_classe);
+        }
+        if (details != null) {
+            funzioni.add(choose_informazioni_aula);
+        }
+
+        final String[] fun = funzioni.toArray(new String[funzioni.size()]);
+
+        if (funzioni.size() > 0) {
+
+            DialogUtil.openChooseDialog(getMainActivity(), "Dettagli", true, fun, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (fun[which]) {
+                        case choose_informazioni_aula: {
+                            DialogUtil.openInfoDialog(getMainActivity(), "Informazioni", details);
+                            break;
+                        }
+                        case choose_orario_classe: {
+                            if (item!=null) {
+                                final DataMenuInfo orarioClassi = StringsMenuPrincipale.ORARIO_CLASSI;
+                                OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
+                                w.setPersistFlag(false);
+                                w.setData(giornoCorrente);
+                                w.setFiltro(item.getClasse());
+                                getMainActivity().doAction(orarioClassi, w.getBundle());
+                            }
+                            break;
+                        }
+                        case choose_orario_docente_principale: {
+
+                            break;
+                        }
+                        case choose_orario_docente_compresenza: {
+
+                            break;
+                        }
+                        default:
+                            dialog.dismiss();
+                    }
+                }
+            });
+        }
+
+
+    }
+
     private void _loadData() {
         final ScuolaAppDbHelper db = new ScuolaAppDbHelper(getMainActivity());
         containerOrari = new BitOrarioGrigliaOrarioContainer();
@@ -306,7 +386,6 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         updateView();
     }
 
-
     private void openDialogChooseFilter(boolean cancellable) {
         final String[] etichette = new String[getFilterValues().length];
         if (etichette.length == 0) return;
@@ -322,12 +401,13 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         }
 
 
-        DialogUtil.openChooseDialog(getMainActivity(), "Seleziona " + getFilterDialogLabel(), cancellable, etichette, filtro,
+        DialogUtil.openSingleChooseDialog(getMainActivity(), "Seleziona " + getFilterDialogLabel(), cancellable, etichette, filtro,
                 new OnClickListenerDialogErrorCheck(getMainActivity()) {
                     @Override
                     protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
                         filtro = getFilterValues()[which];
-                        saveFiltrerValue(filtro);
+                        if (wrapperParameter.getPersistFlag())
+                            saveFiltrerValue(filtro);
                         updateView();
                     }
                 }
@@ -373,5 +453,45 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    public static class OrarioFragmentBundleWrapper extends AbstractBundleWrapper {
+
+        private final static String key_filtro = "KEY_FILTRO";
+        private final static String key_save_filter = "KEY_SAVE_FILTER";
+        private final static String key_data = "KEY_DATA";
+
+        public OrarioFragmentBundleWrapper(Bundle b) {
+            super(b);
+        }
+
+        public OrarioFragmentBundleWrapper() {
+            this(null);
+        }
+
+        public String getFiltro() {
+            return b.getString(key_filtro);
+        }
+
+        public void setFiltro(String f) {
+            b.putString(key_filtro, f);
+        }
+
+        //true se si vuole utilizzare la persistenza dei dati
+        public boolean getPersistFlag() {
+            return b.getBoolean(key_save_filter, true);
+        }
+
+        public void setPersistFlag(boolean f) {
+            b.putBoolean(key_save_filter, f);
+        }
+
+        public OnlyDate getData() {
+            return (OnlyDate) b.getSerializable(key_data);
+        }
+
+        public void setData(OnlyDate f) {
+            b.putSerializable(key_data, f);
+        }
     }
 }

@@ -106,10 +106,10 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         final RoomData room = ClassesAndRoomContainer.getRoom(item.getNomeAula());
         if (room != null) {
 
-            info.append("Aula: ").append(room.simpleName());
-            info.append("\nTipologia: ").append(room.usage);
-            info.append(room.flagLIM ? " con LIM" : "");
-            info.append("\nPosizione: ").append(room.location == null ? "-" : room.location.description);
+            info.append("Aula: ").append(room.simpleName()).append("\n");
+            info.append("\n").append(room.usage);
+            info.append(room.flagLIM ? " con LIM" : "").append("\n");
+            info.append("\n").append(room.location == null ? "-" : room.location.description);
             if (cambioAula) {
                 info.append("\n\nATTENZIONE: Questa lezione risulta modificata rispetto all'orario standard per esigenze didattiche/logistiche." + "\nLezione predefinita:").
                         append(itemDefault == null ? null : itemDefault.toStringShort());

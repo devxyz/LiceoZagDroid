@@ -55,7 +55,7 @@ public class DialogUtil {
                                 context);
 
                         TextView msg = new TextView(context);
-                        msg.setPadding(5,5,5,5);
+                        msg.setPadding(5, 5, 5, 5);
                         msg.setText(Html.fromHtml("<html><b>" + strName + "</b><br> <i>" + message.get(strName) + "</i> </html>"));
                         //builderInner.setMessage(""+strName);
                         builderInner.setView(msg);
@@ -112,8 +112,8 @@ public class DialogUtil {
     }
 
 
-    public static void openChooseDialog(final Activity coontext, final String title, boolean cancelable, final CharSequence[] values, CharSequence selectedItem,
-                                        final DialogInterface.OnClickListener onClickListener
+    public static void openSingleChooseDialog(final Activity coontext, final String title, boolean cancelable, final CharSequence[] values, CharSequence selectedItem,
+                                              final DialogInterface.OnClickListener onClickListener
     ) {
         AlertDialog.Builder builder = new AlertDialog.Builder(coontext);
         builder.setTitle(title);
@@ -132,8 +132,51 @@ public class DialogUtil {
             }
         }
 
-
         builder.setSingleChoiceItems(values, selected, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                onClickListener.onClick(dialog, which);
+            }
+        });
+
+        if (cancelable) {
+            builder.setNegativeButton("Annulla",
+                    new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            builder.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                @Override
+                public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK) {
+                        dialog.cancel();
+                    }
+                    return true;
+
+                }
+            });
+        }
+
+
+        final AlertDialog dialog = builder.create();
+
+        dialog.show();
+    }
+
+    public static void openChooseDialog(final Activity coontext, final String title, boolean cancelable, final CharSequence[] values,
+                                        final DialogInterface.OnClickListener onClickListener
+    ) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(coontext);
+        builder.setTitle(title);
+        //builder.setMessage("L'applicazione impostera' le viste in modo adeguato alla scelta fatta. Potrai sempre cambiare modalita' dal menu.");
+
+        builder.setCancelable(cancelable);
+
+        builder.setItems(values, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

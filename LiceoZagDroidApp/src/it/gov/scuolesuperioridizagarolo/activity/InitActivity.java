@@ -29,7 +29,7 @@ public class InitActivity extends AbstractActivity {
         }
 
 
-        DialogUtil.openChooseDialog(e, "Scegli il profilo piu' adatto a te.", cancelable, values, selectedValue,
+        DialogUtil.openSingleChooseDialog(e, "Scegli il profilo piu' adatto a te.", cancelable, values, selectedValue,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // The 'which' argument contains the index position
