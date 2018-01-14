@@ -93,13 +93,19 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         final BitOrarioOraLezione itemDefault = getItem(orarioDefault, position);
         final boolean cambioAula = !Objects.equals(item, itemDefault);
         StringBuilder info = new StringBuilder();
+
+        final String note = item == null ? null : item.getNote();
         if (item == null || item.getNomeAula() == null) {
             if (cambioAula)
-                return ("ATTENZIONE: Questa lezione risulta modificata rispetto all'orario standard per esigenze didattiche/logistiche." +
-                        "\nLezione predefinita:" + (itemDefault == null ? null : itemDefault.toStringShort())
+                return (("ATTENZIONE: Questa lezione risulta modificata rispetto all'orario standard per esigenze didattiche/logistiche." +
+                        "\nLezione predefinita:" + (itemDefault == null ? null : itemDefault.toStringShort()) + "\n" + note).trim()
                 );
-            else
-                return null;
+            else {
+                if (note != null)
+                    return "Note: " + note;
+                else
+                    return null;
+            }
         }
 
 
@@ -111,9 +117,12 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
             info.append("\n - ").append(room.maxStudents).append(" posti").append("\n");
 
             info.append("\n - ").append(room.location == null ? "-" : room.location.description);
+            if (note != null) {
+                info.append("\n - note: ").append(note);
+            }
             if (cambioAula) {
-                info.append("\n\nATTENZIONE: Questa lezione risulta modificata rispetto all'orario standard per esigenze didattiche / organizzative." + "\nLezione predefinita:").
-                        append(itemDefault == null ? null : itemDefault.toStringShort());
+                info.append(("ATTENZIONE: Questa lezione risulta modificata rispetto all'orario standard per esigenze didattiche/logistiche." +
+                        "\nLezione predefinita:" + (itemDefault == null ? null : itemDefault.toStringShort())).trim());
             }
             return info.toString();
         }
@@ -210,6 +219,11 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         }
 
 
+        String note = item == null ? null : item.getNote();
+
+        //todo debug
+        // note += " xxxxx x x x x x x xxxxx x xx x x x ";
+
         if (!ora.flagOraDiLezione()) {
             //NON ORA DI LEZIONE ma inizio/fine giornata
 
@@ -225,8 +239,6 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
             if (ora.isNowHour() && giorno.isToday()) {
                 o.layout.setBackground(a.getResources().getDrawable(R.drawable.listview_orario_border_ora_corrente));
             }
-
-
         } else {
 
 
@@ -317,6 +329,11 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
                 }
             }
+        }
+
+        //eventuali note
+        if (note != null) {
+            o.textViewDocenteClasse.setText((o.textViewDocenteClasse.getText() + " " + note).trim());
         }
 
 
