@@ -88,24 +88,31 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         }
     }
 
-    public String getDetails(int position) {
+    /**
+     * true se risulta un cambiamento di aula
+     *
+     * @param position
+     * @return
+     */
+    public boolean cambiamentoAula(int position) {
         final BitOrarioOraLezione item = getItem(position);
         final BitOrarioOraLezione itemDefault = getItem(orarioDefault, position);
         final boolean cambioAula = !Objects.equals(item, itemDefault);
+        return cambioAula;
+    }
+
+    public String getDetails(int position) {
+        final BitOrarioOraLezione item = getItem(position);
+        final BitOrarioOraLezione itemDefault = getItem(orarioDefault, position);
+
         StringBuilder info = new StringBuilder();
 
-        final String note = item == null ? null : item.getNote();
+        final String note = item == null ? "" : item.getNote();
         if (item == null || item.getNomeAula() == null) {
-            if (cambioAula)
-                return (("ATTENZIONE: Questa lezione risulta modificata rispetto all'orario standard per esigenze didattiche/logistiche." +
-                        "\nLezione predefinita:" + (itemDefault == null ? null : itemDefault.toStringShort()) + "\n" + note).trim()
-                );
-            else {
-                if (note != null)
-                    return "Note: " + note;
-                else
-                    return null;
-            }
+            if (note != null && note.trim().length() > 0)
+                return "Note: " + note;
+            else
+                return null;
         }
 
 
@@ -113,16 +120,12 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         if (room != null) {
 
             info.append("Aula: ").append(room.simpleName()).append("\n");
-            info.append("\n - ").append(room.usage).append(room.flagLIM ? " con LIM" : "").append("\n");
-            info.append("\n - ").append(room.maxStudents).append(" posti").append("\n");
+            info.append(" - ").append(room.usage).append(room.flagLIM ? " con LIM" : "").append("\n");
+            info.append(" - ").append(room.maxStudents).append(" posti").append("\n");
 
-            info.append("\n - ").append(room.location == null ? "-" : room.location.description);
-            if (note != null) {
+            info.append(" - ").append(room.location == null ? "-" : room.location.description);
+            if (note != null && note.trim().length() > 0) {
                 info.append("\n - note: ").append(note);
-            }
-            if (cambioAula) {
-                info.append(("ATTENZIONE: Questa lezione risulta modificata rispetto all'orario standard per esigenze didattiche/logistiche." +
-                        "\nLezione predefinita:" + (itemDefault == null ? null : itemDefault.toStringShort())).trim());
             }
             return info.toString();
         }
@@ -220,6 +223,18 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
 
         String note = item == null ? null : item.getNote();
+
+        if (cambiamentoAula(position)) {
+
+            String msg = "Questa lezione risulta modificata rispetto all'orario standard per esigenze didattiche/logistiche.\nOriginale: " + itemDefault.toStringShort();
+
+            if (note == null) {
+                note = msg;
+            } else {
+                note = note + "\n" + msg;
+            }
+        }
+
 
         //todo debug
         // note += " xxxxx x x x x x x xxxxx x xx x x x ";
@@ -333,7 +348,10 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
         //eventuali note
         if (note != null) {
-            o.textViewDocenteClasse.setText((o.textViewDocenteClasse.getText() + " " + note).trim());
+            o.textView_Note.setText((o.textViewDocenteClasse.getText() + " " + note).trim());
+            o.textView_Note.setVisibility(View.VISIBLE);
+        } else {
+            o.textView_Note.setVisibility(View.GONE);
         }
 
 

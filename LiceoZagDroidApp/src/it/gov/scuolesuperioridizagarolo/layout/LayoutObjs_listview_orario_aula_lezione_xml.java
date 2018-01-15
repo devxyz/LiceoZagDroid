@@ -11,6 +11,7 @@ public class LayoutObjs_listview_orario_aula_lezione_xml{
   public final TextView textViewLezione;
   public final TextView textViewOra;
   public final TextView textViewFasciaOraria;
+  public final TextView textView_Note;
 
 public LayoutObjs_listview_orario_aula_lezione_xml(Fragment f){
   View view=f.getView();
@@ -20,6 +21,7 @@ public LayoutObjs_listview_orario_aula_lezione_xml(Fragment f){
   textViewLezione= (TextView)view.findViewById(R.id.textViewLezione);
   textViewOra= (TextView)view.findViewById(R.id.textViewOra);
   textViewFasciaOraria= (TextView)view.findViewById(R.id.textViewFasciaOraria);
+  textView_Note= (TextView)view.findViewById(R.id.textView_Note);
 }
 public LayoutObjs_listview_orario_aula_lezione_xml(Activity view){
     layout= (RelativeLayout)view.findViewById(R.id.layout);
@@ -28,6 +30,7 @@ public LayoutObjs_listview_orario_aula_lezione_xml(Activity view){
   textViewLezione= (TextView)view.findViewById(R.id.textViewLezione);
   textViewOra= (TextView)view.findViewById(R.id.textViewOra);
   textViewFasciaOraria= (TextView)view.findViewById(R.id.textViewFasciaOraria);
+  textView_Note= (TextView)view.findViewById(R.id.textView_Note);
 
 }
 public LayoutObjs_listview_orario_aula_lezione_xml(View view){
@@ -37,6 +40,7 @@ public LayoutObjs_listview_orario_aula_lezione_xml(View view){
   textViewLezione= (TextView)view.findViewById(R.id.textViewLezione);
   textViewOra= (TextView)view.findViewById(R.id.textViewOra);
   textViewFasciaOraria= (TextView)view.findViewById(R.id.textViewFasciaOraria);
+  textView_Note= (TextView)view.findViewById(R.id.textView_Note);
 
 }
 public LayoutObjs_listview_orario_aula_lezione_xml(Dialog view){
@@ -46,6 +50,7 @@ public LayoutObjs_listview_orario_aula_lezione_xml(Dialog view){
   textViewLezione= (TextView)view.findViewById(R.id.textViewLezione);
   textViewOra= (TextView)view.findViewById(R.id.textViewOra);
   textViewFasciaOraria= (TextView)view.findViewById(R.id.textViewFasciaOraria);
+  textView_Note= (TextView)view.findViewById(R.id.textView_Note);
 
 }
 }
