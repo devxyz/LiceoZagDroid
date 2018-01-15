@@ -47,8 +47,8 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
     public static void coloraViewAula(TextView textViewAula, ERoomArea location, Context a) {
         if (location == null) {
-            textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_white));
-            textViewAula.setTextColor(a.getResources().getColor(R.color.color_black));
+            textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_disposizione));
+            textViewAula.setTextColor(a.getResources().getColor(R.color.color_white));
             return;
         }
         switch (location) {
@@ -103,13 +103,12 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
     public String getDetails(int position) {
         final BitOrarioOraLezione item = getItem(position);
-        final BitOrarioOraLezione itemDefault = getItem(orarioDefault, position);
 
         StringBuilder info = new StringBuilder();
 
-        final String note = item == null ? "" : item.getNote();
+        final String note = item == null || item.getNote() == null ? "" : (item.getNote() + "\n");
         if (item == null || item.getNomeAula() == null) {
-            if (note != null && note.trim().length() > 0)
+            if (note.trim().length() > 0)
                 return "Note: " + note;
             else
                 return null;
@@ -124,7 +123,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
             info.append(" - ").append(room.maxStudents).append(" posti").append("\n");
 
             info.append(" - ").append(room.location == null ? "-" : room.location.description);
-            if (note != null && note.trim().length() > 0) {
+            if (note.trim().length() > 0) {
                 info.append("\n - note: ").append(note);
             }
             return info.toString();
@@ -226,12 +225,12 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
         if (cambiamentoAula(position)) {
 
-            String msg = "Questa lezione risulta modificata rispetto all'orario standard per esigenze didattiche/logistiche.\nOriginale: " + itemDefault.toStringShort();
+            String msg = "Lezione modificata rispetto all'originale:\n -> " + itemDefault.toStringShort();
 
             if (note == null) {
                 note = msg;
             } else {
-                note = note + "\n" + msg;
+                note = note + "\n\n" + msg;
             }
         }
 
@@ -329,9 +328,8 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
                 if (nomeAula == null || nomeAula.length() == 0) {
 
 
-                    o.textViewAula.setText("");
-                    o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_white));
-                    o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_white));
+                    o.textViewAula.setText("--");
+                    coloraViewAula(o.textViewAula, null, a);
 
 
                 } else {
@@ -348,7 +346,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
         //eventuali note
         if (note != null) {
-            o.textView_Note.setText((o.textViewDocenteClasse.getText() + " " + note).trim());
+            o.textView_Note.setText((note).trim());
             o.textView_Note.setVisibility(View.VISIBLE);
         } else {
             o.textView_Note.setVisibility(View.GONE);

@@ -287,7 +287,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         final String choose_orario_docente_principale = "Orario del docente " + (item == null ? "" : item.getDocentePrincipale());
         final String choose_orario_docente_compresenza = "Orario del docente in compresenza " + (item == null ? "" : item.getDocenteCompresenza());
         final String choose_orario_classe = "Orario della classe " + (item == null ? "" : item.getClasse());
-        final String choose_informazioni_aula = "Informazioni sull'aula " + (item == null ? "" : item.getNomeAula());
+        final String choose_informazioni_aula = "Informazioni " + (item == null || item.getNomeAula() == null ? "sulla lezione" : "sull'aula " + item.getNomeAula());
         final String details = orarioAdapter.getDetails(position);
         ArrayList<String> funzioni = new ArrayList<>();
 

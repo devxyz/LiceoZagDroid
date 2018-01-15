@@ -16,11 +16,11 @@
             android:width="80dp"
             android:layout_alignTop="@+id/textViewOra" android:layout_toEndOf="@+id/textViewFasciaOraria"
             android:textSize="25dp"/>
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Docente: Classe:"
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="3A"
               android:id="@+id/textViewDocenteClasse"
               android:layout_gravity="right"
               android:layout_below="@+id/textViewAula" android:layout_toEndOf="@+id/textViewFasciaOraria"
-              android:padding="5dp" android:textSize="20dp" android:textStyle="bold"
+              android:padding="2dp" android:textSize="20dp" android:textStyle="bold"
               android:gravity="center_horizontal" android:textColor="@color/color_blue"/>
     <TextView
             android:layout_width="match_parent"
@@ -48,7 +48,9 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Small Text"
-            android:id="@+id/textView_Note" android:layout_alignParentTop="false" android:layout_centerHorizontal="true"
-            android:layout_below="@+id/textViewDocenteClasse" android:layout_alignParentLeft="false"
-            android:layout_alignParentRight="true" android:textColor="@color/color_red_scuro"/>
+            android:id="@+id/textView_Note" android:layout_alignParentTop="false"
+            android:layout_below="@+id/textViewDocenteClasse"
+            android:layout_alignParentRight="true"
+            android:layout_toEndOf="@+id/textViewFasciaOraria" android:textStyle="italic"
+            android:background="@drawable/background_note_orario" android:padding="5dp"/>
 </RelativeLayout>
