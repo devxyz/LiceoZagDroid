@@ -44,13 +44,6 @@ public class HomeFragment extends AbstractFragment {
 
         LAYOUT_OBJs.imageView.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
             @Override
-            protected void onClickImpl(View v) throws Throwable {
-                getMainActivity().openMenu();
-            }
-        });
-
-        LAYOUT_OBJs.imageView.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
-            @Override
             public void onClickImpl(View v) {
                 getMainActivity().openMenu();
 
