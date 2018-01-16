@@ -12,6 +12,9 @@ public class LayoutObjs_fragment_contatti_xml{
   public final ImageButton imageButtonWWW;
   public final ImageButton imageButtonMap;
   public final TextView textView2;
+  public final TextView textView;
+  public final ImageView imageView4;
+  public final TextView textView13;
 
 public LayoutObjs_fragment_contatti_xml(Fragment f){
   View view=f.getView();
@@ -22,6 +25,9 @@ public LayoutObjs_fragment_contatti_xml(Fragment f){
   imageButtonWWW= (ImageButton)view.findViewById(R.id.imageButtonWWW);
   imageButtonMap= (ImageButton)view.findViewById(R.id.imageButtonMap);
   textView2= (TextView)view.findViewById(R.id.textView2);
+  textView= (TextView)view.findViewById(R.id.textView);
+  imageView4= (ImageView)view.findViewById(R.id.imageView4);
+  textView13= (TextView)view.findViewById(R.id.textView13);
 }
 public LayoutObjs_fragment_contatti_xml(Activity view){
     textViewGiorni= (TextView)view.findViewById(R.id.textViewGiorni);
@@ -31,6 +37,9 @@ public LayoutObjs_fragment_contatti_xml(Activity view){
   imageButtonWWW= (ImageButton)view.findViewById(R.id.imageButtonWWW);
   imageButtonMap= (ImageButton)view.findViewById(R.id.imageButtonMap);
   textView2= (TextView)view.findViewById(R.id.textView2);
+  textView= (TextView)view.findViewById(R.id.textView);
+  imageView4= (ImageView)view.findViewById(R.id.imageView4);
+  textView13= (TextView)view.findViewById(R.id.textView13);
 
 }
 public LayoutObjs_fragment_contatti_xml(View view){
@@ -41,6 +50,9 @@ public LayoutObjs_fragment_contatti_xml(View view){
   imageButtonWWW= (ImageButton)view.findViewById(R.id.imageButtonWWW);
   imageButtonMap= (ImageButton)view.findViewById(R.id.imageButtonMap);
   textView2= (TextView)view.findViewById(R.id.textView2);
+  textView= (TextView)view.findViewById(R.id.textView);
+  imageView4= (ImageView)view.findViewById(R.id.imageView4);
+  textView13= (TextView)view.findViewById(R.id.textView13);
 
 }
 public LayoutObjs_fragment_contatti_xml(Dialog view){
@@ -51,6 +63,9 @@ public LayoutObjs_fragment_contatti_xml(Dialog view){
   imageButtonWWW= (ImageButton)view.findViewById(R.id.imageButtonWWW);
   imageButtonMap= (ImageButton)view.findViewById(R.id.imageButtonMap);
   textView2= (TextView)view.findViewById(R.id.textView2);
+  textView= (TextView)view.findViewById(R.id.textView);
+  imageView4= (ImageView)view.findViewById(R.id.imageView4);
+  textView13= (TextView)view.findViewById(R.id.textView13);
 
 }
 }

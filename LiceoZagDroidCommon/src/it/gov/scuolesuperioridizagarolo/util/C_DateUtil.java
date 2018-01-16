@@ -54,6 +54,17 @@ public class C_DateUtil {
         return df.format(d);
     }
 
+    public static String toDDMM(Date d) {
+        if (d == null) return "--/--";
+        // Create an instance of SimpleDateFormat used for formatting
+        // the string representation of date (month/day/year)
+        DateFormat df = new SimpleDateFormat("dd/MM", Locale.ITALIAN);
+
+        // Using DateFormat format method we can create a string
+        // representation of a date with the defined format.
+        return df.format(d);
+    }
+
     public static String toYYYYMMDD(Date d) {
         if (d == null) return "--/--/---";
         // Create an instance of SimpleDateFormat used for formatting

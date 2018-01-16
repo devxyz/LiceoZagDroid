@@ -17,7 +17,7 @@
     -->
 
     <color name="menu_list_item_title">#272727</color>
-    <color name="menu_list_background">#ffffffff</color>
+    <color name="menu_list_background">#bed7ff</color>
     <color name="menu_list_background_soft">#606060</color>
     <color name="menu_list_background_pressed">#992416</color>
     <color name="menu_list_divider">#272727</color>

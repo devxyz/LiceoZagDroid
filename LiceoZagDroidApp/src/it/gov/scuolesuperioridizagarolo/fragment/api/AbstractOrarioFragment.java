@@ -176,8 +176,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                 openDialogChooseFilter(cancellable);
             }
         };
-        LAYOUT_OBJs.textViewFiltro.setOnClickListener(clickFiltro);
-        LAYOUT_OBJs.imageViewFiltro.setOnClickListener(clickFiltro);
+        LAYOUT_OBJs.button_filtro.setOnClickListener(clickFiltro);
 
         final OnClickListenerViewErrorCheck clickGiorno = new OnClickListenerViewErrorCheck(getMainActivity()) {
             @Override
@@ -196,6 +195,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
             }
         };
+        /*
         LAYOUT_OBJs.textViewGiorni.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
             @Override
             protected void onClickImpl(View v) throws Throwable {
@@ -203,8 +203,8 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                 updateOrarioCorrente();
                 updateView();
             }
-        });
-        LAYOUT_OBJs.imageViewGiorno.setOnClickListener(clickGiorno);
+        });*/
+        LAYOUT_OBJs.button_giorno.setOnClickListener(clickGiorno);
 
 
         //controlla le gesture della listview
@@ -446,14 +446,14 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         updateAdapter(filtro);
         orarioAdapter.setGiorno(giornoCorrente);
         if (giornoCorrente.isToday())
-            LAYOUT_OBJs.textViewGiorni.setText("Oggi " + giornoCorrente.getGiorno().shortName());
+            LAYOUT_OBJs.button_giorno.setText("Oggi\n" + giornoCorrente.getGiorno().shortName());
         else
-            LAYOUT_OBJs.textViewGiorni.setText(giornoCorrente.getGiorno().shortName() + " - " + giornoCorrente.toDDMMYY());
+            LAYOUT_OBJs.button_giorno.setText(giornoCorrente.getGiorno().shortName() + "\n" + giornoCorrente.toDDMM());
 
         if (!normalizeFilterName()) {
-            LAYOUT_OBJs.textViewFiltro.setText((getFilterAppLabel() + " " + filtro).trim());
+            LAYOUT_OBJs.button_filtro.setText((getFilterAppLabel() + " " + filtro).trim());
         } else {
-            LAYOUT_OBJs.textViewFiltro.setText((getFilterAppLabel() + " " + C_TextUtil.capitalize(filtro)).trim());
+            LAYOUT_OBJs.button_filtro.setText((getFilterAppLabel() + " " + C_TextUtil.capitalize(filtro)).trim());
         }
 
         visualizzaOraCorrente();

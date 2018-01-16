@@ -78,6 +78,11 @@ public class OnlyDate extends Date {
 
     }
 
+    public String toDDMM() {
+        return C_DateUtil.toDDMM(this);
+
+    }
+
     public String toStringFull() {
         return super.toString();
 

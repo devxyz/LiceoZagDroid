@@ -1,26 +1,35 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:padding="10dp" android:id="@+id/layout"
+              android:gravity="center_vertical|center_horizontal">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="80dp"
+                  android:layout_height="80dp" android:id="@+id/layout2"
+                  android:background="@drawable/background_pulsante_celeste_bianco"
+                  android:gravity="center_vertical|center_horizontal" android:padding="2dp">
+
+        <ImageView
+                android:id="@+id/thumb"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:padding="10dp" android:id="@+id/layout">
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="false"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/_menu_teaching_48x48" android:layout_alignParentTop="true"/>
 
-    <ImageView
-            android:id="@+id/thumb"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="false"
-            android:layout_centerVertical="true"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/_menu_teaching_48x48" android:layout_alignParentTop="true"/>
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="titolo"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_below="@+id/thumb" android:layout_alignParentStart="true"
+                android:layout_alignEnd="@+id/thumb" android:textStyle="bold" android:paddingTop="5dp"/>
 
-    <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="titolo"
-            android:gravity="center_vertical|center_horizontal"
-            android:layout_below="@+id/thumb" android:layout_alignParentStart="true"
-            android:layout_alignEnd="@+id/thumb" android:padding="2dp" android:textStyle="bold"/>
-
-</RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
