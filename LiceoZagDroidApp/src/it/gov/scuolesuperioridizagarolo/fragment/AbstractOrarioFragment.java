@@ -1,4 +1,4 @@
-package it.gov.scuolesuperioridizagarolo.fragment.api;
+package it.gov.scuolesuperioridizagarolo.fragment;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -12,15 +12,13 @@ import dada.bitorario.data.BitOrarioGrigliaOrario;
 import dada.bitorario.data.BitOrarioOraLezione;
 import dada.bitorario.data.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.R;
-import it.gov.scuolesuperioridizagarolo.adapter.api.AbstractOrarioListAdapter;
+import it.gov.scuolesuperioridizagarolo.adapter.AbstractOrarioListAdapter;
 import it.gov.scuolesuperioridizagarolo.api.AbstractBundleWrapper;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelperCallable;
 import it.gov.scuolesuperioridizagarolo.db.ManagerTimetables;
-import it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment;
-import it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteFragment;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_orario_classe_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
@@ -236,6 +234,9 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                if (!wrapperParameter.getNavigateFlag())
+                    return true;
+
                 //System.err.println("FL " + e1 + " -- " + e2);
                 //se cambia la y
                 if (Math.abs(e1.getY() - e2.getY()) > 150)
@@ -275,6 +276,11 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
             }
         });
 
+        if (!wrapperParameter.getNavigateFlag()) {
+            LAYOUT_OBJs.button_filtro.setEnabled(false);
+            LAYOUT_OBJs.button_giorno.setEnabled(false);
+        }
+
         updateView();
 
         return rootView;
@@ -291,13 +297,13 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         final String details = orarioAdapter.getDetails(position);
         ArrayList<String> funzioni = new ArrayList<>();
 
-        if (!this.getClass().equals(OrarioDocenteFragment.class) && item != null && item.getDocentePrincipale() != null) {
+        if (!this.getClass().equals(OrarioDocentePersistenteFragment.class) && item != null && item.getDocentePrincipale() != null && wrapperParameter.getNavigateFlag()) {
             funzioni.add(choose_orario_docente_principale);
         }
-        if (!this.getClass().equals(OrarioDocenteFragment.class) && item != null && item.getDocenteCompresenza() != null) {
+        if (!this.getClass().equals(OrarioDocentePersistenteFragment.class) && item != null && item.getDocenteCompresenza() != null && wrapperParameter.getNavigateFlag()) {
             funzioni.add(choose_orario_docente_compresenza);
         }
-        if (!this.getClass().equals(OrarioClasseFragment.class) && item != null && item.getClasse() != null) {
+        if (!this.getClass().equals(OrarioClassePersistenteFragment.class) && item != null && item.getClasse() != null && wrapperParameter.getNavigateFlag()) {
             funzioni.add(choose_orario_classe);
         }
         if (details != null) {
@@ -317,31 +323,34 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                         DialogUtil.openInfoDialog(getMainActivity(), "Informazioni", details);
 
                     } else if (fun[which].equals(choose_orario_classe)) {
-                        if (item != null) {
+                        if (item != null ) {
                             final DataMenuInfo orarioClassi = StringsMenuPrincipale.ORARIO_CLASSI;
                             OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
                             w.setPersistFlag(false);
                             w.setData(giornoCorrente);
                             w.setFiltro(item.getClasse());
+                            w.setNavigateFlag(false);
                             getMainActivity().doAction(orarioClassi, w.getBundle());
                         }
 
                     } else if (fun[which].equals(choose_orario_docente_principale)) {
-                        if (item != null) {
+                        if (item != null ) {
                             final DataMenuInfo orarioClassi = StringsMenuPrincipale.ORARIO_DOCENTI;
                             OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
                             w.setPersistFlag(false);
                             w.setData(giornoCorrente);
                             w.setFiltro(item.getDocentePrincipale());
+                            w.setNavigateFlag(false);
                             getMainActivity().doAction(orarioClassi, w.getBundle());
                         }
                     } else if (fun[which].equals(choose_orario_docente_compresenza)) {
-                        if (item != null) {
+                        if (item != null ) {
                             final DataMenuInfo orarioClassi = StringsMenuPrincipale.ORARIO_DOCENTI;
                             OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
                             w.setPersistFlag(false);
                             w.setData(giornoCorrente);
                             w.setFiltro(item.getDocenteCompresenza());
+                            w.setNavigateFlag(false);
                             getMainActivity().doAction(orarioClassi, w.getBundle());
                         }
                     } else {
@@ -469,6 +478,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         private final static String key_filtro = "KEY_FILTRO";
         private final static String key_save_filter = "KEY_SAVE_FILTER";
         private final static String key_data = "KEY_DATA";
+        private final static String key_navigate = "KEY_NAVIGATE";
 
         public OrarioFragmentBundleWrapper(Bundle b) {
             super(b);
@@ -493,6 +503,15 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
         public void setPersistFlag(boolean f) {
             b.putBoolean(key_save_filter, f);
+        }
+
+        //true se si vuole navigare nell'orario (cambiare pulsanti ecc)
+        public boolean getNavigateFlag() {
+            return b.getBoolean(key_navigate, true);
+        }
+
+        public void setNavigateFlag(boolean f) {
+            b.putBoolean(key_navigate, f);
         }
 
         public OnlyDate getData() {

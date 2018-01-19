@@ -14,7 +14,6 @@ import dada.bitorario.data.classes.ClassesAndRoomContainer;
 import dada.bitorario.data.classes.RoomData;
 import dada.bitorario.data.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.R;
-import it.gov.scuolesuperioridizagarolo.adapter.api.AbstractOrarioListAdapter;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_classivuote_detail_xml;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_classivuote_header_xml;
 import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;

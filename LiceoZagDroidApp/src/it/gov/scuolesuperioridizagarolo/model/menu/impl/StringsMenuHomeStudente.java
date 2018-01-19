@@ -20,9 +20,9 @@ null);
      public static final DataMenuInfo ORARIO_CLASSI= new DataMenuInfo(
 "Orario Classi",
 "Orario Classi",
-it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment.class,
+it.gov.scuolesuperioridizagarolo.fragment.OrarioClassePersistenteFragment.class,
 R.drawable._menu_student_48x48,
-DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment.class),
+DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioClassePersistenteFragment.class),
 null);
      public static final DataMenuInfo R_E_FAMIGLIE= new DataMenuInfo(
 "R.E. Famiglie",

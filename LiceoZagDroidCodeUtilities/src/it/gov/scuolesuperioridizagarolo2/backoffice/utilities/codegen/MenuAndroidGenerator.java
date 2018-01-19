@@ -26,7 +26,7 @@ public class MenuAndroidGenerator {
         File f2 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_home_docente.xml");
         File f3 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_home_studente.xml");
         File f4 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_home_famiglie.xml");
-        File f5 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_home_altro.xml");
+        File f5 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_home_ata.xml");
 
         genera(f1, destFolder);
         genera(f2, destFolder);

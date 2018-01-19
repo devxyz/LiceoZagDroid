@@ -113,15 +113,7 @@ public class AuleVuoteFragment extends AbstractFragment {
 
             }
         };
-        LAYOUT_OBJs.textViewGiorni.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
-            @Override
-            protected void onClickImpl(View v) throws Throwable {
-                giornoCorrente = new OnlyDate();
-                updateOrarioCorrente();
-                updateView();
-            }
-        });
-        LAYOUT_OBJs.imageViewGiorno.setOnClickListener(clickGiorno);
+        LAYOUT_OBJs.button_giorno.setOnClickListener(clickGiorno);
 
 
         LAYOUT_OBJs.listView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
@@ -190,6 +182,24 @@ public class AuleVuoteFragment extends AbstractFragment {
                 }
 
                 return true;
+            }
+        });
+
+        LAYOUT_OBJs.button_ora.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
+            @Override
+            protected void onClickImpl(View v) throws Throwable {
+                collapseAll();
+                final EOra[] values = EOra.values();
+                int i = 0;
+                for (EOra c : values) {
+                    if (!c.flagOraDiLezione())
+                        continue;
+
+                    if (c.isNowHour()) {
+                        LAYOUT_OBJs.listView.expandGroup(i);
+                    }
+                    i++;
+                }
             }
         });
 
@@ -267,9 +277,9 @@ public class AuleVuoteFragment extends AbstractFragment {
         //orarioAdapter.setClasse(classeCorrente);
         orarioAdapter.setGiorno(giornoCorrente);
         if (giornoCorrente.isToday())
-            LAYOUT_OBJs.textViewGiorni.setText("Oggi " + giornoCorrente.getGiorno().name());
+            LAYOUT_OBJs.button_giorno.setText("Oggi\n" + giornoCorrente.getGiorno().name());
         else
-            LAYOUT_OBJs.textViewGiorni.setText(giornoCorrente.getGiorno().name() + " - " + giornoCorrente.toDDMMYY());
+            LAYOUT_OBJs.button_giorno.setText(giornoCorrente.getGiorno().name() + "\n" + giornoCorrente.toDDMMYY());
 
         visualizzaOraCorrente();
     }

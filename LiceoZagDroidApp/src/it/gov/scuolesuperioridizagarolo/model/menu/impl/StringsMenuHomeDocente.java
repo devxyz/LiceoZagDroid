@@ -1,6 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.model.menu.impl;
 import it.gov.scuolesuperioridizagarolo.R;
 
+import it.gov.scuolesuperioridizagarolo.fragment.OrarioDocentePersistenteFragment;
 import it.gov.scuolesuperioridizagarolo.model.menu.*;
 public class StringsMenuHomeDocente{
      public static final DataMenuInfo APRI_MENU= new DataMenuInfo(
@@ -27,16 +28,16 @@ null);
      public static final DataMenuInfo ORARIO_DOCENTI= new DataMenuInfo(
 "Orario Docenti",
 "Orario Docenti",
-it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteFragment.class,
+OrarioDocentePersistenteFragment.class,
 R.drawable._menu_teaching_48x48,
-DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteFragment.class),
+DataMenuInfoType.search(OrarioDocentePersistenteFragment.class),
 null);
      public static final DataMenuInfo ORARIO_CLASSI= new DataMenuInfo(
 "Orario Classi",
 "Orario Classi",
-it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment.class,
+it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseNonPersistenteFragment.class,
 R.drawable._menu_student_48x48,
-DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment.class),
+DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseNonPersistenteFragment.class),
 null);
      public static final DataMenuInfo AULE_LIBERE= new DataMenuInfo(
 "Aule Libere",

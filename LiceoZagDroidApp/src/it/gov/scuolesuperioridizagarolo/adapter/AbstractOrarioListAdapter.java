@@ -1,4 +1,4 @@
-package it.gov.scuolesuperioridizagarolo.adapter.api;
+package it.gov.scuolesuperioridizagarolo.adapter;
 
 import android.app.Activity;
 import android.content.Context;

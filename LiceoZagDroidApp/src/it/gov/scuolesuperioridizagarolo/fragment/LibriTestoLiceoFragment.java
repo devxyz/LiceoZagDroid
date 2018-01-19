@@ -5,7 +5,6 @@ package it.gov.scuolesuperioridizagarolo.fragment;
  */
 
 import it.gov.scuolesuperioridizagarolo.R;
-import it.gov.scuolesuperioridizagarolo.fragment.api.AbstractWebpageFragment;
 
 @Deprecated
 public class LibriTestoLiceoFragment extends AbstractWebpageFragment {

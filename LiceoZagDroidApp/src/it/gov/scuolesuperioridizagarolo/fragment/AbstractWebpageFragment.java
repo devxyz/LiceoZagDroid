@@ -1,4 +1,4 @@
-package it.gov.scuolesuperioridizagarolo.fragment.api;
+package it.gov.scuolesuperioridizagarolo.fragment;
 
 /**
  * Created by stefano on 23/12/2017.
@@ -12,10 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.CookieSyncManager;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.webkit.*;
 import android.widget.Toast;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
@@ -41,6 +38,12 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
 
     protected abstract String getTitile();
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        CookieSyncManager.getInstance().startSync();
+    }
+
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     public View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
@@ -59,7 +62,7 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
         //**************************
         //**************************
 
-        CookieSyncManager.createInstance(this.getMainActivity());
+        final CookieSyncManager instance = CookieSyncManager.createInstance(this.getMainActivity());
         CookieSyncManager.getInstance().startSync();
         final WebView webview = LAYOUT_OBJs.webViewHtml;
 
@@ -69,18 +72,21 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
         webview.setInitialScale(1);
         webview.getSettings().setLoadWithOverviewMode(true);
         webview.getSettings().setUseWideViewPort(true);
+        webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 
 
         final Activity activity = getMainActivity();
         webview.setWebChromeClient(new WebChromeClient() {
             public void onProgressChanged(WebView view, int progress) {
-
+                super.onProgressChanged(view,progress);
                 LAYOUT_OBJs.progressBarLoad.setProgress(progress);
                 if (progress >= 100) {
-                    LAYOUT_OBJs.progressBarLoad.setVisibility(View.INVISIBLE);
+                    //LAYOUT_OBJs.progressBarLoad.setVisibility(View.INVISIBLE);
+                    LAYOUT_OBJs.progressBarLoad.setBackgroundColor(getMainActivity().getResources().getColor(R.color.color_blue_chiaro));
                     LAYOUT_OBJs.textViewTitolo.setText(getTitile());
                 } else {
-                    LAYOUT_OBJs.progressBarLoad.setVisibility(View.VISIBLE);
+                    //LAYOUT_OBJs.progressBarLoad.setVisibility(View.VISIBLE);
+                    LAYOUT_OBJs.progressBarLoad.setBackgroundColor(getMainActivity().getResources().getColor(R.color.color_white));
                     LAYOUT_OBJs.textViewTitolo.setText("Caricamento in corso...");
                 }
 
@@ -88,19 +94,41 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
         });
         webview.setWebViewClient(new WebViewClient() {
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                super.onReceivedError(view,errorCode,description,failingUrl);
                 Toast.makeText(activity, "Oh no! " + description, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
                 if (url.endsWith(".pdf")) {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                     // if want to download pdf manually create AsyncTask here
                     // and download file
                     return true;
                 }
-                view.loadUrl(url);
-                return true;
+               // view.loadUrl(url);
+                return false;
+            }
+        });
+
+        LAYOUT_OBJs.webViewHtml.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
+            @Override
+            protected void onClickImpl(View v) throws Throwable {
+
+            }
+        });
+
+        LAYOUT_OBJs.imageViewBack.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
+            @Override
+            protected void onClickImpl(View v) throws Throwable {
+                if (LAYOUT_OBJs.webViewHtml.canGoBack()) {
+                    LAYOUT_OBJs.webViewHtml.goBack();
+                    //Toast.makeText(getMainActivity(),"Torno alla pagina precedente",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getMainActivity(),"Impossibile tornare ancora indietro",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

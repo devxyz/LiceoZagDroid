@@ -43,7 +43,7 @@ public class MenuHomeListAdapter extends BaseAdapter implements IMenuListAdapter
         final TypedArray navMenuInfo;
         AppUserType userType = activity.getSharedPreferences().getUserType();
         if (userType == null) {
-            userType = AppUserType.ALTRO;
+            userType = AppUserType.FAMIGLIA;
         }
         switch (userType) {
             case STUDENTE:
@@ -56,7 +56,7 @@ public class MenuHomeListAdapter extends BaseAdapter implements IMenuListAdapter
                 navMenuInfo = activity.getResources().obtainTypedArray(R.array.menu_home_famiglia);
                 break;
             default:
-                navMenuInfo = activity.getResources().obtainTypedArray(R.array.menu_home_altro);
+                navMenuInfo = activity.getResources().obtainTypedArray(R.array.menu_home_ata);
                 break;
         }
 

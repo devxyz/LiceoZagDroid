@@ -5,37 +5,47 @@ import android.widget.*;
 import android.webkit.*;
 import it.gov.scuolesuperioridizagarolo.R;
 public class LayoutObjs_fragment_webpage_xml{
+  public final WebView webViewHtml;
+  public final ProgressBar progressBarLoad;
+  public final RelativeLayout layoutTop;
   public final TextView textViewTitolo;
   public final ImageView imageViewOpen;
-  public final ProgressBar progressBarLoad;
-  public final WebView webViewHtml;
+  public final ImageButton imageViewBack;
 
 public LayoutObjs_fragment_webpage_xml(Fragment f){
   View view=f.getView();
-    textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
-  imageViewOpen= (ImageView)view.findViewById(R.id.imageViewOpen);
+    webViewHtml= (WebView)view.findViewById(R.id.webViewHtml);
   progressBarLoad= (ProgressBar)view.findViewById(R.id.progressBarLoad);
-  webViewHtml= (WebView)view.findViewById(R.id.webViewHtml);
+  layoutTop= (RelativeLayout)view.findViewById(R.id.layoutTop);
+  textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
+  imageViewOpen= (ImageView)view.findViewById(R.id.imageViewOpen);
+  imageViewBack= (ImageButton)view.findViewById(R.id.imageViewBack);
 }
 public LayoutObjs_fragment_webpage_xml(Activity view){
-    textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
-  imageViewOpen= (ImageView)view.findViewById(R.id.imageViewOpen);
+    webViewHtml= (WebView)view.findViewById(R.id.webViewHtml);
   progressBarLoad= (ProgressBar)view.findViewById(R.id.progressBarLoad);
-  webViewHtml= (WebView)view.findViewById(R.id.webViewHtml);
+  layoutTop= (RelativeLayout)view.findViewById(R.id.layoutTop);
+  textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
+  imageViewOpen= (ImageView)view.findViewById(R.id.imageViewOpen);
+  imageViewBack= (ImageButton)view.findViewById(R.id.imageViewBack);
 
 }
 public LayoutObjs_fragment_webpage_xml(View view){
-    textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
-  imageViewOpen= (ImageView)view.findViewById(R.id.imageViewOpen);
+    webViewHtml= (WebView)view.findViewById(R.id.webViewHtml);
   progressBarLoad= (ProgressBar)view.findViewById(R.id.progressBarLoad);
-  webViewHtml= (WebView)view.findViewById(R.id.webViewHtml);
+  layoutTop= (RelativeLayout)view.findViewById(R.id.layoutTop);
+  textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
+  imageViewOpen= (ImageView)view.findViewById(R.id.imageViewOpen);
+  imageViewBack= (ImageButton)view.findViewById(R.id.imageViewBack);
 
 }
 public LayoutObjs_fragment_webpage_xml(Dialog view){
-    textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
-  imageViewOpen= (ImageView)view.findViewById(R.id.imageViewOpen);
+    webViewHtml= (WebView)view.findViewById(R.id.webViewHtml);
   progressBarLoad= (ProgressBar)view.findViewById(R.id.progressBarLoad);
-  webViewHtml= (WebView)view.findViewById(R.id.webViewHtml);
+  layoutTop= (RelativeLayout)view.findViewById(R.id.layoutTop);
+  textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
+  imageViewOpen= (ImageView)view.findViewById(R.id.imageViewOpen);
+  imageViewBack= (ImageButton)view.findViewById(R.id.imageViewBack);
 
 }
 }

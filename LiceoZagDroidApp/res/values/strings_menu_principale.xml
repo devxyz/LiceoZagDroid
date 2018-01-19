@@ -43,7 +43,7 @@
 
         <item>Orario Classi</item>
         <item>Orario Classi</item>
-        <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseFragment</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioClassePersistenteFragment</item>
         <item>@drawable/_menu_student_48x48</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>

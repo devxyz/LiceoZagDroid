@@ -1,12 +1,11 @@
 package it.gov.scuolesuperioridizagarolo.fragment;
 
 import it.gov.scuolesuperioridizagarolo.adapter.OrarioClasseListAdapter;
-import it.gov.scuolesuperioridizagarolo.fragment.api.AbstractOrarioFragment;
 import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
 
 import java.util.TreeSet;
 
-public class OrarioClasseFragment extends AbstractOrarioFragment<OrarioClasseListAdapter> {
+public class OrarioClasseNonPersistenteFragment extends AbstractOrarioFragment<OrarioClasseListAdapter> {
 
     @Override
     protected OrarioClasseListAdapter createAbstractOrarioListAdapter() {
@@ -21,14 +20,11 @@ public class OrarioClasseFragment extends AbstractOrarioFragment<OrarioClasseLis
 
     @Override
     protected void saveFiltrerValue(String filtro) {
-        final SharedPreferenceWrapper p = SharedPreferenceWrapper.getCommonInstance(getMainActivity());
-        p.setUltimaClasse(filtro);
     }
 
     @Override
     protected String getSavedFiltrerValue() {
-        final SharedPreferenceWrapper p = SharedPreferenceWrapper.getCommonInstance(getMainActivity());
-        return p.getUltimaClasse();
+        return null;
     }
 
     @Override

@@ -4,7 +4,6 @@ import android.app.Activity;
 import dada.bitorario.data.BitOrarioGrigliaOrario;
 import dada.bitorario.data.BitOrarioOraLezione;
 import dada.bitorario.data.enum_values.EOra;
-import it.gov.scuolesuperioridizagarolo.adapter.api.AbstractOrarioListAdapter;
 import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
 import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
 

@@ -22,7 +22,7 @@ public class InitActivity extends AbstractActivity {
     public static void chooseUserType(final AbstractActivity e, final DialogInterface.OnClickListener onClickListener, boolean cancelable) {
 //DOCENTE("Docente"), STUDENTE("Studente"), FAMIGLIA("Genitore"), ALTRO("Visitatore");
         final AppUserType userType = SharedPreferenceWrapper.getCommonInstance(e).getUserType();
-        final CharSequence[] values = {"Sono un docente", "Sono uno studente", "Sono un genitore"};
+        final CharSequence[] values = {"Sono un docente", "Sono uno studente", "Sono un genitore", "Personale Amministrativo (ATA)"};
         CharSequence selectedValue = null;
         if (userType != null) {
             selectedValue = values[userType.ordinal()];
@@ -45,7 +45,7 @@ public class InitActivity extends AbstractActivity {
                                 e.getSharedPreferences().setUserType(AppUserType.FAMIGLIA);
                                 break;
                             case 3:
-                                e.getSharedPreferences().setUserType(AppUserType.ALTRO);
+                                e.getSharedPreferences().setUserType(AppUserType.ATA);
                                 break;
                         }
 
