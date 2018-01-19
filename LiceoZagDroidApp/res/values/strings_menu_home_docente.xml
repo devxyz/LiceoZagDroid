@@ -32,7 +32,7 @@
 
         <item>Orario Docenti</item>
         <item>Orario Docenti</item>
-        <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteFragment</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocentePersistenteFragment</item>
         <item>@drawable/_menu_teaching_48x48</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
