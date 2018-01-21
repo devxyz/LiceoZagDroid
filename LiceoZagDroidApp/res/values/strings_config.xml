@@ -59,5 +59,6 @@
 <!--deprecated-->
     <string name="prefix_url_circolari">http://www.fermitivoli.gov.it</string>
     <string name="url_data_json">http://efermi-tivoli.appspot.com/JSonDataServlet</string>
+    <string name="url_circolari">view-source:http://www.scuolesuperioridizagarolo.gov.it/prova.php?id=XXXX</string>
 
 </resources>
