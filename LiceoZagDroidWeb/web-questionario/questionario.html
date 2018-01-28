@@ -1,0 +1,181 @@
+<html>
+<style>
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+    div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<body>
+
+
+
+<div>
+    <h1>Questionario chiusura sabato</h1>
+    <form action="questionario.php">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Inserire il tuo nome ...">
+
+        <label for="cognome">Cognome</label>
+        <input type="text" id="cognome" name="cognome" placeholder="Inserire il tuo cognome ...">
+
+        <h4>Data di nascita</h4>
+        <label for="giorno">Giorno di nascita</label>
+        <select id="giorno" name="giorno">
+            <option value="">selezionare...</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+        </select>
+
+        <label for="mese">Mese di nascita</label>
+        <select id="mese" name="mese">
+            <option value="">selezionare...</option>
+            <option value="01">Gennaio</option>
+            <option value="02">Febbraio</option>
+            <option value="03">Marzo</option>
+            <option value="04">Aprile</option>
+            <option value="05">Maggio</option>
+            <option value="06">Giugno</option>
+            <option value="07">Luglio</option>
+            <option value="08">Agosto</option>
+            <option value="09">Settembre</option>
+            <option value="10">Ottobre</option>
+            <option value="11">Novembre</option>
+            <option value="12">Dicembre</option>
+        </select>
+
+        <label for="anno">Anno di nascita</label>
+        <select id="anno" name="anno">
+            <option value="">selezionare...</option>
+            <option value="1993">1993</option>
+            <option value="1994">1994</option>
+            <option value="1995">1995</option>
+            <option value="1996">1996</option>
+            <option value="1997">1997</option>
+            <option value="1998">1998</option>
+            <option value="1999">1999</option>
+            <option value="2000">2000</option>
+            <option value="2001">2001</option>
+            <option value="2002">2002</option>
+            <option value="2003">2003</option>
+            <option value="2004">2004</option>
+        </select>
+
+        <h4>Classe frequentata</h4>
+        <label for="classe">Classe</label>
+        <select id="classe" name="classe">
+            <option value="">selezionare...</option>
+            <option value="1A-IPIA">1A-IPIA</option>
+            <option value="2A-IPIA">2A-IPIA</option>
+            <option value="3A-IPIA">3A-IPIA</option>
+            <option value="3B-IPIA">3B-IPIA</option>
+            <option value="4A-IPIA">4A-IPIA</option>
+            <option value="4B-IPIA">4B-IPIA</option>
+            <option value="5A-IPIA">5A-IPIA</option>
+
+
+            <option value="1A-LICEO">1A-LICEO</option>
+            <option value="1B-LICEO">1B-LICEO</option>
+            <option value="1C-LICEO">1C-LICEO</option>
+            <option value="1D-LICEO">1D-LICEO</option>
+            <option value="1E-LICEO">1E-LICEO</option>
+            <option value="1F-LICEO">1F-LICEO</option>
+            <option value="1G-LICEO">1G-LICEO</option>
+            <option value="1H-LICEO">1H-LICEO</option>
+
+            <option value="2A-LICEO">2A-LICEO</option>
+            <option value="2B-LICEO">2B-LICEO</option>
+            <option value="2C-LICEO">2C-LICEO</option>
+            <option value="2D-LICEO">2D-LICEO</option>
+            <option value="2E-LICEO">2E-LICEO</option>
+            <option value="2F-LICEO">2F-LICEO</option>
+            <option value="2G-LICEO">2G-LICEO</option>
+
+            <option value="3A-LICEO">3A-LICEO</option>
+            <option value="3B-LICEO">3B-LICEO</option>
+            <option value="3C-LICEO">3C-LICEO</option>
+            <option value="3D-LICEO">3D-LICEO</option>
+            <option value="3E-LICEO">3E-LICEO</option>
+
+
+            <option value="4A-LICEO">4A-LICEO</option>
+            <option value="4B-LICEO">4B-LICEO</option>
+            <option value="4C-LICEO">4C-LICEO</option>
+            <option value="4D-LICEO">4D-LICEO</option>
+            <option value="4E-LICEO">4E-LICEO</option>
+            <option value="4F-LICEO">4F-LICEO</option>
+
+            <option value="5A-LICEO">5A-LICEO</option>
+            <option value="5B-LICEO">5B-LICEO</option>
+            <option value="5C-LICEO">5C-LICEO</option>
+            <option value="5D-LICEO">5D-LICEO</option>
+
+        </select>
+
+        <input type="submit" value="Accedi">
+    </form>
+</div>
+
+</body>
+</html>
