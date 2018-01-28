@@ -286,6 +286,10 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         return rootView;
     }
 
+    protected abstract boolean isTimetableForTeacher();
+
+    protected abstract boolean isTimetableForStudents();
+
     private void onSelectRow(int position) {
         final BitOrarioOraLezione item = orarioAdapter.getItem(position);
 
@@ -297,13 +301,13 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         final String details = orarioAdapter.getDetails(position);
         ArrayList<String> funzioni = new ArrayList<>();
 
-        if (!this.getClass().equals(OrarioDocentePersistenteFragment.class) && item != null && item.getDocentePrincipale() != null && wrapperParameter.getNavigateFlag()) {
+        if (!this.isTimetableForTeacher() && item != null && item.getDocentePrincipale() != null && wrapperParameter.getNavigateFlag()) {
             funzioni.add(choose_orario_docente_principale);
         }
-        if (!this.getClass().equals(OrarioDocentePersistenteFragment.class) && item != null && item.getDocenteCompresenza() != null && wrapperParameter.getNavigateFlag()) {
+        if (!this.isTimetableForTeacher() && item != null && item.getDocenteCompresenza() != null && wrapperParameter.getNavigateFlag()) {
             funzioni.add(choose_orario_docente_compresenza);
         }
-        if (!this.getClass().equals(OrarioClassePersistenteFragment.class) && item != null && item.getClasse() != null && wrapperParameter.getNavigateFlag()) {
+        if (!this.isTimetableForStudents() && item != null && item.getClasse() != null && wrapperParameter.getNavigateFlag()) {
             funzioni.add(choose_orario_classe);
         }
         if (details != null) {
@@ -323,7 +327,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                         DialogUtil.openInfoDialog(getMainActivity(), "Informazioni", details);
 
                     } else if (fun[which].equals(choose_orario_classe)) {
-                        if (item != null ) {
+                        if (item != null) {
                             final DataMenuInfo orarioClassi = StringsMenuPrincipale.ORARIO_CLASSI;
                             OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
                             w.setPersistFlag(false);
@@ -334,7 +338,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                         }
 
                     } else if (fun[which].equals(choose_orario_docente_principale)) {
-                        if (item != null ) {
+                        if (item != null) {
                             final DataMenuInfo orarioClassi = StringsMenuPrincipale.ORARIO_DOCENTI;
                             OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
                             w.setPersistFlag(false);
@@ -344,7 +348,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                             getMainActivity().doAction(orarioClassi, w.getBundle());
                         }
                     } else if (fun[which].equals(choose_orario_docente_compresenza)) {
-                        if (item != null ) {
+                        if (item != null) {
                             final DataMenuInfo orarioClassi = StringsMenuPrincipale.ORARIO_DOCENTI;
                             OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
                             w.setPersistFlag(false);

@@ -1,7 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.fragment;
 
 import it.gov.scuolesuperioridizagarolo.adapter.OrarioDocenteListAdapter;
-import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
 
 import java.util.TreeSet;
 
@@ -28,6 +27,16 @@ public class OrarioDocenteNonPersistenteFragment extends AbstractOrarioFragment<
     @Override
     protected String getSavedFiltrerValue() {
         return null;
+    }
+
+    @Override
+    protected boolean isTimetableForTeacher() {
+        return true;
+    }
+
+    @Override
+    protected boolean isTimetableForStudents() {
+        return false;
     }
 
     @Override
