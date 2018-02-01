@@ -25,6 +25,9 @@ public class DataMenuInfoStack implements Serializable {
         stack.add(m);
     }
 
+    public void clear(){
+        stack.clear();
+    }
 
     public DataMenuInfoCall back() {
         //rimuove l'ultimo e il penultimo

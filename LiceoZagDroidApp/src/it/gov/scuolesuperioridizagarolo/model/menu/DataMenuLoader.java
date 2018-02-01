@@ -1,6 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.model.menu;
 
 import android.content.res.TypedArray;
+import it.gov.scuolesuperioridizagarolo.model.AppUserType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * Created by stefano on 18/03/15.
  */
 public class DataMenuLoader {
-    public static List<DataMenuInfo> load(TypedArray navMenuInfo) {
+    public static List<DataMenuInfo> load(TypedArray navMenuInfo, AppUserType user) {
         List<DataMenuInfo> ris = new ArrayList<DataMenuInfo>(navMenuInfo.length() / 5);
         if (navMenuInfo.length() % 6 != 0) {
             throw new IllegalArgumentException("Dimensioni del vettore dei menu non corretta: " + navMenuInfo.length() + ". Deve essere multipla di 6");
@@ -43,11 +44,21 @@ public class DataMenuLoader {
             }
             final DataMenuInfoType search = DataMenuInfoType.search(fragmentClass);
             final DataMenuInfo o = new DataMenuInfo(label, longLabel, fragmentClass, imageID, search, DataMenuInfoFlag.valueOf(flags.split("([ ,])+")));
+
+
             //skip item non attivi
             if (o.getFlags().contains(DataMenuInfoFlag.NOT_ACTIVE))
                 continue;
+            if (!o.getFlags().contains(user.getUserFlag()))
+                continue;
+
+
+
             ris.add(o);
         }
+
+
+
         return ris;
 
     }

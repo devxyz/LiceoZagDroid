@@ -8,6 +8,10 @@ import java.util.TreeSet;
  * Created by stefano on 09/09/15.
  */
 public enum DataMenuInfoFlag implements Serializable{
+    SHOW_DOCENTI,
+    SHOW_ATA,
+    SHOW_GENITORI,
+    SHOW_STUDENTI,
     DONT_SHOW_IN_HOME,
     SUB_ITEM,
     NOT_ACTIVE//se nascosto

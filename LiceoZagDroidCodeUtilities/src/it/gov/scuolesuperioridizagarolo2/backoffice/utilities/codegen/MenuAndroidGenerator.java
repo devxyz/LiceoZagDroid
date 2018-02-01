@@ -23,9 +23,9 @@ public class MenuAndroidGenerator {
         File destFolder = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/src/it/gov/scuolesuperioridizagarolo/model/menu/impl");
 
         File f1 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_principale.xml");
-        File f2 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_home_docente.xml");
-        File f3 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_home_studente.xml");
-        File f4 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_home_famiglie.xml");
+        File f2 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_home_docenti.xml");
+        File f3 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_home_studenti.xml");
+        File f4 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_home_genitori.xml");
         File f5 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/values/strings_menu_home_ata.xml");
 
         genera(f1, destFolder);
@@ -82,6 +82,7 @@ public class MenuAndroidGenerator {
 
         out.println("package it.gov.scuolesuperioridizagarolo.model.menu.impl;");
         out.println("import it.gov.scuolesuperioridizagarolo.R;\n");
+        out.println("import java.util.*;\n");
         out.println("import it.gov.scuolesuperioridizagarolo.model.menu.*;");
         out.println("public class " + className + "{");
 
@@ -92,30 +93,45 @@ public class MenuAndroidGenerator {
             String longLabel = ss.get(i++);
             String actionClass = ss.get(i++);
             String imageId = ss.get(i++);
-            String x1 = ss.get(i++);
-            String x2 = ss.get(i++);
+            String flags = ss.get(i++);
+            String closeItem = ss.get(i++);
             String nomeCampo = menuLabel.replaceAll("[ .-]+", "_").toUpperCase().replace("(", "").replace(")", "");
 
+
+            //System.out.println("x1=" + flags);
+            //System.out.println("x2=" + closeItem);
             //skip null
-            if (actionClass.trim().length() == 0) continue;
+            if (actionClass.trim().length() == 0)
+                continue;
+
+            ArrayList<String> ffll = new ArrayList<>();
+            final String[] split = flags.split(",");
+            for (String s : split) {
+                s = s.trim();
+                if (s.length() > 0)
+                    ffll.add("DataMenuInfoFlag." + s);
+            }
+
+            String fl = ("new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(" + ffll.toString().replace("[", "").replace("]", "") + ") )");
+
 
             //final DataMenuInfoType type, Set<DataMenuInfoFlag > flags
             final String s = MessageFormat.format("     public static final DataMenuInfo {0}= new DataMenuInfo(\n\"{1}\",\n\"{2}\",\n{3}.class,\n{4},\nDataMenuInfoType.search({3}.class),\n{6});",
                     nomeCampo,
-                     menuLabel, longLabel.length() == 0 ? menuLabel : longLabel, actionClass, imageId.replace("@drawable/", "R.drawable."), "", "null");
+                    menuLabel, longLabel.length() == 0 ? menuLabel : longLabel, actionClass, imageId.replace("@drawable/", "R.drawable."), "", fl);
             //System.out.println(s);
             out.println(s);
         }
         out.println("}");
 
-       // System.out.println(out1);
+        // System.out.println(out1);
 
         File fout = new File(destFolder, className + ".java");
         FileWriter fout2 = new FileWriter(fout);
         fout2.write(out1.toString());
         fout2.close();
 
-        System.out.println("=============================================== "+f.getName()+" >>>>> "+fout.getName());
+        System.out.println("=============================================== " + f.getName() + " >>>>> " + fout.getName());
 
     }
 

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_item_menu_generale_liv1_xml;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_item_menu_generale_liv2_xml;
+import it.gov.scuolesuperioridizagarolo.model.AppUserType;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoType;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuLoader;
@@ -27,16 +28,7 @@ public class MainMenuExpandibleListAdapter extends BaseAdapter implements IMenuL
     private DataMenuInfo lastOpen = null;
     private LayoutInflater mInflater;
 
-    public DataMenuInfo getDataMenuInfoByMenuID(String id){
-        for (DataMenuInfo x : original) {
-            if (x.getMenuID().equals(id))return x;
-        }
-        return null;
-    }
-
     public MainMenuExpandibleListAdapter(Context context, List<DataMenuInfo> navDrawerItems) {
-
-
 
 
         mInflater = (LayoutInflater)
@@ -54,11 +46,18 @@ public class MainMenuExpandibleListAdapter extends BaseAdapter implements IMenuL
         }
     }
 
-    public static MainMenuExpandibleListAdapter getInstanceForMainMenu(Context context) {
+    public static MainMenuExpandibleListAdapter getInstanceForMainMenu(Context context, AppUserType user) {
         final TypedArray navMenuInfo = context.getResources().obtainTypedArray(R.array.menu_principale);
-        final List<DataMenuInfo> ff = DataMenuLoader.load(navMenuInfo);
+        final List<DataMenuInfo> ff = DataMenuLoader.load(navMenuInfo, user);
         return new MainMenuExpandibleListAdapter(context, ff);
 
+    }
+
+    public DataMenuInfo getDataMenuInfoByMenuID(String id) {
+        for (DataMenuInfo x : original) {
+            if (x.getMenuID().equals(id)) return x;
+        }
+        return null;
     }
 
     public ArrayList<DataMenuInfo> getOriginal() {
@@ -161,7 +160,7 @@ public class MainMenuExpandibleListAdapter extends BaseAdapter implements IMenuL
     public View getView(int position, View convertView, ViewGroup parent) {
         final DataMenuInfo item = currentVisibleItems.get(position);
 
-        convertView=null;
+        convertView = null;
         if (item.isSubItem()) {
             if (convertView == null || !convertView.getTag().equals("subitem")) {
                 convertView = mInflater.inflate(R.layout.listview_item_menu_generale_liv2, null);

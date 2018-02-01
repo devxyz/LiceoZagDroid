@@ -1,5 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.activity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
@@ -19,8 +20,14 @@ public class InitActivity extends AbstractActivity {
     private LayoutObjs_activity_splash_update2_xml obj;
     private boolean closed = false;
 
+    public static AppUserType getCurrentUser(Context e) {
+        return SharedPreferenceWrapper.getCommonInstance(e).getUserType();
+    }
+
     public static void chooseUserType(final AbstractActivity e, final DialogInterface.OnClickListener onClickListener, boolean cancelable) {
-//DOCENTE("Docente"), STUDENTE("Studente"), FAMIGLIA("Genitore"), ALTRO("Visitatore");
+
+        //DOCENTE("Docente"), STUDENTE("Studente"), FAMIGLIA("Genitore"), ALTRO("Visitatore");
+
         final AppUserType userType = SharedPreferenceWrapper.getCommonInstance(e).getUserType();
         final CharSequence[] values = {"Sono un docente", "Sono uno studente", "Sono un genitore", "Personale Amministrativo (ATA)"};
         CharSequence selectedValue = null;
@@ -86,36 +93,6 @@ public class InitActivity extends AbstractActivity {
             }, false);
         } else {
             startMainMenuActivity();
-
-            /*
-            //attende 15 secondi
-            final int SECONDS = 10;
-            obj.progressBar2.setIndeterminate(false);
-            obj.progressBar2.setMax(SECONDS);
-
-
-            Thread t = new Thread() {
-                @Override
-                public void run() {
-
-                    for (int i = 0; i <= SECONDS && !closed; i = i + 1) {
-                        final int finalI = i;
-                        ThreadUtil.runOnUiThreadAndWait(SplashUpdateActivity.this, new Runnable() {
-                            @Override
-                            public void run() {
-                                obj.txtInfo.setText("Continua (" + (SECONDS - finalI) + ") >>");
-                                obj.progressBar2.setProgress(finalI);
-                            }
-                        });
-                        ThreadUtil.sleep(1000);
-                    }
-                    if (closed) return;
-                    startMainMenuActivity();
-                }
-            };
-
-
-            t.start();*/
         }
     }
 

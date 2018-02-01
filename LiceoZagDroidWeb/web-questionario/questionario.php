@@ -57,6 +57,7 @@
   function normalizeString($s){
       $v=trim($s);
       $v=str_replace("'","",$v);
+      $v=str_replace(" ","",$v);
       $unwanted_array = array(    'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
                                   'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
                                   'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
@@ -69,24 +70,24 @@
   }
 
 
-  $nome=normalizeString($_GET["nome"]);
-  $cognome=normalizeString($_GET["cognome"]);
-  $data=normalizeData($_GET["giorno"]."/".$_GET["mese"]."/".$_GET["anno"]);
-  $classe=normalizeString($_GET["classe"]);
+  $nome=strtoupper(normalizeString($_GET["nome"]));
+  $cognome=strtoupper(normalizeString($_GET["cognome"]));
+  $datanas=normalizeData($_GET["giorno"]."/".$_GET["mese"]."/".$_GET["anno"]);
+  $classe=strtoupper(normalizeString($_GET["classe"]));
 
 
   $t=time();
 
 //$nome;cognome;$data;$classe
-  $csvline=strtoupper($nome.";".$cognome.";".$data.";".$classe);
+  $csvline=strtoupper($nome.";".$cognome.";".$datanas.";".$classe);
 
   $idt=strtoupper(
   "".$nome.
   "\t".$cognome.
-  "\t".$data.
-  "\t".$classe.
-  "\t". date("d/m/Y H:i:s",$t).
-  "\t".$_SERVER['REMOTE_ADDR']
+  "\t".$datanas.
+  "\t".$classe
+  //"\t". date("d/m/Y H:i:s",$t).
+//  "\t".$_SERVER['REMOTE_ADDR']
   );
   $idtransazione= base64_encode($idt);
 
@@ -95,7 +96,7 @@
   $trovato=0;
   if ($handle) {
       while (($line = fgets($handle)) !== false) {
-          if (strtoupper($line)==$csvline){
+          if (strtoupper($line)==strtoupper(normalizeString($csvline))){
             $trovato=1;
             break;
           }
@@ -114,8 +115,8 @@
   //echo "<hr>";
 
   //echo "ID TRANSAZIONE: " . $idtransazione ."";
-  echo "<h4>Nominativo: " . $nome. " " . cognome."</h4>";
-  echo "<h4>Nato il :" . $data."</h4>";
+  echo "<h4>Nominativo: " . $_GET["nome"]. " " . $_GET["cognome"]."</h4>";
+  echo "<h4>Nato il :" . $datanas."</h4>";
   echo "<h4>Classe :" . $classe."</h4>";
 
   echo "<br>";

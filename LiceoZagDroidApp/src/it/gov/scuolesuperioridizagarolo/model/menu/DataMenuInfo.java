@@ -49,6 +49,21 @@ public class DataMenuInfo implements Serializable {
             this.flags = new TreeSet<>(flags);
         else
             this.flags = new TreeSet<>();
+
+        //aggiunge eventualmente tutti i flag x gli utenti, se nessuno e' stato specificato
+        if (
+                !this.flags.contains(DataMenuInfoFlag.SHOW_ATA) &&
+                        !this.flags.contains(DataMenuInfoFlag.SHOW_DOCENTI) &&
+                        !this.flags.contains(DataMenuInfoFlag.SHOW_GENITORI) &&
+                        !this.flags.contains(DataMenuInfoFlag.SHOW_STUDENTI)
+                ) {
+            this.flags.add(DataMenuInfoFlag.SHOW_ATA);
+            this.flags.add(DataMenuInfoFlag.SHOW_DOCENTI);
+            this.flags.add(DataMenuInfoFlag.SHOW_GENITORI);
+            this.flags.add(DataMenuInfoFlag.SHOW_STUDENTI);
+        }
+
+
         this.action = action;
         this.menuLabel = menuLabel;
         this.longLabel = longLabel == null ? menuLabel : longLabel;
@@ -56,7 +71,7 @@ public class DataMenuInfo implements Serializable {
     }
 
     public DataMenuInfo(String menuLabel, String longLabel, Class actionClass, DataMenuInfoType type, Set<DataMenuInfoFlag> flags) {
-        this( menuLabel, longLabel, actionClass, null, type, flags);
+        this(menuLabel, longLabel, actionClass, null, type, flags);
     }
 
     //indica se si tratta di un comando o di un fragment

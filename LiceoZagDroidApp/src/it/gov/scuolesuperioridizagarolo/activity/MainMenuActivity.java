@@ -173,9 +173,7 @@ public class MainMenuActivity extends AbstractActivity {
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 
         // setting the nav drawer list menuAdapter
-        menuMainAdapter = MainMenuExpandibleListAdapter.getInstanceForMainMenu(getApplicationContext());
-
-
+        menuMainAdapter = MainMenuExpandibleListAdapter.getInstanceForMainMenu(getApplicationContext(), InitActivity.getCurrentUser(this));
         mDrawerList.setAdapter(menuMainAdapter);
 
 
@@ -234,6 +232,14 @@ public class MainMenuActivity extends AbstractActivity {
                 doAction(0, null);*/
         }
 
+
+    }
+
+    //azzera le varie info in base al cambiamento di utente
+    public void reInitUser() {
+        stack.clear();
+        menuMainAdapter = MainMenuExpandibleListAdapter.getInstanceForMainMenu(getApplicationContext(), InitActivity.getCurrentUser(this));
+        mDrawerList.setAdapter(menuMainAdapter);
 
     }
 
@@ -323,6 +329,7 @@ public class MainMenuActivity extends AbstractActivity {
                 InitActivity.chooseUserType(this, new OnClickListenerDialogErrorCheck(this) {
                     @Override
                     protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
+                        MainMenuActivity.this.reInitUser();
                         MainMenuActivity.this.doAction(0, null);
                     }
                 }, true);
