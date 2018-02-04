@@ -457,7 +457,7 @@ public class MainMenuActivity extends AbstractActivity {
 
     private void _composeReportOrariScaricati(final StringBuilder sb) throws Throwable {
         sb.append("<html><body><table border=1>");
-        sb.append("<tr><td>Id</td><td>Data Inizio</td><td>Data Fine</td><td>Nome File</td><td>Size</td><td>Download date</td>");
+
         final ScuolaAppDbHelper db = new ScuolaAppDbHelper(this);
         db.runInTransaction(new ScuolaAppDbHelperCallable<ArrayList<String>>() {
             @Override
@@ -465,12 +465,13 @@ public class MainMenuActivity extends AbstractActivity {
                 final List<TimetableDB> list = session.getTimetableDBDao().queryBuilder().orderAsc(TimetableDBDao.Properties.RemoteId).list();
                 ArrayList<String> ris = new ArrayList<String>();
                 for (TimetableDB x : list) {
-
-                    sb.append("<tr><td>" + x.getRemoteId() + "</td><td>" + C_DateUtil.toDDMMYYY(x.getStartDate()) + "</td>" +
-                            "<td>" + C_DateUtil.toDDMMYYY(x.getEndDate()) + "</td>" +
-                            "<td>" + x.getFilename() + "</td>" +
-                            "<td>" + x.getData().length + "</td>" +
-                            "<td>" + x.getCreateDate() + "</td>");
+                    sb.append("<tr><td style='background-color:red'>##  </td><td style='background-color:red'></td></tr>");
+                    sb.append("<tr><td>ID:</td><td>" + x.getRemoteId() + "</td></tr>" +
+                            "<tr><td>Data Inizio</td><td>" + C_DateUtil.toDDMMYYY(x.getStartDate()) + "</td>" +
+                            "<tr><td>Data Fine</td><td>" + C_DateUtil.toDDMMYYY(x.getEndDate()) + "</td></tr>" +
+                            "<tr><td>Filename:</td><td>" + x.getFilename() + "</td></tr>" +
+                            "<tr><td>Size BYTE:</td><td>" + x.getData().length + "</td></tr>" +
+                            "<tr><td>Data Creazione:</td><td>" + x.getCreateDate() + "</td></tr>");
                 }
 
                 return ris;

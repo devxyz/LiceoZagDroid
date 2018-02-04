@@ -48,6 +48,9 @@
     <string name="url_re_famiglie">https://family.axioscloud.it/Secret/REStart.aspx?Customer_ID=93015960581</string>
 
     <string name="url_rss_feed_circolari">http://www.scuolesuperioridizagarolo.gov.it/pasw4/index.php/circolari2?format=feed&amp;type=rss&amp;limitstart=XXX</string>
+
+
+    <string name="url_article">http://www.scuolesuperioridizagarolo.gov.it/prova.php?id=</string>
     <string name="url_timetable_index">http://www.scuolesuperioridizagarolo.gov.it/orario/timetables.txt</string>
     <string name="url_timetable_prefix">http://www.scuolesuperioridizagarolo.gov.it/orario/</string>
 

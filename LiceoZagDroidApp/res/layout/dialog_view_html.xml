@@ -3,19 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:background="@color/color_dialog_background">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Title"
-            android:id="@+id/textViewTitle"
-            android:textStyle="bold"
-            android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_toLeftOf="@+id/buttonClose"
-            android:layout_toStartOf="@+id/buttonClose"
-            android:gravity="center_vertical|center_horizontal"
-            android:padding="10dp"/>
-        <WebView
+    <WebView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceSmall"
@@ -24,17 +12,8 @@
                 android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
                 android:layout_above="@+id/linearLayout2"
                 android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
-                android:layout_below="@+id/textViewTitle"/>
-    <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonClose"
-            android:src="@drawable/right_arrow2_30x30"
-
-            android:layout_alignParentTop="true" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" android:background="@drawable/background_pulsante_red"
-            android:layout_margin="5dp"/>
-        <LinearLayout
+                android:layout_below="@+id/progressBar7"/>
+    <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:layout_alignParentBottom="true"
@@ -54,6 +33,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/progressBar7"
-                android:layout_below="@+id/textViewTitle"
-                android:layout_alignStart="@+id/textViewDescrizione"/>
+                android:layout_alignStart="@+id/textViewDescrizione" android:layout_below="@+id/layout2"/>
+    <RelativeLayout
+            android:id="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:background="@color/color_red_scuro">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Title"
+                android:id="@+id/textViewTitle"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" android:layout_toLeftOf="@+id/buttonClose"
+                android:layout_toStartOf="@+id/buttonClose"
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="10dp" android:textColor="@color/color_white"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonClose"
+                android:src="@drawable/right_arrow2_30x30"
+
+                android:layout_alignParentTop="true" android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" android:background="@drawable/background_pulsante_red"
+                android:layout_margin="5dp"/>
+    </RelativeLayout>
 </RelativeLayout>

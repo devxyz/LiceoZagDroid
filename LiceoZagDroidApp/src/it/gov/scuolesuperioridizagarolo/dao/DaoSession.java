@@ -10,6 +10,9 @@ import org.greenrobot.greendao.internal.DaoConfig;
 
 import it.gov.scuolesuperioridizagarolo.dao.CacheFileDB;
 import it.gov.scuolesuperioridizagarolo.dao.TimetableDB;
+import it.gov.scuolesuperioridizagarolo.dao.ArticoloDB;
+import it.gov.scuolesuperioridizagarolo.dao.TagArticoloDB;
+import it.gov.scuolesuperioridizagarolo.dao.AttachmentArticoloDB;
 import it.gov.scuolesuperioridizagarolo.dao.CircolareDB;
 import it.gov.scuolesuperioridizagarolo.dao.TermineDB;
 import it.gov.scuolesuperioridizagarolo.dao.NewsDB;
@@ -18,6 +21,9 @@ import it.gov.scuolesuperioridizagarolo.dao.NewsContieneTermineDB;
 
 import it.gov.scuolesuperioridizagarolo.dao.CacheFileDBDao;
 import it.gov.scuolesuperioridizagarolo.dao.TimetableDBDao;
+import it.gov.scuolesuperioridizagarolo.dao.ArticoloDBDao;
+import it.gov.scuolesuperioridizagarolo.dao.TagArticoloDBDao;
+import it.gov.scuolesuperioridizagarolo.dao.AttachmentArticoloDBDao;
 import it.gov.scuolesuperioridizagarolo.dao.CircolareDBDao;
 import it.gov.scuolesuperioridizagarolo.dao.TermineDBDao;
 import it.gov.scuolesuperioridizagarolo.dao.NewsDBDao;
@@ -35,6 +41,9 @@ public class DaoSession extends AbstractDaoSession {
 
     private final DaoConfig cacheFileDBDaoConfig;
     private final DaoConfig timetableDBDaoConfig;
+    private final DaoConfig articoloDBDaoConfig;
+    private final DaoConfig tagArticoloDBDaoConfig;
+    private final DaoConfig attachmentArticoloDBDaoConfig;
     private final DaoConfig circolareDBDaoConfig;
     private final DaoConfig termineDBDaoConfig;
     private final DaoConfig newsDBDaoConfig;
@@ -43,6 +52,9 @@ public class DaoSession extends AbstractDaoSession {
 
     private final CacheFileDBDao cacheFileDBDao;
     private final TimetableDBDao timetableDBDao;
+    private final ArticoloDBDao articoloDBDao;
+    private final TagArticoloDBDao tagArticoloDBDao;
+    private final AttachmentArticoloDBDao attachmentArticoloDBDao;
     private final CircolareDBDao circolareDBDao;
     private final TermineDBDao termineDBDao;
     private final NewsDBDao newsDBDao;
@@ -58,6 +70,15 @@ public class DaoSession extends AbstractDaoSession {
 
         timetableDBDaoConfig = daoConfigMap.get(TimetableDBDao.class).clone();
         timetableDBDaoConfig.initIdentityScope(type);
+
+        articoloDBDaoConfig = daoConfigMap.get(ArticoloDBDao.class).clone();
+        articoloDBDaoConfig.initIdentityScope(type);
+
+        tagArticoloDBDaoConfig = daoConfigMap.get(TagArticoloDBDao.class).clone();
+        tagArticoloDBDaoConfig.initIdentityScope(type);
+
+        attachmentArticoloDBDaoConfig = daoConfigMap.get(AttachmentArticoloDBDao.class).clone();
+        attachmentArticoloDBDaoConfig.initIdentityScope(type);
 
         circolareDBDaoConfig = daoConfigMap.get(CircolareDBDao.class).clone();
         circolareDBDaoConfig.initIdentityScope(type);
@@ -76,6 +97,9 @@ public class DaoSession extends AbstractDaoSession {
 
         cacheFileDBDao = new CacheFileDBDao(cacheFileDBDaoConfig, this);
         timetableDBDao = new TimetableDBDao(timetableDBDaoConfig, this);
+        articoloDBDao = new ArticoloDBDao(articoloDBDaoConfig, this);
+        tagArticoloDBDao = new TagArticoloDBDao(tagArticoloDBDaoConfig, this);
+        attachmentArticoloDBDao = new AttachmentArticoloDBDao(attachmentArticoloDBDaoConfig, this);
         circolareDBDao = new CircolareDBDao(circolareDBDaoConfig, this);
         termineDBDao = new TermineDBDao(termineDBDaoConfig, this);
         newsDBDao = new NewsDBDao(newsDBDaoConfig, this);
@@ -84,6 +108,9 @@ public class DaoSession extends AbstractDaoSession {
 
         registerDao(CacheFileDB.class, cacheFileDBDao);
         registerDao(TimetableDB.class, timetableDBDao);
+        registerDao(ArticoloDB.class, articoloDBDao);
+        registerDao(TagArticoloDB.class, tagArticoloDBDao);
+        registerDao(AttachmentArticoloDB.class, attachmentArticoloDBDao);
         registerDao(CircolareDB.class, circolareDBDao);
         registerDao(TermineDB.class, termineDBDao);
         registerDao(NewsDB.class, newsDBDao);
@@ -94,6 +121,9 @@ public class DaoSession extends AbstractDaoSession {
     public void clear() {
         cacheFileDBDaoConfig.clearIdentityScope();
         timetableDBDaoConfig.clearIdentityScope();
+        articoloDBDaoConfig.clearIdentityScope();
+        tagArticoloDBDaoConfig.clearIdentityScope();
+        attachmentArticoloDBDaoConfig.clearIdentityScope();
         circolareDBDaoConfig.clearIdentityScope();
         termineDBDaoConfig.clearIdentityScope();
         newsDBDaoConfig.clearIdentityScope();
@@ -107,6 +137,18 @@ public class DaoSession extends AbstractDaoSession {
 
     public TimetableDBDao getTimetableDBDao() {
         return timetableDBDao;
+    }
+
+    public ArticoloDBDao getArticoloDBDao() {
+        return articoloDBDao;
+    }
+
+    public TagArticoloDBDao getTagArticoloDBDao() {
+        return tagArticoloDBDao;
+    }
+
+    public AttachmentArticoloDBDao getAttachmentArticoloDBDao() {
+        return attachmentArticoloDBDao;
     }
 
     public CircolareDBDao getCircolareDBDao() {

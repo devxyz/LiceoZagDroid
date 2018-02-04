@@ -8,7 +8,7 @@ import org.greenrobot.greendao.generator.*;
  */
 public class GreenDaoGenerator {
     public static void main(String[] args) throws Exception {
-        Schema schema = new Schema(20180122, "it.gov.scuolesuperioridizagarolo.dao");
+        Schema schema = new Schema(20180201, "it.gov.scuolesuperioridizagarolo.dao");
 
         //cache file
         final Entity cacheFile = schema.addEntity("CacheFileDB");
@@ -34,7 +34,46 @@ public class GreenDaoGenerator {
         }
 
 
+        //articolo
+        final Entity articolo = schema.addEntity("ArticoloDB");
+        {
+            articolo.addIdProperty();
+            articolo.addStringProperty("title");
+            articolo.addDateProperty("pubDate");
+            articolo.addDateProperty("insertTimestamp");
+            articolo.addIntProperty("remoteId").unique();
+            articolo.addIntProperty("remoteCategoryId");
+            articolo.addStringProperty("categoryTitle");
+            articolo.addStringProperty("content");
+            articolo.addStringProperty("url");
+        }
+
+        final Entity tag = schema.addEntity("TagArticoloDB");
+        {
+            tag.addIdProperty();
+            tag.addStringProperty("title");
+            tag.addIntProperty("remoteId").unique();
+            tag.addDateProperty("insertTimestamp");
+            final Property.PropertyBuilder articleId = tag.addLongProperty("fk_articleId").index();
+            tag.addToOne(articolo, articleId.getProperty());
+        }
+
+        final Entity attachment = schema.addEntity("AttachmentArticoloDB");
+        {
+            attachment.addIdProperty();
+            attachment.addStringProperty("filename");
+            attachment.addStringProperty("url");
+            attachment.addIntProperty("filesize");
+            attachment.addIntProperty("state");
+            attachment.addDateProperty("insertTimestamp");
+            attachment.addStringProperty("filetype");
+            final Property.PropertyBuilder articleId = attachment.addLongProperty("fk_articleId").index();
+            attachment.addToOne(articolo, articleId.getProperty());
+        }
+
+
         //circolare
+        @Deprecated
         final Entity circolare = schema.addEntity("CircolareDB");
         {
             circolare.addIdProperty().autoincrement();
@@ -61,6 +100,7 @@ public class GreenDaoGenerator {
 
 
         //termine
+        @Deprecated
         final Entity termine = schema.addEntity("TermineDB");
         {
             termine.addIdProperty().autoincrement();
@@ -70,6 +110,7 @@ public class GreenDaoGenerator {
 
 
         //termine
+        @Deprecated
         final Entity news = schema.addEntity("NewsDB");
         {
             news.addIdProperty().autoincrement();
@@ -90,7 +131,9 @@ public class GreenDaoGenerator {
 
         //tabella intermedia
 
+
         {
+            @Deprecated
             final Entity circolareTermine = schema.addEntity("CircolareContieneTermineDB");
             Property id_circolare = circolareTermine.addLongProperty("_id_circolare").notNull().getProperty();
             Property id_termine = circolareTermine.addLongProperty("_id_termine").notNull().getProperty();
@@ -109,6 +152,7 @@ public class GreenDaoGenerator {
 
         //tabella intermedia
         {
+            @Deprecated
             final Entity newsContieneTermine = schema.addEntity("NewsContieneTermineDB");
             Property id_news = newsContieneTermine.addLongProperty("_id_news").notNull().getProperty();
             Property id_termine = newsContieneTermine.addLongProperty("_id_termine").notNull().getProperty();

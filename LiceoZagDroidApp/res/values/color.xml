@@ -61,7 +61,7 @@
     <color name="color_dialog_background">#ffffffff</color>
     <color name="default_activity_background">#ffffff</color>
 
-    <color name="color_action_bar">#0000ff</color>
+    <color name="color_action_bar">#ffffffff</color>
     <color name="color_white">#ffffffff</color>
     <color name="color_white_transparent">#D0ffffff</color>
     <color name="color_transparent">#00000000</color>
