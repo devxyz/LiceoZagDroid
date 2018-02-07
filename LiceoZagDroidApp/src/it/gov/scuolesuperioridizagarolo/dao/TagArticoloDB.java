@@ -15,14 +15,18 @@ public class TagArticoloDB {
 
     @Id
     private Long id;
+
+    @NotNull
     private String title;
 
     @Unique
-    private Integer remoteId;
+    private int remoteId;
+
+    @NotNull
     private java.util.Date insertTimestamp;
 
     @Index
-    private Long fk_articleId;
+    private long fk_articleId;
 
     /** Used to resolve relations */
     @Generated
@@ -47,7 +51,7 @@ public class TagArticoloDB {
     }
 
     @Generated
-    public TagArticoloDB(Long id, String title, Integer remoteId, java.util.Date insertTimestamp, Long fk_articleId) {
+    public TagArticoloDB(Long id, String title, int remoteId, java.util.Date insertTimestamp, long fk_articleId) {
         this.id = id;
         this.title = title;
         this.remoteId = remoteId;
@@ -70,42 +74,46 @@ public class TagArticoloDB {
         this.id = id;
     }
 
+    @NotNull
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setTitle(@NotNull String title) {
         this.title = title;
     }
 
-    public Integer getRemoteId() {
+    public int getRemoteId() {
         return remoteId;
     }
 
-    public void setRemoteId(Integer remoteId) {
+    public void setRemoteId(int remoteId) {
         this.remoteId = remoteId;
     }
 
+    @NotNull
     public java.util.Date getInsertTimestamp() {
         return insertTimestamp;
     }
 
-    public void setInsertTimestamp(java.util.Date insertTimestamp) {
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setInsertTimestamp(@NotNull java.util.Date insertTimestamp) {
         this.insertTimestamp = insertTimestamp;
     }
 
-    public Long getFk_articleId() {
+    public long getFk_articleId() {
         return fk_articleId;
     }
 
-    public void setFk_articleId(Long fk_articleId) {
+    public void setFk_articleId(long fk_articleId) {
         this.fk_articleId = fk_articleId;
     }
 
     /** To-one relationship, resolved on first access. */
     @Generated
     public ArticoloDB getArticoloDB() {
-        Long __key = this.fk_articleId;
+        long __key = this.fk_articleId;
         if (articoloDB__resolvedKey == null || !articoloDB__resolvedKey.equals(__key)) {
             __throwIfDetached();
             ArticoloDBDao targetDao = daoSession.getArticoloDBDao();
@@ -120,9 +128,12 @@ public class TagArticoloDB {
 
     @Generated
     public void setArticoloDB(ArticoloDB articoloDB) {
+        if (articoloDB == null) {
+            throw new DaoException("To-one property 'fk_articleId' has not-null constraint; cannot set to-one to null");
+        }
         synchronized (this) {
             this.articoloDB = articoloDB;
-            fk_articleId = articoloDB == null ? null : articoloDB.getId();
+            fk_articleId = articoloDB.getId();
             articoloDB__resolvedKey = fk_articleId;
         }
     }

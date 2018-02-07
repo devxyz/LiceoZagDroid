@@ -15,15 +15,23 @@ public class AttachmentArticoloDB {
 
     @Id
     private Long id;
+
+    @NotNull
     private String filename;
+
+    @NotNull
     private String url;
-    private Integer filesize;
-    private Integer state;
+    private int filesize;
+    private int state;
+
+    @NotNull
     private java.util.Date insertTimestamp;
+
+    @NotNull
     private String filetype;
 
     @Index
-    private Long fk_articleId;
+    private long fk_articleId;
 
     /** Used to resolve relations */
     @Generated
@@ -48,7 +56,7 @@ public class AttachmentArticoloDB {
     }
 
     @Generated
-    public AttachmentArticoloDB(Long id, String filename, String url, Integer filesize, Integer state, java.util.Date insertTimestamp, String filetype, Long fk_articleId) {
+    public AttachmentArticoloDB(Long id, String filename, String url, int filesize, int state, java.util.Date insertTimestamp, String filetype, long fk_articleId) {
         this.id = id;
         this.filename = filename;
         this.url = url;
@@ -74,66 +82,74 @@ public class AttachmentArticoloDB {
         this.id = id;
     }
 
+    @NotNull
     public String getFilename() {
         return filename;
     }
 
-    public void setFilename(String filename) {
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setFilename(@NotNull String filename) {
         this.filename = filename;
     }
 
+    @NotNull
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setUrl(@NotNull String url) {
         this.url = url;
     }
 
-    public Integer getFilesize() {
+    public int getFilesize() {
         return filesize;
     }
 
-    public void setFilesize(Integer filesize) {
+    public void setFilesize(int filesize) {
         this.filesize = filesize;
     }
 
-    public Integer getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(Integer state) {
+    public void setState(int state) {
         this.state = state;
     }
 
+    @NotNull
     public java.util.Date getInsertTimestamp() {
         return insertTimestamp;
     }
 
-    public void setInsertTimestamp(java.util.Date insertTimestamp) {
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setInsertTimestamp(@NotNull java.util.Date insertTimestamp) {
         this.insertTimestamp = insertTimestamp;
     }
 
+    @NotNull
     public String getFiletype() {
         return filetype;
     }
 
-    public void setFiletype(String filetype) {
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setFiletype(@NotNull String filetype) {
         this.filetype = filetype;
     }
 
-    public Long getFk_articleId() {
+    public long getFk_articleId() {
         return fk_articleId;
     }
 
-    public void setFk_articleId(Long fk_articleId) {
+    public void setFk_articleId(long fk_articleId) {
         this.fk_articleId = fk_articleId;
     }
 
     /** To-one relationship, resolved on first access. */
     @Generated
     public ArticoloDB getArticoloDB() {
-        Long __key = this.fk_articleId;
+        long __key = this.fk_articleId;
         if (articoloDB__resolvedKey == null || !articoloDB__resolvedKey.equals(__key)) {
             __throwIfDetached();
             ArticoloDBDao targetDao = daoSession.getArticoloDBDao();
@@ -148,9 +164,12 @@ public class AttachmentArticoloDB {
 
     @Generated
     public void setArticoloDB(ArticoloDB articoloDB) {
+        if (articoloDB == null) {
+            throw new DaoException("To-one property 'fk_articleId' has not-null constraint; cannot set to-one to null");
+        }
         synchronized (this) {
             this.articoloDB = articoloDB;
-            fk_articleId = articoloDB == null ? null : articoloDB.getId();
+            fk_articleId = articoloDB.getId();
             articoloDB__resolvedKey = fk_articleId;
         }
     }

@@ -26,8 +26,8 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
         public final static Property Title = new Property(1, String.class, "title", false, "TITLE");
         public final static Property PubDate = new Property(2, java.util.Date.class, "pubDate", false, "PUB_DATE");
         public final static Property InsertTimestamp = new Property(3, java.util.Date.class, "insertTimestamp", false, "INSERT_TIMESTAMP");
-        public final static Property RemoteId = new Property(4, Integer.class, "remoteId", false, "REMOTE_ID");
-        public final static Property RemoteCategoryId = new Property(5, Integer.class, "remoteCategoryId", false, "REMOTE_CATEGORY_ID");
+        public final static Property RemoteId = new Property(4, int.class, "remoteId", false, "REMOTE_ID");
+        public final static Property RemoteCategoryId = new Property(5, int.class, "remoteCategoryId", false, "REMOTE_CATEGORY_ID");
         public final static Property CategoryTitle = new Property(6, String.class, "categoryTitle", false, "CATEGORY_TITLE");
         public final static Property Content = new Property(7, String.class, "content", false, "CONTENT");
         public final static Property Url = new Property(8, String.class, "url", false, "URL");
@@ -47,14 +47,14 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"ARTICOLO_DB\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"TITLE\" TEXT," + // 1: title
-                "\"PUB_DATE\" INTEGER," + // 2: pubDate
-                "\"INSERT_TIMESTAMP\" INTEGER," + // 3: insertTimestamp
-                "\"REMOTE_ID\" INTEGER UNIQUE ," + // 4: remoteId
-                "\"REMOTE_CATEGORY_ID\" INTEGER," + // 5: remoteCategoryId
-                "\"CATEGORY_TITLE\" TEXT," + // 6: categoryTitle
-                "\"CONTENT\" TEXT," + // 7: content
-                "\"URL\" TEXT);"); // 8: url
+                "\"TITLE\" TEXT NOT NULL ," + // 1: title
+                "\"PUB_DATE\" INTEGER NOT NULL ," + // 2: pubDate
+                "\"INSERT_TIMESTAMP\" INTEGER NOT NULL ," + // 3: insertTimestamp
+                "\"REMOTE_ID\" INTEGER NOT NULL UNIQUE ," + // 4: remoteId
+                "\"REMOTE_CATEGORY_ID\" INTEGER NOT NULL ," + // 5: remoteCategoryId
+                "\"CATEGORY_TITLE\" TEXT NOT NULL ," + // 6: categoryTitle
+                "\"CONTENT\" TEXT NOT NULL ," + // 7: content
+                "\"URL\" TEXT NOT NULL );"); // 8: url
     }
 
     /** Drops the underlying database table. */
@@ -71,46 +71,14 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
- 
-        String title = entity.getTitle();
-        if (title != null) {
-            stmt.bindString(2, title);
-        }
- 
-        java.util.Date pubDate = entity.getPubDate();
-        if (pubDate != null) {
-            stmt.bindLong(3, pubDate.getTime());
-        }
- 
-        java.util.Date insertTimestamp = entity.getInsertTimestamp();
-        if (insertTimestamp != null) {
-            stmt.bindLong(4, insertTimestamp.getTime());
-        }
- 
-        Integer remoteId = entity.getRemoteId();
-        if (remoteId != null) {
-            stmt.bindLong(5, remoteId);
-        }
- 
-        Integer remoteCategoryId = entity.getRemoteCategoryId();
-        if (remoteCategoryId != null) {
-            stmt.bindLong(6, remoteCategoryId);
-        }
- 
-        String categoryTitle = entity.getCategoryTitle();
-        if (categoryTitle != null) {
-            stmt.bindString(7, categoryTitle);
-        }
- 
-        String content = entity.getContent();
-        if (content != null) {
-            stmt.bindString(8, content);
-        }
- 
-        String url = entity.getUrl();
-        if (url != null) {
-            stmt.bindString(9, url);
-        }
+        stmt.bindString(2, entity.getTitle());
+        stmt.bindLong(3, entity.getPubDate().getTime());
+        stmt.bindLong(4, entity.getInsertTimestamp().getTime());
+        stmt.bindLong(5, entity.getRemoteId());
+        stmt.bindLong(6, entity.getRemoteCategoryId());
+        stmt.bindString(7, entity.getCategoryTitle());
+        stmt.bindString(8, entity.getContent());
+        stmt.bindString(9, entity.getUrl());
     }
 
     @Override
@@ -121,46 +89,14 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
- 
-        String title = entity.getTitle();
-        if (title != null) {
-            stmt.bindString(2, title);
-        }
- 
-        java.util.Date pubDate = entity.getPubDate();
-        if (pubDate != null) {
-            stmt.bindLong(3, pubDate.getTime());
-        }
- 
-        java.util.Date insertTimestamp = entity.getInsertTimestamp();
-        if (insertTimestamp != null) {
-            stmt.bindLong(4, insertTimestamp.getTime());
-        }
- 
-        Integer remoteId = entity.getRemoteId();
-        if (remoteId != null) {
-            stmt.bindLong(5, remoteId);
-        }
- 
-        Integer remoteCategoryId = entity.getRemoteCategoryId();
-        if (remoteCategoryId != null) {
-            stmt.bindLong(6, remoteCategoryId);
-        }
- 
-        String categoryTitle = entity.getCategoryTitle();
-        if (categoryTitle != null) {
-            stmt.bindString(7, categoryTitle);
-        }
- 
-        String content = entity.getContent();
-        if (content != null) {
-            stmt.bindString(8, content);
-        }
- 
-        String url = entity.getUrl();
-        if (url != null) {
-            stmt.bindString(9, url);
-        }
+        stmt.bindString(2, entity.getTitle());
+        stmt.bindLong(3, entity.getPubDate().getTime());
+        stmt.bindLong(4, entity.getInsertTimestamp().getTime());
+        stmt.bindLong(5, entity.getRemoteId());
+        stmt.bindLong(6, entity.getRemoteCategoryId());
+        stmt.bindString(7, entity.getCategoryTitle());
+        stmt.bindString(8, entity.getContent());
+        stmt.bindString(9, entity.getUrl());
     }
 
     @Override
@@ -172,14 +108,14 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
     public ArticoloDB readEntity(Cursor cursor, int offset) {
         ArticoloDB entity = new ArticoloDB( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // title
-            cursor.isNull(offset + 2) ? null : new java.util.Date(cursor.getLong(offset + 2)), // pubDate
-            cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)), // insertTimestamp
-            cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4), // remoteId
-            cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5), // remoteCategoryId
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // categoryTitle
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // content
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8) // url
+            cursor.getString(offset + 1), // title
+            new java.util.Date(cursor.getLong(offset + 2)), // pubDate
+            new java.util.Date(cursor.getLong(offset + 3)), // insertTimestamp
+            cursor.getInt(offset + 4), // remoteId
+            cursor.getInt(offset + 5), // remoteCategoryId
+            cursor.getString(offset + 6), // categoryTitle
+            cursor.getString(offset + 7), // content
+            cursor.getString(offset + 8) // url
         );
         return entity;
     }
@@ -187,14 +123,14 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
     @Override
     public void readEntity(Cursor cursor, ArticoloDB entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setTitle(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setPubDate(cursor.isNull(offset + 2) ? null : new java.util.Date(cursor.getLong(offset + 2)));
-        entity.setInsertTimestamp(cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)));
-        entity.setRemoteId(cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4));
-        entity.setRemoteCategoryId(cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5));
-        entity.setCategoryTitle(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setContent(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setUrl(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setTitle(cursor.getString(offset + 1));
+        entity.setPubDate(new java.util.Date(cursor.getLong(offset + 2)));
+        entity.setInsertTimestamp(new java.util.Date(cursor.getLong(offset + 3)));
+        entity.setRemoteId(cursor.getInt(offset + 4));
+        entity.setRemoteCategoryId(cursor.getInt(offset + 5));
+        entity.setCategoryTitle(cursor.getString(offset + 6));
+        entity.setContent(cursor.getString(offset + 7));
+        entity.setUrl(cursor.getString(offset + 8));
      }
     
     @Override

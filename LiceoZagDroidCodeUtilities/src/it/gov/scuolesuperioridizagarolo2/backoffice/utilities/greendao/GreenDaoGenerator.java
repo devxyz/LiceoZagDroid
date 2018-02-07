@@ -8,7 +8,7 @@ import org.greenrobot.greendao.generator.*;
  */
 public class GreenDaoGenerator {
     public static void main(String[] args) throws Exception {
-        Schema schema = new Schema(20180201, "it.gov.scuolesuperioridizagarolo.dao");
+        Schema schema = new Schema(20180204, "it.gov.scuolesuperioridizagarolo.dao");
 
         //cache file
         final Entity cacheFile = schema.addEntity("CacheFileDB");
@@ -38,36 +38,36 @@ public class GreenDaoGenerator {
         final Entity articolo = schema.addEntity("ArticoloDB");
         {
             articolo.addIdProperty();
-            articolo.addStringProperty("title");
-            articolo.addDateProperty("pubDate");
-            articolo.addDateProperty("insertTimestamp");
-            articolo.addIntProperty("remoteId").unique();
-            articolo.addIntProperty("remoteCategoryId");
-            articolo.addStringProperty("categoryTitle");
-            articolo.addStringProperty("content");
-            articolo.addStringProperty("url");
+            articolo.addStringProperty("title").notNull();
+            articolo.addDateProperty("pubDate").notNull();
+            articolo.addDateProperty("insertTimestamp").notNull();
+            articolo.addIntProperty("remoteId").unique().notNull();
+            articolo.addIntProperty("remoteCategoryId").notNull();
+            articolo.addStringProperty("categoryTitle").notNull();
+            articolo.addStringProperty("content").notNull();
+            articolo.addStringProperty("url").notNull();
         }
 
         final Entity tag = schema.addEntity("TagArticoloDB");
         {
             tag.addIdProperty();
-            tag.addStringProperty("title");
-            tag.addIntProperty("remoteId").unique();
-            tag.addDateProperty("insertTimestamp");
-            final Property.PropertyBuilder articleId = tag.addLongProperty("fk_articleId").index();
+            tag.addStringProperty("title").notNull();
+            tag.addIntProperty("remoteId").unique().notNull();
+            tag.addDateProperty("insertTimestamp").notNull();
+            final Property.PropertyBuilder articleId = tag.addLongProperty("fk_articleId").index().notNull();
             tag.addToOne(articolo, articleId.getProperty());
         }
 
         final Entity attachment = schema.addEntity("AttachmentArticoloDB");
         {
             attachment.addIdProperty();
-            attachment.addStringProperty("filename");
-            attachment.addStringProperty("url");
-            attachment.addIntProperty("filesize");
-            attachment.addIntProperty("state");
-            attachment.addDateProperty("insertTimestamp");
-            attachment.addStringProperty("filetype");
-            final Property.PropertyBuilder articleId = attachment.addLongProperty("fk_articleId").index();
+            attachment.addStringProperty("filename").notNull();
+            attachment.addStringProperty("url").notNull();
+            attachment.addIntProperty("filesize").notNull();
+            attachment.addIntProperty("state").notNull();
+            attachment.addDateProperty("insertTimestamp").notNull();
+            attachment.addStringProperty("filetype").notNull();
+            final Property.PropertyBuilder articleId = attachment.addLongProperty("fk_articleId").index().notNull();
             attachment.addToOne(articolo, articleId.getProperty());
         }
 

@@ -28,11 +28,11 @@ public class AttachmentArticoloDBDao extends AbstractDao<AttachmentArticoloDB, L
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Filename = new Property(1, String.class, "filename", false, "FILENAME");
         public final static Property Url = new Property(2, String.class, "url", false, "URL");
-        public final static Property Filesize = new Property(3, Integer.class, "filesize", false, "FILESIZE");
-        public final static Property State = new Property(4, Integer.class, "state", false, "STATE");
+        public final static Property Filesize = new Property(3, int.class, "filesize", false, "FILESIZE");
+        public final static Property State = new Property(4, int.class, "state", false, "STATE");
         public final static Property InsertTimestamp = new Property(5, java.util.Date.class, "insertTimestamp", false, "INSERT_TIMESTAMP");
         public final static Property Filetype = new Property(6, String.class, "filetype", false, "FILETYPE");
-        public final static Property Fk_articleId = new Property(7, Long.class, "fk_articleId", false, "FK_ARTICLE_ID");
+        public final static Property Fk_articleId = new Property(7, long.class, "fk_articleId", false, "FK_ARTICLE_ID");
     }
 
     private DaoSession daoSession;
@@ -52,13 +52,13 @@ public class AttachmentArticoloDBDao extends AbstractDao<AttachmentArticoloDB, L
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"ATTACHMENT_ARTICOLO_DB\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"FILENAME\" TEXT," + // 1: filename
-                "\"URL\" TEXT," + // 2: url
-                "\"FILESIZE\" INTEGER," + // 3: filesize
-                "\"STATE\" INTEGER," + // 4: state
-                "\"INSERT_TIMESTAMP\" INTEGER," + // 5: insertTimestamp
-                "\"FILETYPE\" TEXT," + // 6: filetype
-                "\"FK_ARTICLE_ID\" INTEGER);"); // 7: fk_articleId
+                "\"FILENAME\" TEXT NOT NULL ," + // 1: filename
+                "\"URL\" TEXT NOT NULL ," + // 2: url
+                "\"FILESIZE\" INTEGER NOT NULL ," + // 3: filesize
+                "\"STATE\" INTEGER NOT NULL ," + // 4: state
+                "\"INSERT_TIMESTAMP\" INTEGER NOT NULL ," + // 5: insertTimestamp
+                "\"FILETYPE\" TEXT NOT NULL ," + // 6: filetype
+                "\"FK_ARTICLE_ID\" INTEGER NOT NULL );"); // 7: fk_articleId
         // Add Indexes
         db.execSQL("CREATE INDEX " + constraint + "IDX_ATTACHMENT_ARTICOLO_DB_FK_ARTICLE_ID ON \"ATTACHMENT_ARTICOLO_DB\"" +
                 " (\"FK_ARTICLE_ID\");");
@@ -78,41 +78,13 @@ public class AttachmentArticoloDBDao extends AbstractDao<AttachmentArticoloDB, L
         if (id != null) {
             stmt.bindLong(1, id);
         }
- 
-        String filename = entity.getFilename();
-        if (filename != null) {
-            stmt.bindString(2, filename);
-        }
- 
-        String url = entity.getUrl();
-        if (url != null) {
-            stmt.bindString(3, url);
-        }
- 
-        Integer filesize = entity.getFilesize();
-        if (filesize != null) {
-            stmt.bindLong(4, filesize);
-        }
- 
-        Integer state = entity.getState();
-        if (state != null) {
-            stmt.bindLong(5, state);
-        }
- 
-        java.util.Date insertTimestamp = entity.getInsertTimestamp();
-        if (insertTimestamp != null) {
-            stmt.bindLong(6, insertTimestamp.getTime());
-        }
- 
-        String filetype = entity.getFiletype();
-        if (filetype != null) {
-            stmt.bindString(7, filetype);
-        }
- 
-        Long fk_articleId = entity.getFk_articleId();
-        if (fk_articleId != null) {
-            stmt.bindLong(8, fk_articleId);
-        }
+        stmt.bindString(2, entity.getFilename());
+        stmt.bindString(3, entity.getUrl());
+        stmt.bindLong(4, entity.getFilesize());
+        stmt.bindLong(5, entity.getState());
+        stmt.bindLong(6, entity.getInsertTimestamp().getTime());
+        stmt.bindString(7, entity.getFiletype());
+        stmt.bindLong(8, entity.getFk_articleId());
     }
 
     @Override
@@ -123,41 +95,13 @@ public class AttachmentArticoloDBDao extends AbstractDao<AttachmentArticoloDB, L
         if (id != null) {
             stmt.bindLong(1, id);
         }
- 
-        String filename = entity.getFilename();
-        if (filename != null) {
-            stmt.bindString(2, filename);
-        }
- 
-        String url = entity.getUrl();
-        if (url != null) {
-            stmt.bindString(3, url);
-        }
- 
-        Integer filesize = entity.getFilesize();
-        if (filesize != null) {
-            stmt.bindLong(4, filesize);
-        }
- 
-        Integer state = entity.getState();
-        if (state != null) {
-            stmt.bindLong(5, state);
-        }
- 
-        java.util.Date insertTimestamp = entity.getInsertTimestamp();
-        if (insertTimestamp != null) {
-            stmt.bindLong(6, insertTimestamp.getTime());
-        }
- 
-        String filetype = entity.getFiletype();
-        if (filetype != null) {
-            stmt.bindString(7, filetype);
-        }
- 
-        Long fk_articleId = entity.getFk_articleId();
-        if (fk_articleId != null) {
-            stmt.bindLong(8, fk_articleId);
-        }
+        stmt.bindString(2, entity.getFilename());
+        stmt.bindString(3, entity.getUrl());
+        stmt.bindLong(4, entity.getFilesize());
+        stmt.bindLong(5, entity.getState());
+        stmt.bindLong(6, entity.getInsertTimestamp().getTime());
+        stmt.bindString(7, entity.getFiletype());
+        stmt.bindLong(8, entity.getFk_articleId());
     }
 
     @Override
@@ -175,13 +119,13 @@ public class AttachmentArticoloDBDao extends AbstractDao<AttachmentArticoloDB, L
     public AttachmentArticoloDB readEntity(Cursor cursor, int offset) {
         AttachmentArticoloDB entity = new AttachmentArticoloDB( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // filename
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // url
-            cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3), // filesize
-            cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4), // state
-            cursor.isNull(offset + 5) ? null : new java.util.Date(cursor.getLong(offset + 5)), // insertTimestamp
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // filetype
-            cursor.isNull(offset + 7) ? null : cursor.getLong(offset + 7) // fk_articleId
+            cursor.getString(offset + 1), // filename
+            cursor.getString(offset + 2), // url
+            cursor.getInt(offset + 3), // filesize
+            cursor.getInt(offset + 4), // state
+            new java.util.Date(cursor.getLong(offset + 5)), // insertTimestamp
+            cursor.getString(offset + 6), // filetype
+            cursor.getLong(offset + 7) // fk_articleId
         );
         return entity;
     }
@@ -189,13 +133,13 @@ public class AttachmentArticoloDBDao extends AbstractDao<AttachmentArticoloDB, L
     @Override
     public void readEntity(Cursor cursor, AttachmentArticoloDB entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setFilename(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setUrl(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setFilesize(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
-        entity.setState(cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4));
-        entity.setInsertTimestamp(cursor.isNull(offset + 5) ? null : new java.util.Date(cursor.getLong(offset + 5)));
-        entity.setFiletype(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setFk_articleId(cursor.isNull(offset + 7) ? null : cursor.getLong(offset + 7));
+        entity.setFilename(cursor.getString(offset + 1));
+        entity.setUrl(cursor.getString(offset + 2));
+        entity.setFilesize(cursor.getInt(offset + 3));
+        entity.setState(cursor.getInt(offset + 4));
+        entity.setInsertTimestamp(new java.util.Date(cursor.getLong(offset + 5)));
+        entity.setFiletype(cursor.getString(offset + 6));
+        entity.setFk_articleId(cursor.getLong(offset + 7));
      }
     
     @Override
@@ -244,7 +188,9 @@ public class AttachmentArticoloDBDao extends AbstractDao<AttachmentArticoloDB, L
         int offset = getAllColumns().length;
 
         ArticoloDB articoloDB = loadCurrentOther(daoSession.getArticoloDBDao(), cursor, offset);
-        entity.setArticoloDB(articoloDB);
+         if(articoloDB != null) {
+            entity.setArticoloDB(articoloDB);
+        }
 
         return entity;    
     }

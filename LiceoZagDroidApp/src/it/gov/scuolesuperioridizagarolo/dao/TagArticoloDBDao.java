@@ -27,9 +27,9 @@ public class TagArticoloDBDao extends AbstractDao<TagArticoloDB, Long> {
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Title = new Property(1, String.class, "title", false, "TITLE");
-        public final static Property RemoteId = new Property(2, Integer.class, "remoteId", false, "REMOTE_ID");
+        public final static Property RemoteId = new Property(2, int.class, "remoteId", false, "REMOTE_ID");
         public final static Property InsertTimestamp = new Property(3, java.util.Date.class, "insertTimestamp", false, "INSERT_TIMESTAMP");
-        public final static Property Fk_articleId = new Property(4, Long.class, "fk_articleId", false, "FK_ARTICLE_ID");
+        public final static Property Fk_articleId = new Property(4, long.class, "fk_articleId", false, "FK_ARTICLE_ID");
     }
 
     private DaoSession daoSession;
@@ -49,10 +49,10 @@ public class TagArticoloDBDao extends AbstractDao<TagArticoloDB, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"TAG_ARTICOLO_DB\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"TITLE\" TEXT," + // 1: title
-                "\"REMOTE_ID\" INTEGER UNIQUE ," + // 2: remoteId
-                "\"INSERT_TIMESTAMP\" INTEGER," + // 3: insertTimestamp
-                "\"FK_ARTICLE_ID\" INTEGER);"); // 4: fk_articleId
+                "\"TITLE\" TEXT NOT NULL ," + // 1: title
+                "\"REMOTE_ID\" INTEGER NOT NULL UNIQUE ," + // 2: remoteId
+                "\"INSERT_TIMESTAMP\" INTEGER NOT NULL ," + // 3: insertTimestamp
+                "\"FK_ARTICLE_ID\" INTEGER NOT NULL );"); // 4: fk_articleId
         // Add Indexes
         db.execSQL("CREATE INDEX " + constraint + "IDX_TAG_ARTICOLO_DB_FK_ARTICLE_ID ON \"TAG_ARTICOLO_DB\"" +
                 " (\"FK_ARTICLE_ID\");");
@@ -72,26 +72,10 @@ public class TagArticoloDBDao extends AbstractDao<TagArticoloDB, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
- 
-        String title = entity.getTitle();
-        if (title != null) {
-            stmt.bindString(2, title);
-        }
- 
-        Integer remoteId = entity.getRemoteId();
-        if (remoteId != null) {
-            stmt.bindLong(3, remoteId);
-        }
- 
-        java.util.Date insertTimestamp = entity.getInsertTimestamp();
-        if (insertTimestamp != null) {
-            stmt.bindLong(4, insertTimestamp.getTime());
-        }
- 
-        Long fk_articleId = entity.getFk_articleId();
-        if (fk_articleId != null) {
-            stmt.bindLong(5, fk_articleId);
-        }
+        stmt.bindString(2, entity.getTitle());
+        stmt.bindLong(3, entity.getRemoteId());
+        stmt.bindLong(4, entity.getInsertTimestamp().getTime());
+        stmt.bindLong(5, entity.getFk_articleId());
     }
 
     @Override
@@ -102,26 +86,10 @@ public class TagArticoloDBDao extends AbstractDao<TagArticoloDB, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
- 
-        String title = entity.getTitle();
-        if (title != null) {
-            stmt.bindString(2, title);
-        }
- 
-        Integer remoteId = entity.getRemoteId();
-        if (remoteId != null) {
-            stmt.bindLong(3, remoteId);
-        }
- 
-        java.util.Date insertTimestamp = entity.getInsertTimestamp();
-        if (insertTimestamp != null) {
-            stmt.bindLong(4, insertTimestamp.getTime());
-        }
- 
-        Long fk_articleId = entity.getFk_articleId();
-        if (fk_articleId != null) {
-            stmt.bindLong(5, fk_articleId);
-        }
+        stmt.bindString(2, entity.getTitle());
+        stmt.bindLong(3, entity.getRemoteId());
+        stmt.bindLong(4, entity.getInsertTimestamp().getTime());
+        stmt.bindLong(5, entity.getFk_articleId());
     }
 
     @Override
@@ -139,10 +107,10 @@ public class TagArticoloDBDao extends AbstractDao<TagArticoloDB, Long> {
     public TagArticoloDB readEntity(Cursor cursor, int offset) {
         TagArticoloDB entity = new TagArticoloDB( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // title
-            cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2), // remoteId
-            cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)), // insertTimestamp
-            cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4) // fk_articleId
+            cursor.getString(offset + 1), // title
+            cursor.getInt(offset + 2), // remoteId
+            new java.util.Date(cursor.getLong(offset + 3)), // insertTimestamp
+            cursor.getLong(offset + 4) // fk_articleId
         );
         return entity;
     }
@@ -150,10 +118,10 @@ public class TagArticoloDBDao extends AbstractDao<TagArticoloDB, Long> {
     @Override
     public void readEntity(Cursor cursor, TagArticoloDB entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setTitle(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setRemoteId(cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2));
-        entity.setInsertTimestamp(cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)));
-        entity.setFk_articleId(cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4));
+        entity.setTitle(cursor.getString(offset + 1));
+        entity.setRemoteId(cursor.getInt(offset + 2));
+        entity.setInsertTimestamp(new java.util.Date(cursor.getLong(offset + 3)));
+        entity.setFk_articleId(cursor.getLong(offset + 4));
      }
     
     @Override
@@ -202,7 +170,9 @@ public class TagArticoloDBDao extends AbstractDao<TagArticoloDB, Long> {
         int offset = getAllColumns().length;
 
         ArticoloDB articoloDB = loadCurrentOther(daoSession.getArticoloDBDao(), cursor, offset);
-        entity.setArticoloDB(articoloDB);
+         if(articoloDB != null) {
+            entity.setArticoloDB(articoloDB);
+        }
 
         return entity;    
     }

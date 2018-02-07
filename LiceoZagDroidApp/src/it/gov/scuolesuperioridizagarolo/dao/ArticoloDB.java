@@ -12,15 +12,27 @@ public class ArticoloDB {
 
     @Id
     private Long id;
+
+    @NotNull
     private String title;
+
+    @NotNull
     private java.util.Date pubDate;
+
+    @NotNull
     private java.util.Date insertTimestamp;
 
     @Unique
-    private Integer remoteId;
-    private Integer remoteCategoryId;
+    private int remoteId;
+    private int remoteCategoryId;
+
+    @NotNull
     private String categoryTitle;
+
+    @NotNull
     private String content;
+
+    @NotNull
     private String url;
 
     @Generated
@@ -32,7 +44,7 @@ public class ArticoloDB {
     }
 
     @Generated
-    public ArticoloDB(Long id, String title, java.util.Date pubDate, java.util.Date insertTimestamp, Integer remoteId, Integer remoteCategoryId, String categoryTitle, String content, String url) {
+    public ArticoloDB(Long id, String title, java.util.Date pubDate, java.util.Date insertTimestamp, int remoteId, int remoteCategoryId, String categoryTitle, String content, String url) {
         this.id = id;
         this.title = title;
         this.pubDate = pubDate;
@@ -52,67 +64,79 @@ public class ArticoloDB {
         this.id = id;
     }
 
+    @NotNull
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setTitle(@NotNull String title) {
         this.title = title;
     }
 
+    @NotNull
     public java.util.Date getPubDate() {
         return pubDate;
     }
 
-    public void setPubDate(java.util.Date pubDate) {
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setPubDate(@NotNull java.util.Date pubDate) {
         this.pubDate = pubDate;
     }
 
+    @NotNull
     public java.util.Date getInsertTimestamp() {
         return insertTimestamp;
     }
 
-    public void setInsertTimestamp(java.util.Date insertTimestamp) {
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setInsertTimestamp(@NotNull java.util.Date insertTimestamp) {
         this.insertTimestamp = insertTimestamp;
     }
 
-    public Integer getRemoteId() {
+    public int getRemoteId() {
         return remoteId;
     }
 
-    public void setRemoteId(Integer remoteId) {
+    public void setRemoteId(int remoteId) {
         this.remoteId = remoteId;
     }
 
-    public Integer getRemoteCategoryId() {
+    public int getRemoteCategoryId() {
         return remoteCategoryId;
     }
 
-    public void setRemoteCategoryId(Integer remoteCategoryId) {
+    public void setRemoteCategoryId(int remoteCategoryId) {
         this.remoteCategoryId = remoteCategoryId;
     }
 
+    @NotNull
     public String getCategoryTitle() {
         return categoryTitle;
     }
 
-    public void setCategoryTitle(String categoryTitle) {
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setCategoryTitle(@NotNull String categoryTitle) {
         this.categoryTitle = categoryTitle;
     }
 
+    @NotNull
     public String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setContent(@NotNull String content) {
         this.content = content;
     }
 
+    @NotNull
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setUrl(@NotNull String url) {
         this.url = url;
     }
 

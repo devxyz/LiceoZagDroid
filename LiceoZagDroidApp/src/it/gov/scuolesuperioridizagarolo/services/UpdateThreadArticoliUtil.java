@@ -7,6 +7,7 @@ import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.dao.*;
 import it.gov.scuolesuperioridizagarolo.db.ManagerArticolo;
+import it.gov.scuolesuperioridizagarolo.model.C_Pair;
 import it.gov.scuolesuperioridizagarolo.util.C_Base64;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -50,9 +51,35 @@ public class UpdateThreadArticoliUtil {
         final ScuolaAppDbHelperCallable<Integer> saveDB = new ScuolaAppDbHelperCallable<Integer>() {
             @Override
             public Integer call(DaoSession session, Context ctx) throws Throwable {
+
                 ManagerArticolo m = new ManagerArticolo(session);
                 m.removeAllLess(updateThreadContainer.minArticleId);
+                Log.e(UpdateThreadArticoliUtil.class.getName(), "Cancellazione articoli vecchi");
 
+                //crea articoli
+                final ArrayList<ArticoloDB> values = new ArrayList<>(updateThreadContainer.articoliByRemoteId.values());
+                final ArticoloDBDao articoloDBDao = session.getArticoloDBDao();
+                for (ArticoloDB aa : values) {
+                    final long insert = articoloDBDao.insert(aa);
+                }
+                Log.e(UpdateThreadArticoliUtil.class.getName(), "Inserimento articoli");
+
+                //aggiunge i tag
+                final TagArticoloDBDao tagArticoloDBDao = session.getTagArticoloDBDao();
+                for (C_Pair<TagArticoloDB, Integer> tagArticoloDB : updateThreadContainer.tagsByRemoteArticleId) {
+                    final TagArticoloDB a = tagArticoloDB.a;
+                    a.setArticoloDB(updateThreadContainer.articoliByRemoteId.get(tagArticoloDB.b));
+                    tagArticoloDBDao.insert(a);
+
+                    Log.e(UpdateThreadArticoliUtil.class.getName(), "Inserimento tag articoli");}
+
+                //aggiunge i attach
+                final AttachmentArticoloDBDao attachmentArticoloDBDao = session.getAttachmentArticoloDBDao();
+                for (C_Pair<AttachmentArticoloDB, Integer> attachmentArticoloDB : updateThreadContainer.attachmentsListByRemoteArticleId) {
+                    attachmentArticoloDB.a.setArticoloDB(updateThreadContainer.articoliByRemoteId.get(attachmentArticoloDB.b));
+                    attachmentArticoloDBDao.insert(attachmentArticoloDB.a);
+                }
+                Log.e(UpdateThreadArticoliUtil.class.getName(), "Inserimento attachments articoli");
 
                 return null;
             }
@@ -74,12 +101,12 @@ public class UpdateThreadArticoliUtil {
         HttpURLConnection con = (HttpURLConnection) u.openConnection();
         Document doc = dBuilder.parse(new BufferedInputStream(con.getInputStream()));
         con.disconnect();
-        final UpdateThreadContainer ris = parseList(doc);
+        final UpdateThreadContainer ris = parseAndUpdateList(doc);
         return ris;
     }
 
     @SuppressWarnings("ConstantConditions")
-    private static UpdateThreadContainer parseList(Document doc) throws UnsupportedEncodingException {
+    private static UpdateThreadContainer parseAndUpdateList(Document doc) throws UnsupportedEncodingException {
 
         final UpdateThreadContainer ris = new UpdateThreadContainer();
 
@@ -155,8 +182,8 @@ public class UpdateThreadArticoliUtil {
             tt.setInsertTimestamp(new Date());
             tt.setTitle(tag_title);
             tt.setRemoteId(Integer.parseInt(tag_id));
-            tt.setArticoloDB(ris.articoliByRemoteId.get(Integer.parseInt(article_id)));
-            ris.tagsByRemoteId.put(tt.getRemoteId(), tt);
+            //tt.setArticoloDB(ris.articoliByRemoteId.get(Integer.parseInt(article_id)));
+            ris.tagsByRemoteArticleId.add(new C_Pair<>(tt, Integer.parseInt(article_id)));
 
 
             System.out.println(article_id);
@@ -184,8 +211,8 @@ public class UpdateThreadArticoliUtil {
             att.setFilesize(Integer.parseInt(xxxx_filesize));
             att.setState(Integer.parseInt(xxxx_state));
             att.setFiletype(xxxx_filetype);
-            att.setArticoloDB(ris.articoliByRemoteId.get(Integer.parseInt(xxxx_article_id)));
-            ris.attachmentsList.add(att);
+            //att.setArticoloDB(ris.articoliByRemoteId.get(Integer.parseInt(xxxx_article_id)));
+            ris.attachmentsListByRemoteArticleId.add(new C_Pair<>(att, Integer.parseInt(xxxx_article_id)));
 
             System.out.println(xxxx_article_id);
             System.out.println(xxxx_url);
@@ -195,8 +222,8 @@ public class UpdateThreadArticoliUtil {
 
     private static class UpdateThreadContainer {
         final Map<Integer, ArticoloDB> articoliByRemoteId = new TreeMap<>();
-        final Map<Integer, TagArticoloDB> tagsByRemoteId = new TreeMap<>();
-        final List<AttachmentArticoloDB> attachmentsList = new ArrayList<>();
+        final List<C_Pair<TagArticoloDB, Integer>> tagsByRemoteArticleId = new ArrayList<>();
+        final List<C_Pair<AttachmentArticoloDB, Integer>> attachmentsListByRemoteArticleId = new ArrayList<>();
         /**
          * id minimo remoto di articoli (al di sotto del quale gli articoli non vanno piu' considerati)
          */

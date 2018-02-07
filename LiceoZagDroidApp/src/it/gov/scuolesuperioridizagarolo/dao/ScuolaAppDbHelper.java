@@ -16,9 +16,7 @@ public class ScuolaAppDbHelper {
 
     public ScuolaAppDbHelper(Context ctx) {
         this.ctx = ctx;
-        helper = new DaoMaster.DevOpenHelper(ctx, "fermi_tivoli_db", null);
-
-
+        helper = new DaoMaster.DevOpenHelper(ctx, "liceo_zagarolo_db", null);
         SQLiteDatabase db = helper.getWritableDatabase();
         daoMaster = new DaoMaster(db);
         session = daoMaster.newSession();
@@ -41,7 +39,6 @@ public class ScuolaAppDbHelper {
             db.close();
         }
     }
-
 
     public static void runOneTransactionAsync(
             final AbstractActivity ctx,
@@ -145,6 +142,14 @@ public class ScuolaAppDbHelper {
 
         };
         a.execute();
+    }
+
+    public SQLiteDatabase getReadableDatabase() {
+        return helper.getReadableDatabase();
+    }
+
+    public SQLiteDatabase getWritableDatabase() {
+        return helper.getWritableDatabase();
     }
 
     public synchronized void close() {
