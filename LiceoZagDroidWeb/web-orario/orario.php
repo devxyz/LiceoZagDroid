@@ -62,6 +62,7 @@
 $nome_classe = $_GET["classe"];
 $nome_docente = $_GET["docente"];
 $aule_vuote = $_GET["aule_vuote"];
+$variazioni = $_GET["variazioni"];
 ?>
 
 <div class="main">
@@ -77,6 +78,7 @@ $aule_vuote = $_GET["aule_vuote"];
 
 
                         <label for="classe">Classe </label>
+                        <input type="hidden" name="rand" value="<?php echo rand(1,10000);?>">
                         <select id="classe" name="classe">
                             <option value="">Seleziona una classe...</option>
                             <?php
@@ -107,7 +109,8 @@ $aule_vuote = $_GET["aule_vuote"];
 
 
                         <label for="docente">Docente</label>
-                        <select id="docente" name="docente">
+                        <input type="hidden" name="rand" value="<?php echo rand(1,10000);?>">
+                        <select id="docente" name="docente" >
                             <option value="">Seleziona un docente...</option>
                             <?php
                             $dir = "./DOCENTI";
@@ -134,8 +137,12 @@ $aule_vuote = $_GET["aule_vuote"];
                 <center>
 
                     <form action="orario.php" method="get">
+                        <input type="hidden" name="rand" value="<?php echo rand(1,10000);?>">
                         <input type="submit" name="aule_vuote" value="Aule vuote">
-
+                    </form>
+                    <form action="orario.php" method="get">
+                        <input type="hidden" name="rand" value="<?php echo rand(1,10000);?>">
+                        <input type="submit" name="variazioni" value="Variazioni Orario">
                     </form>
                 </center>
 
@@ -170,6 +177,13 @@ $aule_vuote = $_GET["aule_vuote"];
     <?php
     if (strlen($aule_vuote) > 0) {
         $file = file_get_contents("EXTRA/" . "AULE-VUOTE", true);
+        echo $file;
+    }
+    ?>
+
+    <?php
+    if (strlen($variazioni) > 0) {
+        $file = file_get_contents("EXTRA/" . "VARIAZIONI", true);
         echo $file;
     }
     ?>

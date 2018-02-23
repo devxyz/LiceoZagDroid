@@ -1,7 +1,7 @@
 <table cellspacing=0 style='width:100%;table-layout: fixed; border:4px solid black; '>
 <tr style='border:1px solid clack' >
 <td style='border:1px solid black; background-color:blue;color:yellow' colspan='7'>
-<center>Modifiche aule dal 12/02/2018 al 17/02/2018<br><span style='font-size:200%'><b>Classe 5A</b></span></center>
+<center>Modifiche aule dal 19/02/2018 al 24/02/2018<br><span style='font-size:200%'><b>Classe 5A</b></span></center>
 </td>
 </tr>
 <tr>
@@ -24,7 +24,7 @@
 </tr>
 <tr  style='border:1px solid black'>
 <td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>2<br></span> (09:10)</b></td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>TAGLIAFERRI</b></span><br><span style='font-size:150%'>Aula <b>A7</b></span><br><input onclick="javascript:document.getElementById('msg_3').style.display='block' " type='button' style="border:3px solid red; font-size:120% ;padding:5px; margin:5px; background-color:yellow   " value='Dettagli' ><div id ='msg_3' style=' display: none;border:2px solid red;background-color:pink'><hr><i>Orario modificato rispetto all'orario standard LATINO-TAGLIAFERRI (D26) classe:5A</i></i></div></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>TAGLIAFERRI</b></span><br><span style='font-size:150%'>Aula <b>D26</b></span></center></td>
 <td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>MARTELLI</b></span><br><span style='font-size:150%'>Aula <b>D26</b></span></center></td>
 <td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>VITALONE</b></span><br><span style='font-size:150%'>Aula <b>E29</b></span></center></td>
 <td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>CENTRACCHIO</b></span><br><span style='font-size:150%'>Aula <b>F32</b></span></center></td>
@@ -42,12 +42,12 @@
 </tr>
 <tr  style='border:1px solid black'>
 <td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>4<br></span> (11:10)</b></td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>MARTELLI</b></span><br><span style='font-size:150%'>Aula <b>D26</b></span></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>MARTELLI</b></span><br><span style='font-size:150%'>Aula <b>E28</b></span><br><input onclick="javascript:document.getElementById('msg_22').style.display='block' " type='button' style="border:3px solid red; font-size:120% ;padding:5px; margin:5px; background-color:yellow   " value='Dettagli' ><div id ='msg_22' style=' display: none;border:2px solid red;background-color:pink'><hr><i>Orario modificato rispetto all'orario standard FILOSOFIA-MARTELLI (D26) classe:5A</i></i></div></center></td>
 <td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>CERRI</b></span><br><span style='font-size:150%'>Aula <b>D26</b></span></center></td>
 <td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>MONARDO</b></span><br><span style='font-size:150%'>Aula <b>E30</b></span></center></td>
 <td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>SANTORI</b></span><br><span style='font-size:150%'>Aula <b>F31</b></span></center></td>
 <td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>CERRI</b></span><br><span style='font-size:150%'>Aula <b>A7</b></span></center></td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>TAGLIAFERRI</b></span><br><span style='font-size:150%'>Aula <b>E27</b></span><br><input onclick="javascript:document.getElementById('msg_5').style.display='block' " type='button' style="border:3px solid red; font-size:120% ;padding:5px; margin:5px; background-color:yellow   " value='Dettagli' ><div id ='msg_5' style=' display: none;border:2px solid red;background-color:pink'><hr><i>Orario modificato rispetto all'orario standard LATINO-TAGLIAFERRI (D26) classe:5A</i></i></div></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:150%'><b>TAGLIAFERRI</b></span><br><span style='font-size:150%'>Aula <b>E27</b></span><br><input onclick="javascript:document.getElementById('msg_27').style.display='block' " type='button' style="border:3px solid red; font-size:120% ;padding:5px; margin:5px; background-color:yellow   " value='Dettagli' ><div id ='msg_27' style=' display: none;border:2px solid red;background-color:pink'><hr><i>Orario modificato rispetto all'orario standard LATINO-TAGLIAFERRI (D26) classe:5A</i></i></div></center></td>
 </tr>
 <tr  style='border:1px solid black'>
 <td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>5<br></span> (12:10)</b></td>
