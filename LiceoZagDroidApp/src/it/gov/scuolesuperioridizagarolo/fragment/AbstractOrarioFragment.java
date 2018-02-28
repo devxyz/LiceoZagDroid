@@ -293,7 +293,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
     protected abstract boolean isTimetableForRooms();
 
     private void onSelectRow(int position) {
-        final BitOrarioOraLezione item = orarioAdapter.getItem(position);
+        final BitOrarioOraLezione item = orarioAdapter.getItem(position).lezione;
 
 
         final String choose_orario_docente_principale = "Orario del docente " + (item == null ? "" : item.getDocentePrincipale());

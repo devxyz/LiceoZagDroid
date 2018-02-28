@@ -3,6 +3,7 @@ package it.gov.scuolesuperioridizagarolo.adapter;
 import android.app.Activity;
 import dada.bitorario.data.BitOrarioGrigliaOrario;
 import dada.bitorario.data.BitOrarioOraLezione;
+import dada.bitorario.data.enum_values.EGiorno;
 import dada.bitorario.data.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
 import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
@@ -31,16 +32,13 @@ public class OrarioAulaListAdapter extends AbstractOrarioListAdapter {
 
 
     @Override
-    public BitOrarioOraLezione getItem(BitOrarioGrigliaOrario o, int position) {
-        int ora = position;
-        //lezione
-        final EOra ora1 = EOra.values()[ora];
-        final List<BitOrarioOraLezione> lezioneInClasse = o.getLezioneInAula(ora1, giorno.getGiorno(), aula);
-        if (lezioneInClasse.size()==0)return null;
-        if (lezioneInClasse.size()==1)return lezioneInClasse.get(0);
+    public List<BitOrarioOraLezione> getItem(BitOrarioGrigliaOrario o, EGiorno giorno, EOra ora) {
 
-        //@todo completare???
-        return null;// lezioneInClasse;
+        final List<BitOrarioOraLezione> lezioneInClasse = o.getLezioneInAula(ora, giorno, aula);
+        if (lezioneInClasse.size() == 0) {
+            lezioneInClasse.add(null);
+        }
+        return lezioneInClasse;
     }
 
 
