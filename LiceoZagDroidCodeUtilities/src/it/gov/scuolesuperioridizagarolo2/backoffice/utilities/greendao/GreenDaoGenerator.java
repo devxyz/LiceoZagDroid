@@ -8,7 +8,7 @@ import org.greenrobot.greendao.generator.*;
  */
 public class GreenDaoGenerator {
     public static void main(String[] args) throws Exception {
-        Schema schema = new Schema(20180204, "it.gov.scuolesuperioridizagarolo.dao");
+        Schema schema = new Schema(20180228, "it.gov.scuolesuperioridizagarolo.dao");
 
         //cache file
         final Entity cacheFile = schema.addEntity("CacheFileDB");
@@ -26,7 +26,7 @@ public class GreenDaoGenerator {
             timetableFile.addIdProperty().autoincrement();
             timetableFile.addStringProperty("url").notNull().unique().index();
             timetableFile.addLongProperty("remoteId").notNull().unique().index();
-            timetableFile.addDateProperty("createDate").notNull().unique().index();
+            timetableFile.addDateProperty("createDate").notNull().index();
             timetableFile.addStringProperty("filename").notNull().unique().index();
             timetableFile.addDateProperty("startDate").notNull();
             timetableFile.addDateProperty("endDate").notNull();
@@ -41,18 +41,27 @@ public class GreenDaoGenerator {
             articolo.addStringProperty("title").notNull();
             articolo.addDateProperty("pubDate").notNull();
             articolo.addDateProperty("insertTimestamp").notNull();
-            articolo.addIntProperty("remoteId").unique().notNull();
+            articolo.addIntProperty("remoteId").unique().notNull().index();
             articolo.addIntProperty("remoteCategoryId").notNull();
             articolo.addStringProperty("categoryTitle").notNull();
             articolo.addStringProperty("content").notNull();
+            articolo.addStringProperty("words").notNull();
             articolo.addStringProperty("url").notNull();
+            articolo.addStringProperty("keywords").notNull()
+                    .customType("it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDB_Keywords", "it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDB_KeywordsConverter");
+            articolo.addStringProperty("circolareNumber");
+
+
+            articolo.addStringProperty("type").notNull()
+                    .customType("it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDB_Type", "it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDB_TypeConverter");
+            articolo.addDateProperty("date");
         }
 
         final Entity tag = schema.addEntity("TagArticoloDB");
         {
             tag.addIdProperty();
-            tag.addStringProperty("title").notNull();
-            tag.addIntProperty("remoteId").unique().notNull();
+            tag.addStringProperty("tag").notNull();
+            tag.addIntProperty("remoteTagId").notNull().index();
             tag.addDateProperty("insertTimestamp").notNull();
             final Property.PropertyBuilder articleId = tag.addLongProperty("fk_articleId").index().notNull();
             tag.addToOne(articolo, articleId.getProperty());

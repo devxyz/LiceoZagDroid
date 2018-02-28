@@ -23,7 +23,7 @@ public class ItalianWordSplit {
     private static final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     private static final Calendar c = Calendar.getInstance();
 
-    private static String normalize(Token t) {
+    public static String normalize(Token t) {
         switch (t.kind) {
             case WordParserConstants.DATA: {
                 String n = t.image.toLowerCase()
@@ -40,6 +40,7 @@ public class ItalianWordSplit {
                         .replace("novembre", "11")
                         .replace("dicembre", "12")
                         .replace("-", "/")
+                        .replace(".", "/")
                         .replaceAll("[ /-]+", "/");
                 String[] s = n.split("/");
 
@@ -53,26 +54,37 @@ public class ItalianWordSplit {
                 return formatter.format(c.getTime()) + "(#DATA)";
             }
             case WordParserConstants.CLASSE: {
-                return t.image.toUpperCase().replace(" ", "") + "(#CLASSE)";
+                return t.image.toUpperCase()
+                        .replace(" ", "")
+                        .replace("I", "1")
+                        .replace("II", "2")
+                        .replace("III", "3")
+                        .replace("IV", "4")
+                        .replace("V", "5")
+                        +
+                        "(#CLASSE)";
                 /*return "#CLASSE_"+t.image.toUpperCase().replace(" ", "") ;*/
             }
             case WordParserConstants.NUMERO: {
-                return null;//"classe:" + t.image.toUpperCase().replace(" ", "");
+                return t.image;//"classe:" + t.image.toUpperCase().replace(" ", "");
             }
             case WordParserConstants.CIRCOLARE: {
-                return null;// "circolare:" + t.image.toLowerCase();
+                final String[] split = t.image.split("[ :.]");
+                return (split[split.length - 1].toLowerCase().trim() + "(#CIRCOLARE)");// "circolare:" + t.image.toLowerCase();
             }
             default:
                 if (t.image.length() <= 3) return null;
-                return t.image.toLowerCase();
+                return t.image.toLowerCase().trim();
 
         }
     }
 
+    @Deprecated
     public static TreeSet<TermineInfoWeb> parseWords(String... ss) {
         return parseWords(Arrays.asList(ss));
     }
 
+    @Deprecated
     public static Set<String> estraiRadiciTermini(Collection<String> termini) {
         ItalianStemmer it = new ItalianStemmer();
         Set<String> ris = new TreeSet<String>();
@@ -82,6 +94,7 @@ public class ItalianWordSplit {
         return ris;
     }
 
+    @Deprecated
     public static TreeSet<TermineInfoWeb> parseWords(Collection<String> ss) {
         final StringBuffer sb = new StringBuffer();
         for (String s : ss) {
@@ -117,41 +130,60 @@ public class ItalianWordSplit {
         return new TreeSet<TermineInfoWeb>(ris.values());
     }
 
-    public static void main(String[] args) throws ParseException {
-        String s = "MINISTERO DELL’ISTRUZIONE, DELL’UNIVERSITÀ E DELLA RICERCA\n" +
-                " UFFICIO SCOLASTICO REGIONALE PER IL LAZIO\n" +
-                " ISTITUTO TECNICO COMMERCIALE E PER GEOMETRI “E. FERMI”\n" +
-                "Ai tutti i docenti\n" +
-                "Circolare n.249 del 16-06-2015\n" +
-                "OGGETTO: disponibilità corsi di recupero\n" +
-                "Tutti i docenti che si rendono disponibili per i corsi di recupero estivi, devono darne comunicazioni inviando una\n" +
-                "e-mail all’indirizzo istituzionale rmtd07000g@istruzione.it entro il 19/06/2015\n" +
-                "Il Dirigente scolastico\n" +
-                "Prof.ssa Laura Maria Giovannelli\n" +
-                "Powered by TCPDF (www.tcpdf.org)\n" +
-                "Via Acquaregna, 112 - 00019 TIVOLI Tel.06/121126986 06/121126985 Fax 0774/334373\n" +
-                "C.F. 86000020585 - Cod. Ist.RMTD07000G - Distretto scol. 34\n" +
-                "WEB: www.fermitivoli.gov.it - EMAIL: rmtd07000g@istruzione.it - PEC: rmtd07000g@pec.istruzione.it";
-        TreeSet<TermineInfoWeb> ris = parseWords(s);
-
-        for (TermineInfoWeb r : ris) {
-            System.out.println(r);
-        }
-        /*
-
-        WordParser parser = new WordParser(new StringReader(s));
+    public static ArrayList<Token> parseTextAsToken(String s) {
+        ArrayList<Token> ris = new ArrayList<>();
+        final WordParser parser = new WordParser(new StringReader(s));
         Token nextToken;
         do {
             nextToken = parser.getNextToken();
-            if (nextToken.kind != WordParserConstants.ALTRO)
-                System.out.println(nextToken);
+            ris.add(nextToken);
         } while (nextToken.kind != WordParserConstants.EOF);
-        System.out.println(nextToken);
-*/
+        return ris;
+    }
+
+    public static ArrayList<String> parseTextNormalized(String s) {
+        ArrayList<String> ris = new ArrayList<>();
+        final WordParser parser = new WordParser(new StringReader(s));
+        Token nextToken;
+        do {
+            nextToken = parser.getNextToken();
+            String normalize = nextToken.image;
+            if (normalize != null) {
+                ris.add(normalize);
+            }
+        } while (nextToken.kind != WordParserConstants.EOF);
+        return ris;
+    }
+
+    public static void main(String[] args) throws ParseException {
+        String s = "Circolare n.150 - 23.02.2018 - rettifica orario consigli delle classi quinte - 27.02.2018\n" +
+                "CIRCOLARE SCOLASTICA RISERVATA AL PERSONALE DOCENTE\n" +
+                "\n" +
+                "Circolare n.: 150\n" +
+                "\n" +
+                "Data di pubblicazione: 23/02/2018\n" +
+                "\n" +
+                "Oggetto: Rettifica orario consigli delle classi quinte - 27.02.2018\n" +
+                "\n" +
+                "Periodo: 27.02.2018";
+
+        ArrayList<String> ris = new ArrayList<>();
+        final WordParser parser = new WordParser(new StringReader(s));
+        Token nextToken;
+        do {
+            nextToken = parser.getNextToken();
+            String normalize = nextToken.image;
+            if (normalize != null) {
+                ris.add(normalize);
+                System.out.println(normalize + " " + WordParserConstants.tokenImage[nextToken.kind] + "   " + normalize(nextToken));
+            }
+        } while (nextToken.kind != WordParserConstants.EOF);
+
 
     }
 
     @Deprecated
+
     public static String extractTextPdf(File f) throws IOException {
         StringBuffer sb = new StringBuffer();
         InputStream in = new BufferedInputStream(new FileInputStream(f));

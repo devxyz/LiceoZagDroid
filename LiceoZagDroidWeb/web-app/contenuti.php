@@ -140,7 +140,7 @@ echo "</tags>\n";
 //=========================================================================================
 
 echo "<attachments>\n";
-$sql="SELECT filename, url, file_size,file_type,state,parent_id ".
+$sql="SELECT filename, url, file_size,file_type,access,parent_id ".
 " FROM jhost_attachments".
 " WHERE parent_entity='article' and parent_id in (".$sql_subselection_id_article.")";
 echo "<debug>sql attachment: <![CDATA[".$sql."]]></debug>\n";
@@ -156,7 +156,7 @@ if ($result->num_rows > 0) {
     	echo "  <attachment-url><![CDATA[http://www.scuolesuperioridizagarolo.gov.it/pasw4/" . $row["url"]. "]]></attachment-url>\n";
     	echo "  <attachment-filesize>" . $row["file_size"]. "</attachment-filesize>\n";
     	echo "  <attachment-filetype>" . $row["file_type"]. "</attachment-filetype>\n";
-    	echo "  <attachment-state>" . $row["state"]. "</attachment-state>\n";
+    	echo "  <attachment-access>" . $row["access"]. "</attachment-access>\n";
     	echo "  <attachment-article-id>" . $row["parent_id"]. "</attachment-article-id>\n";
 
 

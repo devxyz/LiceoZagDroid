@@ -27,6 +27,14 @@
         <item>END-ITEM</item>
 
 
+        <item>Orario Aule</item>
+        <item>Orario Aule</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioAulaNonPersistenteFragment</item>
+        <item>@drawable/_menu_room_timetable_48x48</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
+
+
         <item>R.E. Famiglie</item>
         <item>Registro elettronico famiglie</item>
         <item>it.gov.scuolesuperioridizagarolo.action.ReStudentiAction</item>

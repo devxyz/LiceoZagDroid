@@ -35,11 +35,13 @@ public interface WordParserConstants {
   /** RegularExpression Id. */
   int CIRCOLARE = 26;
   /** RegularExpression Id. */
-  int EMAIL = 27;
+  int AVVISO = 27;
   /** RegularExpression Id. */
-  int PAROLA = 28;
+  int EMAIL = 28;
   /** RegularExpression Id. */
-  int ALTRO = 29;
+  int PAROLA = 29;
+  /** RegularExpression Id. */
+  int ALTRO = 30;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -73,6 +75,7 @@ public interface WordParserConstants {
     "<NUMERO>",
     "<TELEFONO>",
     "<CIRCOLARE>",
+    "<AVVISO>",
     "<EMAIL>",
     "<PAROLA>",
     "<ALTRO>",

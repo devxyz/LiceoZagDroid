@@ -23,7 +23,6 @@ public class TimetableDB {
     private long remoteId;
 
     @NotNull
-    @Unique
     @Index
     private java.util.Date createDate;
 

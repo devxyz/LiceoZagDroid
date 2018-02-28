@@ -3,6 +3,7 @@ package it.gov.scuolesuperioridizagarolo.model;
 /**
  * Descrizione delle foto
  */
+@Deprecated
 public class PhotoFermiDescription {
     public final String category;
     public final String description;

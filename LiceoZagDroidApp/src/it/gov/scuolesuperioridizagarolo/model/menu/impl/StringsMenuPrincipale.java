@@ -82,6 +82,13 @@ it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteNonPersistenteFragment.cl
 R.drawable._menu_teaching_48x48,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteNonPersistenteFragment.class),
 new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM, DataMenuInfoFlag.SHOW_STUDENTI, DataMenuInfoFlag.SHOW_ATA) ));
+     public static final DataMenuInfo ORARIO_AULE= new DataMenuInfo(
+"Orario Aule",
+"Orario Aule",
+it.gov.scuolesuperioridizagarolo.fragment.OrarioAulaNonPersistenteFragment.class,
+R.drawable._menu_room_timetable_48x48,
+DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioAulaNonPersistenteFragment.class),
+new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM, DataMenuInfoFlag.SHOW_ATA, DataMenuInfoFlag.SHOW_DOCENTI, DataMenuInfoFlag.SHOW_STUDENTI) ));
      public static final DataMenuInfo AULE_LIBERE= new DataMenuInfo(
 "Aule Libere",
 "Aule Libere",

@@ -18,6 +18,7 @@ public class WordParser implements WordParserConstants {
       case DATA:
       case CLASSE:
       case CIRCOLARE:
+      case AVVISO:
       case EMAIL:
       case PAROLA:
       case ALTRO:{
@@ -49,6 +50,10 @@ public class WordParser implements WordParserConstants {
         jj_consume_token(CIRCOLARE);
         break;
         }
+      case AVVISO:{
+        jj_consume_token(AVVISO);
+        break;
+        }
       case EMAIL:{
         jj_consume_token(EMAIL);
         break;
@@ -77,7 +82,7 @@ public class WordParser implements WordParserConstants {
       jj_la1_init_0();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x3cc00000,0x3cc00000,};
+      jj_la1_0 = new int[] {0x7cc00000,0x7cc00000,};
    }
 
   /** Constructor with InputStream. */
@@ -194,7 +199,7 @@ public class WordParser implements WordParserConstants {
   /** Generate ParseException. */
   public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[30];
+    boolean[] la1tokens = new boolean[31];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
@@ -208,7 +213,7 @@ public class WordParser implements WordParserConstants {
         }
       }
     }
-    for (int i = 0; i < 30; i++) {
+    for (int i = 0; i < 31; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

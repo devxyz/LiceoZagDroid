@@ -6,8 +6,10 @@ import dada.bitorario.util.XmlUtil;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.dao.*;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDB_Keywords;
 import it.gov.scuolesuperioridizagarolo.db.ManagerArticolo;
 import it.gov.scuolesuperioridizagarolo.model.C_Pair;
+import it.gov.scuolesuperioridizagarolo.parser.ItalianWordSplit;
 import it.gov.scuolesuperioridizagarolo.util.C_Base64;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -52,6 +54,7 @@ public class UpdateThreadArticoliUtil {
             @Override
             public Integer call(DaoSession session, Context ctx) throws Throwable {
 
+                //rimuove articoli vecchi
                 ManagerArticolo m = new ManagerArticolo(session);
                 m.removeAllLess(updateThreadContainer.minArticleId);
                 Log.e(UpdateThreadArticoliUtil.class.getName(), "Cancellazione articoli vecchi");
@@ -71,7 +74,8 @@ public class UpdateThreadArticoliUtil {
                     a.setArticoloDB(updateThreadContainer.articoliByRemoteId.get(tagArticoloDB.b));
                     tagArticoloDBDao.insert(a);
 
-                    Log.e(UpdateThreadArticoliUtil.class.getName(), "Inserimento tag articoli");}
+                    Log.e(UpdateThreadArticoliUtil.class.getName(), "Inserimento tag articoli");
+                }
 
                 //aggiunge i attach
                 final AttachmentArticoloDBDao attachmentArticoloDBDao = session.getAttachmentArticoloDBDao();
@@ -154,6 +158,8 @@ public class UpdateThreadArticoliUtil {
 
             ris.articoliByRemoteId.put(aa.getRemoteId(), aa);
 
+            final ArrayList<String> strings = ItalianWordSplit.parseTextNormalized(aa.getTitle() + " " + aa.getContent());
+            aa.setKeywords(new ArticoloDB_Keywords(strings));
 
             System.out.println(article_id);
             System.out.println(article_title);
@@ -180,8 +186,8 @@ public class UpdateThreadArticoliUtil {
             final String tag_title = XmlUtil.searchFirstByTagName(a.getChildNodes(), "tag-title").getTextContent().trim();
 
             tt.setInsertTimestamp(new Date());
-            tt.setTitle(tag_title);
-            tt.setRemoteId(Integer.parseInt(tag_id));
+            tt.setTag(tag_title);
+            tt.setRemoteTagId(Integer.parseInt(tag_id));
             //tt.setArticoloDB(ris.articoliByRemoteId.get(Integer.parseInt(article_id)));
             ris.tagsByRemoteArticleId.add(new C_Pair<>(tt, Integer.parseInt(article_id)));
 
@@ -202,8 +208,9 @@ public class UpdateThreadArticoliUtil {
             final String xxxx_url = (XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-url").getTextContent().trim()).replace(" ", "%20");
             final String xxxx_filesize = XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-filesize").getTextContent().trim();
             final String xxxx_filetype = XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-filetype").getTextContent().trim();
-            final String xxxx_state = XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-state").getTextContent().trim();
+            final String xxxx_state = XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-access").getTextContent().trim();
             final String xxxx_article_id = XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-article-id").getTextContent().trim();
+
 
             att.setInsertTimestamp(new Date());
             att.setUrl(xxxx_url);

@@ -290,6 +290,8 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
 
     protected abstract boolean isTimetableForStudents();
 
+    protected abstract boolean isTimetableForRooms();
+
     private void onSelectRow(int position) {
         final BitOrarioOraLezione item = orarioAdapter.getItem(position);
 
@@ -297,6 +299,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         final String choose_orario_docente_principale = "Orario del docente " + (item == null ? "" : item.getDocentePrincipale());
         final String choose_orario_docente_compresenza = "Orario del docente in compresenza " + (item == null ? "" : item.getDocenteCompresenza());
         final String choose_orario_classe = "Orario della classe " + (item == null ? "" : item.getClasse());
+        final String choose_orario_aula = "Orario aula " + (item == null || item.getNomeAula() == null ? "" : item.getNomeAula());
         final String choose_informazioni_aula = "Informazioni " + (item == null || item.getNomeAula() == null ? "sulla lezione" : "sull'aula " + item.getNomeAula());
         final String details = orarioAdapter.getDetails(position);
         ArrayList<String> funzioni = new ArrayList<>();
@@ -309,6 +312,9 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         }
         if (!this.isTimetableForStudents() && item != null && item.getClasse() != null && wrapperParameter.getNavigateFlag()) {
             funzioni.add(choose_orario_classe);
+        }
+        if (!this.isTimetableForRooms() && item != null && item.getNomeAula() != null && wrapperParameter.getNavigateFlag()) {
+            funzioni.add(choose_orario_aula);
         }
         if (details != null) {
             funzioni.add(choose_informazioni_aula);
@@ -356,6 +362,16 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                             w.setFiltro(item.getDocenteCompresenza());
                             w.setNavigateFlag(false);
                             getMainActivity().doAction(orarioClassi, w.getBundle());
+                        }
+                    } else if (fun[which].equals(choose_orario_aula)) {
+                        if (item != null) {
+                            final DataMenuInfo orarioAule = StringsMenuPrincipale.ORARIO_AULE;
+                            OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
+                            w.setPersistFlag(false);
+                            w.setData(giornoCorrente);
+                            w.setFiltro(item.getNomeAula());
+                            w.setNavigateFlag(false);
+                            getMainActivity().doAction(orarioAule, w.getBundle());
                         }
                     } else {
                         dialog.dismiss();

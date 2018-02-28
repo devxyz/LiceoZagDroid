@@ -40,6 +40,11 @@ public class OrarioDocenteNonPersistenteFragment extends AbstractOrarioFragment<
     }
 
     @Override
+    protected boolean isTimetableForRooms() {
+        return false;
+    }
+
+    @Override
     protected boolean normalizeFilterName() {
         return true;
     }

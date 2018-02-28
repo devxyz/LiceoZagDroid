@@ -48,7 +48,7 @@ public class TimetableDBDao extends AbstractDao<TimetableDB, Long> {
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"URL\" TEXT NOT NULL UNIQUE ," + // 1: url
                 "\"REMOTE_ID\" INTEGER NOT NULL UNIQUE ," + // 2: remoteId
-                "\"CREATE_DATE\" INTEGER NOT NULL UNIQUE ," + // 3: createDate
+                "\"CREATE_DATE\" INTEGER NOT NULL ," + // 3: createDate
                 "\"FILENAME\" TEXT NOT NULL UNIQUE ," + // 4: filename
                 "\"START_DATE\" INTEGER NOT NULL ," + // 5: startDate
                 "\"END_DATE\" INTEGER NOT NULL ," + // 6: endDate

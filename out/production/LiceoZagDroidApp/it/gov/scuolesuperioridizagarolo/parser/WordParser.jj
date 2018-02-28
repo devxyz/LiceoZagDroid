@@ -49,7 +49,7 @@ options {
 }
 
 PARSER_BEGIN(WordParser)
-package it.gov.fermitivoli.parser.impl;
+package it.gov.scuolesuperioridizagarolo.parser.impl;
 
 /** Simple brace matcher. */
 public class WordParser {
@@ -98,19 +98,20 @@ TOKEN :
   |
   <#NUMBER_4cifre: ["0"-"9"]["0"-"9"]["0"-"9"]["0"-"9"]>
   |
-  <#TEMPLATE_DATA:  (<NUMBER_1_2cifre>(["-","/"," ",","])+<NUMBER_1_2cifre>(["-","/"," ",","])+<NUMBER_4cifre>)
-
-          |(<NUMBER_1_2cifre>(["-","/"," ",","])+<MESE>(["-","/"," ",","])+<NUMBER_4cifre>)>
+  <#TEMPLATE_DATA:
+            (<NUMBER_1_2cifre>(["-","/"," ",".",","])+<NUMBER_1_2cifre>(["-","/"," ",".",","])+<NUMBER_4cifre>)
+            |(<NUMBER_1_2cifre>(["-","/"," ",".",","])+<MESE>(["-","/"," ",".",","])+<NUMBER_4cifre>)>
   |
-  <DATA:  <TEMPLATE_DATA>
-  >
+  <DATA:  <TEMPLATE_DATA>  >
   |
   <CLASSE:
-        ["1"-"5"]([" "])?["A"-"Q"]
+        ["1"-"5"]([" "])?["A"-"H"]|
+        ["I","II","III","IV","V"]([" "])?["A"-"H"]
+
   >
   |
   <NUMERO:
-        (["1"-"5"])+
+        (["0"-"9"])+
   >
   |
   <TELEFONO:
@@ -118,9 +119,12 @@ TOKEN :
   >
   |
   <CIRCOLARE:
-        ("Circolare" <BLANK_MULTIPLI> "n" ([" ","\t","\n","."])+  (["0"-"9"])+ <BLANK_MULTIPLI> ("del")  <BLANK_MULTIPLI> <TEMPLATE_DATA>)
+        ("Circolare" <BLANK_MULTIPLI> "n" ([" ","\t","\n",".",":"])+  (["0"-"9"])+)
+  >
   |
-        ("avviso" <BLANK_MULTIPLI> "n" ([" ","\t","\n","."])+  (["0"-"9"])+ <BLANK_MULTIPLI> ("del")  <BLANK_MULTIPLI> <TEMPLATE_DATA>)
+  <AVVISO:
+
+        ("avviso" <BLANK_MULTIPLI> (["0"-"9"])+)
   >
   |
   <EMAIL:
@@ -141,5 +145,5 @@ TOKEN :
 public void Input() :
 {}
 {
-  (<DATA>|<PAROLA>|<ALTRO>|<CLASSE>|<CIRCOLARE>|<EMAIL>)* <EOF>
+  (<DATA>|<PAROLA>|<ALTRO>|<CLASSE>|<CIRCOLARE>|<AVVISO>|<EMAIL>)* <EOF>
 }

@@ -10,6 +10,7 @@ import java.util.Set;
 /**
  * Created by stefano on 01/08/15.
  */
+@Deprecated
 public class CircolariContainerByDate {
     private final List<CircolareDB> listaCircolari;
     private final Map<C_MyDate, Set<CircolareDB>> circolariByDataApplicazione;

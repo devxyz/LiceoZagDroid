@@ -17,10 +17,10 @@ public class TagArticoloDB {
     private Long id;
 
     @NotNull
-    private String title;
+    private String tag;
 
-    @Unique
-    private int remoteId;
+    @Index
+    private int remoteTagId;
 
     @NotNull
     private java.util.Date insertTimestamp;
@@ -51,10 +51,10 @@ public class TagArticoloDB {
     }
 
     @Generated
-    public TagArticoloDB(Long id, String title, int remoteId, java.util.Date insertTimestamp, long fk_articleId) {
+    public TagArticoloDB(Long id, String tag, int remoteTagId, java.util.Date insertTimestamp, long fk_articleId) {
         this.id = id;
-        this.title = title;
-        this.remoteId = remoteId;
+        this.tag = tag;
+        this.remoteTagId = remoteTagId;
         this.insertTimestamp = insertTimestamp;
         this.fk_articleId = fk_articleId;
     }
@@ -75,21 +75,21 @@ public class TagArticoloDB {
     }
 
     @NotNull
-    public String getTitle() {
-        return title;
+    public String getTag() {
+        return tag;
     }
 
     /** Not-null value; ensure this value is available before it is saved to the database. */
-    public void setTitle(@NotNull String title) {
-        this.title = title;
+    public void setTag(@NotNull String tag) {
+        this.tag = tag;
     }
 
-    public int getRemoteId() {
-        return remoteId;
+    public int getRemoteTagId() {
+        return remoteTagId;
     }
 
-    public void setRemoteId(int remoteId) {
-        this.remoteId = remoteId;
+    public void setRemoteTagId(int remoteTagId) {
+        this.remoteTagId = remoteTagId;
     }
 
     @NotNull

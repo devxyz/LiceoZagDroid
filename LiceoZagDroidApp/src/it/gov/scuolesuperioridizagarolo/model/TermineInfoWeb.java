@@ -3,6 +3,7 @@ package it.gov.scuolesuperioridizagarolo.model;
 /**
  * Created by stefano on 25/06/15.
  */
+@Deprecated
 public class TermineInfoWeb implements Comparable<TermineInfoWeb> {
     private final String termine;
     private int occorrenze;
