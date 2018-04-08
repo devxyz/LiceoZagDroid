@@ -14,8 +14,8 @@ import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.dialog.DialogProdottiBarQrCode;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_prodotti_bar_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
-import it.gov.scuolesuperioridizagarolo.model.ProdottoBar;
-import it.gov.scuolesuperioridizagarolo.model.ProdottoBarContainer;
+import it.gov.scuolesuperioridizagarolo.model.bar.ProdottoBar;
+import it.gov.scuolesuperioridizagarolo.model.bar.ProdottoBarContainer;
 import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:orientation="horizontal">
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@color/color_blue_chiaro" android:padding="5dp"
+            android:gravity="center_horizontal">
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Millozzi"
+                android:id="@+id/button_filtro"
+                android:drawableLeft="@drawable/_menu_student_48x48"
+                android:drawablePadding="10dp"
+                android:background="@drawable/background_pulsante_celeste_bianco" android:paddingLeft="10dp"
+                android:paddingRight="10dp" android:paddingBottom="5dp" android:paddingTop="5dp"
+                android:minWidth="150dp"/>
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Giorno"
+                android:id="@+id/button_giorno"
+                android:drawableLeft="@drawable/button_calendario_48x48"
+                android:drawablePadding="10dp"
+                android:background="@drawable/background_pulsante_celeste_bianco" android:paddingLeft="10dp"
+                android:paddingRight="10dp" android:paddingBottom="5dp" android:paddingTop="5dp"
+                android:layout_marginTop="10dp" android:minWidth="150dp"/>
+    </LinearLayout>
+    <ListView
+            android:id="@+id/listView"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:divider="#aaaaaa"
+            android:dividerHeight="1dp"
+            android:childDivider="@color/color_black"
+
+            android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:layout_marginBottom="5dp"
+    >
+
+    </ListView>
+</LinearLayout>

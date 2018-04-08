@@ -5,6 +5,7 @@ import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
 import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
 import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
 import it.gov.scuolesuperioridizagarolo.model.TermineInfoWeb;
+import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloTypeCircolare;
 import it.gov.scuolesuperioridizagarolo.parser.impl.ParseException;
 import it.gov.scuolesuperioridizagarolo.parser.impl.Token;
 import it.gov.scuolesuperioridizagarolo.parser.impl.WordParser;
@@ -69,8 +70,10 @@ public class ItalianWordSplit {
                 return t.image;//"classe:" + t.image.toUpperCase().replace(" ", "");
             }
             case WordParserConstants.CIRCOLARE: {
-                final String[] split = t.image.split("[ :.]");
-                return (split[split.length - 1].toLowerCase().trim() + "(#CIRCOLARE)");// "circolare:" + t.image.toLowerCase();
+                return t.image;
+            }
+            case WordParserConstants.ALTRO: {
+                return t.image;
             }
             default:
                 if (t.image.length() <= 3) return null;
@@ -156,28 +159,45 @@ public class ItalianWordSplit {
     }
 
     public static void main(String[] args) throws ParseException {
-        String s = "Circolare n.150 - 23.02.2018 - rettifica orario consigli delle classi quinte - 27.02.2018\n" +
+        String xx =
+
                 "CIRCOLARE SCOLASTICA RISERVATA AL PERSONALE DOCENTE\n" +
-                "\n" +
-                "Circolare n.: 150\n" +
-                "\n" +
-                "Data di pubblicazione: 23/02/2018\n" +
-                "\n" +
-                "Oggetto: Rettifica orario consigli delle classi quinte - 27.02.2018\n" +
-                "\n" +
-                "Periodo: 27.02.2018";
+                        "\n" +
+                        "Circolare n.: 150\n" +
+                        "\n" +
+                        "Data di pubblicazione: 23/02/2018\n" +
+                        "\n" +
+                        "Oggetto: Rettifica orario consigli delle classi quinte - 27.02.2018\n" +
+                        "\n" +
+                        "Periodo: 27.02.2018";
+
+        String s = "Circolare n.150 - 23.02.2018 - rettifica orario consigli delle classi quinte - 27.02.2018";
+
 
         ArrayList<String> ris = new ArrayList<>();
-        final WordParser parser = new WordParser(new StringReader(s));
+        WordParser parser = new WordParser(new StringReader(s));
+        ArticoloTypeCircolare ac=new ArticoloTypeCircolare();
+        ac.parseNumeroCircolare("n.10");
+        ac.parseDataCircolare("10/gennaio/2018");
+        System.out.println(ac.numeroCircolare);
+        System.out.println(ac.dataCircolare);
+
+        final ArrayList<Object> a = new ArrayList<>();
+        parser.Input(a);
+        System.out.println(a);
+
+
+        parser = new WordParser(new StringReader(s));
         Token nextToken;
         do {
             nextToken = parser.getNextToken();
             String normalize = nextToken.image;
-            if (normalize != null) {
-                ris.add(normalize);
-                System.out.println(normalize + " " + WordParserConstants.tokenImage[nextToken.kind] + "   " + normalize(nextToken));
+            if (true||normalize != null) {
+                //ris.add(normalize);
+                System.out.println("txt:"+normalize + "\tkind:" + WordParserConstants.tokenImage[nextToken.kind] + "\tnormalize:" + normalize(nextToken));
             }
-        } while (nextToken.kind != WordParserConstants.EOF);
+        }
+        while (nextToken.kind != WordParserConstants.EOF);
 
 
     }

@@ -242,14 +242,14 @@
         <item>BACKUP DATABASE</item>
         <item>it.gov.scuolesuperioridizagarolo.action.BackupDatabaseAction</item>
         <item>@drawable/close_48x48</item>
-        <item>SHOW_DOCENTI,NOT_ACTIVE</item>
+        <item>SHOW_DOCENTI</item>
         <item>END-ITEM</item>
 
         <item>DOWNLOAD ARTICLES</item>
         <item>DOWNLOAD ARTICLES</item>
         <item>it.gov.scuolesuperioridizagarolo.action.DownloadArticlesAction</item>
         <item>@drawable/close_48x48</item>
-        <item>SHOW_DOCENTI,NOT_ACTIVE</item>
+        <item>SHOW_DOCENTI</item>
         <item>END-ITEM</item>
 
 

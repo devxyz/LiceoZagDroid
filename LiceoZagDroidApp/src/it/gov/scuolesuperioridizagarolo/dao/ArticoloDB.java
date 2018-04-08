@@ -37,6 +37,13 @@ public class ArticoloDB {
     private String content;
 
     @NotNull
+    private String jsonContent;
+
+    @NotNull
+    private String jsonClass;
+    private boolean flagLettura;
+
+    @NotNull
     private String words;
 
     @NotNull
@@ -61,7 +68,7 @@ public class ArticoloDB {
     }
 
     @Generated
-    public ArticoloDB(Long id, String title, java.util.Date pubDate, java.util.Date insertTimestamp, int remoteId, int remoteCategoryId, String categoryTitle, String content, String words, String url, ArticoloDB_Keywords keywords, String circolareNumber, ArticoloDB_Type type, java.util.Date date) {
+    public ArticoloDB(Long id, String title, java.util.Date pubDate, java.util.Date insertTimestamp, int remoteId, int remoteCategoryId, String categoryTitle, String content, String jsonContent, String jsonClass, boolean flagLettura, String words, String url, ArticoloDB_Keywords keywords, String circolareNumber, ArticoloDB_Type type, java.util.Date date) {
         this.id = id;
         this.title = title;
         this.pubDate = pubDate;
@@ -70,6 +77,9 @@ public class ArticoloDB {
         this.remoteCategoryId = remoteCategoryId;
         this.categoryTitle = categoryTitle;
         this.content = content;
+        this.jsonContent = jsonContent;
+        this.jsonClass = jsonClass;
+        this.flagLettura = flagLettura;
         this.words = words;
         this.url = url;
         this.keywords = keywords;
@@ -150,6 +160,34 @@ public class ArticoloDB {
     /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setContent(@NotNull String content) {
         this.content = content;
+    }
+
+    @NotNull
+    public String getJsonContent() {
+        return jsonContent;
+    }
+
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setJsonContent(@NotNull String jsonContent) {
+        this.jsonContent = jsonContent;
+    }
+
+    @NotNull
+    public String getJsonClass() {
+        return jsonClass;
+    }
+
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setJsonClass(@NotNull String jsonClass) {
+        this.jsonClass = jsonClass;
+    }
+
+    public boolean getFlagLettura() {
+        return flagLettura;
+    }
+
+    public void setFlagLettura(boolean flagLettura) {
+        this.flagLettura = flagLettura;
     }
 
     @NotNull

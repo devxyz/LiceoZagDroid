@@ -1,4 +1,4 @@
-package it.gov.scuolesuperioridizagarolo.model;
+package it.gov.scuolesuperioridizagarolo.model.bar;
 
 import java.io.Serializable;
 

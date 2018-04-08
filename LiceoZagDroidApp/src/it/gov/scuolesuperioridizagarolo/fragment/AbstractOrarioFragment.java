@@ -140,6 +140,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                 filtro = getSavedFiltrerValue();
             }
             if (filtro == null) {
+                LAYOUT_OBJs.listView.setVisibility(View.INVISIBLE);
                 openDialogChooseFilter(false);
                 //filtro = getDefaultFiltrerValue();
             }
@@ -447,6 +448,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                         if (wrapperParameter.getPersistFlag())
                             saveFiltrerValue(filtro);
                         updateView();
+                        LAYOUT_OBJs.listView.setVisibility(View.VISIBLE);
                     }
                 }
 

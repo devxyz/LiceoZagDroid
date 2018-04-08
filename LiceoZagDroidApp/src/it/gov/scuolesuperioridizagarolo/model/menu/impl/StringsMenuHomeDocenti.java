@@ -61,6 +61,13 @@ it.gov.scuolesuperioridizagarolo.action.ReDocentiAction.class,
 R.drawable.logo_re_docente_45x45,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.action.ReDocentiAction.class),
 new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
+     public static final DataMenuInfo CIRCOLARI= new DataMenuInfo(
+"Circolari",
+"Elenco delle circolari",
+it.gov.scuolesuperioridizagarolo.fragment.ArticoloCircolariFragment.class,
+R.drawable._menu_photos,
+DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.ArticoloCircolariFragment.class),
+new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
      public static final DataMenuInfo AGGIORNA_DATI= new DataMenuInfo(
 "Aggiorna Dati",
 "Aggiorna i dati",

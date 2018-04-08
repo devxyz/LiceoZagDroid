@@ -35,12 +35,15 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
         public final static Property RemoteCategoryId = new Property(5, int.class, "remoteCategoryId", false, "REMOTE_CATEGORY_ID");
         public final static Property CategoryTitle = new Property(6, String.class, "categoryTitle", false, "CATEGORY_TITLE");
         public final static Property Content = new Property(7, String.class, "content", false, "CONTENT");
-        public final static Property Words = new Property(8, String.class, "words", false, "WORDS");
-        public final static Property Url = new Property(9, String.class, "url", false, "URL");
-        public final static Property Keywords = new Property(10, String.class, "keywords", false, "KEYWORDS");
-        public final static Property CircolareNumber = new Property(11, String.class, "circolareNumber", false, "CIRCOLARE_NUMBER");
-        public final static Property Type = new Property(12, String.class, "type", false, "TYPE");
-        public final static Property Date = new Property(13, java.util.Date.class, "date", false, "DATE");
+        public final static Property JsonContent = new Property(8, String.class, "jsonContent", false, "JSON_CONTENT");
+        public final static Property JsonClass = new Property(9, String.class, "jsonClass", false, "JSON_CLASS");
+        public final static Property FlagLettura = new Property(10, boolean.class, "flagLettura", false, "FLAG_LETTURA");
+        public final static Property Words = new Property(11, String.class, "words", false, "WORDS");
+        public final static Property Url = new Property(12, String.class, "url", false, "URL");
+        public final static Property Keywords = new Property(13, String.class, "keywords", false, "KEYWORDS");
+        public final static Property CircolareNumber = new Property(14, String.class, "circolareNumber", false, "CIRCOLARE_NUMBER");
+        public final static Property Type = new Property(15, String.class, "type", false, "TYPE");
+        public final static Property Date = new Property(16, java.util.Date.class, "date", false, "DATE");
     }
 
     private final ArticoloDB_KeywordsConverter keywordsConverter = new ArticoloDB_KeywordsConverter();
@@ -66,12 +69,15 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
                 "\"REMOTE_CATEGORY_ID\" INTEGER NOT NULL ," + // 5: remoteCategoryId
                 "\"CATEGORY_TITLE\" TEXT NOT NULL ," + // 6: categoryTitle
                 "\"CONTENT\" TEXT NOT NULL ," + // 7: content
-                "\"WORDS\" TEXT NOT NULL ," + // 8: words
-                "\"URL\" TEXT NOT NULL ," + // 9: url
-                "\"KEYWORDS\" TEXT NOT NULL ," + // 10: keywords
-                "\"CIRCOLARE_NUMBER\" TEXT," + // 11: circolareNumber
-                "\"TYPE\" TEXT NOT NULL ," + // 12: type
-                "\"DATE\" INTEGER);"); // 13: date
+                "\"JSON_CONTENT\" TEXT NOT NULL ," + // 8: jsonContent
+                "\"JSON_CLASS\" TEXT NOT NULL ," + // 9: jsonClass
+                "\"FLAG_LETTURA\" INTEGER NOT NULL ," + // 10: flagLettura
+                "\"WORDS\" TEXT NOT NULL ," + // 11: words
+                "\"URL\" TEXT NOT NULL ," + // 12: url
+                "\"KEYWORDS\" TEXT NOT NULL ," + // 13: keywords
+                "\"CIRCOLARE_NUMBER\" TEXT," + // 14: circolareNumber
+                "\"TYPE\" TEXT NOT NULL ," + // 15: type
+                "\"DATE\" INTEGER);"); // 16: date
         // Add Indexes
         db.execSQL("CREATE INDEX " + constraint + "IDX_ARTICOLO_DB_REMOTE_ID ON \"ARTICOLO_DB\"" +
                 " (\"REMOTE_ID\");");
@@ -98,19 +104,22 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
         stmt.bindLong(6, entity.getRemoteCategoryId());
         stmt.bindString(7, entity.getCategoryTitle());
         stmt.bindString(8, entity.getContent());
-        stmt.bindString(9, entity.getWords());
-        stmt.bindString(10, entity.getUrl());
-        stmt.bindString(11, keywordsConverter.convertToDatabaseValue(entity.getKeywords()));
+        stmt.bindString(9, entity.getJsonContent());
+        stmt.bindString(10, entity.getJsonClass());
+        stmt.bindLong(11, entity.getFlagLettura() ? 1L: 0L);
+        stmt.bindString(12, entity.getWords());
+        stmt.bindString(13, entity.getUrl());
+        stmt.bindString(14, keywordsConverter.convertToDatabaseValue(entity.getKeywords()));
  
         String circolareNumber = entity.getCircolareNumber();
         if (circolareNumber != null) {
-            stmt.bindString(12, circolareNumber);
+            stmt.bindString(15, circolareNumber);
         }
-        stmt.bindString(13, typeConverter.convertToDatabaseValue(entity.getType()));
+        stmt.bindString(16, typeConverter.convertToDatabaseValue(entity.getType()));
  
         java.util.Date date = entity.getDate();
         if (date != null) {
-            stmt.bindLong(14, date.getTime());
+            stmt.bindLong(17, date.getTime());
         }
     }
 
@@ -129,19 +138,22 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
         stmt.bindLong(6, entity.getRemoteCategoryId());
         stmt.bindString(7, entity.getCategoryTitle());
         stmt.bindString(8, entity.getContent());
-        stmt.bindString(9, entity.getWords());
-        stmt.bindString(10, entity.getUrl());
-        stmt.bindString(11, keywordsConverter.convertToDatabaseValue(entity.getKeywords()));
+        stmt.bindString(9, entity.getJsonContent());
+        stmt.bindString(10, entity.getJsonClass());
+        stmt.bindLong(11, entity.getFlagLettura() ? 1L: 0L);
+        stmt.bindString(12, entity.getWords());
+        stmt.bindString(13, entity.getUrl());
+        stmt.bindString(14, keywordsConverter.convertToDatabaseValue(entity.getKeywords()));
  
         String circolareNumber = entity.getCircolareNumber();
         if (circolareNumber != null) {
-            stmt.bindString(12, circolareNumber);
+            stmt.bindString(15, circolareNumber);
         }
-        stmt.bindString(13, typeConverter.convertToDatabaseValue(entity.getType()));
+        stmt.bindString(16, typeConverter.convertToDatabaseValue(entity.getType()));
  
         java.util.Date date = entity.getDate();
         if (date != null) {
-            stmt.bindLong(14, date.getTime());
+            stmt.bindLong(17, date.getTime());
         }
     }
 
@@ -161,12 +173,15 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
             cursor.getInt(offset + 5), // remoteCategoryId
             cursor.getString(offset + 6), // categoryTitle
             cursor.getString(offset + 7), // content
-            cursor.getString(offset + 8), // words
-            cursor.getString(offset + 9), // url
-            keywordsConverter.convertToEntityProperty(cursor.getString(offset + 10)), // keywords
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // circolareNumber
-            typeConverter.convertToEntityProperty(cursor.getString(offset + 12)), // type
-            cursor.isNull(offset + 13) ? null : new java.util.Date(cursor.getLong(offset + 13)) // date
+            cursor.getString(offset + 8), // jsonContent
+            cursor.getString(offset + 9), // jsonClass
+            cursor.getShort(offset + 10) != 0, // flagLettura
+            cursor.getString(offset + 11), // words
+            cursor.getString(offset + 12), // url
+            keywordsConverter.convertToEntityProperty(cursor.getString(offset + 13)), // keywords
+            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // circolareNumber
+            typeConverter.convertToEntityProperty(cursor.getString(offset + 15)), // type
+            cursor.isNull(offset + 16) ? null : new java.util.Date(cursor.getLong(offset + 16)) // date
         );
         return entity;
     }
@@ -181,12 +196,15 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
         entity.setRemoteCategoryId(cursor.getInt(offset + 5));
         entity.setCategoryTitle(cursor.getString(offset + 6));
         entity.setContent(cursor.getString(offset + 7));
-        entity.setWords(cursor.getString(offset + 8));
-        entity.setUrl(cursor.getString(offset + 9));
-        entity.setKeywords(keywordsConverter.convertToEntityProperty(cursor.getString(offset + 10)));
-        entity.setCircolareNumber(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
-        entity.setType(typeConverter.convertToEntityProperty(cursor.getString(offset + 12)));
-        entity.setDate(cursor.isNull(offset + 13) ? null : new java.util.Date(cursor.getLong(offset + 13)));
+        entity.setJsonContent(cursor.getString(offset + 8));
+        entity.setJsonClass(cursor.getString(offset + 9));
+        entity.setFlagLettura(cursor.getShort(offset + 10) != 0);
+        entity.setWords(cursor.getString(offset + 11));
+        entity.setUrl(cursor.getString(offset + 12));
+        entity.setKeywords(keywordsConverter.convertToEntityProperty(cursor.getString(offset + 13)));
+        entity.setCircolareNumber(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
+        entity.setType(typeConverter.convertToEntityProperty(cursor.getString(offset + 15)));
+        entity.setDate(cursor.isNull(offset + 16) ? null : new java.util.Date(cursor.getLong(offset + 16)));
      }
     
     @Override

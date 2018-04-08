@@ -6,10 +6,11 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:orientation="vertical"
-                  android:layout_width="80dp"
-                  android:layout_height="80dp" android:id="@+id/layout2"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" android:id="@+id/layout2"
                   android:background="@drawable/background_pulsante_celeste_bianco"
-                  android:gravity="center_vertical|center_horizontal" android:padding="2dp">
+                  android:gravity="center_vertical|center_horizontal" android:padding="2dp" android:minHeight="80dp"
+                  android:minWidth="80dp">
 
         <ImageView
                 android:id="@+id/thumb"

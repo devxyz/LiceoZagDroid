@@ -9,7 +9,7 @@ import com.travijuu.numberpicker.library.Enums.ActionEnum;
 import com.travijuu.numberpicker.library.Interface.ValueChangedListener;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_bar_prodotto_dettaglio_xml;
-import it.gov.scuolesuperioridizagarolo.model.ProdottoBar;
+import it.gov.scuolesuperioridizagarolo.model.bar.ProdottoBar;
 import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
 
 import java.util.ArrayList;

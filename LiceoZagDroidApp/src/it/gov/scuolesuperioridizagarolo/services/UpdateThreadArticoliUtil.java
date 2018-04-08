@@ -56,14 +56,14 @@ public class UpdateThreadArticoliUtil {
 
                 //rimuove articoli vecchi
                 ManagerArticolo m = new ManagerArticolo(session);
-                m.removeAllLess(updateThreadContainer.minArticleId);
+                m.rimoveArticoliPrecedentiAdID(updateThreadContainer.minArticleId);
                 Log.e(UpdateThreadArticoliUtil.class.getName(), "Cancellazione articoli vecchi");
 
                 //crea articoli
                 final ArrayList<ArticoloDB> values = new ArrayList<>(updateThreadContainer.articoliByRemoteId.values());
                 final ArticoloDBDao articoloDBDao = session.getArticoloDBDao();
                 for (ArticoloDB aa : values) {
-                    final long insert = articoloDBDao.insert(aa);
+                    articoloDBDao.insert(aa);
                 }
                 Log.e(UpdateThreadArticoliUtil.class.getName(), "Inserimento articoli");
 

@@ -11,37 +11,39 @@ public interface WordParserConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int BLANK_MULTIPLI = 15;
+  int BLANK_MULTIPLI = 5;
   /** RegularExpression Id. */
-  int SEPARATORE = 16;
+  int SEPARATORE = 6;
   /** RegularExpression Id. */
-  int NUMBER_1_2cifre = 17;
+  int NUMBER_1_2cifre = 7;
   /** RegularExpression Id. */
-  int NUMBER_2cifre = 18;
+  int NUMBER_2cifre = 8;
   /** RegularExpression Id. */
-  int MESE = 19;
+  int MESE = 9;
   /** RegularExpression Id. */
-  int NUMBER_4cifre = 20;
+  int NUMBER_4cifre = 10;
   /** RegularExpression Id. */
-  int TEMPLATE_DATA = 21;
+  int TEMPLATE_DATA = 11;
   /** RegularExpression Id. */
-  int DATA = 22;
+  int DATA = 12;
   /** RegularExpression Id. */
-  int CLASSE = 23;
+  int CLASSE = 13;
   /** RegularExpression Id. */
-  int NUMERO = 24;
+  int NUMERO = 14;
   /** RegularExpression Id. */
-  int TELEFONO = 25;
+  int TELEFONO = 15;
   /** RegularExpression Id. */
-  int CIRCOLARE = 26;
+  int CIRCOLARE = 16;
   /** RegularExpression Id. */
-  int AVVISO = 27;
+  int NUMERO_PUNTATO = 17;
   /** RegularExpression Id. */
-  int EMAIL = 28;
+  int AVVISO = 18;
   /** RegularExpression Id. */
-  int PAROLA = 29;
+  int EMAIL = 19;
   /** RegularExpression Id. */
-  int ALTRO = 30;
+  int PAROLA = 20;
+  /** RegularExpression Id. */
+  int ALTRO = 21;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -53,16 +55,6 @@ public interface WordParserConstants {
     "\"\\t\"",
     "\"\\n\"",
     "\"\\r\"",
-    "\".\"",
-    "\",\"",
-    "\":\"",
-    "\";\"",
-    "\"-\"",
-    "\"!\"",
-    "\"\\\"\"",
-    "\"?\"",
-    "\"\\\'\"",
-    "\"^\"",
     "<BLANK_MULTIPLI>",
     "<SEPARATORE>",
     "<NUMBER_1_2cifre>",
@@ -74,8 +66,9 @@ public interface WordParserConstants {
     "<CLASSE>",
     "<NUMERO>",
     "<TELEFONO>",
-    "<CIRCOLARE>",
-    "<AVVISO>",
+    "\"Circolare\"",
+    "<NUMERO_PUNTATO>",
+    "\"avviso\"",
     "<EMAIL>",
     "<PAROLA>",
     "<ALTRO>",
