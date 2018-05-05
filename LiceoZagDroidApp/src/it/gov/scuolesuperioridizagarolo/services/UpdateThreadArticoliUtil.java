@@ -9,6 +9,7 @@ import it.gov.scuolesuperioridizagarolo.dao.*;
 import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDB_Keywords;
 import it.gov.scuolesuperioridizagarolo.db.ManagerArticolo;
 import it.gov.scuolesuperioridizagarolo.model.C_Pair;
+import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloTypeCircolare;
 import it.gov.scuolesuperioridizagarolo.parser.ItalianWordSplit;
 import it.gov.scuolesuperioridizagarolo.util.C_Base64;
 import org.w3c.dom.Document;
@@ -155,6 +156,11 @@ public class UpdateThreadArticoliUtil {
             aa.setRemoteId(Integer.parseInt(article_id));
             aa.setTitle(article_title);
             aa.setUrl(article_url);
+
+
+            //ArticoloTypeCircolare t=new ArticoloTypeCircolare()
+            //aa.setJsonClass(t.getClass().getName());
+            //aa.setJsonContent(t.getClass().getName());
 
             ris.articoliByRemoteId.put(aa.getRemoteId(), aa);
 

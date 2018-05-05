@@ -5,7 +5,9 @@ import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
 import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
 import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
 import it.gov.scuolesuperioridizagarolo.model.TermineInfoWeb;
+import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloType;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloTypeCircolare;
+import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloTypeGenerico;
 import it.gov.scuolesuperioridizagarolo.parser.impl.ParseException;
 import it.gov.scuolesuperioridizagarolo.parser.impl.Token;
 import it.gov.scuolesuperioridizagarolo.parser.impl.WordParser;
@@ -70,14 +72,23 @@ public class ItalianWordSplit {
                 return t.image;//"classe:" + t.image.toUpperCase().replace(" ", "");
             }
             case WordParserConstants.CIRCOLARE: {
-                return t.image;
+                return t.image.toLowerCase();
             }
             case WordParserConstants.ALTRO: {
-                return t.image;
+                if (t.image.length() <= 3) return null;
+
+                final String ris = t.image.toLowerCase().trim();
+                if (StopWords.stopWords.contains(ris))
+                    return null;
+                return ris;
             }
             default:
                 if (t.image.length() <= 3) return null;
-                return t.image.toLowerCase().trim();
+
+                final String ris = t.image.toLowerCase().trim();
+                if (StopWords.stopWords.contains(ris))
+                    return null;
+                return ris;
 
         }
     }
@@ -144,13 +155,18 @@ public class ItalianWordSplit {
         return ris;
     }
 
+    /**
+     * restituisce le parole normalizzate) estratte dalla stringa s
+     * @param s
+     * @return
+     */
     public static ArrayList<String> parseTextNormalized(String s) {
         ArrayList<String> ris = new ArrayList<>();
         final WordParser parser = new WordParser(new StringReader(s));
         Token nextToken;
         do {
             nextToken = parser.getNextToken();
-            String normalize = nextToken.image;
+            String normalize = normalize(nextToken);
             if (normalize != null) {
                 ris.add(normalize);
             }
@@ -158,25 +174,29 @@ public class ItalianWordSplit {
         return ris;
     }
 
+    public static ArticoloType parseArticleTitle(String title,String content) {
+        WordParser parser = new WordParser(new StringReader(title));
+        final ArrayList<Object> a = new ArrayList<>();
+        try {
+            parser.Input(a);
+        } catch (ParseException e) {
+            a.clear();
+
+            ArticoloTypeGenerico g = new ArticoloTypeGenerico();
+            g.addParolaString(parseTextNormalized(title));
+        }
+        return (ArticoloType) a.get(0);
+
+    }
+
     public static void main(String[] args) throws ParseException {
-        String xx =
-
-                "CIRCOLARE SCOLASTICA RISERVATA AL PERSONALE DOCENTE\n" +
-                        "\n" +
-                        "Circolare n.: 150\n" +
-                        "\n" +
-                        "Data di pubblicazione: 23/02/2018\n" +
-                        "\n" +
-                        "Oggetto: Rettifica orario consigli delle classi quinte - 27.02.2018\n" +
-                        "\n" +
-                        "Periodo: 27.02.2018";
-
-        String s = "Circolare n.150 - 23.02.2018 - rettifica orario consigli delle classi quinte - 27.02.2018";
+        String s1 = "Circolare n.150 - 23.02.2018 - rettifica orario consigli delle classi quinte e altro - 27.02.2018";
+        //String s = "Avviso 23.02.2018 - rettifica orario consigli delle classi quinte - 27.02.2018";
 
 
         ArrayList<String> ris = new ArrayList<>();
-        WordParser parser = new WordParser(new StringReader(s));
-        ArticoloTypeCircolare ac=new ArticoloTypeCircolare();
+        WordParser parser = new WordParser(new StringReader(s1));
+        ArticoloTypeCircolare ac = new ArticoloTypeCircolare();
         ac.parseNumeroCircolare("n.10");
         ac.parseDataCircolare("10/gennaio/2018");
         System.out.println(ac.numeroCircolare);
@@ -187,39 +207,24 @@ public class ItalianWordSplit {
         System.out.println(a);
 
 
-        parser = new WordParser(new StringReader(s));
+        parser = new WordParser(new StringReader(s1));
         Token nextToken;
         do {
             nextToken = parser.getNextToken();
             String normalize = nextToken.image;
-            if (true||normalize != null) {
+            if (true || normalize != null) {
                 //ris.add(normalize);
-                System.out.println("txt:"+normalize + "\tkind:" + WordParserConstants.tokenImage[nextToken.kind] + "\tnormalize:" + normalize(nextToken));
+                System.out.println("txt:" + normalize + "\tkind:" + WordParserConstants.tokenImage[nextToken.kind] + "\tnormalize:" + normalize(nextToken));
             }
         }
         while (nextToken.kind != WordParserConstants.EOF);
 
+        final ArrayList<String> strings = parseTextNormalized(s1);
+        System.out.println(strings);
+
 
     }
 
-    @Deprecated
-
-    public static String extractTextPdf(File f) throws IOException {
-        StringBuffer sb = new StringBuffer();
-        InputStream in = new BufferedInputStream(new FileInputStream(f));
-
-        PdfReader reader = new PdfReader(in);
-        PdfReaderContentParser parser = new PdfReaderContentParser(reader);
-        TextExtractionStrategy ex;
-        for (int i = 1; i <= reader.getNumberOfPages(); i++) {
-            ex = parser.processContent(i, new SimpleTextExtractionStrategy());
-            sb.append(ex.getResultantText().trim());
-            sb.append(" ");
-        }
-        reader.close();
-        in.close();
-        return sb.toString().replaceAll("[ ]+", " ");
-    }
 
 
 }

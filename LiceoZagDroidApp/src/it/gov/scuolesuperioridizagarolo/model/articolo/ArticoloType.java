@@ -3,6 +3,7 @@ package it.gov.scuolesuperioridizagarolo.model.articolo;
 import com.google.gson.Gson;
 import it.gov.scuolesuperioridizagarolo.dao.ArticoloDB;
 
+import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -50,5 +51,18 @@ public abstract class ArticoloType {
             paroleLowerCase.add(p.trim().toLowerCase());
     }
 
+    public void addParolaString(Collection<String> p) {
+        for (String s : p) {
+            addParolaString(s);
+        }
 
+    }
+
+
+    @Override
+    public String toString() {
+        return "ArticoloType{" +
+                "paroleLowerCase=" + paroleLowerCase +
+                '}';
+    }
 }

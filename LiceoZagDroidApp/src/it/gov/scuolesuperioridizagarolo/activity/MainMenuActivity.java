@@ -144,7 +144,7 @@ public class MainMenuActivity extends AbstractActivity {
 
         // Possible work around for market launches. See http://code.google.com/p/android/issues/detail?id=2373
         // for more details. Essentially, the market launches the main activity on top of other activities.
-        // we never want this to happen. Instead, we check if we are the root and if not, we finish.
+        // we never want this to happen. Instead, we __check if we are the root and if not, we finish.
 
 
         //start service automatically
