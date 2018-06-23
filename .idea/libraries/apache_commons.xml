@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="apache-commons">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/apache-commons/commons-codec-1.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/apache-commons/commons-csv-1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/apache-commons/commons-httpclient-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/apache-commons/commons-io-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/apache-commons/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/apache-commons/commons-vfs2-2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/apache-commons/commons-codec-1.11-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/apache-commons/commons-csv-1.5-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/apache-commons/commons-io-2.6-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/apache-commons/commons-vfs2-2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
