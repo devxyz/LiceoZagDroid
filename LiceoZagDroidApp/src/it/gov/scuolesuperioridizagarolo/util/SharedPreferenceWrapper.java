@@ -15,9 +15,10 @@ import java.util.List;
 public class SharedPreferenceWrapper {
     private static final String PREFIX_FRAGMENT_HELP = "PREFIX_FRAGMENT_HELP";
     private static final String KEY_LAST_USED_MENU = "KEY_LAST_USED_MENU";
-    private static final String KEY_NOME_CLASSE = "KEY_NOME_CLASSE";
-    private static final String KEY_NOME_DOCENTE = "KEY_NOME_DOCENTE";
+    //private static final String KEY_NOME_CLASSE = "KEY_NOME_CLASSE";
+    //private static final String KEY_NOME_DOCENTE = "KEY_NOME_DOCENTE";
     private static final String KEY_USER_TYPE = "KEY_USER_TYPE";
+    private static final String KEY_USER_ADDITIONAL_FIELD = "KEY_USER_ADDITIONAL_FIELD";//campo addizionale
     private static final String KEY_DATA_UPDATE = "KEY_DATA_UPDATE";
     private final SharedPreferences preferences;
 
@@ -30,27 +31,15 @@ public class SharedPreferenceWrapper {
     }
 
 
-    public String getUltimaClasse() {
-        return preferences.getString(KEY_NOME_CLASSE, null);
+    public String getAdditionalField() {
+        return preferences.getString(KEY_USER_ADDITIONAL_FIELD, null);
     }
 
-    public void setUltimaClasse(String d) {
+    public void setAdditionalField(String d) {
         SharedPreferences.Editor e = preferences.edit();
-        e.putString(KEY_NOME_CLASSE, d);
+        e.putString(KEY_USER_ADDITIONAL_FIELD, d);
         e.apply();
     }
-
-    public String getUltimoDocente() {
-        return preferences.getString(KEY_NOME_DOCENTE, null);
-    }
-
-    public void setUltimoDocente(String d) {
-        SharedPreferences.Editor e = preferences.edit();
-        e.putString(KEY_NOME_DOCENTE, d);
-        e.apply();
-    }
-
-
 
     public AppUserType getUserType() {
         final String string = preferences.getString(KEY_USER_TYPE, null);

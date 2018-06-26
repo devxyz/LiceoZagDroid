@@ -7,13 +7,13 @@ public class OrarioClassePersistenteFragment extends OrarioClasseNonPersistenteF
     @Override
     protected void saveFiltrerValue(String filtro) {
         final SharedPreferenceWrapper p = SharedPreferenceWrapper.getCommonInstance(getMainActivity());
-        p.setUltimaClasse(filtro);
+        //p.setUltimaClasse(filtro);
     }
 
     @Override
     protected String getSavedFiltrerValue() {
         final SharedPreferenceWrapper p = SharedPreferenceWrapper.getCommonInstance(getMainActivity());
-        return p.getUltimaClasse();
+        return null ;//p.getUltimaClasse();
     }
 }
 

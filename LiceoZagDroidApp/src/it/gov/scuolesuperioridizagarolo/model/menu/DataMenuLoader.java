@@ -49,14 +49,13 @@ public class DataMenuLoader {
             //skip item non attivi
             if (o.getFlags().contains(DataMenuInfoFlag.NOT_ACTIVE))
                 continue;
-            if (!o.getFlags().contains(user.getUserFlag()))
+            //controlla se visualizzare il menu
+            if (!user.showMenuForUser(o))
                 continue;
-
 
 
             ris.add(o);
         }
-
 
 
         return ris;

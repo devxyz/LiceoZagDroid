@@ -29,7 +29,7 @@ public class InitActivity extends AbstractActivity {
         //DOCENTE("Docente"), STUDENTE("Studente"), FAMIGLIA("Genitore"), ALTRO("Visitatore");
 
         final AppUserType userType = SharedPreferenceWrapper.getCommonInstance(e).getUserType();
-        final CharSequence[] values = {"Sono un docente", "Sono uno studente", "Sono un genitore", "Personale Amministrativo (ATA)"};
+        final CharSequence[] values = {"Docente", "Studente", "Famiglia", "Personale ATA", "Dirigente"};
         CharSequence selectedValue = null;
         if (userType != null) {
             selectedValue = values[userType.ordinal()];
@@ -41,18 +41,22 @@ public class InitActivity extends AbstractActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         // The 'which' argument contains the index position
                         // of the selected item
+                        AppUserType tipo;
                         switch (which) {
                             case 0:
-                                e.getSharedPreferences().setUserType(AppUserType.DOCENTE);
+                                tipo = (AppUserType.DOCENTE);
                                 break;
                             case 1:
-                                e.getSharedPreferences().setUserType(AppUserType.STUDENTE);
+                                tipo = (AppUserType.STUDENTE);
                                 break;
                             case 2:
-                                e.getSharedPreferences().setUserType(AppUserType.FAMIGLIA);
+                                tipo = (AppUserType.FAMIGLIA);
                                 break;
                             case 3:
-                                e.getSharedPreferences().setUserType(AppUserType.ATA);
+                                tipo = (AppUserType.ATA);
+                                break;
+                            case 4:
+                                tipo = (AppUserType.ADMIN);
                                 break;
                         }
 

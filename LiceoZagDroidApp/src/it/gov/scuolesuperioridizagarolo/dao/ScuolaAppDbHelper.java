@@ -10,13 +10,13 @@ import it.gov.scuolesuperioridizagarolo.async.WaitingAsyncTaskWaitingDialog;
  */
 public class ScuolaAppDbHelper {
     final DaoSession session;
-    private final DaoMaster.DevOpenHelper helper;
+    private final ScuolaAppOpenHelper helper;
     private final DaoMaster daoMaster;
     private Context ctx;
 
     public ScuolaAppDbHelper(Context ctx) {
         this.ctx = ctx;
-        helper = new DaoMaster.DevOpenHelper(ctx, "liceo_zagarolo_db", null);
+        helper = new ScuolaAppOpenHelper(ctx, "liceo_zagarolo_db", null);
         SQLiteDatabase db = helper.getWritableDatabase();
         daoMaster = new DaoMaster(db);
         session = daoMaster.newSession();
