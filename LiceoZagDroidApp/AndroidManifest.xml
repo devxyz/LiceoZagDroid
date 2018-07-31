@@ -45,6 +45,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".activity.LoginActivity"/>
         <service android:name="it.gov.scuolesuperioridizagarolo.services.UpdateService"/>
         <receiver android:name="it.gov.scuolesuperioridizagarolo.services.BootReceiver" android:enabled="true"
                   android:exported="false">

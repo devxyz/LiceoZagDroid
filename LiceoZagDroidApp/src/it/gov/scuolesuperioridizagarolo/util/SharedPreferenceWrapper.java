@@ -35,10 +35,15 @@ public class SharedPreferenceWrapper {
         return preferences.getString(KEY_USER_ADDITIONAL_FIELD, null);
     }
 
-    public void setAdditionalField(String d) {
+    public void setUserAdditionalField(String d) {
         SharedPreferences.Editor e = preferences.edit();
         e.putString(KEY_USER_ADDITIONAL_FIELD, d);
         e.apply();
+    }
+
+    public void login(AppUserType type, String additionalInfo) {
+        setUserType(type);
+        setUserAdditionalField(additionalInfo);
     }
 
     public AppUserType getUserType() {

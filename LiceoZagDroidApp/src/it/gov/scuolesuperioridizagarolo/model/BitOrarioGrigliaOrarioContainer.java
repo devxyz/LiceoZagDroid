@@ -20,6 +20,10 @@ public class BitOrarioGrigliaOrarioContainer {
         System.out.println(g.isValid(new OnlyDate(11, 1, 2018)));
     }
 
+    public int size() {
+        return sortByremoteIdDesc.size();
+    }
+
     public void add(Date startDate,
                     Date endDate,
                     long remoteId,

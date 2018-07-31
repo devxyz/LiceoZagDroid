@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import it.gov.scuolesuperioridizagarolo.R;
@@ -102,7 +103,11 @@ public class InitActivity extends AbstractActivity {
 
 
     private void startMainMenuActivity() {
-        MainMenuActivity.startMainActivity(InitActivity.this);
+        //todo debug MainMenuActivity.startMainActivity(InitActivity.this);
+
+        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(i);
+
         closed = true;
         finish();
     }

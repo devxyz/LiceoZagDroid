@@ -42,7 +42,7 @@ import java.util.Map;
 
 
 public class MainMenuActivity extends AbstractActivity {
-    public static final String RECEIVER_ACTION_UPDATE = "it.gov.scuolesuperioridizagarolo.DATA_UPDATE";
+
     private static final String KEY_MENU_ID_INTENT = "KEY_MENU_ID_INTENT";
     private static final String KEY_STACK = "KEY_STACK";
     public ListView mDrawerList;
@@ -139,7 +139,7 @@ public class MainMenuActivity extends AbstractActivity {
                 }
             }
         };
-        registerReceiver(receiver, new IntentFilter(RECEIVER_ACTION_UPDATE));
+        registerReceiver(receiver, new IntentFilter(UpdateService.RECEIVER_DATA_UPDATE));
 
 
         // Possible work around for market launches. See http://code.google.com/p/android/issues/detail?id=2373

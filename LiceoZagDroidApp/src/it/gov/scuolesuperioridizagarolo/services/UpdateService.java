@@ -18,6 +18,9 @@ import java.util.concurrent.TimeUnit;
  * Created by stefano on 23/09/16.
  */
 public class UpdateService extends Service {
+    public static final String RECEIVER_DATA_UPDATE = "it.gov.scuolesuperioridizagarolo.DATA_UPDATE";
+
+
     public static final String KEY_MESSAGGIO_UPDATE = "KEY_MESSAGGIO_UPDATE";
     public static final String KEY_SHOULD_UPDATE = "KEY_STATO_UPDATE";
 

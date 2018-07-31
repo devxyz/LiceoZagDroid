@@ -2,7 +2,6 @@ package it.gov.scuolesuperioridizagarolo.services;
 
 import android.content.Intent;
 import android.util.Log;
-import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.util.ThreadUtil;
 
 /**
@@ -72,7 +71,7 @@ class UpdateThreadService implements Runnable {
     }
 
     private void sendMessageToMainActivity(String value, boolean shouldUpdateUI) {
-        Intent x = new Intent(MainMenuActivity.RECEIVER_ACTION_UPDATE);
+        Intent x = new Intent(UpdateService.RECEIVER_DATA_UPDATE);
         x.putExtra(UpdateService.KEY_MESSAGGIO_UPDATE, value);
         x.putExtra(UpdateService.KEY_SHOULD_UPDATE, shouldUpdateUI);
         updateService.sendBroadcast(x);
