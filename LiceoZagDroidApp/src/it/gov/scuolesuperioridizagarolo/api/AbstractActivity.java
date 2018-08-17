@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.api;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import it.gov.scuolesuperioridizagarolo.cache.UrlFileCache;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
 import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;

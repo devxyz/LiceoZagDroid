@@ -33,6 +33,9 @@ public class UpdateService extends Service {
     }
 
     public static boolean isNetworkAvailable(Context a) {
+
+
+
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) a.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();

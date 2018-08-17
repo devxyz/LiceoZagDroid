@@ -76,6 +76,8 @@ public class LoginActivity extends AbstractActivity {
 
             }
         };
+
+
         registerReceiver(receiver, new IntentFilter(UpdateService.RECEIVER_DATA_UPDATE));
 
         ArrayAdapter<String> appUserDataAdapter = new ArrayAdapter<String>(this,
