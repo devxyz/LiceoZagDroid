@@ -14,7 +14,7 @@ import android.widget.TextView;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.cache.UrlImageLoader;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
-import it.gov.scuolesuperioridizagarolo.model.C_NormalizedURL;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
 import it.gov.scuolesuperioridizagarolo.model.PhotoFermiDescription;
 import it.gov.scuolesuperioridizagarolo.util.ScreenUtil;
 

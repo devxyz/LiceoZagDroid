@@ -72,6 +72,10 @@ public class InitActivity extends AbstractActivity {
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onCreateWithPermissions(final Bundle savedInstanceState) {
         setContentView(R.layout.activity_splash_update2);
         obj = new LayoutObjs_activity_splash_update2_xml(this);
 
@@ -99,6 +103,7 @@ public class InitActivity extends AbstractActivity {
         } else {
             startMainMenuActivity();
         }
+
     }
 
 

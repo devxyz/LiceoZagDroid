@@ -2,16 +2,15 @@ package it.gov.scuolesuperioridizagarolo.services;
 
 import android.content.Context;
 import android.util.Log;
-import dada.bitorario.util.XmlUtil;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.dao.*;
 import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDB_Keywords;
 import it.gov.scuolesuperioridizagarolo.db.ManagerArticolo;
-import it.gov.scuolesuperioridizagarolo.model.C_Pair;
-import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloTypeCircolare;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_Pair;
 import it.gov.scuolesuperioridizagarolo.parser.ItalianWordSplit;
 import it.gov.scuolesuperioridizagarolo.util.C_Base64;
+import it.gov.scuolesuperioridizagarolo.util.C_XmlUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -121,11 +120,11 @@ public class UpdateThreadArticoliUtil {
 
 
         //elenco articoli
-        final Element minId = XmlUtil.searchFirstByTagName(childNodes, "min-article-id");
+        final Element minId = C_XmlUtil.searchFirstByTagName(childNodes, "min-article-id");
         ris.minArticleId = Integer.parseInt(minId.getTextContent().trim());
 
-        final Element articles = XmlUtil.searchFirstByTagName(childNodes, "articles");
-        final List<Element> article = XmlUtil.searchByTagName(articles.getChildNodes(), "article");
+        final Element articles = C_XmlUtil.searchFirstByTagName(childNodes, "articles");
+        final List<Element> article = C_XmlUtil.searchByTagName(articles.getChildNodes(), "article");
 
         //2018-02-01 09:36:52
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -134,13 +133,13 @@ public class UpdateThreadArticoliUtil {
 
             ArticoloDB aa = new ArticoloDB();
 
-            final String article_id = XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-id").getTextContent().trim();
-            final String article_created = XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-created").getTextContent().trim();
-            final String category_id = XmlUtil.searchFirstByTagName(a.getChildNodes(), "category-id").getTextContent().trim();
-            final String category_title = XmlUtil.searchFirstByTagName(a.getChildNodes(), "category-title").getTextContent().trim();
-            final String article_url = XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-url").getTextContent().trim();
-            final String article_title = XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-title").getTextContent().trim();
-            final String article_content = XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-content").getTextContent().trim();
+            final String article_id = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-id").getTextContent().trim();
+            final String article_created = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-created").getTextContent().trim();
+            final String category_id = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "category-id").getTextContent().trim();
+            final String category_title = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "category-title").getTextContent().trim();
+            final String article_url = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-url").getTextContent().trim();
+            final String article_title = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-title").getTextContent().trim();
+            final String article_content = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-content").getTextContent().trim();
             String article_content_decode = new String(C_Base64.decode(article_content), "UTF-8");
             aa.setCategoryTitle(category_title);
             aa.setContent(article_content_decode);
@@ -180,16 +179,16 @@ public class UpdateThreadArticoliUtil {
         System.out.println();
 
         //elenco tag
-        final Element tags = XmlUtil.searchFirstByTagName(childNodes, "tags");
-        final List<Element> tag = XmlUtil.searchByTagName(tags.getChildNodes(), "tag-map");
+        final Element tags = C_XmlUtil.searchFirstByTagName(childNodes, "tags");
+        final List<Element> tag = C_XmlUtil.searchByTagName(tags.getChildNodes(), "tag-map");
         for (Element a : tag) {
             System.out.println("=========================");
             TagArticoloDB tt = new TagArticoloDB();
 
 
-            final String article_id = XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-id").getTextContent().trim();
-            final String tag_id = XmlUtil.searchFirstByTagName(a.getChildNodes(), "tag-id").getTextContent().trim();
-            final String tag_title = XmlUtil.searchFirstByTagName(a.getChildNodes(), "tag-title").getTextContent().trim();
+            final String article_id = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-id").getTextContent().trim();
+            final String tag_id = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "tag-id").getTextContent().trim();
+            final String tag_title = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "tag-title").getTextContent().trim();
 
             tt.setInsertTimestamp(new Date());
             tt.setTag(tag_title);
@@ -204,18 +203,18 @@ public class UpdateThreadArticoliUtil {
         }
 
         //elenco attachment
-        final Element attachments = XmlUtil.searchFirstByTagName(childNodes, "attachments");
-        final List<Element> attachment = XmlUtil.searchByTagName(attachments.getChildNodes(), "attachment-map");
+        final Element attachments = C_XmlUtil.searchFirstByTagName(childNodes, "attachments");
+        final List<Element> attachment = C_XmlUtil.searchByTagName(attachments.getChildNodes(), "attachment-map");
         for (Element a : attachment) {
             System.out.println("=========================");
             AttachmentArticoloDB att = new AttachmentArticoloDB();
 
-            final String xxxx_filename = XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-filename").getTextContent().trim();
-            final String xxxx_url = (XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-url").getTextContent().trim()).replace(" ", "%20");
-            final String xxxx_filesize = XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-filesize").getTextContent().trim();
-            final String xxxx_filetype = XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-filetype").getTextContent().trim();
-            final String xxxx_state = XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-access").getTextContent().trim();
-            final String xxxx_article_id = XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-article-id").getTextContent().trim();
+            final String xxxx_filename = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-filename").getTextContent().trim();
+            final String xxxx_url = (C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-url").getTextContent().trim()).replace(" ", "%20");
+            final String xxxx_filesize = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-filesize").getTextContent().trim();
+            final String xxxx_filetype = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-filetype").getTextContent().trim();
+            final String xxxx_state = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-access").getTextContent().trim();
+            final String xxxx_article_id = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-article-id").getTextContent().trim();
 
 
             att.setInsertTimestamp(new Date());

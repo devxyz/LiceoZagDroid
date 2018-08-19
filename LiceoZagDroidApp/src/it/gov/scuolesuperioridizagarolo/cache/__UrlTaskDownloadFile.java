@@ -1,7 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.cache;
 
 import android.util.Log;
-import it.gov.scuolesuperioridizagarolo.model.C_NormalizedURL;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
 import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 
 import java.io.*;

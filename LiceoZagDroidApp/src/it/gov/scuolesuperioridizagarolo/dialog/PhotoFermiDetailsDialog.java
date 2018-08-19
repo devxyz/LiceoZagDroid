@@ -9,7 +9,7 @@ import it.gov.scuolesuperioridizagarolo.cache.UrlImageLoader;
 import it.gov.scuolesuperioridizagarolo.api.AbstractDialog;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_dialog_photos_details_xml;
-import it.gov.scuolesuperioridizagarolo.model.C_NormalizedURL;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.PhotoFermiDescription;
 import it.gov.scuolesuperioridizagarolo.util.ScreenUtil;

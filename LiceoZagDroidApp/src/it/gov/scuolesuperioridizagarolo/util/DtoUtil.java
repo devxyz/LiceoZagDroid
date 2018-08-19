@@ -2,9 +2,9 @@ package it.gov.scuolesuperioridizagarolo.util;
 
 import it.gov.scuolesuperioridizagarolo.dao.CircolareDB;
 import it.gov.scuolesuperioridizagarolo.dao.NewsDB;
-import it.gov.scuolesuperioridizagarolo.model.C_CircolareDto;
-import it.gov.scuolesuperioridizagarolo.model.C_NewsDto;
-import it.gov.scuolesuperioridizagarolo.model.C_NormalizedURL;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_CircolareDto;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NewsDto;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
 
 /**
  * Created by stefano on 01/08/15.

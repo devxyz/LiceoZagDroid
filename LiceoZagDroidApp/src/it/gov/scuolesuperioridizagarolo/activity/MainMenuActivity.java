@@ -106,6 +106,13 @@ public class MainMenuActivity extends AbstractActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+    }
+
+    @Override
+    protected void onCreateWithPermissions(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState != null && savedInstanceState.containsKey(KEY_STACK)) {
@@ -231,8 +238,6 @@ public class MainMenuActivity extends AbstractActivity {
             else
                 doAction(0, null);*/
         }
-
-
     }
 
     //azzera le varie info in base al cambiamento di utente

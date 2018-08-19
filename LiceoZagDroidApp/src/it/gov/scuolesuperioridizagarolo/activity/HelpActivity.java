@@ -27,6 +27,12 @@ public class HelpActivity extends AbstractActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+    }
+
+    @Override
+    protected void onCreateWithPermissions(Bundle savedInstanceState) {
         setContentView(R.layout.activity_help);
 
         //ON CREATE method
@@ -54,9 +60,7 @@ public class HelpActivity extends AbstractActivity {
             }
         });
 
-
     }
-
 
 
 }

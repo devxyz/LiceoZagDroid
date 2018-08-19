@@ -2,7 +2,7 @@ package it.gov.scuolesuperioridizagarolo.cache;
 
 import android.graphics.Bitmap;
 import android.util.Log;
-import it.gov.scuolesuperioridizagarolo.model.C_NormalizedURL;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
 
 import java.util.Collections;
 import java.util.Iterator;

@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../Dada-orario-utilities/Dada-orario-utilities.iml" filepath="$PROJECT_DIR$/../Dada-orario-utilities/Dada-orario-utilities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LiceoZagDadaUtilities/LiceoZagDadaUtilities.iml" filepath="$PROJECT_DIR$/LiceoZagDadaUtilities/LiceoZagDadaUtilities.iml" />
       <module fileurl="file://$PROJECT_DIR$/LiceoZagDroidApp/LiceoZagDroidApp.iml" filepath="$PROJECT_DIR$/LiceoZagDroidApp/LiceoZagDroidApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/LiceoZagDroidCodeUtilities/LiceoZagDroidCodeUtilities.iml" filepath="$PROJECT_DIR$/LiceoZagDroidCodeUtilities/LiceoZagDroidCodeUtilities.iml" />
       <module fileurl="file://$PROJECT_DIR$/LiceoZagDroidCommon/LiceoZagDroidCommon.iml" filepath="$PROJECT_DIR$/LiceoZagDroidCommon/LiceoZagDroidCommon.iml" />
       <module fileurl="file://$PROJECT_DIR$/LiceoZagDroidWeb/LiceoZagDroidWeb.iml" filepath="$PROJECT_DIR$/LiceoZagDroidWeb/LiceoZagDroidWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LiceoZag_AppCompat_v7/LiceoZag_AppCompat_v7.iml" filepath="$PROJECT_DIR$/LiceoZag_AppCompat_v7/LiceoZag_AppCompat_v7.iml" />
     </modules>
   </component>
 </project>

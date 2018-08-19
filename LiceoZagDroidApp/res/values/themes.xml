@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- the theme applied to the application or activity -->
-    <style name="CustomActionBarTheme"
-           parent="@android:style/Theme.Holo.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/MyActionBar</item>
+
+    <style name="AppTheme" parent="@style/Base.Theme.AppCompat.Light">
+        <!-- Customize your theme here.-->
+        <item name="colorPrimary">@color/color_black</item>
+        <item name="colorPrimaryDark">@color/color_black</item>
+        <item name="colorAccent">@color/color_blue</item>
+
+        <item name="android:textColor">@color/color_black</item>
+
+
+        <!--<item name="android:background">@color/color_light_gray</item>
+        <item name="android:windowBackground">@color/color_light_gray</item>
+        <item name="android:colorBackground">@color/color_light_gray</item>-->
     </style>
 
-    <!-- ActionBar styles -->
-    <style name="MyActionBar"
-           parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/color_black</item>
-    </style>
 </resources>

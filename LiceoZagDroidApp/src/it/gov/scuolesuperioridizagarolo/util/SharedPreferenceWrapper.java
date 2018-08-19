@@ -55,7 +55,11 @@ public class SharedPreferenceWrapper {
 
     public void setUserType(AppUserType t) {
         SharedPreferences.Editor edit = preferences.edit();
-        edit.putString(KEY_USER_TYPE, t.name());
+        if (t == null) {
+            edit.remove(KEY_USER_TYPE);
+        } else {
+            edit.putString(KEY_USER_TYPE, t.name());
+        }
         edit.apply();
     }
 

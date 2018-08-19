@@ -1,7 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.model;
 
 import android.util.Log;
-import dada.bitorario.data.BitOrarioGrigliaOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 
 import java.util.ArrayList;
 import java.util.Collections;

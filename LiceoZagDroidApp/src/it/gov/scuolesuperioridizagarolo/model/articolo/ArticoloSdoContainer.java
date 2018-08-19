@@ -1,6 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.model.articolo;
 
-import it.gov.scuolesuperioridizagarolo.model.C_MyDate;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_MyDate;
 
 import java.util.*;
 

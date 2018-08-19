@@ -10,7 +10,7 @@ import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDBHelperRun;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
-import it.gov.scuolesuperioridizagarolo.model.C_NormalizedURL;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 
 import java.io.File;

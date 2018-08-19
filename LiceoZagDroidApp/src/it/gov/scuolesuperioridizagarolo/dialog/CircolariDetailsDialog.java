@@ -23,7 +23,7 @@ import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_dialog_circolari_details_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
-import it.gov.scuolesuperioridizagarolo.model.C_NormalizedURL;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
 import it.gov.scuolesuperioridizagarolo.util.*;
 
 import java.io.File;

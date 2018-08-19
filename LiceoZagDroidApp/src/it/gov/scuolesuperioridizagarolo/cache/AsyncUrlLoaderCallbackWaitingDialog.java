@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.util.Log;
 import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
-import it.gov.scuolesuperioridizagarolo.model.C_NormalizedURL;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 
 import java.io.File;

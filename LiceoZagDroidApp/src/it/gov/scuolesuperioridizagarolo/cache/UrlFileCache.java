@@ -7,11 +7,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 import it.gov.scuolesuperioridizagarolo.dao.*;
-import it.gov.scuolesuperioridizagarolo.model.C_NormalizedURL;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
 import it.gov.scuolesuperioridizagarolo.util.C_DateUtil;
 import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 import org.greenrobot.greendao.query.*;
-import org.greenrobot.greendao.*;
 
 import java.io.File;
 import java.util.*;

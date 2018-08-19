@@ -1,7 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.util;
 
-import it.gov.scuolesuperioridizagarolo.model.C_CircolareDto;
-import it.gov.scuolesuperioridizagarolo.model.C_NormalizedURL;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_CircolareDto;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;

@@ -1,9 +1,9 @@
 package it.gov.scuolesuperioridizagarolo.model;
 
-import android.util.Base64;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoFlag;
 
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -24,38 +24,22 @@ public enum AppUserType {
         this.flag = flag;
     }
 
-    public String getAdditionalFieldName() {
+
+    public boolean verifyPassword(String s) {
         switch (this) {
             case ADMIN:
-                return null;
+                return Objects.equals("Stefano123$", s);
             case ATA:
-                return null;
-            case DOCENTE:
-                return "Nome Docente";
-            case FAMIGLIA:
-                return "Classe";
-            case STUDENTE:
-                return "Classe";
-            default:
-                return null;
-        }
-    }
+                return Objects.equals("Ata123$", s);
 
-
-    public String getPassword(String additionalField) {
-        switch (this) {
-            case ADMIN:
-                return "Stefano123$";
-            case ATA:
-                return "Ata123";
             case DOCENTE:
-                return Base64.encodeToString(additionalField.getBytes(), Base64.DEFAULT);
+                return false;
             case FAMIGLIA:
-                return null;
+                return true;
             case STUDENTE:
-                return null;
+                return true;
             default:
-                return null;
+                return false;
         }
 
     }

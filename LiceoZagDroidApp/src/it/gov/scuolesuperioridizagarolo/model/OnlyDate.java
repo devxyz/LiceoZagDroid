@@ -1,6 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.model;
 
-import dada.bitorario.data.enum_values.EGiorno;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.util.C_DateUtil;
 
 import java.util.Calendar;

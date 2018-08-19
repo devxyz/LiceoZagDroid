@@ -1,6 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.model;
 
 import it.gov.scuolesuperioridizagarolo.dao.CircolareDB;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_MyDate;
 
 import java.util.Collections;
 import java.util.List;

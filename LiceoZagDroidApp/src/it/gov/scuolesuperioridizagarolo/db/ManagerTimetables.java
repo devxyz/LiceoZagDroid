@@ -1,12 +1,12 @@
 package it.gov.scuolesuperioridizagarolo.db;
 
 import android.database.Cursor;
-import dada.bitorario.data.BitOrarioGrigliaOrario;
-import dada.bitorario.data.BitOrarioOraLezioneJSonConverter;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
 import it.gov.scuolesuperioridizagarolo.dao.TimetableDB;
 import it.gov.scuolesuperioridizagarolo.dao.TimetableDBDao;
 import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
+import it.gov.scuolesuperioridizagarolo.util.BitOrarioOraLezioneJSonConverter;
 import it.gov.scuolesuperioridizagarolo.util.StreamAndroidUtil;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;

@@ -5,7 +5,7 @@ import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDBHelperRun;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
-import it.gov.scuolesuperioridizagarolo.model.C_NormalizedURL;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
 
 import java.io.File;
 

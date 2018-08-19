@@ -3,7 +3,7 @@ package it.gov.scuolesuperioridizagarolo.db;
 import android.database.Cursor;
 import android.util.Log;
 import it.gov.scuolesuperioridizagarolo.dao.*;
-import it.gov.scuolesuperioridizagarolo.model.C_NewsDto;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_NewsDto;
 import it.gov.scuolesuperioridizagarolo.model.TermineInfoWeb;
 import it.gov.scuolesuperioridizagarolo.parser.ItalianWordSplit;
 import it.gov.scuolesuperioridizagarolo.util.DebugUtil;

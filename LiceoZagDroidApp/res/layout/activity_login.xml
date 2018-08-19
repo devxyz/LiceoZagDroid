@@ -7,7 +7,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Profilo"
+            android:text="Selezionare il tipo di Profilo"
             android:id="@+id/login_label_profilo" android:layout_alignParentStart="false"
             android:layout_below="@+id/textView21"/>
     <Spinner
@@ -15,33 +15,13 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/login_spinner_tipo_profilo" android:layout_below="@+id/login_label_profilo"
-            android:layout_alignStart="@+id/login_label_profilo"/>
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-              android:textAppearance="?android:attr/textAppearanceLarge" android:text="Classe/Docente"
-              android:id="@+id/login_label_classe_docente"
-              android:layout_below="@+id/login_spinner_tipo_profilo" android:layout_alignStart="@+id/login_spinner_tipo_profilo"/>
-    <Spinner
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/login_spinner_classe"
-            android:layout_below="@+id/login_label_classe_docente"
-            android:layout_alignStart="@+id/login_label_classe_docente"/>
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-              android:textAppearance="?android:attr/textAppearanceLarge" android:text="Chiave di Accesso"
-              android:id="@+id/login_label_password"
-              android:layout_below="@+id/login_spinner_classe" android:layout_alignStart="@+id/login_spinner_classe"/>
-    <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/login_edittext_password" android:layout_below="@+id/login_label_password"
-            android:layout_alignStart="@+id/login_label_password"/>
+            android:layout_alignStart="@+id/login_label_profilo" android:layout_margin="20dp"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_below="@+id/login_edittext_password"
-            android:layout_alignParentStart="true" android:gravity="center_horizontal" android:layout_marginTop="10dp">
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/activity_login_textViewMsg" android:layout_alignParentEnd="true">
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,11 +39,20 @@
               android:text="@string/nome_scuola_denominazione_breve" android:id="@+id/textView21"
               android:gravity="center_vertical|center_horizontal" android:textStyle="bold"
               android:textColor="@color/color_blue_scurissimo" android:textSize="26dp"
-              android:layout_alignStart="@+id/login_label_profilo" android:layout_below="@+id/textView22"/>
+              android:layout_alignStart="@+id/login_label_profilo" android:layout_below="@+id/textView22"
+              android:layout_marginBottom="20dp"/>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
               android:text="@string/nome_scuola_tipologia" android:id="@+id/textView22" android:textSize="16dp"
               android:gravity="center_horizontal" android:textStyle="bold"
               android:textColor="@color/color_blue_scurissimo"
               android:layout_alignParentStart="true" android:paddingTop="5dp"
               android:layout_alignParentLeft="true"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/activity_login_textViewMsg" android:layout_below="@+id/login_spinner_tipo_profilo"
+            android:layout_alignParentStart="true" android:layout_marginBottom="10dp"
+            android:singleLine="false" android:layout_marginTop="10dp"
+            android:gravity="fill_horizontal"/>
 </RelativeLayout>

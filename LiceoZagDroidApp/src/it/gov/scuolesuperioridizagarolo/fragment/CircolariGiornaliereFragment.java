@@ -21,7 +21,7 @@ import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
 import it.gov.scuolesuperioridizagarolo.db.ManagerCircolare;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_cerca_circolari_by_date_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
-import it.gov.scuolesuperioridizagarolo.model.C_MyDate;
+import it.gov.scuolesuperioridizagarolo.model.dto.C_MyDate;
 import it.gov.scuolesuperioridizagarolo.model.CircolariContainerByDate;
 import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 
