@@ -51,19 +51,6 @@ public class HomeFragment extends AbstractFragment {
         });
 
         LAYOUT_OBJs.textViewTipoUtente.setText(getMainActivity().getSharedPreferences().getUserType().getDescrizione());
-        LAYOUT_OBJs.textViewTipoUtente.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
-            @Override
-            protected void onClickImpl(View v) throws Throwable {
-                InitActivity.chooseUserType(getMainActivity(), new OnClickListenerDialogErrorCheck(getMainActivity()) {
-                    @Override
-                    protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
-                        getMainActivity().doAction(0, null);
-                    }
-                }, true);
-            }
-        });
-
-
         final MenuHomeListAdapter adapter = new MenuHomeListAdapter(getMainActivity());
         LAYOUT_OBJs.listView4.setAdapter(adapter);
 

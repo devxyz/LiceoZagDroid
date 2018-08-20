@@ -56,9 +56,14 @@ public class MenuHomeListAdapter extends BaseAdapter implements IMenuListAdapter
             case FAMIGLIA:
                 navMenuInfo = activity.getResources().obtainTypedArray(R.array.menu_home_famiglia);
                 break;
-            default:
+            case ATA:
                 navMenuInfo = activity.getResources().obtainTypedArray(R.array.menu_home_ata);
                 break;
+            case ADMIN:
+                navMenuInfo = activity.getResources().obtainTypedArray(R.array.menu_home_admin);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid user");
         }
 
 

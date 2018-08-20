@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/LiceoZagDroidCommon/LiceoZagDroidCommon.iml" filepath="$PROJECT_DIR$/LiceoZagDroidCommon/LiceoZagDroidCommon.iml" />
       <module fileurl="file://$PROJECT_DIR$/LiceoZagDroidWeb/LiceoZagDroidWeb.iml" filepath="$PROJECT_DIR$/LiceoZagDroidWeb/LiceoZagDroidWeb.iml" />
       <module fileurl="file://$PROJECT_DIR$/LiceoZag_AppCompat_v7/LiceoZag_AppCompat_v7.iml" filepath="$PROJECT_DIR$/LiceoZag_AppCompat_v7/LiceoZag_AppCompat_v7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LiceoZag_zxing-android-embedded/LiceoZag_zxing-android-embedded.iml" filepath="$PROJECT_DIR$/LiceoZag_zxing-android-embedded/LiceoZag_zxing-android-embedded.iml" />
     </modules>
   </component>
 </project>

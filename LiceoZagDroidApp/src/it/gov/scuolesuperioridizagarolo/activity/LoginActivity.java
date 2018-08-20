@@ -1,9 +1,13 @@
 package it.gov.scuolesuperioridizagarolo.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_activity_login_xml;
@@ -11,6 +15,7 @@ import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.AppUserType;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
+import it.gov.scuolesuperioridizagarolo.util.ZXingIntentIntegration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +25,12 @@ import java.util.List;
  */
 public class LoginActivity extends AbstractActivity {
     LayoutObjs_activity_login_xml obj;
+
+    public static void startLoginActivity(Context ctx) {
+        Intent i = new Intent(ctx, LoginActivity.class);
+        ctx.startActivity(i);
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -124,7 +135,6 @@ public class LoginActivity extends AbstractActivity {
                     return;
                 }
                 SharedPreferenceWrapper.getCommonInstance(getActivity()).setUserType(null);
-
                 switch (type) {
                     case ADMIN:
                     case ATA: {
@@ -147,22 +157,14 @@ public class LoginActivity extends AbstractActivity {
                                     }
                                 }
                         );
-
-                        obj.login_button_accedi.setText("Accedi con Password");
-                        obj.login_button_accedi.setEnabled(true);
-                        obj.activity_login_textViewMsg.setText("Per continuare premere il pulsante Accedi.\nVerra' richiesta una password di accesso.");
                         break;
                     }
                     case DOCENTE: {
-
-                        obj.login_button_accedi.setText("Accedi con QRCODE");
-                        obj.login_button_accedi.setEnabled(true);
-                        obj.activity_login_textViewMsg.setText("Per continuare premere il pulsante Accedi.\nVerra' richiesto di scansionare il codice di controllo QRCODE disponibile nell'area riservata del sito d'Istituto.");
-
+                        final ZXingIntentIntegration ii = new ZXingIntentIntegration(LoginActivity.this);
+                        ii.initiateScan();
                         break;
                     }
                     case STUDENTE: {
-
                         SharedPreferenceWrapper.getCommonInstance(getActivity()).setUserType(type);
                         startApplication();
                         break;
@@ -180,6 +182,33 @@ public class LoginActivity extends AbstractActivity {
 
             }
         });
+
+
+        final AppUserType prevUser = SharedPreferenceWrapper.getCommonInstance(getActivity()).getUserType();
+        if (prevUser != null) {
+            startApplication();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+
+            if (requestCode == IntentIntegrator.REQUEST_CODE) {
+                IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+                String ewmString = result.getContents();
+                final AppUserType appUserType = getAppUserType();
+                if (appUserType != null && appUserType.verifyPassword(ewmString)) {
+                    SharedPreferenceWrapper.getCommonInstance(getActivity()).setUserType(appUserType);
+                    startApplication();
+                } else {
+                    DialogUtil.openInfoDialog(getActivity(), "Info", "Codice errato. Il QRCode e' disponibile nell'area riservata del sito d'Istituto");
+                }
+            }
+        }
+
     }
 
     private void startApplication() {

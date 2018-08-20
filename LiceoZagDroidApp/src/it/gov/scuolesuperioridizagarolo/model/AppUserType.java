@@ -28,12 +28,12 @@ public enum AppUserType {
     public boolean verifyPassword(String s) {
         switch (this) {
             case ADMIN:
-                return Objects.equals("Stefano123$", s);
+                return Objects.equals("xxx", s);
             case ATA:
-                return Objects.equals("Ata123$", s);
+                return Objects.equals("yyy", s);
 
             case DOCENTE:
-                return false;
+                return true;
             case FAMIGLIA:
                 return true;
             case STUDENTE:

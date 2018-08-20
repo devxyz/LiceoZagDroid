@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="zxing_msg_default_status">zxing_msg_default_status</string>
+    <string name="zxing_app_name">Nome</string>
+    <string name="zxing_msg_camera_framework_bug">bug</string>
+    <string name="zxing_button_ok">ok</string>
+</resources>

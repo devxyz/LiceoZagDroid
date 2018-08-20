@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -45,9 +44,6 @@ public class BarCodeFragment extends AbstractFragment {
 
             @Override
             protected void onClickImpl(View v) throws Throwable {
-
-
-
 
 
                 BitMatrix bitMatrix;
@@ -93,8 +89,8 @@ public class BarCodeFragment extends AbstractFragment {
             protected void onClickImpl(View v) throws Throwable {
 
 
-                IntentIntegrator integrator = new IntentIntegrator(BarCodeFragment.this);
-                integrator.setMessage("Avvia riconoscimento");
+                IntentIntegrator integrator = IntentIntegrator.forFragment(BarCodeFragment.this);
+                integrator.setPrompt("Avvia riconoscimento");
 
 
                 integrator.initiateScan();

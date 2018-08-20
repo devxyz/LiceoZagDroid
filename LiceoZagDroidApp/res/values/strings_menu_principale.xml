@@ -13,34 +13,6 @@
         <item>END-ITEM</item>
 
 
-        <item>Docente</item>
-        <item>Docente</item>
-        <item>it.gov.scuolesuperioridizagarolo.action.AppUserChooserAction</item>
-        <item>@drawable/_menu_photos</item>
-        <item>SHOW_DOCENTI</item>
-        <item>END-ITEM</item>
-
-        <item>Personale ATA</item>
-        <item>Personale ATA</item>
-        <item>it.gov.scuolesuperioridizagarolo.action.AppUserChooserAction</item>
-        <item>@drawable/_menu_photos</item>
-        <item>SHOW_ATA</item>
-        <item>END-ITEM</item>
-
-        <item>Genitore</item>
-        <item>Genitore</item>
-        <item>it.gov.scuolesuperioridizagarolo.action.AppUserChooserAction</item>
-        <item>@drawable/_menu_photos</item>
-        <item>SHOW_GENITORI</item>
-        <item>END-ITEM</item>
-
-        <item>Studente</item>
-        <item>Studente</item>
-        <item>it.gov.scuolesuperioridizagarolo.action.AppUserChooserAction</item>
-        <item>@drawable/_menu_photos</item>
-        <item>SHOW_STUDENTI</item>
-        <item>END-ITEM</item>
-
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
 
@@ -77,28 +49,28 @@
         <item>Orario Docenti</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocentePersistenteFragment</item>
         <item>@drawable/_menu_teaching_48x48</item>
-        <item>SUB_ITEM,SHOW_DOCENTI</item>
+        <item>SUB_ITEM,SHOW_DOCENTI,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
         <item>Orario Classi</item>
         <item>Orario Classi</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioClassePersistenteFragment</item>
         <item>@drawable/_menu_student_48x48</item>
-        <item>SUB_ITEM,SHOW_STUDENTI,SHOW_GENITORI</item>
+        <item>SUB_ITEM,SHOW_STUDENTI,SHOW_GENITORI,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
         <item>Cerca Classi</item>
         <item>Cerca Classi</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseNonPersistenteFragment</item>
         <item>@drawable/_menu_student_48x48</item>
-        <item>SUB_ITEM,SHOW_DOCENTI,SHOW_ATA</item>
+        <item>SUB_ITEM,SHOW_DOCENTI,SHOW_ATA,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
         <item>Cerca Docenti</item>
         <item>Cerca Docenti</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteNonPersistenteFragment</item>
         <item>@drawable/_menu_teaching_48x48</item>
-        <item>SUB_ITEM,SHOW_STUDENTI,SHOW_ATA</item>
+        <item>SUB_ITEM,SHOW_STUDENTI,SHOW_ATA,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
 
@@ -106,14 +78,14 @@
         <item>Orario Aule</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioAulaNonPersistenteFragment</item>
         <item>@drawable/_menu_room_timetable_48x48</item>
-        <item>SUB_ITEM,SHOW_ATA,SHOW_DOCENTI,SHOW_STUDENTI</item>
+        <item>SUB_ITEM,SHOW_ATA,SHOW_DOCENTI,SHOW_STUDENTI,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
         <item>Aule Libere</item>
         <item>Aule Libere</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.AuleVuoteFragment</item>
         <item>@drawable/_menu_rooms_48x48</item>
-        <item>SUB_ITEM,SHOW_ATA,SHOW_DOCENTI</item>
+        <item>SUB_ITEM,SHOW_ATA,SHOW_DOCENTI,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
 
@@ -177,7 +149,7 @@
         <item>Circolari del Giorno</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.CircolariGiornaliereFragment</item>
         <item>@drawable/calendar_preferences_50x50</item>
-        <item>SUB_ITEM,NOT_ACTIVE</item>
+        <item>SUB_ITEM,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
         <!-- .................................. -->
@@ -186,7 +158,7 @@
         <item>Ultime Notizie dalla scuola</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.NewsFragmentRss</item>
         <item>@drawable/id_tab_news</item>
-        <item>SUB_ITEM,NOT_ACTIVE</item>
+        <item>SUB_ITEM,SHOW_ADMIN</item>
         <item>END-ITEM</item>
         <!-- .................................. -->
 
@@ -194,7 +166,7 @@
         <item>Circolari scolastiche</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.CircolariSearchFragment</item>
         <item>@drawable/file_search</item>
-        <item>SUB_ITEM,NOT_ACTIVE</item>
+        <item>SUB_ITEM,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
 
@@ -203,7 +175,7 @@
         <item>Registro elettronico docenti</item>
         <item>it.gov.scuolesuperioridizagarolo.action.ReDocentiAction</item>
         <item>@drawable/logo_re_docente_45x45</item>
-        <item>SHOW_DOCENTI</item>
+        <item>SHOW_DOCENTI,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
 
@@ -211,7 +183,7 @@
         <item>Registro elettronico famiglie</item>
         <item>it.gov.scuolesuperioridizagarolo.action.ReStudentiAction</item>
         <item>@drawable/logo_re_famiglie_45x45</item>
-        <item>SHOW_GENITORI,SHOW_STUDENTI</item>
+        <item>SHOW_GENITORI,SHOW_STUDENTI,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
@@ -223,18 +195,26 @@
         <item></item>
         <item>END-ITEM</item>
 
+        <item>Cambia Profilo</item>
+        <item>Cambia Profilo</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.AppUserChooserAction</item>
+        <item>@drawable/_menu_photos</item>
+        <item></item>
+        <item>END-ITEM</item>
+
+
         <item>Barcode</item>
         <item>Barcode</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.BarCodeFragment</item>
         <item>@drawable/close_48x48</item>
-        <item>NOT_ACTIVE</item>
+        <item>SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
         <item>BAR</item>
         <item>BAR</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.ProdottiBarFragment</item>
         <item>@drawable/close_48x48</item>
-        <item>NOT_ACTIVE</item>
+        <item>SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
 
@@ -242,14 +222,14 @@
         <item>BACKUP DATABASE</item>
         <item>it.gov.scuolesuperioridizagarolo.action.BackupDatabaseAction</item>
         <item>@drawable/close_48x48</item>
-        <item>SHOW_DOCENTI</item>
+        <item>SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
         <item>DOWNLOAD ARTICLES</item>
         <item>DOWNLOAD ARTICLES</item>
         <item>it.gov.scuolesuperioridizagarolo.action.DownloadArticlesAction</item>
         <item>@drawable/close_48x48</item>
-        <item>SHOW_DOCENTI</item>
+        <item>SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
 
