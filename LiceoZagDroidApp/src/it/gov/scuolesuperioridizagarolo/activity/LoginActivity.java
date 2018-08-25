@@ -18,6 +18,7 @@ import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
 import it.gov.scuolesuperioridizagarolo.util.ZXingIntentIntegration;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,6 +43,18 @@ public class LoginActivity extends AbstractActivity {
         setContentView(R.layout.activity_login);
         obj = new LayoutObjs_activity_login_xml(this);
 
+
+        final Date expirationDate = SharedPreferenceWrapper.getCommonInstance(getActivity()).getUserTypeExpirationDate();
+        if (expirationDate != null && expirationDate.compareTo(new Date()) < 0) {
+            SharedPreferenceWrapper.getCommonInstance(getActivity()).setUserType(null);
+        }
+
+
+        final AppUserType prevUser = SharedPreferenceWrapper.getCommonInstance(getActivity()).getUserType();
+        if (prevUser != null) {
+            startApplication();
+        }
+
         List<String> list = new ArrayList<String>();
         list.add("-- Selezionare --");
         for (AppUserType userType : AppUserType.values()) {
@@ -59,7 +72,7 @@ public class LoginActivity extends AbstractActivity {
         obj.login_spinner_tipo_profilo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                AppUserType type = getAppUserType();
+                AppUserType type = getSelectedAppUserType();
                 if (type == null) {
                     obj.login_button_accedi.setEnabled(false);
                     obj.login_button_accedi.setText("Accedi");
@@ -127,7 +140,7 @@ public class LoginActivity extends AbstractActivity {
             @Override
             protected void onClickImpl(View v) throws Throwable {
 
-                final AppUserType type = getAppUserType();
+                final AppUserType type = getSelectedAppUserType();
                 if (type == null) {
                     obj.login_button_accedi.setEnabled(false);
                     obj.login_button_accedi.setText("Accedi");
@@ -184,10 +197,6 @@ public class LoginActivity extends AbstractActivity {
         });
 
 
-        final AppUserType prevUser = SharedPreferenceWrapper.getCommonInstance(getActivity()).getUserType();
-        if (prevUser != null) {
-            startApplication();
-        }
     }
 
     @Override
@@ -199,7 +208,7 @@ public class LoginActivity extends AbstractActivity {
             if (requestCode == IntentIntegrator.REQUEST_CODE) {
                 IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
                 String ewmString = result.getContents();
-                final AppUserType appUserType = getAppUserType();
+                final AppUserType appUserType = getSelectedAppUserType();
                 if (appUserType != null && appUserType.verifyPassword(ewmString)) {
                     SharedPreferenceWrapper.getCommonInstance(getActivity()).setUserType(appUserType);
                     startApplication();
@@ -217,7 +226,7 @@ public class LoginActivity extends AbstractActivity {
         LoginActivity.this.finish();
     }
 
-    private AppUserType getAppUserType() {
+    private AppUserType getSelectedAppUserType() {
         final int o = obj.login_spinner_tipo_profilo.getSelectedItemPosition();
         if (o <= 0) return null;
         return AppUserType.values()[o - 1];

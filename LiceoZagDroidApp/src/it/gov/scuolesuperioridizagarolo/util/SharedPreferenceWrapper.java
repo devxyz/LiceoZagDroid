@@ -6,6 +6,7 @@ import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.model.AppUserType;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class SharedPreferenceWrapper {
     //private static final String KEY_NOME_CLASSE = "KEY_NOME_CLASSE";
     //private static final String KEY_NOME_DOCENTE = "KEY_NOME_DOCENTE";
     private static final String KEY_USER_TYPE = "KEY_USER_TYPE";
+    private static final String KEY_USER_TYPE_DATE = "KEY_USER_TYPE_DATE";
     private static final String KEY_USER_ADDITIONAL_FIELD = "KEY_USER_ADDITIONAL_FIELD";//campo addizionale
     private static final String KEY_DATA_UPDATE = "KEY_DATA_UPDATE";
     private final SharedPreferences preferences;
@@ -57,10 +59,18 @@ public class SharedPreferenceWrapper {
         SharedPreferences.Editor edit = preferences.edit();
         if (t == null) {
             edit.remove(KEY_USER_TYPE);
+            edit.remove(KEY_USER_TYPE_DATE);
         } else {
             edit.putString(KEY_USER_TYPE, t.name());
+            edit.putLong(KEY_USER_TYPE_DATE, System.currentTimeMillis());
         }
         edit.apply();
+    }
+
+    public Date getUserTypeTimestamp() {
+        final long val = preferences.getLong(KEY_USER_TYPE_DATE, 0);
+        if (val == 0) return null;
+        return new Date(val);
     }
 
     public Date getLastDataUpdate() {
@@ -72,6 +82,25 @@ public class SharedPreferenceWrapper {
         SharedPreferences.Editor e = preferences.edit();
         e.putLong(KEY_DATA_UPDATE, d.getTime());
         e.apply();
+    }
+
+    public Date getUserTypeExpirationDate() {
+        final Date d = getUserTypeTimestamp();
+        if (d == null) return null;
+        final Calendar c1 = Calendar.getInstance();
+        c1.setTime(d);
+
+        final Calendar c2 = Calendar.getInstance();
+        c2.set(Calendar.YEAR, c1.get(Calendar.YEAR));
+        c2.set(Calendar.MONTH, 9);//agosto
+        c2.set(Calendar.DAY_OF_MONTH, 31);//31 agosto
+        c2.set(Calendar.HOUR, 23);
+        c2.set(Calendar.MINUTE, 59);
+        c2.set(Calendar.SECOND, 59);
+        if (c2.getTime().compareTo(c1.getTime()) < 0) {
+            c2.set(Calendar.YEAR, c1.get(Calendar.YEAR) + 1);
+        }
+        return c2.getTime();
     }
 
     public SharedPreferences getPreferences() {

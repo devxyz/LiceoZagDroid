@@ -45,18 +45,18 @@
         <item>END-ITEM</item>
 
 
-        <item>Orario Docenti</item>
-        <item>Orario Docenti</item>
+        <item>Il mio orario (docente)</item>
+        <item>Il mio orario (docente)</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocentePersistenteFragment</item>
         <item>@drawable/_menu_teaching_48x48</item>
         <item>SUB_ITEM,SHOW_DOCENTI,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
-        <item>Orario Classi</item>
-        <item>Orario Classi</item>
+        <item>Orario della classe</item>
+        <item>Orario della classe</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioClassePersistenteFragment</item>
         <item>@drawable/_menu_student_48x48</item>
-        <item>SUB_ITEM,SHOW_STUDENTI,SHOW_GENITORI,SHOW_ADMIN</item>
+        <item>SUB_ITEM,SHOW_STUDENTI,SHOW_GENITORI</item>
         <item>END-ITEM</item>
 
         <item>Cerca Classi</item>
@@ -85,7 +85,7 @@
         <item>Aule Libere</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.AuleVuoteFragment</item>
         <item>@drawable/_menu_rooms_48x48</item>
-        <item>SUB_ITEM,SHOW_ATA,SHOW_DOCENTI,SHOW_ADMIN</item>
+        <item>SUB_ITEM,SHOW_ATA,SHOW_DOCENTI,SHOW_ADMIN,SHOW_STUDENTI</item>
         <item>END-ITEM</item>
 
 

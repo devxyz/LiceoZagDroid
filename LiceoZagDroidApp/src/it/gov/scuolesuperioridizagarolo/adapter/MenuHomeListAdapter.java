@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import it.gov.scuolesuperioridizagarolo.R;
-import it.gov.scuolesuperioridizagarolo.activity.InitActivity;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_gridview_item_menu_home_xml;
 import it.gov.scuolesuperioridizagarolo.model.AppUserType;
@@ -67,7 +66,7 @@ public class MenuHomeListAdapter extends BaseAdapter implements IMenuListAdapter
         }
 
 
-        final List<DataMenuInfo> load = DataMenuLoader.load(navMenuInfo, InitActivity.getCurrentUser(activity));
+        final List<DataMenuInfo> load = DataMenuLoader.load(navMenuInfo, MainMenuActivity.getCurrentUser(activity));
         for (DataMenuInfo x : load) {
             if (x.type() != DataMenuInfoType.LABEL_ONLY)
                 items.add(x);

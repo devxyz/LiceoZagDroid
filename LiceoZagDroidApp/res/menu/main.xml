@@ -20,13 +20,6 @@
 
 
         <item
-                android:id="@+id/action_usertype"
-                android:orderInCategory="100"
-                android:showAsAction="never"
-                android:icon="@drawable/arrow_next"
-                android:title="Cambia tipo di profilo"/>
-
-        <item
                 android:id="@+id/action_update"
                 android:orderInCategory="100"
                 android:showAsAction="never"

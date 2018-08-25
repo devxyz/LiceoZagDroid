@@ -3,7 +3,10 @@ package it.gov.scuolesuperioridizagarolo.activity;
 import android.app.ActivityManager;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.*;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -24,7 +27,7 @@ import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.dao.*;
 import it.gov.scuolesuperioridizagarolo.dialog.HtmlPageDialog;
-import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
+import it.gov.scuolesuperioridizagarolo.model.AppUserType;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoFlag;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoLatestUsed;
@@ -37,6 +40,7 @@ import it.gov.scuolesuperioridizagarolo.util.ThreadUtil;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -60,6 +64,9 @@ public class MainMenuActivity extends AbstractActivity {
     private int currentSelectionIndex = -1;
     private BroadcastReceiver receiver;
 
+    public static AppUserType getCurrentUser(Context e) {
+        return SharedPreferenceWrapper.getCommonInstance(e).getUserType();
+    }
 
     public static void startMainActivity(Context ctx, DataMenuInfo m) {
         Intent i = new Intent(ctx, MainMenuActivity.class);
@@ -106,7 +113,6 @@ public class MainMenuActivity extends AbstractActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
 
     }
@@ -180,7 +186,7 @@ public class MainMenuActivity extends AbstractActivity {
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 
         // setting the nav drawer list menuAdapter
-        menuMainAdapter = MainMenuExpandibleListAdapter.getInstanceForMainMenu(getApplicationContext(), InitActivity.getCurrentUser(this));
+        menuMainAdapter = MainMenuExpandibleListAdapter.getInstanceForMainMenu(getApplicationContext(), getCurrentUser(this));
         mDrawerList.setAdapter(menuMainAdapter);
 
 
@@ -243,7 +249,7 @@ public class MainMenuActivity extends AbstractActivity {
     //azzera le varie info in base al cambiamento di utente
     public void reInitUser() {
         stack.clear();
-        menuMainAdapter = MainMenuExpandibleListAdapter.getInstanceForMainMenu(getApplicationContext(), InitActivity.getCurrentUser(this));
+        menuMainAdapter = MainMenuExpandibleListAdapter.getInstanceForMainMenu(getApplicationContext(), getCurrentUser(this));
         mDrawerList.setAdapter(menuMainAdapter);
 
     }
@@ -330,15 +336,6 @@ public class MainMenuActivity extends AbstractActivity {
 
                 return true;
             }
-            case R.id.action_usertype:
-                InitActivity.chooseUserType(this, new OnClickListenerDialogErrorCheck(this) {
-                    @Override
-                    protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
-                        MainMenuActivity.this.reInitUser();
-                        MainMenuActivity.this.doAction(0, null);
-                    }
-                }, true);
-                return true;
             case R.id.action_reset: {
                 _doResetApplication();
                 finish();
@@ -361,7 +358,12 @@ public class MainMenuActivity extends AbstractActivity {
                 sb.append("<html><body><table border=1>");
                 sb.append("<tr><td>key</td><td>Value</td>");
                 for (Map.Entry<String, ?> e : all.entrySet()) {
-                    sb.append("<tr><td>" + e.getKey() + "</td><td>" + e.getValue() + "</td>");
+                    final Object value = e.getValue();
+                    if (value instanceof Long) {
+                        sb.append("<tr><td>" + e.getKey() + "</td><td>" + value + " " + new Date((Long) value) + "</td>");
+                    } else {
+                        sb.append("<tr><td>" + e.getKey() + "</td><td>" + value + "</td>");
+                    }
                 }
                 sb.append("</table></body></html>");
                 HtmlPageDialog d = new HtmlPageDialog(this, "Report shared prefs", sb.toString(), null);
