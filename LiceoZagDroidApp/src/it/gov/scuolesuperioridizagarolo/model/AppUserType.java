@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.model;
 
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoFlag;
+import it.gov.scuolesuperioridizagarolo.util.LoginUtil;
 
 import java.util.Objects;
 import java.util.Set;
@@ -33,7 +34,7 @@ public enum AppUserType {
                 return Objects.equals("yyy", s);
 
             case DOCENTE:
-                return true;
+                return LoginUtil.verifyQRCODEDocente(s);
             case FAMIGLIA:
                 return true;
             case STUDENTE:

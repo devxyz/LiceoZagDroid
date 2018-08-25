@@ -16,7 +16,7 @@ import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
 /**
  * Created by stefano on 10/09/15.
  */
-
+@Deprecated
 public class InitActivity extends AbstractActivity {
     private LayoutObjs_activity_splash_update2_xml obj;
     private boolean closed = false;

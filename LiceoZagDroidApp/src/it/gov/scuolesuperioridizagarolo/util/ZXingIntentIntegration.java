@@ -1,7 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.util;
 
 import android.app.Activity;
-import android.app.Fragment;
 import com.google.zxing.integration.android.IntentIntegrator;
 
 /**
@@ -10,12 +9,11 @@ import com.google.zxing.integration.android.IntentIntegrator;
 public class ZXingIntentIntegration extends IntentIntegrator {
     public ZXingIntentIntegration(Activity activity) {
         super(activity);
-        /*
+
         setTitle("Installa Barcode Scanner?");
-        setMessage("L'applicazione richiede l'APP Barcode Scanner disponibile sul Google Play. Vuoi installarla?");
+        setMessage("Per continuare e' necessaria l'APP Barcode Scanner disponibile sul Google Play. Vuoi installarla?");
         setButtonNo("Annulla");
         setButtonYes("Installa (consigliato)");
-*/
 
     }
 

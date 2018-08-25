@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="zxing_CaptureTheme" parent="android:Theme.Holo.NoActionBar.Fullscreen">
+    </style>
+
+
     <style name="AppTheme" parent="@style/Base.Theme.AppCompat.Light">
         <!-- Customize your theme here.-->
         <item name="colorPrimary">@color/color_black</item>

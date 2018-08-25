@@ -203,8 +203,9 @@ public class LoginActivity extends AbstractActivity {
                 if (appUserType != null && appUserType.verifyPassword(ewmString)) {
                     SharedPreferenceWrapper.getCommonInstance(getActivity()).setUserType(appUserType);
                     startApplication();
+                    //DialogUtil.openInfoDialog(getActivity(), "Info", "Codice corretto.");
                 } else {
-                    DialogUtil.openInfoDialog(getActivity(), "Info", "Codice errato. Il QRCode e' disponibile nell'area riservata del sito d'Istituto");
+                    DialogUtil.openInfoDialog(getActivity(), "Info", "Codice errato o scaduo.\n" + ewmString + "\nIl QRCode e' disponibile nell'area riservata del sito d'Istituto");
                 }
             }
         }

@@ -89,8 +89,8 @@ public class BarCodeFragment extends AbstractFragment {
             protected void onClickImpl(View v) throws Throwable {
 
 
-                IntentIntegrator integrator = IntentIntegrator.forFragment(BarCodeFragment.this);
-                integrator.setPrompt("Avvia riconoscimento");
+                IntentIntegrator integrator = new IntentIntegrator(BarCodeFragment.this);
+
 
 
                 integrator.initiateScan();
