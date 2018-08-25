@@ -3,8 +3,8 @@ package it.gov.scuolesuperioridizagarolo.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.R;
+import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_activity_help_xml;
 
 /**

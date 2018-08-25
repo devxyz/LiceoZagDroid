@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.DatePicker;
 import android.widget.ExpandableListView;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.adapter.AuleVuoteExpandibleListAdapter;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
@@ -19,6 +17,8 @@ import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_classi_vuote_
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
 import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
 /**
  * Created by stefano on 08/01/2018.

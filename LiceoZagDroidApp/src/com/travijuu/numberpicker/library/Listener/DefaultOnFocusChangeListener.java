@@ -2,7 +2,6 @@ package com.travijuu.numberpicker.library.Listener;
 
 import android.view.View;
 import android.widget.EditText;
-
 import com.travijuu.numberpicker.library.Enums.ActionEnum;
 import com.travijuu.numberpicker.library.NumberPicker;
 

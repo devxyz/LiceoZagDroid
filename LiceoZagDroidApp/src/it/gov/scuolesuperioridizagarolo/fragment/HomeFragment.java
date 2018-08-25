@@ -1,20 +1,20 @@
 package it.gov.scuolesuperioridizagarolo.fragment;
 
 import android.os.Bundle;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.PopupMenu;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.adapter.MenuHomeListAdapter;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_home_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
-import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 
 public class HomeFragment extends AbstractFragment {
 
-    private LayoutObjs_fragment_home_xml LAYOUT_OBJs;   //***************************
+    public LayoutObjs_fragment_home_xml LAYOUT_OBJs;   //***************************
 
     public HomeFragment() {
     }
@@ -39,16 +39,6 @@ public class HomeFragment extends AbstractFragment {
         //Bitmap b = ScreenUtil.getResourceAsBitmap(this.getMainActivity(), R.drawable.logo_fermi_150x150);
         //LAYOUT_OBJs.imageView.setImageBitmap(ScreenUtil.scaleAndAdapt(b, 300, 300));
 
-        LAYOUT_OBJs.imageView.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
-            @Override
-            public void onClickImpl(View v) {
-
-                getMainActivity().openMenu();
-
-            }
-        });
-
-        LAYOUT_OBJs.textViewTipoUtente.setText(getMainActivity().getSharedPreferences().getUserType().getDescrizione());
         final MenuHomeListAdapter adapter = new MenuHomeListAdapter(getMainActivity());
         LAYOUT_OBJs.listView4.setAdapter(adapter);
 

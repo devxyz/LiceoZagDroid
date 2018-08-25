@@ -1,8 +1,8 @@
 package it.gov.scuolesuperioridizagarolo.action;
 
 import android.os.Bundle;
-import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.action.api.ActivityAction;
+import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
 
 /**

@@ -17,9 +17,6 @@ import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloTypeCircolare;
 import it.gov.scuolesuperioridizagarolo.util.C_DateUtil;
 import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by stefano on 04/03/15.
  */

@@ -1,12 +1,12 @@
 package it.gov.scuolesuperioridizagarolo.adapter;
 
 import android.app.Activity;
+import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
+import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
-import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
-import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
 
 import java.util.List;
 

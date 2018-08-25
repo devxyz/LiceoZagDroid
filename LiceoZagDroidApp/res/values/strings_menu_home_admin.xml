@@ -105,7 +105,7 @@
 
         <item>Debug Config</item>
         <item>Debug Config</item>
-        <item>it.gov.scuolesuperioridizagarolo.action.OpenMenuAction</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.OpenDebugMenuAction</item>
         <item>@drawable/close_48x48</item>
         <item></item>
         <item>END-ITEM</item>

@@ -24,7 +24,10 @@ import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_dialog_circolari_detai
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
-import it.gov.scuolesuperioridizagarolo.util.*;
+import it.gov.scuolesuperioridizagarolo.util.C_DateUtil;
+import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
+import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
+import it.gov.scuolesuperioridizagarolo.util.ScreenUtil;
 
 import java.io.File;
 import java.util.Locale;

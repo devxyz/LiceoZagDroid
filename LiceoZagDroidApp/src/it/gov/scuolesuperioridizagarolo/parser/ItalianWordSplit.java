@@ -1,9 +1,5 @@
 package it.gov.scuolesuperioridizagarolo.parser;
 
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
-import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
-import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
 import it.gov.scuolesuperioridizagarolo.model.TermineInfoWeb;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloType;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloTypeCircolare;
@@ -15,7 +11,7 @@ import it.gov.scuolesuperioridizagarolo.parser.impl.WordParserConstants;
 import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 import org.tartarus.snowball.ext.ItalianStemmer;
 
-import java.io.*;
+import java.io.StringReader;
 import java.text.SimpleDateFormat;
 import java.util.*;
 

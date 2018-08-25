@@ -27,6 +27,8 @@ import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.dao.*;
 import it.gov.scuolesuperioridizagarolo.dialog.HtmlPageDialog;
+import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_activity_main_xml;
+import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.AppUserType;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoFlag;
@@ -63,6 +65,7 @@ public class MainMenuActivity extends AbstractActivity {
     private AbstractFragment currentFragment;
     private int currentSelectionIndex = -1;
     private BroadcastReceiver receiver;
+    public LayoutObjs_activity_main_xml LAYOUT_OBJs;   //***************************
 
     public static AppUserType getCurrentUser(Context e) {
         return SharedPreferenceWrapper.getCommonInstance(e).getUserType();
@@ -121,11 +124,26 @@ public class MainMenuActivity extends AbstractActivity {
     protected void onCreateWithPermissions(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
 
+        LAYOUT_OBJs = new LayoutObjs_activity_main_xml(this);
+
         if (savedInstanceState != null && savedInstanceState.containsKey(KEY_STACK)) {
             stack = (DataMenuInfoStack) savedInstanceState.getSerializable(KEY_STACK);
         } else {
             stack = new DataMenuInfoStack();
         }
+
+
+        LAYOUT_OBJs.imageView.setOnClickListener(new OnClickListenerViewErrorCheck(this) {
+            @Override
+            public void onClickImpl(View v) {
+
+                MainMenuActivity.this.openMenu();
+
+            }
+        });
+
+        LAYOUT_OBJs.textViewTipoUtente.setText(getSharedPreferences().getUserType().getDescrizione());
+
 
         receiver = new BroadcastReceiver() {
             @Override

@@ -10,7 +10,9 @@ import it.gov.scuolesuperioridizagarolo.dao.*;
 import it.gov.scuolesuperioridizagarolo.model.dto.C_NormalizedURL;
 import it.gov.scuolesuperioridizagarolo.util.C_DateUtil;
 import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
-import org.greenrobot.greendao.query.*;
+import org.greenrobot.greendao.query.DeleteQuery;
+import org.greenrobot.greendao.query.QueryBuilder;
+import org.greenrobot.greendao.query.WhereCondition;
 
 import java.io.File;
 import java.util.*;

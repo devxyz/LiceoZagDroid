@@ -46,12 +46,6 @@ public class ContattiFragment extends AbstractFragment {
             }
         });
 
-        LAYOUT_OBJs.imageView4.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
-            @Override
-            protected void onClickImpl(View v) throws Throwable {
-                getMainActivity().openMenu();
-            }
-        });
 
 
 
