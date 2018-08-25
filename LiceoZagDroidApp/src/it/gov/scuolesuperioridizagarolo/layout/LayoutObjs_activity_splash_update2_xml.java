@@ -5,7 +5,7 @@ import android.widget.*;
 import android.webkit.*;
 import it.gov.scuolesuperioridizagarolo.R;
 public class LayoutObjs_activity_splash_update2_xml{
-  public final TextView textViewOra;
+  public final TextView textViewTitolo;
   public final TextView txtInfo;
   public final TextView textViewMsgUpdate;
   public final TextView textView9;
@@ -16,7 +16,7 @@ public class LayoutObjs_activity_splash_update2_xml{
 
 public LayoutObjs_activity_splash_update2_xml(Fragment f){
   View view=f.getView();
-    textViewOra= (TextView)view.findViewById(R.id.textViewOra);
+    textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
   txtInfo= (TextView)view.findViewById(R.id.txtInfo);
   textViewMsgUpdate= (TextView)view.findViewById(R.id.textViewMsgUpdate);
   textView9= (TextView)view.findViewById(R.id.textView9);
@@ -26,7 +26,7 @@ public LayoutObjs_activity_splash_update2_xml(Fragment f){
   txtNuoveCircolari= (TextView)view.findViewById(R.id.txtNuoveCircolari);
 }
 public LayoutObjs_activity_splash_update2_xml(Activity view){
-    textViewOra= (TextView)view.findViewById(R.id.textViewOra);
+    textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
   txtInfo= (TextView)view.findViewById(R.id.txtInfo);
   textViewMsgUpdate= (TextView)view.findViewById(R.id.textViewMsgUpdate);
   textView9= (TextView)view.findViewById(R.id.textView9);
@@ -37,7 +37,7 @@ public LayoutObjs_activity_splash_update2_xml(Activity view){
 
 }
 public LayoutObjs_activity_splash_update2_xml(View view){
-    textViewOra= (TextView)view.findViewById(R.id.textViewOra);
+    textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
   txtInfo= (TextView)view.findViewById(R.id.txtInfo);
   textViewMsgUpdate= (TextView)view.findViewById(R.id.textViewMsgUpdate);
   textView9= (TextView)view.findViewById(R.id.textView9);
@@ -48,7 +48,7 @@ public LayoutObjs_activity_splash_update2_xml(View view){
 
 }
 public LayoutObjs_activity_splash_update2_xml(Dialog view){
-    textViewOra= (TextView)view.findViewById(R.id.textViewOra);
+    textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
   txtInfo= (TextView)view.findViewById(R.id.txtInfo);
   textViewMsgUpdate= (TextView)view.findViewById(R.id.textViewMsgUpdate);
   textView9= (TextView)view.findViewById(R.id.textView9);

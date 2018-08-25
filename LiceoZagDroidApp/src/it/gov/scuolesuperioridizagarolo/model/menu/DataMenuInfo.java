@@ -55,12 +55,14 @@ public class DataMenuInfo implements Serializable {
                 !this.flags.contains(DataMenuInfoFlag.SHOW_ATA) &&
                         !this.flags.contains(DataMenuInfoFlag.SHOW_DOCENTI) &&
                         !this.flags.contains(DataMenuInfoFlag.SHOW_GENITORI) &&
+                        !this.flags.contains(DataMenuInfoFlag.SHOW_ADMIN) &&
                         !this.flags.contains(DataMenuInfoFlag.SHOW_STUDENTI)
                 ) {
             this.flags.add(DataMenuInfoFlag.SHOW_ATA);
             this.flags.add(DataMenuInfoFlag.SHOW_DOCENTI);
             this.flags.add(DataMenuInfoFlag.SHOW_GENITORI);
             this.flags.add(DataMenuInfoFlag.SHOW_STUDENTI);
+            this.flags.add(DataMenuInfoFlag.SHOW_ADMIN);
         }
 
 

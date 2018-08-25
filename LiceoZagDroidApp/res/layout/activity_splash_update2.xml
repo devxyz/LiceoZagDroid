@@ -8,7 +8,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/nome_scuola_denominazione_breve"
-            android:id="@+id/textViewOra"
+            android:id="@+id/textViewTitolo"
             android:gravity="center_vertical|center_horizontal"
             android:textStyle="bold" android:textColor="@color/color_blue_scurissimo" android:textSize="26dp"
             android:layout_below="@+id/textView9"
@@ -48,7 +48,7 @@
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
               android:id="@+id/textView10" android:textSize="16dp"
               android:textColor="@color/color_red_scuro"
-              android:layout_below="@+id/textViewOra" android:layout_centerHorizontal="true"
+              android:layout_below="@+id/textViewTitolo" android:layout_centerHorizontal="true"
               android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:paddingTop="10dp"
               android:enabled="false" android:gravity="right"/>
     <ListView

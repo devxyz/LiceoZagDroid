@@ -14,7 +14,7 @@
             android:textColor="@color/color_white"
             android:background="@drawable/background_aule_a"
             android:width="80dp"
-            android:layout_alignTop="@+id/textViewOra" android:layout_toEndOf="@+id/textViewFasciaOraria"
+            android:layout_alignTop="@+id/textViewTitolo" android:layout_toEndOf="@+id/textViewFasciaOraria"
             android:textSize="25dp"/>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="3A"
               android:id="@+id/textViewDocenteClasse"

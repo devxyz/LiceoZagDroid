@@ -30,16 +30,23 @@
         <item>END-ITEM</item>
 
 
-        <item>Orario Docenti</item>
-        <item>Orario Docenti</item>
+        <item>Il mio Orario</item>
+        <item>Il mio Orario</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocentePersistenteFragment</item>
         <item>@drawable/_menu_teaching_48x48</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
+        <item>Orario Docenti</item>
+        <item>Orario Docenti</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteNonPersistenteFragment</item>
+        <item>@drawable/_menu_teaching_48x48</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
 
-        <item>Cerca Classi</item>
-        <item>Cerca Classi</item>
+
+        <item>Orario Classi</item>
+        <item>Orario Classi</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseNonPersistenteFragment</item>
         <item>@drawable/_menu_student_48x48</item>
         <item>SUB_ITEM</item>
@@ -58,8 +65,6 @@
         <item>@drawable/_menu_rooms_48x48</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
-
-
 
         <item>R.E. Docenti</item>
         <item>Registro elettronico docenti</item>
@@ -83,19 +88,28 @@
         <item></item>
         <item>END-ITEM</item>
 
-        <item>Barcode</item>
-        <item>Barcode</item>
+        <item>Barcode - Test</item>
+        <item>Barcode - Test</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.BarCodeFragment</item>
         <item>@drawable/close_48x48</item>
         <item>NOT_ACTIVE</item>
         <item>END-ITEM</item>
 
-        <item>BAR</item>
-        <item>BAR</item>
+        <item>BAR - Test</item>
+        <item>BAR - Test</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.ProdottiBarFragment</item>
         <item>@drawable/close_48x48</item>
         <item>NOT_ACTIVE</item>
         <item>END-ITEM</item>
+
+
+        <item>Debug Config</item>
+        <item>Debug Config</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.OpenMenuAction</item>
+        <item>@drawable/close_48x48</item>
+        <item></item>
+        <item>END-ITEM</item>
+
 
     </array>
 

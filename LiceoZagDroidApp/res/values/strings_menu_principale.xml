@@ -13,7 +13,6 @@
         <item>END-ITEM</item>
 
 
-
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
 
 
@@ -59,20 +58,19 @@
         <item>SUB_ITEM,SHOW_STUDENTI,SHOW_GENITORI</item>
         <item>END-ITEM</item>
 
-        <item>Cerca Classi</item>
-        <item>Cerca Classi</item>
+        <item>Orario Classi</item>
+        <item>Orario Classi</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseNonPersistenteFragment</item>
         <item>@drawable/_menu_student_48x48</item>
         <item>SUB_ITEM,SHOW_DOCENTI,SHOW_ATA,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
-        <item>Cerca Docenti</item>
-        <item>Cerca Docenti</item>
+        <item>Orario Docenti</item>
+        <item>Orario Docenti</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteNonPersistenteFragment</item>
         <item>@drawable/_menu_teaching_48x48</item>
         <item>SUB_ITEM,SHOW_STUDENTI,SHOW_ATA,SHOW_ADMIN</item>
         <item>END-ITEM</item>
-
 
         <item>Orario Aule</item>
         <item>Orario Aule</item>
@@ -102,12 +100,6 @@
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
 
 
-        <item>Foto (TODO)</item>
-        <item>Foto Gallery</item>
-        <item>it.gov.scuolesuperioridizagarolo.fragment.PhotosExpandibleFragment</item>
-        <item>@drawable/_menu_photos</item>
-        <item>SUB_ITEM,NOT_ACTIVE</item>
-        <item>END-ITEM</item>
 
 
         <item>Libri di testo LICEO</item>
@@ -136,11 +128,11 @@
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
 
-        <item>Deprecated</item>
+        <item>Comunicazioni - DEBUG</item>
         <item></item>
         <item></item>
         <item>@drawable/pict_news</item>
-        <item>DONT_SHOW_IN_HOME,NOT_ACTIVE</item>
+        <item>SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
         <!-- .................................. -->
@@ -195,41 +187,70 @@
         <item></item>
         <item>END-ITEM</item>
 
-        <item>Cambia Profilo</item>
-        <item>Cambia Profilo</item>
-        <item>it.gov.scuolesuperioridizagarolo.action.AppUserChooserAction</item>
-        <item>@drawable/_menu_photos</item>
+
+
+
+
+        <item>Sviluppo</item>
         <item></item>
+        <item></item>
+        <item>@drawable/_menu_school_48x48</item>
+        <item>SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
-
+        <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
         <item>Barcode</item>
         <item>Barcode</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.BarCodeFragment</item>
         <item>@drawable/close_48x48</item>
-        <item>SHOW_ADMIN</item>
+        <item>SUB_ITEM,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
         <item>BAR</item>
         <item>BAR</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.ProdottiBarFragment</item>
         <item>@drawable/close_48x48</item>
-        <item>SHOW_ADMIN</item>
+        <item>SUB_ITEM,SHOW_ADMIN</item>
         <item>END-ITEM</item>
-
 
         <item>BACKUP DATABASE</item>
         <item>BACKUP DATABASE</item>
         <item>it.gov.scuolesuperioridizagarolo.action.BackupDatabaseAction</item>
         <item>@drawable/close_48x48</item>
-        <item>SHOW_ADMIN</item>
+        <item>SUB_ITEM,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
         <item>DOWNLOAD ARTICLES</item>
         <item>DOWNLOAD ARTICLES</item>
         <item>it.gov.scuolesuperioridizagarolo.action.DownloadArticlesAction</item>
         <item>@drawable/close_48x48</item>
-        <item>SHOW_ADMIN</item>
+        <item>SUB_ITEM,SHOW_ADMIN</item>
+        <item>END-ITEM</item>
+
+        <item>Foto (TODO)</item>
+        <item>Foto Gallery</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.PhotosExpandibleFragment</item>
+        <item>@drawable/_menu_photos</item>
+        <item>SUB_ITEM,NOT_ACTIVE</item>
+        <item>END-ITEM</item>
+
+
+        <item>Debug Config</item>
+        <item>Debug Config</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.OpenMenuAction</item>
+        <item>@drawable/close_48x48</item>
+        <item>SUB_ITEM,SHOW_ADMIN</item>
+        <item>END-ITEM</item>
+        <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
+
+
+
+
+        <item>Cambia Profilo</item>
+        <item>Cambia Profilo</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.AppUserChooserAction</item>
+        <item>@drawable/_menu_photos</item>
+        <item></item>
         <item>END-ITEM</item>
 
 
