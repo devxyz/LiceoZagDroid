@@ -21,8 +21,6 @@
 
 
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
-
-
         <item name="colorPrimary">@color/color_black</item>
         <item name="colorPrimaryDark">@color/color_black</item>
         <item name="colorAccent">@color/color_blue</item>
@@ -34,4 +32,17 @@
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+    <style name="Theme.AppCompat.Light.NoActionBar.Help" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_black</item>
+        <item name="colorPrimaryDark">@color/color_black</item>
+        <item name="colorAccent">@color/color_blue</item>
+
+        <item name="android:textColor">@color/color_black</item>
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
 </resources>

@@ -36,7 +36,7 @@
         <activity android:name="it.gov.scuolesuperioridizagarolo.activity.Text2SpeechActivity"/>
 
         <activity android:name="it.gov.scuolesuperioridizagarolo.activity.HelpActivity"
-                  android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar.Help"/>
 
 
         <activity android:name=".activity.LoginActivity"
