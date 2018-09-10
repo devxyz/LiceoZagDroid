@@ -35,7 +35,7 @@ public class LessonConstraint_ClasseBloccataInArea extends AbstractLessonConstra
 
     @Override
     protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
-        if (this.classe.progressive == classe.progressive)
+        if (this.classe == classe)
             if (this.giorno.contains(giorno)) {
                 if (!area.contains(aula.location))
                     return false;

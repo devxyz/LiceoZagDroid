@@ -97,6 +97,21 @@
                         android:orderInCategory="100"
                         android:showAsAction="never"
                         android:title="Elenco Orari"/>
+                <item
+                        android:id="@+id/action_view_articoli"
+                        android:orderInCategory="100"
+                        android:showAsAction="never"
+                        android:title="Elenco Articoli debug"/>
+                <item
+                        android:id="@+id/action_view_tag"
+                        android:orderInCategory="100"
+                        android:showAsAction="never"
+                        android:title="Elenco Tag debug"/>
+                <item
+                        android:id="@+id/action_view_attachment"
+                        android:orderInCategory="100"
+                        android:showAsAction="never"
+                        android:title="Elenco Allegati debug"/>
 
             </menu>
             <item

@@ -1,4 +1,4 @@
-package it.gov.scuolesuperioridizagarolo.model.articolo;
+package it.gov.scuolesuperioridizagarolo.dao.customType;
 
 import it.gov.scuolesuperioridizagarolo.dao.ArticoloDB;
 
@@ -9,26 +9,29 @@ import java.util.Date;
 /**
  * Created by stefano on 22/03/2018.
  */
-public class ArticoloTypeAvviso extends ArticoloType {
-
-    public Date dataAvviso;
+public class ArticoloDetailsCircolare extends ArticoloDetails {
+    public int numeroCircolare;
+    public Date dataCircolare;
     public String oggetto;
 
-    public ArticoloTypeAvviso(Date dataAvviso, String oggetto) {
-        this.dataAvviso = dataAvviso;
-
+    public ArticoloDetailsCircolare(Date dataCircolare, int numeroCircolare, String oggetto) {
+        this.dataCircolare = dataCircolare;
+        this.numeroCircolare = numeroCircolare;
         this.oggetto = oggetto;
     }
 
-    public ArticoloTypeAvviso() {
+    public ArticoloDetailsCircolare() {
         oggetto = "";
     }
 
-    public static ArticoloTypeAvviso loadFrom(ArticoloDB db) {
-        return ArticoloType.loadFrom(ArticoloTypeAvviso.class, db);
+
+    public void parseNumeroCircolare(String s) {
+        //rimuove caratteri indesiderati
+        s = s.replaceAll("[.n \t\n]", "");
+        numeroCircolare = Integer.parseInt(s);
     }
 
-    public void parseDataAvviso(String s) {
+    public void parseDataCircolare(String s) {
         s = s.toUpperCase();
         String[] mesi = new String[]{"GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"};
         int mese = 1;
@@ -42,7 +45,7 @@ public class ArticoloTypeAvviso extends ArticoloType {
 
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            dataAvviso = f.parse(s);
+            dataCircolare = f.parse(s);
         } catch (ParseException e) {
             throw new IllegalArgumentException(e);
         }
@@ -50,8 +53,9 @@ public class ArticoloTypeAvviso extends ArticoloType {
 
     @Override
     public String toString() {
-        return "ArticoloTypeAvviso{" +
-                "dataAvviso=" + dataAvviso +
+        return "ArticoloTypeCircolare{" +
+                "dataCircolare=" + dataCircolare +
+                ", numeroCircolare=" + numeroCircolare +
                 ", oggetto='" + oggetto + '\'' +
                 '}';
     }

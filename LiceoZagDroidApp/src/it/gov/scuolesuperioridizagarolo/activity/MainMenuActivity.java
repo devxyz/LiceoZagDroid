@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -52,6 +54,7 @@ public class MainMenuActivity extends AbstractActivity {
     private static final String KEY_MENU_ID_INTENT = "KEY_MENU_ID_INTENT";
     private static final String KEY_STACK = "KEY_STACK";
     public ListView mDrawerList;
+    public LayoutObjs_activity_main_xml LAYOUT_OBJs;   //***************************
     private DataMenuInfoStack stack;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -65,7 +68,6 @@ public class MainMenuActivity extends AbstractActivity {
     private AbstractFragment currentFragment;
     private int currentSelectionIndex = -1;
     private BroadcastReceiver receiver;
-    public LayoutObjs_activity_main_xml LAYOUT_OBJs;   //***************************
 
     public static AppUserType getCurrentUser(Context e) {
         return SharedPreferenceWrapper.getCommonInstance(e).getUserType();
@@ -320,14 +322,45 @@ public class MainMenuActivity extends AbstractActivity {
             case R.id.action_menu:
                 openMenu();
                 return true;
-            case R.id.action_view_debug_fragment:
-                if (currentFragment != null) {
-                    final String htmlText = "<html><body>" + currentFragment.toString().replace("\n", "<br>") + "</body></html>";
-                    HtmlPageDialog d = new HtmlPageDialog(this, "Report Fragment", htmlText, null);
-                    d.show();
-
+            case R.id.action_view_articoli: {
+                String tabella = ArticoloDBDao.TABLENAME;
+                try {
+                    final String htmlText = htmlForTableContent(tabella);
+                    HtmlPageDialog d2 = new HtmlPageDialog(this, "Report Articoli", htmlText, null);
+                    d2.show();
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                    DialogUtil.openErrorDialog(MainMenuActivity.this, "Errore", "Errore di accesso ai dati", throwable);
+                    return true;
                 }
                 return true;
+            }
+            case R.id.action_view_attachment: {
+                String tabella = AttachmentArticoloDBDao.TABLENAME;
+                try {
+                    final String htmlText = htmlForTableContent(tabella);
+                    HtmlPageDialog d2 = new HtmlPageDialog(this, "Report Allegati", htmlText, null);
+                    d2.show();
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                    DialogUtil.openErrorDialog(MainMenuActivity.this, "Errore", "Errore di accesso ai dati", throwable);
+                    return true;
+                }
+                return true;
+            }
+            case R.id.action_view_tag: {
+                String tabella = TagArticoloDBDao.TABLENAME;
+                try {
+                    final String htmlText = htmlForTableContent(tabella);
+                    HtmlPageDialog d2 = new HtmlPageDialog(this, "Report TAG", htmlText, null);
+                    d2.show();
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                    DialogUtil.openErrorDialog(MainMenuActivity.this, "Errore", "Errore di accesso ai dati", throwable);
+                    return true;
+                }
+                return true;
+            }
             case R.id.action_update:
                 //start service
                 Intent serviceIntent = new Intent(this, UpdateService.class);
@@ -430,6 +463,38 @@ public class MainMenuActivity extends AbstractActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    private String htmlForTableContent(String tabella) {
+        StringBuilder sb = new StringBuilder();
+        final SQLiteDatabase db = getDatabase().getReadableDatabase();
+        db.beginTransaction();
+        final Cursor cursor = db.rawQuery("SELECT * from " + tabella, null);
+        final int columnCount = cursor.getColumnCount();
+        sb.append("<table border='1'>\n");
+        while (cursor.moveToNext()) {
+
+            sb.append("<tr>");
+            sb.append("<td style='background-color:red'>-</td>");
+            sb.append("</tr>");
+
+
+            for (int i = 0; i < columnCount; i++) {
+                sb.append("<tr>");
+                sb.append("<td>");
+                sb.append(cursor.getColumnName(i));
+                sb.append("</td>");
+                sb.append("<td>");
+                sb.append(cursor.getString(i));
+                sb.append("</td>");
+                sb.append("</tr>");
+            }
+
+        }
+        sb.append("</table>\n");
+        cursor.close();
+        db.endTransaction();
+        return "<html><body>" + sb + "</body></html>";
     }
 
     private void _doResetApplication() {

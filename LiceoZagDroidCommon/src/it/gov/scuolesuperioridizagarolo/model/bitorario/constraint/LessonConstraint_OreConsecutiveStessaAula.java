@@ -29,7 +29,7 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
     }
 
     /**
-     * genera tutti i vincoli per la stessa aula per le ore consecutive
+     * generaRoomCode tutti i vincoli per la stessa aula per le ore consecutive
      *
      * @param orario
      * @return
@@ -72,7 +72,7 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
                               String docenteCompresenza, String materiaCompresenza,
                               RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
         if (classe == null) return true;
-        if (this.classe.progressive == classe.progressive)
+        if (this.classe == classe)
             if (this.giorno.equals(giorno)) {
                 if (this.ora1.equals(ora)) {
                     final BitOrarioOraLezione altraLezione = orario.getLezioneInClasse(ora2, giorno, classe.name);

@@ -8,7 +8,7 @@ import org.greenrobot.greendao.generator.*;
  */
 public class GreenDaoGenerator {
     public static void main(String[] args) throws Exception {
-        Schema schema = new Schema(20180626, "it.gov.scuolesuperioridizagarolo.dao");
+        Schema schema = new Schema(20180902, "it.gov.scuolesuperioridizagarolo.dao");
 
         //cache file
         final Entity cacheFile = schema.addEntity("CacheFileDB");
@@ -45,18 +45,16 @@ public class GreenDaoGenerator {
             articolo.addIntProperty("remoteCategoryId").notNull();
             articolo.addStringProperty("categoryTitle").notNull();
             articolo.addStringProperty("content").notNull();
-            articolo.addStringProperty("jsonContent").notNull();
-            articolo.addStringProperty("jsonClass").notNull();
             articolo.addBooleanProperty("flagLettura").notNull();
-            articolo.addStringProperty("words").notNull();
             articolo.addStringProperty("url").notNull();
-            articolo.addStringProperty("keywords").notNull()
-                    .customType("it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDB_Keywords", "it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDB_KeywordsConverter");
-            articolo.addStringProperty("circolareNumber");
+
+            articolo.addStringProperty("details").notNull()
+                    .customType("it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetails", "it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetails_DBConverter");
+
 
 
             articolo.addStringProperty("type").notNull()
-                    .customType("it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDB_Type", "it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDB_TypeConverter");
+                    .customType("it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType", "it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType_DBConverter");
             articolo.addDateProperty("date");
         }
 

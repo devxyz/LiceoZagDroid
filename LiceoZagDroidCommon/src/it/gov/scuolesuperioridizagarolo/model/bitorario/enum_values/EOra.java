@@ -12,7 +12,8 @@ public enum EOra {
     TERZA(3, 10, 10),
     QUARTA(4, 11, 10),
     QUINTA(5, 12, 10),
-    USCITA(6, 13, 10);
+    SESTA(6, 13, 10),
+    USCITA(7, 14, 10);
 
     private final int progressivOra;
     private final int oraInizio;

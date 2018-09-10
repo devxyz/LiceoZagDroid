@@ -5,12 +5,51 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
 /**
  * Created by stefano on 24/11/2017.
  */
-public class RoomData {
+public enum RoomData {
 
-    public static final String USCITA_DIDATTICA = ClassesAndRoomContainer.USCITA_DIDATTICA;
-    public boolean isUscitaDidattica() {
-        return name.equals(ClassesAndRoomContainer.USCITA_DIDATTICA);
-    }
+    USCITA_DIDATTICA("###", "Uscita Didattica", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
+    A1("A1", "Aula Didattica", 30, 11, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    A2("A2", "Aula Didattica", 28, 13, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    A3_FIS("A3_FIS", "Laboratorio di Fisica", 30, 15, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    A4_INF("A4_INF", "Laboratorio di Informatica", 30, 17, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    A5sharp("A5#", "Aula Didattica", 24, 22, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    A5_DIS("A5_DIS", "Aula di Disegno", 30, 22, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    A6("A6", "Aula Didattica", 29, 20, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    A7("A7", "Aula Didattica", 18, 21, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
+
+    B10("B10", "Aula Didattica", 28, 8, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO AL MOMENTO non utilizzabile aveva 28 posti
+    B11("B11", "Aula Didattica", 30, 31, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    B12("B12", "Aula Didattica", 30, 32, ERoomArea.AREA_B, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
+    B13("B13", "Aula Didattica", 30, 33, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    B13sharp("B13#", "Aula Didattica", 0, 33, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//todo AL MOMENTO NON UTILIZZABILE
+
+    B8("B8", "Aula Didattica", 30, 10, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    B9("B9", "Aula Didattica", 30, 9, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+
+    C14("C14", "Aula Didattica", 22, 47, ERoomArea.AREA_C, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//ANNO SCORSO 25
+    C15("C15", "Aula Didattica", 0, 46, ERoomArea.AREA_C, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//AULA CORRIDOIO
+
+    C16("C16", "Aula Didattica", 30, 45, ERoomArea.AREA_C, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    C17("C17", "Aula Didattica", 30, 51, ERoomArea.AREA_C, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    C18("C18", "Aula Didattica", 30, 52, ERoomArea.AREA_C, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    C19("C19", "Aula Didattica", 30, 53, ERoomArea.AREA_C, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    C20("C20", "Aula Didattica", 30, 54, ERoomArea.AREA_C, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    C21("C21", "Aula Didattica", 21, 55, ERoomArea.AREA_C, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//ANNO SCORSO 22
+
+    D22("D22", "Aula Didattica", 30, 61, ERoomArea.AREA_D, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    D23("D23", "Aula Didattica", 30, 62, ERoomArea.AREA_D, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    D24("D24", "Aula Didattica", 30, 63, ERoomArea.AREA_D, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    D25("D25", "Aula Didattica", 30, 64, ERoomArea.AREA_D, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    D26("D26", "Aula Didattica", 20, 65, ERoomArea.AREA_D, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//???ANNO SCORSO 22
+
+    E27("E27", "Aula Didattica", 26, 44, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE - anno scorso 26 posti
+    E28("E28", "Aula Didattica", 26, 39, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    E29("E29", "Aula Didattica", 26, 40, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    E30("E30", "Aula Didattica", 26, 41, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+
+    F31_PALESTRA("F31_PALESTRA", "Palestra", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
+
+    F32_SCI("F32_SCI", "Laboratorio di Scienze", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_SI);
 
     public final String name;
     public final String usage;
@@ -19,9 +58,8 @@ public class RoomData {
     public final ERoomArea location;
     public final boolean flagLIM;
     public final boolean flagPRESACORRENTE;
-    public final int progressive;
 
-    public RoomData(int progressive, String name, String usage, int maxStudents, int idRoom, ERoomArea location, boolean flagLIM, boolean flagPRESACORRENTE) {
+    RoomData(String name, String usage, int maxStudents, int idRoom, ERoomArea location, boolean flagLIM, boolean flagPRESACORRENTE) {
         this.name = name;
         this.usage = usage;
         this.maxStudents = maxStudents;
@@ -29,7 +67,10 @@ public class RoomData {
         this.location = location;
         this.flagLIM = flagLIM;
         this.flagPRESACORRENTE = flagPRESACORRENTE;
-        this.progressive = progressive;
+    }
+
+    public boolean isUscitaDidattica() {
+        return name.equals(ClassesAndRoomContainer.USCITA_DIDATTICA);
     }
 
     public String simpleName() {
@@ -42,38 +83,13 @@ public class RoomData {
     }
 
     //true se aula speciale
-    public boolean flagSpecial() {
-        return !usage.equalsIgnoreCase("Aula Didattica");
+    public boolean flagAulaLaboratorioPalestra() {
+        return this == F31_PALESTRA ||
+                this == F32_SCI ||
+                this == A3_FIS ||
+                this == A4_INF ||
+                this == A5_DIS;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        RoomData roomData = (RoomData) o;
-
-        if (maxStudents != roomData.maxStudents) return false;
-        if (idRoom != roomData.idRoom) return false;
-        if (flagLIM != roomData.flagLIM) return false;
-        if (flagPRESACORRENTE != roomData.flagPRESACORRENTE) return false;
-        if (progressive != roomData.progressive) return false;
-        if (name != null ? !name.equals(roomData.name) : roomData.name != null) return false;
-        if (usage != null ? !usage.equals(roomData.usage) : roomData.usage != null) return false;
-        return location == roomData.location;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (usage != null ? usage.hashCode() : 0);
-        result = 31 * result + maxStudents;
-        result = 31 * result + idRoom;
-        result = 31 * result + (location != null ? location.hashCode() : 0);
-        result = 31 * result + (flagLIM ? 1 : 0);
-        result = 31 * result + (flagPRESACORRENTE ? 1 : 0);
-        result = 31 * result + progressive;
-        return result;
-    }
 }

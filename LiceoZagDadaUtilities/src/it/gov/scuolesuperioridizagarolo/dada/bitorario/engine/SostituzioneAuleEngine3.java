@@ -198,7 +198,7 @@ public class SostituzioneAuleEngine3 {
 
                     //salta lezioni in lab o non in aula
                     final String aula3 = altraLezione2.getNomeAula();
-                    //if (aula3 == null || skipAuleSpeciali && altraLezione2.getAula().flagSpecial())
+                    //if (aula3 == null || skipAuleSpeciali && altraLezione2.getAula().flagAulaLaboratorioPalestra())
 
                     if (aula3 == null || aula1.equals(aula3) || aula2.equals(aula3) || aula0.equals(aula3))
                         continue;

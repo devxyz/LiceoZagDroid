@@ -46,8 +46,8 @@ public class LessonConstraint_ClasseNonInAula_labsToo extends AbstractLessonCons
         //skip aule speciali
 
 
-        if (this.classe.progressive == classe.progressive)
-            if (this.aula.progressive == aula.progressive)
+        if (this.classe == classe)
+            if (this.aula == aula)
                 if (this.giorno.contains(giorno)) {
                     return false;
                 }

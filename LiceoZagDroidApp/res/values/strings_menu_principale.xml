@@ -227,6 +227,13 @@
         <item>SUB_ITEM,SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
+        <item>DEBUG MENU</item>
+        <item>DEBUG MENU</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.OpenDebugMenuAction</item>
+        <item>@drawable/_menu_room_timetable_48x48</item>
+        <item>SUB_ITEM,SHOW_ADMIN</item>
+        <item>END-ITEM</item>
+
         <item>Foto (TODO)</item>
         <item>Foto Gallery</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.PhotosExpandibleFragment</item>

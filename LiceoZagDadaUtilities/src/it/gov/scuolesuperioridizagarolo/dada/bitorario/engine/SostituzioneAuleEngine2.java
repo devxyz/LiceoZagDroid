@@ -56,7 +56,7 @@ public class SostituzioneAuleEngine2 {
                 continue;
 
             //skip aule speciali
-/*            if (DataContainer.getRoom(lezione.nomeAula).flagSpecial()){
+/*            if (DataContainer.getRoom(lezione.nomeAula).flagAulaLaboratorioPalestra()){
                 System.out.println(DataContainer.getRoom(lezione.nomeAula).usage);
                 continue;
             }*/
@@ -217,7 +217,7 @@ public class SostituzioneAuleEngine2 {
 
                     //salta lezioni in lab o non in aula
                     final String aula3 = altraLezione2.getNomeAula();
-                    //if (aula3 == null || skipAuleSpeciali && altraLezione2.getAula().flagSpecial())
+                    //if (aula3 == null || skipAuleSpeciali && altraLezione2.getAula().flagAulaLaboratorioPalestra())
 
                     if (aula3 == null || aula1.equals(aula3) || aula2.equals(aula3) || aula0.equals(aula3))
                         continue;
@@ -413,7 +413,7 @@ public class SostituzioneAuleEngine2 {
                 final int i = Integer.valueOf(o1.maxStudents).compareTo(o2.maxStudents);
                 if (i != 0)
                     return i;
-                return (o1.flagSpecial() + "").compareToIgnoreCase(o2.flagSpecial() + "");
+                return (o1.flagAulaLaboratorioPalestra() + "").compareToIgnoreCase(o2.flagAulaLaboratorioPalestra() + "");
             }
         });
 
@@ -435,7 +435,7 @@ public class SostituzioneAuleEngine2 {
                 final int i = Integer.valueOf(o1.maxStudents).compareTo(o2.maxStudents);
                 if (i != 0)
                     return i;
-                return (o1.flagSpecial() + "").compareToIgnoreCase(o2.flagSpecial() + "");
+                return (o1.flagAulaLaboratorioPalestra() + "").compareToIgnoreCase(o2.flagAulaLaboratorioPalestra() + "");
             }
         });
 

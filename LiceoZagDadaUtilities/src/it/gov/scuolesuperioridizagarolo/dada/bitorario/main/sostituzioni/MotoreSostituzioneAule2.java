@@ -27,6 +27,7 @@ import java.util.zip.ZipOutputStream;
 /**
  * definendo alcune aule non utilizzabili si cercano nuove aule da assegnare
  */
+@Deprecated
 public class MotoreSostituzioneAule2 {
 
 

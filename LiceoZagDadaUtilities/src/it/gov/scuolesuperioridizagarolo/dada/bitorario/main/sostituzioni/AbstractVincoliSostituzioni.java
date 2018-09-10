@@ -21,10 +21,10 @@ public abstract class AbstractVincoliSostituzioni {
 
     public static final RoomData _A1 = ClassesAndRoomContainer.getRoom("A1");
     public static final RoomData _A2 = ClassesAndRoomContainer.getRoom("A2");
-    public static final RoomData _A3 = ClassesAndRoomContainer.getRoom("A3");
+    public static final RoomData _A3_FIS = ClassesAndRoomContainer.getRoom("A3_FIS");
     public static final RoomData _A4_INF = ClassesAndRoomContainer.getRoom("A4_INF");
     public static final RoomData _A5_DIS = ClassesAndRoomContainer.getRoom("A5_DIS");
-    public static final RoomData _A6_FIS = ClassesAndRoomContainer.getRoom("A6_FIS");
+    public static final RoomData _A6 = ClassesAndRoomContainer.getRoom("A6");
     public static final RoomData _A7 = ClassesAndRoomContainer.getRoom("A7");
     public static final RoomData _B10 = ClassesAndRoomContainer.getRoom("B10");
     public static final RoomData _B11 = ClassesAndRoomContainer.getRoom("B11");
@@ -58,7 +58,7 @@ public abstract class AbstractVincoliSostituzioni {
     public static final ClassData _1D = ClassesAndRoomContainer.getClass("1D");
     public static final ClassData _1E = ClassesAndRoomContainer.getClass("1E");
     public static final ClassData _1F = ClassesAndRoomContainer.getClass("1F");
-    public static final ClassData _1G = ClassesAndRoomContainer.getClass("1G");
+
     public static final ClassData _1H = ClassesAndRoomContainer.getClass("1H");
     public static final ClassData _2A = ClassesAndRoomContainer.getClass("2A");
     public static final ClassData _2B = ClassesAndRoomContainer.getClass("2B");
@@ -77,7 +77,7 @@ public abstract class AbstractVincoliSostituzioni {
     public static final ClassData _4C = ClassesAndRoomContainer.getClass("4C");
     public static final ClassData _4D = ClassesAndRoomContainer.getClass("4D");
     public static final ClassData _4E = ClassesAndRoomContainer.getClass("4E");
-    public static final ClassData _4F = ClassesAndRoomContainer.getClass("4F");
+    public static final ClassData _4F = null;//ClassesAndRoomContainer.getClass("4F");
     public static final ClassData _5A = ClassesAndRoomContainer.getClass("5A");
     public static final ClassData _5B = ClassesAndRoomContainer.getClass("5B");
     public static final ClassData _5C = ClassesAndRoomContainer.getClass("5C");
@@ -118,17 +118,17 @@ public abstract class AbstractVincoliSostituzioni {
         return (anomalie > 0) ? ("Anomalie: " + anomalie + "\n" + sb) : "Nessuna anomalia con uso multiplo aule";
     }
 
-    static void classeConStampelle(LessonConstraintContainer l, ClassData classe, EGiorno... giorni) {
+    protected static void classeConStampelle(LessonConstraintContainer l, ClassData classe, EGiorno... giorni) {
         l.add(new LessonConstraint_ClasseBloccataInArea(true, classe, new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D, ERoomArea.AREA_F}, giorni));
         l.add(new LessonConstraint_ClasseNonInAula_labsToo(classe, _F32_SCI, giorni));
     }
 
-    static void classeConStampelle(LessonConstraintContainer l, ClassData classe) {
+    protected static void classeConStampelle(LessonConstraintContainer l, ClassData classe) {
         l.add(new LessonConstraint_ClasseBloccataInArea(true, classe, new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D, ERoomArea.AREA_F}, EGiorno.values()));
         l.add(new LessonConstraint_ClasseNonInAula_labsToo(classe, _F32_SCI, EGiorno.values()));
     }
 
-    static void classeConStampellePianoTerra(LessonConstraintContainer l, ClassData classe) {
+    protected static void classeConStampellePianoTerra(LessonConstraintContainer l, ClassData classe) {
         l.add(new LessonConstraint_ClasseBloccataInArea(true, classe, new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B}, EGiorno.values()));
         l.add(new LessonConstraint_ClasseNonInAula_labsToo(classe, _F32_SCI, EGiorno.values()));
     }

@@ -1,5 +1,7 @@
-package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni;
+package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.as2017_18;
 
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule2;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.*;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
@@ -13,33 +15,20 @@ import java.io.IOException;
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_n05_28mag__02giugno extends AbstractVincoliSostituzioni {
+public class VincoliSostituzioni_n03_13mag__19mag extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
-        final VincoliSostituzioni_n05_28mag__02giugno l = new VincoliSostituzioni_n05_28mag__02giugno();
+        final VincoliSostituzioni_n03_13mag__19mag l = new VincoliSostituzioni_n03_13mag__19mag();
         MotoreSostituzioneAule2.doTask(l);
 
     }
 
-    public VincoliSostituzioni_n05_28mag__02giugno invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+    public VincoliSostituzioni_n03_13mag__19mag invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
         //vincoli base
         l.add(new LessonConstraint_OccupazioneAule_labsToo());
 
         //vincoli classi
         l.add(new LessonConstraint_ClasseFermaInAulaDidattica_ignoreLabs(_4C, _A2, EGiorno.values()));
         l.add(new LessonConstraint_AuleDidatticheConLIM_IgnoreLabs(_1H, EGiorno.values()));
-
-        //lavori
-        l.add(new LessonConstraint_AulaNonDisponibile(_A7, EGiorno.LUNEDI, EOra.values()));
-
-        //compito marchese
-        l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_4F, _A3, EGiorno.LUNEDI, EOra.PRIMA));//2° ora
-
-        //prove parallele scienze
-        l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_2G, _A3, EGiorno.LUNEDI, EOra.SECONDA));//2° ora
-        l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_2A, _A4_INF, EGiorno.LUNEDI, EOra.QUARTA));//4° ora latini --> lab informatica
-        l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_2C, _A3, EGiorno.LUNEDI, EOra.TERZA));//3° ora
-        l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_2E, _A3, EGiorno.LUNEDI, EOra.QUINTA));//5° ora cambia con mattetti - scambia con 1H
-
 
         //l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre(_3A, _F32_SCI, EGiorno.MARTEDI, EOra.TERZA));
         //l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre(_3D, _A4_INF, EGiorno.MARTEDI, EOra.SECONDA));
@@ -76,18 +65,58 @@ public class VincoliSostituzioni_n05_28mag__02giugno extends AbstractVincoliSost
             */
 
 
+        //INVALSI
+        //--lun
+        final EGiorno lunedi = EGiorno.LUNEDI;
+        l.add(new LessonConstraint_AulaNonDisponibile(_A4_INF, lunedi, EOra.PRIMA, EOra.SECONDA, EOra.TERZA, EOra.QUARTA, EOra.QUINTA));
+        l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(false, "Millozzi", _A3_FIS, EGiorno.LUNEDI, EOra.PRIMA, EOra.SECONDA, EOra.TERZA, EOra.QUARTA, EOra.QUINTA));
+        orarioTotale.classeInVisitaDidattica("PROVA INVALSI IN LAB. INFORMATICA 2F ITALIANO", _2F, lunedi, EOra.PRIMA, EOra.SECONDA);
+        orarioTotale.classeInVisitaDidattica("PROVA INVALSI IN LAB. INFORMATICA 2G ITALIANO", _2G, lunedi, EOra.TERZA, EOra.QUARTA);
+        orarioTotale.classeInVisitaDidattica("PROVA INVALSI IN LAB. INFORMATICA 2E ITALIANO", _2E, lunedi, EOra.QUINTA);
+
+        //--mar
+        final EGiorno martedi = EGiorno.MARTEDI;
+        l.add(new LessonConstraint_AulaNonDisponibile(_A4_INF, martedi, EOra.PRIMA, EOra.SECONDA, EOra.TERZA, EOra.QUARTA, EOra.QUINTA));
+        l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(false, "Millozzi", _A3_FIS, martedi, EOra.PRIMA, EOra.SECONDA, EOra.TERZA, EOra.QUARTA, EOra.QUINTA));
+        orarioTotale.classeInVisitaDidattica("PROVA INVALSI IN LAB. INFORMATICA 2B ITALIANO", _2B, martedi, EOra.PRIMA, EOra.SECONDA);
+        orarioTotale.classeInVisitaDidattica("PROVA INVALSI IN LAB. INFORMATICA 2C ITALIANO", _2C, martedi, EOra.TERZA, EOra.QUARTA);
+        orarioTotale.classeInVisitaDidattica("PROVA INVALSI IN LAB. INFORMATICA 2A ITALIANO", _2A, martedi, EOra.QUINTA);
+
+        //--mer
+        final EGiorno mercoledi = EGiorno.MERCOLEDI;
+        l.add(new LessonConstraint_AulaNonDisponibile(_A4_INF, mercoledi, EOra.PRIMA, EOra.SECONDA, EOra.TERZA, EOra.QUARTA));
+        l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(false, "Millozzi", _A3_FIS, mercoledi, EOra.PRIMA, EOra.SECONDA, EOra.TERZA, EOra.QUARTA));
+        orarioTotale.classeInVisitaDidattica("PROVA INVALSI IN LAB. INFORMATICA 2D ITALIANO", _2D, mercoledi, EOra.PRIMA, EOra.SECONDA);
+        orarioTotale.classeInVisitaDidattica("PROVA INVALSI IN LAB. INFORMATICA 2C MATEMATICA", _2C, mercoledi, EOra.TERZA, EOra.QUARTA);
+
+
+        //--gio
+        final EGiorno giovedi = EGiorno.GIOVEDI;
+        l.add(new LessonConstraint_AulaNonDisponibile(_A4_INF, giovedi, EOra.PRIMA, EOra.SECONDA, EOra.TERZA, EOra.QUARTA));
+        l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(false, "Millozzi", _A3_FIS, giovedi, EOra.PRIMA, EOra.SECONDA, EOra.TERZA, EOra.QUARTA));
+        orarioTotale.classeInVisitaDidattica("PROVA INVALSI IN LAB. INFORMATICA 2D ITALIANO", _2D, giovedi, EOra.PRIMA, EOra.SECONDA);
+        orarioTotale.classeInVisitaDidattica("PROVA INVALSI IN LAB. INFORMATICA 2A MATEMATICA", _2A, giovedi, EOra.TERZA, EOra.QUARTA);
+
+
+        //simulazione seconda prova
+        orarioTotale.classeInVisitaDidattica("Simulazione Seconda Prova (POMERIGGIO)", _5A, EGiorno.LUNEDI, EOra.values());
+        orarioTotale.classeInVisitaDidattica("Simulazione Seconda Prova (POMERIGGIO)", _5B, EGiorno.LUNEDI, EOra.values());
+        orarioTotale.classeInVisitaDidattica("Simulazione Seconda Prova (POMERIGGIO)", _5C, EGiorno.LUNEDI, EOra.values());
+        orarioTotale.classeInVisitaDidattica("Simulazione Seconda Prova (POMERIGGIO)", _5D, EGiorno.LUNEDI, EOra.values());
+
+        l.add(new LessonConstraint_AulaNonDisponibile(_C14, EGiorno.LUNEDI, EOra.QUINTA));
+        l.add(new LessonConstraint_AulaNonDisponibile(_C15, EGiorno.LUNEDI, EOra.QUINTA));
+        l.add(new LessonConstraint_AulaNonDisponibile(_C16, EGiorno.LUNEDI, EOra.QUINTA));
+        l.add(new LessonConstraint_AulaNonDisponibile(_D26, EGiorno.LUNEDI, EOra.QUINTA));
+        l.add(new LessonConstraint_AulaNonDisponibile(_D25, EGiorno.LUNEDI, EOra.QUINTA));
+        l.add(new LessonConstraint_AulaNonDisponibile(_D24, EGiorno.LUNEDI, EOra.QUINTA));
+
         //lavori aula fisica
         for (EGiorno g : EGiorno.values()) {
             if (g.flagGiornoDiLezione()) {
-                l.add(new LessonConstraint_AulaNonDisponibile(_A6_FIS, g, EOra.values()));
-                //   l.add(new LessonConstraint_AulaNonDisponibile(_C15, g, EOra.values()));
+                l.add(new LessonConstraint_AulaNonDisponibile(_A6, g, EOra.values()));
             }
 
-        }
-
-
-        for (String c : orarioTotale.getClassi()) {
-            orarioTotale.classeInVisitaDidattica("Festa 2 giugno", c, EGiorno.SABATO,EOra.values());
         }
 
 
@@ -109,12 +138,9 @@ public class VincoliSostituzioni_n05_28mag__02giugno extends AbstractVincoliSost
 
         //classeConStampelle(l, _2A);
         //classeConStampelle(l, _1E, EGiorno.LUNEDI, EGiorno.MARTEDI, EGiorno.MERCOLEDI);
-        //classeConStampelle(l, _1E);
-        classeConStampelle(l, _4F, EGiorno.MERCOLEDI, EGiorno.GIOVEDI, EGiorno.VENERDI, EGiorno.SABATO);
-        classeConStampelle(l, _2E, EGiorno.GIOVEDI, EGiorno.VENERDI, EGiorno.SABATO);
+        classeConStampelle(l, _1E);
         classeConStampelle(l, _5C);
-        classeConStampelle(l, _1B);
-        // classeConStampelle(l, _3D);
+        classeConStampelle(l, _3D);
         //  classeConStampelle(l, _2G);
 
         //lab scienze chiuso il sabato
@@ -134,7 +160,6 @@ public class VincoliSostituzioni_n05_28mag__02giugno extends AbstractVincoliSost
         //perfetti
         l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_5D, _E29, EGiorno.SABATO, EOra.QUARTA, EOra.QUINTA));
         l.add(new LessonConstraint_DocenteBloccatoInArea(true, orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D}, EGiorno.values()));
-
         //l.add(new LessonConstraint_DocenteBloccatoInArea(orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D}, new EGiorno[]{EGiorno.LUNEDI, EGiorno.MARTEDI, EGiorno.MERCOLEDI}));
 
         //l.add(new LessonConstraint_ClasseBloccataInArea("4B", ERoomArea.AREA_B, EGiorno.values()));
@@ -145,8 +170,8 @@ public class VincoliSostituzioni_n05_28mag__02giugno extends AbstractVincoliSost
         //l.add(new LessonConstraint_DocenteBloccatoInArea(orarioTotale, "BENEDETTI", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B}, giorno));
 
 
-        dal = "28/05/2018";
-        al = "02/06/2018";
+        dal = "13/05/2018";
+        al = "19/05/2018";
         return this;
     }
 }

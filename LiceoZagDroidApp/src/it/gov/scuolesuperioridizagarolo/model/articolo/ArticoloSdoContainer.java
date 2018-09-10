@@ -1,5 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.model.articolo;
 
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetails;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
 import it.gov.scuolesuperioridizagarolo.model.dto.C_MyDate;
 
 import java.util.*;
@@ -7,7 +9,7 @@ import java.util.*;
 /**
  * Created by stefano on 08/03/2018.
  */
-public class ArticoloSdoContainer<T extends ArticoloType> {
+public class ArticoloSdoContainer<T extends ArticoloDetails> {
 
     public final List<ArticoloSdo<T>> articoli;
 
@@ -15,14 +17,14 @@ public class ArticoloSdoContainer<T extends ArticoloType> {
         articoli = new ArrayList<>();
     }
 
-    public static Comparator<ArticoloSdo<ArticoloTypeCircolare>> getArticoloTypeCircolareComparator() {
-        return new Comparator<ArticoloSdo<ArticoloTypeCircolare>>() {
+    public static Comparator<ArticoloSdo<ArticoloDetailsCircolare>> getArticoloTypeCircolareComparator() {
+        return new Comparator<ArticoloSdo<ArticoloDetailsCircolare>>() {
             @Override
-            public int compare(ArticoloSdo<ArticoloTypeCircolare> a, ArticoloSdo<ArticoloTypeCircolare> b) {
+            public int compare(ArticoloSdo<ArticoloDetailsCircolare> a, ArticoloSdo<ArticoloDetailsCircolare> b) {
 
 
-                final ArticoloTypeCircolare dA = a.wrapperArticolo.articoloDettagli;
-                final ArticoloTypeCircolare dB = b.wrapperArticolo.articoloDettagli;
+                final ArticoloDetailsCircolare dA = a.wrapperArticolo.getDetails();
+                final ArticoloDetailsCircolare dB = b.wrapperArticolo.getDetails();
 
                 final C_MyDate d1 = getDataGiornoMeseAnno(dA.dataCircolare);
                 final C_MyDate d2 = getDataGiornoMeseAnno(dB.dataCircolare);

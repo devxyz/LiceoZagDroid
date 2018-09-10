@@ -1,9 +1,9 @@
 package it.gov.scuolesuperioridizagarolo.parser;
 
 import it.gov.scuolesuperioridizagarolo.model.TermineInfoWeb;
-import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloType;
-import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloTypeCircolare;
-import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloTypeGenerico;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetails;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsGenerico;
 import it.gov.scuolesuperioridizagarolo.parser.impl.ParseException;
 import it.gov.scuolesuperioridizagarolo.parser.impl.Token;
 import it.gov.scuolesuperioridizagarolo.parser.impl.WordParser;
@@ -170,7 +170,7 @@ public class ItalianWordSplit {
         return ris;
     }
 
-    public static ArticoloType parseArticleTitle(String title,String content) {
+    public static ArticoloDetails parseArticleTitle(String title, String content) {
         WordParser parser = new WordParser(new StringReader(title));
         final ArrayList<Object> a = new ArrayList<>();
         try {
@@ -178,10 +178,10 @@ public class ItalianWordSplit {
         } catch (ParseException e) {
             a.clear();
 
-            ArticoloTypeGenerico g = new ArticoloTypeGenerico();
+            ArticoloDetailsGenerico g = new ArticoloDetailsGenerico();
             g.addParolaString(parseTextNormalized(title));
         }
-        return (ArticoloType) a.get(0);
+        return (ArticoloDetails) a.get(0);
 
     }
 
@@ -192,7 +192,7 @@ public class ItalianWordSplit {
 
         ArrayList<String> ris = new ArrayList<>();
         WordParser parser = new WordParser(new StringReader(s1));
-        ArticoloTypeCircolare ac = new ArticoloTypeCircolare();
+        ArticoloDetailsCircolare ac = new ArticoloDetailsCircolare();
         ac.parseNumeroCircolare("n.10");
         ac.parseDataCircolare("10/gennaio/2018");
         System.out.println(ac.numeroCircolare);

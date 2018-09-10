@@ -17,13 +17,13 @@ import java.util.List;
  * Created by stefano on 25/09/2017.
  */
 public class MainParserGeneraStampeOrario {
-    static final String FOLDER_INPUT = "/Users/stefano/Dropbox/";
+    static final String FOLDER_INPUT = "/Users/stefano/Dropbox/orario2018";
     static final String file_allocazione_aule = "Orario Allocazione Aule.txt";
     static final String file_disposizione_docenti = "Orario Ore a Disposizione.txt";
 
     public static BitOrarioGrigliaOrario parsingDefaultFileOrarioAuleClassi() throws IOException {
 
-        final String titolo = "Liceo Scientifico - Orario Definitivo dal 20 novembre 2017 -- versione 3.1";
+        final String titolo = "Liceo Scientifico - Orario Provvisorio dal 12 settembre 2018 -- versione 0.1";
         final BitOrarioGrigliaOrario orarioTotale = parsingFileOrarioAuleClassi(
                 titolo,
                 new File(FOLDER_INPUT, file_allocazione_aule),

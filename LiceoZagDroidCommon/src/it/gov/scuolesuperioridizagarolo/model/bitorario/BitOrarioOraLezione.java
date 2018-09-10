@@ -91,6 +91,15 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
                 getTipoLezione());
     }
 
+    public BitOrarioOraLezione clonaLezioneInAltraAula(RoomData nuovaaula) {
+        return new BitOrarioOraLezione(
+                getDocentePrincipale(), getMateriaPrincipale(),
+                getDocenteCompresenza(), getMateriaCompresenza(),
+                nuovaaula.name, getClasse(),
+                getOra(), getGiorno(),
+                getTipoLezione());
+    }
+
     private String normalize(String docentePrincipale) {
         return docentePrincipale == null ? null : docentePrincipale.trim().toUpperCase();
     }

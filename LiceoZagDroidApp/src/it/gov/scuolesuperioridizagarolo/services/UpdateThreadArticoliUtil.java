@@ -5,10 +5,10 @@ import android.util.Log;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.dao.*;
-import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDB_Keywords;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType;
 import it.gov.scuolesuperioridizagarolo.db.ManagerArticolo;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
 import it.gov.scuolesuperioridizagarolo.model.dto.C_Pair;
-import it.gov.scuolesuperioridizagarolo.parser.ItalianWordSplit;
 import it.gov.scuolesuperioridizagarolo.util.C_Base64;
 import it.gov.scuolesuperioridizagarolo.util.C_XmlUtil;
 import org.w3c.dom.Document;
@@ -156,15 +156,20 @@ public class UpdateThreadArticoliUtil {
             aa.setTitle(article_title);
             aa.setUrl(article_url);
 
+            ArticoloDetailsCircolare x = new ArticoloDetailsCircolare();
+            x.oggetto = "oggetto da terminare";
+            x.numeroCircolare = 9999;
+            x.dataCircolare = new Date();
+            x.addParolaString("PROVA");
+            aa.setDetails(x);
+            aa.setType(ArticoloType.CIRCOLARE);
+
 
             //ArticoloTypeCircolare t=new ArticoloTypeCircolare()
             //aa.setJsonClass(t.getClass().getName());
             //aa.setJsonContent(t.getClass().getName());
 
             ris.articoliByRemoteId.put(aa.getRemoteId(), aa);
-
-            final ArrayList<String> strings = ItalianWordSplit.parseTextNormalized(aa.getTitle() + " " + aa.getContent());
-            aa.setKeywords(new ArticoloDB_Keywords(strings));
 
             System.out.println(article_id);
             System.out.println(article_title);

@@ -57,7 +57,7 @@ public abstract class AbstractLessonConstraint {
 
 
         final RoomData room = getRoom(nomeAula);
-        if (ignoreLabs && room != null && room.flagSpecial())
+        if (ignoreLabs && room != null && room.flagAulaLaboratorioPalestra())
             return true;
 
         return __check(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza,
@@ -67,7 +67,7 @@ public abstract class AbstractLessonConstraint {
 
     public final boolean __check(BitOrarioOraLezione l, BitOrarioGrigliaOrario orario) {
         final RoomData room = getRoom(l.getNomeAula());
-        if (ignoreLabs && room != null && room.flagSpecial())
+        if (ignoreLabs && room != null && room.flagAulaLaboratorioPalestra())
             return true;
 
 

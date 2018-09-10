@@ -18,24 +18,23 @@ import java.util.*;
  * Created by stefano on 16/09/2017.
  */
 public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
-    private transient boolean readOnly=false;
-    public void setReadOnly(boolean f){
-        this.readOnly=f;
-    }
-
-    private void checkReadOnly(){
-        if (readOnly)
-            throw new IllegalArgumentException("Read only mode");
-    }
-
     private final IndexedGrigliaOrariaMultiValore<String> _lezioniPerDocente = new IndexedGrigliaOrariaMultiValore<>();
     private final IndexedGrigliaOrariaMultiValore<String> _lezioniPerAula = new IndexedGrigliaOrariaMultiValore<>();
     private final IndexedGrigliaOrariaMultiValore<String> _lezioniPerClasse = new IndexedGrigliaOrariaMultiValore<>();
     private final GrigliaOrariaMultiValore _lezioni = new GrigliaOrariaMultiValore();
+    private transient boolean readOnly = false;
     private String titolo;
-
     public BitOrarioGrigliaOrario(String titolo) {
         this.titolo = titolo;
+    }
+
+    public void setReadOnly(boolean f) {
+        this.readOnly = f;
+    }
+
+    private void checkReadOnly() {
+        if (readOnly)
+            throw new IllegalArgumentException("Read only mode");
     }
 
     public Set<String> getMaterie(String classe) {

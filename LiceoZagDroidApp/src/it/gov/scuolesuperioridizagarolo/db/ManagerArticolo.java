@@ -1,9 +1,10 @@
 package it.gov.scuolesuperioridizagarolo.db;
 
 import it.gov.scuolesuperioridizagarolo.dao.*;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdo;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdoContainer;
-import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloTypeCircolare;
 import it.gov.scuolesuperioridizagarolo.model.articolo.WrapperArticoloDB;
 import org.greenrobot.greendao.query.DeleteQuery;
 import org.greenrobot.greendao.query.QueryBuilder;
@@ -65,39 +66,39 @@ public class ManagerArticolo {
         queryDeleteArticleDB.executeDeleteWithoutDetachingEntities();
     }
 
-    public ArticoloSdoContainer<ArticoloTypeCircolare> elencoArticoliCircolari() {
+    public ArticoloSdoContainer<ArticoloDetailsCircolare> elencoArticoliCircolari() {
         final List<AttachmentArticoloDB> listAttachment = session.getAttachmentArticoloDBDao().queryBuilder().list();
         final List<TagArticoloDB> listTag = session.getTagArticoloDBDao().queryBuilder().list();
 
         //elenco circolari
         final QueryBuilder<ArticoloDB> qb = session.getArticoloDBDao().queryBuilder();
-        qb.where(ArticoloDBDao.Properties.JsonClass.eq(ArticoloTypeCircolare.class.getName()));
+        qb.where(ArticoloDBDao.Properties.Type.eq(ArticoloType.CIRCOLARE.name()));
         final List<ArticoloDB> listArticolo = qb.list();
 
-        final Map<Long, ArticoloSdo<ArticoloTypeCircolare>> map = new TreeMap<>();
+        final Map<Long, ArticoloSdo<ArticoloDetailsCircolare>> map = new TreeMap<>();
 
         //articolo
         for (ArticoloDB a : listArticolo) {
-            ArticoloSdo<ArticoloTypeCircolare> s = new ArticoloSdo<ArticoloTypeCircolare>(new WrapperArticoloDB<>(ArticoloTypeCircolare.class, a));
+            ArticoloSdo<ArticoloDetailsCircolare> s = new ArticoloSdo<ArticoloDetailsCircolare>(new WrapperArticoloDB<>(ArticoloDetailsCircolare.class, a));
             map.put(a.getId(), s);
         }
 
         //tag
         for (TagArticoloDB t : listTag) {
-            final ArticoloSdo<ArticoloTypeCircolare> x = map.get(t.getFk_articleId());
+            final ArticoloSdo<ArticoloDetailsCircolare> x = map.get(t.getFk_articleId());
             if (x != null)
                 x.tags.add(t);
         }
 
         //attachment
         for (AttachmentArticoloDB t : listAttachment) {
-            final ArticoloSdo<ArticoloTypeCircolare> x = map.get(t.getFk_articleId());
+            final ArticoloSdo<ArticoloDetailsCircolare> x = map.get(t.getFk_articleId());
             if (x != null)
                 x.attachments.add(t);
         }
 
         //articoli
-        ArticoloSdoContainer<ArticoloTypeCircolare> s = new ArticoloSdoContainer<>();
+        ArticoloSdoContainer<ArticoloDetailsCircolare> s = new ArticoloSdoContainer<>();
         s.articoli.addAll(map.values());
 
         return s;

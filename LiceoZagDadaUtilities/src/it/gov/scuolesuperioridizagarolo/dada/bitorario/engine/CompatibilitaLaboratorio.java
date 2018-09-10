@@ -59,7 +59,7 @@ public class CompatibilitaLaboratorio {
 
         for (BitOrarioOraLezione l : o.getLezioni()) {
             final RoomData a = l.getAula();
-            if (a != null && a.flagSpecial()) {
+            if (a != null && a.flagAulaLaboratorioPalestra()) {
                 ris.add(new CompatibilitaLaboratorio(l.getClasse(), l.getMateriaPrincipale(), l.getNomeAula()));
             }
         }

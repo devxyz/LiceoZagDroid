@@ -1,5 +1,7 @@
-package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni;
+package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.as2017_18;
 
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule2;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
@@ -83,7 +85,7 @@ public class VincoliSostituzioni_n01_30apr__05mag extends AbstractVincoliSostitu
             //lavori
             for (EGiorno g : EGiorno.values()) {
                 if (g.flagGiornoDiLezione()) {
-                    l.add(new LessonConstraint_AulaNonDisponibile(_A6_FIS, g, EOra.values()));
+                    l.add(new LessonConstraint_AulaNonDisponibile(_A6, g, EOra.values()));
                     //if (g != EGiorno.SABATO)
                     //  l.add(new LessonConstraint_AulaNonDisponibile(_A7, g, EOra.values()));
                 }

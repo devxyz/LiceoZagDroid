@@ -13,7 +13,7 @@ import it.gov.scuolesuperioridizagarolo.dao.TagArticoloDB;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_articoli_circolari_xml;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdo;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdoContainer;
-import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloTypeCircolare;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
 import it.gov.scuolesuperioridizagarolo.util.C_DateUtil;
 import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
 
@@ -22,27 +22,27 @@ import it.gov.scuolesuperioridizagarolo.util.C_TextUtil;
  */
 public class ArticoliCircolariListAdapter extends BaseAdapter {
 
-    private ArticoloSdoContainer<ArticoloTypeCircolare> articoliCircolari;
+    private ArticoloSdoContainer<ArticoloDetailsCircolare> articoliCircolari;
     private Activity activity;
     private LayoutInflater layoutInflater;
 
 
     public ArticoliCircolariListAdapter(Activity f) {
-        this(f, new ArticoloSdoContainer<ArticoloTypeCircolare>());
+        this(f, new ArticoloSdoContainer<ArticoloDetailsCircolare>());
 
     }
 
-    public ArticoliCircolariListAdapter(Activity f, ArticoloSdoContainer<ArticoloTypeCircolare> circolari) {
+    public ArticoliCircolariListAdapter(Activity f, ArticoloSdoContainer<ArticoloDetailsCircolare> circolari) {
         this.articoliCircolari = circolari;
         activity = f;
         layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public ArticoloSdoContainer<ArticoloTypeCircolare> getArticoliCircolari() {
+    public ArticoloSdoContainer<ArticoloDetailsCircolare> getArticoliCircolari() {
         return articoliCircolari;
     }
 
-    public void update(ArticoloSdoContainer<ArticoloTypeCircolare> nuovaLista) {
+    public void update(ArticoloSdoContainer<ArticoloDetailsCircolare> nuovaLista) {
         this.articoliCircolari = nuovaLista;
         super.notifyDataSetChanged();
     }
@@ -103,8 +103,8 @@ public class ArticoliCircolariListAdapter extends BaseAdapter {
         TextView textView_oggetto = LAYOUT_OBJs.textView_oggetto;
         TextView textView_tag = LAYOUT_OBJs.textView_tag;
 
-        final ArticoloSdo<ArticoloTypeCircolare> c = this.articoliCircolari.articoli.get(position);
-        final ArticoloTypeCircolare circolare = c.wrapperArticolo.articoloDettagli;
+        final ArticoloSdo<ArticoloDetailsCircolare> c = this.articoliCircolari.articoli.get(position);
+        final ArticoloDetailsCircolare circolare = c.wrapperArticolo.getDetails();
 
         textView_info_circolare.setText("Circolare n." + circolare.numeroCircolare + " del " + C_DateUtil.toDDMMYYY(circolare.dataCircolare));
         textView_oggetto.setText(circolare.oggetto);

@@ -36,7 +36,7 @@ public class LessonConstraint_DocenteFermoInAulaDidatticaPerOre extends Abstract
 
         if ((docentePrincipale != null && this.docente.equalsIgnoreCase(docentePrincipale) || (docenteCompresenza != null && this.docente.equalsIgnoreCase(docenteCompresenza))))
             if (this.giorno.contains(giorno) && this.ore.contains(ora)) {
-                if (aula.progressive != this.aula.progressive)
+                if (aula != this.aula)
                     return false;
             }
         return true;

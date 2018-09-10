@@ -33,7 +33,7 @@ public class LessonConstraint_DocenteBloccatoInArea extends AbstractLessonConstr
     @Override
     protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
         //skip aule speciali
-        //if (aula.flagSpecial()) return true;
+        //if (aula.flagAulaLaboratorioPalestra()) return true;
 
 
         if (docentePrincipale != null)

@@ -12,7 +12,7 @@ public enum FilterAule {
     LABORATORI_MAI {
         @Override
         boolean accept(String materia, String classe, String docente, RoomData aula, Set<CompatibilitaLaboratorio> c) {
-            if (!aula.flagSpecial()) return true;
+            if (!aula.flagAulaLaboratorioPalestra()) return true;
             return false;
         }
     },
@@ -27,7 +27,7 @@ public enum FilterAule {
     LABORATORI_SOLO_COMPATIBILI {
         @Override
         boolean accept(String materia, String classe, String docente, RoomData aula, Set<CompatibilitaLaboratorio> c) {
-            if (!aula.flagSpecial()) return true;
+            if (!aula.flagAulaLaboratorioPalestra()) return true;
             return c.contains(new CompatibilitaLaboratorio(classe, materia, aula.name));
             //return true;
         }

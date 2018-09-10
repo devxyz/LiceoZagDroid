@@ -27,7 +27,7 @@ import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_articoli_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdo;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdoContainer;
-import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloTypeCircolare;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
 import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
 
@@ -35,12 +35,11 @@ import java.util.TreeSet;
 
 
 public class ArticoloCircolariFragment extends AbstractFragment {
-    private static final int EXPIRE_TIME_DAYS = 15;
     private LayoutObjs_fragment_articoli_xml LAYOUT_OBJs;   //***************************
     private UrlFileCache cache = null;
     private ArticoliCircolariListAdapter a;
     private ArrayAdapter<String> multiTextViewAdapter;
-    private ArticoloSdoContainer<ArticoloTypeCircolare> articoliCircolari = new ArticoloSdoContainer<>();
+    private ArticoloSdoContainer<ArticoloDetailsCircolare> articoliCircolari = new ArticoloSdoContainer<>();
 
     public ArticoloCircolariFragment() {
     }
@@ -52,7 +51,7 @@ public class ArticoloCircolariFragment extends AbstractFragment {
             db.runInTransaction(new ScuolaAppDBHelperRun() {
                 @Override
                 public void run(DaoSession session, Context ctx) throws Throwable {
-                    final ArticoloSdoContainer<ArticoloTypeCircolare> circolari = a.getArticoliCircolari();
+                    final ArticoloSdoContainer<ArticoloDetailsCircolare> circolari = a.getArticoliCircolari();
                     final ArticoloDBDao circolareDBDao = session.getArticoloDBDao();
                     for (ArticoloSdo c : circolari.articoli) {
                         c.wrapperArticolo.articolo.setFlagLettura(flagLettura);
@@ -90,7 +89,7 @@ public class ArticoloCircolariFragment extends AbstractFragment {
     }
 
 
-    public static TreeSet<String> listaParole_Circolare(MainMenuActivity m, ArticoliCircolariListAdapter a, final ArticoloSdo<ArticoloTypeCircolare> c) {
+    public static TreeSet<String> listaParole_Circolare(MainMenuActivity m, ArticoliCircolariListAdapter a, final ArticoloSdo<ArticoloDetailsCircolare> c) {
         final TreeSet<String> ris = new TreeSet<>();
         ris.addAll(c.parole());
 
@@ -205,7 +204,7 @@ public class ArticoloCircolariFragment extends AbstractFragment {
                         final ManagerArticolo managerCircolare = new ManagerArticolo(session);
 
                         //update termin
-                        final ArticoloSdoContainer<ArticoloTypeCircolare> articoli = managerCircolare.elencoArticoliCircolari();
+                        final ArticoloSdoContainer<ArticoloDetailsCircolare> articoli = managerCircolare.elencoArticoliCircolari();
                         multiTextViewAdapter.clear();
                         multiTextViewAdapter.addAll(articoli.parole());
 
@@ -278,7 +277,7 @@ public class ArticoloCircolariFragment extends AbstractFragment {
         @Override
         public boolean onItemLongClick(final AdapterView<?> parent, final View view, final int position, final long id) {
 
-            final ArticoloSdo<ArticoloTypeCircolare> c = a.getArticoliCircolari().articoli.get(position);
+            final ArticoloSdo<ArticoloDetailsCircolare> c = a.getArticoliCircolari().articoli.get(position);
 
             DialogUtil.openSingleChooseDialog(fragment.getActivity(), "Quale azione vuoi svolgere?", true, new CharSequence[]{
                             "Segna tutte da leggere",

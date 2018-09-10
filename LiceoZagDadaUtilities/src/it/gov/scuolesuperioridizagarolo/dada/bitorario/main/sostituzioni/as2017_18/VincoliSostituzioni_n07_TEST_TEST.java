@@ -1,8 +1,8 @@
-package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni;
+package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.as2017_18;
 
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule3;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.*;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
@@ -16,14 +16,21 @@ import java.util.TreeSet;
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_n06_04giugno__08giugno extends AbstractVincoliSostituzioni {
+public class VincoliSostituzioni_n07_TEST_TEST extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
-        final VincoliSostituzioni_n06_04giugno__08giugno l = new VincoliSostituzioni_n06_04giugno__08giugno();
-        MotoreSostituzioneAule2.doTask(l);
+        final VincoliSostituzioni_n07_TEST_TEST l = new VincoliSostituzioni_n07_TEST_TEST();
+        MotoreSostituzioneAule3.doTask(l);
 
     }
 
-    public VincoliSostituzioni_n06_04giugno__08giugno invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+    public VincoliSostituzioni_n07_TEST_TEST invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+
+
+
+        System.out.flush();
+//        if (true)
+  //          throw new IllegalArgumentException("DEBUG");
+
         //vincoli base
         l.add(new LessonConstraint_OccupazioneAule_labsToo());
 
@@ -78,11 +85,13 @@ public class VincoliSostituzioni_n06_04giugno__08giugno extends AbstractVincoliS
             orarioTotale.classeInVisitaDidattica("Conferenza sulla legalità - aula disegno - terzo turno", _4F, EGiorno.VENERDI, EOra.QUARTA);
             */
 
+        //orarioTotale.classeInVisitaDidattica("Uscita di Test",_1E,EGiorno.LUNEDI,EOra.values());
+        //orarioTotale.classeInVisitaDidattica("Uscita di Test",_1G,EGiorno.LUNEDI,EOra.values());
 
         //lavori aula fisica
         for (EGiorno g : EGiorno.values()) {
             if (g.flagGiornoDiLezione()) {
-                l.add(new LessonConstraint_AulaNonDisponibile(_A6_FIS, g, EOra.values()));
+                l.add(new LessonConstraint_AulaNonDisponibile(_A6, g, EOra.values()));
                 //   l.add(new LessonConstraint_AulaNonDisponibile(_C15, g, EOra.values()));
             }
 
@@ -111,25 +120,12 @@ public class VincoliSostituzioni_n06_04giugno__08giugno extends AbstractVincoliS
         //GLH
         l.add(new LessonConstraint_AulaNonDisponibile(_A5_DIS, EGiorno.MARTEDI, EOra.SECONDA, EOra.TERZA, EOra.QUARTA));
 
-        //biennio in teatro
-        orarioTotale.classeInVisitaDidattica("Teatro Biennio 4 giugno", _1A, EGiorno.LUNEDI, EOra.values());
 
-
-        for (String c : classi) {
-            final ClassData aClass = ClassesAndRoomContainer.getClass(c);
-            if (aClass.name.startsWith("1") || aClass.name.startsWith("2")) {
-                orarioTotale.classeInVisitaDidattica("Teatro Biennio - 4 giugno", aClass, EGiorno.LUNEDI, EOra.values());
-            } else {
-                orarioTotale.classeInVisitaDidattica("Teatro Triennio 5 giugno", aClass, EGiorno.MARTEDI, EOra.values());
-            }
-
-            orarioTotale.classeInVisitaDidattica("Chiusura scuola", aClass, EGiorno.SABATO, EOra.values());
-        }
         //classeConStampelle(l, _2A);
         //classeConStampelle(l, _1E, EGiorno.LUNEDI, EGiorno.MARTEDI, EGiorno.MERCOLEDI);
         //classeConStampelle(l, _1E);
-        classeConStampelle(l, _4F, EGiorno.MERCOLEDI, EGiorno.GIOVEDI, EGiorno.VENERDI, EGiorno.SABATO);
-        classeConStampelle(l, _2E, EGiorno.GIOVEDI, EGiorno.VENERDI, EGiorno.SABATO);
+        classeConStampelle(l, _4F, EGiorno.valuesGiorniDiLezione());
+        classeConStampelle(l, _2E, EGiorno.valuesGiorniDiLezione());
         classeConStampelle(l, _5C);
         classeConStampelle(l, _1B);
         // classeConStampelle(l, _3D);
@@ -151,7 +147,8 @@ public class VincoliSostituzioni_n06_04giugno__08giugno extends AbstractVincoliS
 
         //perfetti
         l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_5D, _E29, EGiorno.SABATO, EOra.QUARTA, EOra.QUINTA));
-        l.add(new LessonConstraint_DocenteBloccatoInArea(true, orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D}, EGiorno.values()));
+        l.add(new LessonConstraint_DocenteBloccatoInArea(false, orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A}, EGiorno.values()));
+        //l.add(new LessonConstraint_DocenteBloccatoInArea(false, orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D}, EGiorno.values()));
 
         //l.add(new LessonConstraint_DocenteBloccatoInArea(orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D}, new EGiorno[]{EGiorno.LUNEDI, EGiorno.MARTEDI, EGiorno.MERCOLEDI}));
 
@@ -163,8 +160,8 @@ public class VincoliSostituzioni_n06_04giugno__08giugno extends AbstractVincoliS
         //l.add(new LessonConstraint_DocenteBloccatoInArea(orarioTotale, "BENEDETTI", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B}, giorno));
 
 
-        dal = "04/06/2018";
-        al = "08/06/2018";
+        dal = "30/07/2018";
+        al = "04/08/2018";
         return this;
     }
 }
