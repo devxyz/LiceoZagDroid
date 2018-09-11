@@ -1,6 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.parser;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public class ParserOrarioAllocazioneAuleTXT {
 
-    public static List<BitOrarioOraLezione> parsingFileOrarioAuleClassi(File fileAllocazioneAule) throws IOException {
+    public static List<BitOrarioOraLezione> parsingFileOrarioAuleClassi(File fileAllocazioneAule, boolean noAule) throws IOException {
 
         List<BitOrarioOraLezione> ris = new ArrayList<>();
 
@@ -49,7 +50,7 @@ public class ParserOrarioAllocazioneAuleTXT {
                 continue;
             if (line.contains("|CLASSE")) {
                 if (classe != null) {
-                    aggiungiClasse(classe, orario, ris);
+                    aggiungiClasse(classe, orario, ris, noAule);
                 }
 
                 orario = new MatriceDinamicaStringhe();
@@ -67,13 +68,13 @@ public class ParserOrarioAllocazioneAuleTXT {
 
 
         if (classe != null) {
-            aggiungiClasse(classe, orario, ris);
+            aggiungiClasse(classe, orario, ris, noAule);
         }
 
         return ris;
     }
 
-    private static void aggiungiClasse(String classe, MatriceDinamicaStringhe orario, List<BitOrarioOraLezione> orarioTotale) {
+    private static void aggiungiClasse(String classe, MatriceDinamicaStringhe orario, List<BitOrarioOraLezione> orarioTotale, boolean noAula) {
         //System.out.println("=======================================");
         //System.out.println("CLASSE " + classe);
         //System.out.println(orario);
@@ -105,6 +106,9 @@ public class ParserOrarioAllocazioneAuleTXT {
 
                     materiaPrincipale = a[0];
                     nomeAula = a[2];
+                    if (noAula) {
+                        nomeAula = RoomData.NON_ASSEGNATO.name;
+                    }
                     l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale, nomeAula, classe, oraX, giornoX);
 
                 } else {
@@ -115,6 +119,9 @@ public class ParserOrarioAllocazioneAuleTXT {
                     docenteCompresenza = a[2];
                     materiaCompresenza = "compresenza";
                     nomeAula = a[3];
+                    if (noAula) {
+                        nomeAula = RoomData.NON_ASSEGNATO.name;
+                    }
                     l = BitOrarioOraLezione.creaOraCompresenza(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, nomeAula, classe, oraX, giornoX);
                 }
 

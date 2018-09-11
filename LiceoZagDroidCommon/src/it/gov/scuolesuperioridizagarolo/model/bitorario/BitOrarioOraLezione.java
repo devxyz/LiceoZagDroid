@@ -8,6 +8,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 /**
  * Created by stefano on 16/09/2017.
  */
+//todo DA TERMINARE
 public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
     protected transient BitOrarioGrigliaOrario _parent;
     private String docentePrincipale;
@@ -62,7 +63,11 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
     }
 
     public RoomData getAula() {
-        return ClassesAndRoomContainer.getRoom(this);
+        try {
+            return ClassesAndRoomContainer.getRoom(this);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Aula errata per " + this.toStringShort(), e);
+        }
     }
 
     public void appendNote(String note) {
@@ -122,9 +127,9 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
 
     public String toStringShort() {
         if (getDocenteCompresenza() == null)
-            return getMateriaPrincipale() + "-" + getDocentePrincipale() + " (" + getNomeAula() + ") classe:" + classe;
+            return classe + "_" + giorno + "." + ora.getProgressivOra() + "_" + getMateriaPrincipale() + "-" + getDocentePrincipale() + "(" + getNomeAula() + ")";
         else
-            return getMateriaPrincipale() + "-" + getDocentePrincipale() + "-" + getDocenteCompresenza() + " (" + getNomeAula() + ") classe:" + classe;
+            return classe + "_" + giorno + "." + ora.getProgressivOra() + "_" + getMateriaPrincipale() + "-" + getDocentePrincipale() + "-" + getDocenteCompresenza() + "(" + getNomeAula() + ")";
     }
 
     @Override

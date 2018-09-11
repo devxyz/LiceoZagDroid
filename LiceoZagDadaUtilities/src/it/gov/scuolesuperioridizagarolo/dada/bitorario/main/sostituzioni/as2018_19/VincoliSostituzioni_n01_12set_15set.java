@@ -93,16 +93,20 @@ public class VincoliSostituzioni_n01_12set_15set extends AbstractVincoliSostituz
         }
 
         for (ClassData classe : ClassData.values()) {
-            orarioTotale.classeInVisitaDidattica("ORARIO PROVVISORIO SI INIZIA MERCOLEDI'", classe, EGiorno.LUNEDI, EOra.values());
-            orarioTotale.classeInVisitaDidattica("ORARIO PROVVISORIO SI INIZIA MERCOLEDI'", classe, EGiorno.MARTEDI, EOra.values());
+            orarioTotale.classeInSospensioneDidattica("ORARIO PROVVISORIO SI INIZIA MERCOLEDI'", classe, EGiorno.LUNEDI, EOra.values());
+            orarioTotale.classeInSospensioneDidattica("ORARIO PROVVISORIO SI INIZIA MERCOLEDI'", classe, EGiorno.MARTEDI, EOra.values());
             if (classe._class > 2) {
                 //triennio
-                orarioTotale.classeInVisitaDidattica("ORARIO PROVVISORIO triennio GIOV e SAB", classe, EGiorno.MERCOLEDI, EOra.values());
-                orarioTotale.classeInVisitaDidattica("ORARIO PROVVISORIO triennio GIOV e SAB", classe, EGiorno.VENERDI, EOra.values());
+                orarioTotale.classeInSospensioneDidattica("ORARIO PROVVISORIO triennio GIOV e SAB", classe, EGiorno.MERCOLEDI, EOra.values());
+                orarioTotale.classeInSospensioneDidattica("ORARIO PROVVISORIO triennio GIOV e SAB", classe, EGiorno.VENERDI, EOra.values());
+                orarioTotale.classeInSospensioneDidattica("ORARIO PROVVISORIO triennio GIOV e SAB", classe, EGiorno.GIOVEDI, EOra.QUARTA, EOra.QUINTA, EOra.SESTA);
+                orarioTotale.classeInSospensioneDidattica("ORARIO PROVVISORIO triennio GIOV e SAB", classe, EGiorno.SABATO, EOra.QUARTA, EOra.QUINTA, EOra.SESTA);
             } else {
                 //biennio
-                orarioTotale.classeInVisitaDidattica("ORARIO PROVVISORIO triennio MERC e VEN", classe, EGiorno.GIOVEDI, EOra.values());
-                orarioTotale.classeInVisitaDidattica("ORARIO PROVVISORIO triennio MERC e VEN", classe, EGiorno.SABATO, EOra.values());
+                orarioTotale.classeInSospensioneDidattica("ORARIO PROVVISORIO biennio MERC e VEN", classe, EGiorno.MERCOLEDI, EOra.QUARTA, EOra.QUINTA, EOra.SESTA, EOra.PRIMA);
+                orarioTotale.classeInSospensioneDidattica("ORARIO PROVVISORIO biennio MERC e VEN", classe, EGiorno.VENERDI, EOra.QUARTA, EOra.QUINTA, EOra.SESTA);
+                orarioTotale.classeInSospensioneDidattica("ORARIO PROVVISORIO biennio MERC e VEN", classe, EGiorno.GIOVEDI, EOra.values());
+                orarioTotale.classeInSospensioneDidattica("ORARIO PROVVISORIO biennio MERC e VEN", classe, EGiorno.SABATO, EOra.values());
 
             }
         }

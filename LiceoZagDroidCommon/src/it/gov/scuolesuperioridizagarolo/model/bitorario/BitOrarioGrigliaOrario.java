@@ -24,6 +24,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
     private final GrigliaOrariaMultiValore _lezioni = new GrigliaOrariaMultiValore();
     private transient boolean readOnly = false;
     private String titolo;
+
     public BitOrarioGrigliaOrario(String titolo) {
         this.titolo = titolo;
     }
@@ -68,7 +69,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
     }
 
     /**
-     * rimuove le lezioni per la classe specificata
+     * specifica usita didattica per le lezioni per la classe specificata
      *
      * @param nomeClasse
      * @param giorno
@@ -76,6 +77,17 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
      */
     public void classeInVisitaDidattica(String note, ClassData nomeClasse, EGiorno giorno, EOra... ore) {
         classeInVisitaDidattica(note, nomeClasse.name, giorno, ore);
+    }
+
+    /**
+     * rimuove le lezioni per la classe specificata
+     *
+     * @param nomeClasse
+     * @param giorno
+     * @param ore
+     */
+    public void classeInSospensioneDidattica(String note, ClassData nomeClasse, EGiorno giorno, EOra... ore) {
+        classeInSospensioneDidattica(note, nomeClasse.name, giorno, ore);
     }
 
     public void classeInVisitaDidattica(String note, String nomeClasse, EGiorno giorno, EOra... ore) {
@@ -92,6 +104,20 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
             final BitOrarioOraLezione nuovaLezioneInClasse = lezioneInClasse.clonaLezioneInAltraAula(RoomData.USCITA_DIDATTICA);
             nuovaLezioneInClasse.setNote(note);
             addLezione(nuovaLezioneInClasse);
+        }
+    }
+
+    public void classeInSospensioneDidattica(String note, String nomeClasse, EGiorno giorno, EOra... ore) {
+        checkReadOnly();
+        if (!getClassi().contains(nomeClasse))
+            throw new IllegalArgumentException("Classe " + nomeClasse + " inesistente");
+
+        for (EOra eOra : ore) {
+            //if (!eOra.flagOraDiLezione()) continue;
+            final BitOrarioOraLezione lezioneInClasse = getLezioneInClasse(eOra, giorno, nomeClasse);
+            if (lezioneInClasse == null) continue;
+
+            removeLezione(lezioneInClasse);
         }
     }
 
@@ -213,7 +239,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         TreeSet<String> ris = new TreeSet<>();
 
         for (String a : getAule()) {
-            if (ClassesAndRoomContainer.getRoom(a).isUscitaDidattica())
+            if (ClassesAndRoomContainer.getRoom(a).isAulaFittizia())
                 continue;
 
             final List<BitOrarioOraLezione> l = getLezioneInAula(ora, settimana, a);
@@ -235,7 +261,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
 
         for (String a : getAule()) {
 
-            if (ClassesAndRoomContainer.getRoom(a).isUscitaDidattica())
+            if (ClassesAndRoomContainer.getRoom(a).isAulaFittizia())
                 continue;
 
             final List<BitOrarioOraLezione> l = getLezioneInAula(ora, settimana, a);
@@ -408,7 +434,15 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
     }
 
     public TreeSet<String> getAule() {
-        return new TreeSet<>(_lezioniPerAula.keys());
+        //elenco di tutte le aule disponibili sia presenti nell'orario che nell'ENUM
+        final TreeSet<String> ris = new TreeSet<>(_lezioniPerAula.keys());
+        for (RoomData r : RoomData.values()) {
+            ris.add(r.name);
+        }
+
+        return ris;
+
+
     }
 
     public String toStringConDocente(String docente) {

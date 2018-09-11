@@ -6,7 +6,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
  * Created by stefano on 24/11/2017.
  */
 public enum RoomData {
-
+    NON_ASSEGNATO("(NON ASSEGNATO)", "(NON ASSEGNATO)", 1, 0, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     USCITA_DIDATTICA("###", "Uscita Didattica", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     A1("A1", "Aula Didattica", 30, 11, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     A2("A2", "Aula Didattica", 28, 13, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
@@ -17,11 +17,11 @@ public enum RoomData {
     A6("A6", "Aula Didattica", 29, 20, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     A7("A7", "Aula Didattica", 18, 21, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
 
-    B10("B10", "Aula Didattica", 28, 8, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO AL MOMENTO non utilizzabile aveva 28 posti
+    B10("B10", "Aula Didattica", 30, 8, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO AL MOMENTO non utilizzabile aveva 28 posti
     B11("B11", "Aula Didattica", 30, 31, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     B12("B12", "Aula Didattica", 30, 32, ERoomArea.AREA_B, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     B13("B13", "Aula Didattica", 30, 33, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
-    B13sharp("B13#", "Aula Didattica", 0, 33, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//todo AL MOMENTO NON UTILIZZABILE
+    B13sharp("B13#", "Aula Didattica", 30, 33, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//todo AL MOMENTO NON UTILIZZABILE
 
     B8("B8", "Aula Didattica", 30, 10, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     B9("B9", "Aula Didattica", 30, 9, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
@@ -42,10 +42,10 @@ public enum RoomData {
     D25("D25", "Aula Didattica", 30, 64, ERoomArea.AREA_D, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     D26("D26", "Aula Didattica", 20, 65, ERoomArea.AREA_D, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//???ANNO SCORSO 22
 
-    E27("E27", "Aula Didattica", 26, 44, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE - anno scorso 26 posti
-    E28("E28", "Aula Didattica", 26, 39, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
-    E29("E29", "Aula Didattica", 26, 40, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
-    E30("E30", "Aula Didattica", 26, 41, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    E27("E27", "Aula Didattica", 30, 44, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE - anno scorso 26 posti
+    E28("E28", "Aula Didattica", 30, 39, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    E29("E29", "Aula Didattica", 30, 40, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    E30("E30", "Aula Didattica", 30, 41, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
 
     F31_PALESTRA("F31_PALESTRA", "Palestra", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
 
@@ -69,7 +69,7 @@ public enum RoomData {
         this.flagPRESACORRENTE = flagPRESACORRENTE;
     }
 
-    public boolean isUscitaDidattica() {
+    public boolean isAulaFittizia() {
         return name.equals(ClassesAndRoomContainer.USCITA_DIDATTICA);
     }
 

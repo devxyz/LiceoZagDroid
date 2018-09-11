@@ -1,5 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni;
 
+import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.BitOrarioOraLezioneJSonConverter;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.constraint.impl.CheckForClassroom_CoerenzaCapacitàClassiAule;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.engine.SostituzioneAuleEngine3;
@@ -9,6 +10,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraintContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_OreConsecutiveStessaAula;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EPaperFormat;
@@ -33,9 +35,26 @@ public class MotoreSostituzioneAule3 {
 
 
     public static void doTask(AbstractVincoliSostituzioni l) throws IOException {
-        final BitOrarioGrigliaOrario orarioInModifica = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi();
-        final BitOrarioGrigliaOrario orarioStandard = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi();
+        final BitOrarioGrigliaOrario orarioInModifica = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(true);
+        final BitOrarioGrigliaOrario orarioStandard = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(true);
+
+
+
         orarioStandard.setReadOnly(true);
+
+
+        System.out.println("\n" +
+                "\n********************************************************************************************");
+        System.out.println("********************** Controllo INIZIALE multiplo stessa aula");
+        System.out.println("********************************************************************************************");
+        final String s22 = AbstractVincoliSostituzioni.checkAuleMultiple(orarioInModifica);
+        System.out.println(s22);
+        System.out.println();
+
+        System.out.println("\n" +
+                "\n********************************************************************************************");
+        System.out.println("********************** predisposizione vincoli");
+        System.out.println("********************************************************************************************");
 
         final LessonConstraintContainer l1 = new LessonConstraintContainer();
         final LessonConstraintContainer l1_clone = l1.clone();
@@ -57,9 +76,14 @@ public class MotoreSostituzioneAule3 {
         System.out.println("********************************************************************************************");
         SostituzioneAuleEngine3.spostamentiPerAuleNonDisponibili(orarioInModifica, l1, "Assegnazione aule dal " + dal + " al " + al);
 
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println("\n" +
                 "\n********************************************************************************************");
-        System.out.println("********************** Controllo vincoli aule");
+        System.out.println("********************** Controllo vincoli utente");
         System.out.println("********************************************************************************************");
         final java.util.List<String> strings = l1_clone.checkAllNotPassed(orarioInModifica.getLezioni(), orarioInModifica);
         for (String x : strings) {

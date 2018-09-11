@@ -100,11 +100,11 @@ public abstract class AbstractVincoliSostituzioni {
                     final RoomData room = ClassesAndRoomContainer.getRoom(aula);
                     if (room.equals(_F31_PALESTRA))
                         continue;
-                    if (room.isUscitaDidattica())
+                    if (room.isAulaFittizia())
                         continue;
                     final List<BitOrarioOraLezione> lezioneInAula = orarioTotale.getLezioneInAula(o, g, aula);
                     if (lezioneInAula.size() > 1) {
-                        sb.append(" AULA " + aula + " " + lezioneInAula.size() + " lezioni!!!\n");
+                        sb.append("\n------------\n AULA " + aula + " " + lezioneInAula.size() + " lezioni il " + g + " " + o + " ora!!!\n");
                         for (BitOrarioOraLezione l : lezioneInAula) {
                             sb.append("   >> ").append(l);
                         }

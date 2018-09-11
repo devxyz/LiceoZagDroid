@@ -19,6 +19,7 @@ public enum EOra {
     private final int oraInizio;
     private final int minutiInizio;
 
+
     EOra(int progressivOra, int oraInizio, int minutiInizio) {
         this.progressivOra = progressivOra;
         this.oraInizio = oraInizio;

@@ -25,7 +25,7 @@ public class CompatibilitaAuleClassi {
         Collections.sort(classi, new Comparator<ClassData>() {
             @Override
             public int compare(ClassData o1, ClassData o2) {
-                final int i = new Integer(o1.numberOfStudents).compareTo(o2.numberOfStudents);
+                final int i = Integer.valueOf(o1.numberOfStudents).compareTo(o2.numberOfStudents);
                 if (i != 0) return i;
                 return o1.name.compareTo(o2.name);
             }
@@ -47,21 +47,21 @@ public class CompatibilitaAuleClassi {
         for (RoomData roomData : RoomData.values()) {
             if (
                     roomData.flagAulaLaboratorioPalestra() ||
-                            roomData.isUscitaDidattica() ||
+                            roomData.isAulaFittizia() ||
                             roomData.maxStudents == 0
                     ) {
                 aule.remove(roomData);
             }
         }
 
-
-        Map<String, String> reportClassi = new TreeMap<>();
-        for (ClassData x : classi) {
+        ArrayList<ClassData> classi2 = new ArrayList<>(classi);
+        Map<String, String> reportClassi = new LinkedHashMap<>();
+        for (ClassData x : classi2) {
 
             String report = "NUM STUDENTI:" + x.numberOfStudents + "\n";
             //cerca aula predefinita
             for (RoomData roomData : aule) {
-                if (roomData.isUscitaDidattica()) continue;
+                if (roomData.isAulaFittizia()) continue;
                 if (roomData.flagAulaLaboratorioPalestra()) continue;
                 if (roomData.maxStudents == 0) continue;
 
@@ -74,9 +74,9 @@ public class CompatibilitaAuleClassi {
 
             StringBuilder auleIncompatibili = new StringBuilder();
             for (RoomData roomData : RoomData.values()) {
-                if (roomData.isUscitaDidattica()) continue;
+                if (roomData.isAulaFittizia()) continue;
                 if (roomData.flagAulaLaboratorioPalestra()) continue;
-                if (roomData.maxStudents==0) continue;
+                if (roomData.maxStudents == 0) continue;
 
                 if (roomData.maxStudents < x.numberOfStudents) {
                     if (auleIncompatibili.length() > 0) {

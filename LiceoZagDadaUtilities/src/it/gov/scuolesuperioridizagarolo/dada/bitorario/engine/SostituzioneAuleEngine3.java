@@ -115,9 +115,9 @@ public class SostituzioneAuleEngine3 {
                     {
                         final ArrayList<RegolaCambioAula> sostituzioni = x_cercaScambioAulaLibera(o, vincoliStandard, lezione, filterAule, estrai, true);
                         if (sostituzioni.size() > 0) {
-
                             sostituzioni.get(0).apply(o);
                             assegnato = sostituzioni.get(0);
+                            System.out.println("Trovata aula libera " + assegnato);
                             break;
                         }
                     }
@@ -129,6 +129,7 @@ public class SostituzioneAuleEngine3 {
                         if (sostituzioni.size() > 0) {
                             assegnato = sostituzioni.get(0);
                             sostituzioni.get(0).apply(o);
+                            System.out.println("Trovato scambio tra 2 aule " + assegnato);
                             break;
                         }
                     }
@@ -140,6 +141,7 @@ public class SostituzioneAuleEngine3 {
                         if (sostituzioni.size() > 0) {
                             assegnato = sostituzioni.get(0);
                             sostituzioni.get(0).apply(o);
+                            System.out.println("Trovato scambio tra 3 aule " + assegnato);
                             break;
                         }
                     }

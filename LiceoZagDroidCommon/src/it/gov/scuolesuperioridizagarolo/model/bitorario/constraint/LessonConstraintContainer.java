@@ -83,6 +83,8 @@ public class LessonConstraintContainer implements Cloneable {
                 continue;
             if (l.getNomeAula() == null)
                 continue;
+            if (l.getAula().isAulaFittizia())
+                continue;
 
             for (AbstractLessonConstraint z : filtri) {
                 if (!z.__check(l, orario)) {

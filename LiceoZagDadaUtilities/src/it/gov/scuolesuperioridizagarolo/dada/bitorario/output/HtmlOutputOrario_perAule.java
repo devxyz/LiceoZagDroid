@@ -2,6 +2,8 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EPaperFormat;
@@ -31,7 +33,12 @@ public class HtmlOutputOrario_perAule extends HtmlOutputOrario {
     protected Collection<String> raggruppaPer(BitOrarioGrigliaOrario o) {
         final TreeSet<String> aule = o.getAule();
         TreeSet<String> ris = new TreeSet<>();
-        ris.addAll(aule);
+        for (String a : aule) {
+            final RoomData room = ClassesAndRoomContainer.getRoom(a);
+            if (room.maxStudents > 0 && !room.isAulaFittizia())
+                ris.add(a);
+        }
+
         return ris;
     }
 
@@ -51,8 +58,8 @@ public class HtmlOutputOrario_perAule extends HtmlOutputOrario {
             if (l != null && l.getNote() != null && n.length() > 0) {
                 n += (" " + l.getNote()).trim();
             }
-            if (n.length()>0){
-                n="<br><span style='border:2px solid black;color:white;background-color:black'>"+n+"</span>";
+            if (n.length() > 0) {
+                n = "<br><span style='border:2px solid black;color:white;background-color:black'>" + n + "</span>";
             }
 
 

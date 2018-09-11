@@ -40,7 +40,7 @@ public class SostituzioneAuleEngine3Util {
             return false;
 
         //skip uscite didattiche
-        if (lezione.getAula().isUscitaDidattica())
+        if (lezione.getAula().isAulaFittizia())
             return false;
 
         //salta uscite didattiche
@@ -62,7 +62,7 @@ public class SostituzioneAuleEngine3Util {
                 continue;
 
             //salta lezioni in uscita didattica
-            if (x.getAula().isUscitaDidattica())
+            if (x.getAula().isAulaFittizia())
                 continue;
 
             lezioni.add(x);
