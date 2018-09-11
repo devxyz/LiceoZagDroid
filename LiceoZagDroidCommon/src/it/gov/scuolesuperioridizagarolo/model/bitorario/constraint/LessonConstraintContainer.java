@@ -23,6 +23,18 @@ public class LessonConstraintContainer implements Cloneable {
         return ClassesAndRoomContainer.getAllClasses();
     }
 
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (AbstractLessonConstraint x : filtri) {
+            if (sb.length()>0){
+                sb.append("\n");
+
+            }
+            sb.append(x);
+        }
+        return sb.toString();
+    }
+
     public LessonConstraintContainer clone() {
         try {
             return (LessonConstraintContainer) super.clone();
@@ -83,7 +95,7 @@ public class LessonConstraintContainer implements Cloneable {
                 continue;
             if (l.getNomeAula() == null)
                 continue;
-            if (l.getAula().isAulaFittizia())
+            if (l.getAula().flagAulaFittizia())
                 continue;
 
             for (AbstractLessonConstraint z : filtri) {

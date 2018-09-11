@@ -86,8 +86,8 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
      * @param giorno
      * @param ore
      */
-    public void classeInSospensioneDidattica(String note, ClassData nomeClasse, EGiorno giorno, EOra... ore) {
-        classeInSospensioneDidattica(note, nomeClasse.name, giorno, ore);
+    public void classeInSospensioneDidattica(ClassData nomeClasse, EGiorno giorno, EOra... ore) {
+        classeInSospensioneDidattica(nomeClasse.name, giorno, ore);
     }
 
     public void classeInVisitaDidattica(String note, String nomeClasse, EGiorno giorno, EOra... ore) {
@@ -107,7 +107,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         }
     }
 
-    public void classeInSospensioneDidattica(String note, String nomeClasse, EGiorno giorno, EOra... ore) {
+    public void classeInSospensioneDidattica(String nomeClasse, EGiorno giorno, EOra... ore) {
         checkReadOnly();
         if (!getClassi().contains(nomeClasse))
             throw new IllegalArgumentException("Classe " + nomeClasse + " inesistente");
@@ -239,7 +239,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         TreeSet<String> ris = new TreeSet<>();
 
         for (String a : getAule()) {
-            if (ClassesAndRoomContainer.getRoom(a).isAulaFittizia())
+            if (ClassesAndRoomContainer.getRoom(a).flagAulaFittizia())
                 continue;
 
             final List<BitOrarioOraLezione> l = getLezioneInAula(ora, settimana, a);
@@ -261,7 +261,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
 
         for (String a : getAule()) {
 
-            if (ClassesAndRoomContainer.getRoom(a).isAulaFittizia())
+            if (ClassesAndRoomContainer.getRoom(a).flagAulaFittizia())
                 continue;
 
             final List<BitOrarioOraLezione> l = getLezioneInAula(ora, settimana, a);

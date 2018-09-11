@@ -35,7 +35,7 @@ public class ClassesAndRoomContainer {
     public static RoomData getRoom(String aula) {
         if (aula == null) return null;
 
-        final RoomData roomData = aule.get(aula.split("_")[0]);
+        final RoomData roomData = aule.get(aula.split("_")[0].toUpperCase());
         if (roomData == null) {
             throw new IllegalArgumentException("Aula " + aula + " inesistente");
         }

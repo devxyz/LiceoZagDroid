@@ -1,6 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.parser;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
@@ -106,7 +107,7 @@ public class ParserOrarioAllocazioneAuleTXT {
 
                     materiaPrincipale = a[0];
                     nomeAula = a[2];
-                    if (noAula) {
+                    if (nomeAula != null && noAula && !ClassesAndRoomContainer.getRoom(nomeAula).flagAulaLaboratorioPalestra()) {
                         nomeAula = RoomData.NON_ASSEGNATO.name;
                     }
                     l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale, nomeAula, classe, oraX, giornoX);
@@ -119,7 +120,7 @@ public class ParserOrarioAllocazioneAuleTXT {
                     docenteCompresenza = a[2];
                     materiaCompresenza = "compresenza";
                     nomeAula = a[3];
-                    if (noAula) {
+                    if (nomeAula != null && noAula && !ClassesAndRoomContainer.getRoom(nomeAula).flagAulaLaboratorioPalestra()) {
                         nomeAula = RoomData.NON_ASSEGNATO.name;
                     }
                     l = BitOrarioOraLezione.creaOraCompresenza(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, nomeAula, classe, oraX, giornoX);

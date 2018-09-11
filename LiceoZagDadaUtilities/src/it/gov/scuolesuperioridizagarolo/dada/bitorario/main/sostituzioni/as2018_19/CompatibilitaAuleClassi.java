@@ -47,7 +47,7 @@ public class CompatibilitaAuleClassi {
         for (RoomData roomData : RoomData.values()) {
             if (
                     roomData.flagAulaLaboratorioPalestra() ||
-                            roomData.isAulaFittizia() ||
+                            roomData.flagAulaFittizia() ||
                             roomData.maxStudents == 0
                     ) {
                 aule.remove(roomData);
@@ -61,7 +61,7 @@ public class CompatibilitaAuleClassi {
             String report = "NUM STUDENTI:" + x.numberOfStudents + "\n";
             //cerca aula predefinita
             for (RoomData roomData : aule) {
-                if (roomData.isAulaFittizia()) continue;
+                if (roomData.flagAulaFittizia()) continue;
                 if (roomData.flagAulaLaboratorioPalestra()) continue;
                 if (roomData.maxStudents == 0) continue;
 
@@ -74,7 +74,7 @@ public class CompatibilitaAuleClassi {
 
             StringBuilder auleIncompatibili = new StringBuilder();
             for (RoomData roomData : RoomData.values()) {
-                if (roomData.isAulaFittizia()) continue;
+                if (roomData.flagAulaFittizia()) continue;
                 if (roomData.flagAulaLaboratorioPalestra()) continue;
                 if (roomData.maxStudents == 0) continue;
 

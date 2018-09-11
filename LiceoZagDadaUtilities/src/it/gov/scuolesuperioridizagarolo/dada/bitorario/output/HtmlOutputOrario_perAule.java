@@ -35,7 +35,7 @@ public class HtmlOutputOrario_perAule extends HtmlOutputOrario {
         TreeSet<String> ris = new TreeSet<>();
         for (String a : aule) {
             final RoomData room = ClassesAndRoomContainer.getRoom(a);
-            if (room.maxStudents > 0 && !room.isAulaFittizia())
+            if (room.maxStudents > 0 && !room.flagAulaFittizia())
                 ris.add(a);
         }
 

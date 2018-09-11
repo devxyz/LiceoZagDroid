@@ -21,7 +21,7 @@ public class SostituzioneAuleEngine3 {
     //???
     //private static final Random generatoreCasualeFix = new Random(0);
 
-    public static void spostamentiPerAuleNonDisponibili(BitOrarioGrigliaOrario o, LessonConstraintContainer vincoliStandard, String note) {
+    public static void spostamentiPerAuleNonDisponibili(BitOrarioGrigliaOrario o, LessonConstraintContainer vincoliStandard) {
 
         final Set<CompatibilitaLaboratorio> estrai = CompatibilitaLaboratorio.estrai(o);
 
@@ -81,22 +81,20 @@ public class SostituzioneAuleEngine3 {
      * @return
      */
     private static ArrayList<BitOrarioOraLezione> risolveVincoliAndCambiaAula(BitOrarioGrigliaOrario o, LessonConstraintContainer vincoliStandard, Set<CompatibilitaLaboratorio> estrai) {
+        System.out.println("VINCOLI: "+vincoliStandard);
         ArrayList<BitOrarioOraLezione> prevLezioniDaModificare = null;
-        ArrayList<BitOrarioOraLezione> lezioniDaModificare = o.getLezioni();
+        ArrayList<BitOrarioOraLezione> lezioniDaModificare = SostituzioneAuleEngine3Util.estraiLezioniViolanoVincoli(o, vincoliStandard);
         do {
 
             //aggiorna
             prevLezioniDaModificare = lezioniDaModificare;
 
-            //ordina le lezioniDaModificare
-            lezioniDaModificare = SostituzioneAuleEngine3Util.estraiLezioniViolanoVincoli(o, vincoliStandard);
-
-            System.out.println(">>>>>>>>>>>>>>>>>>> ANALIZZA LEZIONI CHE VIOLANO VINCOLI. " + lezioniDaModificare.size() + " LEZIONI DA ANALIZZARE, PRECEDENTI: " + prevLezioniDaModificare.size());
+            System.out.println(">>>>>>>>>>>>>>>>>>> ANALIZZA LE LEZIONI CHE VIOLANO VINCOLI. TROVATE " + lezioniDaModificare.size() + ", PRECEDENTI: " + prevLezioniDaModificare.size());
 
 
             for (BitOrarioOraLezione lezione : lezioniDaModificare) {
                 System.out.println("-------------------------------------------------------------");
-                System.out.println("  >> CAMBIO LEZIONE " + lezione.toStringShort());
+                System.out.println("  >>> MODIFICA LEZIONE PER VIOLAZIONE VINOLI " + lezione.toStringShort());
 
                 if (!lezione.isActive()) {
                     System.out.println("   SKIP");
@@ -116,8 +114,8 @@ public class SostituzioneAuleEngine3 {
                         final ArrayList<RegolaCambioAula> sostituzioni = x_cercaScambioAulaLibera(o, vincoliStandard, lezione, filterAule, estrai, true);
                         if (sostituzioni.size() > 0) {
                             sostituzioni.get(0).apply(o);
+                            //applica sostituzione
                             assegnato = sostituzioni.get(0);
-                            System.out.println("Trovata aula libera " + assegnato);
                             break;
                         }
                     }
@@ -128,8 +126,8 @@ public class SostituzioneAuleEngine3 {
                         final ArrayList<RegolaCambioAula> sostituzioni = x_cercaScambio2Aule(o, vincoliStandard, lezione, filterAule, estrai, true);
                         if (sostituzioni.size() > 0) {
                             assegnato = sostituzioni.get(0);
+                            //applica sostituzione
                             sostituzioni.get(0).apply(o);
-                            System.out.println("Trovato scambio tra 2 aule " + assegnato);
                             break;
                         }
                     }
@@ -140,8 +138,8 @@ public class SostituzioneAuleEngine3 {
                         final ArrayList<RegolaCambioAula> sostituzioni = x_cercaAula3Scambi(o, vincoliStandard, lezione, filterAule, estrai, true);
                         if (sostituzioni.size() > 0) {
                             assegnato = sostituzioni.get(0);
+                            //applica sostituzione
                             sostituzioni.get(0).apply(o);
-                            System.out.println("Trovato scambio tra 3 aule " + assegnato);
                             break;
                         }
                     }
@@ -153,12 +151,17 @@ public class SostituzioneAuleEngine3 {
                 if (assegnato == null) {
                     String s = "ATTENZIONE!!!" + (lezione.getGiorno() + "\t" + lezione.getOra().getProgressivOra() + "^ ORA\t" + lezione.getDocentePrincipale() + " - " + lezione.getMateriaPrincipale() + "\tclasse " + lezione.getClasse()) +
                             ("\tVecchia aula: " + lezione.getNomeAula()) +
-                            ("\tNessuna aula trovata in sostituzione\tATTENZIONE!!!");
+                            ("\tNessuna aula trovata in sostituzione\tLA SOSTITUZIONE SARA' DI NUOVO TENTATA!!!");
                     System.out.println(s);
                 } else {
-                    System.out.println(assegnato);
+                    System.out.println("Trovato cambio: " + assegnato);
                 }
             }
+
+            //RICALCOLA LEZIONI
+            //ordina le lezioniDaModificare
+            lezioniDaModificare = SostituzioneAuleEngine3Util.estraiLezioniViolanoVincoli(o, vincoliStandard);
+
         } while (lezioniDaModificare.size() > 0 && prevLezioniDaModificare.size() > lezioniDaModificare.size());
         return lezioniDaModificare;
     }
@@ -230,7 +233,7 @@ public class SostituzioneAuleEngine3 {
                                         ) {
                                     //System.out.println("\tCapienza aula: " + occupazioneMigliore + " posti, num. studenti:" + numStudenti);
 
-                                    regolaApplicata = String.format("regola >>> 3 >>> \n  > %-60s  ->  %s\n  > %-60s  ->  %s\n  > %-60s  ->  %s",
+                                    regolaApplicata = String.format("regola >>> cambio a 3 aule >>> \n  > %-60s  ->  %s\n  > %-60s  ->  %s\n  > %-60s  ->  %s",
                                             lezione.toStringComplete(), nuovaLezione.toStringComplete(),
                                             altraLezione.toStringComplete(), nuovaAltraLezione.toStringComplete(),
                                             altraLezione2.toStringComplete(), nuovaAltraLezione2.toStringComplete()
@@ -306,7 +309,7 @@ public class SostituzioneAuleEngine3 {
                                 s.accept(nuovaLezione, c) && s.accept(nuovaAltraLezione, c)
                         ) {
                     //aggiungo cambiamenti DA --> A
-                    regolaApplicata = String.format("regola >>> 2 >>> \n  > %-60s  ->  %s\n  > %-60s  ->  %s",
+                    regolaApplicata = String.format("regola >>> cambio a 2 aule >>> \n  > %-60s  ->  %s\n  > %-60s  ->  %s",
                             lezione.toStringComplete(), nuovaLezione.toStringComplete(),
                             altraLezione.toStringComplete(), nuovaAltraLezione.toStringComplete());
 
@@ -347,7 +350,7 @@ public class SostituzioneAuleEngine3 {
             if (a == null) continue;
             final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(a.name);
             if (l.checkAll(nuovaLezione, o) && s.accept(nuovaLezione, c)) {
-                regolaApplicata = String.format("regola >>> 2 >>> \n  > %-60s  ->  %s", lezione.toStringComplete(), nuovaLezione.toStringComplete());
+                regolaApplicata = String.format("regola >>> cambio con aula libera >>> \n  > %-60s  ->  %s", lezione.toStringComplete(), nuovaLezione.toStringComplete());
                 final RegolaCambioAula e = new RegolaCambioAula(regolaApplicata);
                 e.vecchieLezioniDaRimuovere.add(lezione);
                 e.nuoveLezioniDaAggiungere.add(nuovaLezione);

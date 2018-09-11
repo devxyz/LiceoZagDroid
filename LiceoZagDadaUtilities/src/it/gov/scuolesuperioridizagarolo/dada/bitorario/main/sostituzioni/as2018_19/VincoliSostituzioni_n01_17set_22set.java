@@ -3,7 +3,6 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.as2018
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule3;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.*;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
@@ -18,14 +17,14 @@ import java.util.TreeSet;
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_n01_12set_15set extends AbstractVincoliSostituzioni {
+public class VincoliSostituzioni_n01_17set_22set extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
-        final VincoliSostituzioni_n01_12set_15set l = new VincoliSostituzioni_n01_12set_15set();
+        final VincoliSostituzioni_n01_17set_22set l = new VincoliSostituzioni_n01_17set_22set();
         MotoreSostituzioneAule3.doTask(l);
 
     }
 
-    public VincoliSostituzioni_n01_12set_15set invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+    public VincoliSostituzioni_n01_17set_22set invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
 
 
         System.out.flush();
@@ -83,19 +82,18 @@ public class VincoliSostituzioni_n01_12set_15set extends AbstractVincoliSostituz
         //lavori aule medie e piano terra
         for (EGiorno g : EGiorno.values()) {
             if (g.flagGiornoDiLezione()) {
-                l.add(new LessonConstraint_AulaNonDisponibile(RoomData.F32_SCI, g, EOra.values()));
+                //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.F32_SCI, g, EOra.values()));
                 //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.F31_PALESTRA, g, EOra.values()));
-                l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E27, g, EOra.values()));
-                l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E28, g, EOra.values()));
-                l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E29, g, EOra.values()));
-                l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E30, g, EOra.values()));
-                l.add(new LessonConstraint_AulaNonDisponibile(RoomData.B10, g, EOra.values()));
+                //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E27, g, EOra.values()));
+                //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E28, g, EOra.values()));
+                //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E29, g, EOra.values()));
+                //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E30, g, EOra.values()));
+                //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.B10, g, EOra.values()));
                 l.add(new LessonConstraint_AulaNonDisponibile(RoomData.B13sharp, g, EOra.values()));
-                l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5sharp, g, EOra.values()));
+                //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5sharp, g, EOra.values()));
             }
         }
-
-        for (ClassData classe : ClassData.values()) {
+        /*for (ClassData classe : ClassData.values()) {
             orarioTotale.classeInSospensioneDidattica(classe, EGiorno.LUNEDI, EOra.values());
             orarioTotale.classeInSospensioneDidattica(classe, EGiorno.MARTEDI, EOra.values());
             if (classe._class > 2) {
@@ -117,7 +115,7 @@ public class VincoliSostituzioni_n01_12set_15set extends AbstractVincoliSostituz
 
             }
         }
-
+*/
 
         final TreeSet<String> classi = orarioTotale.getClassi();
 
@@ -166,8 +164,8 @@ public class VincoliSostituzioni_n01_12set_15set extends AbstractVincoliSostituz
         //l.add(new LessonConstraint_DocenteBloccatoInArea(orarioTotale, "BENEDETTI", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B}, giorno));
 
 
-        dal = "10/09/2018";
-        al = "15/09/2018";
+        dal = "17/09/2018";
+        al = "22/09/2018";
         return this;
     }
 }
