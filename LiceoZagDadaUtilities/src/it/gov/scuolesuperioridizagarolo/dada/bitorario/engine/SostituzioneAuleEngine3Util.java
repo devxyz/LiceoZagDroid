@@ -44,7 +44,7 @@ public class SostituzioneAuleEngine3Util {
             return false;
 
         //salta uscite didattiche
-        if (lezione.uscitaDidattica())
+        if (lezione.getAula()== RoomData.USCITA_DIDATTICA)
             return false;
 
         //controlla se lezione e' OK

@@ -10,6 +10,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.TreeSet;
 
@@ -21,7 +22,8 @@ import java.util.TreeSet;
 public class VincoliSostituzioni_n01_12set_15set extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
         final VincoliSostituzioni_n01_12set_15set l = new VincoliSostituzioni_n01_12set_15set();
-        MotoreSostituzioneAule3.doTask(l);
+        final File folderInput = new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/01-2018.09.10_2018.09.15");
+        MotoreSostituzioneAule3.doTask(l, folderInput, new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/"),l.filtroAuleSpostamenti());
 
     }
 

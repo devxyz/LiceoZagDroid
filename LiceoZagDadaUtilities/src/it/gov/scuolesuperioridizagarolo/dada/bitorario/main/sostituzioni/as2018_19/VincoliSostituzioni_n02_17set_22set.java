@@ -1,14 +1,16 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.as2018_19;
 
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.engine.FilterAule;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule3;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.*;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraintContainer;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_DocenteBloccatoInArea;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_OccupazioneAule_labsToo;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.TreeSet;
 
@@ -17,14 +19,20 @@ import java.util.TreeSet;
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_n01_17set_22set extends AbstractVincoliSostituzioni {
+public class VincoliSostituzioni_n02_17set_22set extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
-        final VincoliSostituzioni_n01_17set_22set l = new VincoliSostituzioni_n01_17set_22set();
-        MotoreSostituzioneAule3.doTask(l);
+        final VincoliSostituzioni_n02_17set_22set l = new VincoliSostituzioni_n02_17set_22set();
+        final File folderInput = new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/02-2018.09.17_2018.09.22");
+        MotoreSostituzioneAule3.doTask(l, folderInput, new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/"), l.filtroAuleSpostamenti());
 
     }
 
-    public VincoliSostituzioni_n01_17set_22set invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+    @Override
+    protected FilterAule[] filtroAuleSpostamenti() {
+        return new FilterAule[]{FilterAule.LABORATORI_MAI};
+    }
+
+    public VincoliSostituzioni_n02_17set_22set invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
 
 
         System.out.flush();
@@ -89,7 +97,7 @@ public class VincoliSostituzioni_n01_17set_22set extends AbstractVincoliSostituz
                 //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E29, g, EOra.values()));
                 //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E30, g, EOra.values()));
                 //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.B10, g, EOra.values()));
-                l.add(new LessonConstraint_AulaNonDisponibile(RoomData.B13sharp, g, EOra.values()));
+                //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.B13sharp, g, EOra.values()));
                 //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5sharp, g, EOra.values()));
             }
         }
@@ -150,8 +158,10 @@ public class VincoliSostituzioni_n01_17set_22set extends AbstractVincoliSostituz
 
         l.add(new LessonConstraint_DocenteBloccatoInArea(false, orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A}, EGiorno.values()));
         for (EGiorno giorno : EGiorno.values()) {
-            l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(false, "FERRIGNO", RoomData.A1, giorno, EOra.values()));
+            //l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(false, "FERRIGNO", RoomData.A1, giorno, EOra.values()));
+
         }
+        l.add(new LessonConstraint_DocenteBloccatoInArea(false, orarioTotale, "FERRIGNO", new ERoomArea[]{ERoomArea.AREA_A}, EGiorno.values()));
 
 
         //l.add(new LessonConstraint_DocenteBloccatoInArea(orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D}, new EGiorno[]{EGiorno.LUNEDI, EGiorno.MARTEDI, EGiorno.MERCOLEDI}));

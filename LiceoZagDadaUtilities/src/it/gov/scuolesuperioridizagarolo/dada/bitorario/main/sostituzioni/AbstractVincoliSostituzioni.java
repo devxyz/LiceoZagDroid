@@ -1,5 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni;
 
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.engine.FilterAule;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
@@ -18,6 +19,13 @@ import java.util.List;
  * Created by stefano on 27/04/2018.
  */
 public abstract class AbstractVincoliSostituzioni {
+
+    /*
+    modificare in casi specifici
+     */
+    protected FilterAule[]filtroAuleSpostamenti(){
+        return new FilterAule[]{FilterAule.LABORATORI_MAI, FilterAule.LABORATORI_SOLO_COMPATIBILI, FilterAule.LABORATORI_SEMPRE};
+    }
 
     public static final RoomData _A1 = ClassesAndRoomContainer.getRoom("A1");
     public static final RoomData _A2 = ClassesAndRoomContainer.getRoom("A2");

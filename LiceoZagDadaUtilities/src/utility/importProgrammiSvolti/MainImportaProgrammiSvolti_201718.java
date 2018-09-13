@@ -127,7 +127,7 @@ public class MainImportaProgrammiSvolti_201718 {
                 FileUtil.copyContent(remoteFile, localFile);
             }
 
-        final BitOrarioGrigliaOrario orarioTotale = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi();
+        final BitOrarioGrigliaOrario orarioTotale = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(new File(MainParserGeneraStampeOrario.DEBUG_FOLDER_INPUT));
         final TreeSet<String> classi = orarioTotale.getClassi();
         for (String c : classi) {
             File progClasse = new File(folderOut, "LICEO/" + c.toUpperCase());

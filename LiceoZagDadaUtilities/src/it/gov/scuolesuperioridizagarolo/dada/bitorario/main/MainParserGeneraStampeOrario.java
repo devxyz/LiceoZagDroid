@@ -17,21 +17,22 @@ import java.util.List;
  * Created by stefano on 25/09/2017.
  */
 public class MainParserGeneraStampeOrario {
-    static final String FOLDER_INPUT = "/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario";
+    @Deprecated
+    public static final String DEBUG_FOLDER_INPUT = "/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario";
     static final String file_allocazione_aule = "Orario Allocazione Aule.txt";
     static final String file_disposizione_docenti = "Orario Ore a Disposizione.txt";
 
-    public static BitOrarioGrigliaOrario parsingDefaultFileOrarioAuleClassi() throws IOException {
-        return parsingDefaultFileOrarioAuleClassi(false);
+    public static BitOrarioGrigliaOrario parsingDefaultFileOrarioAuleClassi(File folderInput) throws IOException {
+        return parsingDefaultFileOrarioAuleClassi(folderInput, false);
     }
 
-    public static BitOrarioGrigliaOrario parsingDefaultFileOrarioAuleClassi(boolean noAule) throws IOException {
+    public static BitOrarioGrigliaOrario parsingDefaultFileOrarioAuleClassi(File folderInput, boolean noAule) throws IOException {
 
         final String titolo = "Liceo Scientifico - Orario Provvisorio dal 12 settembre 2018 -- versione 0.1";
         final BitOrarioGrigliaOrario orarioTotale = parsingFileOrarioAuleClassi(
                 titolo,
-                new File(FOLDER_INPUT, file_allocazione_aule),
-                new File(FOLDER_INPUT, file_disposizione_docenti),
+                new File(folderInput, file_allocazione_aule),
+                new File(folderInput, file_disposizione_docenti),
                 noAule
         );
         return orarioTotale;
@@ -51,7 +52,7 @@ public class MainParserGeneraStampeOrario {
     public static void main(String[] args) throws IOException {
 
 
-        final BitOrarioGrigliaOrario orarioTotale = parsingDefaultFileOrarioAuleClassi(true);
+        final BitOrarioGrigliaOrario orarioTotale = parsingDefaultFileOrarioAuleClassi(new File(DEBUG_FOLDER_INPUT), true);
 
         System.out.println(orarioTotale.getClassi());
 
@@ -61,7 +62,7 @@ public class MainParserGeneraStampeOrario {
 
         //System.out.println(orarioTotale.toStringInClasse("3A"));
 
-        generaFile(orarioTotale, new File(FOLDER_INPUT));
+        generaFile(orarioTotale, new File(DEBUG_FOLDER_INPUT));
     }
 
     public static void generaFile(BitOrarioGrigliaOrario orarioTotale, File FOLDER_INPUT) throws IOException {

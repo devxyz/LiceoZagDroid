@@ -21,7 +21,7 @@ public class SostituzioneAuleEngine3 {
     //???
     //private static final Random generatoreCasualeFix = new Random(0);
 
-    public static void spostamentiPerAuleNonDisponibili(BitOrarioGrigliaOrario o, LessonConstraintContainer vincoliStandard) {
+    public static void spostamentiPerAuleNonDisponibili(BitOrarioGrigliaOrario o, LessonConstraintContainer vincoliStandard, FilterAule[] ff) {
 
         final Set<CompatibilitaLaboratorio> estrai = CompatibilitaLaboratorio.estrai(o);
 
@@ -29,10 +29,10 @@ public class SostituzioneAuleEngine3 {
         //================================================================
         // PASSO 1: risolve i vincoli di base restituendo eventualmente le lezioni che non sono state soddisfatte
         //================================================================
-        final ArrayList<BitOrarioOraLezione> lezioniCheNonRispettanoVincoli = risolveVincoliAndCambiaAula(o, vincoliStandard, estrai);
+        final ArrayList<BitOrarioOraLezione> lezioniCheNonRispettanoVincoli = risolveVincoliAndCambiaAula(o, vincoliStandard, estrai, ff);
         if (lezioniCheNonRispettanoVincoli.size() > 0) {
             System.out.println("ERRORE!!!!!  Alcune lezioni non rispettano i vincoli base: " + lezioniCheNonRispettanoVincoli.size());
-            throw new IllegalArgumentException("Programma interrotto");
+            //throw new IllegalArgumentException("Programma interrotto");
         }
 
         //================================================================
@@ -58,7 +58,7 @@ public class SostituzioneAuleEngine3 {
         for (Iterator<LessonConstraint_OreConsecutiveStessaAula> iterator = vincoliOreConsecutiveNonVerificati.iterator(); iterator.hasNext(); ) {
             LessonConstraint_OreConsecutiveStessaAula x = iterator.next();
             vincoliFinali.add(x);
-            final ArrayList<BitOrarioOraLezione> ris = risolveVincoliAndCambiaAula(o, vincoliFinali, estrai);
+            final ArrayList<BitOrarioOraLezione> ris = risolveVincoliAndCambiaAula(o, vincoliFinali, estrai, ff);
             if (ris.size() > 0) {
                 //non risolto
                 vincoliFinali.remove(x);
@@ -80,8 +80,8 @@ public class SostituzioneAuleEngine3 {
      * @param estrai
      * @return
      */
-    private static ArrayList<BitOrarioOraLezione> risolveVincoliAndCambiaAula(BitOrarioGrigliaOrario o, LessonConstraintContainer vincoliStandard, Set<CompatibilitaLaboratorio> estrai) {
-        System.out.println("VINCOLI: "+vincoliStandard);
+    private static ArrayList<BitOrarioOraLezione> risolveVincoliAndCambiaAula(BitOrarioGrigliaOrario o, LessonConstraintContainer vincoliStandard, Set<CompatibilitaLaboratorio> estrai, FilterAule[] ff) {
+        //System.out.println("VINCOLI: "+vincoliStandard);
         ArrayList<BitOrarioOraLezione> prevLezioniDaModificare = null;
         ArrayList<BitOrarioOraLezione> lezioniDaModificare = SostituzioneAuleEngine3Util.estraiLezioniViolanoVincoli(o, vincoliStandard);
         do {
@@ -107,7 +107,7 @@ public class SostituzioneAuleEngine3 {
                 }
 
                 RegolaCambioAula assegnato = null;
-                for (FilterAule filterAule : new FilterAule[]{FilterAule.LABORATORI_MAI, FilterAule.LABORATORI_SOLO_COMPATIBILI, FilterAule.LABORATORI_SEMPRE}) {
+                for (FilterAule filterAule : ff) {
                     // System.out.println("Utilizzato " + filterAule + " ===================================================");
                     //cerco un'aula vuota compatibile e faccio il cambio se possibile... (la cerco la piu' piccola possibile evitando aule speciali)
                     {

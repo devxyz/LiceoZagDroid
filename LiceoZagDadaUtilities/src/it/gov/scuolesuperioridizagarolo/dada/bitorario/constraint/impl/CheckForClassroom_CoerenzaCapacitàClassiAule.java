@@ -3,6 +3,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.constraint.impl;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.constraint.CheckForClass;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
@@ -21,7 +22,7 @@ public class CheckForClassroom_CoerenzaCapacitàClassiAule extends CheckForClass
 
                 final BitOrarioOraLezione lezioneClasse = l.getLezioneInClasse(o, e, nomeClasse);
                 if (lezioneClasse == null) continue;
-                if (lezioneClasse.uscitaDidattica())continue;
+                if (lezioneClasse.getAula()== RoomData.USCITA_DIDATTICA)continue;
 
                 final int stu = ClassesAndRoomContainer.getClass(lezioneClasse).numberOfStudents;
                 final int aula = ClassesAndRoomContainer.getRoom(lezioneClasse).maxStudents;

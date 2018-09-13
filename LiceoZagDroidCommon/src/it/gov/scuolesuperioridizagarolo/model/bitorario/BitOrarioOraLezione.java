@@ -8,7 +8,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 /**
  * Created by stefano on 16/09/2017.
  */
-//todo DA TERMINARE
+//todo DA TERMINARE, sostituendo enum
 public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
     protected transient BitOrarioGrigliaOrario _parent;
     private String docentePrincipale;
@@ -175,10 +175,6 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
 
     public String getNomeAula() {
         return nomeAula;
-    }
-
-    public boolean uscitaDidattica() {
-        return classe != null && nomeAula != null && nomeAula.equals(ClassesAndRoomContainer.USCITA_DIDATTICA);
     }
 
     public String getClasse() {

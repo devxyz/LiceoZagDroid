@@ -17,10 +17,10 @@ public class ClassesAndRoomContainer {
 
     static {
         for (ClassData c : ClassData.values()) {
-            classi.put(c.name, c);
+            classi.put(c.name.toUpperCase(), c);
         }
         for (RoomData c : RoomData.values()) {
-            aule.put(c.name.split("_")[0], c);
+            aule.put(c.name.toUpperCase(), c);
         }
     }
 
@@ -35,7 +35,8 @@ public class ClassesAndRoomContainer {
     public static RoomData getRoom(String aula) {
         if (aula == null) return null;
 
-        final RoomData roomData = aule.get(aula.split("_")[0].toUpperCase());
+        //final RoomData roomData = aule.get(aula.split("_")[0].toUpperCase());
+        final RoomData roomData = aule.get(aula.toUpperCase());
         if (roomData == null) {
             throw new IllegalArgumentException("Aula " + aula + " inesistente");
         }
@@ -45,7 +46,7 @@ public class ClassesAndRoomContainer {
 
 
     public static ClassData getClass(String classe) {
-        final ClassData classData = classi.get(classe);
+        final ClassData classData = classi.get(classe.toUpperCase());
         if (classData == null) {
             throw new IllegalArgumentException("Classe " + classe + " inesistente");
         }

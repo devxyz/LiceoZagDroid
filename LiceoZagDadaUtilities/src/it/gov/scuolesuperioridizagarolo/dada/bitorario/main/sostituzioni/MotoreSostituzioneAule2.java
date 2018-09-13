@@ -32,8 +32,11 @@ public class MotoreSostituzioneAule2 {
 
 
     public static void doTask(AbstractVincoliSostituzioni l) throws IOException {
-        final BitOrarioGrigliaOrario orarioTotale = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi();
-        final BitOrarioGrigliaOrario orarioStandard = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi();
+        throw new IllegalArgumentException("Specificare cartella contenente dati");
+    }
+    public static void doTask(AbstractVincoliSostituzioni l, File folderInput, File folderOutput) throws IOException {
+        final BitOrarioGrigliaOrario orarioTotale = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(folderInput);
+        final BitOrarioGrigliaOrario orarioStandard = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(folderInput);
         final LessonConstraintContainer l1 = new LessonConstraintContainer();
         l.invoke(orarioTotale, l1);
         String dal = l.getDal();
@@ -43,8 +46,7 @@ public class MotoreSostituzioneAule2 {
         final String[] dalSplit = dal.split("/");
         final String[] alSplit = al.split("/");
 
-        final File folder = new File("/Users/stefano/Dropbox/orari/");
-        folder.mkdirs();
+        folderOutput.mkdirs();
 
 
         //avvia elaborazione
@@ -73,7 +75,7 @@ public class MotoreSostituzioneAule2 {
         //report
         {
             orarioTotale.setTitolo("Modifiche aule dal " + dal + " al " + al);
-            final File root = new File(folder, "html/" + subName2);
+            final File root = new File(folderOutput, "html/" + subName2);
             root.mkdirs();
 
             FileWriter w = new FileWriter(new File(root, subName2 + "_VARIAZIONI" + ".html"));
@@ -166,7 +168,7 @@ public class MotoreSostituzioneAule2 {
         }
 
         System.out.println("Controllo nome " + nomeFile);
-        for (File file : folder.listFiles()) {
+        for (File file : folderOutput.listFiles()) {
             if (file.getName().endsWith(subName)) {
 
                 System.err.println("E' gia' presente un file con le date specificate " + file.getName() + " che e' stato rinominato");
@@ -179,13 +181,13 @@ public class MotoreSostituzioneAule2 {
 
 
         final String s = BitOrarioOraLezioneJSonConverter.toJSon(orarioTotale);
-        ZipOutputStream out = new ZipOutputStream(new FileOutputStream(new File(folder, nomeFile)));
+        ZipOutputStream out = new ZipOutputStream(new FileOutputStream(new File(folderOutput, nomeFile)));
         out.putNextEntry(new ZipEntry("timetable.json"));
         out.write(s.getBytes());
         out.close();
 
-        FileWriter list = new FileWriter(new File(folder, "timetables.txt"));
-        final File[] files = folder.listFiles();
+        FileWriter list = new FileWriter(new File(folderOutput, "timetables.txt"));
+        final File[] files = folderOutput.listFiles();
         Arrays.sort(files, new Comparator<File>() {
             @Override
             public int compare(File o1, File o2) {
@@ -202,7 +204,7 @@ public class MotoreSostituzioneAule2 {
 
         list.close();
 
-        Desktop.getDesktop().open(folder);
+        Desktop.getDesktop().open(folderOutput);
     }
 
     private static String printQCODEClassi() {

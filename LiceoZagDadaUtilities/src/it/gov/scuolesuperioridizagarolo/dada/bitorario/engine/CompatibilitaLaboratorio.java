@@ -5,6 +5,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +22,29 @@ public class CompatibilitaLaboratorio {
         this.classe = classe.toLowerCase();
         this.materia = materia.toLowerCase();
         this.room = room.toLowerCase();
+
+    }
+
+    public static Set<CompatibilitaLaboratorio> estrai(BitOrarioGrigliaOrario o) {
+        Set<CompatibilitaLaboratorio> ris = new HashSet<>();
+
+        for (BitOrarioOraLezione l : o.getLezioni()) {
+            final RoomData a = l.getAula();
+            if (a != null && a.flagAulaLaboratorioPalestra()) {
+                ris.add(new CompatibilitaLaboratorio(l.getClasse(), l.getMateriaPrincipale(), l.getNomeAula()));
+            }
+        }
+
+        return ris;
+    }
+
+    public static void main(String[] args) throws IOException {
+        final BitOrarioGrigliaOrario orarioTotale = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(new File(MainParserGeneraStampeOrario.DEBUG_FOLDER_INPUT));
+        final Set<CompatibilitaLaboratorio> estrai = estrai(orarioTotale);
+        for (CompatibilitaLaboratorio compatibilitaLaboratorio : estrai) {
+            System.out.println(compatibilitaLaboratorio);
+        }
+
 
     }
 
@@ -52,29 +76,5 @@ public class CompatibilitaLaboratorio {
         result = 31 * result + (materia != null ? materia.hashCode() : 0);
         result = 31 * result + (room != null ? room.hashCode() : 0);
         return result;
-    }
-
-    public static Set<CompatibilitaLaboratorio> estrai(BitOrarioGrigliaOrario o) {
-        Set<CompatibilitaLaboratorio> ris = new HashSet<>();
-
-        for (BitOrarioOraLezione l : o.getLezioni()) {
-            final RoomData a = l.getAula();
-            if (a != null && a.flagAulaLaboratorioPalestra()) {
-                ris.add(new CompatibilitaLaboratorio(l.getClasse(), l.getMateriaPrincipale(), l.getNomeAula()));
-            }
-        }
-
-        return ris;
-    }
-
-
-    public static void main(String[] args) throws IOException {
-        final BitOrarioGrigliaOrario orarioTotale = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi();
-        final Set<CompatibilitaLaboratorio> estrai = estrai(orarioTotale);
-        for (CompatibilitaLaboratorio compatibilitaLaboratorio : estrai) {
-            System.out.println(compatibilitaLaboratorio);
-        }
-
-
     }
 }

@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni;
 
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.BitOrarioOraLezioneJSonConverter;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.constraint.impl.CheckForClassroom_CoerenzaCapacitàClassiAule;
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.engine.FilterAule;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.engine.SostituzioneAuleEngine3;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.MainParserGeneraStampeOrario;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.output.*;
@@ -32,11 +33,13 @@ import java.util.zip.ZipOutputStream;
 public class MotoreSostituzioneAule3 {
 
 
+    @Deprecated
     public static void doTask(AbstractVincoliSostituzioni l) throws IOException {
-        final BitOrarioGrigliaOrario orarioInModifica = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(true);
+        throw new IllegalArgumentException("Specificare cartella contenente dati");
+    }
 
-
-
+    public static void doTask(AbstractVincoliSostituzioni l, File folderInput, File folderOutput, FilterAule[]ff) throws IOException {
+        final BitOrarioGrigliaOrario orarioInModifica = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(folderInput);
 
 
         System.out.println("\n" +
@@ -62,7 +65,7 @@ public class MotoreSostituzioneAule3 {
         final String[] dalSplit = dal.split("/");
         final String[] alSplit = al.split("/");
 
-        final File folder = new File("/Users/stefano/Dropbox/orari/");
+        final File folder = folderOutput;//new File("/Users/stefano/Dropbox/orari/");
         folder.mkdirs();
 
 
@@ -70,7 +73,7 @@ public class MotoreSostituzioneAule3 {
         System.out.println("********************************************************************************************");
         System.out.println("********************** Risoluzione vincoli");
         System.out.println("********************************************************************************************");
-        SostituzioneAuleEngine3.spostamentiPerAuleNonDisponibili(orarioInModifica, l1);
+        SostituzioneAuleEngine3.spostamentiPerAuleNonDisponibili(orarioInModifica, l1, ff);
 
 
         System.out.println();
@@ -126,7 +129,7 @@ public class MotoreSostituzioneAule3 {
             final File root = new File(folder, "html/" + subName2);
             root.mkdirs();
 
-            final BitOrarioGrigliaOrario orarioStandard = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(true);
+            final BitOrarioGrigliaOrario orarioStandard = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(folderInput);
             orarioStandard.setReadOnly(true);
 
             final NoteVariazioniBitOrarioGrigliaOrario note = NoteVariazioniBitOrarioGrigliaOrario.generateDifferenze(orarioStandard, orarioInModifica);

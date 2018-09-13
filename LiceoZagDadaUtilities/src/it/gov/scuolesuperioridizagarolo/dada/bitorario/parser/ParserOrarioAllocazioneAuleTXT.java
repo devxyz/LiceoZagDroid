@@ -19,6 +19,8 @@ import java.util.List;
  */
 public class ParserOrarioAllocazioneAuleTXT {
 
+    private static final String SEPARATORE_INTERNO = "@";
+
     public static List<BitOrarioOraLezione> parsingFileOrarioAuleClassi(File fileAllocazioneAule, boolean noAule) throws IOException {
 
         List<BitOrarioOraLezione> ris = new ArrayList<>();
@@ -34,6 +36,11 @@ public class ParserOrarioAllocazioneAuleTXT {
 
         while ((line = in.readLine()) != null) {
             line = line.trim();
+
+            //se ci sono aule non assegnate, salta il resto del file
+            if (line.startsWith("|(non assegnato)     |Giorno              |       Ora|DOCENTE             |")) {
+                break;
+            }
 
             if (line.startsWith("=====")) {
                 riga++;
@@ -63,7 +70,7 @@ public class ParserOrarioAllocazioneAuleTXT {
 
             final String[] a = line.split("[|]+");
             for (int i = 0; i < a.length; i++) {
-                orario.append(riga, i, a[i].trim() + "#");
+                orario.append(riga, i, a[i].trim() + SEPARATORE_INTERNO);
             }
         }
 
@@ -132,8 +139,8 @@ public class ParserOrarioAllocazioneAuleTXT {
     }
 
     private static String[] separaStringhe(MatriceDinamicaStringhe orario, int ora, int giorno) {
-        final String s = "#" + orario.get(ora, giorno);
-        final String[] split = s.trim().split("[#]+");
+        final String s = SEPARATORE_INTERNO + orario.get(ora, giorno);
+        final String[] split = s.trim().split("[" + SEPARATORE_INTERNO + "]+");
         ArrayList<String> aa = new ArrayList<>();
         for (String x : split) {
             x = x.trim();

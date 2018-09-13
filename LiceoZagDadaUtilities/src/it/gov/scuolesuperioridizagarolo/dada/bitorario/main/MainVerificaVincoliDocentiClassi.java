@@ -4,6 +4,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.main;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.constraint.impl.*;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -15,7 +16,7 @@ public class MainVerificaVincoliDocentiClassi {
 
     public static void main(String[] args) throws IOException {
 
-        final BitOrarioGrigliaOrario orarioTotale = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi();
+        final BitOrarioGrigliaOrario orarioTotale = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(new File(MainParserGeneraStampeOrario.DEBUG_FOLDER_INPUT));
         new CheckForTeacher_5oreAlGiorno().printReport(orarioTotale);
         new CheckForClassroom_CoerenzaCapacitàClassiAule().printReport(orarioTotale);
         new CheckForTeacher_OreBucheTotali().printReport(orarioTotale);
