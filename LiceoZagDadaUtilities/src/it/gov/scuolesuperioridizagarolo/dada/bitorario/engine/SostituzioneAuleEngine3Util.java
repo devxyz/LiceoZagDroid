@@ -39,10 +39,6 @@ public class SostituzioneAuleEngine3Util {
         if (lezione.getTipoLezione() == BitOrarioOraEnumTipoLezione.DISPOSIZIONE)
             return false;
 
-        //skip uscite didattiche
-        if (lezione.getAula().flagAulaFittizia())
-            return false;
-
         //salta uscite didattiche
         if (lezione.getAula()== RoomData.USCITA_DIDATTICA)
             return false;
@@ -62,7 +58,7 @@ public class SostituzioneAuleEngine3Util {
                 continue;
 
             //salta lezioni in uscita didattica
-            if (x.getAula().flagAulaFittizia())
+            if (x.getAula()==RoomData.USCITA_DIDATTICA)
                 continue;
 
             lezioni.add(x);

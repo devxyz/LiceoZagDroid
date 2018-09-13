@@ -52,6 +52,8 @@ public class Report_perVariazioniAule {
             String docente = (x.getDocentePrincipale() + (x.getDocenteCompresenza() != null ? " " + x.getDocenteCompresenza() : " ")).trim();
             String precAula = "";
             final BitOrarioOraLezione precLezione = vecchioOrario.getLezioneConDocente(x.getOra(), x.getGiorno(), x.getDocentePrincipale());
+
+
             if (precLezione != null && precLezione.getNomeAula() != null) {
                 precAula = precLezione.getNomeAula();
             }

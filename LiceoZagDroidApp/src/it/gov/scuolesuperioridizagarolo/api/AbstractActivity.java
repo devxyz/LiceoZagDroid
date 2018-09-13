@@ -156,7 +156,7 @@ public abstract class AbstractActivity extends AppCompatActivity {
                             }
                         });
             }
-
+            onCreateWithPermissions(onCreate_savedInstanceState);
         } else {
             onCreateWithPermissions(onCreate_savedInstanceState);
         }

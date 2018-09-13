@@ -72,8 +72,9 @@ public enum RoomData {
 
     public boolean flagAulaFittizia() {
         return
-                 this == USCITA_DIDATTICA
-                || this == AULA_SCONOSCIUTA;
+                this == USCITA_DIDATTICA
+                        || this == NON_ASSEGNATO
+                        || this == AULA_SCONOSCIUTA;
     }
 
     public String simpleName() {
@@ -82,7 +83,7 @@ public enum RoomData {
 
     @Override
     public String toString() {
-        return name;
+        return simpleName();
     }
 
     //true se aula speciale

@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
@@ -51,6 +52,11 @@ public class Report_perOccupazioneAule {
 
                 p.print("<table >");
                 for (String a : aule) {
+
+                    final RoomData room = ClassesAndRoomContainer.getRoom(a);
+                    if (room.flagAulaFittizia()) continue;
+                    if (room.maxStudents == 0) continue;
+
 
                     int studentiClasse = 0;
                     final List<BitOrarioOraLezione> lezioni = o.getLezioneInAula(ora, settimana, a);

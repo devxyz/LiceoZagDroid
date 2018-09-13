@@ -2,6 +2,8 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
@@ -22,6 +24,10 @@ public class HtmlOutputOrario_perAule_con_responsabili {
 
         final TreeSet<String> aule = o.getAule();
         for (String a : aule) {
+            final RoomData room = ClassesAndRoomContainer.getRoom(a);
+            if (room.flagAulaFittizia()) continue;
+            if (room.maxStudents == 0) continue;
+
             p.print(titolo);
             p.print("<h1>Aula " + a);
             p.print(" - <span style='font-size:14px'>Docenti responsabili della chiusura del PC di classe, riconsegna chiavi e registri cartacei</span></h1>");

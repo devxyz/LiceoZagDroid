@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
@@ -44,6 +45,10 @@ public class Report_perAuleVuote {
                 final TreeSet<String> l = o.getAuleVuote(ora, settimana);
                 p.print("<td style='border:1px solid black; text-align:left;padding-left:5px'>");
                 for (String s : l) {
+                    final RoomData room = ClassesAndRoomContainer.getRoom(s);
+                    if (room.flagAulaFittizia()) continue;
+                    if (room.maxStudents == 0) continue;
+
                     p.print("<b>" + s + "</b> - " + ClassesAndRoomContainer.getRoom(s).maxStudents + " posti <br>");
                 }
                 p.print("</td>");

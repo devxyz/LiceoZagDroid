@@ -2,6 +2,8 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
@@ -26,6 +28,10 @@ public class HtmlMobile_Aule {
 
 
         for (String aule : strings) {
+
+            final RoomData room = ClassesAndRoomContainer.getRoom(aule);
+            if (room.flagAulaFittizia())continue;
+
             PrintStream p = new PrintStream(new File(f, aule));
 
             p.println("<table cellspacing=0 style='width:100%;table-layout: fixed; border:4px solid black; '>");

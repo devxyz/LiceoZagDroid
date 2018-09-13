@@ -20,7 +20,6 @@ public class SharedPreferenceWrapper {
     //private static final String KEY_NOME_DOCENTE = "KEY_NOME_DOCENTE";
     private static final String KEY_USER_TYPE = "KEY_USER_TYPE";
     private static final String KEY_USER_TYPE_DATE = "KEY_USER_TYPE_DATE";
-    private static final String KEY_USER_ADDITIONAL_FIELD = "KEY_USER_ADDITIONAL_FIELD";//campo addizionale
     private static final String KEY_DATA_UPDATE = "KEY_DATA_UPDATE";
     private final SharedPreferences preferences;
 
@@ -32,21 +31,6 @@ public class SharedPreferenceWrapper {
         return new SharedPreferenceWrapper(ctx.getSharedPreferences("liceo-zagarolo", Context.MODE_PRIVATE));
     }
 
-
-    public String getAdditionalField() {
-        return preferences.getString(KEY_USER_ADDITIONAL_FIELD, null);
-    }
-
-    public void setUserAdditionalField(String d) {
-        SharedPreferences.Editor e = preferences.edit();
-        e.putString(KEY_USER_ADDITIONAL_FIELD, d);
-        e.apply();
-    }
-
-    public void login(AppUserType type, String additionalInfo) {
-        setUserType(type);
-        setUserAdditionalField(additionalInfo);
-    }
 
     public AppUserType getUserType() {
         final String string = preferences.getString(KEY_USER_TYPE, null);

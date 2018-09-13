@@ -26,7 +26,7 @@ public class LessonConstraintContainer implements Cloneable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (AbstractLessonConstraint x : filtri) {
-            if (sb.length()>0){
+            if (sb.length() > 0) {
                 sb.append("\n");
 
             }
@@ -95,7 +95,7 @@ public class LessonConstraintContainer implements Cloneable {
                 continue;
             if (l.getNomeAula() == null)
                 continue;
-            if (l.getAula().flagAulaFittizia())
+            if (l.getAula() == RoomData.USCITA_DIDATTICA)
                 continue;
 
             for (AbstractLessonConstraint z : filtri) {
