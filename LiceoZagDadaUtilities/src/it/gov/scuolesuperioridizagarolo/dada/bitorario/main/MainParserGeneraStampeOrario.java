@@ -1,6 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.main;
 
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.output.*;
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.parser.ParserDisposizioniDaRiepilogoVerticaleTXT;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.parser.ParserDisposizioniTXT;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.parser.ParserOrarioAllocazioneAuleTXT;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
@@ -21,6 +22,7 @@ public class MainParserGeneraStampeOrario {
     public static final String DEBUG_FOLDER_INPUT = "/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario";
     static final String file_allocazione_aule = "Orario Allocazione Aule.txt";
     static final String file_disposizione_docenti = "Orario Ore a Disposizione.txt";
+    static final String file_disposizione_da_orario_verticale_opzional = "Orario Professori Verticale.txt";
 
     public static BitOrarioGrigliaOrario parsingDefaultFileOrarioAuleClassi(File folderInput) throws IOException {
         return parsingDefaultFileOrarioAuleClassi(folderInput, false);
@@ -33,18 +35,40 @@ public class MainParserGeneraStampeOrario {
                 titolo,
                 new File(folderInput, file_allocazione_aule),
                 new File(folderInput, file_disposizione_docenti),
+                new File(folderInput, file_disposizione_da_orario_verticale_opzional),
                 noAule
         );
         return orarioTotale;
     }
 
-    public static BitOrarioGrigliaOrario parsingFileOrarioAuleClassi(String titolo, File fileAllocazioneAule, File file_disposizione_docenti, boolean noAule) throws IOException {
+    public static BitOrarioGrigliaOrario parsingFileOrarioAuleClassi(String titolo, File fileAllocazioneAule, File file_disposizione_docenti, File file_disposizione_da_orario_orizzontale_opzional,
+                                                                     boolean noAule) throws IOException {
+
+        if (!fileAllocazioneAule.exists()) {
+            throw new IllegalArgumentException("File orario " + fileAllocazioneAule.getName() + " non trovato");
+        }
+        if (!file_disposizione_da_orario_orizzontale_opzional.exists() && !file_disposizione_docenti.exists()) {
+            throw new IllegalArgumentException("Nessun file disposizioni trovato");
+        }
+        if (file_disposizione_da_orario_orizzontale_opzional.exists() && file_disposizione_docenti.exists()) {
+            throw new IllegalArgumentException("Troppi file disposizioni trovati sia in " + file_disposizione_da_orario_orizzontale_opzional.getName() + " che in " + file_disposizione_docenti.getName());
+        }
+
         final BitOrarioGrigliaOrario orarioTotale = new BitOrarioGrigliaOrario(titolo);
 
         final List<BitOrarioOraLezione> l1 = ParserOrarioAllocazioneAuleTXT.parsingFileOrarioAuleClassi(fileAllocazioneAule, noAule);
         orarioTotale.addLezione(l1);
-        final List<BitOrarioOraLezione> l = ParserDisposizioniTXT.parsingDisposizioniDocenti(file_disposizione_docenti);
-        orarioTotale.addLezione(l);
+
+
+        if (file_disposizione_docenti.exists()) {
+            final List<BitOrarioOraLezione> l = ParserDisposizioniTXT.parsingDisposizioniDocenti(file_disposizione_docenti);
+            orarioTotale.addLezione(l);
+        }
+
+        if (file_disposizione_da_orario_orizzontale_opzional.exists()) {
+            final List<BitOrarioOraLezione> l = ParserDisposizioniDaRiepilogoVerticaleTXT.parsingDisposizioniDocenti(file_disposizione_da_orario_orizzontale_opzional);
+            orarioTotale.addLezione(l);
+        }
         return orarioTotale;
     }
 

@@ -38,23 +38,35 @@ public enum ClassData {
     CLASS_5C("5C", 19, 5, "C"),
     CLASS_5D("5D", 18, 5, "D"),
     CLASS_5E("5E", 24, 5, "E"),
-    CLASS_5F("5F", 17, 5, "F");
+    CLASS_5F("5F", 17, 5, "F"),
+    CLASS_SCONOSCIUTA("--", 0, 0, "-");
 
-    public final String name;
+    public final String classname;
     public final int numberOfStudents;
     public final int _class;
     public final String _section;
 
-    ClassData(String name, int numberOfStudents, int aClass, String section) {
-        this.name = name;
+    ClassData(String classname, int numberOfStudents, int aClass, String section) {
+        this.classname = classname;
         this.numberOfStudents = numberOfStudents;
         _class = aClass;
         _section = section;
     }
 
+    public static ClassData search(String s) {
+        if (s == null) return CLASS_SCONOSCIUTA;
+        for (ClassData xx : values()) {
+            if (xx.classname.equalsIgnoreCase(s)) return xx;
+        }
+        return CLASS_SCONOSCIUTA;
+    }
+
+    public boolean flagClasseFittizia() {
+        return this == CLASS_SCONOSCIUTA;
+    }
 
     @Override
     public String toString() {
-        return name;
+        return classname;
     }
 }

@@ -75,7 +75,7 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
         if (this.classe == classe)
             if (this.giorno.equals(giorno)) {
                 if (this.ora1.equals(ora)) {
-                    final BitOrarioOraLezione altraLezione = orario.getLezioneInClasse(ora2, giorno, classe.name);
+                    final BitOrarioOraLezione altraLezione = orario.getLezioneInClasse(ora2, giorno, classe.classname);
                     if (altraLezione != null) {
                         final RoomData altraAula = altraLezione.getAula();
                         if (altraAula != null) {

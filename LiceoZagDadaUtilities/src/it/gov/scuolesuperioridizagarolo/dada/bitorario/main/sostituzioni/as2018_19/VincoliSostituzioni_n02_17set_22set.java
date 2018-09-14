@@ -4,17 +4,20 @@ import it.gov.scuolesuperioridizagarolo.dada.bitorario.engine.FilterAule;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule3;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraintContainer;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_DocenteBloccatoInArea;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_AulaNonDisponibile;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_ClasseFermaInAulaDidattica_ignoreLabs;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_OccupazioneAule_labsToo;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.TreeSet;
 
-//import dada.bitorario.data.constraint.*;
 
 /**
  * Created by stefano on 27/04/2018.
@@ -23,13 +26,32 @@ public class VincoliSostituzioni_n02_17set_22set extends AbstractVincoliSostituz
     public static void main(String[] args) throws IOException {
         final VincoliSostituzioni_n02_17set_22set l = new VincoliSostituzioni_n02_17set_22set();
         final File folderInput = new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/02-2018.09.17_2018.09.22");
-        MotoreSostituzioneAule3.doTask(l, folderInput, new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/"), l.filtroAuleSpostamenti());
+        MotoreSostituzioneAule3.doTask(l, folderInput, new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/"), l.filtroAuleSpostamenti(), false);
+
+    }
+
+    @Override
+    protected void postOrarioBeforeFinalCheck(BitOrarioGrigliaOrario orarioTotale, LessonConstraintContainer l) {
+/**
+ *   >> NON RISOLTO: Test not passed it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_AulaNonDisponibile@28a418fc for lesson SECONDA MARTEDI 2E_MARTEDI.2_MATEMATICA-ALESSANDRONI(B13#)
+ >> NON RISOLTO: Test not passed it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_AulaNonDisponibile@5305068a for lesson SECONDA MERCOLEDI 1H_MERCOLEDI.2_MATEMATICA-PERFETTI(B13#)
+ >> NON RISOLTO: Test not passed it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_AulaNonDisponibile@1f32e575 for lesson QUARTA GIOVEDI 1E_GIOVEDI.4_MATEMATICA-ALESSANDRONI(B13#)
+
+ */
+        final BitOrarioOraLezione lezione1 = orarioTotale.getLezioneInClasse(EOra.SECONDA, EGiorno.MARTEDI, ClassData.CLASS_2E.classname);
+        final BitOrarioOraLezione lezione2 = orarioTotale.getLezioneInClasse(EOra.SECONDA, EGiorno.MERCOLEDI, ClassData.CLASS_1H.classname);
+        final BitOrarioOraLezione lezione3 = orarioTotale.getLezioneInClasse(EOra.QUARTA, EGiorno.GIOVEDI, ClassData.CLASS_1E.classname);
+
+
+        //orarioTotale.removeLezione(lezione1);
+        //orarioTotale.removeLezione(lezione2);
+        //orarioTotale.removeLezione(lezione3);
 
     }
 
     @Override
     protected FilterAule[] filtroAuleSpostamenti() {
-        return new FilterAule[]{FilterAule.LABORATORI_MAI};
+        return new FilterAule[]{FilterAule.LABORATORI_MAI, FilterAule.LABORATORI_SOLO_SE_LIBERI};
     }
 
     public VincoliSostituzioni_n02_17set_22set invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
@@ -57,10 +79,11 @@ public class VincoliSostituzioni_n02_17set_22set extends AbstractVincoliSostituz
         //l.add(new LessonConstraint_AulaNonDisponibile(_A6_FIS, EGiorno.SABATO, EOra.SECONDA)); //fabroni
 
 
-            /*
-            for (EGiorno g : EGiorno.values()) {
-                l.add(new LessonConstraint_AulaNonDisponibile(_C14, g, EOra.values()));
-            }*/
+        for (EGiorno g : EGiorno.values()) {
+            l.add(new LessonConstraint_AulaNonDisponibile(RoomData.B13sharp, g, EOra.values()));
+
+        }
+        l.add(new LessonConstraint_ClasseFermaInAulaDidattica_ignoreLabs(ClassData.CLASS_1B, _A1, EGiorno.values()));
 
 
         //  orarioTotale.classeInVisitaDidattica("Incontro con Avvocati dell'Unione delle Camere Penali - aula disegno (4B e 4D)", _4D, EGiorno.GIOVEDI, EOra.SECONDA, EOra.TERZA);
@@ -156,12 +179,12 @@ public class VincoliSostituzioni_n02_17set_22set extends AbstractVincoliSostituz
         //l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre(_5D, _A7, EGiorno.VENERDI, EOra.PRIMA, EOra.SECONDA));
 
 
-        l.add(new LessonConstraint_DocenteBloccatoInArea(false, orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A}, EGiorno.values()));
+        //l.add(new LessonConstraint_DocenteBloccatoInArea(false, orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A}, EGiorno.values()));
         for (EGiorno giorno : EGiorno.values()) {
             //l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(false, "FERRIGNO", RoomData.A1, giorno, EOra.values()));
 
         }
-        l.add(new LessonConstraint_DocenteBloccatoInArea(false, orarioTotale, "FERRIGNO", new ERoomArea[]{ERoomArea.AREA_A}, EGiorno.values()));
+        //l.add(new LessonConstraint_DocenteBloccatoInArea(false, orarioTotale, "FERRIGNO", new ERoomArea[]{ERoomArea.AREA_A}, EGiorno.values()));
 
 
         //l.add(new LessonConstraint_DocenteBloccatoInArea(orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D}, new EGiorno[]{EGiorno.LUNEDI, EGiorno.MARTEDI, EGiorno.MERCOLEDI}));

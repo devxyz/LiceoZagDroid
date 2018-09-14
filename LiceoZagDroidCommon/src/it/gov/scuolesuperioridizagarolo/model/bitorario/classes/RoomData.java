@@ -2,9 +2,6 @@ package it.gov.scuolesuperioridizagarolo.model.bitorario.classes;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
 
-/**
- * Created by stefano on 24/11/2017.
- */
 public enum RoomData {
     NON_ASSEGNATO("(NON ASSEGNATO)", "(NON ASSEGNATO)", 0, 0, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     AULA_SCONOSCIUTA("AULA SCONOSCIUTA", "AULA SCONOSCIUTA", 0, 0, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
@@ -18,14 +15,13 @@ public enum RoomData {
     A6("A6", "Aula Didattica", 29, 20, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     A7("A7", "Aula Didattica", 18, 21, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
 
+    B8("B8", "Aula Didattica", 30, 10, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    B9("B9", "Aula Didattica", 30, 9, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     B10("B10", "Aula Didattica", 30, 8, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO AL MOMENTO non utilizzabile aveva 28 posti
     B11("B11", "Aula Didattica", 30, 31, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     B12("B12", "Aula Didattica", 30, 32, ERoomArea.AREA_B, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     B13("B13", "Aula Didattica", 30, 33, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     B13sharp("B13#", "Aula Didattica", 30, 33, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//todo AL MOMENTO NON UTILIZZABILE
-
-    B8("B8", "Aula Didattica", 30, 10, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
-    B9("B9", "Aula Didattica", 30, 9, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
 
     C14("C14", "Aula Didattica", 22, 47, ERoomArea.AREA_C, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//ANNO SCORSO 25
     C15("C15", "Aula Didattica", 0, 46, ERoomArea.AREA_C, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//AULA CORRIDOIO
@@ -49,10 +45,9 @@ public enum RoomData {
     E30("E30", "Aula Didattica", 30, 41, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
 
     F31_PALESTRA("F31_PALESTRA", "Palestra", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
-
     F32_SCI("F32_SCI", "Laboratorio di Scienze", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_SI);
 
-    public final String name;
+    public final String roomname;
     public final String usage;
     public final int maxStudents;
     public final int idRoom;
@@ -60,8 +55,8 @@ public enum RoomData {
     public final boolean flagLIM;
     public final boolean flagPRESACORRENTE;
 
-    RoomData(String name, String usage, int maxStudents, int idRoom, ERoomArea location, boolean flagLIM, boolean flagPRESACORRENTE) {
-        this.name = name;
+    RoomData(String roomname, String usage, int maxStudents, int idRoom, ERoomArea location, boolean flagLIM, boolean flagPRESACORRENTE) {
+        this.roomname = roomname;
         this.usage = usage;
         this.maxStudents = maxStudents;
         this.idRoom = idRoom;
@@ -78,12 +73,21 @@ public enum RoomData {
     }
 
     public String simpleName() {
-        return name.split("_")[0];
+        return roomname.split("_")[0];
     }
 
     @Override
     public String toString() {
         return simpleName();
+    }
+
+
+    public static RoomData search(String s) {
+        if (s == null) return AULA_SCONOSCIUTA;
+        for (RoomData xx : values()) {
+            if (xx.roomname.equalsIgnoreCase(s)) return xx;
+        }
+        return AULA_SCONOSCIUTA;
     }
 
     //true se aula speciale

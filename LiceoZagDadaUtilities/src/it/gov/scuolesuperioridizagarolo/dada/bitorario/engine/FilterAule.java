@@ -24,11 +24,18 @@ public enum FilterAule {
         }
     },
 
+    LABORATORI_SOLO_SE_LIBERI {
+        @Override
+        boolean accept(String materia, String classe, String docente, RoomData aula, Set<CompatibilitaLaboratorio> c) {
+            return true;
+        }
+    },
+
     LABORATORI_SOLO_COMPATIBILI {
         @Override
         boolean accept(String materia, String classe, String docente, RoomData aula, Set<CompatibilitaLaboratorio> c) {
             if (!aula.flagAulaLaboratorioPalestra()) return true;
-            return c.contains(new CompatibilitaLaboratorio(classe, materia, aula.name));
+            return c.contains(new CompatibilitaLaboratorio(classe, materia, aula.roomname));
             //return true;
         }
     };

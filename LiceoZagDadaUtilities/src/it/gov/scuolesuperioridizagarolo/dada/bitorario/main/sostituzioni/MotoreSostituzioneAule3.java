@@ -38,7 +38,7 @@ public class MotoreSostituzioneAule3 {
         throw new IllegalArgumentException("Specificare cartella contenente dati");
     }
 
-    public static void doTask(AbstractVincoliSostituzioni l, File folderInput, File folderOutput, FilterAule[]ff) throws IOException {
+    public static void doTask(AbstractVincoliSostituzioni l, File folderInput, File folderOutput, FilterAule[] ff, boolean showTimetablesChanges) throws IOException {
         final BitOrarioGrigliaOrario orarioInModifica = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(folderInput);
 
 
@@ -68,12 +68,12 @@ public class MotoreSostituzioneAule3 {
         final File folder = folderOutput;//new File("/Users/stefano/Dropbox/orari/");
         folder.mkdirs();
 
-
         //avvia elaborazione
         System.out.println("********************************************************************************************");
         System.out.println("********************** Risoluzione vincoli");
         System.out.println("********************************************************************************************");
         SostituzioneAuleEngine3.spostamentiPerAuleNonDisponibili(orarioInModifica, l1, ff);
+        l.postOrarioBeforeFinalCheck(orarioInModifica, l1);
 
 
         System.out.println();
@@ -132,12 +132,14 @@ public class MotoreSostituzioneAule3 {
             final BitOrarioGrigliaOrario orarioStandard = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(folderInput);
             orarioStandard.setReadOnly(true);
 
-            final NoteVariazioniBitOrarioGrigliaOrario note = NoteVariazioniBitOrarioGrigliaOrario.generateDifferenze(orarioStandard, orarioInModifica);
+            final NoteVariazioniBitOrarioGrigliaOrario note = showTimetablesChanges ?
+                    NoteVariazioniBitOrarioGrigliaOrario.generateDifferenze(orarioStandard, orarioInModifica) : new NoteVariazioniBitOrarioGrigliaOrario();
 
 
             new HtmlOutputOrario_perAule().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_AULE_A3" + ".html"), EPaperFormat.A3);
             new HtmlOutputOrario_perClassi().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_A3" + ".html"), EPaperFormat.A3);
             new Report_perDocentiRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_RIDOTTO_A3" + ".html"), EPaperFormat.A3);
+            new Report_perClasseRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_RIDOTTO_A3_ORIZZ" + ".html"), EPaperFormat.A3);
             new Report_perAuleVuote().print(orarioInModifica, new File(root, subName2 + "_AULE VUOTE" + ".html"));
             new Report_perVariazioniAule().print(orarioInModifica, orarioStandard, new File(root, subName2 + "_VARIAZIONI" + ".html"));
 
@@ -216,8 +218,8 @@ public class MotoreSostituzioneAule3 {
 
             // sb.append("<div style='display: block; page-break-before: always;'></div>\n");
             sb.append("<hr>");
-            sb.append("<h1 style='font-size:40px;font-weight:bolder'>Orario delle lezioni aggiornato Classe " + c.name + "</h1>\n");
-            sb.append("<img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fwww.scuolesuperioridizagarolo.gov.it%2Forario%2Forario2.php%3Fclasse%3D" + c.name + "&chs=400x400&choe=UTF-8&chld=L|2' alt=''>\n");
+            sb.append("<h1 style='font-size:40px;font-weight:bolder'>Orario delle lezioni aggiornato Classe " + c.classname + "</h1>\n");
+            sb.append("<img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fwww.scuolesuperioridizagarolo.gov.it%2Forario%2Forario2.php%3Fclasse%3D" + c.classname + "&chs=400x400&choe=UTF-8&chld=L|2' alt=''>\n");
 
         }
         sb.append("</body></html>");

@@ -17,10 +17,10 @@ public class ClassesAndRoomContainer {
 
     static {
         for (ClassData c : ClassData.values()) {
-            classi.put(c.name.toUpperCase(), c);
+            classi.put(c.classname.toUpperCase(), c);
         }
         for (RoomData c : RoomData.values()) {
-            aule.put(c.name.toUpperCase(), c);
+            aule.put(c.roomname.toUpperCase(), c);
         }
     }
 

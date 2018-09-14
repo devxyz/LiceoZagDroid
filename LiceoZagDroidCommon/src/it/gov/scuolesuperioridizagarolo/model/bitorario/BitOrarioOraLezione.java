@@ -100,7 +100,7 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
         return new BitOrarioOraLezione(
                 getDocentePrincipale(), getMateriaPrincipale(),
                 getDocenteCompresenza(), getMateriaCompresenza(),
-                nuovaaula.name, getClasse(),
+                nuovaaula.roomname, getClasse(),
                 getOra(), getGiorno(),
                 getTipoLezione());
     }
@@ -126,10 +126,17 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
     }
 
     public String toStringShort() {
-        if (getDocenteCompresenza() == null)
-            return classe + "_" + giorno + "." + ora.getProgressivOra() + "_" + getMateriaPrincipale() + "-" + getDocentePrincipale() + "(" + getNomeAula() + ")";
-        else
-            return classe + "_" + giorno + "." + ora.getProgressivOra() + "_" + getMateriaPrincipale() + "-" + getDocentePrincipale() + "-" + getDocenteCompresenza() + "(" + getNomeAula() + ")";
+        switch (tipoLezione) {
+            case DISPOSIZIONE:
+                return ora.getProgressivOra() + "° ora " + giorno + ": DISPOSIZIONE - " + getDocentePrincipale();
+
+            case LEZIONE_CON_COMPRESENZA:
+                return ora.getProgressivOra() + "° ora " + giorno + ": " + getMateriaPrincipale() + " - " + getDocentePrincipale() + "/" + getDocenteCompresenza() + "(aula " + getNomeAula() + ")";
+            case LEZIONE_SINGOLA:
+                return ora.getProgressivOra() + "° ora " + giorno + ": " + getMateriaPrincipale() + " - " + getDocentePrincipale() + "(aula " + getNomeAula() + ")";
+            default:
+                return "???";
+        }
     }
 
     @Override

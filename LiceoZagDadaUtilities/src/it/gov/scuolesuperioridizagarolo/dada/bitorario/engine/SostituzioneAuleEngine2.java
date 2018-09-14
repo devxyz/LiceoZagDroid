@@ -199,7 +199,7 @@ public class SostituzioneAuleEngine2 {
         final String aula0 = lezione.getNomeAula();
 
         for (RoomData x : auleDisponibiliPerLezioneCorrente) {
-            final String aula1 = x.name;
+            final String aula1 = x.roomname;
             if (nuovaAssegnazione_DA.size() > 0) break;
 
             for (BitOrarioOraLezione altraLezione : lezioniParallele) {
@@ -327,7 +327,7 @@ public class SostituzioneAuleEngine2 {
                 if (altraLezione.getNomeAula() == null)
                     continue;
 
-                final String aula1 = auleLezione.name;
+                final String aula1 = auleLezione.roomname;
                 final String aula2 = altraLezione.getNomeAula();
 
 
@@ -375,7 +375,7 @@ public class SostituzioneAuleEngine2 {
 
         for (RoomData a : auleVuoteX) {
             if (a == null) continue;
-            final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(a.name);
+            final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(a.roomname);
             if (l.checkAll(nuovaLezione, o) &&
                     s.accept(nuovaLezione, c)) {
                 //System.out.println("\tCapienza aula: " + occupazioneMigliore + " posti, num. studenti:" + numStudenti);

@@ -115,7 +115,7 @@ public class ParserOrarioAllocazioneAuleTXT {
                     materiaPrincipale = a[0];
                     nomeAula = a[2];
                     if (nomeAula != null && noAula && !ClassesAndRoomContainer.getRoom(nomeAula).flagAulaLaboratorioPalestra()) {
-                        nomeAula = RoomData.NON_ASSEGNATO.name;
+                        nomeAula = RoomData.NON_ASSEGNATO.roomname;
                     }
                     l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale, nomeAula, classe, oraX, giornoX);
 
@@ -128,7 +128,7 @@ public class ParserOrarioAllocazioneAuleTXT {
                     materiaCompresenza = "compresenza";
                     nomeAula = a[3];
                     if (nomeAula != null && noAula && !ClassesAndRoomContainer.getRoom(nomeAula).flagAulaLaboratorioPalestra()) {
-                        nomeAula = RoomData.NON_ASSEGNATO.name;
+                        nomeAula = RoomData.NON_ASSEGNATO.roomname;
                     }
                     l = BitOrarioOraLezione.creaOraCompresenza(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, nomeAula, classe, oraX, giornoX);
                 }

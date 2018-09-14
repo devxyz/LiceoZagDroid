@@ -76,7 +76,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
      * @param ore
      */
     public void classeInVisitaDidattica(String note, ClassData nomeClasse, EGiorno giorno, EOra... ore) {
-        classeInVisitaDidattica(note, nomeClasse.name, giorno, ore);
+        classeInVisitaDidattica(note, nomeClasse.classname, giorno, ore);
     }
 
     /**
@@ -87,7 +87,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
      * @param ore
      */
     public void classeInSospensioneDidattica(ClassData nomeClasse, EGiorno giorno, EOra... ore) {
-        classeInSospensioneDidattica(nomeClasse.name, giorno, ore);
+        classeInSospensioneDidattica(nomeClasse.classname, giorno, ore);
     }
 
     public void classeInVisitaDidattica(String note, String nomeClasse, EGiorno giorno, EOra... ore) {
@@ -437,7 +437,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         //elenco di tutte le aule disponibili sia presenti nell'orario che nell'ENUM
         final TreeSet<String> ris = new TreeSet<>(_lezioniPerAula.keys());
         for (RoomData r : RoomData.values()) {
-            ris.add(r.name);
+            ris.add(r.roomname);
         }
 
         return ris;

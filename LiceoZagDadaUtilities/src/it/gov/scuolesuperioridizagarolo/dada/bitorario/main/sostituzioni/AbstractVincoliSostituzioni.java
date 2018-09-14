@@ -19,14 +19,6 @@ import java.util.List;
  * Created by stefano on 27/04/2018.
  */
 public abstract class AbstractVincoliSostituzioni {
-
-    /*
-    modificare in casi specifici
-     */
-    protected FilterAule[]filtroAuleSpostamenti(){
-        return new FilterAule[]{FilterAule.LABORATORI_MAI, FilterAule.LABORATORI_SOLO_COMPATIBILI, FilterAule.LABORATORI_SEMPRE};
-    }
-
     public static final RoomData _A1 = ClassesAndRoomContainer.getRoom("A1");
     public static final RoomData _A2 = ClassesAndRoomContainer.getRoom("A2");
     public static final RoomData _A3_FIS = ClassesAndRoomContainer.getRoom("A3_FIS");
@@ -66,7 +58,6 @@ public abstract class AbstractVincoliSostituzioni {
     public static final ClassData _1D = ClassesAndRoomContainer.getClass("1D");
     public static final ClassData _1E = ClassesAndRoomContainer.getClass("1E");
     public static final ClassData _1F = ClassesAndRoomContainer.getClass("1F");
-
     public static final ClassData _1H = ClassesAndRoomContainer.getClass("1H");
     public static final ClassData _2A = ClassesAndRoomContainer.getClass("2A");
     public static final ClassData _2B = ClassesAndRoomContainer.getClass("2B");
@@ -108,7 +99,7 @@ public abstract class AbstractVincoliSostituzioni {
                     final RoomData room = ClassesAndRoomContainer.getRoom(aula);
                     if (room.equals(_F31_PALESTRA))
                         continue;
-                    if (room==RoomData.USCITA_DIDATTICA)
+                    if (room == RoomData.USCITA_DIDATTICA)
                         continue;
                     final List<BitOrarioOraLezione> lezioneInAula = orarioTotale.getLezioneInAula(o, g, aula);
                     if (lezioneInAula.size() > 1) {
@@ -139,6 +130,24 @@ public abstract class AbstractVincoliSostituzioni {
     protected static void classeConStampellePianoTerra(LessonConstraintContainer l, ClassData classe) {
         l.add(new LessonConstraint_ClasseBloccataInArea(true, classe, new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B}, EGiorno.values()));
         l.add(new LessonConstraint_ClasseNonInAula_labsToo(classe, _F32_SCI, EGiorno.values()));
+    }
+
+
+    /**
+     * eseguito al termine dell'elaborazione, prima della verifica finale vincoli e stampa report
+     *
+     * @param orarioTotale
+     * @param l
+     */
+    protected void postOrarioBeforeFinalCheck(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+
+    }
+
+    /*
+    modificare in casi specifici
+     */
+    protected FilterAule[] filtroAuleSpostamenti() {
+        return new FilterAule[]{FilterAule.LABORATORI_MAI, FilterAule.LABORATORI_SOLO_COMPATIBILI, FilterAule.LABORATORI_SEMPRE};
     }
 
     public String getDal() {
