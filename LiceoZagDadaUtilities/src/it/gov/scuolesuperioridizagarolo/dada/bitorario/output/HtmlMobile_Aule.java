@@ -70,7 +70,7 @@ public class HtmlMobile_Aule {
                         p.println("<td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>");
                     } else {
 
-                        p.print("<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'>");
+                        p.print("<td style='padding:9px;border:1px solid black;vertical-align: middle;background-color:white'>");
                         for (BitOrarioOraLezione lezione : lezioneList) {
 
 
@@ -92,7 +92,7 @@ public class HtmlMobile_Aule {
 
                                         p.printf("" +
                                                 "<center>" +
-                                                "<span style='color:blue;font-size:100%%'><b>%s</b></span><br><span style='font-size:110%%'>" + classe + " <b>%s</b></span>%s%s</center>" +
+                                                "<span style='color:blue;font-size:100%%'><b>%s</b></span><br><span style='font-size:100%%'>" + classe + " <b>%s</b></span>%s%s</center>" +
                                                 "%n", lezione.getMateriaPrincipale().replace("_", " "), docente, button_dettagli, testo_dettagli);
                                         break;
 

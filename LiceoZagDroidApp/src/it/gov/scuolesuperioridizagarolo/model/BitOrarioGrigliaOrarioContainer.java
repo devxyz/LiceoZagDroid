@@ -3,10 +3,7 @@ package it.gov.scuolesuperioridizagarolo.model;
 import android.util.Log;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by stefano on 31/12/2017.
@@ -18,6 +15,30 @@ public class BitOrarioGrigliaOrarioContainer {
     public static void main(String[] args) {
         BitOrarioGrigliaOrarioItem g = new BitOrarioGrigliaOrarioItem(new OnlyDate(8, 1, 2018), new OnlyDate(13, 1, 2018), 32, null);
         System.out.println(g.isValid(new OnlyDate(11, 1, 2018)));
+    }
+
+    public Set<String> getAule() {
+        Set<String> ris = new TreeSet<>();
+        for (BitOrarioGrigliaOrarioItem x : sortByremoteIdDesc) {
+            ris.addAll(x.orario.getAule());
+        }
+        return ris;
+    }
+
+    public Set<String> getClassi() {
+        Set<String> ris = new TreeSet<>();
+        for (BitOrarioGrigliaOrarioItem x : sortByremoteIdDesc) {
+            ris.addAll(x.orario.getClassi());
+        }
+        return ris;
+    }
+
+    public Set<String> getDocenti() {
+        Set<String> ris = new TreeSet<>();
+        for (BitOrarioGrigliaOrarioItem x : sortByremoteIdDesc) {
+            ris.addAll(x.orario.getDocenti());
+        }
+        return ris;
     }
 
     public int size() {

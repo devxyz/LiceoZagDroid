@@ -37,6 +37,13 @@
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
+        <item>Cerca altri Docenti</item>
+        <item>Cerca altri Docenti</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteNonPersistenteFragment</item>
+        <item>@drawable/_menu_school_48x48</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
+
 
         <item>Cerca Classi</item>
         <item>Cerca Classi</item>
@@ -72,7 +79,7 @@
         <item>Elenco delle circolari</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.ArticoloCircolariFragment</item>
         <item>@drawable/_menu_photos</item>
-        <item>SUB_ITEM</item>
+        <item>NOT_ACTIVE,SUB_ITEM</item>
         <item>END-ITEM</item>
 
 

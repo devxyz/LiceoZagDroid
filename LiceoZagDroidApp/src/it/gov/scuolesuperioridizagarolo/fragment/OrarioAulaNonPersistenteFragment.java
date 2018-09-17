@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.fragment;
 
 import it.gov.scuolesuperioridizagarolo.adapter.OrarioAulaListAdapter;
 
+import java.util.Set;
 import java.util.TreeSet;
 
 public class OrarioAulaNonPersistenteFragment extends AbstractOrarioFragment<OrarioAulaListAdapter> {
@@ -13,7 +14,7 @@ public class OrarioAulaNonPersistenteFragment extends AbstractOrarioFragment<Ora
 
     @Override
     protected String[] getFilterValues() {
-        final TreeSet<String> aule = orario.getAule();
+        final Set<String> aule = new TreeSet<>(containerOrari.getAule());
         return aule.toArray(new String[aule.size()]);
     }
 

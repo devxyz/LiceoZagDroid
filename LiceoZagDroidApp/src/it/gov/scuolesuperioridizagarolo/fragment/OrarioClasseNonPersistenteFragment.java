@@ -13,7 +13,7 @@ public class OrarioClasseNonPersistenteFragment extends AbstractOrarioFragment<O
 
     @Override
     protected String[] getFilterValues() {
-        final TreeSet<String> classi = orario.getClassi();
+        final TreeSet<String> classi = new TreeSet<>(containerOrari.getClassi());
         return classi.toArray(new String[classi.size()]);
     }
 

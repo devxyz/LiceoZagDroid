@@ -39,10 +39,10 @@ public enum RoomData {
     D25("D25", "Aula Didattica", 30, 64, ERoomArea.AREA_D, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     D26("D26", "Aula Didattica", 20, 65, ERoomArea.AREA_D, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//???ANNO SCORSO 22
 
-    E27("E27", "Aula Didattica", 30, 44, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE - anno scorso 26 posti
-    E28("E28", "Aula Didattica", 30, 39, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
-    E29("E29", "Aula Didattica", 30, 40, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
-    E30("E30", "Aula Didattica", 30, 41, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    E27("E27", "Aula Didattica", 28, 44, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE - anno scorso 26 posti
+    E28("E28", "Aula Didattica", 28, 39, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    E29("E29", "Aula Didattica", 28, 40, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    E30("E30", "Aula Didattica", 28, 41, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
 
     F31_PALESTRA("F31_PALESTRA", "Palestra", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     F32_SCI("F32_SCI", "Laboratorio di Scienze", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_SI);

@@ -129,11 +129,10 @@ public class MotoreSostituzioneAule3 {
             final File root = new File(folder, "html/" + subName2);
             root.mkdirs();
 
-            final BitOrarioGrigliaOrario orarioStandard = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(folderInput);
+            final BitOrarioGrigliaOrario orarioStandard = showTimetablesChanges ? orarioInModifica : MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(folderInput);
             orarioStandard.setReadOnly(true);
 
-            final NoteVariazioniBitOrarioGrigliaOrario note = showTimetablesChanges ?
-                    NoteVariazioniBitOrarioGrigliaOrario.generateDifferenze(orarioStandard, orarioInModifica) : new NoteVariazioniBitOrarioGrigliaOrario();
+            final NoteVariazioniBitOrarioGrigliaOrario note = NoteVariazioniBitOrarioGrigliaOrario.generateDifferenze(orarioStandard, orarioInModifica);
 
 
             new HtmlOutputOrario_perAule().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_AULE_A3" + ".html"), EPaperFormat.A3);
