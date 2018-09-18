@@ -76,14 +76,14 @@ public class HtmlMobile_Classi {
                                     "onclick=\"javascript:document.getElementById('msg_" + id + "').style.display='block' \" " +
                                     "type='button' " +
                                     "style=\"border:3px solid red; font-size:120% ;padding:5px; margin:5px; background-color:yellow   \" " +
-                                    "value='Dettagli' >" : "";
+                                    "value='info' >" : "";
                     if (lezione == null)
                         p.println("<td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>");
                     else {
                         switch (lezione.getTipoLezione()) {
                             case DISPOSIZIONE: {
                                 p.println("<td style='padding:5px;border:1px solid black;vertical-align: middle;background-color:yellow'><center>" +
-                                        "DISPOSIZIONE" + button_dettagli
+                                        "DISP" + button_dettagli
                                         + "</center></td>");
 
                                 break;
@@ -91,11 +91,12 @@ public class HtmlMobile_Classi {
                             default: {
                                 final String docente = lezione.getDocentePrincipale() + (lezione.getDocenteCompresenza() == null ? "" : " " + lezione.getDocenteCompresenza());
                                 final String aula = lezione.getAula() == null ? "-" : lezione.getAula().simpleName();
+                                String materia = Report_perClasseRidotto.abbreviazioneMateria(lezione);
 
                                 p.printf("<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'>" +
                                         "<center>" +
-                                        "<span style='color:blue;font-size:100%%'><b>%s</b></span><br><span style='font-size:110%%'>Aula <b>%s</b></span>%s%s</center>" +
-                                        "</td>%n", lezione.getMateriaPrincipale().replace("_", " "), aula, button_dettagli, testo_dettagli);
+                                        "<span style='color:blue;font-size:100%%'><b>%s</b></span><br><span style='font-size:110%%'><b>%s</b></span>%s%s</center>" +
+                                        "</td>%n", materia, aula, button_dettagli, testo_dettagli);
                                 break;
 
                             }

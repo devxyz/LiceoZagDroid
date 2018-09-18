@@ -30,7 +30,7 @@ public class HtmlMobile_Aule {
         for (String aule : strings) {
 
             final RoomData room = ClassesAndRoomContainer.getRoom(aule);
-            if (room.flagAulaFittizia())continue;
+            if (room.flagAulaFittizia()) continue;
 
             PrintStream p = new PrintStream(new File(f, aule));
 
@@ -82,12 +82,11 @@ public class HtmlMobile_Aule {
                             else {
                                 switch (lezione.getTipoLezione()) {
                                     case DISPOSIZIONE: {
-                                        p.println("DISPOSIZIONE" + button_dettagli + "</center>");
-
+                                        p.println("DISP" + button_dettagli + "</center>");
                                         break;
                                     }
                                     default: {
-                                        final String docente = lezione.getDocentePrincipale() + (lezione.getDocenteCompresenza() == null ? "" : " " + lezione.getDocenteCompresenza());
+                                        final String docente = lezione.getDocentePrincipale() + " " + (lezione.getDocenteCompresenza() == null ? "" : " " + lezione.getDocenteCompresenza());
                                         final String classe = lezione.getClasse() == null ? "-" : lezione.getClasse();
 
                                         p.printf("" +

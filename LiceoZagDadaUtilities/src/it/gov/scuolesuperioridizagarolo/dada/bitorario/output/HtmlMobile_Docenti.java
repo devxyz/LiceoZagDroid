@@ -24,7 +24,7 @@ public class HtmlMobile_Docenti {
         final Collection<String> strings = o.getDocenti();
 
         for (String docente : strings) {
-            PrintStream p = new PrintStream(new File(f, docente));
+            PrintStream p = new PrintStream(new File(f, docente.replaceAll("'","_")));
 
             p.println("<table cellspacing=0 style='width:100%;table-layout: fixed; border:4px solid black; '>");
 
@@ -75,14 +75,14 @@ public class HtmlMobile_Docenti {
                                     "onclick=\"javascript:document.getElementById('msg_" + id + "').style.display='block' \" " +
                                     "type='button' " +
                                     "style=\"border:3px solid red; font-size:120% ;padding:5px; margin:5px; background-color:yellow   \" " +
-                                    "value='Dettagli' >" : "";
+                                    "value='info' >" : "";
                     if (lezione == null)
                         p.println("<td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>");
                     else {
                         switch (lezione.getTipoLezione()) {
                             case DISPOSIZIONE: {
                                 p.println("<td style='padding:5px;border:1px solid black;vertical-align: middle;background-color:yellow'><center>" +
-                                        "DISPOSIZIONE" + button_dettagli
+                                        "DISP" + button_dettagli
                                         + "</center></td>");
 
                                 break;
@@ -90,11 +90,12 @@ public class HtmlMobile_Docenti {
                             default: {
                                 final String classe = lezione.getClasse();
                                 final String aula = lezione.getAula() == null ? "-" : lezione.getAula().simpleName();
+                                String materia=Report_perClasseRidotto.abbreviazioneMateria(lezione);
 
                                 p.printf("<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'>" +
                                         "<center>" +
-                                        "<span style='color:blue;font-size:200%%'><b>%s</b></span><br><span style='font-size:110%%'>Aula <b>%s</b></span>%s%s</center>" +
-                                        "</td>%n", classe, aula, button_dettagli, testo_dettagli);
+                                        "<span style='color:blue;font-size:200%%'><b>%s</b></span><br><span style='font-size:110%%'>%s <b>%s</b></span>%s%s</center>" +
+                                        "</td>%n", classe, materia,aula, button_dettagli, testo_dettagli);
                                 break;
 
                             }

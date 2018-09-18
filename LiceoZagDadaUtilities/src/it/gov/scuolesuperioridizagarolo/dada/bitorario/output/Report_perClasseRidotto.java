@@ -69,13 +69,13 @@ public class Report_perClasseRidotto {
                         p.print("<td style='border:1px solid black;border-left:" + spessore + "px solid black;background-color:gray'><b>" + "</td>");
                     else {
                         if (ll.getClasse() == null) {
-                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:red;background-color:yellow'><b>" + abbreviazione(ll) + x +
+                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:red;background-color:yellow'><b>" + abbreviazioneMateria(ll) + x +
                                     "</b></span></td>");
 
                         } else {
 
                             String aulaBreve = ll.getNomeAula() != null && ll.getNomeAula().contains("_") ? ll.getNomeAula().split("_")[0] : ll.getNomeAula();
-                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center'><b>" + abbreviazione(ll) +
+                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center'><b>" + abbreviazioneMateria(ll) +
                                     "</b><br><span style=''> (" + aulaBreve + ")" + x + "</span></td>");
                         }
                     }
@@ -92,7 +92,7 @@ public class Report_perClasseRidotto {
         p.close();
     }
 
-    private String abbreviazione(BitOrarioOraLezione ll) {
+    public static String abbreviazioneMateria(BitOrarioOraLezione ll) {
 
         final String materiaPrincipale = ll.getMateriaPrincipale();
         int min = materiaPrincipale.contains(".") ? Math.min(materiaPrincipale.length(), 6) : Math.min(materiaPrincipale.length(), 3);
