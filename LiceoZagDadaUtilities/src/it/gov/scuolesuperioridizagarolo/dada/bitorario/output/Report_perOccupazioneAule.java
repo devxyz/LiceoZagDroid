@@ -2,10 +2,10 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,16 +44,16 @@ public class Report_perOccupazioneAule {
             p.print("<td style='text-align: right;font-size:20px' >" + settimana.getNome() + "</td>");
             for (EOra ora : EOra.values()) {
                 if (ora == EOra.USCITA) continue;
-                final TreeSet<String> l = o.getAuleVuote(ora, settimana);
+                final TreeSet<RoomData> l = o.getAuleVuote(ora, settimana);
                 p.print("<td style='border:1px solid black; text-align:left;padding-left:5px;vertical-align:top'>");
 
-                final TreeSet<String> aule = o.getAule();
-                String aulaPrec = null;
+                final TreeSet<RoomData> aule = o.getAule();
+                RoomData aulaPrec = null;
 
                 p.print("<table >");
-                for (String a : aule) {
+                for (RoomData a : aule) {
 
-                    final RoomData room = ClassesAndRoomContainer.getRoom(a);
+                    final RoomData room = (a);
                     if (room.flagAulaFittizia()) continue;
                     if (room.maxStudents == 0) continue;
 
@@ -62,14 +62,14 @@ public class Report_perOccupazioneAule {
                     final List<BitOrarioOraLezione> lezioni = o.getLezioneInAula(ora, settimana, a);
                     for (BitOrarioOraLezione lezione : lezioni) {
                         if (lezione.getClasse() != null) {
-                            final int i = ClassesAndRoomContainer.getClass(lezione.getClasse()).numberOfStudents;
+                            final int i = (lezione.getClasse()).numberOfStudents;
                             studentiClasse += i;
                         }
                     }
 
-                    final int x = ClassesAndRoomContainer.getRoom(a).maxStudents - studentiClasse;
+                    final int x = (a).maxStudents - studentiClasse;
                     if (x > 3) {
-                        if (aulaPrec!=null  && aulaPrec.charAt(0) != a.charAt(0)) {
+                        if (aulaPrec != null && aulaPrec.roomName.charAt(0) != a.roomName.charAt(0)) {
                             p.print("</table><hr style='border:4px solid black'>");
                             p.print("<table >");
                         }

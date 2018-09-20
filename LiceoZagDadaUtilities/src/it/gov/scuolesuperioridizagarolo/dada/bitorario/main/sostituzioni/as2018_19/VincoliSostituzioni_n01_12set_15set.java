@@ -121,7 +121,7 @@ public class VincoliSostituzioni_n01_12set_15set extends AbstractVincoliSostituz
         }
 
 
-        final TreeSet<String> classi = orarioTotale.getClassi();
+        final TreeSet<ClassData> classi = orarioTotale.getClassi();
 
 
         //lavori

@@ -53,8 +53,8 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
     @Override
     public RoomData getChild(int groupPosition, int childPosititon) {
         final EOra group = getGroup(groupPosition);
-        final ArrayList<String> auleVuote = new ArrayList<>(orario.getAuleVuote(group, giorno.getGiorno()));
-        return ClassesAndRoomContainer.getRoom(auleVuote.get(childPosititon));
+        final ArrayList<RoomData> auleVuote = new ArrayList<>(orario.getAuleVuote(group, giorno.getGiorno()));
+        return auleVuote.get(childPosititon);
     }
 
     @Override
@@ -110,7 +110,7 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
                              View convertView, ViewGroup parent) {
         //ok
         final EOra ora = ore[groupPosition];
-        final TreeSet<String> auleVuote = orario.getAuleVuote(ora, giorno.getGiorno());
+        final TreeSet<RoomData> auleVuote = orario.getAuleVuote(ora, giorno.getGiorno());
 
         if (convertView == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(a);

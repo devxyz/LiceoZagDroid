@@ -14,7 +14,7 @@ import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraEnumTipoLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
@@ -128,7 +128,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         StringBuilder info = new StringBuilder();
 
         final String note = item == null || item.getNote() == null ? "" : (item.getNote() + "\n");
-        if (item == null || item.getNomeAula() == null) {
+        if (item == null || item.getAula() == null) {
             if (note.trim().length() > 0)
                 return "Note: " + note;
             else
@@ -136,7 +136,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         }
 
 
-        final RoomData room = ClassesAndRoomContainer.getRoom(item.getNomeAula());
+        final RoomData room = item.getAula();
         if (room != null) {
 
             info.append("Aula: ").append(room.simpleName()).append("\n");
@@ -210,7 +210,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
      */
     private BitOrarioOraLezione getDefaultCorrelatedLesson(BitOrarioOraLezione l) {
         if (l == null) return null;
-        final String classe = l.getClasse();
+        final ClassData classe = l.getClasse();
         if (classe == null) return null;
         final EGiorno giorno = l.getGiorno();
         if (giorno == null) return null;
@@ -339,7 +339,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
                 o.textViewFasciaOraria.setText(ora.fascia());
 
 
-                String classe = lezione.getClasse();
+                ClassData classe = lezione.getClasse();
                 String insegnanti;
 
 
@@ -367,9 +367,9 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
 
                 //disegno aula
-                String nomeAula = lezione.getNomeAula();
+                RoomData nomeAula = lezione.getAula();
                 final RoomData room;
-                if (nomeAula == null || nomeAula.length() == 0) {
+                if (nomeAula == null) {
 
 
                     o.textViewAula.setText("--");
@@ -377,8 +377,8 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
 
                 } else {
-                    room = ClassesAndRoomContainer.getRoom(nomeAula);
-                    o.textViewAula.setText(nomeAula.split("_")[0]);
+                    room = (nomeAula);
+                    o.textViewAula.setText(nomeAula.simpleName());
 
                     final ERoomArea location = room.location;
                     coloraViewAula(o.textViewAula, location, a);

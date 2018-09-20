@@ -1,11 +1,12 @@
 package it.gov.scuolesuperioridizagarolo.fragment;
 
 import it.gov.scuolesuperioridizagarolo.adapter.OrarioAulaListAdapter;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 
-import java.util.Set;
 import java.util.TreeSet;
 
-public class OrarioAulaNonPersistenteFragment extends AbstractOrarioFragment<OrarioAulaListAdapter> {
+public class OrarioAulaNonPersistenteFragment extends AbstractOrarioFragment<OrarioAulaListAdapter, RoomData> {
 
     @Override
     protected OrarioAulaListAdapter createAbstractOrarioListAdapter() {
@@ -13,17 +14,21 @@ public class OrarioAulaNonPersistenteFragment extends AbstractOrarioFragment<Ora
     }
 
     @Override
-    protected String[] getFilterValues() {
-        final Set<String> aule = new TreeSet<>(containerOrari.getAule());
-        return aule.toArray(new String[aule.size()]);
+    protected RoomData[] getFilterValues() {
+        final TreeSet<RoomData> aule = new TreeSet<>();
+        for (RoomData x : ClassesAndRoomContainer.getAllValidRooms()) {
+            if (!x.flagAulaFittizia())
+                aule.add(x);
+        }
+        return aule.toArray(new RoomData[aule.size()]);
     }
 
     @Override
-    protected void saveFiltrerValue(String filtro) {
+    protected void persistFiltrerValue(RoomData filtro) {
     }
 
     @Override
-    protected String getSavedFiltrerValue() {
+    protected RoomData retrievePersistedFiltrerValue() {
         return null;
     }
 
@@ -43,13 +48,18 @@ public class OrarioAulaNonPersistenteFragment extends AbstractOrarioFragment<Ora
     }
 
     @Override
+    protected String filterToLabel(RoomData filter) {
+        return filter == null ? "-" : filter.simpleName();
+    }
+
+    @Override
     protected boolean normalizeFilterName() {
         return false;
     }
 
     @Override
-    protected void updateAdapter(String filter) {
-        super.orarioAdapter.setAula(filter);
+    protected void updateAdapter(RoomData filter) {
+        super.orarioAdapter.setAula(filtro);
     }
 
     @Override

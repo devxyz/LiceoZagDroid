@@ -3,6 +3,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.engine;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.MainParserGeneraStampeOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 
 import java.io.File;
@@ -14,14 +15,14 @@ import java.util.Set;
  * Created by stefano on 01/05/2018.
  */
 public class CompatibilitaLaboratorio {
-    public final String classe;
+    public final ClassData classe;
     public final String materia;
-    public final String room;
+    public final RoomData room;
 
-    public CompatibilitaLaboratorio(String classe, String materia, String room) {
-        this.classe = classe.toLowerCase();
+    public CompatibilitaLaboratorio(ClassData classe, String materia, RoomData room) {
+        this.classe = classe;
         this.materia = materia.toLowerCase();
-        this.room = room.toLowerCase();
+        this.room = room;
 
     }
 
@@ -31,7 +32,7 @@ public class CompatibilitaLaboratorio {
         for (BitOrarioOraLezione l : o.getLezioni()) {
             final RoomData a = l.getAula();
             if (a != null && a.flagAulaLaboratorioPalestra()) {
-                ris.add(new CompatibilitaLaboratorio(l.getClasse(), l.getMateriaPrincipale(), l.getNomeAula()));
+                ris.add(new CompatibilitaLaboratorio(l.getClasse(), l.getMateriaPrincipale(), l.getAula()));
             }
         }
 

@@ -20,7 +20,7 @@ public class LessonConstraint_AuleDidatticheConLIM_IgnoreLabs extends AbstractLe
 
 
     public LessonConstraint_AuleDidatticheConLIM_IgnoreLabs(String c, EGiorno[] giorno) {
-        this(ClassesAndRoomContainer.getClass(c), giorno);
+        this(ClassesAndRoomContainer.parseClass(c), giorno);
 
     }
 

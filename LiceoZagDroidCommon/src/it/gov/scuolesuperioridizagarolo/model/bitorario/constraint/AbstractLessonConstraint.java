@@ -19,12 +19,12 @@ public abstract class AbstractLessonConstraint {
 
     public static RoomData getRoom(String nome) {
         if (nome == null) return null;
-        return ClassesAndRoomContainer.getRoom(nome);
+        return ClassesAndRoomContainer.parseRoom(nome);
     }
 
     public static ClassData getClass(String nome) {
         if (nome == null) return null;
-        return ClassesAndRoomContainer.getClass(nome);
+        return ClassesAndRoomContainer.parseClass(nome);
     }
 
     public boolean checkAll(List<BitOrarioOraLezione> lx, BitOrarioGrigliaOrario orario) {
@@ -66,13 +66,13 @@ public abstract class AbstractLessonConstraint {
     }
 
     public final boolean __check(BitOrarioOraLezione l, BitOrarioGrigliaOrario orario) {
-        final RoomData room = getRoom(l.getNomeAula());
+        final RoomData room = (l.getAula());
         if (ignoreLabs && room != null && room.flagAulaLaboratorioPalestra())
             return true;
 
 
         return __check(l.getDocentePrincipale(), l.getMateriaPrincipale(), l.getDocenteCompresenza(), l.getMateriaCompresenza(),
-                room, getClass(l.getClasse()), l.getOra(), l.getGiorno(),
+                room, (l.getClasse()), l.getOra(), l.getGiorno(),
                 orario);
     }
 

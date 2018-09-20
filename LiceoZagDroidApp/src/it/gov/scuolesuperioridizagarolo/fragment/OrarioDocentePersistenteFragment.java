@@ -7,14 +7,14 @@ import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
  */
 public class OrarioDocentePersistenteFragment extends OrarioDocenteNonPersistenteFragment {
     @Override
-    protected void saveFiltrerValue(String filtro) {
+    protected void persistFiltrerValue(String filtro) {
         final SharedPreferenceWrapper p = SharedPreferenceWrapper.getCommonInstance(getMainActivity());
         p.setUltimoDocente(filtro);
 
     }
 
     @Override
-    protected String getSavedFiltrerValue() {
+    protected String retrievePersistedFiltrerValue() {
         final SharedPreferenceWrapper p = SharedPreferenceWrapper.getCommonInstance(getMainActivity());
         return p.getUltimoDocente();
     }

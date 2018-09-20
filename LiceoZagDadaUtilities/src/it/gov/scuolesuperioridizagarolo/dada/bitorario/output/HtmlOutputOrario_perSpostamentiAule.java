@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 //import dada.bitorario.data.*;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EPaperFormat;
@@ -31,11 +32,11 @@ public class HtmlOutputOrario_perSpostamentiAule extends HtmlOutputOrario {
 
     @Override
     protected String getLezione(BitOrarioGrigliaOrario griglia, NoteVariazioniBitOrarioGrigliaOrario note, EOra o, EGiorno s, String x) {
-        final TreeSet<String> classi = griglia.cambiDiAula(o, s);
+        final TreeSet<ClassData> classi = griglia.cambiDiAula(o, s);
         StringBuilder sb = new StringBuilder();
         int cambi = 0;
         int uscita = 0;
-        for (String classe : classi) {
+        for (ClassData classe : classi) {
             final String s1 = griglia.dettaglioCambiaAula(classe, o, s);
             if (s1.toLowerCase().contains("uscita"))
                 uscita++;

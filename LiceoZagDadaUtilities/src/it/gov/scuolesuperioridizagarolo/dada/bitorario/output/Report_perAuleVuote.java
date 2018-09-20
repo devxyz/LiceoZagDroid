@@ -42,14 +42,14 @@ public class Report_perAuleVuote {
             for (EGiorno settimana : EGiorno.values()) {
                 if (!settimana.flagGiornoDiLezione()) continue;
 
-                final TreeSet<String> l = o.getAuleVuote(ora, settimana);
+                final TreeSet<RoomData> l = o.getAuleVuote(ora, settimana);
                 p.print("<td style='border:1px solid black; text-align:left;padding-left:5px'>");
-                for (String s : l) {
-                    final RoomData room = ClassesAndRoomContainer.getRoom(s);
+                for (RoomData s : l) {
+                    final RoomData room = (s);
                     if (room.flagAulaFittizia()) continue;
                     if (room.maxStudents == 0) continue;
 
-                    p.print("<b>" + s + "</b> - " + ClassesAndRoomContainer.getRoom(s).maxStudents + " posti <br>");
+                    p.print("<b>" + s + "</b> - " + (s).maxStudents + " posti <br>");
                 }
                 p.print("</td>");
 

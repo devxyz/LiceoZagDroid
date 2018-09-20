@@ -166,8 +166,8 @@ public class UpdateThreadArticoliUtil {
 
 
             //ArticoloTypeCircolare t=new ArticoloTypeCircolare()
-            //aa.setJsonClass(t.getClass().getName());
-            //aa.setJsonContent(t.getClass().getName());
+            //aa.setJsonClass(t.parseClass().getName());
+            //aa.setJsonContent(t.parseClass().getName());
 
             ris.articoliByRemoteId.put(aa.getRemoteId(), aa);
 

@@ -1,6 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.model.bitorario;
 
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
@@ -15,21 +15,22 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
     private String materiaPrincipale;
     private String docenteCompresenza;
     private String materiaCompresenza;
-    private String nomeAula;
-    private String classe;
+    private RoomData aula;
+    private ClassData classe;
     private EOra ora;
     private EGiorno giorno;
     private String note;
     private BitOrarioOraEnumTipoLezione tipoLezione;
 
     //ora lezione
-    private BitOrarioOraLezione(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, String nomeAula, String classe, EOra ora, EGiorno giorno, BitOrarioOraEnumTipoLezione t) {
+    private BitOrarioOraLezione(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza,
+                                RoomData nomeAula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioOraEnumTipoLezione t) {
         this.docentePrincipale = normalize(docentePrincipale);
         this.materiaPrincipale = normalize(materiaPrincipale);
         this.docenteCompresenza = normalize(docenteCompresenza);
         this.materiaCompresenza = normalize(materiaCompresenza);
-        this.nomeAula = normalize(nomeAula);
-        this.classe = normalize(classe);
+        this.aula = (nomeAula);
+        this.classe = (classe);
         this.ora = ora;
         this.giorno = giorno;
         this.tipoLezione = t;
@@ -45,11 +46,11 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
 
     //gestire note
     //ora lab
-    public static BitOrarioOraLezione creaOraCompresenza(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, String nomeAula, String classe, EOra ora, EGiorno giorno) {
+    public static BitOrarioOraLezione creaOraCompresenza(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, RoomData nomeAula, ClassData classe, EOra ora, EGiorno giorno) {
         return new BitOrarioOraLezione(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, nomeAula, classe, ora, giorno, BitOrarioOraEnumTipoLezione.LEZIONE_CON_COMPRESENZA);
     }
 
-    public static BitOrarioOraLezione creaOraDocenteSingolo(String docentePrincipale, String materiaPrincipale, String nomeAula, String classe, EOra ora, EGiorno giorno) {
+    public static BitOrarioOraLezione creaOraDocenteSingolo(String docentePrincipale, String materiaPrincipale, RoomData nomeAula, ClassData classe, EOra ora, EGiorno giorno) {
         return new BitOrarioOraLezione(docentePrincipale, materiaPrincipale, null, null, nomeAula, classe, ora, giorno, BitOrarioOraEnumTipoLezione.LEZIONE_SINGOLA);
     }
 
@@ -62,13 +63,6 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
         return _parent != null;
     }
 
-    public RoomData getAula() {
-        try {
-            return ClassesAndRoomContainer.getRoom(this);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Aula errata per " + this.toStringShort(), e);
-        }
-    }
 
     public void appendNote(String note) {
         if (this.note == null) {
@@ -87,20 +81,12 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
         this.note = note;
     }
 
-    public BitOrarioOraLezione clonaLezioneInAltraAula(String nuovaaula) {
-        return new BitOrarioOraLezione(
-                getDocentePrincipale(), getMateriaPrincipale(),
-                getDocenteCompresenza(), getMateriaCompresenza(),
-                nuovaaula, getClasse(),
-                getOra(), getGiorno(),
-                getTipoLezione());
-    }
 
     public BitOrarioOraLezione clonaLezioneInAltraAula(RoomData nuovaaula) {
         return new BitOrarioOraLezione(
                 getDocentePrincipale(), getMateriaPrincipale(),
                 getDocenteCompresenza(), getMateriaCompresenza(),
-                nuovaaula.roomname, getClasse(),
+                nuovaaula, getClasse(),
                 getOra(), getGiorno(),
                 getTipoLezione());
     }
@@ -131,9 +117,9 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
                 return ora.getProgressivOra() + "° ora " + giorno + ": DISPOSIZIONE - " + getDocentePrincipale();
 
             case LEZIONE_CON_COMPRESENZA:
-                return ora.getProgressivOra() + "° ora " + giorno + ": " + getMateriaPrincipale() + " - " + getDocentePrincipale() + "/" + getDocenteCompresenza() + "(aula " + getNomeAula() + ")";
+                return ora.getProgressivOra() + "° ora " + giorno + ": " + getMateriaPrincipale() + " - " + getDocentePrincipale() + "/" + getDocenteCompresenza() + "(aula " + getAula() + ")";
             case LEZIONE_SINGOLA:
-                return ora.getProgressivOra() + "° ora " + giorno + ": " + getMateriaPrincipale() + " - " + getDocentePrincipale() + "(aula " + getNomeAula() + ")";
+                return ora.getProgressivOra() + "° ora " + giorno + ": " + getMateriaPrincipale() + " - " + getDocentePrincipale() + "(aula " + getAula() + ")";
             default:
                 return "???";
         }
@@ -180,11 +166,11 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
         return materiaCompresenza;
     }
 
-    public String getNomeAula() {
-        return nomeAula;
+    public RoomData getAula() {
+        return aula;
     }
 
-    public String getClasse() {
+    public ClassData getClasse() {
         return classe;
     }
 
@@ -215,7 +201,7 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
             return false;
         if (materiaCompresenza != null ? !materiaCompresenza.equals(that.materiaCompresenza) : that.materiaCompresenza != null)
             return false;
-        if (nomeAula != null ? !nomeAula.equals(that.nomeAula) : that.nomeAula != null) return false;
+        if (aula != null ? !aula.equals(that.aula) : that.aula != null) return false;
         if (classe != null ? !classe.equals(that.classe) : that.classe != null) return false;
         if (ora != that.ora) return false;
         if (giorno != that.giorno) return false;
@@ -229,7 +215,7 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
         result = 31 * result + (materiaPrincipale != null ? materiaPrincipale.hashCode() : 0);
         result = 31 * result + (docenteCompresenza != null ? docenteCompresenza.hashCode() : 0);
         result = 31 * result + (materiaCompresenza != null ? materiaCompresenza.hashCode() : 0);
-        result = 31 * result + (nomeAula != null ? nomeAula.hashCode() : 0);
+        result = 31 * result + (aula != null ? aula.hashCode() : 0);
         result = 31 * result + (classe != null ? classe.hashCode() : 0);
         result = 31 * result + (ora != null ? ora.hashCode() : 0);
         result = 31 * result + (giorno != null ? giorno.hashCode() : 0);

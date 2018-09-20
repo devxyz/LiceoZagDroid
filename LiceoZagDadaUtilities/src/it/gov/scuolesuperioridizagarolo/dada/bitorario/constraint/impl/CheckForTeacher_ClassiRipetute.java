@@ -3,6 +3,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.constraint.impl;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.constraint.CheckForTeacher;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 
 import java.util.ArrayList;
@@ -19,24 +20,24 @@ public class CheckForTeacher_ClassiRipetute extends CheckForTeacher {
         StringBuilder sb = new StringBuilder();
 
         //per ogni classe il numero di segnalazioni
-        Map<String, ArrayList<String>> ris = new TreeMap<>();
+        Map<ClassData, ArrayList<String>> ris = new TreeMap<>();
 
         for (EGiorno e : EGiorno.values()) {
 
             if (!e.flagGiornoDiLezione()) continue;
             final ArrayList<BitOrarioOraLezione> lezioneConDocente = l.getLezioneConDocente(e, nomeDocente);
             int count = 0;
-            Map<String, Integer> lezioniPerClasse = new TreeMap<>();
+            Map<ClassData, Integer> lezioniPerClasse = new TreeMap<>();
             for (int i = 0; i < lezioneConDocente.size(); i++) {
                 if (lezioneConDocente.get(i).getClasse() == null) continue;
 
-                final String classe = lezioneConDocente.get(i).getClasse();
+                final ClassData classe = lezioneConDocente.get(i).getClasse();
                 int v = lezioniPerClasse.get(classe) == null ? 0 : lezioniPerClasse.get(classe);
                 lezioniPerClasse.put(classe, v + 1);
             }
 
-            for (Map.Entry<String, Integer> x : lezioniPerClasse.entrySet()) {
-                final String classe = x.getKey();
+            for (Map.Entry<ClassData, Integer> x : lezioniPerClasse.entrySet()) {
+                final ClassData classe = x.getKey();
                 String str = null;
                 if (x.getValue() == 2) {
                     str = "\n- " + classe + " lezione svolta su " + x.getValue() + " ore (" + e + ")";
@@ -56,11 +57,11 @@ public class CheckForTeacher_ClassiRipetute extends CheckForTeacher {
 
         }
 
-        for (Map.Entry<String, ArrayList<String>> x : ris.entrySet()) {
+        for (Map.Entry<ClassData, ArrayList<String>> x : ris.entrySet()) {
             final ArrayList<String> a = x.getValue();
             Collections.sort(a);
 
-            final String classe = x.getKey().split("-")[0];
+            final String classe = x.getKey().className;
 
             int oreTotali = l.getOreTotaliDocenteClasse(nomeDocente, classe);
             if (a.size() == 1) {

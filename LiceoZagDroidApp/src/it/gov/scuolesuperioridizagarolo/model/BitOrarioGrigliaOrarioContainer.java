@@ -2,6 +2,8 @@ package it.gov.scuolesuperioridizagarolo.model;
 
 import android.util.Log;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 
 import java.util.*;
 
@@ -17,16 +19,16 @@ public class BitOrarioGrigliaOrarioContainer {
         System.out.println(g.isValid(new OnlyDate(11, 1, 2018)));
     }
 
-    public Set<String> getAule() {
-        Set<String> ris = new TreeSet<>();
+    public Set<RoomData> getAule() {
+        Set<RoomData> ris = new TreeSet<>();
         for (BitOrarioGrigliaOrarioItem x : sortByremoteIdDesc) {
             ris.addAll(x.orario.getAule());
         }
         return ris;
     }
 
-    public Set<String> getClassi() {
-        Set<String> ris = new TreeSet<>();
+    public Set<ClassData> getClassi() {
+        Set<ClassData> ris = new TreeSet<>();
         for (BitOrarioGrigliaOrarioItem x : sortByremoteIdDesc) {
             ris.addAll(x.orario.getClassi());
         }

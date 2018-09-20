@@ -2,6 +2,7 @@ package utility.importProgrammiSvolti;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.MainParserGeneraStampeOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -128,9 +129,9 @@ public class MainImportaProgrammiSvolti_201718 {
             }
 
         final BitOrarioGrigliaOrario orarioTotale = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(new File(MainParserGeneraStampeOrario.DEBUG_FOLDER_INPUT));
-        final TreeSet<String> classi = orarioTotale.getClassi();
-        for (String c : classi) {
-            File progClasse = new File(folderOut, "LICEO/" + c.toUpperCase());
+        final TreeSet<ClassData> classi = orarioTotale.getClassi();
+        for (ClassData c : classi) {
+            File progClasse = new File(folderOut, "LICEO/" + c.className.toUpperCase());
             if (!progClasse.exists())
                 continue;
 

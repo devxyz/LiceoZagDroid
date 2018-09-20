@@ -3,7 +3,6 @@ package it.gov.scuolesuperioridizagarolo.model.bitorario.constraint;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
@@ -36,11 +35,11 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
      */
     public static List<LessonConstraint_OreConsecutiveStessaAula> genera(BitOrarioGrigliaOrario orario) {
         List<LessonConstraint_OreConsecutiveStessaAula> ris = new ArrayList<>();
-        final TreeSet<String> classi = orario.getClassi();
+        final TreeSet<ClassData> classi = orario.getClassi();
 
-        for (String classe : classi) {
+        for (ClassData classe : classi) {
             final EGiorno[] giorni = EGiorno.values();
-            final ClassData classeD = ClassesAndRoomContainer.getClass(classe);
+            final ClassData classeD = classe;
             for (EGiorno giorno : giorni) {
 
 
@@ -53,9 +52,9 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
                     final BitOrarioOraLezione l = orario.getLezioneInClasse(ora, giorno, classe);
                     final BitOrarioOraLezione lnext = orario.getLezioneInClasse(ora.next(), giorno, classe);
                     if (l == null) continue;
-                    if (l.getNomeAula() == null) continue;
+                    if (l.getAula() == null) continue;
                     if (lnext == null) continue;
-                    if (lnext.getNomeAula() == null) continue;
+                    if (lnext.getAula() == null) continue;
                     if (l.getMateriaPrincipale().equals(lnext.getMateriaPrincipale())) {
                         ris.add(new LessonConstraint_OreConsecutiveStessaAula(classeD, giorno, ora, ora.next()));
                     }
@@ -75,7 +74,7 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
         if (this.classe == classe)
             if (this.giorno.equals(giorno)) {
                 if (this.ora1.equals(ora)) {
-                    final BitOrarioOraLezione altraLezione = orario.getLezioneInClasse(ora2, giorno, classe.classname);
+                    final BitOrarioOraLezione altraLezione = orario.getLezioneInClasse(ora2, giorno, classe);
                     if (altraLezione != null) {
                         final RoomData altraAula = altraLezione.getAula();
                         if (altraAula != null) {

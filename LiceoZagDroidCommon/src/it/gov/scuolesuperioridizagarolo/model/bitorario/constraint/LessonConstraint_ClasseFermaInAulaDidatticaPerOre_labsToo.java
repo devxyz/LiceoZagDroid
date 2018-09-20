@@ -21,7 +21,7 @@ public class LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo extends A
 
 
     public LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(String c, String aula, EGiorno giorno, EOra... ore) {
-        this(ClassesAndRoomContainer.getClass(c), ClassesAndRoomContainer.getRoom(aula), giorno, ore);
+        this(ClassesAndRoomContainer.parseClass(c), ClassesAndRoomContainer.parseRoom(aula), giorno, ore);
     }
 
     public LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(ClassData c, RoomData aula, EGiorno giorno, EOra... ore) {

@@ -21,7 +21,7 @@ public class LessonConstraint_ClasseNonInAula_labsToo extends AbstractLessonCons
 
 
     public LessonConstraint_ClasseNonInAula_labsToo(String c, String aula, EGiorno[] giorno) {
-        this(ClassesAndRoomContainer.getClass(c), ClassesAndRoomContainer.getRoom(aula), giorno);
+        this(ClassesAndRoomContainer.parseClass(c), ClassesAndRoomContainer.parseRoom(aula), giorno);
 
     }
 

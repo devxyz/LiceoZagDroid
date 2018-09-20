@@ -3,7 +3,6 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.engine;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraEnumTipoLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraintContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
@@ -40,7 +39,7 @@ public class SostituzioneAuleEngine3Util {
             return false;
 
         //salta uscite didattiche
-        if (lezione.getAula()== RoomData.USCITA_DIDATTICA)
+        if (lezione.getAula() == RoomData.USCITA_DIDATTICA)
             return false;
 
         //controlla se lezione e' OK
@@ -58,7 +57,7 @@ public class SostituzioneAuleEngine3Util {
                 continue;
 
             //salta lezioni in uscita didattica
-            if (x.getAula()==RoomData.USCITA_DIDATTICA)
+            if (x.getAula() == RoomData.USCITA_DIDATTICA)
                 continue;
 
             lezioni.add(x);
@@ -85,8 +84,8 @@ public class SostituzioneAuleEngine3Util {
                     if (i != 0) return i;
                 }
 
-                if (o1.getNomeAula() != null) {
-                    i = o1.getNomeAula().compareTo(o2.getNomeAula());
+                if (o1.getAula() != null) {
+                    i = o1.getAula().compareTo(o2.getAula());
                     if (i != 0) return i;
                 }
 
@@ -106,7 +105,7 @@ public class SostituzioneAuleEngine3Util {
         final ArrayList<BitOrarioOraLezione> lezioni1 = o.getLezioni(ora, giorno);
         final ArrayList<BitOrarioOraLezione> lezioniParallele = new ArrayList<>();
         for (BitOrarioOraLezione xl : lezioni1) {
-            if (xl.getNomeAula() != null)
+            if (xl.getAula() != null)
                 lezioniParallele.add(xl);
         }
 
@@ -115,8 +114,8 @@ public class SostituzioneAuleEngine3Util {
             public int compare(BitOrarioOraLezione a, BitOrarioOraLezione b) {
 
 
-                RoomData o1 = ClassesAndRoomContainer.getRoom(a.getNomeAula());
-                RoomData o2 = ClassesAndRoomContainer.getRoom(b.getNomeAula());
+                RoomData o1 = (a.getAula());
+                RoomData o2 = (b.getAula());
 
                 final int i = Integer.valueOf(o1.maxStudents).compareTo(o2.maxStudents);
                 if (i != 0)
@@ -128,10 +127,10 @@ public class SostituzioneAuleEngine3Util {
         return lezioniParallele;
     }
 
-    static ArrayList<RoomData> toRoomData(Collection<String> aule) {
+    static ArrayList<RoomData> toRoomData(Collection<RoomData> aule) {
         ArrayList<RoomData> ris = new ArrayList<>();
-        for (String s : aule) {
-            ris.add(ClassesAndRoomContainer.getRoom(s));
+        for (RoomData s : aule) {
+            ris.add((s));
         }
         return ris;
     }

@@ -22,9 +22,9 @@ public class HtmlOutputOrario_perAule_con_responsabili {
         p.print("<html><body>");
         String titolo = o.getTitolo();
 
-        final TreeSet<String> aule = o.getAule();
-        for (String a : aule) {
-            final RoomData room = ClassesAndRoomContainer.getRoom(a);
+        final TreeSet<RoomData> aule = o.getAule();
+        for (RoomData a : aule) {
+            final RoomData room = (a);
             if (room.flagAulaFittizia()) continue;
             if (room.maxStudents == 0) continue;
 
@@ -54,7 +54,7 @@ public class HtmlOutputOrario_perAule_con_responsabili {
                     if (lezioneInAula.size() > 0) {
                         StringBuilder sb = new StringBuilder();
                         for (BitOrarioOraLezione s : lezioneInAula) {
-                            final boolean chiusuraPC = o.oraLezioneChiusuraPC(s.getNomeAula(), settimana, ora);
+                            final boolean chiusuraPC = o.oraLezioneChiusuraPC(s.getAula(), settimana, ora);
                             final boolean consegnaRegistro = o.oraLezioneConsegnaRegistro(s.getClasse(), settimana, ora);
                             if (chiusuraPC || consegnaRegistro) {
                                 sb.append("<b>" + s.getDocentePrincipale() + " (" + s.getClasse() + "):<br></b>");

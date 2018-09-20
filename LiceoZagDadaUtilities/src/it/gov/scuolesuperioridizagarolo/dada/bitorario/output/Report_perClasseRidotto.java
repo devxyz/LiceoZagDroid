@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EPaperFormat;
@@ -24,6 +25,16 @@ public class Report_perClasseRidotto {
         return cons.contains("" + c);
     }
 
+    public static String abbreviazioneMateria(BitOrarioOraLezione ll) {
+
+        final String materiaPrincipale = ll.getMateriaPrincipale();
+        int min = materiaPrincipale.contains(".") ? Math.min(materiaPrincipale.length(), 6) : Math.min(materiaPrincipale.length(), 3);
+        while (min > 3 && !isConsanant(materiaPrincipale.charAt(min - 1))) {
+            min--;
+        }
+        return ll.getMateriaPrincipale().substring(0, min);
+    }
+
     public void print(BitOrarioGrigliaOrario o, NoteVariazioniBitOrarioGrigliaOrario note, File f, EPaperFormat format) throws IOException {
         PrintStream p = new PrintStream(f);
         p.print("<html><body>");
@@ -33,8 +44,8 @@ public class Report_perClasseRidotto {
         int count = format == EPaperFormat.A4 ? 11 : 20;
         p.println("<h1>" + o.getTitolo() + "</h1>");
 
-        final TreeSet<String> classi = o.getClassi();
-        for (String classe : classi) {
+        final TreeSet<ClassData> classi = o.getClassi();
+        for (ClassData classe : classi) {
             if (count <= 0) {
                 count = format == EPaperFormat.A4 ? 11 : 20;
                 fineTabella(p);
@@ -74,7 +85,7 @@ public class Report_perClasseRidotto {
 
                         } else {
 
-                            String aulaBreve = ll.getNomeAula() != null && ll.getNomeAula().contains("_") ? ll.getNomeAula().split("_")[0] : ll.getNomeAula();
+                            String aulaBreve = ll.getAula() != null ? ll.getAula().simpleName() : "-";
                             p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center'><b>" + abbreviazioneMateria(ll) +
                                     "</b><br><span style=''> (" + aulaBreve + ")" + x + "</span></td>");
                         }
@@ -90,16 +101,6 @@ public class Report_perClasseRidotto {
         fineTabella(p);
         p.print("</body></html>");
         p.close();
-    }
-
-    public static String abbreviazioneMateria(BitOrarioOraLezione ll) {
-
-        final String materiaPrincipale = ll.getMateriaPrincipale();
-        int min = materiaPrincipale.contains(".") ? Math.min(materiaPrincipale.length(), 6) : Math.min(materiaPrincipale.length(), 3);
-        while (min > 3 && !isConsanant(materiaPrincipale.charAt(min - 1))) {
-            min--;
-        }
-        return ll.getMateriaPrincipale().substring(0, min);
     }
 
     private void fineTabella(PrintStream p) {

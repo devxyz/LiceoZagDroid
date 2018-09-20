@@ -44,7 +44,7 @@ public class HtmlOutputOrario_perDocenti extends HtmlOutputOrario {
         }
 
         if (l.getClasse() != null)
-            return "<center style='font-size:12px'> <b>" + l.getClasse() + "</b> (" + l.getNomeAula() + ") - <span style='font-size:12px'>" + l.getMateriaPrincipale().toLowerCase() + "</span> " + n + "</center>";
+            return "<center style='font-size:12px'> <b>" + l.getClasse() + "</b> (" + l.getAula() + ") - <span style='font-size:12px'>" + l.getMateriaPrincipale().toLowerCase() + "</span> " + n + "</center>";
         else
             return "<center style='color:red;font-size:18px'> <b>" + l.getMateriaPrincipale().toUpperCase() + "</span>" + n + "</center>";
     }

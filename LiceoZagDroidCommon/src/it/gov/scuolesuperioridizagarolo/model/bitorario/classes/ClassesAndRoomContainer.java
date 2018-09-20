@@ -1,7 +1,5 @@
 package it.gov.scuolesuperioridizagarolo.model.bitorario.classes;
 
-import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
-
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
@@ -10,45 +8,38 @@ import java.util.TreeMap;
  * Elenco dai per aule e classi
  */
 public class ClassesAndRoomContainer {
-    public static final String USCITA_DIDATTICA = "###";
     private static final Map<String, RoomData> aule = new TreeMap<>();
     //public static class Class
     private static final Map<String, ClassData> classi = new TreeMap<>();
 
     static {
         for (ClassData c : ClassData.values()) {
-            classi.put(c.classname.toUpperCase(), c);
+            classi.put(c.className.toUpperCase(), c);
         }
         for (RoomData c : RoomData.values()) {
-            aule.put(c.roomname.toUpperCase(), c);
+            aule.put(c.roomName.toUpperCase(), c);
         }
     }
 
-    public static RoomData USCITA_DIDATTICA() {
-        return RoomData.USCITA_DIDATTICA;
-    }
-
-    public static RoomData getRoom(BitOrarioOraLezione l) {
-        return getRoom(l.getNomeAula());
-    }
-
-    public static RoomData getRoom(String aula) {
+    public static RoomData parseRoom(String aula) {
         if (aula == null) return null;
 
         //final RoomData roomData = aule.get(aula.split("_")[0].toUpperCase());
         final RoomData roomData = aule.get(aula.toUpperCase());
         if (roomData == null) {
-            throw new IllegalArgumentException("Aula " + aula + " inesistente");
+//            throw new IllegalArgumentException("Aula " + aula + " inesistente");
+            return RoomData.AULA_SCONOSCIUTA;
         }
 
         return roomData;
     }
 
 
-    public static ClassData getClass(String classe) {
+    public static ClassData parseClass(String classe) {
         final ClassData classData = classi.get(classe.toUpperCase());
         if (classData == null) {
-            throw new IllegalArgumentException("Classe " + classe + " inesistente");
+            return ClassData.CLASS_SCONOSCIUTA;
+         //   throw new IllegalArgumentException("Classe " + classe + " inesistente");
         }
         return classData;
     }
@@ -57,12 +48,26 @@ public class ClassesAndRoomContainer {
         return new ArrayList<>(classi.values());
     }
 
-    public static ArrayList<RoomData> getAllRooms() {
-        return new ArrayList<>(aule.values());
+    public static ArrayList<ClassData> getAllValidClasses() {
+        final ArrayList<ClassData> ris = new ArrayList<>();
+        for (ClassData x : getAllClasses()) {
+            if (x.flagClasseFittizia()) continue;
+            ris.add(x);
+        }
+        return ris;
     }
 
-    public static ClassData getClass(BitOrarioOraLezione l) {
-        return getClass(l.getClasse());
+    public static ArrayList<RoomData> getAllValidRooms() {
+        final ArrayList<RoomData> ris = new ArrayList<>();
+        for (RoomData x : getAllRooms()) {
+            if (x.flagAulaFittizia()) continue;
+            ris.add(x);
+        }
+        return ris;
+    }
+
+    public static ArrayList<RoomData> getAllRooms() {
+        return new ArrayList<>(aule.values());
     }
 
     public static void main(String[] args) {

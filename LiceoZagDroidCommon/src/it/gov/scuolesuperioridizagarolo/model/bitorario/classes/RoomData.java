@@ -47,7 +47,7 @@ public enum RoomData {
     F31_PALESTRA("F31_PALESTRA", "Palestra", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     F32_SCI("F32_SCI", "Laboratorio di Scienze", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_SI);
 
-    public final String roomname;
+    public final String roomName;
     public final String usage;
     public final int maxStudents;
     public final int idRoom;
@@ -56,7 +56,7 @@ public enum RoomData {
     public final boolean flagPRESACORRENTE;
 
     RoomData(String roomname, String usage, int maxStudents, int idRoom, ERoomArea location, boolean flagLIM, boolean flagPRESACORRENTE) {
-        this.roomname = roomname;
+        this.roomName = roomname;
         this.usage = usage;
         this.maxStudents = maxStudents;
         this.idRoom = idRoom;
@@ -73,7 +73,7 @@ public enum RoomData {
     }
 
     public String simpleName() {
-        return roomname.split("_")[0];
+        return roomName.split("_")[0];
     }
 
     @Override
@@ -85,7 +85,7 @@ public enum RoomData {
     public static RoomData search(String s) {
         if (s == null) return AULA_SCONOSCIUTA;
         for (RoomData xx : values()) {
-            if (xx.roomname.equalsIgnoreCase(s)) return xx;
+            if (xx.roomName.equalsIgnoreCase(s)) return xx;
         }
         return AULA_SCONOSCIUTA;
     }

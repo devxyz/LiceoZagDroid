@@ -20,7 +20,7 @@ public class LessonConstraint_ClasseFermaInAulaDidattica_ignoreLabs extends Abst
 
 
     public LessonConstraint_ClasseFermaInAulaDidattica_ignoreLabs(String c, String aula, EGiorno... giorno) {
-        this(ClassesAndRoomContainer.getClass(c), ClassesAndRoomContainer.getRoom(aula), giorno);
+        this(ClassesAndRoomContainer.parseClass(c), ClassesAndRoomContainer.parseRoom(aula), giorno);
     }
 
     public LessonConstraint_ClasseFermaInAulaDidattica_ignoreLabs(ClassData c, RoomData aula, EGiorno... giorno) {

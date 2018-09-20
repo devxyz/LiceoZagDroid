@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -38,10 +39,10 @@ public class HtmlMobile_Variazioni {
         String prec = "";
         for (BitOrarioOraLezione x : lezioniModificate) {
             String docente = (x.getDocentePrincipale() + (x.getDocenteCompresenza() != null ? " " + x.getDocenteCompresenza() : " ")).trim();
-            String precAula = "";
+            RoomData precAula = null;
             final BitOrarioOraLezione precLezione = orarioStandard.getLezioneConDocente(x.getOra(), x.getGiorno(), x.getDocentePrincipale());
-            if (precLezione != null && precLezione.getNomeAula() != null) {
-                precAula = precLezione.getNomeAula();
+            if (precLezione != null && precLezione.getAula() != null) {
+                precAula = precLezione.getAula();
             }
 
             if (!prec.equals(x.getGiorno().getNome())) {
@@ -57,7 +58,7 @@ public class HtmlMobile_Variazioni {
             sb.append("<td style='background-color:" + color + "'>" + (docente) + "</td>\n");
             sb.append("<td style='background-color:" + color + "'>" + x.getMateriaPrincipale() + "</td>\n");
             sb.append("<td style='background-color:" + color + "'>" + precAula + "</td>\n");
-            sb.append("<td style='font-size:150%;font-weight:bolder;background-color:" + color + "'>" + (x.getNomeAula() != null ? x.getNomeAula() : "") + "</td>\n");
+            sb.append("<td style='font-size:150%;font-weight:bolder;background-color:" + color + "'>" + (x.getAula() != null ? x.getAula() : "") + "</td>\n");
             sb.append("<td style='background-color:" + color + "'>" + (x.getNote() != null ? x.getNote() : "") + "</td>\n");
 
             sb.append("</tr>\n");

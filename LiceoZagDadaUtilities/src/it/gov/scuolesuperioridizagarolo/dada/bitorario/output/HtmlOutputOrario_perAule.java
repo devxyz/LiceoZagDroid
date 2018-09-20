@@ -24,20 +24,20 @@ public class HtmlOutputOrario_perAule extends HtmlOutputOrario {
     @Override
     protected int getPrintForPage(EPaperFormat paperFormat) {
         if (paperFormat == EPaperFormat.A3)
-            return 6;
+            return 5;
         else
             return 1;
     }
 
     @Override
     protected Collection<String> raggruppaPer(BitOrarioGrigliaOrario o) {
-        final TreeSet<String> aule = o.getAule();
+        final TreeSet<RoomData> aule = o.getAule();
         TreeSet<String> ris = new TreeSet<>();
-        for (String a : aule) {
-            final RoomData room = ClassesAndRoomContainer.getRoom(a);
+        for (RoomData a : aule) {
+            final RoomData room = (a);
             if (room.flagAulaFittizia()) continue;
             if (room.maxStudents == 0) continue;
-            ris.add(a);
+            ris.add(a.roomName);
         }
 
         return ris;
@@ -45,7 +45,7 @@ public class HtmlOutputOrario_perAule extends HtmlOutputOrario {
 
     @Override
     protected String getLezione(BitOrarioGrigliaOrario griglia, NoteVariazioniBitOrarioGrigliaOrario note, EOra o, EGiorno s, String classe) {
-        final List<BitOrarioOraLezione> lezioni = griglia.getLezioneInAula(o, s, classe);
+        final List<BitOrarioOraLezione> lezioni = griglia.getLezioneInAula(o, s, ClassesAndRoomContainer.parseRoom(classe));
         if (lezioni == null || lezioni.size() == 0) return "";
         StringBuilder sb = new StringBuilder();
         for (BitOrarioOraLezione l : lezioni) {

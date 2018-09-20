@@ -73,7 +73,7 @@ public class Report_perDocentiRidottoDettagliato {
 
                         } else {
 
-                            String aulaBreve = (ll.getNomeAula() != null && ll.getNomeAula().contains("_")) ? ll.getNomeAula().split("_")[0] : ll.getNomeAula();
+                            String aulaBreve = ll.getAula() != null ? ll.getAula().simpleName() : "-";
                             p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center'><b>" + ll.getClasse() +
                                     "</b><br>" +
                                     reduce(ll.getMateriaPrincipale()) + "<br>" +

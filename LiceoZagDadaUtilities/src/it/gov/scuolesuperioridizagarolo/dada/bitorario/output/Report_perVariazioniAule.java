@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,12 +51,12 @@ public class Report_perVariazioniAule {
         String prec = "";
         for (BitOrarioOraLezione x : lezioniModificate) {
             String docente = (x.getDocentePrincipale() + (x.getDocenteCompresenza() != null ? " " + x.getDocenteCompresenza() : " ")).trim();
-            String precAula = "";
+            RoomData precAula = null;
             final BitOrarioOraLezione precLezione = vecchioOrario.getLezioneConDocente(x.getOra(), x.getGiorno(), x.getDocentePrincipale());
 
 
-            if (precLezione != null && precLezione.getNomeAula() != null) {
-                precAula = precLezione.getNomeAula();
+            if (precLezione != null && precLezione.getAula() != null) {
+                precAula = precLezione.getAula();
             }
 
             if (!prec.equals(x.getGiorno().getNome())) {
@@ -70,7 +71,7 @@ public class Report_perVariazioniAule {
             out.println("<td style=''>" + (docente) + "</td>\n");
             out.println("<td style=''>" + x.getMateriaPrincipale() + "</td>\n");
             out.println("<td style=''>" + precAula + "</td>\n");
-            out.println("<td style='font-weight:bolder;'>" + (x.getNomeAula() != null ? x.getNomeAula() : "") + "</td>\n");
+            out.println("<td style='font-weight:bolder;'>" + (x.getAula() != null ? x.getAula() : "") + "</td>\n");
             out.println("<td style=''>" + (x.getNote() != null ? x.getNote() : "") + "</td>\n");
 
             out.println("</tr>\n");

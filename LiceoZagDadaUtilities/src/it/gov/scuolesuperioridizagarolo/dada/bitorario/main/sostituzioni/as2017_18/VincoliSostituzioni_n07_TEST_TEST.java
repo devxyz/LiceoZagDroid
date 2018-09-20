@@ -3,6 +3,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.as2017
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule3;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.*;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
@@ -98,7 +99,7 @@ public class VincoliSostituzioni_n07_TEST_TEST extends AbstractVincoliSostituzio
         }
 
 
-        final TreeSet<String> classi = orarioTotale.getClassi();
+        final TreeSet<ClassData> classi = orarioTotale.getClassi();
 
 
         //lavori

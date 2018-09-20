@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
@@ -24,7 +25,7 @@ public class HtmlMobile_Docenti {
         final Collection<String> strings = o.getDocenti();
 
         for (String docente : strings) {
-            PrintStream p = new PrintStream(new File(f, docente.replaceAll("'","_")));
+            PrintStream p = new PrintStream(new File(f, docente.replaceAll("'", "_")));
 
             p.println("<table cellspacing=0 style='width:100%;table-layout: fixed; border:4px solid black; '>");
 
@@ -88,14 +89,14 @@ public class HtmlMobile_Docenti {
                                 break;
                             }
                             default: {
-                                final String classe = lezione.getClasse();
+                                final ClassData classe = lezione.getClasse();
                                 final String aula = lezione.getAula() == null ? "-" : lezione.getAula().simpleName();
-                                String materia=Report_perClasseRidotto.abbreviazioneMateria(lezione);
+                                String materia = Report_perClasseRidotto.abbreviazioneMateria(lezione);
 
                                 p.printf("<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'>" +
                                         "<center>" +
                                         "<span style='color:blue;font-size:200%%'><b>%s</b></span><br><span style='font-size:110%%'>%s <b>%s</b></span>%s%s</center>" +
-                                        "</td>%n", classe, materia,aula, button_dettagli, testo_dettagli);
+                                        "</td>%n", classe.className, materia, aula, button_dettagli, testo_dettagli);
                                 break;
 
                             }

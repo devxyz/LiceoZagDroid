@@ -47,14 +47,13 @@ public class HtmlMobile_AuleVuote {
                 if (ora == EOra.ENTRATA) continue;
                 if (ora == EOra.USCITA) continue;
 
-                final TreeSet<String> aule = o.getAuleVuote(ora, settimana);
+                final TreeSet<RoomData> aule = o.getAuleVuote(ora, settimana);
                 p.println("<td style='border:1px solid black; text-align:center;vertical-align: text-top;padding-left:5px'>");
                 p.println("<b style='color:red;width:100%;padding:5px'>" + ora.getProgressivOra() + "^ ora dalle " + ora.printOra() + "</b><hr>");
-                for (String s : aule) {
-                    final RoomData room = ClassesAndRoomContainer.getRoom(s);
+                for (RoomData s : aule) {
+                    final RoomData room =(s);
                     if (room.flagAulaFittizia()) continue;
-                    final String[] split = s.split("_");
-                    p.println("<b style='font-size:150%;color:blue'>" + split[0] + (split.length > 1 ? "*" : "") + "</b> <br> " + ClassesAndRoomContainer.getRoom(s).maxStudents + " posti <br>");
+                    p.println("<b style='font-size:150%;color:blue'>" + s.roomName + (s.flagAulaLaboratorioPalestra()  ? "*" : "") + "</b> <br> " + s.maxStudents + " posti <br>");
                 }
                 p.print("</td>");
 

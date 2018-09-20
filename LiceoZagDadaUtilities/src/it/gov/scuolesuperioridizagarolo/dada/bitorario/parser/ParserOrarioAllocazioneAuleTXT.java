@@ -114,10 +114,11 @@ public class ParserOrarioAllocazioneAuleTXT {
 
                     materiaPrincipale = a[0];
                     nomeAula = a[2];
-                    if (nomeAula != null && noAula && !ClassesAndRoomContainer.getRoom(nomeAula).flagAulaLaboratorioPalestra()) {
-                        nomeAula = RoomData.NON_ASSEGNATO.roomname;
+                    if (nomeAula != null && noAula && !ClassesAndRoomContainer.parseRoom(nomeAula).flagAulaLaboratorioPalestra()) {
+                        nomeAula = RoomData.NON_ASSEGNATO.roomName;
                     }
-                    l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale, nomeAula, classe, oraX, giornoX);
+                    l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale,
+                            ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
 
                 } else {
                     materiaPrincipale = a[0];
@@ -127,10 +128,11 @@ public class ParserOrarioAllocazioneAuleTXT {
                     docenteCompresenza = a[2];
                     materiaCompresenza = "compresenza";
                     nomeAula = a[3];
-                    if (nomeAula != null && noAula && !ClassesAndRoomContainer.getRoom(nomeAula).flagAulaLaboratorioPalestra()) {
-                        nomeAula = RoomData.NON_ASSEGNATO.roomname;
+                    if (nomeAula != null && noAula && !ClassesAndRoomContainer.parseRoom(nomeAula).flagAulaLaboratorioPalestra()) {
+                        nomeAula = RoomData.NON_ASSEGNATO.roomName;
                     }
-                    l = BitOrarioOraLezione.creaOraCompresenza(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, nomeAula, classe, oraX, giornoX);
+                    l = BitOrarioOraLezione.creaOraCompresenza(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza,
+                            ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
                 }
 
                 orarioTotale.add(l);

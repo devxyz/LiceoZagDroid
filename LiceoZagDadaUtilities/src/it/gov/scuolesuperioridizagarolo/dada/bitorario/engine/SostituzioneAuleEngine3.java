@@ -152,7 +152,7 @@ public class SostituzioneAuleEngine3 {
                 //System.out.println("===============================");
                 if (assegnato == null) {
                     String s = "ATTENZIONE!!!" + (lezione.getGiorno() + "\t" + lezione.getOra().getProgressivOra() + "^ ORA\t" + lezione.getDocentePrincipale() + " - " + lezione.getMateriaPrincipale() + "\tclasse " + lezione.getClasse()) +
-                            ("\tVecchia aula: " + lezione.getNomeAula()) +
+                            ("\tVecchia aula: " + lezione.getAula()) +
                             ("\tNessuna aula trovata in sostituzione\tLA SOSTITUZIONE SARA' DI NUOVO TENTATA!!!");
                     System.out.println(s);
                 } else {
@@ -189,15 +189,15 @@ public class SostituzioneAuleEngine3 {
         //lezioni parallele con cui scambiare
         final ArrayList<BitOrarioOraLezione> lezioniParallele = SostituzioneAuleEngine3Util.estraiLezioniOrdinateCrescentePerOccupazioneAula(o, ora, giorno);
 
-        final String aula0 = lezione.getNomeAula();
+        final RoomData aula0 = lezione.getAula();
 
         for (RoomData x : auleDisponibiliPerLezioneCorrente) {
-            final String aula1 = x.roomname;
+            final RoomData aula1 = x;
 
             for (BitOrarioOraLezione altraLezione : lezioniParallele) {
 
                 //salta lezioni in lab o non in aula
-                final String aula2 = altraLezione.getNomeAula();
+                final RoomData aula2 = altraLezione.getAula();
 
                 if (aula2 == null || aula1.equals(aula2))
                     continue;
@@ -205,13 +205,13 @@ public class SostituzioneAuleEngine3 {
                 for (BitOrarioOraLezione altraLezione2 : new ArrayList<>(lezioniParallele)) {
 
                     //salta lezioni in lab o non in aula
-                    final String aula3 = altraLezione2.getNomeAula();
+                    final RoomData aula3 = altraLezione2.getAula();
                     //if (aula3 == null || skipAuleSpeciali && altraLezione2.getAula().flagAulaLaboratorioPalestra())
 
                     if (aula3 == null || aula1.equals(aula3) || aula2.equals(aula3) || aula0.equals(aula3))
                         continue;
 
-                    String[] aule = new String[]{aula1, aula2, aula3};
+                    RoomData[] aule = new RoomData[]{aula1, aula2, aula3};
 
                     for (int i1 = 0; i1 < aule.length; i1++) {
                         for (int i2 = 0; i2 < aule.length; i2++) {
@@ -296,11 +296,11 @@ public class SostituzioneAuleEngine3 {
             for (BitOrarioOraLezione altraLezione : lezioniParallele) {
 
                 //salta lezioni in lab o non in aula
-                if (altraLezione.getNomeAula() == null)
+                if (altraLezione.getAula() == null)
                     continue;
 
-                final String aula1 = auleLezione.roomname;
-                final String aula2 = altraLezione.getNomeAula();
+                final RoomData aula1 = auleLezione;
+                final RoomData aula2 = altraLezione.getAula();
 
 
                 final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(aula2);
@@ -351,7 +351,7 @@ public class SostituzioneAuleEngine3 {
 
         for (RoomData a : auleVuoteX) {
             if (a == null) continue;
-            final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(a.roomname);
+            final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(a);
             if (l.checkAll(nuovaLezione, o) && s.accept(nuovaLezione, c)) {
                 regolaApplicata = String.format("regola >>> cambio con aula libera >>> \n  > %-60s  ->  %s", lezione.toStringComplete(), nuovaLezione.toStringComplete());
                 final RegolaCambioAula e = new RegolaCambioAula(regolaApplicata);

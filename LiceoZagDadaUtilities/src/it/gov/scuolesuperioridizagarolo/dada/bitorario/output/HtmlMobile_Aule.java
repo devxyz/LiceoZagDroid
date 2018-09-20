@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Collection;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * Created by stefano on 25/09/2017.
@@ -24,21 +26,21 @@ public class HtmlMobile_Aule {
 
     public void print(BitOrarioGrigliaOrario o, BitOrarioGrigliaOrario oDefault, File f) throws IOException {
 
-        final Collection<String> strings = o.getAule();
+        final TreeSet<RoomData> strings = o.getAule();
 
 
-        for (String aule : strings) {
+        for (RoomData aule : strings) {
 
-            final RoomData room = ClassesAndRoomContainer.getRoom(aule);
+            final RoomData room = (aule);
             if (room.flagAulaFittizia()) continue;
 
-            PrintStream p = new PrintStream(new File(f, aule));
+            PrintStream p = new PrintStream(new File(f, aule.simpleName()));
 
             p.println("<table cellspacing=0 style='width:100%;table-layout: fixed; border:4px solid black; '>");
 
             p.println("<tr style='border:1px solid clack' >");
             p.println("<td style='border:1px solid black; background-color:blue;color:yellow' colspan='" + (1 + EGiorno.numeroGiorniDiLezione()) + "'>");
-            p.println("<center>" + o.getTitolo() + "<br><span style='font-size:200%'><b>Aula " + aule + "</b></span></center>");
+            p.println("<center>" + o.getTitolo() + "<br><span style='font-size:200%'><b>Aula " + aule.simpleName() + "</b></span></center>");
             p.println("</td>");
             p.println("</tr>");
 
@@ -87,7 +89,7 @@ public class HtmlMobile_Aule {
                                     }
                                     default: {
                                         final String docente = lezione.getDocentePrincipale() + " " + (lezione.getDocenteCompresenza() == null ? "" : " " + lezione.getDocenteCompresenza());
-                                        final String classe = lezione.getClasse() == null ? "-" : lezione.getClasse();
+                                        final ClassData classe = lezione.getClasse() == null ? ClassData.CLASS_SCONOSCIUTA : lezione.getClasse();
 
                                         p.printf("" +
                                                 "<center>" +

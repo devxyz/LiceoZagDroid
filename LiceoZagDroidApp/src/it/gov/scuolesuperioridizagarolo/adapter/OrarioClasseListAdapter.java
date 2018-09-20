@@ -5,6 +5,7 @@ import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
 import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
@@ -16,18 +17,18 @@ import java.util.List;
  */
 public class OrarioClasseListAdapter extends AbstractOrarioListAdapter {
 
-    private String classe;
+    private ClassData classe;
 
-    public OrarioClasseListAdapter(Activity a, String classe, BitOrarioGrigliaOrarioContainer orario, OnlyDate giorno) {
+    public OrarioClasseListAdapter(Activity a, ClassData classe, BitOrarioGrigliaOrarioContainer orario, OnlyDate giorno) {
         super(a, orario, giorno, true, false, true);
         this.classe = classe;
     }
 
-    public String getClasse() {
+    public ClassData getClasse() {
         return classe;
     }
 
-    public void setClasse(String classe) {
+    public void setClasse(ClassData classe) {
         this.classe = classe;
     }
 

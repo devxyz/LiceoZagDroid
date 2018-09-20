@@ -9,6 +9,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraintContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EPaperFormat;
 import it.gov.scuolesuperioridizagarolo.util.C_DateUtil;
@@ -133,10 +134,10 @@ public class MotoreSostituzioneAule2 {
             String prec = "";
             for (BitOrarioOraLezione x : lezioniModificate) {
                 String docente = (x.getDocentePrincipale() + (x.getDocenteCompresenza() != null ? " " + x.getDocenteCompresenza() : " ")).trim();
-                String precAula = "";
+                RoomData precAula = null;
                 final BitOrarioOraLezione precLezione = orarioStandard.getLezioneConDocente(x.getOra(), x.getGiorno(), x.getDocentePrincipale());
-                if (precLezione != null && precLezione.getNomeAula() != null) {
-                    precAula = precLezione.getNomeAula();
+                if (precLezione != null && precLezione.getAula() != null) {
+                    precAula = precLezione.getAula();
                 }
 
                 if (!prec.equals(x.getGiorno().getNome())) {
@@ -152,7 +153,7 @@ public class MotoreSostituzioneAule2 {
                 sb.append("<td style='background-color:" + color + "'>" + (docente) + "</td>\n");
                 sb.append("<td style='background-color:" + color + "'>" + x.getMateriaPrincipale() + "</td>\n");
                 sb.append("<td style='background-color:" + color + "'>" + precAula + "</td>\n");
-                sb.append("<td style='font-size:150%;font-weight:bolder;background-color:" + color + "'>" + (x.getNomeAula() != null ? x.getNomeAula() : "") + "</td>\n");
+                sb.append("<td style='font-size:150%;font-weight:bolder;background-color:" + color + "'>" + (x.getAula() != null ? x.getAula() : "") + "</td>\n");
                 sb.append("<td style='background-color:" + color + "'>" + (x.getNote() != null ? x.getNote() : "") + "</td>\n");
 
                 sb.append("</tr>\n");
@@ -215,8 +216,8 @@ public class MotoreSostituzioneAule2 {
 
             // sb.append("<div style='display: block; page-break-before: always;'></div>\n");
             sb.append("<hr>");
-            sb.append("<h1 style='font-size:40px;font-weight:bolder'>Orario delle lezioni aggiornato Classe " + c.classname + "</h1>\n");
-            sb.append("<img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fwww.scuolesuperioridizagarolo.gov.it%2Forario%2Forario2.php%3Fclasse%3D" + c.classname + "&chs=400x400&choe=UTF-8&chld=L|2' alt=''>\n");
+            sb.append("<h1 style='font-size:40px;font-weight:bolder'>Orario delle lezioni aggiornato Classe " + c.className + "</h1>\n");
+            sb.append("<img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fwww.scuolesuperioridizagarolo.gov.it%2Forario%2Forario2.php%3Fclasse%3D" + c.className + "&chs=400x400&choe=UTF-8&chld=L|2' alt=''>\n");
 
         }
         sb.append("</body></html>");

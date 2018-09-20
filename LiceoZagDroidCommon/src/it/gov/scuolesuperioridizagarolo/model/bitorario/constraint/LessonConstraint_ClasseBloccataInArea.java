@@ -22,7 +22,7 @@ public class LessonConstraint_ClasseBloccataInArea extends AbstractLessonConstra
 
     public LessonConstraint_ClasseBloccataInArea(boolean ignoreLabs, String c, ERoomArea[] area, EGiorno[] giorno) {
 
-        this(ignoreLabs, ClassesAndRoomContainer.getClass(c), area, giorno);
+        this(ignoreLabs, ClassesAndRoomContainer.parseClass(c), area, giorno);
     }
 
     public LessonConstraint_ClasseBloccataInArea(boolean ignoreLabs, ClassData c, ERoomArea[] area, EGiorno[] giorno) {

@@ -38,9 +38,9 @@ public class VincoliSostituzioni_n02_17set_22set extends AbstractVincoliSostituz
  >> NON RISOLTO: Test not passed it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_AulaNonDisponibile@1f32e575 for lesson QUARTA GIOVEDI 1E_GIOVEDI.4_MATEMATICA-ALESSANDRONI(B13#)
 
  */
-        final BitOrarioOraLezione lezione1 = orarioTotale.getLezioneInClasse(EOra.SECONDA, EGiorno.MARTEDI, ClassData.CLASS_2E.classname);
-        final BitOrarioOraLezione lezione2 = orarioTotale.getLezioneInClasse(EOra.SECONDA, EGiorno.MERCOLEDI, ClassData.CLASS_1H.classname);
-        final BitOrarioOraLezione lezione3 = orarioTotale.getLezioneInClasse(EOra.QUARTA, EGiorno.GIOVEDI, ClassData.CLASS_1E.classname);
+        final BitOrarioOraLezione lezione1 = orarioTotale.getLezioneInClasse(EOra.SECONDA, EGiorno.MARTEDI, ClassData.CLASS_2E);
+        final BitOrarioOraLezione lezione2 = orarioTotale.getLezioneInClasse(EOra.SECONDA, EGiorno.MERCOLEDI, ClassData.CLASS_1H);
+        final BitOrarioOraLezione lezione3 = orarioTotale.getLezioneInClasse(EOra.QUARTA, EGiorno.GIOVEDI, ClassData.CLASS_1E);
 
 
         //orarioTotale.removeLezione(lezione1);
@@ -148,7 +148,7 @@ public class VincoliSostituzioni_n02_17set_22set extends AbstractVincoliSostituz
         }
 */
 
-        final TreeSet<String> classi = orarioTotale.getClassi();
+        final TreeSet<ClassData> classi = orarioTotale.getClassi();
 
 
         //lavori

@@ -91,7 +91,7 @@ public class VincoliSostituzioni_n06_04giugno__08giugno extends AbstractVincoliS
         }
 
 
-        final TreeSet<String> classi = orarioTotale.getClassi();
+        final TreeSet<ClassData> classi = orarioTotale.getClassi();
 
 
         //lavori
@@ -117,9 +117,9 @@ public class VincoliSostituzioni_n06_04giugno__08giugno extends AbstractVincoliS
         orarioTotale.classeInVisitaDidattica("Teatro Biennio 4 giugno", _1A, EGiorno.LUNEDI, EOra.values());
 
 
-        for (String c : classi) {
-            final ClassData aClass = ClassesAndRoomContainer.getClass(c);
-            if (aClass.classname.startsWith("1") || aClass.classname.startsWith("2")) {
+        for (ClassData c : classi) {
+            final ClassData aClass = (c);
+            if (aClass.className.startsWith("1") || aClass.className.startsWith("2")) {
                 orarioTotale.classeInVisitaDidattica("Teatro Biennio - 4 giugno", aClass, EGiorno.LUNEDI, EOra.values());
             } else {
                 orarioTotale.classeInVisitaDidattica("Teatro Triennio 5 giugno", aClass, EGiorno.MARTEDI, EOra.values());

@@ -25,14 +25,14 @@ public class CheckForTeacher_AuleRipetute extends CheckForTeacher {
                 final BitOrarioOraLezione lezioneSuccessiva = l.getLezioneConDocente(o.next(), e, nomeDocente);
                 if (lezione == null || lezioneSuccessiva == null) continue;
                 if (lezione.getClasse() == null || lezioneSuccessiva.getClasse() == null) continue;
-                if (lezione.getNomeAula() == null || lezioneSuccessiva.getNomeAula() == null) continue;
+                if (lezione.getAula() == null || lezioneSuccessiva.getAula() == null) continue;
                 if (
-                        lezione.getClasse().equalsIgnoreCase(lezioneSuccessiva.getClasse()) &&
+                        lezione.getClasse().equals(lezioneSuccessiva.getClasse()) &&
                         lezione.getMateriaPrincipale().equalsIgnoreCase(lezioneSuccessiva.getMateriaPrincipale()) &&
-                                !lezione.getNomeAula().equalsIgnoreCase(lezioneSuccessiva.getNomeAula())
+                                !lezione.getAula().equals(lezioneSuccessiva.getAula())
                         ) {
                     sb.append("Lezioni di " + nomeDocente + " della classe " + lezione.getClasse() + "(" + e + " " + o + " e " + o.next() + " ora) consecutive in aule differenti: " +
-                            lezione.getNomeAula() + " e " + lezioneSuccessiva.getNomeAula());
+                            lezione.getAula() + " e " + lezioneSuccessiva.getAula());
 
                 }
 

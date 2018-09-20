@@ -7,7 +7,7 @@ import java.util.TreeSet;
 /**
  * Created by stefano on 23/12/2017.
  */
-public class OrarioDocenteNonPersistenteFragment extends AbstractOrarioFragment<OrarioDocenteListAdapter> {
+public class OrarioDocenteNonPersistenteFragment extends AbstractOrarioFragment<OrarioDocenteListAdapter, String> {
     @Override
     protected OrarioDocenteListAdapter createAbstractOrarioListAdapter() {
         return new OrarioDocenteListAdapter(getMainActivity(), filtro, containerOrari, giornoCorrente);
@@ -20,12 +20,12 @@ public class OrarioDocenteNonPersistenteFragment extends AbstractOrarioFragment<
     }
 
     @Override
-    protected void saveFiltrerValue(String filtro) {
+    protected void persistFiltrerValue(String filtro) {
 
     }
 
     @Override
-    protected String getSavedFiltrerValue() {
+    protected String retrievePersistedFiltrerValue() {
         return null;
     }
 
@@ -42,6 +42,11 @@ public class OrarioDocenteNonPersistenteFragment extends AbstractOrarioFragment<
     @Override
     protected boolean isTimetableForRooms() {
         return false;
+    }
+
+    @Override
+    protected String filterToLabel(String filter) {
+        return filter;
     }
 
     @Override

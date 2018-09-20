@@ -6,6 +6,7 @@ import it.gov.scuolesuperioridizagarolo.dada.bitorario.parser.ParserDisposizioni
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.parser.ParserOrarioAllocazioneAuleTXT;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EPaperFormat;
@@ -80,7 +81,7 @@ public class MainParserGeneraStampeOrario {
 
         System.out.println(orarioTotale.getClassi());
 
-        final BitOrarioOraLezione lezioneInClasse = orarioTotale.getLezioneInClasse(EOra.QUINTA, EGiorno.VENERDI, "3D");
+        final BitOrarioOraLezione lezioneInClasse = orarioTotale.getLezioneInClasse(EOra.QUINTA, EGiorno.VENERDI, ClassData.CLASS_3D);
         System.out.println(lezioneInClasse);
 
 

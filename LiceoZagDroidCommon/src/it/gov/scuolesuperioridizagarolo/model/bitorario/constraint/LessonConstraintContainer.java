@@ -93,7 +93,7 @@ public class LessonConstraintContainer implements Cloneable {
             //skip disposizioni
             if (l.getTipoLezione() == BitOrarioOraEnumTipoLezione.DISPOSIZIONE)
                 continue;
-            if (l.getNomeAula() == null)
+            if (l.getAula() == null)
                 continue;
             if (l.getAula() == RoomData.USCITA_DIDATTICA)
                 continue;

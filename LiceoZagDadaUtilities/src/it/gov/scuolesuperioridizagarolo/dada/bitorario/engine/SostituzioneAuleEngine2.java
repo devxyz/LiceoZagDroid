@@ -3,7 +3,6 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.engine;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraEnumTipoLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraintContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
@@ -56,8 +55,8 @@ public class SostituzioneAuleEngine2 {
                 continue;
 
             //skip aule speciali
-/*            if (DataContainer.getRoom(lezione.nomeAula).flagAulaLaboratorioPalestra()){
-                System.out.println(DataContainer.getRoom(lezione.nomeAula).usage);
+/*            if (DataContainer.parseRoom(lezione.nomeAula).flagAulaLaboratorioPalestra()){
+                System.out.println(DataContainer.parseRoom(lezione.nomeAula).usage);
                 continue;
             }*/
 
@@ -90,7 +89,7 @@ public class SostituzioneAuleEngine2 {
             //System.out.println("===============================");
             if (nuovaAssegnazione_A.size() == 0) {
                 String s = "<tr><td>" + (lezione.getGiorno() + "</td><td>" + lezione.getOra().getProgressivOra() + "^ ORA</td><td>" + lezione.getDocentePrincipale() + " - " + lezione.getMateriaPrincipale() + "</td><td>classe " + lezione.getClasse()) +
-                        ("</td><td>Vecchia aula: " + lezione.getNomeAula()) +
+                        ("</td><td>Vecchia aula: " + lezione.getAula()) +
                         ("</td><td>Nessuna aula trovata in sostituzione</td><td>ATTENZIONE!!!</td></tr>");
                 System.out.println(s);
                 out.println(s);
@@ -106,13 +105,13 @@ public class SostituzioneAuleEngine2 {
                     final BitOrarioOraLezione a = nuovaAssegnazione_A.get(i);
 
                     StringBuilder sb = m.get(da.getClasse()) == null ? new StringBuilder() : m.get(da.getClasse());
-                    m.put(da.getClasse(), sb);
+                    m.put(da.getClasse().className, sb);
 
                     String s;
                     s = "<tr><td>" + (da.getGiorno() + "</td><td>" + da.getOra().getProgressivOra() + "° ORA </td><td>" + da.getDocentePrincipale() + " - " + da.getMateriaPrincipale() + "</td><td>classe " + da.getClasse());
-                    s += ("</td><td>Vecchia aula: " + da.getNomeAula());
+                    s += ("</td><td>Vecchia aula: " + da.getAula());
                     // s += ("</td><td>Nuova aula: <b>" + a.getNomeAula()) + "</b> rule #" + regolaApplicata + "</td></tr>";
-                    s += ("</td><td>Nuova aula: <b>" + a.getNomeAula()) + "</b></td><td>" + a.getNote() + "</td></tr>";
+                    s += ("</td><td>Nuova aula: <b>" + a.getAula()) + "</b></td><td>" + a.getNote() + "</td></tr>";
                     out.println(s);
                     sb.append(s).append("\n");
 
@@ -162,8 +161,8 @@ public class SostituzioneAuleEngine2 {
                     if (i != 0) return i;
                 }
 
-                if (o1.getNomeAula() != null) {
-                    i = o1.getNomeAula().compareTo(o2.getNomeAula());
+                if (o1.getAula() != null) {
+                    i = o1.getAula().compareTo(o2.getAula());
                     if (i != 0) return i;
                 }
 
@@ -196,10 +195,10 @@ public class SostituzioneAuleEngine2 {
         //lezioni parallele con cui scambiare
         final ArrayList<BitOrarioOraLezione> lezioniParallele = estraiLezioniOrdinateCrescentePerOccupazioneAula(o, ora, giorno);
 
-        final String aula0 = lezione.getNomeAula();
+        final RoomData aula0 = lezione.getAula();
 
         for (RoomData x : auleDisponibiliPerLezioneCorrente) {
-            final String aula1 = x.roomname;
+            final RoomData aula1 = x;
             if (nuovaAssegnazione_DA.size() > 0) break;
 
             for (BitOrarioOraLezione altraLezione : lezioniParallele) {
@@ -207,7 +206,7 @@ public class SostituzioneAuleEngine2 {
                 if (nuovaAssegnazione_DA.size() > 0) break;
 
                 //salta lezioni in lab o non in aula
-                final String aula2 = altraLezione.getNomeAula();
+                final RoomData aula2 = altraLezione.getAula();
 
                 if (aula2 == null || aula1.equals(aula2))
                     continue;
@@ -216,13 +215,13 @@ public class SostituzioneAuleEngine2 {
                     if (nuovaAssegnazione_DA.size() > 0) break;
 
                     //salta lezioni in lab o non in aula
-                    final String aula3 = altraLezione2.getNomeAula();
+                    final RoomData aula3 = altraLezione2.getAula();
                     //if (aula3 == null || skipAuleSpeciali && altraLezione2.getAula().flagAulaLaboratorioPalestra())
 
                     if (aula3 == null || aula1.equals(aula3) || aula2.equals(aula3) || aula0.equals(aula3))
                         continue;
 
-                    String[] aule = new String[]{aula1, aula2, aula3};
+                    RoomData[] aule = new RoomData[]{aula1, aula2, aula3};
 
                     for (int i1 = 0; i1 < aule.length; i1++) {
                         if (nuovaAssegnazione_DA.size() > 0) break;
@@ -324,11 +323,11 @@ public class SostituzioneAuleEngine2 {
                 if (nuovaAssegnazione_DA.size() > 0) break;
 
                 //salta lezioni in lab o non in aula
-                if (altraLezione.getNomeAula() == null)
+                if (altraLezione.getAula() == null)
                     continue;
 
-                final String aula1 = auleLezione.roomname;
-                final String aula2 = altraLezione.getNomeAula();
+                final RoomData aula1 = auleLezione;
+                final RoomData aula2 = altraLezione.getAula();
 
 
                 final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(aula2);
@@ -375,7 +374,7 @@ public class SostituzioneAuleEngine2 {
 
         for (RoomData a : auleVuoteX) {
             if (a == null) continue;
-            final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(a.roomname);
+            final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(a);
             if (l.checkAll(nuovaLezione, o) &&
                     s.accept(nuovaLezione, c)) {
                 //System.out.println("\tCapienza aula: " + occupazioneMigliore + " posti, num. studenti:" + numStudenti);
@@ -398,7 +397,7 @@ public class SostituzioneAuleEngine2 {
         final ArrayList<BitOrarioOraLezione> lezioni1 = o.getLezioni(ora, giorno);
         final ArrayList<BitOrarioOraLezione> lezioniParallele = new ArrayList<>();
         for (BitOrarioOraLezione xl : lezioni1) {
-            if (xl.getNomeAula() != null)
+            if (xl.getAula() != null)
                 lezioniParallele.add(xl);
         }
 
@@ -407,8 +406,8 @@ public class SostituzioneAuleEngine2 {
             public int compare(BitOrarioOraLezione a, BitOrarioOraLezione b) {
 
 
-                RoomData o1 = ClassesAndRoomContainer.getRoom(a.getNomeAula());
-                RoomData o2 = ClassesAndRoomContainer.getRoom(b.getNomeAula());
+                RoomData o1 = (a.getAula());
+                RoomData o2 = (b.getAula());
 
                 final int i = Integer.valueOf(o1.maxStudents).compareTo(o2.maxStudents);
                 if (i != 0)
@@ -420,10 +419,10 @@ public class SostituzioneAuleEngine2 {
         return lezioniParallele;
     }
 
-    private static ArrayList<RoomData> toRoomData(Collection<String> aule) {
+    private static ArrayList<RoomData> toRoomData(Collection<RoomData> aule) {
         ArrayList<RoomData> ris = new ArrayList<>();
-        for (String s : aule) {
-            ris.add(ClassesAndRoomContainer.getRoom(s));
+        for (RoomData s : aule) {
+            ris.add((s));
         }
         return ris;
     }

@@ -18,7 +18,7 @@ public class CompatibilitaAuleClassi {
             public int compare(RoomData o1, RoomData o2) {
                 final int i = new Integer(o1.maxStudents).compareTo(o2.maxStudents);
                 if (i != 0) return i;
-                return o1.roomname.compareTo(o2.roomname);
+                return o1.roomName.compareTo(o2.roomName);
             }
         });
         ArrayList<ClassData> classi = new ArrayList<>(Arrays.asList(ClassData.values()));
@@ -27,7 +27,7 @@ public class CompatibilitaAuleClassi {
             public int compare(ClassData o1, ClassData o2) {
                 final int i = Integer.valueOf(o1.numberOfStudents).compareTo(o2.numberOfStudents);
                 if (i != 0) return i;
-                return o1.classname.compareTo(o2.classname);
+                return o1.className.compareTo(o2.className);
             }
         });
 
@@ -67,7 +67,7 @@ public class CompatibilitaAuleClassi {
 
                 if (roomData.maxStudents >= x.numberOfStudents) {
                     aule.remove(roomData);
-                    report += "AULA PREDEFINITA: " + roomData.roomname + "(" + roomData.maxStudents + ")\n";
+                    report += "AULA PREDEFINITA: " + roomData.roomName + "(" + roomData.maxStudents + ")\n";
                     break;
                 }
             }
@@ -82,13 +82,13 @@ public class CompatibilitaAuleClassi {
                     if (auleIncompatibili.length() > 0) {
                         auleIncompatibili.append(", ");
                     }
-                    auleIncompatibili.append(roomData.roomname + "(" + roomData.maxStudents + ")");
+                    auleIncompatibili.append(roomData.roomName + "(" + roomData.maxStudents + ")");
                 }
 
 
             }
             report += "AULE INCOMPATIBILI: " + auleIncompatibili;
-            reportClassi.put(x.classname, report);
+            reportClassi.put(x.className, report);
         }
 
         System.out.println();

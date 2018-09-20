@@ -3,6 +3,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.as2017
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule2;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.*;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
@@ -88,7 +89,7 @@ public class VincoliSostituzioni_n05_28mag__02giugno extends AbstractVincoliSost
         }
 
 
-        for (String c : orarioTotale.getClassi()) {
+        for (ClassData c : orarioTotale.getClassi()) {
             orarioTotale.classeInVisitaDidattica("Festa 2 giugno", c, EGiorno.SABATO,EOra.values());
         }
 

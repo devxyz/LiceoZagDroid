@@ -217,8 +217,8 @@ public class MotoreSostituzioneAule3 {
 
             // sb.append("<div style='display: block; page-break-before: always;'></div>\n");
             sb.append("<hr>");
-            sb.append("<h1 style='font-size:40px;font-weight:bolder'>Orario delle lezioni aggiornato Classe " + c.classname + "</h1>\n");
-            sb.append("<img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fwww.scuolesuperioridizagarolo.gov.it%2Forario%2Forario2.php%3Fclasse%3D" + c.classname + "&chs=400x400&choe=UTF-8&chld=L|2' alt=''>\n");
+            sb.append("<h1 style='font-size:40px;font-weight:bolder'>Orario delle lezioni aggiornato Classe " + c.className + "</h1>\n");
+            sb.append("<img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fwww.scuolesuperioridizagarolo.gov.it%2Forario%2Forario2.php%3Fclasse%3D" + c.className + "&chs=400x400&choe=UTF-8&chld=L|2' alt=''>\n");
 
         }
         sb.append("</body></html>");

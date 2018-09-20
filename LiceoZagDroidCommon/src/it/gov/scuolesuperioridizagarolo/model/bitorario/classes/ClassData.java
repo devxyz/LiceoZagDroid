@@ -41,13 +41,13 @@ public enum ClassData {
     CLASS_5F("5F", 17, 5, "F"),
     CLASS_SCONOSCIUTA("--", 0, 0, "-");
 
-    public final String classname;
+    public final String className;
     public final int numberOfStudents;
     public final int _class;
     public final String _section;
 
     ClassData(String classname, int numberOfStudents, int aClass, String section) {
-        this.classname = classname;
+        this.className = classname;
         this.numberOfStudents = numberOfStudents;
         _class = aClass;
         _section = section;
@@ -56,7 +56,7 @@ public enum ClassData {
     public static ClassData search(String s) {
         if (s == null) return CLASS_SCONOSCIUTA;
         for (ClassData xx : values()) {
-            if (xx.classname.equalsIgnoreCase(s)) return xx;
+            if (xx.className.equalsIgnoreCase(s)) return xx;
         }
         return CLASS_SCONOSCIUTA;
     }
@@ -67,6 +67,6 @@ public enum ClassData {
 
     @Override
     public String toString() {
-        return classname;
+        return className;
     }
 }

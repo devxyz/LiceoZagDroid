@@ -20,7 +20,7 @@ public class LessonConstraint_AulaNonDisponibile extends AbstractLessonConstrain
 
     public LessonConstraint_AulaNonDisponibile(String aula, EGiorno giorno, EOra... ore) {
         super(false);
-        this.aula = ClassesAndRoomContainer.getRoom(aula);
+        this.aula = ClassesAndRoomContainer.parseRoom(aula);
         this.giorno = giorno;
         this.ore = new ArrayList<>(Arrays.asList(ore));
         ;

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.model.AppUserType;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,13 +32,14 @@ public class SharedPreferenceWrapper {
         return new SharedPreferenceWrapper(ctx.getSharedPreferences("liceo-zagarolo", Context.MODE_PRIVATE));
     }
 
-    public String getUltimaClasse() {
-        return preferences.getString(KEY_NOME_CLASSE, null);
+    public ClassData getUltimaClasse() {
+        final String x = preferences.getString(KEY_NOME_CLASSE, null);
+        return x == null ? null : ClassData.valueOf(x);
     }
 
-    public void setUltimaClasse(String d) {
+    public void setUltimaClasse(ClassData d) {
         SharedPreferences.Editor e = preferences.edit();
-        e.putString(KEY_NOME_CLASSE, d);
+        e.putString(KEY_NOME_CLASSE, d.name());
         e.apply();
     }
 

@@ -3,7 +3,6 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.main;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,12 +30,12 @@ public class AnalisiBusinessIntell {
             int ore = 0;
             final ArrayList<BitOrarioOraLezione> lezioneConDocente = orarioTotale.getLezioneConDocente(d);
             for (BitOrarioOraLezione l : lezioneConDocente) {
-                final String classe = l.getClasse();
+                final ClassData classe = l.getClasse();
                 if (classe != null) {
-                    final ClassData aClass = ClassesAndRoomContainer.getClass(l);
+                    final ClassData aClass = l.getClasse();
                     min = Math.min(min, aClass.numberOfStudents);
                     max = Math.max(max, aClass.numberOfStudents);
-                    if (!ClassesAndRoomContainer.getRoom(l).flagAulaLaboratorioPalestra())
+                    if (!l.getAula().flagAulaLaboratorioPalestra())
                         ore++;
                 }
             }

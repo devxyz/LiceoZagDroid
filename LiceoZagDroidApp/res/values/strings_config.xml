@@ -50,9 +50,9 @@
     <string name="url_rss_feed_circolari">http://www.scuolesuperioridizagarolo.gov.it/pasw4/index.php/circolari2?format=feed&amp;type=rss&amp;limitstart=XXX</string>
 
 
-    <string name="url_article">http://www.scuolesuperioridizagarolo.gov.it/contenuti.php?id=</string>
-    <string name="url_timetable_index">http://www.scuolesuperioridizagarolo.gov.it/orario/timetables.txt</string>
-    <string name="url_timetable_prefix">http://www.scuolesuperioridizagarolo.gov.it/orario/</string>
+    <string name="url_article">http://www.scuolesuperioridizagarolo.gov.it/circolari.php?id=</string>
+    <string name="url_timetable_index">http://www.scuolesuperioridizagarolo.gov.it/orario/JSON/timetables.txt</string>
+    <string name="url_timetable_prefix">http://www.scuolesuperioridizagarolo.gov.it/orario/JSON/</string>
 
 
     <!--Tempo in secondi di scadenza della cache-->

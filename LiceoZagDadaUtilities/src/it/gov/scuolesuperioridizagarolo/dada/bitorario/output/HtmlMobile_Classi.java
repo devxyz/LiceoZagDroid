@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
@@ -9,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Collection;
+import java.util.TreeSet;
 
 /**
  * Created by stefano on 25/09/2017.
@@ -21,11 +23,11 @@ public class HtmlMobile_Classi {
 
     public void print(BitOrarioGrigliaOrario o, BitOrarioGrigliaOrario oDefault, File f) throws IOException {
 
-        final Collection<String> strings = o.getClassi();
+        final TreeSet<ClassData> strings = o.getClassi();
 
 
-        for (String classe : strings) {
-            PrintStream p = new PrintStream(new File(f, classe));
+        for (ClassData classe : strings) {
+            PrintStream p = new PrintStream(new File(f, classe.className));
 
             p.println("<table cellspacing=0 style='width:100%;table-layout: fixed; border:4px solid black; '>");
 
