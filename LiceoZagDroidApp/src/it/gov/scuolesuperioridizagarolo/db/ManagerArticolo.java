@@ -1,11 +1,13 @@
 package it.gov.scuolesuperioridizagarolo.db;
 
+import android.util.Log;
 import it.gov.scuolesuperioridizagarolo.dao.*;
 import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
 import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdo;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdoContainer;
 import it.gov.scuolesuperioridizagarolo.model.articolo.WrapperArticoloDB;
+import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 import org.greenrobot.greendao.query.DeleteQuery;
 import org.greenrobot.greendao.query.QueryBuilder;
 
@@ -36,7 +38,7 @@ public class ManagerArticolo {
     }
 
     //rimuove tutti gli articoli con remoteid minore di quello specificato
-    public void rimoveArticoliPrecedentiAdID(int minRemoteId) {
+    public void removeArticoliPrecedentiAdID(int minRemoteId) {
 
         final QueryBuilder<ArticoloDB> elencoArticoliDaRimuovere = session.getArticoloDBDao().queryBuilder();
         elencoArticoliDaRimuovere.where(ArticoloDBDao.Properties.RemoteId.lt(minRemoteId));
@@ -67,13 +69,29 @@ public class ManagerArticolo {
     }
 
     public ArticoloSdoContainer<ArticoloDetailsCircolare> elencoArticoliCircolari() {
+        if (DebugUtil.DEBUG__ManagerArticolo) {
+            Log.w("ManagerArticolo", "START elencoArticoliCircolari");
+        }
+
         final List<AttachmentArticoloDB> listAttachment = session.getAttachmentArticoloDBDao().queryBuilder().list();
         final List<TagArticoloDB> listTag = session.getTagArticoloDBDao().queryBuilder().list();
+        if (DebugUtil.DEBUG__ManagerArticolo) {
+            Log.w("ManagerArticolo", "TAG TOTALI:" + listTag.size());
+        }
+
 
         //elenco circolari
         final QueryBuilder<ArticoloDB> qb = session.getArticoloDBDao().queryBuilder();
         qb.where(ArticoloDBDao.Properties.Type.eq(ArticoloType.CIRCOLARE.name()));
         final List<ArticoloDB> listArticolo = qb.list();
+        if (DebugUtil.DEBUG__ManagerArticolo) {
+            Log.w("ManagerArticolo", "ARTICOLI TOTALI:" + listArticolo.size());
+        }
+
+
+        if (DebugUtil.DEBUG__ManagerArticolo) {
+            Log.w("ManagerArticolo", "concatenate elencoArticoliCircolari");
+        }
 
         final Map<Long, ArticoloSdo<ArticoloDetailsCircolare>> map = new TreeMap<>();
 
@@ -100,6 +118,9 @@ public class ManagerArticolo {
         //articoli
         ArticoloSdoContainer<ArticoloDetailsCircolare> s = new ArticoloSdoContainer<>();
         s.articoli.addAll(map.values());
+        if (DebugUtil.DEBUG__ManagerArticolo) {
+            Log.w("ManagerArticolo", "END elencoArticoliCircolari");
+        }
 
         return s;
     }

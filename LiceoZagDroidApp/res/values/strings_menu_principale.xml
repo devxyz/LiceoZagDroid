@@ -135,31 +135,6 @@
         <item>SHOW_ADMIN</item>
         <item>END-ITEM</item>
 
-        <!-- .................................. -->
-
-        <item>In evidenza oggi</item>
-        <item>Circolari del Giorno</item>
-        <item>it.gov.scuolesuperioridizagarolo.fragment.CircolariGiornaliereFragment</item>
-        <item>@drawable/calendar_preferences_50x50</item>
-        <item>SUB_ITEM,SHOW_ADMIN</item>
-        <item>END-ITEM</item>
-
-        <!-- .................................. -->
-
-        <item>News</item>
-        <item>Ultime Notizie dalla scuola</item>
-        <item>it.gov.scuolesuperioridizagarolo.fragment.NewsFragmentRss</item>
-        <item>@drawable/id_tab_news</item>
-        <item>SUB_ITEM,SHOW_ADMIN</item>
-        <item>END-ITEM</item>
-        <!-- .................................. -->
-
-        <item>Circolari</item>
-        <item>Circolari scolastiche</item>
-        <item>it.gov.scuolesuperioridizagarolo.fragment.CircolariSearchFragment</item>
-        <item>@drawable/file_search</item>
-        <item>SUB_ITEM,SHOW_ADMIN</item>
-        <item>END-ITEM</item>
 
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->

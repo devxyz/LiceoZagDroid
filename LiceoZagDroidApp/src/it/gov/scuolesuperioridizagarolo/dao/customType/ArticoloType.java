@@ -5,6 +5,7 @@ package it.gov.scuolesuperioridizagarolo.dao.customType;
  */
 public enum ArticoloType {
     CIRCOLARE,
+    EVENTO,
     AVVISO,
-    ALTRO
+    GENERICO
 }

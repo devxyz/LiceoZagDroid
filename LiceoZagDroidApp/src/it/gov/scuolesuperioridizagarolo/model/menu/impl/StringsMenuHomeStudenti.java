@@ -1,12 +1,9 @@
 package it.gov.scuolesuperioridizagarolo.model.menu.impl;
-
 import it.gov.scuolesuperioridizagarolo.R;
-import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
-import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoFlag;
-import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoType;
 
-import java.util.Arrays;
-import java.util.TreeSet;
+import java.util.*;
+
+import it.gov.scuolesuperioridizagarolo.model.menu.*;
 public class StringsMenuHomeStudenti{
      public static final DataMenuInfo APRI_MENU= new DataMenuInfo(
 "Apri Menu",
@@ -22,8 +19,8 @@ it.gov.scuolesuperioridizagarolo.fragment.SitoWebFragment.class,
 R.drawable._menu_web_48x48,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.SitoWebFragment.class),
 new TreeSet<>(Arrays.<DataMenuInfoFlag>asList() ));
-     public static final DataMenuInfo ORARIO_CLASSI= new DataMenuInfo(
-"Orario Classi",
+     public static final DataMenuInfo ORARIO_DI_CLASSE= new DataMenuInfo(
+"Orario di classe",
 "Orario Classi",
 it.gov.scuolesuperioridizagarolo.fragment.OrarioClassePersistenteFragment.class,
 R.drawable._menu_student_48x48,

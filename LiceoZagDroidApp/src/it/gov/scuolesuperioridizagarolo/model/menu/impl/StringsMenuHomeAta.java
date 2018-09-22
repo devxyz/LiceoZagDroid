@@ -1,12 +1,9 @@
 package it.gov.scuolesuperioridizagarolo.model.menu.impl;
-
 import it.gov.scuolesuperioridizagarolo.R;
-import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
-import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoFlag;
-import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoType;
 
-import java.util.Arrays;
-import java.util.TreeSet;
+import java.util.*;
+
+import it.gov.scuolesuperioridizagarolo.model.menu.*;
 public class StringsMenuHomeAta{
      public static final DataMenuInfo CONTATTI= new DataMenuInfo(
 "Contatti",

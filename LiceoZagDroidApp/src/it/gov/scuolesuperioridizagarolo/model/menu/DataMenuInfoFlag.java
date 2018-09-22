@@ -7,7 +7,7 @@ import java.util.TreeSet;
 /**
  * Created by stefano on 09/09/15.
  */
-public enum DataMenuInfoFlag implements Serializable{
+public enum DataMenuInfoFlag implements Serializable {
     SHOW_DOCENTI,
     SHOW_ATA,
     SHOW_ADMIN,
@@ -22,7 +22,7 @@ public enum DataMenuInfoFlag implements Serializable{
         Set<DataMenuInfoFlag> ris = new TreeSet<>();
         for (String s : ss) {
             final String trim = s.trim();
-            if (trim.length()==0)continue;
+            if (trim.length() == 0) continue;
             try {
                 ris.add(valueOf(trim));
             } catch (IllegalArgumentException e) {

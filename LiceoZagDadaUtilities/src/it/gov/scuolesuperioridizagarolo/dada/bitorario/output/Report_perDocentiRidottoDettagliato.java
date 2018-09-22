@@ -68,7 +68,7 @@ public class Report_perDocentiRidottoDettagliato {
                         p.print("<td style='border:1px solid black;border-left:" + spessore + "px solid black;background-color:gray'>" + "</td>");
                     else {
                         if (ll.getClasse() == null) {
-                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:red;background-color:yellow'><b>" + ll.getMateriaPrincipale() +
+                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>" + ll.getMateriaPrincipale() +
                                     "</b></span></td>");
 
                         } else {

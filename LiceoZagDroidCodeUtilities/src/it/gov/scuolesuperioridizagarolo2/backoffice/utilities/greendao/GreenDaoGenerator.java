@@ -8,7 +8,7 @@ import org.greenrobot.greendao.generator.*;
  */
 public class GreenDaoGenerator {
     public static void main(String[] args) throws Exception {
-        Schema schema = new Schema(20180902, "it.gov.scuolesuperioridizagarolo.dao");
+        Schema schema = new Schema(20180920, "it.gov.scuolesuperioridizagarolo.dao");
 
         //cache file
         final Entity cacheFile = schema.addEntity("CacheFileDB");
@@ -81,7 +81,7 @@ public class GreenDaoGenerator {
             attachment.addToOne(articolo, articleId.getProperty());
         }
 
-
+/*
         //circolare
         @Deprecated
         final Entity circolare = schema.addEntity("CircolareDB");
@@ -178,7 +178,7 @@ public class GreenDaoGenerator {
             indexNewsTermine.addProperty(id_termine);
             newsContieneTermine.addIndex(indexNewsTermine);
         }
-
+*/
 
         new DaoGenerator().generateAll(schema, "/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/src");
     }

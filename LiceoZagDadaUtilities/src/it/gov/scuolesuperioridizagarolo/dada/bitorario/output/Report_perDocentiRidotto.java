@@ -65,7 +65,7 @@ public class Report_perDocentiRidotto {
                         p.print("<td style='border:1px solid black;border-left:" + spessore + "px solid black;background-color:gray'><b>" + "</td>");
                     else {
                         if (ll.getClasse() == null) {
-                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:red;background-color:yellow'><b>" + ll.getMateriaPrincipale() + x +
+                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>" + ll.getMateriaPrincipale() + x +
                                     "</b></span></td>");
 
                         } else {

@@ -12,7 +12,7 @@ public enum RoomData {
     A4_INF("A4_INF", "Laboratorio di Informatica", 30, 17, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     A5sharp("A5#", "Aula Didattica", 24, 22, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     A5_DIS("A5_DIS", "Aula di Disegno", 30, 22, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
-    A6("A6", "Aula Didattica", 29, 20, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    A6("A6", "Aula Didattica", 30, 20, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     A7("A7", "Aula Didattica", 18, 21, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
 
     B8("B8", "Aula Didattica", 30, 10, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),

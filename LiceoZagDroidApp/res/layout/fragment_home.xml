@@ -9,7 +9,15 @@
             android:id="@+id/listView4" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:horizontalSpacing="3dp"
-            android:layout_below="@+id/textView15" android:choiceMode="none" android:clickable="true"
-            android:numColumns="3" android:layout_alignParentBottom="true" android:gravity="top"/>
+            android:choiceMode="none" android:clickable="true"
+            android:numColumns="3" android:layout_alignParentBottom="true" android:gravity="top"
+            android:layout_below="@+id/textViewTipoUtente"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="TIPO UTENTE"
+            android:id="@+id/textViewTipoUtente" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+            android:background="@color/color_blue_scurissimo" android:textColor="@color/color_white"/>
 
 </RelativeLayout>

@@ -13,8 +13,9 @@ public class DebugUtil {
     public static final boolean DEBUG__SincronizzaCircolariAsync = false;
     public final static boolean DEBUG__OnClickListenerViewErrorCheck = false;
     public static final boolean DEBUG__ItalianWordSplit = false;
-    public static final boolean DEBUG__CircolariSearchFragment = false;
+    public static final boolean DEBUG__CircolariSearchFragment = true;
     public static final boolean DEBUG__NewsFragmentRss = false;
+    public static final boolean DEBUG__ManagerArticolo = true;
     static final boolean DEBUG__ScreenUtil = false;
     final static boolean DEBUG__DialogUtil = false;
 

@@ -35,6 +35,7 @@ public class HomeFragment extends AbstractFragment {
         LAYOUT_OBJs = new LayoutObjs_fragment_home_xml(rootView);
         //**************************
         //**************************
+        LAYOUT_OBJs.textViewTipoUtente.setText(getMainActivity().getSharedPreferences().getUserType().getDescrizione());
 
         //Bitmap b = ScreenUtil.getResourceAsBitmap(this.getMainActivity(), R.drawable.logo_fermi_150x150);
         //LAYOUT_OBJs.imageView.setImageBitmap(ScreenUtil.scaleAndAdapt(b, 300, 300));

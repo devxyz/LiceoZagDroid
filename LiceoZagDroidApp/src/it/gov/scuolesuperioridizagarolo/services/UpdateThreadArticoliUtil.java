@@ -5,9 +5,8 @@ import android.util.Log;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.dao.*;
-import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType;
+import it.gov.scuolesuperioridizagarolo.dao.customType.*;
 import it.gov.scuolesuperioridizagarolo.db.ManagerArticolo;
-import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
 import it.gov.scuolesuperioridizagarolo.model.dto.C_Pair;
 import it.gov.scuolesuperioridizagarolo.util.C_Base64;
 import it.gov.scuolesuperioridizagarolo.util.C_XmlUtil;
@@ -56,7 +55,7 @@ public class UpdateThreadArticoliUtil {
 
                 //rimuove articoli vecchi
                 ManagerArticolo m = new ManagerArticolo(session);
-                m.rimoveArticoliPrecedentiAdID(updateThreadContainer.minArticleId);
+                m.removeArticoliPrecedentiAdID(updateThreadContainer.minArticleId);
                 Log.e(UpdateThreadArticoliUtil.class.getName(), "Cancellazione articoli vecchi");
 
                 //crea articoli
@@ -94,7 +93,17 @@ public class UpdateThreadArticoliUtil {
 
     //http://www.scuolesuperioridizagarolo.gov.it/prova.php?id=XXXX
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
-        downloadListCircolariComunicazioni("http://www.scuolesuperioridizagarolo.gov.it/prova.php?id=1800");
+        final UpdateThreadContainer x = downloadListCircolariComunicazioni("http://www.scuolesuperioridizagarolo.gov.it/circolari.php?id=1000");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        for (Map.Entry<Integer, ArticoloDB> s : x.articoliByRemoteId.entrySet()) {
+            final ArticoloDB a = s.getValue();
+            //System.out.println(a);
+            System.out.println(a.getType() + " " + a.getTitle());
+
+        }
     }
 
 
@@ -148,21 +157,59 @@ public class UpdateThreadArticoliUtil {
             try {
                 aa.setPubDate(sf.parse(article_created));
             } catch (ParseException e) {
-                aa.setPubDate(null);
+                aa.setPubDate(new Date());//data corrente se mancante
             }
+            aa.setId(Long.parseLong(article_id));
             aa.setInsertTimestamp(new Date());
             aa.setRemoteCategoryId(Integer.parseInt(category_id));
             aa.setRemoteId(Integer.parseInt(article_id));
             aa.setTitle(article_title);
             aa.setUrl(article_url);
 
-            ArticoloDetailsCircolare x = new ArticoloDetailsCircolare();
-            x.oggetto = "oggetto da terminare";
-            x.numeroCircolare = 9999;
-            x.dataCircolare = new Date();
-            x.addParolaString("PROVA");
-            aa.setDetails(x);
-            aa.setType(ArticoloType.CIRCOLARE);
+
+            switch (category_title.toUpperCase().trim()) {
+                case "EVENTI": {
+                    ArticoloDetailsEvento x = new ArticoloDetailsEvento();
+                    x.oggetto = "oggetto da terminare";
+                    x.dataEvento = new Date();
+                    x.addParolaString("PROVA");
+                    aa.setDetails(x);
+                    aa.setType(ArticoloType.EVENTO);
+
+                    aa.setDate(x.dataEvento);
+
+                    break;
+                }
+                case "AVVISI/COMUNICAZIONI": {
+                    ArticoloDetailsAvviso x = new ArticoloDetailsAvviso();
+                    x.oggetto = "oggetto da terminare";
+                    x.dataAvviso = new Date();
+                    x.addParolaString("PROVA");
+                    aa.setDetails(x);
+                    aa.setType(ArticoloType.AVVISO);
+                    aa.setDate(x.dataAvviso);
+                    break;
+                }
+                case "CIRCOLARI": {
+                    ArticoloDetailsCircolare x = new ArticoloDetailsCircolare();
+                    x.oggetto = "oggetto da terminare";
+                    x.numeroCircolare = 9999;
+                    x.dataCircolare = new Date();
+                    x.addParolaString("PROVA");
+                    aa.setDetails(x);
+                    aa.setType(ArticoloType.CIRCOLARE);
+                    aa.setDate(x.dataCircolare);
+                    break;
+                }
+                default: {
+                    ArticoloDetailsGenerico x = new ArticoloDetailsGenerico();
+                    x.addParolaString("PROVA");
+                    aa.setDetails(x);
+                    aa.setType(ArticoloType.GENERICO);
+                    aa.setDate(aa.getPubDate());
+                    break;
+                }
+            }
 
 
             //ArticoloTypeCircolare t=new ArticoloTypeCircolare()
@@ -170,24 +217,24 @@ public class UpdateThreadArticoliUtil {
             //aa.setJsonContent(t.parseClass().getName());
 
             ris.articoliByRemoteId.put(aa.getRemoteId(), aa);
-
+            System.out.println("======================================");
             System.out.println(article_id);
             System.out.println(article_title);
             System.out.println(article_url);
-            //System.out.println(article_content);
-            //System.out.println(article_content_decode);
+            System.out.println(article_content);
+            System.out.println(article_content_decode);
         }
 
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
+        //System.out.println();
+        //System.out.println();
+        // System.out.println();
+        // System.out.println();
 
         //elenco tag
         final Element tags = C_XmlUtil.searchFirstByTagName(childNodes, "tags");
         final List<Element> tag = C_XmlUtil.searchByTagName(tags.getChildNodes(), "tag-map");
         for (Element a : tag) {
-            System.out.println("=========================");
+            //System.out.println("=========================");
             TagArticoloDB tt = new TagArticoloDB();
 
 
@@ -201,17 +248,18 @@ public class UpdateThreadArticoliUtil {
             //tt.setArticoloDB(ris.articoliByRemoteId.get(Integer.parseInt(article_id)));
             ris.tagsByRemoteArticleId.add(new C_Pair<>(tt, Integer.parseInt(article_id)));
 
-
+/*
             System.out.println(article_id);
             System.out.println(tag_id);
             System.out.println(tag_title);
+            */
         }
 
         //elenco attachment
         final Element attachments = C_XmlUtil.searchFirstByTagName(childNodes, "attachments");
         final List<Element> attachment = C_XmlUtil.searchByTagName(attachments.getChildNodes(), "attachment-map");
         for (Element a : attachment) {
-            System.out.println("=========================");
+            //System.out.println("=========================");
             AttachmentArticoloDB att = new AttachmentArticoloDB();
 
             final String xxxx_filename = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-filename").getTextContent().trim();
@@ -231,8 +279,10 @@ public class UpdateThreadArticoliUtil {
             //att.setArticoloDB(ris.articoliByRemoteId.get(Integer.parseInt(xxxx_article_id)));
             ris.attachmentsListByRemoteArticleId.add(new C_Pair<>(att, Integer.parseInt(xxxx_article_id)));
 
+            /*
             System.out.println(xxxx_article_id);
             System.out.println(xxxx_url);
+            */
         }
         return ris;
     }

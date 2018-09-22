@@ -77,10 +77,10 @@ public class Report_perClasseRidotto {
                     } else spessore = 1;
 
                     if (ll == null)
-                        p.print("<td style='border:1px solid black;border-left:" + spessore + "px solid black;background-color:gray'><b>" + "</td>");
+                        p.print("<td style='border:1px solid black;border-left:" + spessore + "px solid black;background-color:lightgray'><b>" + "</td>");
                     else {
                         if (ll.getClasse() == null) {
-                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:red;background-color:yellow'><b>" + abbreviazioneMateria(ll) + x +
+                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>" + abbreviazioneMateria(ll) + x +
                                     "</b></span></td>");
 
                         } else {

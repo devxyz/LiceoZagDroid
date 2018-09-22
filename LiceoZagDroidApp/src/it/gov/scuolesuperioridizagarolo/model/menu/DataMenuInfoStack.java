@@ -25,7 +25,7 @@ public class DataMenuInfoStack implements Serializable {
         stack.add(m);
     }
 
-    public void clear(){
+    public void clear() {
         stack.clear();
     }
 

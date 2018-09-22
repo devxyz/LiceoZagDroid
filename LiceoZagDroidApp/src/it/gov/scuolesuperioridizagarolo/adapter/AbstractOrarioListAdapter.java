@@ -233,7 +233,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         final ContainerBitOrarioOraLezione item = getItem(position);
         final BitOrarioOraLezione lezione = item.lezione;
 
-        final BitOrarioOraLezione lezioneDefault = getDefaultCorrelatedLesson(lezione);
+        //final BitOrarioOraLezione lezioneDefault = getDefaultCorrelatedLesson(lezione);
 
         final EOra ora = item.ora;
 
@@ -265,6 +265,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
         String note = lezione == null ? null : lezione.getNote();
 
+        /*
         if (cambiamentoAula(lezione,lezioneDefault)) {
             o.textViewOra.setTextColor(a.getResources().getColor(R.color.color_red));
             o.textViewAula.setTextColor(a.getResources().getColor(R.color.color_red));
@@ -277,6 +278,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
                 note = note + "\n\n" + msg;
             }
         }
+        */
 
 
         //todo debug

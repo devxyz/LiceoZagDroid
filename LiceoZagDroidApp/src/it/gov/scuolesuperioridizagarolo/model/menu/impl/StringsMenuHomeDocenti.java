@@ -1,12 +1,9 @@
 package it.gov.scuolesuperioridizagarolo.model.menu.impl;
-
 import it.gov.scuolesuperioridizagarolo.R;
-import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
-import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoFlag;
-import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfoType;
 
-import java.util.Arrays;
-import java.util.TreeSet;
+import java.util.*;
+
+import it.gov.scuolesuperioridizagarolo.model.menu.*;
 public class StringsMenuHomeDocenti{
      public static final DataMenuInfo APRI_MENU= new DataMenuInfo(
 "Apri Menu",
@@ -29,12 +26,19 @@ it.gov.scuolesuperioridizagarolo.fragment.ContattiFragment.class,
 R.drawable._menu_contatti_48x48,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.ContattiFragment.class),
 new TreeSet<>(Arrays.<DataMenuInfoFlag>asList() ));
-     public static final DataMenuInfo ORARIO_DOCENTI= new DataMenuInfo(
-"Orario Docenti",
-"Orario Docenti",
+     public static final DataMenuInfo IL_MIO_ORARIO= new DataMenuInfo(
+"Il mio Orario",
+"Il mio Orario",
 it.gov.scuolesuperioridizagarolo.fragment.OrarioDocentePersistenteFragment.class,
 R.drawable._menu_teaching_48x48,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioDocentePersistenteFragment.class),
+new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
+     public static final DataMenuInfo CERCA_ALTRI_DOCENTI= new DataMenuInfo(
+"Cerca altri Docenti",
+"Cerca altri Docenti",
+it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteNonPersistenteFragment.class,
+R.drawable._menu_school_48x48,
+DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteNonPersistenteFragment.class),
 new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
      public static final DataMenuInfo CERCA_CLASSI= new DataMenuInfo(
 "Cerca Classi",
@@ -70,7 +74,7 @@ new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
 it.gov.scuolesuperioridizagarolo.fragment.ArticoloCircolariFragment.class,
 R.drawable._menu_photos,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.ArticoloCircolariFragment.class),
-new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
+new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.NOT_ACTIVE, DataMenuInfoFlag.SUB_ITEM) ));
      public static final DataMenuInfo AGGIORNA_DATI= new DataMenuInfo(
 "Aggiorna Dati",
 "Aggiorna i dati",

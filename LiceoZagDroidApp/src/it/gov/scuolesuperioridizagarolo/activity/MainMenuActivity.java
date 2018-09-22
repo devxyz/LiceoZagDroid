@@ -144,7 +144,7 @@ public class MainMenuActivity extends AbstractActivity {
             }
         });
 
-        LAYOUT_OBJs.textViewTipoUtente.setText(getSharedPreferences().getUserType().getDescrizione());
+
 
 
         receiver = new BroadcastReceiver() {
@@ -485,7 +485,11 @@ public class MainMenuActivity extends AbstractActivity {
                 sb.append(cursor.getColumnName(i));
                 sb.append("</td>");
                 sb.append("<td>");
+                final int type = cursor.getType(i);
                 sb.append(cursor.getString(i));
+                if (Cursor.FIELD_TYPE_INTEGER == type && cursor.getInt(i) > 1000000) {
+                    sb.append(" format to date: " + new Date(cursor.getInt(i)));
+                }
                 sb.append("</td>");
                 sb.append("</tr>");
             }
@@ -511,20 +515,15 @@ public class MainMenuActivity extends AbstractActivity {
 
 
         ScuolaAppDbHelper.runOneTransactionAsync(this, new ScuolaAppDBHelperRunAsync() {
-            long numCircolari, numTermini, numFileCache, numNews;
 
             @Override
             public void run(DaoSession session, Context ctx) throws Throwable {
-                numCircolari = session.getCircolareDBDao().queryBuilder().count();
-                numTermini = session.getTermineDBDao().queryBuilder().count();
-                numFileCache = session.getCacheFileDBDao().queryBuilder().count();
-                numFileCache = session.getNewsDBDao().queryBuilder().count();
-
-                session.getCircolareDBDao().deleteAll();
-                session.getTermineDBDao().deleteAll();
-                session.getCircolareContieneTermineDBDao().deleteAll();
+                session.getAttachmentArticoloDBDao().deleteAll();
+                session.getTagArticoloDBDao().deleteAll();
+                session.getTimetableDBDao().deleteAll();
+                session.getAttachmentArticoloDBDao().deleteAll();
+                session.getArticoloDBDao().deleteAll();
                 session.getCacheFileDBDao().deleteAll();
-                session.getNewsDBDao().deleteAll();
             }
 
             @Override

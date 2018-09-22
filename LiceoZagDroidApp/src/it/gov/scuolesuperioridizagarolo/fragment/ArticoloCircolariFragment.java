@@ -22,14 +22,15 @@ import it.gov.scuolesuperioridizagarolo.dao.ArticoloDBDao;
 import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDBHelperRun;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
 import it.gov.scuolesuperioridizagarolo.db.ManagerArticolo;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_articoli_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdo;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdoContainer;
-import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
 import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
+import it.gov.scuolesuperioridizagarolo.util.ThreadUtil;
 
 import java.util.TreeSet;
 
@@ -174,6 +175,8 @@ public class ArticoloCircolariFragment extends AbstractFragment {
             }
         });*/
 
+        Log.w("CERCA_CIRCOLARE_FRAG", "START HERE");
+
         multiTextViewAdapter = new ArrayAdapter<String>(
                 getMainActivity(),
                 android.R.layout.simple_dropdown_item_1line);
@@ -194,39 +197,49 @@ public class ArticoloCircolariFragment extends AbstractFragment {
      */
     private void aggiornaViewCircolariAndTerminiDalDB() {
         try {
-            ScuolaAppDbHelper.runOneTransactionSync(getMainActivity(), new ScuolaAppDBHelperRun() {
+            ScuolaAppDbHelper.runOneTransactionAsync(getMainActivity(), new ScuolaAppDBHelperRun() {
                 @Override
                 public void run(DaoSession session, Context ctx) throws Throwable {
                     try {
                         if (DebugUtil.DEBUG__CircolariSearchFragment) {
-                            Log.d("CERCA_CIRCOLARE_FRAG", "START UPDATE aggiornaViewCircolariAndTerminiDalDB");
+                            Log.w("CERCA_CIRCOLARE_FRAG", "START UPDATE aggiornaViewCircolariAndTerminiDalDB");
                         }
                         final ManagerArticolo managerCircolare = new ManagerArticolo(session);
 
                         //update termin
-                        final ArticoloSdoContainer<ArticoloDetailsCircolare> articoli = managerCircolare.elencoArticoliCircolari();
-                        multiTextViewAdapter.clear();
-                        multiTextViewAdapter.addAll(articoli.parole());
+                        final ArticoloSdoContainer<ArticoloDetailsCircolare> x = managerCircolare.elencoArticoliCircolari();
 
 
-                        multiTextViewAdapter.notifyDataSetChanged();
+
                         if (DebugUtil.DEBUG__CircolariSearchFragment)
-                            Log.d("CERCA_CIRCOLARE_FRAG", "UPDATE LISTA TERMINI " + articoli.articoli.size());
+                            Log.w("CERCA_CIRCOLARE_FRAG", "UPDATE LISTA TERMINI " + x.articoli.size());
 
 
-                        articoli.sortBy(ArticoloSdoContainer.getArticoloTypeCircolareComparator());
+                        x.sortBy(ArticoloSdoContainer.getArticoloTypeCircolareComparator());
 
-                        a.update(articoliCircolari);
+                        if (DebugUtil.DEBUG__CircolariSearchFragment)
+                            Log.w("CERCA_CIRCOLARE_FRAG", "UPDATE VIEW "+x.articoli.size());
 
+                        articoliCircolari = x;
+                        multiTextViewAdapter.clear();
+                        multiTextViewAdapter.addAll(articoliCircolari.parole());
+                        multiTextViewAdapter.notifyDataSetChanged();
+                        //a.update(articoliCircolari);
+                        a = new ArticoliCircolariListAdapter(getMainActivity(), articoliCircolari);
+                        LAYOUT_OBJs.listView.setAdapter(a);
 
                         if (DebugUtil.DEBUG__CircolariSearchFragment) {
                             Log.d("CERCA_CIRCOLARE_FRAG", "END UPDATE aggiornaViewCircolariAndTerminiDalDB");
                         }
                     } catch (Throwable ex) {
+                        ex.printStackTrace();
+                        if (DebugUtil.DEBUG__CircolariSearchFragment) {
+                            Log.e("CERCA_CIRCOLARE_FRAG", "ERRORE aggiornaViewCircolariAndTerminiDalDB",ex);
+                        }
                     }
 
                 }
-            });
+            }, "Lettura dati", "Caricamento circolari attive");
         } catch (Throwable ex) {
         }
 
