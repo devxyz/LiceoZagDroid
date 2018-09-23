@@ -15,9 +15,10 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="TIPO UTENTE"
             android:id="@+id/textViewTipoUtente" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
-            android:background="@color/color_blue_scurissimo" android:textColor="@color/color_white"/>
+            android:background="@color/color_blue_scurissimo" android:textColor="@color/color_white"
+            android:textStyle="bold" android:paddingLeft="10dp"/>
 
 </RelativeLayout>

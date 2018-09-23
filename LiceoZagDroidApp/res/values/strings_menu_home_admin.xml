@@ -4,7 +4,7 @@
     <!-- per ogni menu, l'icona -->
     <array name="menu_home_admin">
 
-        <item>Apri Menu</item>
+        <item>Apri\nMenu</item>
         <item>Apri Menu</item>
         <item>it.gov.scuolesuperioridizagarolo.action.OpenMenuAction</item>
         <item>@drawable/_menu_openmenu_48x48</item>
@@ -12,7 +12,7 @@
         <item>END-ITEM</item>
 
 
-        <item>Sito WEB</item>
+        <item>Sito\nWEB</item>
         <item>IIS Borsellino Falcone - Zagarolo</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.SitoWebFragment</item>
         <item>@drawable/_menu_web_48x48</item>
@@ -22,7 +22,7 @@
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
 
-        <item>Contatti</item>
+        <item>Contatti\nScuola</item>
         <item>Contatta la scuola</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.ContattiFragment</item>
         <item>@drawable/_menu_contatti_48x48</item>
@@ -30,50 +30,50 @@
         <item>END-ITEM</item>
 
 
-        <item>Il mio Orario</item>
+        <item>Il mio\nOrario</item>
         <item>Il mio Orario</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocentePersistenteFragment</item>
         <item>@drawable/_menu_teaching_48x48</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
-        <item>Orario Docenti</item>
-        <item>Orario Docenti</item>
+        <item>Orario\nDocenti</item>
+        <item>Orario\nDocenti</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteNonPersistenteFragment</item>
         <item>@drawable/_menu_teaching_48x48</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
 
-        <item>Orario Classi</item>
+        <item>Orario\nClassi</item>
         <item>Orario Classi</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioClasseNonPersistenteFragment</item>
         <item>@drawable/_menu_student_48x48</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
-        <item>Orario Aule</item>
+        <item>Orario\nAule</item>
         <item>Orario Aule</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioAulaNonPersistenteFragment</item>
         <item>@drawable/_menu_room_timetable_48x48</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
-        <item>Aule Libere</item>
+        <item>Aule\nLibere</item>
         <item>Aule Libere</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.AuleVuoteFragment</item>
         <item>@drawable/_menu_rooms_48x48</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
-        <item>R.E. Docenti</item>
+        <item>R.E.\nDocenti</item>
         <item>Registro elettronico docenti</item>
         <item>it.gov.scuolesuperioridizagarolo.action.ReDocentiAction</item>
         <item>@drawable/logo_re_docente_45x45</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
-        <item>Circolari</item>
+        <item>Circolari\nIstituto</item>
         <item>Elenco delle circolari</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.ArticoloCircolariFragment</item>
         <item>@drawable/_menu_photos</item>
@@ -81,7 +81,7 @@
         <item>END-ITEM</item>
 
 
-        <item>Aggiorna Dati</item>
+        <item>Aggiorna\nDati</item>
         <item>Aggiorna i dati</item>
         <item>it.gov.scuolesuperioridizagarolo.action.UpdateAction</item>
         <item>@drawable/_menu_update_service_60x60</item>

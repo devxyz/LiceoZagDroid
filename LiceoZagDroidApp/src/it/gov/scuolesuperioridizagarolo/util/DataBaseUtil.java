@@ -25,12 +25,6 @@ public class DataBaseUtil {
         sb.append(exportHtml(db, TagArticoloDBDao.TABLENAME));
         sb.append(exportHtml(db, AttachmentArticoloDBDao.TABLENAME));
 
-        sb.append(exportHtml(db, CircolareDBDao.TABLENAME));
-
-        sb.append(exportHtml(db, TermineDBDao.TABLENAME));
-        sb.append(exportHtml(db, NewsDBDao.TABLENAME));
-        sb.append(exportHtml(db, CircolareContieneTermineDBDao.TABLENAME));
-        sb.append(exportHtml(db, NewsContieneTermineDBDao.TABLENAME));
         return "<html><body>" + sb + "</body></html>";
     }
 
