@@ -28,7 +28,6 @@ public class HtmlOutputOrario_perDisposizioni extends HtmlOutputOrario {
 
     @Override
     protected Collection<String> raggruppaPer(BitOrarioGrigliaOrario o) {
-
         return Arrays.asList("fittizio");
     }
 

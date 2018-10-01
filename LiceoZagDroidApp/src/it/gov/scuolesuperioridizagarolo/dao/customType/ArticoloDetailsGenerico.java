@@ -7,6 +7,7 @@ import it.gov.scuolesuperioridizagarolo.dao.ArticoloDB;
  */
 public class ArticoloDetailsGenerico extends ArticoloDetails {
 
+    public String oggetto;
 
     public ArticoloDetailsGenerico() {
     }

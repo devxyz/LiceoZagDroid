@@ -836,11 +836,7 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 169
                     // call mark_suffix_with_optional_U_vowel, line 169
-                    if (!r_mark_suffix_with_optional_U_vowel())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_U_vowel();
                 }
 
                 private boolean r_mark_sU() {
@@ -856,21 +852,13 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 175
                     // call mark_suffix_with_optional_s_consonant, line 175
-                    if (!r_mark_suffix_with_optional_s_consonant())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_s_consonant();
                 }
 
                 private boolean r_mark_lArI() {
                     // (, line 178
                     // among, line 179
-                    if (find_among_b(a_1, 2) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_1, 2) != 0;
                 }
 
                 private boolean r_mark_yU() {
@@ -886,11 +874,7 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 185
                     // call mark_suffix_with_optional_y_consonant, line 185
-                    if (!r_mark_suffix_with_optional_y_consonant())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_y_consonant();
                 }
 
                 private boolean r_mark_nU() {
@@ -901,11 +885,7 @@ private static final long serialVersionUID = 1L;
                         return false;
                     }
                     // among, line 190
-                    if (find_among_b(a_2, 4) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_2, 4) != 0;
                 }
 
                 private boolean r_mark_nUn() {
@@ -922,11 +902,7 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 196
                     // call mark_suffix_with_optional_n_consonant, line 196
-                    if (!r_mark_suffix_with_optional_n_consonant())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_n_consonant();
                 }
 
                 private boolean r_mark_yA() {
@@ -943,11 +919,7 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 202
                     // call mark_suffix_with_optional_y_consonant, line 202
-                    if (!r_mark_suffix_with_optional_y_consonant())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_y_consonant();
                 }
 
                 private boolean r_mark_nA() {
@@ -958,11 +930,7 @@ private static final long serialVersionUID = 1L;
                         return false;
                     }
                     // among, line 207
-                    if (find_among_b(a_5, 2) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_5, 2) != 0;
                 }
 
                 private boolean r_mark_DA() {
@@ -973,11 +941,7 @@ private static final long serialVersionUID = 1L;
                         return false;
                     }
                     // among, line 212
-                    if (find_among_b(a_6, 4) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_6, 4) != 0;
                 }
 
                 private boolean r_mark_ndA() {
@@ -988,11 +952,7 @@ private static final long serialVersionUID = 1L;
                         return false;
                     }
                     // among, line 217
-                    if (find_among_b(a_7, 2) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_7, 2) != 0;
                 }
 
                 private boolean r_mark_DAn() {
@@ -1003,11 +963,7 @@ private static final long serialVersionUID = 1L;
                         return false;
                     }
                     // among, line 222
-                    if (find_among_b(a_8, 4) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_8, 4) != 0;
                 }
 
                 private boolean r_mark_ndAn() {
@@ -1018,11 +974,7 @@ private static final long serialVersionUID = 1L;
                         return false;
                     }
                     // among, line 227
-                    if (find_among_b(a_9, 2) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_9, 2) != 0;
                 }
 
                 private boolean r_mark_ylA() {
@@ -1039,21 +991,13 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 233
                     // call mark_suffix_with_optional_y_consonant, line 233
-                    if (!r_mark_suffix_with_optional_y_consonant())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_y_consonant();
                 }
 
                 private boolean r_mark_ki() {
                     // (, line 236
                     // literal, line 237
-                    if (!(eq_s_b(2, "ki")))
-                    {
-                        return false;
-                    }
-                    return true;
+                    return eq_s_b(2, "ki");
                 }
 
                 private boolean r_mark_ncA() {
@@ -1070,11 +1014,7 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 243
                     // call mark_suffix_with_optional_n_consonant, line 243
-                    if (!r_mark_suffix_with_optional_n_consonant())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_n_consonant();
                 }
 
                 private boolean r_mark_yUm() {
@@ -1091,11 +1031,7 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 249
                     // call mark_suffix_with_optional_y_consonant, line 249
-                    if (!r_mark_suffix_with_optional_y_consonant())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_y_consonant();
                 }
 
                 private boolean r_mark_sUn() {
@@ -1106,11 +1042,7 @@ private static final long serialVersionUID = 1L;
                         return false;
                     }
                     // among, line 254
-                    if (find_among_b(a_13, 4) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_13, 4) != 0;
                 }
 
                 private boolean r_mark_yUz() {
@@ -1127,21 +1059,13 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 260
                     // call mark_suffix_with_optional_y_consonant, line 260
-                    if (!r_mark_suffix_with_optional_y_consonant())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_y_consonant();
                 }
 
                 private boolean r_mark_sUnUz() {
                     // (, line 263
                     // among, line 264
-                    if (find_among_b(a_15, 4) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_15, 4) != 0;
                 }
 
                 private boolean r_mark_lAr() {
@@ -1152,11 +1076,7 @@ private static final long serialVersionUID = 1L;
                         return false;
                     }
                     // among, line 269
-                    if (find_among_b(a_16, 2) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_16, 2) != 0;
                 }
 
                 private boolean r_mark_nUz() {
@@ -1167,11 +1087,7 @@ private static final long serialVersionUID = 1L;
                         return false;
                     }
                     // among, line 274
-                    if (find_among_b(a_17, 4) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_17, 4) != 0;
                 }
 
                 private boolean r_mark_DUr() {
@@ -1182,21 +1098,13 @@ private static final long serialVersionUID = 1L;
                         return false;
                     }
                     // among, line 279
-                    if (find_among_b(a_18, 8) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_18, 8) != 0;
                 }
 
                 private boolean r_mark_cAsInA() {
                     // (, line 282
                     // among, line 283
-                    if (find_among_b(a_19, 2) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_19, 2) != 0;
                 }
 
                 private boolean r_mark_yDU() {
@@ -1213,11 +1121,7 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 292
                     // call mark_suffix_with_optional_y_consonant, line 292
-                    if (!r_mark_suffix_with_optional_y_consonant())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_y_consonant();
                 }
 
                 private boolean r_mark_ysA() {
@@ -1229,11 +1133,7 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 298
                     // call mark_suffix_with_optional_y_consonant, line 298
-                    if (!r_mark_suffix_with_optional_y_consonant())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_y_consonant();
                 }
 
                 private boolean r_mark_ymUs_() {
@@ -1250,11 +1150,7 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 304
                     // call mark_suffix_with_optional_y_consonant, line 304
-                    if (!r_mark_suffix_with_optional_y_consonant())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_y_consonant();
                 }
 
                 private boolean r_mark_yken() {
@@ -1266,11 +1162,7 @@ private static final long serialVersionUID = 1L;
                     }
                     // (, line 308
                     // call mark_suffix_with_optional_y_consonant, line 308
-                    if (!r_mark_suffix_with_optional_y_consonant())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_mark_suffix_with_optional_y_consonant();
                 }
 
                 private boolean r_stem_nominal_verb_suffixes() {
@@ -3125,11 +3017,7 @@ private static final long serialVersionUID = 1L;
                     } while (false);
                     cursor = limit - v_2;
                     cursor = limit_backward;                    // call postlude, line 473
-                    if (!r_postlude())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_postlude();
                 }
 
         public boolean equals( Object o ) {

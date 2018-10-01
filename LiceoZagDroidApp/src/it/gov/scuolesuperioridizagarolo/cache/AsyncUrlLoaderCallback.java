@@ -8,18 +8,18 @@ import java.io.File;
  *xz interfaccia di callback
  */
 public interface AsyncUrlLoaderCallback {
-    public void onLoadFinished(C_NormalizedURL url, File f);
+    void onLoadFinished(C_NormalizedURL url, File f);
 
-    public void onLoadError(C_NormalizedURL url, Throwable error);
+    void onLoadError(C_NormalizedURL url, Throwable error);
 
-    public void onQueueForDownload(C_NormalizedURL url);
+    void onQueueForDownload(C_NormalizedURL url);
 
-    public void onCancelled(C_NormalizedURL url);
+    void onCancelled(C_NormalizedURL url);
 
     /**
      * true if task is cancelled
      *
      * @return
      */
-    public boolean isCancelled();
+    boolean isCancelled();
 }

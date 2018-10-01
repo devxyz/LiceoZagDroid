@@ -120,19 +120,31 @@ public class ParserOrarioAllocazioneAuleTXT {
                     l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale,
                             ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
 
-                } else {
-                    materiaPrincipale = a[0];
+                }else if (a.length == 2) {
                     docentePrincipale = a[1];
-                    String docenteCompresenza;
-                    String materiaCompresenza;
-                    docenteCompresenza = a[2];
-                    materiaCompresenza = "compresenza";
-                    nomeAula = a[3];
-                    if (nomeAula != null && noAula && !ClassesAndRoomContainer.parseRoom(nomeAula).flagAulaLaboratorioPalestra()) {
-                        nomeAula = RoomData.NON_ASSEGNATO.roomName;
-                    }
-                    l = BitOrarioOraLezione.creaOraCompresenza(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza,
+
+                    materiaPrincipale = a[0];
+                    nomeAula =RoomData.NON_ASSEGNATO.roomName;
+                    l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale,
                             ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
+
+                } else {
+                    try {
+                        materiaPrincipale = a[0];
+                        docentePrincipale = a[1];
+                        String docenteCompresenza;
+                        String materiaCompresenza;
+                        docenteCompresenza = a[2];
+                        materiaCompresenza = "compresenza";
+                        nomeAula = a[3];
+                        if (nomeAula != null && noAula && !ClassesAndRoomContainer.parseRoom(nomeAula).flagAulaLaboratorioPalestra()) {
+                            nomeAula = RoomData.NON_ASSEGNATO.roomName;
+                        }
+                        l = BitOrarioOraLezione.creaOraCompresenza(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza,
+                                ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
+                    } catch (Throwable e) {
+                        throw new IllegalArgumentException("Errore in " + Arrays.toString(a) + " " + ora + " " + giorno, e);
+                    }
                 }
 
                 orarioTotale.add(l);

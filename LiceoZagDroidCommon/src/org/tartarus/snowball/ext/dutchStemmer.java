@@ -365,17 +365,11 @@ public class dutchStemmer extends org.tartarus.snowball.SnowballStemmer {
     }
 
     private boolean r_R1() {
-        if (!(I_p1 <= cursor)) {
-            return false;
-        }
-        return true;
+        return I_p1 <= cursor;
     }
 
     private boolean r_R2() {
-        if (!(I_p2 <= cursor)) {
-            return false;
-        }
-        return true;
+        return I_p2 <= cursor;
     }
 
     private boolean r_undouble() {
@@ -430,10 +424,7 @@ public class dutchStemmer extends org.tartarus.snowball.SnowballStemmer {
         // set e_found, line 97
         B_e_found = true;
         // call undouble, line 98
-        if (!r_undouble()) {
-            return false;
-        }
-        return true;
+        return r_undouble();
     }
 
     private boolean r_en_ending() {
@@ -466,10 +457,7 @@ public class dutchStemmer extends org.tartarus.snowball.SnowballStemmer {
         // delete, line 102
         slice_del();
         // call undouble, line 103
-        if (!r_undouble()) {
-            return false;
-        }
-        return true;
+        return r_undouble();
     }
 
     private boolean r_standard_suffix() {

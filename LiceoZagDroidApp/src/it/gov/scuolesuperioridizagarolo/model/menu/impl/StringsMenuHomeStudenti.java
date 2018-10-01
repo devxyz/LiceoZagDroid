@@ -25,21 +25,21 @@ new TreeSet<>(Arrays.<DataMenuInfoFlag>asList() ));
 it.gov.scuolesuperioridizagarolo.fragment.OrarioClassePersistenteFragment.class,
 R.drawable._menu_student_48x48,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioClassePersistenteFragment.class),
-new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
+new TreeSet<>(Arrays.asList(DataMenuInfoFlag.SUB_ITEM) ));
      public static final DataMenuInfo ORARIO_AULE= new DataMenuInfo(
 "Orario Aule",
 "Orario Aule",
 it.gov.scuolesuperioridizagarolo.fragment.OrarioAulaNonPersistenteFragment.class,
 R.drawable._menu_room_timetable_48x48,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioAulaNonPersistenteFragment.class),
-new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
+new TreeSet<>(Arrays.asList(DataMenuInfoFlag.SUB_ITEM) ));
      public static final DataMenuInfo R_E_FAMIGLIE= new DataMenuInfo(
 "R.E. Famiglie",
 "Registro elettronico famiglie",
 it.gov.scuolesuperioridizagarolo.action.ReStudentiAction.class,
 R.drawable.logo_re_famiglie_45x45,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.action.ReStudentiAction.class),
-new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
+new TreeSet<>(Arrays.asList(DataMenuInfoFlag.SUB_ITEM) ));
      public static final DataMenuInfo AGGIORNA= new DataMenuInfo(
 "Aggiorna",
 "Aggiorna i dati",

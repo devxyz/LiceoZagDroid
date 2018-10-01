@@ -88,7 +88,7 @@ public class C_XmlUtil {
         return buffer.toString();
     }
 
-    public static interface NodeListFilter {
-        public boolean accept(Node n);
+    public interface NodeListFilter {
+        boolean accept(Node n);
     }
 }

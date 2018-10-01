@@ -23,7 +23,6 @@ public class LessonConstraint_AulaNonDisponibile extends AbstractLessonConstrain
         this.aula = ClassesAndRoomContainer.parseRoom(aula);
         this.giorno = giorno;
         this.ore = new ArrayList<>(Arrays.asList(ore));
-        ;
     }
 
     public LessonConstraint_AulaNonDisponibile(RoomData aula, EGiorno giorno, EOra... ore) {

@@ -415,10 +415,10 @@ public class DialogUtil {
 
     }
 
-    public static interface InputDialogResult {
-        public void onResult(String s);
+    public interface InputDialogResult {
+        void onResult(String s);
 
-        public void onCancel();
+        void onCancel();
     }
 
 

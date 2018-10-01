@@ -131,9 +131,7 @@ public class UrlImageLoader {
 
     boolean imageViewReused(PhotoToLoad photoToLoad) {
         C_NormalizedURL tag = imageViews.get(photoToLoad.imageView);
-        if (tag == null || !tag.equals(photoToLoad.url))
-            return true;
-        return false;
+        return tag == null || !tag.equals(photoToLoad.url);
     }
 
 

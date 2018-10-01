@@ -60,11 +60,11 @@ public class SplitMaterie {
         }
     }
 
-    public static List<SplitMaterie> SplitMaterie(ClassroomFilter filter, String materiaComposta, String materia1, int orario1, String materia2, int orario2) {
-        return SplitMaterie(filter.filter(), materiaComposta, materia1, orario1, materia2, orario2);
+    public static List<SplitMaterie> splitMaterie(ClassroomFilter filter, String materiaComposta, String materia1, int orario1, String materia2, int orario2) {
+        return splitMaterie(filter.filter(), materiaComposta, materia1, orario1, materia2, orario2);
     }
 
-    public static List<SplitMaterie> SplitMaterie(Collection<Classroom> classi, String materiaComposta, String materia1, int orario1, String materia2, int orario2) {
+    public static List<SplitMaterie> splitMaterie(Collection<Classroom> classi, String materiaComposta, String materia1, int orario1, String materia2, int orario2) {
         List<SplitMaterie> ris = new ArrayList<>();
 
         for (Classroom s : new TreeSet<>(classi)) {

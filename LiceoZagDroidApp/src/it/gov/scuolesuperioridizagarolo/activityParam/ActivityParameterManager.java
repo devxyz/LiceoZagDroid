@@ -17,10 +17,10 @@ public class ActivityParameterManager {
 
     public static <Q extends Serializable, C extends ActivityWithParameter<Q>> void startActivity(Context ctx, Class<C> intent, Q parameter, Map<String, Serializable> parameters) {
         Intent i = new Intent(ctx, intent);
-        i.putExtra(ActivityWithParameter.PARAMETER_KEY, (Serializable) parameter);
+        i.putExtra(ActivityWithParameter.PARAMETER_KEY, parameter);
         if (parameters != null)
             for (Map.Entry<String, Serializable> e : parameters.entrySet()) {
-                i.putExtra(e.getKey(), (Serializable) e.getValue());
+                i.putExtra(e.getKey(), e.getValue());
             }
         ctx.startActivity(i);
     }

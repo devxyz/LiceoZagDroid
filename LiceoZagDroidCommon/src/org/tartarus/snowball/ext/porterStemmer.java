@@ -124,27 +124,15 @@ private static final long serialVersionUID = 1L;
                     {
                         return false;
                     }
-                    if (!(out_grouping_b(g_v, 97, 121)))
-                    {
-                        return false;
-                    }
-                    return true;
+                    return out_grouping_b(g_v, 97, 121);
                 }
 
                 private boolean r_R1() {
-                    if (!(I_p1 <= cursor))
-                    {
-                        return false;
-                    }
-                    return true;
+                    return I_p1 <= cursor;
                 }
 
                 private boolean r_R2() {
-                    if (!(I_p2 <= cursor))
-                    {
-                        return false;
-                    }
-                    return true;
+                    return I_p2 <= cursor;
                 }
 
                 private boolean r_Step_1a() {

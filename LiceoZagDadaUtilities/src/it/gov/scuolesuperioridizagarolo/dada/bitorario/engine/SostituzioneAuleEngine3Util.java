@@ -43,9 +43,7 @@ public class SostituzioneAuleEngine3Util {
             return false;
 
         //controlla se lezione e' OK
-        if (vincoli.checkAll(lezione, o))
-            return false;
-        return true;
+        return !vincoli.checkAll(lezione, o);
     }
 
     static ArrayList<BitOrarioOraLezione> estraiLezioniInAulaOrdinato(BitOrarioGrigliaOrario o) {

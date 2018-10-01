@@ -7,5 +7,5 @@ import android.content.Context;
  */
 public interface ScuolaAppDbHelperCallable<T> {
 
-    public T call(DaoSession session, Context ctx) throws Throwable;
+    T call(DaoSession session, Context ctx) throws Throwable;
 }

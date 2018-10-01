@@ -40,7 +40,7 @@ public class MotoreSostituzioneAule3 {
 
     public static void doTask(AbstractVincoliSostituzioni l, File folderInput, File folderOutput, FilterAule[] ff, boolean showTimetablesChanges) throws IOException {
         final BitOrarioGrigliaOrario orarioInModifica = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(folderInput);
-
+        l.preOrarioBeforeAssignment(orarioInModifica);
 
         System.out.println("\n" +
                 "\n********************************************************************************************");

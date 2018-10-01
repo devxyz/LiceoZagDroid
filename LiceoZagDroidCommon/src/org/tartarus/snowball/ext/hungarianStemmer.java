@@ -328,11 +328,7 @@ private static final long serialVersionUID = 1L;
                 }
 
                 private boolean r_R1() {
-                    if (!(I_p1 <= cursor))
-                    {
-                        return false;
-                    }
-                    return true;
+                    return I_p1 <= cursor;
                 }
 
                 private boolean r_v_ending() {
@@ -451,11 +447,7 @@ private static final long serialVersionUID = 1L;
                     // delete, line 81
                     slice_del();
                     // call undouble, line 82
-                    if (!r_undouble())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_undouble();
                 }
 
                 private boolean r_case() {
@@ -477,11 +469,7 @@ private static final long serialVersionUID = 1L;
                     // delete, line 111
                     slice_del();
                     // call v_ending, line 112
-                    if (!r_v_ending())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_v_ending();
                 }
 
                 private boolean r_case_special() {
@@ -610,11 +598,7 @@ private static final long serialVersionUID = 1L;
                     // delete, line 137
                     slice_del();
                     // call undouble, line 138
-                    if (!r_undouble())
-                    {
-                        return false;
-                    }
-                    return true;
+                    return r_undouble();
                 }
 
                 private boolean r_plural() {

@@ -37,6 +37,26 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
             throw new IllegalArgumentException("Read only mode");
     }
 
+    public List<BitOrarioOraLezione> getLezioni(ClassData c) {
+        final GrigliaOrariaMultiValore r = _lezioniPerClasse.get(c);
+        return new ArrayList<>(r.get());
+    }
+
+
+    public Set<String> getDocentiPerClasse(ClassData c) {
+        final GrigliaOrariaMultiValore r = _lezioniPerClasse.get(c);
+        Set<String> ris = new TreeSet<>();
+        for (BitOrarioOraLezione l : r.get()) {
+            if (l.getDocentePrincipale() != null) {
+                ris.add(l.getDocentePrincipale());
+            }
+            if (l.getDocenteCompresenza() != null) {
+                ris.add(l.getDocenteCompresenza());
+            }
+        }
+        return ris;
+    }
+
     /**
      * elenco materie
      *
@@ -196,10 +216,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
 
         final BitOrarioOraLezione lezioneInAula = getLezioneInClasse(o, settimana, classe);
         if (lezioneInAula == null) return false;
-        if (!o.flagOraDiLezione() || getLezioneInClasse(o.next(), settimana, classe) == null) {
-            return true;
-        }
-        return false;
+        return !o.flagOraDiLezione() || getLezioneInClasse(o.next(), settimana, classe) == null;
 
     }
 
@@ -214,8 +231,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         final BitOrarioOraLezione l2 = getLezioneInClasse(ora.next(), settimana, classe);
         if (l2 == null) return true;
         if (l1.getAula() == null) return false;
-        if (l1.getAula().equals(l2.getAula())) return false;
-        return true;
+        return !l1.getAula().equals(l2.getAula());
 
     }
 

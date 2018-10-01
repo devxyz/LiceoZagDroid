@@ -6,7 +6,7 @@ import android.content.Context;
  * Created by stefano on 09/06/15.
  */
 public interface ScuolaAppDBHelperRunAsync {
-    public void run(DaoSession session, Context ctx) throws Throwable;
+    void run(DaoSession session, Context ctx) throws Throwable;
 
     void onPostExecuteRunUI_OnError(Throwable e);
 

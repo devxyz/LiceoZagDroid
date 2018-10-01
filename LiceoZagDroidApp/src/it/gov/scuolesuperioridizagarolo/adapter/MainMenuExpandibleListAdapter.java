@@ -91,10 +91,7 @@ public class MainMenuExpandibleListAdapter extends BaseAdapter implements IMenuL
         for (DataMenuInfo x : original) {
             if (!x.isSubItem()) {
                 currentVisibleItems.add(x);
-                if (d.equals(x)) {
-                    addSub = true;
-                } else
-                    addSub = false;
+                addSub = d.equals(x);
             } else {
                 if (addSub) {
                     currentVisibleItems.add(x);

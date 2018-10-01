@@ -64,7 +64,7 @@ public class SplitMaterieUtil {
         //ED FISICA
         //==========================
         addAll(ris,
-                SplitMaterie.SplitMaterie(
+                SplitMaterie.splitMaterie(
                         ClassroomFilter.TUTTO(),
                         "ed.fis", "ED.FIS", 2, "ED.FIS", 0
                 ));
@@ -74,7 +74,7 @@ public class SplitMaterieUtil {
         //ITAL-LAT
         //==========================
         addAll(ris,
-                SplitMaterie.SplitMaterie(
+                SplitMaterie.splitMaterie(
                         ClassroomFilter.LICEO_TRADIZIONALE(),
                         "ITAL-LAT", "ITAL", 4, "LAT", 3
                 ));
@@ -84,20 +84,20 @@ public class SplitMaterieUtil {
         //ITAL STORIA
         //==========================
         addAll(ris,
-                SplitMaterie.SplitMaterie(
+                SplitMaterie.splitMaterie(
                         ClassroomFilter.BIENNIO(),
                         "ITAL-STO", "ITAL", 4, "STO B", 3
                 ));
 
         addAll(ris,
-                SplitMaterie.SplitMaterie(
+                SplitMaterie.splitMaterie(
                         ClassroomFilter.TRIENNIO(),
                         "ITAL-STO", "ITAL", 4, "STO T", 2
                 ));
 
 
         addAll(ris,
-                SplitMaterie.SplitMaterie(
+                SplitMaterie.splitMaterie(
                         ClassroomFilter.BIENNIO(),
                         "LAT-STO B", "LAT", 3, "STO B", 3
                 ));
@@ -108,20 +108,20 @@ public class SplitMaterieUtil {
         //==========================
         //mat-fis biennio scienze app
         addAll(ris,
-                SplitMaterie.SplitMaterie(
+                SplitMaterie.splitMaterie(
                         ClassroomFilter.LICEO_SCIENZE_APPLICATE().and(ClassroomFilter.BIENNIO()),
                         "MAT-FIS", "MAT", 5, "FIS", 2
                 ));
 
         //mat-fis biennio tradizionale
         addAll(ris,
-                SplitMaterie.SplitMaterie(
+                SplitMaterie.splitMaterie(
                         ClassroomFilter.LICEO_TRADIZIONALE().and(ClassroomFilter.BIENNIO()),
                         "MAT-FIS", "MAT", 6, "FIS", 2
                 ));
 
         addAll(ris,
-                SplitMaterie.SplitMaterie(
+                SplitMaterie.splitMaterie(
                         ClassroomFilter.TRIENNIO(),
                         "MAT-FIS", "MAT", 4, "FIS", 3
                 ));
@@ -131,13 +131,13 @@ public class SplitMaterieUtil {
         //STO FILOSOFIA
         //==========================
         addAll(ris,
-                SplitMaterie.SplitMaterie(
+                SplitMaterie.splitMaterie(
                         ClassroomFilter.LICEO_TRADIZIONALE().and(ClassroomFilter.TRIENNIO()),
                         "ST-FIL", "STO T", 2, "FIL", 3
                 ));
 
         addAll(ris,
-                SplitMaterie.SplitMaterie(
+                SplitMaterie.splitMaterie(
                         ClassroomFilter.LICEO_SCIENZE_APPLICATE().and(ClassroomFilter.TRIENNIO()),
                         "ST-FIL", "STO T", 2, "FIL", 2
                 ));

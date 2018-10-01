@@ -1,13 +1,11 @@
 package it.gov.scuolesuperioridizagarolo.parser;
 
 import it.gov.scuolesuperioridizagarolo.model.TermineInfoWeb;
-import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetails;
-import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
-import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsGenerico;
 import it.gov.scuolesuperioridizagarolo.parser.impl.ParseException;
 import it.gov.scuolesuperioridizagarolo.parser.impl.Token;
 import it.gov.scuolesuperioridizagarolo.parser.impl.WordParser;
 import it.gov.scuolesuperioridizagarolo.parser.impl.WordParserConstants;
+import it.gov.scuolesuperioridizagarolo.parser.parserArticolo.ContainerParsedArticolo;
 import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 import org.tartarus.snowball.ext.ItalianStemmer;
 
@@ -170,38 +168,20 @@ public class ItalianWordSplit {
         return ris;
     }
 
-    public static ArticoloDetails parseArticleTitle(String title, String content) {
-        WordParser parser = new WordParser(new StringReader(title));
-        final ArrayList<Object> a = new ArrayList<>();
-        try {
-            parser.Input(a);
-        } catch (ParseException e) {
-            a.clear();
-
-            ArticoloDetailsGenerico g = new ArticoloDetailsGenerico();
-            g.addParolaString(parseTextNormalized(title));
-        }
-        return (ArticoloDetails) a.get(0);
-
-    }
 
     public static void main(String[] args) throws ParseException {
-        String s1 = "Circolare n.150 - 23.02.2018 - rettifica orario consigli delle classi quinte e altro - 27.02.2018";
+        //String s1 = "Circolare n.150 - 23.02.2018 - rettifica orario consigli delle classi quinte e altro - 27.02.2018";
+        String s1 = "EVENTO GARA A SQUADRE OLIMPIADI DI MATEMATICA - 8 marzo 2014";
         //String s = "Avviso 23.02.2018 - rettifica orario consigli delle classi quinte - 27.02.2018";
 
 
-        ArrayList<String> ris = new ArrayList<>();
         WordParser parser = new WordParser(new StringReader(s1));
-        ArticoloDetailsCircolare ac = new ArticoloDetailsCircolare();
-        ac.parseNumeroCircolare("n.10");
-        ac.parseDataCircolare("10/gennaio/2018");
-        System.out.println(ac.numeroCircolare);
-        System.out.println(ac.dataCircolare);
+        final ArrayList<ContainerParsedArticolo> a = new ArrayList<>();
+        final ArrayList<Token> b = parser.parse();
+        System.out.println(b);
 
-        final ArrayList<Object> a = new ArrayList<>();
-        parser.Input(a);
-        System.out.println(a);
 
+/*
 
         parser = new WordParser(new StringReader(s1));
         Token nextToken;
@@ -214,10 +194,9 @@ public class ItalianWordSplit {
             }
         }
         while (nextToken.kind != WordParserConstants.EOF);
-
         final ArrayList<String> strings = parseTextNormalized(s1);
         System.out.println(strings);
-
+*/
 
     }
 

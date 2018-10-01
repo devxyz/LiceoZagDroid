@@ -229,8 +229,8 @@ public class ProdottiBarExpandibleListAdapter extends BaseExpandableListAdapter 
         listener.dataChanged(_prodottiPerUtente, 0, 0);
     }
 
-    public static interface ProdottiBarExpandibleListAdapterListener {
-        public void dataChanged(HashMap<String, List<ProdottoBar>> _prodottiPerUtente, int indexGroup, int indexChild);
+    public interface ProdottiBarExpandibleListAdapterListener {
+        void dataChanged(HashMap<String, List<ProdottoBar>> _prodottiPerUtente, int indexGroup, int indexChild);
     }
 }
 

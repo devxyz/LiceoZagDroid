@@ -218,7 +218,7 @@ public class ProdottoBarContainer implements Serializable {
                 '}';
     }
 
-    public static interface ProdottoBarContainerFilter {
-        public boolean accept(ProdottoBar b);
+    public interface ProdottoBarContainerFilter {
+        boolean accept(ProdottoBar b);
     }
 }

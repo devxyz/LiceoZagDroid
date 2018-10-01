@@ -212,7 +212,7 @@ public class LeggiRegistroClasse {
         }
     }
 
-    static enum TipologiaAssenze {
+    enum TipologiaAssenze {
         ENTRATA, USCITA, ASSENZA
     }
 

@@ -21,13 +21,9 @@ public class ThreadUtil {
         }
     }
     public static boolean isUIThread() {
-        if (Looper.getMainLooper().getThread() == Thread.currentThread()) {
-            // On UI thread.
-            return true;
-        } else {
-            // Not on UI thread.
-            return false;
-        }
+        // On UI thread.
+// Not on UI thread.
+        return Looper.getMainLooper().getThread() == Thread.currentThread();
     }
 
     public static void printThreadStatus() {

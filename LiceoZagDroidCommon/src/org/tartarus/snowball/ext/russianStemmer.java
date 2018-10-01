@@ -266,11 +266,7 @@ private static final long serialVersionUID = 1L;
                 }
 
                 private boolean r_R2() {
-                    if (!(I_p2 <= cursor))
-                    {
-                        return false;
-                    }
-                    return true;
+                    return I_p2 <= cursor;
                 }
 
                 private boolean r_perfective_gerund() {

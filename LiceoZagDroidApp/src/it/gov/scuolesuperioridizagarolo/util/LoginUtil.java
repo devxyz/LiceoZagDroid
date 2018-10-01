@@ -33,15 +33,13 @@ public class LoginUtil {
 
         final long tempoTrascorso = System.currentTimeMillis() - parse.getTime();
         System.out.println("Tempo trascorso ms:" + tempoTrascorso);
-        if (tempoTrascorso < 0 || tempoTrascorso > 70 * 60 * 1000) return false;
+        return !(tempoTrascorso < 0 || tempoTrascorso > 70 * 60 * 1000);
 
-        return true;
     }
 
 
     public static void main(String[] args) {
         String prova = "I3VzZXI6ZG9jZW50ZSNyYW5kOjYxNTA5I25vdzoyMDE4LTA4LTIyLTIwLTI1LTE1";
         System.out.println(verifyQRCODEDocente(prova));
-        ;
     }
 }

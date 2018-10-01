@@ -131,7 +131,7 @@ public class ProdottiBarListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public static interface ProdottiBarListAdapterListener {
-        public void dataChanged(List<ProdottoBar> prodotti, int index);
+    public interface ProdottiBarListAdapterListener {
+        void dataChanged(List<ProdottoBar> prodotti, int index);
     }
 }

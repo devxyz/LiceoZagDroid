@@ -224,9 +224,7 @@ public class ArticoloCircolariFragment extends AbstractFragment {
                         multiTextViewAdapter.clear();
                         multiTextViewAdapter.addAll(articoliCircolari.parole());
                         multiTextViewAdapter.notifyDataSetChanged();
-                        //a.update(articoliCircolari);
-                        a = new ArticoliCircolariListAdapter(getMainActivity(), articoliCircolari);
-                        LAYOUT_OBJs.listView.setAdapter(a);
+                        a.update(articoliCircolari);
 
                         if (DebugUtil.DEBUG__CircolariSearchFragment) {
                             Log.d("CERCA_CIRCOLARE_FRAG", "END UPDATE aggiornaViewCircolariAndTerminiDalDB");

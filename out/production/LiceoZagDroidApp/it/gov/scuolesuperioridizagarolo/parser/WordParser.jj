@@ -52,6 +52,8 @@ PARSER_BEGIN(WordParser)
 package it.gov.scuolesuperioridizagarolo.parser.impl;
 import it.gov.scuolesuperioridizagarolo.model.articolo.*;
 import java.util.*;
+import it.gov.scuolesuperioridizagarolo.*;
+import it.gov.scuolesuperioridizagarolo.parser.*;
 
 /** Simple brace matcher. */
 public class WordParser {
@@ -59,7 +61,7 @@ public class WordParser {
   /** Main entry point. */
   public static void main(String args[]) throws ParseException {
     WordParser parser = new WordParser(System.in);
-    parser.Input(new ArrayList());
+    parser.parse();
   }
 
 }
@@ -140,7 +142,7 @@ TOKEN :
   >
   |
   <PAROLA:
-          (["0"-"9","A"-"Z","ò","à","ù","ç","ì","é","è"])+
+          (["0"-"9","A"-"Z","ò","à","ù","ç","ì","é","è"])+(["'"])?
           |("prof.ssa")
           |("sig.ra")
     >
@@ -150,80 +152,27 @@ TOKEN :
 }
 
 /** Root production. */
-public void Input(ArrayList<Object> a) :
+public ArrayList<Token> parse() :
 {
   //javacode
-  ArticoloTypeCircolare ac=new ArticoloTypeCircolare();
-  ArticoloTypeAvviso av=new ArticoloTypeAvviso();
+  ArrayList<Token> a=new ArrayList<Token> ();
 
 
 }
 {
-  (
-    <CIRCOLARE>{a.add(ac);}
-    (<ALTRO>)*
-    (
-      (<NUMERO_PUNTATO>{ac.parseNumeroCircolare(token.image);})    |
-      (<NUMERO>{ac.parseNumeroCircolare(token.image);})
-    )
-    (<ALTRO>)*
-    <DATA>{ac.parseDataCircolare(token.image);}
-    (<ALTRO>)*
-  )
-  (
-    (<AVVISO>{ac.appendOggetto(token.image);})|
-    (<DATA>{ac.appendOggetto(token.image);})|
-    (<CIRCOLARE>{ac.appendOggetto(token.image);})|
-    (<NUMERO_PUNTATO>{ac.appendOggetto(token.image);})|
-    (<PAROLA>{ac.appendOggetto(token.image);})|
-    (<EMAIL>{ac.appendOggetto(token.image);})|
-    (<TELEFONO>{ac.appendOggetto(token.image);})|
-    (<CLASSE>{ac.appendOggetto(token.image);})|
-    (<NUMERO>{ac.appendOggetto(token.image);})
-  )
-  ((
-    (<AVVISO>{ac.appendOggetto(token.image);})|
-    (<DATA>{ac.appendOggetto(token.image);})|
-    (<CIRCOLARE>{ac.appendOggetto(token.image);})|
-    (<NUMERO_PUNTATO>{ac.appendOggetto(token.image);})|
-    (<ALTRO>{ac.appendOggetto(token.image);})|
-    (<PAROLA>{ac.appendOggetto(token.image);})|
-    (<EMAIL>{ac.appendOggetto(token.image);})|
-    (<TELEFONO>{ac.appendOggetto(token.image);})|
-    (<CLASSE>{ac.appendOggetto(token.image);})|
-    (<NUMERO>{ac.appendOggetto(token.image);})
-  )*)
-  |
-  (
-      <AVVISO>{a.add(av);}
-      (<ALTRO>)*
-      <DATA>{av.parseDataAvviso(token.image);}
-      (<ALTRO>)*
-    )
-    (
-          (<AVVISO>{av.appendOggetto(token.image);})|
-          (<DATA>{av.appendOggetto(token.image);})|
-          (<CIRCOLARE>{av.appendOggetto(token.image);})|
-          (<NUMERO_PUNTATO>{av.appendOggetto(token.image);})|
-          (<PAROLA>{av.appendOggetto(token.image);})|
-          (<EMAIL>{av.appendOggetto(token.image);})|
-          (<TELEFONO>{av.appendOggetto(token.image);})|
-          (<CLASSE>{av.appendOggetto(token.image);})|
-          (<NUMERO>{av.appendOggetto(token.image);})
-    )
-    ((
-      (<AVVISO>{av.appendOggetto(token.image);})|
-      (<DATA>{av.appendOggetto(token.image);})|
-      (<CIRCOLARE>{av.appendOggetto(token.image);})|
-      (<NUMERO_PUNTATO>{av.appendOggetto(token.image);})|
-      (<ALTRO>{av.appendOggetto(token.image);})|
-      (<PAROLA>{av.appendOggetto(token.image);})|
-      (<EMAIL>{av.appendOggetto(token.image);})|
-      (<TELEFONO>{av.appendOggetto(token.image);})|
-      (<CLASSE>{av.appendOggetto(token.image);})|
-      (<NUMERO>{av.appendOggetto(token.image);})
-    )*)
 
-
+    (
+        (<AVVISO>{a.add(token);})|
+        (<DATA>{a.add(token);})|
+        (<CIRCOLARE>{a.add(token);})|
+        (<NUMERO_PUNTATO>{a.add(token);})|
+        (<PAROLA>{a.add(token);})|
+        (<EMAIL>{a.add(token);})|
+        (<TELEFONO>{a.add(token);})|
+        (<CLASSE>{a.add(token);})|
+        (<NUMERO>{a.add(token);})|
+        (<ALTRO>)
+    )+
+    {return a;}
 }
 

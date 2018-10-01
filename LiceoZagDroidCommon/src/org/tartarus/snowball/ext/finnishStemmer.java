@@ -238,11 +238,7 @@ private static final long serialVersionUID = 1L;
                 }
 
                 private boolean r_R2() {
-                    if (!(I_p2 <= cursor))
-                    {
-                        return false;
-                    }
-                    return true;
+                    return I_p2 <= cursor;
                 }
 
                 private boolean r_particle_etc() {
@@ -406,11 +402,7 @@ private static final long serialVersionUID = 1L;
 
                 private boolean r_LONG() {
                     // among, line 91
-                    if (find_among_b(a_5, 7) == 0)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return find_among_b(a_5, 7) != 0;
                 }
 
                 private boolean r_VI() {
@@ -420,11 +412,7 @@ private static final long serialVersionUID = 1L;
                     {
                         return false;
                     }
-                    if (!(in_grouping_b(g_V2, 97, 246)))
-                    {
-                        return false;
-                    }
-                    return true;
+                    return in_grouping_b(g_V2, 97, 246);
                 }
 
                 private boolean r_case_ending() {

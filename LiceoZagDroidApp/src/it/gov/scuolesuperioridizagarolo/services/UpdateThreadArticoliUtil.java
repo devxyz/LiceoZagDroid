@@ -8,6 +8,7 @@ import it.gov.scuolesuperioridizagarolo.dao.*;
 import it.gov.scuolesuperioridizagarolo.dao.customType.*;
 import it.gov.scuolesuperioridizagarolo.db.ManagerArticolo;
 import it.gov.scuolesuperioridizagarolo.model.dto.C_Pair;
+import it.gov.scuolesuperioridizagarolo.parser.parserArticolo.*;
 import it.gov.scuolesuperioridizagarolo.util.C_Base64;
 import it.gov.scuolesuperioridizagarolo.util.C_XmlUtil;
 import org.w3c.dom.Document;
@@ -92,22 +93,26 @@ public class UpdateThreadArticoliUtil {
     }
 
     //http://www.scuolesuperioridizagarolo.gov.it/prova.php?id=XXXX
-    public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
+    public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, it.gov.scuolesuperioridizagarolo.parser.impl.ParseException {
         final UpdateThreadContainer x = downloadListCircolariComunicazioni("http://www.scuolesuperioridizagarolo.gov.it/circolari.php?id=1000");
         System.out.println();
         System.out.println();
         System.out.println();
         System.out.println();
+
         for (Map.Entry<Integer, ArticoloDB> s : x.articoliByRemoteId.entrySet()) {
             final ArticoloDB a = s.getValue();
             //System.out.println(a);
-            System.out.println(a.getType() + " " + a.getTitle());
+            System.out.println(a.getType() + "\n" + a.getTitle());
+            System.out.println(a.getDetails());
 
+
+            System.out.println("====================");
         }
     }
 
 
-    public static UpdateThreadContainer downloadListCircolariComunicazioni(String url) throws IOException, ParserConfigurationException, SAXException {
+    public static UpdateThreadContainer downloadListCircolariComunicazioni(String url) throws IOException, ParserConfigurationException, SAXException, it.gov.scuolesuperioridizagarolo.parser.impl.ParseException {
         URL u = new URL(url);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -119,7 +124,7 @@ public class UpdateThreadArticoliUtil {
     }
 
     @SuppressWarnings("ConstantConditions")
-    private static UpdateThreadContainer parseAndUpdateList(Document doc) throws UnsupportedEncodingException {
+    private static UpdateThreadContainer parseAndUpdateList(Document doc) throws UnsupportedEncodingException, it.gov.scuolesuperioridizagarolo.parser.impl.ParseException {
 
         final UpdateThreadContainer ris = new UpdateThreadContainer();
 
@@ -169,10 +174,16 @@ public class UpdateThreadArticoliUtil {
 
             switch (category_title.toUpperCase().trim()) {
                 case "EVENTI": {
+
+
                     ArticoloDetailsEvento x = new ArticoloDetailsEvento();
-                    x.oggetto = "oggetto da terminare";
-                    x.dataEvento = new Date();
-                    x.addParolaString("PROVA");
+
+                    //parsng titolo
+                    final ContainerParsedEvento parse1 = (ContainerParsedEvento) ParserArticolo.parse(ArticoloType.EVENTO, aa.getTitle());
+                    x.oggetto = parse1.oggetto.toString();
+                    x.dataEvento = parse1.dataEvento;
+                    x.addParolaString(parse1.termini);
+
                     aa.setDetails(x);
                     aa.setType(ArticoloType.EVENTO);
 
@@ -182,20 +193,30 @@ public class UpdateThreadArticoliUtil {
                 }
                 case "AVVISI/COMUNICAZIONI": {
                     ArticoloDetailsAvviso x = new ArticoloDetailsAvviso();
-                    x.oggetto = "oggetto da terminare";
-                    x.dataAvviso = new Date();
-                    x.addParolaString("PROVA");
+
+                    //parsng titolo
+                    final ContainerParsedAvviso parse1 = (ContainerParsedAvviso) ParserArticolo.parse(ArticoloType.AVVISO, aa.getTitle());
+                    x.oggetto = parse1.oggetto.toString();
+                    x.dataAvviso = parse1.dataAvviso;
+                    x.addParolaString(parse1.termini);
+
                     aa.setDetails(x);
                     aa.setType(ArticoloType.AVVISO);
                     aa.setDate(x.dataAvviso);
                     break;
                 }
                 case "CIRCOLARI": {
+
                     ArticoloDetailsCircolare x = new ArticoloDetailsCircolare();
-                    x.oggetto = "oggetto da terminare";
-                    x.numeroCircolare = 9999;
-                    x.dataCircolare = new Date();
-                    x.addParolaString("PROVA");
+
+                    //parsng titolo
+                    final ContainerParsedCircolare parse1 = (ContainerParsedCircolare) ParserArticolo.parse(ArticoloType.CIRCOLARE, aa.getTitle());
+                    x.oggetto = parse1.oggetto.toString();
+                    x.dataCircolare = parse1.dataCircolare;
+                    x.numeroCircolare = parse1.numCircolare == null ? 0 : parse1.numCircolare;
+                    x.addParolaString(parse1.termini);
+
+
                     aa.setDetails(x);
                     aa.setType(ArticoloType.CIRCOLARE);
                     aa.setDate(x.dataCircolare);
@@ -203,7 +224,13 @@ public class UpdateThreadArticoliUtil {
                 }
                 default: {
                     ArticoloDetailsGenerico x = new ArticoloDetailsGenerico();
-                    x.addParolaString("PROVA");
+
+                    //parsng titolo
+                    final ContainerParsedArticolo parse1 = ParserArticolo.parse(ArticoloType.GENERICO, aa.getTitle());
+                    x.oggetto = parse1.oggetto.toString();
+                    x.addParolaString(parse1.termini);
+
+
                     aa.setDetails(x);
                     aa.setType(ArticoloType.GENERICO);
                     aa.setDate(aa.getPubDate());
@@ -211,6 +238,9 @@ public class UpdateThreadArticoliUtil {
                 }
             }
 
+            if (aa.getDate() == null) {
+                aa.setDate(aa.getPubDate());
+            }
 
             //ArticoloTypeCircolare t=new ArticoloTypeCircolare()
             //aa.setJsonClass(t.parseClass().getName());
@@ -286,6 +316,7 @@ public class UpdateThreadArticoliUtil {
         }
         return ris;
     }
+
 
     private static class UpdateThreadContainer {
         final Map<Integer, ArticoloDB> articoliByRemoteId = new TreeMap<>();

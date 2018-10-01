@@ -24,26 +24,6 @@ public class ArticoloDetailsAvviso extends ArticoloDetails {
         oggetto = "";
     }
 
-    public void parseDataAvviso(String s) {
-        s = s.toUpperCase();
-        String[] mesi = new String[]{"GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"};
-        int mese = 1;
-        for (String m : mesi) {
-            s = s.replace(m, "/" + mese + "/");
-        }
-        s = s.replaceAll("[.]+", "/");
-        s = s.replaceAll("[ ]+", "/");
-        s = s.replaceAll("[/]+", "/");
-
-
-        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            dataAvviso = f.parse(s);
-        } catch (ParseException e) {
-            throw new IllegalArgumentException(e);
-        }
-    }
-
     @Override
     public String toString() {
         return "ArticoloTypeAvviso{" +

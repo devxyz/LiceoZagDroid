@@ -8,5 +8,5 @@ import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
  * Created by stefano on 06/04/15.
  */
 public interface ActivityAction {
-    public void doTask(MainMenuActivity activity, DataMenuInfo item, Bundle bundle);
+    void doTask(MainMenuActivity activity, DataMenuInfo item, Bundle bundle);
 }

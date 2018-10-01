@@ -57,8 +57,6 @@ public abstract class ActivityWithParameter<T extends Serializable> extends Acti
     protected void onSaveInstanceState0(Bundle outState) {
     }
 
-    ;
-
     protected void onCreate0(Bundle savedInstanceState) {
     }
 }

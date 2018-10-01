@@ -541,27 +541,15 @@ private static final long serialVersionUID = 1L;
                 }
 
                 private boolean r_RV() {
-                    if (!(I_pV <= cursor))
-                    {
-                        return false;
-                    }
-                    return true;
+                    return I_pV <= cursor;
                 }
 
                 private boolean r_R1() {
-                    if (!(I_p1 <= cursor))
-                    {
-                        return false;
-                    }
-                    return true;
+                    return I_p1 <= cursor;
                 }
 
                 private boolean r_R2() {
-                    if (!(I_p2 <= cursor))
-                    {
-                        return false;
-                    }
-                    return true;
+                    return I_p2 <= cursor;
                 }
 
                 private boolean r_standard_suffix() {

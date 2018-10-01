@@ -223,8 +223,8 @@ public abstract class SnowballProgram {
                 if (w.method == null) return w.result;
                 boolean res;
                 try {
-                    Object resobj = w.method.invoke(w.methodobject,
-                            new Object[0]);
+                    Object resobj = w.method.invoke(w.methodobject
+                    );
                     res = resobj.toString().equals("true");
                 } catch (InvocationTargetException e) {
                     res = false;
@@ -291,8 +291,8 @@ public abstract class SnowballProgram {
 
                 boolean res;
                 try {
-                    Object resobj = w.method.invoke(w.methodobject,
-                            new Object[0]);
+                    Object resobj = w.method.invoke(w.methodobject
+                    );
                     res = resobj.toString().equals("true");
                 } catch (InvocationTargetException e) {
                     res = false;
@@ -408,4 +408,4 @@ extern void debug(struct SN_env * z, int number, int line_count)
 }
 */
 
-};
+}

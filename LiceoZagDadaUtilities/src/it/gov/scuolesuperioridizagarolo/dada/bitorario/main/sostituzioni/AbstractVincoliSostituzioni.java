@@ -141,6 +141,9 @@ public abstract class AbstractVincoliSostituzioni {
     protected void postOrarioBeforeFinalCheck(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
 
     }
+    protected void preOrarioBeforeAssignment(final BitOrarioGrigliaOrario orarioTotale) {
+
+    }
 
     /*
     modificare in casi specifici

@@ -13,8 +13,7 @@ public enum FilterAule {
     LABORATORI_MAI {
         @Override
         boolean accept(String materia, ClassData classe, String docente, RoomData aula, Set<CompatibilitaLaboratorio> c) {
-            if (!aula.flagAulaLaboratorioPalestra()) return true;
-            return false;
+            return !aula.flagAulaLaboratorioPalestra();
         }
     },
 
