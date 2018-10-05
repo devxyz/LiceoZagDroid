@@ -104,7 +104,7 @@ public class ArticoliCircolariListAdapter extends BaseAdapter {
         TextView textView_tag = LAYOUT_OBJs.textView_tag;
 
         final ArticoloSdo<ArticoloDetailsCircolare> c = this.articoliCircolari.articoli.get(position);
-        final ArticoloDetailsCircolare circolare = c.wrapperArticolo.getDetails();
+        final ArticoloDetailsCircolare circolare = c.getDetails();
 
         textView_info_circolare.setText("Circolare n." + circolare.numeroCircolare + " del " + C_DateUtil.toDDMMYYY(circolare.dataCircolare));
         textView_oggetto.setText(circolare.oggetto);

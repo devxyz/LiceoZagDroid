@@ -22,6 +22,12 @@ public class ArticoloDetailsEvento extends ArticoloDetails {
         oggetto = "";
     }
 
+
+    public void check() throws IllegalArgumentException{
+        if (dataEvento==null)throw new IllegalArgumentException("Data evento null");
+        if (oggetto==null)throw new IllegalArgumentException("Oggetto null");
+    }
+
     @Override
     public String toString() {
         return "ArticoloTypeAvviso{" +

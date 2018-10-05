@@ -31,6 +31,8 @@ public abstract class ArticoloDetails {
 
     }
 
+    public abstract void check() throws IllegalArgumentException;
+
 
     @Override
     public String toString() {

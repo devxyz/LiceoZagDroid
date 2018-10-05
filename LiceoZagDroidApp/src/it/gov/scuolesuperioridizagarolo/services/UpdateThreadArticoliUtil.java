@@ -61,6 +61,19 @@ public class UpdateThreadArticoliUtil {
 
                 //crea articoli
                 final ArrayList<ArticoloDB> values = new ArrayList<>(updateThreadContainer.articoliByRemoteId.values());
+
+                for (ArticoloDB aa : values) {
+                    final ArticoloDetails details = aa.getDetails();
+                    if (details == null) {
+                        throw new IllegalArgumentException("Dettagli null per " + aa);
+                    }
+                    try {
+                        details.check();
+                    } catch (IllegalArgumentException e) {
+                        throw new IllegalArgumentException("Errore per dettagli " + aa, e);
+                    }
+                }
+
                 final ArticoloDBDao articoloDBDao = session.getArticoloDBDao();
                 for (ArticoloDB aa : values) {
                     articoloDBDao.insert(aa);
@@ -101,13 +114,25 @@ public class UpdateThreadArticoliUtil {
         System.out.println();
 
         for (Map.Entry<Integer, ArticoloDB> s : x.articoliByRemoteId.entrySet()) {
-            final ArticoloDB a = s.getValue();
+            final ArticoloDB aa = s.getValue();
+
+            final ArticoloDetails details = aa.getDetails();
+            if (details == null) {
+                throw new IllegalArgumentException("Dettagli null per " + aa);
+            }
+            try {
+                details.check();
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("Errore per dettagli " + aa, e);
+            }
+
             //System.out.println(a);
-            System.out.println(a.getType() + "\n" + a.getTitle());
-            System.out.println(a.getDetails());
+            System.out.println(aa.getType() + "\n" + aa.getTitle());
+            System.out.println(aa.getDetails());
 
 
             System.out.println("====================");
+            System.out.flush();
         }
     }
 
@@ -187,7 +212,23 @@ public class UpdateThreadArticoliUtil {
                     aa.setDetails(x);
                     aa.setType(ArticoloType.EVENTO);
 
+                    //assegna data
+                    if (x.dataEvento == null) {
+                        x.dataEvento = aa.getPubDate();
+                    }
+                    if (x.dataEvento == null) {
+                        x.dataEvento = new Date();
+                    }
                     aa.setDate(x.dataEvento);
+
+                    //valorizza le date
+                    if (aa.getDate() == null) {
+                        aa.setDate(new Date());
+                    }
+                    if (aa.getPubDate() == null) {
+                        aa.setPubDate(new Date());
+                    }
+
 
                     break;
                 }
@@ -202,7 +243,26 @@ public class UpdateThreadArticoliUtil {
 
                     aa.setDetails(x);
                     aa.setType(ArticoloType.AVVISO);
+
+                    //assegna data
+                    if (x.dataAvviso == null) {
+                        x.dataAvviso = aa.getPubDate();
+                    }
+                    if (x.dataAvviso == null) {
+                        x.dataAvviso = new Date();
+                    }
                     aa.setDate(x.dataAvviso);
+
+                    //valorizza le date
+                    if (aa.getDate() == null) {
+                        aa.setDate(new Date());
+                    }
+                    if (aa.getPubDate() == null) {
+                        aa.setPubDate(new Date());
+                    }
+
+
+
                     break;
                 }
                 case "CIRCOLARI": {
@@ -219,7 +279,25 @@ public class UpdateThreadArticoliUtil {
 
                     aa.setDetails(x);
                     aa.setType(ArticoloType.CIRCOLARE);
+
+
+                    //assegna data
+                    if (x.dataCircolare == null) {
+                        x.dataCircolare = aa.getPubDate();
+                    }
+                    if (x.dataCircolare == null) {
+                        x.dataCircolare = new Date();
+                    }
                     aa.setDate(x.dataCircolare);
+
+                    //valorizza le date
+                    if (aa.getDate() == null) {
+                        aa.setDate(new Date());
+                    }
+                    if (aa.getPubDate() == null) {
+                        aa.setPubDate(new Date());
+                    }
+
                     break;
                 }
                 default: {
@@ -233,14 +311,21 @@ public class UpdateThreadArticoliUtil {
 
                     aa.setDetails(x);
                     aa.setType(ArticoloType.GENERICO);
+
                     aa.setDate(aa.getPubDate());
+
+                    //valorizza le date
+                    if (aa.getDate() == null) {
+                        aa.setDate(new Date());
+                    }
+                    if (aa.getPubDate() == null) {
+                        aa.setPubDate(new Date());
+                    }
+
                     break;
                 }
             }
 
-            if (aa.getDate() == null) {
-                aa.setDate(aa.getPubDate());
-            }
 
             //ArticoloTypeCircolare t=new ArticoloTypeCircolare()
             //aa.setJsonClass(t.parseClass().getName());

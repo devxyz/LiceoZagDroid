@@ -6,7 +6,6 @@ import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
 import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdo;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdoContainer;
-import it.gov.scuolesuperioridizagarolo.model.articolo.WrapperArticoloDB;
 import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 import org.greenrobot.greendao.query.DeleteQuery;
 import org.greenrobot.greendao.query.QueryBuilder;
@@ -97,7 +96,7 @@ public class ManagerArticolo {
 
         //articolo
         for (ArticoloDB a : listArticolo) {
-            ArticoloSdo<ArticoloDetailsCircolare> s = new ArticoloSdo<ArticoloDetailsCircolare>(new WrapperArticoloDB<>(ArticoloDetailsCircolare.class, a));
+            ArticoloSdo<ArticoloDetailsCircolare> s = new ArticoloSdo<>(a, ArticoloDetailsCircolare.class);
             map.put(a.getId(), s);
         }
 

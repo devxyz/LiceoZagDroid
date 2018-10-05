@@ -9,6 +9,10 @@ public class ArticoloDetailsGenerico extends ArticoloDetails {
 
     public String oggetto;
 
+    public void check() throws IllegalArgumentException{
+        if (oggetto==null)throw new IllegalArgumentException("Oggetto null");
+    }
+
     public ArticoloDetailsGenerico() {
     }
 

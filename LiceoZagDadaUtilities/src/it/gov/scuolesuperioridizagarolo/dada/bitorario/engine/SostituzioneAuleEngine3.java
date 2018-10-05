@@ -47,24 +47,30 @@ public class SostituzioneAuleEngine3 {
 
         final List<LessonConstraint_OreConsecutiveStessaAula> vincoliOreConsecutiveNonVerificati = new ArrayList<>();
 
-        for (LessonConstraint_OreConsecutiveStessaAula x : LessonConstraint_OreConsecutiveStessaAula.genera(o)) {
-            if (x.checkAll(lezioniInAulaOrdinato, o)) {
+        for (int i = 0; i < 2; i++) {
+            vincoliOreConsecutiveNonVerificati.clear();
+            for (LessonConstraint_OreConsecutiveStessaAula x : LessonConstraint_OreConsecutiveStessaAula.genera(o)) {
+                if (x.checkAll(lezioniInAulaOrdinato, o)) {
+                    vincoliFinali.add(x);
+                } else {
+                    vincoliOreConsecutiveNonVerificati.add(x);
+                }
+            }
+            System.out.println("Vincoli ore consecutive non verificate: " + vincoliOreConsecutiveNonVerificati.size());
+
+
+            for (Iterator<LessonConstraint_OreConsecutiveStessaAula> iterator = vincoliOreConsecutiveNonVerificati.iterator(); iterator.hasNext(); ) {
+                LessonConstraint_OreConsecutiveStessaAula x = iterator.next();
                 vincoliFinali.add(x);
-            } else {
-                vincoliOreConsecutiveNonVerificati.add(x);
+                final ArrayList<BitOrarioOraLezione> ris = risolveVincoliAndCambiaAula(o, vincoliFinali, estrai, ff);
+                if (ris.size() > 0) {
+                    //non risolto
+                    vincoliFinali.remove(x);
+                } else {
+                    iterator.remove();
+                }
             }
-        }
-        System.out.println("Vincoli ore consecutive non verificate: " + vincoliOreConsecutiveNonVerificati.size());
-        for (Iterator<LessonConstraint_OreConsecutiveStessaAula> iterator = vincoliOreConsecutiveNonVerificati.iterator(); iterator.hasNext(); ) {
-            LessonConstraint_OreConsecutiveStessaAula x = iterator.next();
-            vincoliFinali.add(x);
-            final ArrayList<BitOrarioOraLezione> ris = risolveVincoliAndCambiaAula(o, vincoliFinali, estrai, ff);
-            if (ris.size() > 0) {
-                //non risolto
-                vincoliFinali.remove(x);
-            } else {
-                iterator.remove();
-            }
+            if (vincoliOreConsecutiveNonVerificati.size() == 0) break;
         }
 
         System.out.println("Vincoli ore consecutive non risolti: " + vincoliOreConsecutiveNonVerificati.size());

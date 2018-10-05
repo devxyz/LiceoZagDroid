@@ -6,6 +6,7 @@ public enum RoomData {
     NON_ASSEGNATO("(NON ASSEGNATO)", "(NON ASSEGNATO)", 0, 0, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     AULA_SCONOSCIUTA("AULA SCONOSCIUTA", "AULA SCONOSCIUTA", 0, 0, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     USCITA_DIDATTICA("###", "Uscita Didattica", 0, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
+
     A1("A1", "Aula Didattica", 30, 11, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     A2("A2", "Aula Didattica", 28, 13, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     A3_FIS("A3_FIS", "Laboratorio di Fisica", 30, 15, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),

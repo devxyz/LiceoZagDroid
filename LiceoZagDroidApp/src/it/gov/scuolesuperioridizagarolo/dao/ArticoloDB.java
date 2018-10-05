@@ -194,4 +194,22 @@ public class ArticoloDB {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "ArticoloDB{" +
+                "categoryTitle='" + categoryTitle + '\'' +
+                ", id=" + id +
+                ", title='" + title + '\'' +
+                ", pubDate=" + pubDate +
+                ", insertTimestamp=" + insertTimestamp +
+                ", remoteId=" + remoteId +
+                ", remoteCategoryId=" + remoteCategoryId +
+                ", content='" + content + '\'' +
+                ", flagLettura=" + flagLettura +
+                ", url='" + url + '\'' +
+                ", details=" + details +
+                ", type=" + type +
+                ", date=" + date +
+                '}';
+    }
 }

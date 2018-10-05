@@ -337,7 +337,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                             OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
                             w.setPersistFlag(false);
                             w.setData(giornoCorrente);
-                            w.setFiltro(item.getClasse().className);
+                            w.setFiltro(item.getClasse());
                             w.setNavigateFlag(false);
                             getMainActivity().doAction(orarioClassi, w.getBundle());
                         }
@@ -368,7 +368,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                             OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
                             w.setPersistFlag(false);
                             w.setData(giornoCorrente);
-                            w.setFiltro(item.getAula().roomName);
+                            w.setFiltro(item.getAula());
                             w.setNavigateFlag(false);
                             getMainActivity().doAction(orarioAule, w.getBundle());
                         }

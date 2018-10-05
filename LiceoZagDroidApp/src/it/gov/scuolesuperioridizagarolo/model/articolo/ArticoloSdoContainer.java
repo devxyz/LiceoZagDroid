@@ -23,14 +23,19 @@ public class ArticoloSdoContainer<T extends ArticoloDetails> {
             public int compare(ArticoloSdo<ArticoloDetailsCircolare> a, ArticoloSdo<ArticoloDetailsCircolare> b) {
 
 
-                final ArticoloDetailsCircolare dA = a.wrapperArticolo.getDetails();
-                final ArticoloDetailsCircolare dB = b.wrapperArticolo.getDetails();
+                final ArticoloDetailsCircolare dA = a.getDetails();
+                final ArticoloDetailsCircolare dB = b.getDetails();
 
-                final C_MyDate d1 = getDataGiornoMeseAnno(dA.dataCircolare);
-                final C_MyDate d2 = getDataGiornoMeseAnno(dB.dataCircolare);
+                final C_MyDate d1 = getDataGiornoMeseAnno(a.articolo.getDate());
+                final C_MyDate d2 = getDataGiornoMeseAnno(b.articolo.getDate());
                 final int i = d1.compareTo(d2);
                 if (i != 0) return -i;
-
+                if (dA==null){
+                    throw new IllegalArgumentException("Errore codice A "+a);
+                }
+                if (dB==null){
+                    throw new IllegalArgumentException("Errore codice B "+b);
+                }
                 if (dA.numeroCircolare < dB.numeroCircolare)
                     return 1;
                 else if (dA.numeroCircolare > dB.numeroCircolare)

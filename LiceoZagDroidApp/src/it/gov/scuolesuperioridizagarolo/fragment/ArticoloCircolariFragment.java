@@ -55,8 +55,8 @@ public class ArticoloCircolariFragment extends AbstractFragment {
                     final ArticoloSdoContainer<ArticoloDetailsCircolare> circolari = a.getArticoliCircolari();
                     final ArticoloDBDao circolareDBDao = session.getArticoloDBDao();
                     for (ArticoloSdo c : circolari.articoli) {
-                        c.wrapperArticolo.articolo.setFlagLettura(flagLettura);
-                        circolareDBDao.update(c.wrapperArticolo.articolo);
+                        c.articolo.setFlagLettura(flagLettura);
+                        circolareDBDao.update(c.articolo);
                     }
                 }
             });
@@ -76,8 +76,8 @@ public class ArticoloCircolariFragment extends AbstractFragment {
                 @Override
                 public void run(DaoSession session, Context ctx) throws Throwable {
                     final ArticoloDBDao circolareDBDao = session.getArticoloDBDao();
-                    c.wrapperArticolo.articolo.setFlagLettura(flagLettura);
-                    circolareDBDao.update(c.wrapperArticolo.articolo);
+                    c.articolo.setFlagLettura(flagLettura);
+                    circolareDBDao.update(c.articolo);
 
                 }
             });

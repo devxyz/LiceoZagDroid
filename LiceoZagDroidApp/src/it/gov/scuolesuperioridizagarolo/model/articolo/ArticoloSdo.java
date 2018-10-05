@@ -1,5 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.model.articolo;
 
+import it.gov.scuolesuperioridizagarolo.dao.ArticoloDB;
 import it.gov.scuolesuperioridizagarolo.dao.AttachmentArticoloDB;
 import it.gov.scuolesuperioridizagarolo.dao.TagArticoloDB;
 import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetails;
@@ -12,14 +13,26 @@ import java.util.Set;
  * Created by stefano on 22/03/2018.
  */
 public class ArticoloSdo<T extends ArticoloDetails> {
-    public final WrapperArticoloDB<T> wrapperArticolo;
     public final List<TagArticoloDB> tags = new ArrayList<>();
     public final List<AttachmentArticoloDB> attachments = new ArrayList<>();
+    public final ArticoloDB articolo;
 
-    public ArticoloSdo(WrapperArticoloDB<T> wrapperArticolo) {
-        this.wrapperArticolo = wrapperArticolo;
+    public ArticoloSdo(ArticoloDB articolo, Class<T> cl) {
+        this.articolo = articolo;
     }
 
+
+    @Override
+    public String toString() {
+        return "ArticoloSdo{" +
+                "articolo=" + articolo +
+                '}';
+    }
+
+    public T getDetails() {
+        //noinspection unchecked
+        return (T) articolo.getDetails();
+    }
 
     public void detachAll() {
         for (TagArticoloDB tag : tags) {
@@ -31,6 +44,6 @@ public class ArticoloSdo<T extends ArticoloDetails> {
     }
 
     public Set<String> parole() {
-        return wrapperArticolo.getParoleLowerCase();
+        return articolo.getDetails().getParoleLowerCase();
     }
 }

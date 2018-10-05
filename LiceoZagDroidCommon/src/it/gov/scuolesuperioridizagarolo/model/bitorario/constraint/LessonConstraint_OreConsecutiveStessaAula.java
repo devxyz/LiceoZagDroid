@@ -55,6 +55,7 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
                     if (l.getAula() == null) continue;
                     if (lnext == null) continue;
                     if (lnext.getAula() == null) continue;
+                    if (lnext.getAula().flagAulaLaboratorioPalestra()) continue;
                     if (l.getMateriaPrincipale().equals(lnext.getMateriaPrincipale())) {
                         ris.add(new LessonConstraint_OreConsecutiveStessaAula(classeD, giorno, ora, ora.next()));
                     }

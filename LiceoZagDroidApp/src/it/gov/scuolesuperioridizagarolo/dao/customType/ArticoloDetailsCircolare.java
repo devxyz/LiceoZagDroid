@@ -25,6 +25,10 @@ public class ArticoloDetailsCircolare extends ArticoloDetails {
     }
 
 
+    public void check() throws IllegalArgumentException{
+        if (dataCircolare==null)throw new IllegalArgumentException("Data circolare null");
+        if (oggetto==null)throw new IllegalArgumentException("Oggetto null");
+    }
 
     @Override
     public String toString() {

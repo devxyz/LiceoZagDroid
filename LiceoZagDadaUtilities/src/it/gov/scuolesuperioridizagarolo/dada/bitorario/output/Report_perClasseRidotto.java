@@ -59,7 +59,7 @@ public class Report_perClasseRidotto {
             count--;
 
             p.print("<tr>");
-            p.print("<td style='border:1px solid black'>" + classe + "</td>");
+            p.print("<td style='border:1px solid black;border-right:5px solid black'>" + classe + "</td>");
             for (EGiorno st : EGiorno.values()) {
                 if (!st.flagGiornoDiLezione()) continue;
                 for (EOra ox : EOra.values()) {
@@ -91,6 +91,7 @@ public class Report_perClasseRidotto {
                         }
                     }
                 }
+                p.print("<td style='boder:0px;border-left:5px solid black;border-right:5px solid black; text-align:center'> &nbsp; </td>");
             }
 
 
@@ -113,7 +114,7 @@ public class Report_perClasseRidotto {
         p.print("<td></td>");
         for (EGiorno s : EGiorno.values()) {
             if (!s.flagGiornoDiLezione()) continue;
-            p.print("<td style='border:1px solid black;text-align:center' colspan='" + (EOra.oreDiLezione()) + "'>" + s + "</td>");
+            p.print("<td style='border:1px solid black;text-align:center' colspan='" + (EOra.oreDiLezione()+1) + "'>" + s + "</td>");
         }
         p.print("</tr>");
 
@@ -126,6 +127,7 @@ public class Report_perClasseRidotto {
                 if (!o2.flagOraDiLezione()) continue;
                 p.print("<td style='border:1px solid black; text-align:center'>" + o2.getProgressivOra() + "</td>");
             }
+            p.print("<td style='boder:0px;border-left:5px solid black;border-right:5px solid black; text-align:center'> &nbsp; </td>");
 
         }
         p.print("</tr>");

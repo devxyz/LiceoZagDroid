@@ -9,16 +9,28 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EPaperFormat
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
  * Created by stefano on 25/09/2017.
  */
-public class Report_perDocentiRidotto {
+public class Report_perDocentiIngleseRidotto {
 
-    public Report_perDocentiRidotto() {
+    public Report_perDocentiIngleseRidotto() {
     }
 
+    private Set<String> docentiInglese(BitOrarioGrigliaOrario o) {
+        Set<String> ris = new TreeSet<>();
+        final ArrayList<BitOrarioOraLezione> lezioni = o.getLezioni();
+        for (BitOrarioOraLezione l : lezioni) {
+            if (l.getMateriaPrincipale() != null && l.getMateriaPrincipale().equalsIgnoreCase("inglese")) {
+                ris.add(l.getDocentePrincipale());
+            }
+        }
+        return ris;
+    }
 
     public void print(BitOrarioGrigliaOrario o, NoteVariazioniBitOrarioGrigliaOrario note, File f, EPaperFormat format) throws IOException {
         PrintStream p = new PrintStream(f);
@@ -29,7 +41,8 @@ public class Report_perDocentiRidotto {
         int count = format == EPaperFormat.A4 ? 15 : 40;
         p.println("<h1>" + o.getTitolo() + "</h1>");
 
-        final TreeSet<String> docenti = o.getDocenti();
+        final Set<String> docenti = docentiInglese(o);
+        p.print("<pre>" + docenti + "</pre>");
         for (String docente : docenti) {
             if (count <= 0) {
                 count = format == EPaperFormat.A4 ? 15 : 40;
@@ -76,9 +89,6 @@ public class Report_perDocentiRidotto {
                         }
                     }
                 }
-                p.print("<td style='boder:0px;border-left:5px solid black;border-right:5px solid black; text-align:center'> &nbsp; </td>");
-
-
             }
 
 
@@ -101,7 +111,7 @@ public class Report_perDocentiRidotto {
         p.print("<td></td>");
         for (EGiorno s : EGiorno.values()) {
             if (!s.flagGiornoDiLezione()) continue;
-            p.print("<td style='border:1px solid black;text-align:center' colspan='" + (EOra.oreDiLezione()+1) + "'>" + s + "</td>");
+            p.print("<td style='border:1px solid black;text-align:center' colspan='" + (EOra.oreDiLezione()) + "'>" + s + "</td>");
         }
         p.print("</tr>");
 
@@ -114,9 +124,8 @@ public class Report_perDocentiRidotto {
                 if (!o2.flagOraDiLezione()) continue;
                 p.print("<td style='border:1px solid black; text-align:center'>" + o2.getProgressivOra() + "</td>");
             }
-            p.print("<td style='border:1px solid black; text-align:center'> &nbsp; </td>");
-        }
 
+        }
         p.print("</tr>");
     }
 

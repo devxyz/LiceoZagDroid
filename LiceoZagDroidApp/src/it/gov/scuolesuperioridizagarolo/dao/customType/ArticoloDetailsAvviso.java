@@ -20,6 +20,11 @@ public class ArticoloDetailsAvviso extends ArticoloDetails {
         this.oggetto = oggetto;
     }
 
+    public void check() throws IllegalArgumentException{
+        if (dataAvviso==null)throw new IllegalArgumentException("Data avviso null");
+        if (oggetto==null)throw new IllegalArgumentException("Oggetto null");
+    }
+
     public ArticoloDetailsAvviso() {
         oggetto = "";
     }
