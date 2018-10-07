@@ -1,7 +1,10 @@
 package it.gov.scuolesuperioridizagarolo.db;
 
 import android.util.Log;
-import it.gov.scuolesuperioridizagarolo.dao.*;
+import it.gov.scuolesuperioridizagarolo.dao.ArticoloDB;
+import it.gov.scuolesuperioridizagarolo.dao.ArticoloDBDao;
+import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetails;
 import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloDetailsCircolare;
 import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdo;
@@ -10,7 +13,6 @@ import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 import org.greenrobot.greendao.query.DeleteQuery;
 import org.greenrobot.greendao.query.QueryBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -46,22 +48,6 @@ public class ManagerArticolo {
         final List<ArticoloDB> list = elencoArticoliDaRimuovere.list();
         if (list.size() == 0) return;
 
-        List<Long> idArticlesToBeRemoved = new ArrayList<>(list.size());
-        for (ArticoloDB articoloDB : list) {
-            idArticlesToBeRemoved.add(articoloDB.getId());
-        }
-
-        //=========================================================
-        final DeleteQuery<AttachmentArticoloDB> queryDeleteAttachmentArticoloDB = session.getAttachmentArticoloDBDao().
-                queryBuilder().where(AttachmentArticoloDBDao.Properties.Fk_articleId.in(idArticlesToBeRemoved)).buildDelete();
-        queryDeleteAttachmentArticoloDB.executeDeleteWithoutDetachingEntities();
-
-
-        //=========================================================
-        final DeleteQuery<TagArticoloDB> queryDeleteTagArticoloDB = session.getTagArticoloDBDao().
-                queryBuilder().where(TagArticoloDBDao.Properties.Fk_articleId.in(idArticlesToBeRemoved)).buildDelete();
-        queryDeleteTagArticoloDB.executeDeleteWithoutDetachingEntities();
-
         //=========================================================
         final DeleteQuery<ArticoloDB> queryDeleteArticleDB = elencoArticoliDaRimuovere.buildDelete();
         queryDeleteArticleDB.executeDeleteWithoutDetachingEntities();
@@ -72,11 +58,6 @@ public class ManagerArticolo {
             Log.w("ManagerArticolo", "START elencoArticoliCircolari");
         }
 
-        final List<AttachmentArticoloDB> listAttachment = session.getAttachmentArticoloDBDao().queryBuilder().list();
-        final List<TagArticoloDB> listTag = session.getTagArticoloDBDao().queryBuilder().list();
-        if (DebugUtil.DEBUG__ManagerArticolo) {
-            Log.w("ManagerArticolo", "TAG TOTALI:" + listTag.size());
-        }
 
 
         //elenco circolari
@@ -96,22 +77,12 @@ public class ManagerArticolo {
 
         //articolo
         for (ArticoloDB a : listArticolo) {
+            final ArticoloDetails details = a.getDetails();
+            if (details == null) {
+                throw new NullPointerException("Dettagli nulli per articolo " + a);
+            }
             ArticoloSdo<ArticoloDetailsCircolare> s = new ArticoloSdo<>(a, ArticoloDetailsCircolare.class);
             map.put(a.getId(), s);
-        }
-
-        //tag
-        for (TagArticoloDB t : listTag) {
-            final ArticoloSdo<ArticoloDetailsCircolare> x = map.get(t.getFk_articleId());
-            if (x != null)
-                x.tags.add(t);
-        }
-
-        //attachment
-        for (AttachmentArticoloDB t : listAttachment) {
-            final ArticoloSdo<ArticoloDetailsCircolare> x = map.get(t.getFk_articleId());
-            if (x != null)
-                x.attachments.add(t);
         }
 
         //articoli

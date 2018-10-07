@@ -125,7 +125,7 @@ public class MotoreSostituzioneAule3 {
 
         //report
         {
-            orarioInModifica.setTitolo("Modifiche aule dal " + dal + " al " + al);
+            orarioInModifica.setTitolo("Orario LICEO SCIENTIFICO dal " + dal + " al " + al);
             final File root = new File(folder, "html/" + subName2);
             root.mkdirs();
 

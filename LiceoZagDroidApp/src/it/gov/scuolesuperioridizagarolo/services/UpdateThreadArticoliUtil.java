@@ -80,24 +80,6 @@ public class UpdateThreadArticoliUtil {
                 }
                 Log.e(UpdateThreadArticoliUtil.class.getName(), "Inserimento articoli");
 
-                //aggiunge i tag
-                final TagArticoloDBDao tagArticoloDBDao = session.getTagArticoloDBDao();
-                for (C_Pair<TagArticoloDB, Integer> tagArticoloDB : updateThreadContainer.tagsByRemoteArticleId) {
-                    final TagArticoloDB a = tagArticoloDB.a;
-                    a.setArticoloDB(updateThreadContainer.articoliByRemoteId.get(tagArticoloDB.b));
-                    tagArticoloDBDao.insert(a);
-
-                    Log.e(UpdateThreadArticoliUtil.class.getName(), "Inserimento tag articoli");
-                }
-
-                //aggiunge i attach
-                final AttachmentArticoloDBDao attachmentArticoloDBDao = session.getAttachmentArticoloDBDao();
-                for (C_Pair<AttachmentArticoloDB, Integer> attachmentArticoloDB : updateThreadContainer.attachmentsListByRemoteArticleId) {
-                    attachmentArticoloDB.a.setArticoloDB(updateThreadContainer.articoliByRemoteId.get(attachmentArticoloDB.b));
-                    attachmentArticoloDBDao.insert(attachmentArticoloDB.a);
-                }
-                Log.e(UpdateThreadArticoliUtil.class.getName(), "Inserimento attachments articoli");
-
                 return null;
             }
         };
@@ -207,7 +189,7 @@ public class UpdateThreadArticoliUtil {
                     final ContainerParsedEvento parse1 = (ContainerParsedEvento) ParserArticolo.parse(ArticoloType.EVENTO, aa.getTitle());
                     x.oggetto = parse1.oggetto.toString();
                     x.dataEvento = parse1.dataEvento;
-                    x.addParolaString(parse1.termini);
+                    x.addWordsLowerCase(parse1.termini);
 
                     aa.setDetails(x);
                     aa.setType(ArticoloType.EVENTO);
@@ -239,7 +221,7 @@ public class UpdateThreadArticoliUtil {
                     final ContainerParsedAvviso parse1 = (ContainerParsedAvviso) ParserArticolo.parse(ArticoloType.AVVISO, aa.getTitle());
                     x.oggetto = parse1.oggetto.toString();
                     x.dataAvviso = parse1.dataAvviso;
-                    x.addParolaString(parse1.termini);
+                    x.addWordsLowerCase(parse1.termini);
 
                     aa.setDetails(x);
                     aa.setType(ArticoloType.AVVISO);
@@ -262,7 +244,6 @@ public class UpdateThreadArticoliUtil {
                     }
 
 
-
                     break;
                 }
                 case "CIRCOLARI": {
@@ -274,7 +255,7 @@ public class UpdateThreadArticoliUtil {
                     x.oggetto = parse1.oggetto.toString();
                     x.dataCircolare = parse1.dataCircolare;
                     x.numeroCircolare = parse1.numCircolare == null ? 0 : parse1.numCircolare;
-                    x.addParolaString(parse1.termini);
+                    x.addWordsLowerCase(parse1.termini);
 
 
                     aa.setDetails(x);
@@ -306,7 +287,7 @@ public class UpdateThreadArticoliUtil {
                     //parsng titolo
                     final ContainerParsedArticolo parse1 = ParserArticolo.parse(ArticoloType.GENERICO, aa.getTitle());
                     x.oggetto = parse1.oggetto.toString();
-                    x.addParolaString(parse1.termini);
+                    x.addWordsLowerCase(parse1.termini);
 
 
                     aa.setDetails(x);
@@ -350,18 +331,22 @@ public class UpdateThreadArticoliUtil {
         final List<Element> tag = C_XmlUtil.searchByTagName(tags.getChildNodes(), "tag-map");
         for (Element a : tag) {
             //System.out.println("=========================");
-            TagArticoloDB tt = new TagArticoloDB();
 
 
             final String article_id = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-id").getTextContent().trim();
             final String tag_id = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "tag-id").getTextContent().trim();
             final String tag_title = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "tag-title").getTextContent().trim();
 
-            tt.setInsertTimestamp(new Date());
-            tt.setTag(tag_title);
-            tt.setRemoteTagId(Integer.parseInt(tag_id));
+            final ArticoloDetails d = ris.articoliByRemoteId.get(Integer.parseInt(article_id)).getDetails();
+            final ArticoloTagDetails a1 = new ArticoloTagDetails();
+            d.addTag(a1);
+            a1.setInsertTimestamp(new Date());
+            a1.setTag(tag_title);
+            a1.setRemoteTagId(Integer.parseInt(tag_id));
+
+
             //tt.setArticoloDB(ris.articoliByRemoteId.get(Integer.parseInt(article_id)));
-            ris.tagsByRemoteArticleId.add(new C_Pair<>(tt, Integer.parseInt(article_id)));
+            //ris.tagsByRemoteArticleId.add(new C_Pair<>(tt, Integer.parseInt(article_id)));
 
 /*
             System.out.println(article_id);
@@ -375,7 +360,7 @@ public class UpdateThreadArticoliUtil {
         final List<Element> attachment = C_XmlUtil.searchByTagName(attachments.getChildNodes(), "attachment-map");
         for (Element a : attachment) {
             //System.out.println("=========================");
-            AttachmentArticoloDB att = new AttachmentArticoloDB();
+            ArticoloAttachmentDetails att = new ArticoloAttachmentDetails();
 
             final String xxxx_filename = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-filename").getTextContent().trim();
             final String xxxx_url = (C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "attachment-url").getTextContent().trim()).replace(" ", "%20");
@@ -391,8 +376,10 @@ public class UpdateThreadArticoliUtil {
             att.setFilesize(Integer.parseInt(xxxx_filesize));
             att.setState(Integer.parseInt(xxxx_state));
             att.setFiletype(xxxx_filetype);
+
+            final ArticoloDetails d = ris.articoliByRemoteId.get(Integer.parseInt(xxxx_article_id)).getDetails();
             //att.setArticoloDB(ris.articoliByRemoteId.get(Integer.parseInt(xxxx_article_id)));
-            ris.attachmentsListByRemoteArticleId.add(new C_Pair<>(att, Integer.parseInt(xxxx_article_id)));
+            d.addArticoloAttachment(att);
 
             /*
             System.out.println(xxxx_article_id);
@@ -405,8 +392,6 @@ public class UpdateThreadArticoliUtil {
 
     private static class UpdateThreadContainer {
         final Map<Integer, ArticoloDB> articoliByRemoteId = new TreeMap<>();
-        final List<C_Pair<TagArticoloDB, Integer>> tagsByRemoteArticleId = new ArrayList<>();
-        final List<C_Pair<AttachmentArticoloDB, Integer>> attachmentsListByRemoteArticleId = new ArrayList<>();
         /**
          * id minimo remoto di articoli (al di sotto del quale gli articoli non vanno piu' considerati)
          */

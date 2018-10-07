@@ -13,13 +13,14 @@ import java.util.concurrent.FutureTask;
  * Created by stefano on 12/06/15.
  */
 public class ThreadUtil {
-    public static void sleep(long l){
+    public static void sleep(long l) {
         try {
             Thread.sleep(l);
         } catch (InterruptedException e) {
 
         }
     }
+
     public static boolean isUIThread() {
         // On UI thread.
 // Not on UI thread.
@@ -48,8 +49,14 @@ public class ThreadUtil {
      * @param a
      * @param r
      */
-    public static void runOnUiThreadAsync(Activity a, Runnable r) {
-        a.runOnUiThread(r);
+    public static void runOnUiThreadAsyncSafe(final Activity a, final Runnable r) {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                a.runOnUiThread(r);
+            }
+        });
+        t.start();
     }
 
     /**

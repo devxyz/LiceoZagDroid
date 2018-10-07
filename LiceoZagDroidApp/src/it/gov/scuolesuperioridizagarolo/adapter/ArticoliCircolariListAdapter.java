@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import it.gov.scuolesuperioridizagarolo.R;
-import it.gov.scuolesuperioridizagarolo.dao.TagArticoloDB;
+import it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloTagDetails;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_articoli_circolari_xml;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdo;
 import it.gov.scuolesuperioridizagarolo.model.articolo.ArticoloSdoContainer;
@@ -110,7 +110,7 @@ public class ArticoliCircolariListAdapter extends BaseAdapter {
         textView_oggetto.setText(circolare.oggetto);
 
         StringBuilder sb = new StringBuilder();
-        for (TagArticoloDB tag : c.tags) {
+        for (ArticoloTagDetails tag : c.getDetails().getTags()) {
             sb.append(" ").append(tag.getTag());
         }
         textView_tag.setText(sb.toString().trim());

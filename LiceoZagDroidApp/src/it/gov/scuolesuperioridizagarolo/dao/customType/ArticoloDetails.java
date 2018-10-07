@@ -1,32 +1,51 @@
 package it.gov.scuolesuperioridizagarolo.dao.customType;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * dati specifici per tipo di articolo
  */
 public abstract class ArticoloDetails {
-    protected final Set<String> paroleLowerCase;
+    protected final TreeSet<String> wordsLowercase;
+    protected final ArrayList<ArticoloTagDetails> tags;
+    protected final ArrayList<ArticoloAttachmentDetails> attachments;
 
-    protected ArticoloDetails() {
-        this.paroleLowerCase = new TreeSet<>();
+    public ArticoloDetails() {
+        this.wordsLowercase = new TreeSet<>();
+        tags = new ArrayList<>();
+        attachments = new ArrayList<>();
     }
 
-    public Set<String> getParoleLowerCase() {
-        return Collections.unmodifiableSet(paroleLowerCase);
+    public ArrayList<ArticoloAttachmentDetails> getAttachments() {
+        return attachments;
     }
 
-    public void addParolaString(String p) {
+    public void addTag(ArticoloTagDetails tag) {
+        tags.add(tag);
+    }
+
+    public void addArticoloAttachment(ArticoloAttachmentDetails a) {
+        if (a != null) {
+            attachments.add(a);
+        }
+    }
+
+    public List<ArticoloTagDetails> getTags() {
+        return tags;
+    }
+
+    public Set<String> getWordsLowercase() {
+        return Collections.unmodifiableSet(wordsLowercase);
+    }
+
+    public void addWordsLowerCase(String p) {
         if (p != null)
-            paroleLowerCase.add(p.trim().toLowerCase());
+            wordsLowercase.add(p.trim().toLowerCase());
     }
 
-    public void addParolaString(Collection<String> p) {
+    public void addWordsLowerCase(Collection<String> p) {
         for (String s : p) {
-            addParolaString(s);
+            addWordsLowerCase(s);
         }
 
     }
@@ -37,7 +56,7 @@ public abstract class ArticoloDetails {
     @Override
     public String toString() {
         return "ArticoloType{" +
-                "paroleLowerCase=" + paroleLowerCase +
+                "paroleLowerCase=" + wordsLowercase +
                 '}';
     }
 }

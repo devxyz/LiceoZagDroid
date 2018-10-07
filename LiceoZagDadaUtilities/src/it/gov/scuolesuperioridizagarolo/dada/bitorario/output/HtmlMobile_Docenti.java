@@ -31,7 +31,7 @@ public class HtmlMobile_Docenti {
 
             p.println("<tr style='border:1px solid clack' >");
             p.println("<td style='border:1px solid black; background-color:blue;color:yellow' colspan='" + (1 + EGiorno.numeroGiorniDiLezione()) + "'>");
-            p.println("<center>" + o.getTitolo() + "<br><span style='font-size:200%'><b>" + docente + "</b></span></center>");
+            p.println("<center style='font-size:20px'>" + o.getTitolo() + "<br><span style='font-size:200%'><b>" + docente + "</b></span></center>");
             p.println("</td>");
             p.println("</tr>");
 

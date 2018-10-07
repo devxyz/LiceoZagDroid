@@ -161,7 +161,7 @@ public class MainMenuActivity extends AbstractActivity {
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 
                 if (shouldUpdate) {
-                    ThreadUtil.runOnUiThreadAsync(MainMenuActivity.this, new Runnable() {
+                    ThreadUtil.runOnUiThreadAsyncSafe(MainMenuActivity.this, new Runnable() {
                         @Override
                         public void run() {
                             if (currentFragment != null) {
@@ -335,32 +335,6 @@ public class MainMenuActivity extends AbstractActivity {
                 }
                 return true;
             }
-            case R.id.action_view_attachment: {
-                String tabella = AttachmentArticoloDBDao.TABLENAME;
-                try {
-                    final String htmlText = htmlForTableContent(tabella);
-                    HtmlPageDialog d2 = new HtmlPageDialog(this, "Report Allegati", htmlText, null);
-                    d2.show();
-                } catch (Throwable throwable) {
-                    throwable.printStackTrace();
-                    DialogUtil.openErrorDialog(MainMenuActivity.this, "Errore", "Errore di accesso ai dati", throwable);
-                    return true;
-                }
-                return true;
-            }
-            case R.id.action_view_tag: {
-                String tabella = TagArticoloDBDao.TABLENAME;
-                try {
-                    final String htmlText = htmlForTableContent(tabella);
-                    HtmlPageDialog d2 = new HtmlPageDialog(this, "Report TAG", htmlText, null);
-                    d2.show();
-                } catch (Throwable throwable) {
-                    throwable.printStackTrace();
-                    DialogUtil.openErrorDialog(MainMenuActivity.this, "Errore", "Errore di accesso ai dati", throwable);
-                    return true;
-                }
-                return true;
-            }
             case R.id.action_update:
                 //start service
                 Intent serviceIntent = new Intent(this, UpdateService.class);
@@ -518,10 +492,7 @@ public class MainMenuActivity extends AbstractActivity {
 
             @Override
             public void run(DaoSession session, Context ctx) throws Throwable {
-                session.getAttachmentArticoloDBDao().deleteAll();
-                session.getTagArticoloDBDao().deleteAll();
                 session.getTimetableDBDao().deleteAll();
-                session.getAttachmentArticoloDBDao().deleteAll();
                 session.getArticoloDBDao().deleteAll();
                 session.getCacheFileDBDao().deleteAll();
             }

@@ -24,8 +24,6 @@ public class DaoMaster extends AbstractDaoMaster {
         CacheFileDBDao.createTable(db, ifNotExists);
         TimetableDBDao.createTable(db, ifNotExists);
         ArticoloDBDao.createTable(db, ifNotExists);
-        TagArticoloDBDao.createTable(db, ifNotExists);
-        AttachmentArticoloDBDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
@@ -33,8 +31,6 @@ public class DaoMaster extends AbstractDaoMaster {
         CacheFileDBDao.dropTable(db, ifExists);
         TimetableDBDao.dropTable(db, ifExists);
         ArticoloDBDao.dropTable(db, ifExists);
-        TagArticoloDBDao.dropTable(db, ifExists);
-        AttachmentArticoloDBDao.dropTable(db, ifExists);
     }
 
     /**
@@ -56,8 +52,6 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(CacheFileDBDao.class);
         registerDaoClass(TimetableDBDao.class);
         registerDaoClass(ArticoloDBDao.class);
-        registerDaoClass(TagArticoloDBDao.class);
-        registerDaoClass(AttachmentArticoloDBDao.class);
     }
 
     public DaoSession newSession() {

@@ -92,7 +92,7 @@ public class ArticoloCircolariFragment extends AbstractFragment {
 
     public static TreeSet<String> listaParole_Circolare(MainMenuActivity m, ArticoliCircolariListAdapter a, final ArticoloSdo<ArticoloDetailsCircolare> c) {
         final TreeSet<String> ris = new TreeSet<>();
-        ris.addAll(c.parole());
+        ris.addAll(c.articolo.getDetails().getWordsLowercase());
 
         /*
         //aggiorna il database
@@ -220,15 +220,22 @@ public class ArticoloCircolariFragment extends AbstractFragment {
                         if (DebugUtil.DEBUG__CircolariSearchFragment)
                             Log.w("CERCA_CIRCOLARE_FRAG", "UPDATE VIEW "+x.articoli.size());
 
-                        articoliCircolari = x;
-                        multiTextViewAdapter.clear();
-                        multiTextViewAdapter.addAll(articoliCircolari.parole());
-                        multiTextViewAdapter.notifyDataSetChanged();
-                        a.update(articoliCircolari);
 
-                        if (DebugUtil.DEBUG__CircolariSearchFragment) {
-                            Log.d("CERCA_CIRCOLARE_FRAG", "END UPDATE aggiornaViewCircolariAndTerminiDalDB");
-                        }
+                        ThreadUtil.runOnUiThreadAsyncSafe(getMainActivity(), new Runnable() {
+                            @Override
+                            public void run() {
+                                articoliCircolari = x;
+                                multiTextViewAdapter.clear();
+                                multiTextViewAdapter.addAll(articoliCircolari.parole());
+                                multiTextViewAdapter.notifyDataSetChanged();
+                                a.update(articoliCircolari);
+
+                                if (DebugUtil.DEBUG__CircolariSearchFragment) {
+                                    Log.d("CERCA_CIRCOLARE_FRAG", "END UPDATE aggiornaViewCircolariAndTerminiDalDB");
+                                }
+
+                            }
+                        });
                     } catch (Throwable ex) {
                         ex.printStackTrace();
                         if (DebugUtil.DEBUG__CircolariSearchFragment) {

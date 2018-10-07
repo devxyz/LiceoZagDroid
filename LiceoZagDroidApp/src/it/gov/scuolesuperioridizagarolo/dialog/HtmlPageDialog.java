@@ -2,16 +2,24 @@ package it.gov.scuolesuperioridizagarolo.dialog;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Environment;
 import android.view.View;
 import android.view.Window;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebView;
+import android.widget.Toast;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.api.AbstractDialog;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_dialog_view_html_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.util.ScreenUtil;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by stefano on 25/02/15.
@@ -20,7 +28,7 @@ import it.gov.scuolesuperioridizagarolo.util.ScreenUtil;
 public class HtmlPageDialog extends AbstractDialog {
     private LayoutObjs_dialog_view_html_xml LAYOUT_OBJs;
 
-    public HtmlPageDialog(final AbstractActivity context, String title, String htmlText, final String url) {
+    public HtmlPageDialog(final AbstractActivity context, String title, final String htmlText, final String url) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_view_html);
@@ -63,6 +71,20 @@ public class HtmlPageDialog extends AbstractDialog {
             @Override
             public void onClickImpl(View v) {
                 dismiss();
+            }
+        });
+
+        LAYOUT_OBJs.buttonSALVA.setOnClickListener(new OnClickListenerViewErrorCheck(context.getActivity()) {
+            @Override
+            public void onClickImpl(View v) throws Throwable {
+                final File downloadFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                SimpleDateFormat s = new SimpleDateFormat("yyyy.MM.dd HH_mm_ss");
+                File f = new File(downloadFolder, "file_" + s.format(new Date()) + ".html");
+                BufferedWriter out = new BufferedWriter(new FileWriter(f));
+                out.write(htmlText);
+                out.close();
+                Toast.makeText(context, "File salvato in " + f.getName(), Toast.LENGTH_SHORT).show();
+
             }
         });
 

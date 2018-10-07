@@ -58,7 +58,7 @@ public class ArticoloSdoContainer<T extends ArticoloDetails> {
     public Set<String> parole() {
         TreeSet<String> p = new TreeSet<>();
         for (ArticoloSdo<T> a : articoli) {
-            p.addAll(a.parole());
+            p.addAll(a.articolo.getDetails().getWordsLowercase());
         }
         return p;
     }

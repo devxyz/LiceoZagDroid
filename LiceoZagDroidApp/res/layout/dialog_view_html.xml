@@ -27,7 +27,13 @@
                         android:id="@+id/buttonOK" android:textStyle="bold"
                         android:width="100dp" android:background="@drawable/background_pulsante_red"
                         android:layout_margin="5dp"/>
-        </LinearLayout>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salva"
+                android:id="@+id/buttonSALVA" android:background="@drawable/background_pulsante_red"
+                android:textStyle="bold"/>
+    </LinearLayout>
         <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"

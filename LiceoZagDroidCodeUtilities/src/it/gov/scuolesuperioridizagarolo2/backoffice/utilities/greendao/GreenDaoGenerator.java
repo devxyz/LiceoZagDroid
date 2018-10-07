@@ -58,6 +58,8 @@ public class GreenDaoGenerator {
             articolo.addDateProperty("date");
         }
 
+
+        /*
         final Entity tag = schema.addEntity("TagArticoloDB");
         {
             tag.addIdProperty();
@@ -80,6 +82,7 @@ public class GreenDaoGenerator {
             final Property.PropertyBuilder articleId = attachment.addLongProperty("fk_articleId").index().notNull();
             attachment.addToOne(articolo, articleId.getProperty());
         }
+        */
 
 /*
         //circolare
