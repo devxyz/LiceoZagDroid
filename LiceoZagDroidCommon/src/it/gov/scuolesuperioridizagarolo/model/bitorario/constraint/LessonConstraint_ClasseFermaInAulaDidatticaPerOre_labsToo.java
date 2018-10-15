@@ -45,4 +45,14 @@ public class LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo extends A
             }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo{" +
+                "aula=" + aula +
+                ", classe=" + classe +
+                ", giorno=" + giorno +
+                ", ore=" + ore +
+                '}';
+    }
 }

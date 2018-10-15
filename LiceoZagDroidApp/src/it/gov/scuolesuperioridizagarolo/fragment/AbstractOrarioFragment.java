@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
@@ -95,6 +96,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         //ON CREATE method
         //**************************
         LAYOUT_OBJs = new LayoutObjs_fragment_orario_classe_xml(rootView);
+        Log.e("GENERALE", "SONO QUIIIIIIIIIIIIIIII");
         //**************************
         //**************************
 
@@ -161,6 +163,25 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                                     int position, long id) {
 
                 onSelectRow(position);
+            }
+        });
+
+
+        LAYOUT_OBJs.buttonPrev.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
+            @Override
+            protected void onClickImpl(View v) throws Throwable {
+                giornoCorrente = giornoCorrente.prevDay();
+                updateOrarioCorrente();
+                updateView();
+            }
+        });
+
+        LAYOUT_OBJs.buttonNext.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
+            @Override
+            protected void onClickImpl(View v) throws Throwable {
+                giornoCorrente = giornoCorrente.nextDay();
+                updateOrarioCorrente();
+                updateView();
             }
         });
 
@@ -472,23 +493,26 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
             LAYOUT_OBJs.textViewClasse.setBackgroundColor(getResources().getColor(R.color.color_blue));
         }*/
 
+        String textFiltro = "";
+        String textData = "";
 
         //orarioAdapter.setClasse(classeCorrente);
         updateAdapter(filtro);
         orarioAdapter.setGiorno(giornoCorrente);
         if (giornoCorrente.isToday())
-            LAYOUT_OBJs.button_giorno.setText("Oggi\n" + giornoCorrente.getGiorno().shortName());
+            textData = ("Oggi " + giornoCorrente.getGiorno().shortName());
         else
-            LAYOUT_OBJs.button_giorno.setText(giornoCorrente.getGiorno().shortName() + "\n" + giornoCorrente.toDDMM());
+            textData = (giornoCorrente.getGiorno().shortName() + " " + giornoCorrente.toDDMM());
 
         if (!normalizeFilterName()) {
-            LAYOUT_OBJs.button_filtro.setText((getFilterAppLabel() + " " + filtro).trim());
+            textFiltro = ((getFilterAppLabel() + " " + filtro).trim());
         } else {
-            LAYOUT_OBJs.button_filtro.setText((getFilterAppLabel() + " " + filterToLabel(filtro)).trim());
+            textFiltro = ((getFilterAppLabel() + " " + filterToLabel(filtro)).trim());
         }
-
+        LAYOUT_OBJs.textViewNomeData.setText((textFiltro + ": " + textData).trim());
         visualizzaOraCorrente();
     }
+
 
     @Override
     public void onDestroy() {

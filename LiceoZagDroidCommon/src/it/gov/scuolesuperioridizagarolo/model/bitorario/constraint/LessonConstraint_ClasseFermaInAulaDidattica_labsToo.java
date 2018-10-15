@@ -23,6 +23,15 @@ public class LessonConstraint_ClasseFermaInAulaDidattica_labsToo extends Abstrac
         this(ClassesAndRoomContainer.parseClass(c), ClassesAndRoomContainer.parseRoom(aula), giorno);
     }
 
+    @Override
+    public String toString() {
+        return "LessonConstraint_ClasseFermaInAulaDidattica_labsToo{" +
+                "aula=" + aula +
+                ", classe=" + classe +
+                ", giorno=" + giorno +
+                '}';
+    }
+
     public LessonConstraint_ClasseFermaInAulaDidattica_labsToo(ClassData c, RoomData aula, EGiorno... giorno) {
         super(false);
         if (c == null) throw new IllegalArgumentException("Classe non specificata");

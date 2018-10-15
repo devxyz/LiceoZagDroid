@@ -31,6 +31,15 @@ public class LessonConstraint_DocenteBloccatoInArea extends AbstractLessonConstr
 
 
     @Override
+    public String toString() {
+        return "LessonConstraint_DocenteBloccatoInArea{" +
+                "area=" + area +
+                ", docente='" + docente + '\'' +
+                ", giorno=" + giorno +
+                '}';
+    }
+
+    @Override
     protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
         //skip aule speciali
         //if (aula.flagAulaLaboratorioPalestra()) return true;

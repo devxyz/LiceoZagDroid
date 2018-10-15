@@ -10,31 +10,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import it.gov.scuolesuperioridizagarolo.R;
-import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_classivuote_detail_xml;
-import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_classivuote_header_xml;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_disposizionidocenti_detail_xml;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_disposizionidocenti_header_xml;
 import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
 import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
 import java.util.ArrayList;
 import java.util.Set;
-import java.util.TreeMap;
 import java.util.TreeSet;
 
-public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
+public class DisposizioniDocentiExpandibleListAdapter extends BaseExpandableListAdapter {
+
+
     protected BitOrarioGrigliaOrarioContainer containerOrari;
-    protected TreeMap<BitOrarioGrigliaOrario.GiornoOra, Set<String>> disposizioni;
     protected OnlyDate giorno;
     private BitOrarioGrigliaOrario orario;
     private EOra[] ore;
 
     private Context a;
 
-    public AuleVuoteExpandibleListAdapter(Context context, BitOrarioGrigliaOrarioContainer containerOrari, OnlyDate giorno) {
+    public DisposizioniDocentiExpandibleListAdapter(Context context, BitOrarioGrigliaOrarioContainer containerOrari, OnlyDate giorno) {
         this.a = context;
         this.containerOrari = containerOrari;
         this.orario = containerOrari.getOrario(giorno);
@@ -55,10 +52,16 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public RoomData getChild(int groupPosition, int childPosititon) {
-        final EOra group = getGroup(groupPosition);
-        final ArrayList<RoomData> auleVuote = new ArrayList<>(orario.getAuleVuote(group, giorno.getGiorno()));
-        return auleVuote.get(childPosititon);
+    public String getChild(int groupPosition, int childPosititon) {
+        final EOra ora = getGroup(groupPosition);
+        Set<String> docentiDispo = orario.getDocentiDisposizione().get(new BitOrarioGrigliaOrario.GiornoOra(giorno.getGiorno(), ora));
+        if (docentiDispo == null) {
+            docentiDispo = new TreeSet<>();
+        }
+
+
+        final ArrayList<String> docenti = new ArrayList<>(docentiDispo);
+        return docenti.get(childPosititon);
     }
 
     @Override
@@ -69,17 +72,17 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
-        final RoomData item = getChild(groupPosition, childPosition);
+        final String nomeDocente = getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(a);
-            convertView = layoutInflater.inflate(R.layout.listview_classivuote_detail, parent, false);
+            convertView = layoutInflater.inflate(R.layout.listview_disposizionidocenti_detail, parent, false);
         }
-        LayoutObjs_listview_classivuote_detail_xml obj = new LayoutObjs_listview_classivuote_detail_xml(convertView);
-        obj.textView_aula.setText(item.simpleName());
-        obj.textView_location.setText(item.location.description + (item.flagLIM ? " con LIM" : ""));
-        obj.textView5.setText(item.usage + " - " + item.maxStudents + " posti");
-        AbstractOrarioListAdapter.coloraViewAula(obj.textView_aula, item.location, a);
+        LayoutObjs_listview_disposizionidocenti_detail_xml obj = new LayoutObjs_listview_disposizionidocenti_detail_xml(convertView);
+        obj.textView_aula.setText("DISP");
+        obj.textView_docente_disp.setText(nomeDocente);
+        obj.textView5.setText("Disposizione");
+        obj.textView_aula.setTextColor(a.getResources().getColor(R.color.color_yellow));
         return convertView;
     }
 
@@ -88,7 +91,11 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
     public int getChildrenCount(int groupPosition) {
         //ok
         final EOra ora = getGroup(groupPosition);
-        return orario.getAuleVuote(ora, giorno.getGiorno()).size();
+        Set<String> docentiDispo = orario.getDocentiDisposizione().get(new BitOrarioGrigliaOrario.GiornoOra(giorno.getGiorno(), ora));
+        if (docentiDispo == null) {
+            return 0;
+        }
+        return docentiDispo.size();
     }
 
     @Override
@@ -114,17 +121,22 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
                              View convertView, ViewGroup parent) {
         //ok
         final EOra ora = ore[groupPosition];
-        final TreeSet<RoomData> auleVuote = orario.getAuleVuote(ora, giorno.getGiorno());
+
+
+        Set<String> docentiDispo = orario.getDocentiDisposizione().get(new BitOrarioGrigliaOrario.GiornoOra(giorno.getGiorno(), ora));
+        if (docentiDispo == null) {
+            docentiDispo = new TreeSet<>();
+        }
 
         if (convertView == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(a);
-            convertView = layoutInflater.inflate(R.layout.listview_classivuote_header, parent, false);
+            convertView = layoutInflater.inflate(R.layout.listview_disposizionidocenti_header, parent, false);
         }
 
-        LayoutObjs_listview_classivuote_header_xml obj = new LayoutObjs_listview_classivuote_header_xml(convertView);
+        LayoutObjs_listview_disposizionidocenti_header_xml obj = new LayoutObjs_listview_disposizionidocenti_header_xml(convertView);
         obj.textView_ora.setText(ora.getProgressivOra() + "°ora");
         obj.textView_fascia.setText(ora.fascia());
-        obj.textView5.setText(auleVuote.size() + " aule");
+        obj.textView5.setText(docentiDispo.size() + " docenti");
         return convertView;
     }
 

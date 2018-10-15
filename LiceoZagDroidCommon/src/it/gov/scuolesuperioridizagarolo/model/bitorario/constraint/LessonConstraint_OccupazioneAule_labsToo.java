@@ -21,4 +21,9 @@ public class LessonConstraint_OccupazioneAule_labsToo extends AbstractLessonCons
         if (aula==RoomData.NON_ASSEGNATO)return false;
         return classe.numberOfStudents <= aula.maxStudents;
     }
+
+    @Override
+    public String toString() {
+        return "LessonConstraint_OccupazioneAule_labsToo{}";
+    }
 }

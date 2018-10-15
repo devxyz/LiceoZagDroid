@@ -32,35 +32,42 @@ new TreeSet<>(Arrays.<DataMenuInfoFlag>asList() ));
 it.gov.scuolesuperioridizagarolo.fragment.OrarioClassePersistenteFragment.class,
 R.drawable._menu_student_48x48,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.OrarioClassePersistenteFragment.class),
-new TreeSet<>(Arrays.asList(DataMenuInfoFlag.SUB_ITEM) ));
+new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
+     public static final DataMenuInfo ORARIO_WEB= new DataMenuInfo(
+"Orario\nWEB",
+"Orario WEB",
+it.gov.scuolesuperioridizagarolo.fragment.SitoOrarioFragment.class,
+R.drawable._menu_orari_48x48,
+DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.fragment.SitoOrarioFragment.class),
+new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
      public static final DataMenuInfo R_E_FAMIGLIE= new DataMenuInfo(
 "R.E. Famiglie",
 "Registro elettronico famiglie",
 it.gov.scuolesuperioridizagarolo.action.ReStudentiAction.class,
 R.drawable.logo_re_famiglie_45x45,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.action.ReStudentiAction.class),
-new TreeSet<>(Arrays.asList(DataMenuInfoFlag.SUB_ITEM) ));
+new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
      public static final DataMenuInfo LIBRI_LICEO= new DataMenuInfo(
 "Libri LICEO",
 "Libri LICEO",
 it.gov.scuolesuperioridizagarolo.action.LibriTestoLiceoAction.class,
 R.drawable.library_icon,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.action.LibriTestoLiceoAction.class),
-new TreeSet<>(Arrays.asList(DataMenuInfoFlag.SUB_ITEM) ));
+new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
      public static final DataMenuInfo LIBRI_IPIA= new DataMenuInfo(
 "Libri IPIA",
 "Libri IPIA",
 it.gov.scuolesuperioridizagarolo.action.LibriTestoIpiaAction.class,
 R.drawable.library_icon,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.action.LibriTestoIpiaAction.class),
-new TreeSet<>(Arrays.asList(DataMenuInfoFlag.SUB_ITEM) ));
+new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
      public static final DataMenuInfo ISCRIZIONE_ONLINE= new DataMenuInfo(
 "Iscrizione Online",
 "Iscrizione Online",
 it.gov.scuolesuperioridizagarolo.action.IscrizioneOnlineAction.class,
 R.drawable.logo_iscrizioni_online_50x50,
 DataMenuInfoType.search(it.gov.scuolesuperioridizagarolo.action.IscrizioneOnlineAction.class),
-new TreeSet<>(Arrays.asList(DataMenuInfoFlag.SUB_ITEM) ));
+new TreeSet<>(Arrays.<DataMenuInfoFlag>asList(DataMenuInfoFlag.SUB_ITEM) ));
      public static final DataMenuInfo AGGIORNA= new DataMenuInfo(
 "Aggiorna",
 "Aggiorna i dati",

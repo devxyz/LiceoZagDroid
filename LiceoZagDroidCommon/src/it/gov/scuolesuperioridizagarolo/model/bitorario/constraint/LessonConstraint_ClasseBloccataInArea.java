@@ -42,4 +42,13 @@ public class LessonConstraint_ClasseBloccataInArea extends AbstractLessonConstra
             }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "LessonConstraint_ClasseBloccataInArea{" +
+                "area=" + area +
+                ", classe=" + classe +
+                ", giorno=" + giorno +
+                '}';
+    }
 }

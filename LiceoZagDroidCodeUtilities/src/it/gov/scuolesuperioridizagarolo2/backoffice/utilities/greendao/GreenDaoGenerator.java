@@ -8,7 +8,7 @@ import org.greenrobot.greendao.generator.*;
  */
 public class GreenDaoGenerator {
     public static void main(String[] args) throws Exception {
-        Schema schema = new Schema(20180922, "it.gov.scuolesuperioridizagarolo.dao");
+        Schema schema = new Schema(20181007, "it.gov.scuolesuperioridizagarolo.dao");
 
         //cache file
         final Entity cacheFile = schema.addEntity("CacheFileDB");
@@ -54,7 +54,7 @@ public class GreenDaoGenerator {
 
 
             articolo.addStringProperty("type").notNull()
-                    .customType("it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType", "it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType_DBConverter");
+                    .customType("it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType", "it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType_DBConverter").index();
             articolo.addDateProperty("date");
         }
 

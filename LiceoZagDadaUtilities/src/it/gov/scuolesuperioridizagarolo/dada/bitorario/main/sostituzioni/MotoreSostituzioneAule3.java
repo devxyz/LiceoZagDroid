@@ -10,6 +10,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.AbstractLessonConstraint;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraintContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_OreConsecutiveStessaAula;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EPaperFormat;
@@ -72,7 +73,8 @@ public class MotoreSostituzioneAule3 {
         System.out.println("********************************************************************************************");
         System.out.println("********************** Risoluzione vincoli");
         System.out.println("********************************************************************************************");
-        SostituzioneAuleEngine3.spostamentiPerAuleNonDisponibili(orarioInModifica, l1, ff);
+        TreeMap<AbstractLessonConstraint, Integer> numerositaVincoliNonSoddisfatti=new TreeMap<>();
+        SostituzioneAuleEngine3.spostamentiPerAuleNonDisponibili(orarioInModifica, l1, ff, numerositaVincoliNonSoddisfatti);
         l.postOrarioBeforeFinalCheck(orarioInModifica, l1);
 
 
@@ -137,10 +139,15 @@ public class MotoreSostituzioneAule3 {
 
             new HtmlOutputOrario_perAule().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_AULE_A3" + ".html"), EPaperFormat.A3);
             new HtmlOutputOrario_perClassi().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_A3" + ".html"), EPaperFormat.A3);
-            new Report_perDocentiDaConvocareRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_DA_CONVOCARE_RIDOTTO_A3" + ".html"), EPaperFormat.A3);
+
+            //new Report_perDocentiDaConvocareRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_DA_CONVOCARE_RIDOTTO_A3" + ".html"), EPaperFormat.A3);
             new Report_perDocentiIngleseRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_INGLESE_RIDOTTO_A3" + ".html"), EPaperFormat.A3);
-            new Report_perDocentiRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_RIDOTTO_A3" + ".html"), EPaperFormat.A3);
+
+            new Report_perDocentiRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_RIDOTTO_A3_ORIZZ" + ".html"), EPaperFormat.A3);
+            new Report_perDocentiRidotto(false).print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_RIDOTTO_A3_NO_AULE" + ".html"), EPaperFormat.A3);
             new Report_perClasseRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_RIDOTTO_A3_ORIZZ" + ".html"), EPaperFormat.A3);
+            new Report_perClasseRidotto(false).print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_RIDOTTO_A3_ORIZZ_NO_AULE" + ".html"), EPaperFormat.A3);
+
             new Report_perAuleVuote().print(orarioInModifica, new File(root, subName2 + "_AULE VUOTE" + ".html"));
             new Report_perVariazioniAule().print(orarioInModifica, orarioStandard, new File(root, subName2 + "_VARIAZIONI" + ".html"));
 

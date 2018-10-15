@@ -6,14 +6,14 @@ import java.util.Calendar;
  * Created by stefano on 16/09/2017.
  */
 public enum EOra {
-    ENTRATA(0, 8, 10),
-    PRIMA(1, 8, 10),
-    SECONDA(2, 9, 10),
-    TERZA(3, 10, 10),
-    QUARTA(4, 11, 10),
-    QUINTA(5, 12, 10),
-    SESTA(6, 13, 10),
-    USCITA(7, 14, 10);
+    ENTRATA(0, 8, 0),
+    PRIMA(1, 8, 0),
+    SECONDA(2, 9, 0),
+    TERZA(3, 10, 0),
+    QUARTA(4, 11, 0),
+    QUINTA(5, 12, 0),
+    SESTA(6, 13, 0),
+    USCITA(7, 14, 0);
 
     private final int progressivOra;
     private final int oraInizio;

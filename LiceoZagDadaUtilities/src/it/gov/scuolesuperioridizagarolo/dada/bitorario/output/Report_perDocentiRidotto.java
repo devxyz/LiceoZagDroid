@@ -15,6 +15,11 @@ import java.util.TreeSet;
  * Created by stefano on 25/09/2017.
  */
 public class Report_perDocentiRidotto {
+    private boolean showAule = true;
+
+    public Report_perDocentiRidotto(boolean showAule) {
+        this.showAule = showAule;
+    }
 
     public Report_perDocentiRidotto() {
     }
@@ -26,13 +31,13 @@ public class Report_perDocentiRidotto {
 
         inizioTabella(p);
 
-        int count = format == EPaperFormat.A4 ? 15 : 40;
+        int count = format == EPaperFormat.A4 ? 15 : 25;
         p.println("<h1>" + o.getTitolo() + "</h1>");
 
         final TreeSet<String> docenti = o.getDocenti();
         for (String docente : docenti) {
             if (count <= 0) {
-                count = format == EPaperFormat.A4 ? 15 : 40;
+                count = format == EPaperFormat.A4 ? 15 : 25;
                 fineTabella(p);
                 p.println("(*) modifiche all'orario<br>");
                 p.println("<div style='display: block; page-break-before: always;'></div>");
@@ -71,8 +76,9 @@ public class Report_perDocentiRidotto {
                         } else {
 
                             String aulaBreve = ll.getAula() != null ? ll.getAula().simpleName() : "-";
+                            final String sx = showAule ? "<br><span style=''> (" + aulaBreve + ")" + x + "</span>" : "";
                             p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center'><b>" + ll.getClasse() +
-                                    "</b><br><span style=''> (" + aulaBreve + ")" + x + "</span></td>");
+                                    "</b>" + sx + "</td>");
                         }
                     }
                 }
@@ -101,7 +107,7 @@ public class Report_perDocentiRidotto {
         p.print("<td></td>");
         for (EGiorno s : EGiorno.values()) {
             if (!s.flagGiornoDiLezione()) continue;
-            p.print("<td style='border:1px solid black;text-align:center' colspan='" + (EOra.oreDiLezione()+1) + "'>" + s + "</td>");
+            p.print("<td style='border:1px solid black;text-align:center' colspan='" + (EOra.oreDiLezione() + 1) + "'>" + s + "</td>");
         }
         p.print("</tr>");
 

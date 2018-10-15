@@ -42,4 +42,13 @@ public class LessonConstraint_AulaNonDisponibile extends AbstractLessonConstrain
 
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "LessonConstraint_AulaNonDisponibile{" +
+                "aula=" + aula +
+                ", giorno=" + giorno +
+                ", ore=" + ore +
+                '}';
+    }
 }

@@ -1,40 +1,57 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.as2017_18;
 
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
-import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule2;
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule3;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.*;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
 
 import java.io.IOException;
+import java.util.TreeSet;
 
 //import dada.bitorario.data.constraint.*;
 
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_n04_21mag__27mag extends AbstractVincoliSostituzioni {
+@Deprecated
+public class VincoliSostituzioni_x07_TEST_TEST extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
-        final VincoliSostituzioni_n04_21mag__27mag l = new VincoliSostituzioni_n04_21mag__27mag();
-        MotoreSostituzioneAule2.doTask(l);
+        final VincoliSostituzioni_x07_TEST_TEST l = new VincoliSostituzioni_x07_TEST_TEST();
+        MotoreSostituzioneAule3.doTask(l);
 
     }
 
-    public VincoliSostituzioni_n04_21mag__27mag invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+    public VincoliSostituzioni_x07_TEST_TEST invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+
+
+
+        System.out.flush();
+//        if (true)
+  //          throw new IllegalArgumentException("DEBUG");
+
         //vincoli base
         l.add(new LessonConstraint_OccupazioneAule_labsToo());
 
         //vincoli classi
         l.add(new LessonConstraint_ClasseFermaInAulaDidattica_ignoreLabs(_4C, _A2, EGiorno.values()));
-        l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_1A, _B8, EGiorno.LUNEDI, EOra.SECONDA));
         l.add(new LessonConstraint_AuleDidatticheConLIM_IgnoreLabs(_1H, EGiorno.values()));
 
+        //lavori
+        l.add(new LessonConstraint_AulaNonDisponibile(_A7, EGiorno.LUNEDI, EOra.values()));
 
-        //commemoriazione falcone borsellino
-        l.add(new LessonConstraint_AulaNonDisponibile(_F31_PALESTRA, EGiorno.MERCOLEDI, EOra.QUARTA, EOra.QUINTA));
+        //compito marchese
+//        l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_4F, _A3, EGiorno.LUNEDI, EOra.PRIMA));//2° ora
 
+        //prove parallele scienze
+  /*      l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_2G, _A3, EGiorno.LUNEDI, EOra.SECONDA));//2° ora
+        l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_2A, _A4_INF, EGiorno.LUNEDI, EOra.QUARTA));//4° ora latini --> lab informatica
+        l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_2C, _A3, EGiorno.LUNEDI, EOra.TERZA));//3° ora
+        l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_2E, _A3, EGiorno.LUNEDI, EOra.QUINTA));//5° ora cambia con mattetti - scambia con 1H
+*/
 
         //l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre(_3A, _F32_SCI, EGiorno.MARTEDI, EOra.TERZA));
         //l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre(_3D, _A4_INF, EGiorno.MARTEDI, EOra.SECONDA));
@@ -70,6 +87,8 @@ public class VincoliSostituzioni_n04_21mag__27mag extends AbstractVincoliSostitu
             orarioTotale.classeInVisitaDidattica("Conferenza sulla legalità - aula disegno - terzo turno", _4F, EGiorno.VENERDI, EOra.QUARTA);
             */
 
+        //orarioTotale.classeInVisitaDidattica("Uscita di Test",_1E,EGiorno.LUNEDI,EOra.values());
+        //orarioTotale.classeInVisitaDidattica("Uscita di Test",_1G,EGiorno.LUNEDI,EOra.values());
 
         //lavori aula fisica
         for (EGiorno g : EGiorno.values()) {
@@ -79,6 +98,9 @@ public class VincoliSostituzioni_n04_21mag__27mag extends AbstractVincoliSostitu
             }
 
         }
+
+
+        final TreeSet<ClassData> classi = orarioTotale.getClassi();
 
 
         //lavori
@@ -97,9 +119,15 @@ public class VincoliSostituzioni_n04_21mag__27mag extends AbstractVincoliSostitu
         //l.add(new LessonConstraint_ClasseBloccataInArea("1F", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D}, EGiorno.values()));
         //l.add(new LessonConstraint_ClasseBloccataInArea("3C", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D}, EGiorno.values()));
 
+        //GLH
+        l.add(new LessonConstraint_AulaNonDisponibile(_A5_DIS, EGiorno.MARTEDI, EOra.SECONDA, EOra.TERZA, EOra.QUARTA));
+
+
         //classeConStampelle(l, _2A);
         //classeConStampelle(l, _1E, EGiorno.LUNEDI, EGiorno.MARTEDI, EGiorno.MERCOLEDI);
-        classeConStampelle(l, _1E);
+        //classeConStampelle(l, _1E);
+        classeConStampelle(l, _4F, EGiorno.valuesGiorniDiLezione());
+        classeConStampelle(l, _2E, EGiorno.valuesGiorniDiLezione());
         classeConStampelle(l, _5C);
         classeConStampelle(l, _1B);
         // classeConStampelle(l, _3D);
@@ -121,7 +149,9 @@ public class VincoliSostituzioni_n04_21mag__27mag extends AbstractVincoliSostitu
 
         //perfetti
         l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(_5D, _E29, EGiorno.SABATO, EOra.QUARTA, EOra.QUINTA));
-        l.add(new LessonConstraint_DocenteBloccatoInArea(true, orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D}, EGiorno.values()));
+        l.add(new LessonConstraint_DocenteBloccatoInArea(false, orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A}, EGiorno.values()));
+        //l.add(new LessonConstraint_DocenteBloccatoInArea(false, orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D}, EGiorno.values()));
+
         //l.add(new LessonConstraint_DocenteBloccatoInArea(orarioTotale, "CERULLO", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B, ERoomArea.AREA_C, ERoomArea.AREA_D}, new EGiorno[]{EGiorno.LUNEDI, EGiorno.MARTEDI, EGiorno.MERCOLEDI}));
 
         //l.add(new LessonConstraint_ClasseBloccataInArea("4B", ERoomArea.AREA_B, EGiorno.values()));
@@ -132,8 +162,8 @@ public class VincoliSostituzioni_n04_21mag__27mag extends AbstractVincoliSostitu
         //l.add(new LessonConstraint_DocenteBloccatoInArea(orarioTotale, "BENEDETTI", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B}, giorno));
 
 
-        dal = "21/05/2018";
-        al = "27/05/2018";
+        dal = "30/07/2018";
+        al = "04/08/2018";
         return this;
     }
 }

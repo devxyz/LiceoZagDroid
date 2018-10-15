@@ -10,7 +10,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
 import java.util.List;
 
-public abstract class AbstractLessonConstraint {
+public abstract class AbstractLessonConstraint implements Comparable<AbstractLessonConstraint> {
     protected final boolean ignoreLabs;
 
     protected AbstractLessonConstraint(boolean ignoreLabs) {
@@ -26,6 +26,13 @@ public abstract class AbstractLessonConstraint {
         if (nome == null) return null;
         return ClassesAndRoomContainer.parseClass(nome);
     }
+
+    @Override
+    public int compareTo(AbstractLessonConstraint o) {
+        return toString().compareTo(o.toString());
+    }
+
+    public abstract String toString();
 
     public boolean checkAll(List<BitOrarioOraLezione> lx, BitOrarioGrigliaOrario orario) {
         for (BitOrarioOraLezione x : lx) {

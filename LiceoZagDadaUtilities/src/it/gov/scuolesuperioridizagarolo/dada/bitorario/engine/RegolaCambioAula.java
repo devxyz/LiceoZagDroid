@@ -16,9 +16,11 @@ public class RegolaCambioAula {
 
     @Override
     public String toString() {
-        return "RegolaCambioAula:" +
-                "\n  vecchieLezioniDaRimuovere=" + vecchieLezioniDaRimuovere +
-                "\n  nuoveLezioniDaAggiungere=" + nuoveLezioniDaAggiungere ;
+        return "RegolaCambioAula{" +
+                "\n nuoveLezioniDaAggiungere=" + nuoveLezioniDaAggiungere +
+                "\n vecchieLezioniDaRimuovere=" + vecchieLezioniDaRimuovere +
+                "\n regola='" + regola + '\'' +
+                '}';
     }
 
     public RegolaCambioAula(String regola) {

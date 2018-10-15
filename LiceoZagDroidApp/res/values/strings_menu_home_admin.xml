@@ -66,6 +66,20 @@
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
 
+        <item>Disposizioni\nDocenti</item>
+        <item>Disposizioni Docenti</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.DisposizioniDocentiFragment</item>
+        <item>@drawable/_menu_rooms_48x48</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
+
+        <item>Orario\nWEB</item>
+        <item>Orario WEB</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.SitoOrarioFragment</item>
+        <item>@drawable/_menu_orari_48x48</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
+
         <item>R.E.\nDocenti</item>
         <item>Registro elettronico docenti</item>
         <item>it.gov.scuolesuperioridizagarolo.action.ReDocentiAction</item>

@@ -77,6 +77,14 @@ public class LessonConstraintContainer implements Cloneable {
         return true;
     }
 
+    public AbstractLessonConstraint checkAll_returnFirstConstraintNotSatisfied(BitOrarioOraLezione l, BitOrarioGrigliaOrario orario) {
+
+        for (AbstractLessonConstraint z : filtri) {
+            if (!z.__check(l, orario)) return z;
+        }
+        return null;
+    }
+
     public boolean checkAll(List<BitOrarioOraLezione> lx, BitOrarioGrigliaOrario orario) {
         for (BitOrarioOraLezione l : lx) {
             for (AbstractLessonConstraint z : filtri) {

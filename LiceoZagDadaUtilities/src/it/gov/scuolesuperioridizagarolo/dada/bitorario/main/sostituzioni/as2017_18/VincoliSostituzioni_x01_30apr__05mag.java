@@ -15,16 +15,17 @@ import java.io.IOException;
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_n01_30apr__05mag extends AbstractVincoliSostituzioni {
+@Deprecated
+public class VincoliSostituzioni_x01_30apr__05mag extends AbstractVincoliSostituzioni {
 
     public static void main(String[] args) throws IOException {
-        final VincoliSostituzioni_n01_30apr__05mag l = new VincoliSostituzioni_n01_30apr__05mag();
+        final VincoliSostituzioni_x01_30apr__05mag l = new VincoliSostituzioni_x01_30apr__05mag();
         MotoreSostituzioneAule2.doTask(l);
 
     }
 
 
-    public VincoliSostituzioni_n01_30apr__05mag invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+    public VincoliSostituzioni_x01_30apr__05mag invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
 
         {
 

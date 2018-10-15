@@ -4,7 +4,6 @@ import it.gov.scuolesuperioridizagarolo.dada.bitorario.engine.FilterAule;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule3;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.*;
@@ -14,17 +13,15 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.TreeSet;
 
 
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_n06_15ott_20ott extends AbstractVincoliSostituzioni {
+public class VincoliSostituzioni_n07_15ott_20ott_Prova_Lab extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
-        final VincoliSostituzioni_n06_15ott_20ott l = new VincoliSostituzioni_n06_15ott_20ott();
+        final VincoliSostituzioni_n07_15ott_20ott_Prova_Lab l = new VincoliSostituzioni_n07_15ott_20ott_Prova_Lab();
         final File folderInput = new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/06-2018.10.15-2018.10.20");
         MotoreSostituzioneAule3.doTask(l, folderInput, new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/"), l.filtroAuleSpostamenti(), false);
     }
@@ -39,41 +36,18 @@ public class VincoliSostituzioni_n06_15ott_20ott extends AbstractVincoliSostituz
 
     @Override
     protected void postOrarioBeforeFinalCheck(BitOrarioGrigliaOrario orarioTotale, LessonConstraintContainer l) {
-/**
- *   >> NON RISOLTO: Test not passed it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_AulaNonDisponibile@28a418fc for lesson SECONDA MARTEDI 2E_MARTEDI.2_MATEMATICA-ALESSANDRONI(B13#)
- >> NON RISOLTO: Test not passed it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_AulaNonDisponibile@5305068a for lesson SECONDA MERCOLEDI 1H_MERCOLEDI.2_MATEMATICA-PERFETTI(B13#)
- >> NON RISOLTO: Test not passed it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_AulaNonDisponibile@1f32e575 for lesson QUARTA GIOVEDI 1E_GIOVEDI.4_MATEMATICA-ALESSANDRONI(B13#)
-
- */
-
-        Map<EGiorno, Integer> presenti = new TreeMap<>();
-        Map<EGiorno, Integer> assenti = new TreeMap<>();
-        for (EGiorno x : EGiorno.values()) {
-            presenti.put(x, 0);
-            assenti.put(x, 0);
-            final TreeSet<String> docenti = orarioTotale.getDocenti();
-            for (String d : docenti) {
-                final BitOrarioOraLezione ll = orarioTotale.getLezioneConDocente(EOra.PRIMA, x, d);
-                if (ll != null) {
-                    presenti.put(x, presenti.get(x) + 1);
-                } else {
-                    assenti.put(x, assenti.get(x) + 1);
-                }
-            }
-        }
-
-        System.out.println(presenti);
-        System.out.println(assenti);
-
     }
 
     @Override
     protected FilterAule[] filtroAuleSpostamenti() {
-        return new FilterAule[]{FilterAule.LABORATORI_MAI, FilterAule.LABORATORI_SOLO_SE_LIBERI, FilterAule.LABORATORI_SOLO_COMPATIBILI};
+        return new FilterAule[]{FilterAule.LABORATORI_MAI};
     }
 
-    public VincoliSostituzioni_n06_15ott_20ott invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+    public VincoliSostituzioni_n07_15ott_20ott_Prova_Lab invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+        dal = "21/10/2018";
+        al = "27/10/2018";
 
+       // if (true) return this;
 
         System.out.flush();
 
@@ -257,8 +231,6 @@ public class VincoliSostituzioni_n06_15ott_20ott extends AbstractVincoliSostituz
         //l.add(new LessonConstraint_DocenteBloccatoInArea(orarioTotale, "BENEDETTI", new ERoomArea[]{ERoomArea.AREA_A, ERoomArea.AREA_B}, giorno));
 
 
-        dal = "15/10/2018";
-        al = "20/10/2018";
         return this;
     }
 }

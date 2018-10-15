@@ -73,6 +73,8 @@ public class ArticoloDBDao extends AbstractDao<ArticoloDB, Long> {
         // Add Indexes
         db.execSQL("CREATE INDEX " + constraint + "IDX_ARTICOLO_DB_REMOTE_ID ON \"ARTICOLO_DB\"" +
                 " (\"REMOTE_ID\");");
+        db.execSQL("CREATE INDEX " + constraint + "IDX_ARTICOLO_DB_TYPE ON \"ARTICOLO_DB\"" +
+                " (\"TYPE\");");
     }
 
     /** Drops the underlying database table. */

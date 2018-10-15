@@ -86,6 +86,21 @@
         <item>SUB_ITEM,SHOW_ATA,SHOW_DOCENTI,SHOW_ADMIN,SHOW_STUDENTI</item>
         <item>END-ITEM</item>
 
+        <item>Disposizioni Docenti</item>
+        <item>Disposizioni Docenti</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.DisposizioniDocentiFragment</item>
+        <item>@drawable/_menu_rooms_48x48</item>
+        <item>SUB_ITEM,SHOW_ADMIN</item>
+        <item>END-ITEM</item>
+
+
+        <item>Orario\nWEB</item>
+        <item>Orario WEB</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.SitoOrarioFragment</item>
+        <item>@drawable/_menu_orari_48x48</item>
+        <item>SUB_ITEM,SHOW_ATA,SHOW_DOCENTI,SHOW_ADMIN,SHOW_STUDENTI</item> ,
+        <item>END-ITEM</item>
+
 
         <!-- xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx -->
 

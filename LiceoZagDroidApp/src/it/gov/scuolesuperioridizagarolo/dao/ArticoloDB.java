@@ -46,6 +46,7 @@ public class ArticoloDB {
 
     @Convert(converter = it.gov.scuolesuperioridizagarolo.dao.customType.ArticoloType_DBConverter.class, columnType = String.class)
     @NotNull
+    @Index
     private ArticoloType type;
     private java.util.Date date;
 

@@ -17,14 +17,17 @@ import java.util.TreeSet;
 public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonConstraint {
     private final ClassData classe;
     private final EGiorno giorno;
-    private final EOra ora1, ora2;
+    private final EOra ora1;
+    private final EOra ora2;
+    private final String note;
 
-    public LessonConstraint_OreConsecutiveStessaAula(ClassData classe, EGiorno giorno, EOra ora1, EOra ora2) {
+    public LessonConstraint_OreConsecutiveStessaAula(ClassData classe, EGiorno giorno, EOra ora1, EOra ora2, String note) {
         super(false);
         this.classe = classe;
         this.giorno = giorno;
         this.ora1 = ora1;
         this.ora2 = ora2;
+        this.note = note;
     }
 
     /**
@@ -56,8 +59,9 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
                     if (lnext == null) continue;
                     if (lnext.getAula() == null) continue;
                     if (lnext.getAula().flagAulaLaboratorioPalestra()) continue;
+                    if (l.getAula().flagAulaLaboratorioPalestra()) continue;
                     if (l.getMateriaPrincipale().equals(lnext.getMateriaPrincipale())) {
-                        ris.add(new LessonConstraint_OreConsecutiveStessaAula(classeD, giorno, ora, ora.next()));
+                        ris.add(new LessonConstraint_OreConsecutiveStessaAula(classeD, giorno, ora, ora.next(), l.getMateriaPrincipale() + " " + l.getDocentePrincipale()));
                     }
 
                 }
@@ -97,6 +101,7 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
                 ", giorno=" + giorno +
                 ", ora1=" + ora1 +
                 ", ora2=" + ora2 +
+                ", note='" + note + '\'' +
                 '}';
     }
 }

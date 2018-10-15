@@ -117,7 +117,7 @@ public class MenuAndroidGenerator {
 
             //final DataMenuInfoType type, Set<DataMenuInfoFlag > flags
             final String s = MessageFormat.format("     public static final DataMenuInfo {0}= new DataMenuInfo(\n\"{1}\",\n\"{2}\",\n{3}.class,\n{4},\nDataMenuInfoType.search({3}.class),\n{6});",
-                    nomeCampo,
+                    nomeCampo.replace("\\N","_"),
                     menuLabel, longLabel.length() == 0 ? menuLabel : longLabel, actionClass, imageId.replace("@drawable/", "R.drawable."), "", fl);
             //System.out.println(s);
             out.println(s);

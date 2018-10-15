@@ -82,11 +82,9 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
                 LAYOUT_OBJs.progressBarLoad.setProgress(progress);
                 if (progress >= 100) {
                     //LAYOUT_OBJs.progressBarLoad.setVisibility(View.INVISIBLE);
-                    LAYOUT_OBJs.progressBarLoad.setBackgroundColor(getMainActivity().getResources().getColor(R.color.color_blue_chiaro));
                     LAYOUT_OBJs.textViewTitolo.setText(getTitile());
                 } else {
                     //LAYOUT_OBJs.progressBarLoad.setVisibility(View.VISIBLE);
-                    LAYOUT_OBJs.progressBarLoad.setBackgroundColor(getMainActivity().getResources().getColor(R.color.color_white));
                     LAYOUT_OBJs.textViewTitolo.setText("Caricamento in corso...");
                 }
 

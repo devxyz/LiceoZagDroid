@@ -9,8 +9,8 @@ public class LayoutObjs_fragment_webpage_xml{
   public final ProgressBar progressBarLoad;
   public final RelativeLayout layoutTop;
   public final TextView textViewTitolo;
-  public final ImageView imageViewOpen;
-  public final ImageButton imageViewBack;
+  public final Button imageViewOpen;
+  public final Button imageViewBack;
 
 public LayoutObjs_fragment_webpage_xml(Fragment f){
   View view=f.getView();
@@ -18,16 +18,16 @@ public LayoutObjs_fragment_webpage_xml(Fragment f){
   progressBarLoad= (ProgressBar)view.findViewById(R.id.progressBarLoad);
   layoutTop= (RelativeLayout)view.findViewById(R.id.layoutTop);
   textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
-  imageViewOpen= (ImageView)view.findViewById(R.id.imageViewOpen);
-  imageViewBack= (ImageButton)view.findViewById(R.id.imageViewBack);
+  imageViewOpen= (Button)view.findViewById(R.id.imageViewOpen);
+  imageViewBack= (Button)view.findViewById(R.id.imageViewBack);
 }
 public LayoutObjs_fragment_webpage_xml(Activity view){
     webViewHtml= (WebView)view.findViewById(R.id.webViewHtml);
   progressBarLoad= (ProgressBar)view.findViewById(R.id.progressBarLoad);
   layoutTop= (RelativeLayout)view.findViewById(R.id.layoutTop);
   textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
-  imageViewOpen= (ImageView)view.findViewById(R.id.imageViewOpen);
-  imageViewBack= (ImageButton)view.findViewById(R.id.imageViewBack);
+  imageViewOpen= (Button)view.findViewById(R.id.imageViewOpen);
+  imageViewBack= (Button)view.findViewById(R.id.imageViewBack);
 
 }
 public LayoutObjs_fragment_webpage_xml(View view){
@@ -35,8 +35,8 @@ public LayoutObjs_fragment_webpage_xml(View view){
   progressBarLoad= (ProgressBar)view.findViewById(R.id.progressBarLoad);
   layoutTop= (RelativeLayout)view.findViewById(R.id.layoutTop);
   textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
-  imageViewOpen= (ImageView)view.findViewById(R.id.imageViewOpen);
-  imageViewBack= (ImageButton)view.findViewById(R.id.imageViewBack);
+  imageViewOpen= (Button)view.findViewById(R.id.imageViewOpen);
+  imageViewBack= (Button)view.findViewById(R.id.imageViewBack);
 
 }
 public LayoutObjs_fragment_webpage_xml(Dialog view){
@@ -44,8 +44,8 @@ public LayoutObjs_fragment_webpage_xml(Dialog view){
   progressBarLoad= (ProgressBar)view.findViewById(R.id.progressBarLoad);
   layoutTop= (RelativeLayout)view.findViewById(R.id.layoutTop);
   textViewTitolo= (TextView)view.findViewById(R.id.textViewTitolo);
-  imageViewOpen= (ImageView)view.findViewById(R.id.imageViewOpen);
-  imageViewBack= (ImageButton)view.findViewById(R.id.imageViewBack);
+  imageViewOpen= (Button)view.findViewById(R.id.imageViewOpen);
+  imageViewBack= (Button)view.findViewById(R.id.imageViewBack);
 
 }
 }

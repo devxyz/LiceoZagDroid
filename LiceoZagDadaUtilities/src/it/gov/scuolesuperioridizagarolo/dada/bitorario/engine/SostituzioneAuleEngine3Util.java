@@ -4,6 +4,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraEnumTipoLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.AbstractLessonConstraint;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraintContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
@@ -33,6 +34,7 @@ public class SostituzioneAuleEngine3Util {
         return ris;
     }
 
+
     static boolean lezioneViolaVincoli(BitOrarioGrigliaOrario o, LessonConstraintContainer vincoli, BitOrarioOraLezione lezione) {
         //skip ore di disposizione
         if (lezione.getTipoLezione() == BitOrarioOraEnumTipoLezione.DISPOSIZIONE)
@@ -44,6 +46,19 @@ public class SostituzioneAuleEngine3Util {
 
         //controlla se lezione e' OK
         return !vincoli.checkAll(lezione, o);
+    }
+
+    static AbstractLessonConstraint lezioneViolaVincoli__returnFirstConstraintNotSatisfied(BitOrarioGrigliaOrario o, LessonConstraintContainer vincoli, BitOrarioOraLezione lezione) {
+        //skip ore di disposizione
+        if (lezione.getTipoLezione() == BitOrarioOraEnumTipoLezione.DISPOSIZIONE)
+            return null;
+
+        //salta uscite didattiche
+        if (lezione.getAula() == RoomData.USCITA_DIDATTICA)
+            return null;
+
+        //controlla se lezione e' OK
+        return vincoli.checkAll_returnFirstConstraintNotSatisfied(lezione, o);
     }
 
     static ArrayList<BitOrarioOraLezione> estraiLezioniInAulaOrdinato(BitOrarioGrigliaOrario o) {

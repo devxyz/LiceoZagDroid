@@ -25,4 +25,12 @@ public class LessonScontraint_OR extends AbstractLessonConstraint {
                 a.__check(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, aula, classe, ora, giorno, orario) ||
                         b.__check(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, aula, classe, ora, giorno, orario);
     }
+
+    @Override
+    public String toString() {
+        return "LessonScontraint_OR{" +
+                "a=" + a +
+                ", b=" + b +
+                '}';
+    }
 }

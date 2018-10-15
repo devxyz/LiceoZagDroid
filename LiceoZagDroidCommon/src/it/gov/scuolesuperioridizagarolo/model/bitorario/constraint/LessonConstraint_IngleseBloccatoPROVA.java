@@ -29,6 +29,13 @@ public class LessonConstraint_IngleseBloccatoPROVA extends AbstractLessonConstra
         }
     }
 
+    @Override
+    public String toString() {
+        return "LessonConstraint_IngleseBloccatoPROVA{" +
+                "escludiClassi=" + escludiClassi +
+                ", escludiDocentiUpperCase=" + escludiDocentiUpperCase +
+                '}';
+    }
 
     @Override
     protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {

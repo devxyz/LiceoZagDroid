@@ -48,4 +48,14 @@ public class LessonConstraint_DocenteFermoInAulaDidatticaPerOre extends Abstract
             }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "LessonConstraint_DocenteFermoInAulaDidatticaPerOre{" +
+                "aule=" + aule +
+                ", docente='" + docente + '\'' +
+                ", giorno=" + giorno +
+                ", ore=" + ore +
+                '}';
+    }
 }

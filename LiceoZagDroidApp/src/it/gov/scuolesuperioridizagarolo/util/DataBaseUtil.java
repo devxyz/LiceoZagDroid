@@ -22,8 +22,6 @@ public class DataBaseUtil {
         sb.append(exportHtml(db, TimetableDBDao.TABLENAME));
         sb.append(exportHtml(db, ArticoloDBDao.TABLENAME));
 
-        sb.append(exportHtml(db, TagArticoloDBDao.TABLENAME));
-        sb.append(exportHtml(db, AttachmentArticoloDBDao.TABLENAME));
 
         return "<html><body>" + sb + "</body></html>";
     }

@@ -6,20 +6,21 @@
 
     <WebView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/webViewHtml"
-            android:layout_alignParentBottom="true" android:layout_below="@+id/progressBarLoad"/>
+            android:layout_below="@+id/progressBarLoad" android:layout_above="@+id/layoutTop"/>
     <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/progressBarLoad" android:max="100" android:indeterminate="false"
-            android:layout_below="@+id/layoutTop" android:background="@color/color_blue_chiaro"/>
+            android:background="@color/color_blue_scurissimo"/>
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" android:id="@+id/layoutTop"
-            android:background="@color/color_blue_chiaro">
+            android:layout_height="wrap_content" android:layout_alignParentTop="false"
+            android:layout_alignParentStart="false" android:id="@+id/layoutTop"
+            android:background="@color/color_blue_scurissimo" android:layout_alignParentEnd="false"
+            android:layout_alignParentBottom="true">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,22 +31,23 @@
                 android:layout_toStartOf="@+id/imageViewOpen" android:layout_toRightOf="@+id/imageViewBack"
                 android:layout_alignBottom="@+id/imageViewOpen" android:layout_alignTop="@+id/imageViewOpen"
                 android:textStyle="bold" android:textColor="@color/color_white"/>
-        <ImageView
+        <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageViewOpen" android:layout_gravity="right" android:src="@drawable/button_chrome_48x48"
+                android:id="@+id/imageViewOpen" android:layout_gravity="right" android:drawableLeft="@drawable/button_chrome_48x48"
                 android:layout_alignParentTop="true" android:layout_alignParentEnd="true"
                 android:background="@drawable/background_pulsante_celeste_bianco"
                 android:layout_marginRight="5dp" android:layout_marginTop="2dp" android:paddingLeft="5dp"
-                android:paddingTop="1dp" android:paddingRight="5dp" android:paddingBottom="1dp"/>
-        <ImageButton
+                android:paddingTop="1dp" android:paddingRight="5dp" android:paddingBottom="1dp"
+                android:text="Apri con" android:textSize="14dp"/>
+        <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Button"
+                android:text="Back "
                 android:id="@+id/imageViewBack" android:layout_alignTop="@+id/imageViewOpen"
-                android:layout_alignParentStart="true" android:src="@drawable/back_button_48x48"
+                android:layout_alignParentStart="true" android:drawableLeft="@drawable/back_button_48x48"
                 android:background="@drawable/background_pulsante_celeste_bianco" android:layout_marginLeft="5dp"
-                android:layout_marginTop="2dp"/>
+                android:layout_marginTop="2dp" android:textSize="14dp"/>
 
     </RelativeLayout>
 </RelativeLayout>

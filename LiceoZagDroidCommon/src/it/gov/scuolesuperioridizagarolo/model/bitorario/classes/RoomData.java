@@ -22,7 +22,7 @@ public enum RoomData {
     B11("B11", "Aula Didattica", 30, 31, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     B12("B12", "Aula Didattica", 30, 32, ERoomArea.AREA_B, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     B13("B13", "Aula Didattica", 30, 33, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
-    B13sharp("B13#", "Aula Didattica", 30, 33, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//todo AL MOMENTO NON UTILIZZABILE
+    B13sharp("B13#", "Aula Didattica", 30, 33, ERoomArea.AREA_B, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//todo AL MOMENTO NON UTILIZZABILE
 
     C14("C14", "Aula Didattica", 22, 47, ERoomArea.AREA_C, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//ANNO SCORSO 25
     C15("C15", "Aula Didattica", 0, 46, ERoomArea.AREA_C, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//AULA CORRIDOIO
