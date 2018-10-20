@@ -28,6 +28,8 @@ public abstract class AbstractFragment extends Fragment {
 
     }
 
+    public abstract void showDetails(boolean show);
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {

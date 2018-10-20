@@ -31,6 +31,16 @@ public class AuleVuoteFragment extends AbstractFragment {
     protected BitOrarioGrigliaOrario orario;
     private AuleVuoteExpandibleListAdapter orarioAdapter;
 
+    @Override
+    public void showDetails(boolean show) {
+        if (show) {
+            LAYOUT_OBJs.linearLayout7.setVisibility(View.VISIBLE);
+
+        } else {
+            LAYOUT_OBJs.linearLayout7.setVisibility(View.GONE);
+        }
+    }
+
 
     private void collapseAll() {
         for (int i = 0; i < orarioAdapter.getGroupCount(); i++) {

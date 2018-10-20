@@ -35,6 +35,11 @@ public class ProdottiBarFragment extends AbstractFragment {
     private ProdottoBarContainer prodotti = null;
 
     @Override
+    public void showDetails(boolean show) {
+
+    }
+
+    @Override
     public void onSaveInstanceStateImpl(Bundle outState) {
 
         outState.putSerializable(KEY_BUNDLE_PRODOTTI, prodotti);

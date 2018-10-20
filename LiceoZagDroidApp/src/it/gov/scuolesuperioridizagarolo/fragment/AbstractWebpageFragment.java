@@ -30,6 +30,16 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
     }
 
     @Override
+    public void showDetails(boolean show) {
+        if (show) {
+            LAYOUT_OBJs.layoutTop.setVisibility(View.VISIBLE);
+
+        } else {
+            LAYOUT_OBJs.layoutTop.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
     protected Integer getHelpScreen() {
         return null;
     }
@@ -78,21 +88,26 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
         final Activity activity = getMainActivity();
         webview.setWebChromeClient(new WebChromeClient() {
             public void onProgressChanged(WebView view, int progress) {
-                super.onProgressChanged(view,progress);
-                LAYOUT_OBJs.progressBarLoad.setProgress(progress);
+                super.onProgressChanged(view, progress);
+                LAYOUT_OBJs.progressBar3.setProgress(progress);
                 if (progress >= 100) {
                     //LAYOUT_OBJs.progressBarLoad.setVisibility(View.INVISIBLE);
                     LAYOUT_OBJs.textViewTitolo.setText(getTitile());
+                    LAYOUT_OBJs.progressBar3.setVisibility(View.GONE);
+                    LAYOUT_OBJs.imageViewBack.setVisibility(View.VISIBLE);
+
                 } else {
                     //LAYOUT_OBJs.progressBarLoad.setVisibility(View.VISIBLE);
                     LAYOUT_OBJs.textViewTitolo.setText("Caricamento in corso...");
+                    LAYOUT_OBJs.progressBar3.setVisibility(View.VISIBLE);
+                    LAYOUT_OBJs.imageViewBack.setVisibility(View.GONE);
                 }
 
             }
         });
         webview.setWebViewClient(new WebViewClient() {
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                super.onReceivedError(view,errorCode,description,failingUrl);
+                super.onReceivedError(view, errorCode, description, failingUrl);
                 Toast.makeText(activity, "Oh no! " + description, Toast.LENGTH_SHORT).show();
             }
 
@@ -105,7 +120,7 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
                     // and download file
                     return true;
                 }
-               // view.loadUrl(url);
+                // view.loadUrl(url);
                 return false;
             }
         });
@@ -123,8 +138,8 @@ public abstract class AbstractWebpageFragment extends AbstractFragment {
                 if (LAYOUT_OBJs.webViewHtml.canGoBack()) {
                     LAYOUT_OBJs.webViewHtml.goBack();
                     //Toast.makeText(getMainActivity(),"Torno alla pagina precedente",Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getMainActivity(),"Impossibile tornare ancora indietro",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getMainActivity(), "Impossibile tornare ancora indietro", Toast.LENGTH_SHORT).show();
                 }
 
             }

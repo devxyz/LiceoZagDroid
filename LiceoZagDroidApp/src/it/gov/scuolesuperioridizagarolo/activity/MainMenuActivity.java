@@ -1,6 +1,5 @@
 package it.gov.scuolesuperioridizagarolo.activity;
 
-import android.app.ActivityManager;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
@@ -12,8 +11,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -68,6 +67,7 @@ public class MainMenuActivity extends AbstractActivity {
     private AbstractFragment currentFragment;
     private int currentSelectionIndex = -1;
     private BroadcastReceiver receiver;
+    private boolean showDetails = true;
 
     public static AppUserType getCurrentUser(Context e) {
         return SharedPreferenceWrapper.getCommonInstance(e).getUserType();
@@ -135,16 +135,34 @@ public class MainMenuActivity extends AbstractActivity {
         }
 
 
-        LAYOUT_OBJs.imageView.setOnClickListener(new OnClickListenerViewErrorCheck(this) {
+        LAYOUT_OBJs.toggleButton_dettagli_form.setOnClickListener(new OnClickListenerViewErrorCheck(this) {
             @Override
-            public void onClickImpl(View v) {
+            protected void onClickImpl(View v) throws Throwable {
+                showDetails = !showDetails;
 
-                MainMenuActivity.this.openMenu();
+                if (showDetails) {
+                    LAYOUT_OBJs.toggleButton_dettagli_form.setBackground(getResources().getDrawable(R.drawable.background_pulsante_tema));
+                } else {
+                    LAYOUT_OBJs.toggleButton_dettagli_form.setBackground(getResources().getDrawable(R.drawable.background_pulsante_red));
+                }
 
+                if (currentFragment != null) {
+                    currentFragment.showDetails(showDetails);
+                }
             }
         });
 
+        LAYOUT_OBJs.imageView.setOnClickListener(new OnClickListenerViewErrorCheck(this) {
+            @Override
+            public void onClickImpl(View v) {
+                if (stack.getStack().size() > 1) {
+                    MainMenuActivity.this.onBackPressed();
+                } else {
+                    MainMenuActivity.this.openMenu();
+                }
 
+            }
+        });
 
 
         receiver = new BroadcastReceiver() {
@@ -216,8 +234,9 @@ public class MainMenuActivity extends AbstractActivity {
             getActionBar().setHomeButtonEnabled(true);
         }
 
+
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable._actionbar_3_red_lines, //nav menu toggle icon
+                //R.drawable._actionbar_3_red_lines, //nav menu toggle icon
                 R.string.app_name, // nav drawer open - description for accessibility
                 R.string.nome_actionbar // nav drawer close - description for accessibility
         ) {
@@ -240,7 +259,7 @@ public class MainMenuActivity extends AbstractActivity {
                 invalidateOptionsMenu();
             }
         };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
             //controlla se è stato specificato un menu particolare
@@ -542,18 +561,6 @@ public class MainMenuActivity extends AbstractActivity {
         sb.append("</table></body></html>");
     }
 
-    public int howManyRunningInstances(Context ctx) {
-        ActivityManager activityManager = (ActivityManager) ctx.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningTaskInfo> tasks = activityManager.getRunningTasks(Integer.MAX_VALUE);
-
-        int count = 0;
-        for (ActivityManager.RunningTaskInfo task : tasks) {
-            if (ctx.getPackageName().equalsIgnoreCase(task.baseActivity.getPackageName()))
-                count++;
-        }
-
-        return count;
-    }
 
     @Override
     public void onBackPressed() {
@@ -694,6 +701,16 @@ public class MainMenuActivity extends AbstractActivity {
                 if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
                     closeMenu();
                 }
+
+
+                ThreadUtil.runOnUiThreadAsyncSafe(this, new Runnable() {
+                    @Override
+                    public void run() {
+                        if (currentFragment != null) {
+                            currentFragment.showDetails(showDetails);
+                        }
+                    }
+                });
 
 
                 //chiude submenu se voce presa da liv 1

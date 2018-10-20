@@ -1,0 +1,244 @@
+<table border=1><tr><td style='font-size:150%;font-weight:bolder;background-color:blue;color:white'>Giorno</td>
+<td style='font-size:150%;font-weight:bolder;background-color:blue;color:white'>Orario</td>
+<td style='font-size:150%;font-weight:bolder;background-color:blue;color:white'>Classe</td>
+<td style='font-size:150%;font-weight:bolder;background-color:blue;color:white'>Docente</td>
+<td style='font-size:150%;font-weight:bolder;background-color:blue;color:white'>Lezione</td>
+<td style='font-size:150%;font-weight:bolder;background-color:blue;color:white'>Precedente Aula</td>
+<td style='font-size:150%;font-weight:bolder;background-color:blue;color:white'>Nuova Aula</td>
+<td style='font-size:150%;font-weight:bolder;background-color:blue;color:white'>Note</td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>LUNEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>4</td>
+<td style='background-color:YELLOW'>2A</td>
+<td style='background-color:YELLOW'>LATINI</td>
+<td style='background-color:YELLOW'>SCIENZE</td>
+<td style='background-color:YELLOW'>E27</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>C14</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>LUNEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>4</td>
+<td style='background-color:YELLOW'>4A</td>
+<td style='background-color:YELLOW'>PERFETTI</td>
+<td style='background-color:YELLOW'>MATEMATICA</td>
+<td style='background-color:YELLOW'>C14</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>E27</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>LUNEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>4</td>
+<td style='background-color:YELLOW'>4F</td>
+<td style='background-color:YELLOW'>FABRONI</td>
+<td style='background-color:YELLOW'>MATEMATICA</td>
+<td style='background-color:YELLOW'>E28</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>D26</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>LUNEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>4</td>
+<td style='background-color:YELLOW'>5A</td>
+<td style='background-color:YELLOW'>MARTELLI</td>
+<td style='background-color:YELLOW'>FILOSOFIA</td>
+<td style='background-color:YELLOW'>D26</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>E28</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>LUNEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>5</td>
+<td style='background-color:YELLOW'>2A</td>
+<td style='background-color:YELLOW'>CARONI</td>
+<td style='background-color:YELLOW'>INGLESE</td>
+<td style='background-color:YELLOW'>E27</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>C14</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>LUNEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>5</td>
+<td style='background-color:YELLOW'>4E</td>
+<td style='background-color:YELLOW'>DEL SIGNORE</td>
+<td style='background-color:YELLOW'>SCIENZE</td>
+<td style='background-color:YELLOW'>F32_SCI</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>B11</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:PINK'>MARTEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:PINK'>1</td>
+<td style='background-color:PINK'>2A</td>
+<td style='background-color:PINK'>CERRI</td>
+<td style='background-color:PINK'>LATINO</td>
+<td style='background-color:PINK'>E27</td>
+<td style='font-size:150%;font-weight:bolder;background-color:PINK'>C20</td>
+<td style='background-color:PINK'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>MERCOLEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>1</td>
+<td style='background-color:YELLOW'>5C</td>
+<td style='background-color:YELLOW'>DEL SIGNORE</td>
+<td style='background-color:YELLOW'>SCIENZE</td>
+<td style='background-color:YELLOW'>F32_SCI</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>A7</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>MERCOLEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>2</td>
+<td style='background-color:YELLOW'>2A</td>
+<td style='background-color:YELLOW'>PARISI</td>
+<td style='background-color:YELLOW'>MATEMATICA</td>
+<td style='background-color:YELLOW'>E30</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>C14</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>MERCOLEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>2</td>
+<td style='background-color:YELLOW'>3B</td>
+<td style='background-color:YELLOW'>DEL SIGNORE</td>
+<td style='background-color:YELLOW'>SCIENZE</td>
+<td style='background-color:YELLOW'>A2</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>D26</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>MERCOLEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>2</td>
+<td style='background-color:YELLOW'>4C</td>
+<td style='background-color:YELLOW'>CENTRACCHIO</td>
+<td style='background-color:YELLOW'>SCIENZE</td>
+<td style='background-color:YELLOW'>F32_SCI</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>A2</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>MERCOLEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>2</td>
+<td style='background-color:YELLOW'>5C</td>
+<td style='background-color:YELLOW'>LIO</td>
+<td style='background-color:YELLOW'>FILOSOFIA</td>
+<td style='background-color:YELLOW'>C14</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>A7</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>MERCOLEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>3</td>
+<td style='background-color:YELLOW'>4F</td>
+<td style='background-color:YELLOW'>MATTETTI</td>
+<td style='background-color:YELLOW'>SCIENZE</td>
+<td style='background-color:YELLOW'>F32_SCI</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>D26</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>MERCOLEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>4</td>
+<td style='background-color:YELLOW'>4F</td>
+<td style='background-color:YELLOW'>MATTETTI</td>
+<td style='background-color:YELLOW'>SCIENZE</td>
+<td style='background-color:YELLOW'>F32_SCI</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>C14</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:PINK'>GIOVEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:PINK'>3</td>
+<td style='background-color:PINK'>5C</td>
+<td style='background-color:PINK'>PONZA</td>
+<td style='background-color:PINK'>FISICA</td>
+<td style='background-color:PINK'>E27</td>
+<td style='font-size:150%;font-weight:bolder;background-color:PINK'>A7</td>
+<td style='background-color:PINK'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:PINK'>GIOVEDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:PINK'>4</td>
+<td style='background-color:PINK'>5C</td>
+<td style='background-color:PINK'>LIO</td>
+<td style='background-color:PINK'>STORIA</td>
+<td style='background-color:PINK'>E27</td>
+<td style='font-size:150%;font-weight:bolder;background-color:PINK'>C15</td>
+<td style='background-color:PINK'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>VENERDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>1</td>
+<td style='background-color:YELLOW'>3B</td>
+<td style='background-color:YELLOW'>CERULLO</td>
+<td style='background-color:YELLOW'>RELIGIONE</td>
+<td style='background-color:YELLOW'>E28</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>C20</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>VENERDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>2</td>
+<td style='background-color:YELLOW'>5C</td>
+<td style='background-color:YELLOW'>CERULLO</td>
+<td style='background-color:YELLOW'>RELIGIONE</td>
+<td style='background-color:YELLOW'>E28</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>C21</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>VENERDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>3</td>
+<td style='background-color:YELLOW'>4F</td>
+<td style='background-color:YELLOW'>DI ROSA</td>
+<td style='background-color:YELLOW'>ARTE</td>
+<td style='background-color:YELLOW'>E27</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>A1</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>VENERDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>5</td>
+<td style='background-color:YELLOW'>4E</td>
+<td style='background-color:YELLOW'>ALESSANDRONI</td>
+<td style='background-color:YELLOW'>MATEMATICA</td>
+<td style='background-color:YELLOW'>E29</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>B12</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>VENERDI'</td>
+<td style='font-size:120%;font-weight:bolder;background-color:YELLOW'>5</td>
+<td style='background-color:YELLOW'>5C</td>
+<td style='background-color:YELLOW'>QUERINI</td>
+<td style='background-color:YELLOW'>MATEMATICA</td>
+<td style='background-color:YELLOW'>E30</td>
+<td style='font-size:150%;font-weight:bolder;background-color:YELLOW'>A7</td>
+<td style='background-color:YELLOW'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:PINK'>SABATO</td>
+<td style='font-size:120%;font-weight:bolder;background-color:PINK'>1</td>
+<td style='background-color:PINK'>2A</td>
+<td style='background-color:PINK'>PARISI</td>
+<td style='background-color:PINK'>MATEMATICA</td>
+<td style='background-color:PINK'>E30</td>
+<td style='font-size:150%;font-weight:bolder;background-color:PINK'>C19</td>
+<td style='background-color:PINK'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:PINK'>SABATO</td>
+<td style='font-size:120%;font-weight:bolder;background-color:PINK'>1</td>
+<td style='background-color:PINK'>5D</td>
+<td style='background-color:PINK'>CORTONI</td>
+<td style='background-color:PINK'>FILOSOFIA</td>
+<td style='background-color:PINK'>C19</td>
+<td style='font-size:150%;font-weight:bolder;background-color:PINK'>C15</td>
+<td style='background-color:PINK'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:PINK'>SABATO</td>
+<td style='font-size:120%;font-weight:bolder;background-color:PINK'>2</td>
+<td style='background-color:PINK'>4F</td>
+<td style='background-color:PINK'>CARABELLA</td>
+<td style='background-color:PINK'>STORIA</td>
+<td style='background-color:PINK'>E29</td>
+<td style='font-size:150%;font-weight:bolder;background-color:PINK'>B11</td>
+<td style='background-color:PINK'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:PINK'>SABATO</td>
+<td style='font-size:120%;font-weight:bolder;background-color:PINK'>4</td>
+<td style='background-color:PINK'>4D</td>
+<td style='background-color:PINK'>CERULLO</td>
+<td style='background-color:PINK'>RELIGIONE</td>
+<td style='background-color:PINK'>E30</td>
+<td style='font-size:150%;font-weight:bolder;background-color:PINK'>D26</td>
+<td style='background-color:PINK'></td>
+</tr>
+<tr><td style='font-size:120%;font-weight:bolder;background-color:PINK'>SABATO</td>
+<td style='font-size:120%;font-weight:bolder;background-color:PINK'>4</td>
+<td style='background-color:PINK'>5A</td>
+<td style='background-color:PINK'>TAGLIAFERRI</td>
+<td style='background-color:PINK'>LATINO</td>
+<td style='background-color:PINK'>D26</td>
+<td style='font-size:150%;font-weight:bolder;background-color:PINK'>E27</td>
+<td style='background-color:PINK'></td>
+</tr>
+</table>

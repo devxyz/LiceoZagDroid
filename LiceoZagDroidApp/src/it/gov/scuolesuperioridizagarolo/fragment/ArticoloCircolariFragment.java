@@ -45,6 +45,11 @@ public class ArticoloCircolariFragment extends AbstractFragment {
     public ArticoloCircolariFragment() {
     }
 
+    @Override
+    public void showDetails(boolean show) {
+
+    }
+
     public static void updateCircolare_impostaFlagLettura(MainMenuActivity m, final ArticoliCircolariListAdapter a, final boolean flagLettura) {
         //aggiorna il database
         ScuolaAppDbHelper db = new ScuolaAppDbHelper(m);

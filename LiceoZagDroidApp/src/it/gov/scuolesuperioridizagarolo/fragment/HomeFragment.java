@@ -20,6 +20,17 @@ public class HomeFragment extends AbstractFragment {
     }
 
     @Override
+    public void showDetails(boolean show) {
+        if (show) {
+            LAYOUT_OBJs.textViewTipoUtente.setVisibility(View.VISIBLE);
+
+        } else {
+            LAYOUT_OBJs.textViewTipoUtente.setVisibility(View.GONE);
+        }
+    }
+
+
+    @Override
     protected Integer getHelpScreen() {
         return R.drawable.help_home_fragment;
     }

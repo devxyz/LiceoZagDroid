@@ -32,7 +32,7 @@
                 android:layout_alignParentTop="true" android:layout_alignParentStart="true"
                 android:background="@drawable/background_pulsante_celeste_bianco" android:paddingLeft="10dp"
                 android:paddingRight="10dp" android:paddingBottom="2dp" android:paddingTop="2dp"
-                android:src="@drawable/_menu_student_48x48"/>
+                android:src="@drawable/_menu_student_48x48" android:longClickable="false"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

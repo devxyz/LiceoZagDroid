@@ -1,0 +1,736 @@
+<?xml version='1.0' encoding='us-ascii' ?>
+<!--                                         -->
+<!--                                         -->
+<!--    Orario Facile XML document           -->
+<!--                                         -->
+<!--    Questo file è stato generato         -->
+<!--    automaticamente: non modificare      -->
+<!--    direttamente il contenuto del file   -->
+<!--    perchè ciò potrebbe causare la       -->
+<!--    perdita irrimediabile dei dati in    -->
+<!--    esso contenuti.                      -->
+<!--                                         -->
+<!--                                         -->
+<DOCUMENT>
+  <VERSION value="7009"/>
+  <ID value="736755208"/>
+  <PERIOD>
+    <NAME value="Orario definitivo"/>
+  </PERIOD>
+  <CLASS>
+    <NAME value="X"/>
+  </CLASS>
+  <PERIODDATA>
+    <PERIOD value="Orario definitivo"/>
+    <TIMEGRID>
+      <TIMEUNIT value="60"/>
+      <DAYS value="6"/>
+      <HOURS value="6"/>
+      <CIRCULARITY value="0"/>
+      <DAY>
+        <SHORTNAME value="LUN"/>
+        <LONGNAME value="lunedi"/>
+      </DAY>
+      <DAY>
+        <SHORTNAME value="MAR"/>
+        <LONGNAME value="martedi"/>
+      </DAY>
+      <DAY>
+        <SHORTNAME value="MER"/>
+        <LONGNAME value="mercoledi"/>
+      </DAY>
+      <DAY>
+        <SHORTNAME value="GIO"/>
+        <LONGNAME value="giovedi"/>
+      </DAY>
+      <DAY>
+        <SHORTNAME value="VEN"/>
+        <LONGNAME value="venerdi"/>
+      </DAY>
+      <DAY>
+        <SHORTNAME value="SAB"/>
+        <LONGNAME value="sabato"/>
+      </DAY>
+      <HOUR>
+        <BEGIN value="480"/>
+        <END value="540"/>
+        <PRINTBEGIN value="1"/>
+      </HOUR>
+      <HOUR>
+        <BEGIN value="540"/>
+        <END value="600"/>
+        <PRINTBEGIN value="1"/>
+      </HOUR>
+      <HOUR>
+        <BEGIN value="600"/>
+        <END value="660"/>
+        <PRINTBEGIN value="1"/>
+      </HOUR>
+      <HOUR>
+        <BEGIN value="660"/>
+        <END value="720"/>
+        <PRINTBEGIN value="1"/>
+      </HOUR>
+      <HOUR>
+        <BEGIN value="720"/>
+        <END value="780"/>
+        <PRINTBEGIN value="1"/>
+      </HOUR>
+      <HOUR>
+        <BEGIN value="780"/>
+        <END value="840"/>
+        <PRINTBEGIN value="1"/>
+      </HOUR>
+      <TIMEFRAMES>
+      </TIMEFRAMES>
+    </TIMEGRID>
+    <TIMEGRIDEXTENSION>
+    </TIMEGRIDEXTENSION>
+    <DAYDEF>
+      <CODE value="0"/>
+      <SHORTNAME value="LUN"/>
+      <LONGNAME value="lunedi"/>
+      <MORNING value="288"/>
+    </DAYDEF>
+    <HOURDEF>
+      <CODE value="0.0"/>
+      <BEGIN value="480"/>
+      <END value="540"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="0.1"/>
+      <BEGIN value="540"/>
+      <END value="600"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="0.2"/>
+      <BEGIN value="600"/>
+      <END value="660"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="0.3"/>
+      <BEGIN value="660"/>
+      <END value="720"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="0.4"/>
+      <BEGIN value="720"/>
+      <END value="780"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="0.5"/>
+      <BEGIN value="780"/>
+      <END value="840"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <DAYDEF>
+      <CODE value="1"/>
+      <SHORTNAME value="MAR"/>
+      <LONGNAME value="martedi"/>
+      <MORNING value="288"/>
+    </DAYDEF>
+    <HOURDEF>
+      <CODE value="1.0"/>
+      <BEGIN value="480"/>
+      <END value="540"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="1.1"/>
+      <BEGIN value="540"/>
+      <END value="600"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="1.2"/>
+      <BEGIN value="600"/>
+      <END value="660"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="1.3"/>
+      <BEGIN value="660"/>
+      <END value="720"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="1.4"/>
+      <BEGIN value="720"/>
+      <END value="780"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="1.5"/>
+      <BEGIN value="780"/>
+      <END value="840"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <DAYDEF>
+      <CODE value="2"/>
+      <SHORTNAME value="MER"/>
+      <LONGNAME value="mercoledi"/>
+      <MORNING value="288"/>
+    </DAYDEF>
+    <HOURDEF>
+      <CODE value="2.0"/>
+      <BEGIN value="480"/>
+      <END value="540"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="2.1"/>
+      <BEGIN value="540"/>
+      <END value="600"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="2.2"/>
+      <BEGIN value="600"/>
+      <END value="660"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="2.3"/>
+      <BEGIN value="660"/>
+      <END value="720"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="2.4"/>
+      <BEGIN value="720"/>
+      <END value="780"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="2.5"/>
+      <BEGIN value="780"/>
+      <END value="840"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <DAYDEF>
+      <CODE value="3"/>
+      <SHORTNAME value="GIO"/>
+      <LONGNAME value="giovedi"/>
+      <MORNING value="288"/>
+    </DAYDEF>
+    <HOURDEF>
+      <CODE value="3.0"/>
+      <BEGIN value="480"/>
+      <END value="540"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="3.1"/>
+      <BEGIN value="540"/>
+      <END value="600"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="3.2"/>
+      <BEGIN value="600"/>
+      <END value="660"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="3.3"/>
+      <BEGIN value="660"/>
+      <END value="720"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="3.4"/>
+      <BEGIN value="720"/>
+      <END value="780"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="3.5"/>
+      <BEGIN value="780"/>
+      <END value="840"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <DAYDEF>
+      <CODE value="4"/>
+      <SHORTNAME value="VEN"/>
+      <LONGNAME value="venerdi"/>
+      <MORNING value="288"/>
+    </DAYDEF>
+    <HOURDEF>
+      <CODE value="4.0"/>
+      <BEGIN value="480"/>
+      <END value="540"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="4.1"/>
+      <BEGIN value="540"/>
+      <END value="600"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="4.2"/>
+      <BEGIN value="600"/>
+      <END value="660"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="4.3"/>
+      <BEGIN value="660"/>
+      <END value="720"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="4.4"/>
+      <BEGIN value="720"/>
+      <END value="780"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="4.5"/>
+      <BEGIN value="780"/>
+      <END value="840"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <DAYDEF>
+      <CODE value="5"/>
+      <SHORTNAME value="SAB"/>
+      <LONGNAME value="sabato"/>
+      <MORNING value="288"/>
+    </DAYDEF>
+    <HOURDEF>
+      <CODE value="5.0"/>
+      <BEGIN value="480"/>
+      <END value="540"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="5.1"/>
+      <BEGIN value="540"/>
+      <END value="600"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="5.2"/>
+      <BEGIN value="600"/>
+      <END value="660"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="5.3"/>
+      <BEGIN value="660"/>
+      <END value="720"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="5.4"/>
+      <BEGIN value="720"/>
+      <END value="780"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <HOURDEF>
+      <CODE value="5.5"/>
+      <BEGIN value="780"/>
+      <END value="840"/>
+      <PRINTBEGIN value="1"/>
+    </HOURDEF>
+    <PARAM>
+      <SECTION value="TEACHERS"/>
+      <CLASS value="MAXDIST"/>
+      <CODE value="1100"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="TEACHERS"/>
+      <CLASS value="MINDIST"/>
+      <CODE value="1101"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="TEACHERS"/>
+      <CLASS value="MINUNITS"/>
+      <CODE value="1102"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="TEACHERS"/>
+      <CLASS value="MAXUNITS"/>
+      <CODE value="1103"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="TEACHERS"/>
+      <CLASS value="MAXWEIGHT"/>
+      <CODE value="1104"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="TEACHERS"/>
+      <CLASS value="DESIRED"/>
+      <CODE value="1105"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="TEACHERS"/>
+      <CLASS value="UNDESIRED"/>
+      <CODE value="1106"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="TEACHERS"/>
+      <CLASS value="FREEDAYS"/>
+      <CODE value="1107"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="TEACHERS"/>
+      <CLASS value="SITEDIST"/>
+      <CODE value="1108"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="TEACHERS"/>
+      <CLASS value="SITECHANGES"/>
+      <CODE value="0"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="GROUPS"/>
+      <CLASS value="MAXDIST"/>
+      <CODE value="2209"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="GROUPS"/>
+      <CLASS value="MINDIST"/>
+      <CODE value="2210"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="GROUPS"/>
+      <CLASS value="MINUNITS"/>
+      <CODE value="2211"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="GROUPS"/>
+      <CLASS value="MAXUNITS"/>
+      <CODE value="2212"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="GROUPS"/>
+      <CLASS value="MAXWEIGHT"/>
+      <CODE value="2213"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="GROUPS"/>
+      <CLASS value="DESIRED"/>
+      <CODE value="2214"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="GROUPS"/>
+      <CLASS value="UNDESIRED"/>
+      <CODE value="2215"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="GROUPS"/>
+      <CLASS value="FREEDAYS"/>
+      <CODE value="2216"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="GROUPS"/>
+      <CLASS value="SITEDIST"/>
+      <CODE value="2217"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="GROUPS"/>
+      <CLASS value="SITECHANGES"/>
+      <CODE value="0"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="GROUPS"/>
+      <CLASS value="NOTSAMEDAY"/>
+      <CODE value="2218"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="GROUPS"/>
+      <CLASS value="NOTNEXTDAYS"/>
+      <CODE value="2219"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="ROOMS"/>
+      <CLASS value="DESIRED"/>
+      <CODE value="3320"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="ROOMS"/>
+      <CLASS value="UNDESIRED"/>
+      <CODE value="3321"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="SUBJECTS"/>
+      <CLASS value="NOTSAMEDAY"/>
+      <CODE value="0"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="SUBJECTS"/>
+      <CLASS value="NOTNEXTDAYS"/>
+      <CODE value="0"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="LESSONS"/>
+      <CLASS value="BREAKS"/>
+      <CODE value="4422"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="LESSONS"/>
+      <CLASS value="DESIRED"/>
+      <CODE value="4423"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <PARAM>
+      <SECTION value="LESSONS"/>
+      <CLASS value="UNDESIRED"/>
+      <CODE value="4424"/>
+      <CUSTOM value="0"/>
+      <PRIORITY value="2"/>
+      <OPTIMIZED value="1"/>
+      <LOCKED value="0"/>
+      <FIXED value="0"/>
+      <ALLOW value="0"/>
+      <CUSTOMFILTER value="0"/>
+      <ALLOWFILTER value="0"/>
+    </PARAM>
+    <CLASSDATA>
+      <CLASS value="X"/>
+      <MIN value="5"/>
+      <MAX value="6"/>
+      <WEIGHT value="12"/>
+      <DISTMIN value="0"/>
+      <DISTMAX value="0"/>
+      <FORCELEFT value="1"/>
+      <FORCERIGHT value="0"/>
+      <AVOIDAMGAP value="1"/>
+      <FREEDAYS value="0"/>
+      <FREEAM value="0"/>
+      <FREEPM value="0"/>
+      <MAXSITECHANGES value="0"/>
+      <TIMEFRAMES>
+      </TIMEFRAMES>
+    </CLASSDATA>
+  </PERIODDATA>
+</DOCUMENT>

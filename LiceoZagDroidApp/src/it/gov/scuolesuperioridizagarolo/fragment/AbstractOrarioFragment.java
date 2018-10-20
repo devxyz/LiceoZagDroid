@@ -78,6 +78,17 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         wrapperParameter.setNavigateFlag(navigateFlag);
     }
 
+    @Override
+    public void showDetails(boolean show) {
+        if (show) {
+            LAYOUT_OBJs.linearLayout6.setVisibility(View.VISIBLE);
+
+        } else {
+            LAYOUT_OBJs.linearLayout6.setVisibility(View.GONE);
+        }
+    }
+
+
     protected abstract F[] getFilterValues();
 
     protected abstract void persistFiltrerValue(F filtro);

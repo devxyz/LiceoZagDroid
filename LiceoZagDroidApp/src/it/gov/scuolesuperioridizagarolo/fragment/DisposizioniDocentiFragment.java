@@ -15,6 +15,7 @@ import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelperCallable;
 import it.gov.scuolesuperioridizagarolo.db.ManagerTimetables;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_classi_vuote_xml;
+import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_disposizioni_docenti_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
 import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
@@ -27,10 +28,20 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 public class DisposizioniDocentiFragment extends AbstractFragment {
     protected static final String KEY_DATA = "KEY_DATA";
     protected BitOrarioGrigliaOrarioContainer containerOrari;
-    protected LayoutObjs_fragment_classi_vuote_xml LAYOUT_OBJs;   //***************************
+    protected LayoutObjs_fragment_disposizioni_docenti_xml LAYOUT_OBJs;   //***************************
     protected OnlyDate giornoCorrente;
     protected BitOrarioGrigliaOrario orario;
     private DisposizioniDocentiExpandibleListAdapter orarioAdapter;
+
+    @Override
+    public void showDetails(boolean show) {
+        if (show) {
+            LAYOUT_OBJs.linearLayout7.setVisibility(View.VISIBLE);
+
+        } else {
+            LAYOUT_OBJs.linearLayout7.setVisibility(View.GONE);
+        }
+    }
 
 
     private void collapseAll() {
@@ -63,11 +74,11 @@ public class DisposizioniDocentiFragment extends AbstractFragment {
                                  Bundle savedInstanceState, Bundle param) {
 
 
-        View rootView = inflater.inflate(R.layout.fragment_classi_vuote, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_disposizioni_docenti, container, false);
 
         //ON CREATE method
         //**************************
-        LAYOUT_OBJs = new LayoutObjs_fragment_classi_vuote_xml(rootView);
+        LAYOUT_OBJs = new LayoutObjs_fragment_disposizioni_docenti_xml(rootView);
         //**************************
         //**************************
 

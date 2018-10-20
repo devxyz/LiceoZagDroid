@@ -34,6 +34,11 @@ public class BarCodeFragment extends AbstractFragment {
     }
 
     @Override
+    public void showDetails(boolean show) {
+
+    }
+
+    @Override
     public View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState, Bundle p) {
         View rootView = inflater.inflate(R.layout.fragment_barcode, container, false);

@@ -26,6 +26,17 @@ public class ContattiFragment extends AbstractFragment {
     }
 
     @Override
+    public void showDetails(boolean show) {
+        if (show) {
+            LAYOUT_OBJs.textViewContattiScuola.setVisibility(View.VISIBLE);
+
+        } else {
+            LAYOUT_OBJs.textViewContattiScuola.setVisibility(View.GONE);
+        }
+    }
+
+
+    @Override
     public View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState, Bundle p) {
 

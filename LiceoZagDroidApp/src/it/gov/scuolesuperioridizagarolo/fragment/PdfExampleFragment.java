@@ -24,6 +24,11 @@ public class PdfExampleFragment extends AbstractFragment {
     }
 
     @Override
+    public void showDetails(boolean show) {
+
+    }
+
+    @Override
     public View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState, Bundle p) {
 

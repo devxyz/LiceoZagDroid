@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>  <question type="category">
+    <category>
+        <text>Default per CD2018/Prova1</text>
+
+    </category>
+  </question>
+<question type="multichoice">
+    <name>
+      <text>Titolo 1</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Testo 1]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>2.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Risposta corretta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Risposta parzialmente corretta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Risposta errata.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text><![CDATA[risposta 1]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+
+    <answer fraction="0" format="html">
+      <text><![CDATA[risposta 2]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+
+    <answer fraction="0" format="html">
+      <text><![CDATA[risposta 3]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+
+    <answer fraction="0" format="html">
+      <text><![CDATA[risposta 4]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+
+  </question>
+  <question type="category">
+    <category>
+        <text>Default per CD2018/Prova2</text>
+
+    </category>
+  </question>
+<question type="multichoice">
+    <name>
+      <text>Titolo 2</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Testo 2]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>2.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Risposta corretta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Risposta parzialmente corretta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Risposta errata.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text><![CDATA[risposta 1]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+
+    <answer fraction="100" format="html">
+      <text><![CDATA[risposta 2]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+
+    <answer fraction="0" format="html">
+      <text><![CDATA[risposta 3]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+
+    <answer fraction="0" format="html">
+      <text><![CDATA[risposta 4]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+
+  </question>
+</quiz>

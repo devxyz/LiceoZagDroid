@@ -13,42 +13,58 @@
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButtonEmail" android:src="@drawable/_contatti_email_60x60" android:background="#00fbffff"
-                android:paddingRight="5dp"/>
+                android:id="@+id/imageButtonEmail" android:src="@drawable/_contatti_email_60x60" android:background="@drawable/background_pulsante_tema"
+                android:padding="10dp"/>
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButtonTelefono" android:src="@drawable/_contatti_phone_60x60" android:background="#00ffffff"
-                android:paddingLeft="10dp" android:paddingRight="10dp"/>
-        <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageButtonWWW" android:src="@drawable/_contatti_web_60x60" android:background="#00ffffff"
-                android:paddingLeft="10dp" android:paddingRight="10dp"/>
-        <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageButtonMap" android:background="@color/color_transparent"
-                android:src="@drawable/_contatti_maps_60x60" android:paddingLeft="5dp"/>
+                android:id="@+id/imageButtonTelefono" android:src="@drawable/_contatti_phone_60x60" android:background="@drawable/background_pulsante_tema"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"/>
     </LinearLayout>
     <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/contatto_scuola"
             android:id="@+id/textView2"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:paddingLeft="5dp" android:paddingRight="5dp"
-            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentEnd="false" android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false" android:paddingLeft="5dp" android:paddingRight="5dp"
             android:gravity="center_horizontal" android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp" android:layout_alignParentBottom="true"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
               android:textAppearance="?android:attr/textAppearanceLarge" android:text="@string/nome_scuola"
               android:id="@+id/textView"
               android:gravity="center_vertical|center_horizontal" android:textStyle="bold" android:textSize="22dp"
               android:textIsSelectable="false" android:paddingLeft="10dp"
-              android:textColor="@color/color_white" android:layout_alignParentTop="true"
-    />
+              android:layout_alignParentTop="false"
+              android:layout_below="@+id/textViewContattiScuola"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_below="@+id/linearLayout"
+            android:gravity="center_horizontal" android:layout_marginTop="10dp">
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButtonWWW" android:src="@drawable/_contatti_web_60x60" android:background="@drawable/background_pulsante_tema"
+                android:padding="10dp"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButtonMap" android:background="@drawable/background_pulsante_tema"
+                android:src="@drawable/_contatti_maps_60x60" android:layout_marginLeft="10dp"
+                android:padding="10dp"/>
+
+    </LinearLayout>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Contatti Scuola"
+            android:id="@+id/textViewContattiScuola" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+            android:padding="5dp" android:background="@color/color_blue_scurissimo"
+            android:gravity="center_horizontal" android:textStyle="bold" android:textColor="@color/color_white"/>
 
 
 </RelativeLayout>
