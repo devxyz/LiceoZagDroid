@@ -96,7 +96,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         //ON CREATE method
         //**************************
         LAYOUT_OBJs = new LayoutObjs_fragment_orario_classe_xml(rootView);
-        Log.e("GENERALE", "SONO QUIIIIIIIIIIIIIIII");
+        //Log.e("GENERALE", "SONO QUIIIIIIIIIIIIIIII");
         //**************************
         //**************************
 

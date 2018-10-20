@@ -141,11 +141,12 @@ public class MotoreSostituzioneAule3 {
             new HtmlOutputOrario_perClassi().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_A3" + ".html"), EPaperFormat.A3);
 
             //new Report_perDocentiDaConvocareRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_DA_CONVOCARE_RIDOTTO_A3" + ".html"), EPaperFormat.A3);
-            new Report_perDocentiIngleseRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_INGLESE_RIDOTTO_A3" + ".html"), EPaperFormat.A3);
+            new Report_perDocentiRaggruppatiPerMateria().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_PER_MATERIA_RIDOTTO_A3" + ".html"), EPaperFormat.A3);
 
             new Report_perDocentiRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_RIDOTTO_A3_ORIZZ" + ".html"), EPaperFormat.A3);
             new Report_perDocentiRidotto(false).print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_RIDOTTO_A3_NO_AULE" + ".html"), EPaperFormat.A3);
             new Report_perClasseRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_RIDOTTO_A3_ORIZZ" + ".html"), EPaperFormat.A3);
+            new Report_perClasseRidottoSplitGiorni().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_RIDOTTO_3FOGLI_ORIZZ" + ".html"), EPaperFormat.A3);
             new Report_perClasseRidotto(false).print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_RIDOTTO_A3_ORIZZ_NO_AULE" + ".html"), EPaperFormat.A3);
 
             new Report_perAuleVuote().print(orarioInModifica, new File(root, subName2 + "_AULE VUOTE" + ".html"));

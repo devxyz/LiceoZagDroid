@@ -73,6 +73,10 @@ public class SostituzioneAuleEngine3Util {
             if (x.getAula() == RoomData.USCITA_DIDATTICA)
                 continue;
 
+            //salta lezioni laboratori
+            if (x.getAula().flagAulaLaboratorioPalestra())
+                continue;
+
             lezioni.add(x);
         }
 

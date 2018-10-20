@@ -8,7 +8,6 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstra
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_OreConsecutiveStessaAula;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
-import org.omg.CORBA.PRIVATE_MEMBER;
 
 import java.util.*;
 
@@ -16,8 +15,8 @@ import java.util.*;
  * Created by stefano on 14/02/2018.
  */
 public class SostituzioneAuleEngine3 {
-    private static final Random CASUALE=new Random(0);
-    private static final boolean FLAG_SCELTA_REGOLA_CASUALE=true;
+    private static final Random CASUALE = new Random(0);
+    private static final boolean FLAG_SCELTA_CASUALE = true;
 
     //???
     //private static final Random generatoreCasualeFix = new Random(0);
@@ -30,9 +29,12 @@ public class SostituzioneAuleEngine3 {
         //================================================================
         // PASSO 1: risolve i vincoli di base restituendo eventualmente le lezioni che non sono state soddisfatte
         //================================================================
+
+        rimuoviAuleVincoliNonSoddisfatti(o, vincoliStandard);
         final ArrayList<BitOrarioOraLezione> lezioniCheNonRispettanoVincoli = risolveVincoliAndCambiaAula(o, vincoliStandard, estrai, ff, numerositaVincoliNonSoddisfatti);
         if (lezioniCheNonRispettanoVincoli.size() > 0) {
             System.out.println("ERRORE!!!!!  Alcune lezioni non rispettano i vincoli base: " + lezioniCheNonRispettanoVincoli.size());
+//            throw new IllegalArgumentException("Vedi messaggio");
             //throw new IllegalArgumentException("Programma interrotto");
         }
 
@@ -47,21 +49,22 @@ public class SostituzioneAuleEngine3 {
         final LessonConstraintContainer vincoliFinali = new LessonConstraintContainer();
         vincoliFinali.addAll(vincoliStandard.get());
 
-        final List<LessonConstraint_OreConsecutiveStessaAula> vincoliOreConsecutiveNonVerificati = new ArrayList<>();
+        final List<LessonConstraint_OreConsecutiveStessaAula> vincoliOreConsecutiveDaRisolvere = new ArrayList<>(LessonConstraint_OreConsecutiveStessaAula.genera(o));
 
         for (int i = 0; i < 4; i++) {
-            vincoliOreConsecutiveNonVerificati.clear();
+            vincoliOreConsecutiveDaRisolvere.clear();
             for (LessonConstraint_OreConsecutiveStessaAula x : LessonConstraint_OreConsecutiveStessaAula.genera(o)) {
                 if (x.checkAll(lezioniInAulaOrdinato, o)) {
                     vincoliFinali.add(x);
+                    //vincoliOreConsecutiveDaRisolvere.add(x);
                 } else {
-                    vincoliOreConsecutiveNonVerificati.add(x);
+                    vincoliOreConsecutiveDaRisolvere.add(x);
                 }
             }
-            System.out.println("Vincoli ore consecutive non verificate: " + vincoliOreConsecutiveNonVerificati.size());
+            System.out.println("Vincoli ore consecutive non verificate: " + vincoliOreConsecutiveDaRisolvere.size());
 
 
-            for (Iterator<LessonConstraint_OreConsecutiveStessaAula> iterator = vincoliOreConsecutiveNonVerificati.iterator(); iterator.hasNext(); ) {
+            for (Iterator<LessonConstraint_OreConsecutiveStessaAula> iterator = vincoliOreConsecutiveDaRisolvere.iterator(); iterator.hasNext(); ) {
                 LessonConstraint_OreConsecutiveStessaAula x = iterator.next();
                 vincoliFinali.add(x);
                 final ArrayList<BitOrarioOraLezione> ris = risolveVincoliAndCambiaAula(o, vincoliFinali, estrai, ff, numerositaVincoliNonSoddisfatti);
@@ -72,35 +75,48 @@ public class SostituzioneAuleEngine3 {
                     iterator.remove();
                 }
             }
-            if (vincoliOreConsecutiveNonVerificati.size() == 0) break;
+            if (vincoliOreConsecutiveDaRisolvere.size() == 0) break;
         }
 
-        System.out.println("Vincoli ore consecutive non risolti: " + vincoliOreConsecutiveNonVerificati.size());
+        System.out.println("Vincoli ore consecutive non risolti: " + vincoliOreConsecutiveDaRisolvere.size());
 
 
     }
 
-    private static RegolaCambioAula scegliRegola(List<RegolaCambioAula> regole){
-        if (!FLAG_SCELTA_REGOLA_CASUALE)return regole.get(0);
+    //sceglie una regola a caso usando random deterministico o prmo elemento in base al flag
+    private static RegolaCambioAula scegliRegola(List<RegolaCambioAula> regole) {
+        if (!FLAG_SCELTA_CASUALE) return regole.get(0);
         return regole.get(CASUALE.nextInt(regole.size()));
     }
 
     /**
-     * risolve i vincoli di base, restituendo le lezioni per le quali c'e' almeno un vincolo non risolto
-     *
-     * @param o
-     * @param vincoliStandard
-     * @param estrai
-     * @param numerositaVincoliNonSoddisfatti
-     * @return
+     * rimuove le aule dalle lezioni che non soddisfano tutti i vincoli
      */
+    private static void rimuoviAuleVincoliNonSoddisfatti(BitOrarioGrigliaOrario o, LessonConstraintContainer vincoli) {
+        final ArrayList<BitOrarioOraLezione> lezioni = new ArrayList<>(o.getLezioni());
+        for (BitOrarioOraLezione l : lezioni) {
+            if (l.getAula() == null) continue;
+            if (!vincoli.checkAll(l, o)) {
+                final BitOrarioOraLezione nuovaLez = l.clonaLezioneInAltraAula(RoomData.NON_ASSEGNATO);
+                o.removeLezione(l);
+                o.addLezione(nuovaLez);
+            }
+        }
+
+
+    }
+
     private static ArrayList<BitOrarioOraLezione> risolveVincoliAndCambiaAula(BitOrarioGrigliaOrario o, LessonConstraintContainer vincoliStandard, Set<CompatibilitaLaboratorio> estrai, FilterAule[] ff, TreeMap<AbstractLessonConstraint, Integer> numerositaVincoliNonSoddisfatti) {
         //System.out.println("VINCOLI: "+vincoliStandard);
         ArrayList<BitOrarioOraLezione> prevLezioniDaModificare = null;
+
+        //--------------------------- prende le lezioni che violano vincoli ed eventualmente le riordina
         ArrayList<BitOrarioOraLezione> lezioniDaModificare = SostituzioneAuleEngine3Util.estraiLezioniViolanoVincoli(o, vincoliStandard);
+        riordinaLezioniCheViolanoVincoli(lezioniDaModificare);
+        if (lezioniDaModificare.size() == 0) return new ArrayList<>();
 
 
-        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        //System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         int iterazioni = 0;
         do {
             iterazioni++;
@@ -217,14 +233,16 @@ public class SostituzioneAuleEngine3 {
             System.out.println("====================================================================");
 
             //RICALCOLA LEZIONI
-            //ordina le lezioniDaModificare
+
+            //--------------------------- prende le lezioni che violano vincoli ed eventualmente le riordina
             lezioniDaModificare = SostituzioneAuleEngine3Util.estraiLezioniViolanoVincoli(o, vincoliStandard);
+            riordinaLezioniCheViolanoVincoli(lezioniDaModificare);
+
 
         }
         while (lezioniDaModificare.size() > 0 && prevLezioniDaModificare.size() > lezioniDaModificare.size() && iterazioni < 10);
         return lezioniDaModificare;
     }
-
 
     private static ArrayList<RegolaCambioAula> x_cercaAula3Scambi(
             BitOrarioGrigliaOrario o, LessonConstraintContainer l, BitOrarioOraLezione lezione,
@@ -420,6 +438,21 @@ public class SostituzioneAuleEngine3 {
             }
         }
         return ris;
+    }
+
+    //riordina casualmente le lezioni che violano i vincoli oppure no in base al flag
+    private static void riordinaLezioniCheViolanoVincoli(ArrayList<BitOrarioOraLezione> lezioniDaModificare) {
+        if (!FLAG_SCELTA_CASUALE) return;
+        for (int i = 0; i < lezioniDaModificare.size() * 2; i++) {
+            int i1 = CASUALE.nextInt(lezioniDaModificare.size());
+            int i2 = CASUALE.nextInt(lezioniDaModificare.size());
+            if (i1 != i2) {
+                //scambia
+                BitOrarioOraLezione o1 = lezioniDaModificare.get(i1);
+                lezioniDaModificare.set(i1, lezioniDaModificare.get(i2));
+                lezioniDaModificare.set(i2, o1);
+            }
+        }
     }
 
 }
