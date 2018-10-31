@@ -14,6 +14,8 @@ import java.util.List;
 public class GrigliaOrariaMultiValore implements Cloneable {
     private final ArrayList<BitOrarioOraLezione>[][] orario;
 
+
+
     public GrigliaOrariaMultiValore clone(){
         try {
             return (GrigliaOrariaMultiValore) super.clone();

@@ -35,12 +35,28 @@ public class MotoreSostituzioneAule3 {
 
 
     @Deprecated
-    public static void doTask(AbstractVincoliSostituzioni l) throws IOException {
+    public static void doTaskFromTXT(AbstractVincoliSostituzioni l) throws IOException {
         throw new IllegalArgumentException("Specificare cartella contenente dati");
     }
 
-    public static void doTask(AbstractVincoliSostituzioni l, File folderInput, File folderOutput, FilterAule[] ff, boolean showTimetablesChanges) throws IOException {
+    public static void doTaskFromJSon(AbstractVincoliSostituzioni l, File jSonFile, File folderOutput, FilterAule[] ff, boolean showTimetablesChanges) throws IOException {
+        final BitOrarioGrigliaOrario orarioInModifica = MainParserGeneraStampeOrario.readJsonFileOrarioAuleClassi(jSonFile);
+        final BitOrarioGrigliaOrario orarioStandard = !showTimetablesChanges ? orarioInModifica : MainParserGeneraStampeOrario.readJsonFileOrarioAuleClassi(jSonFile);
+        if (showTimetablesChanges)
+            orarioStandard.setReadOnly(true);
+        _doTask(l, folderOutput, ff, orarioInModifica, orarioStandard);
+    }
+
+    public static void doTaskFromTXT(AbstractVincoliSostituzioni l, File folderInput, File folderOutput, FilterAule[] ff, boolean showTimetablesChanges) throws IOException {
         final BitOrarioGrigliaOrario orarioInModifica = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(folderInput);
+        final BitOrarioGrigliaOrario orarioStandard = !showTimetablesChanges ? orarioInModifica : MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(folderInput);
+        orarioStandard.setReadOnly(true);
+
+
+        _doTask(l, folderOutput, ff, orarioInModifica, orarioStandard);
+    }
+
+    private static void _doTask(AbstractVincoliSostituzioni l, File folderOutput, FilterAule[] ff, BitOrarioGrigliaOrario orarioInModifica, BitOrarioGrigliaOrario orarioStandard) throws IOException {
         l.preOrarioBeforeAssignment(orarioInModifica);
 
         System.out.println("\n" +
@@ -73,7 +89,7 @@ public class MotoreSostituzioneAule3 {
         System.out.println("********************************************************************************************");
         System.out.println("********************** Risoluzione vincoli");
         System.out.println("********************************************************************************************");
-        TreeMap<AbstractLessonConstraint, Integer> numerositaVincoliNonSoddisfatti=new TreeMap<>();
+        TreeMap<AbstractLessonConstraint, Integer> numerositaVincoliNonSoddisfatti = new TreeMap<>();
         SostituzioneAuleEngine3.spostamentiPerAuleNonDisponibili(orarioInModifica, l1, ff, numerositaVincoliNonSoddisfatti);
         l.postOrarioBeforeFinalCheck(orarioInModifica, l1);
 
@@ -86,7 +102,7 @@ public class MotoreSostituzioneAule3 {
                 "\n********************************************************************************************");
         System.out.println("********************** Controllo vincoli utente");
         System.out.println("********************************************************************************************");
-        final java.util.List<String> strings = l1_clone.checkAllNotPassed(orarioInModifica.getLezioni(), orarioInModifica);
+        final List<String> strings = l1_clone.checkAllNotPassed(orarioInModifica.getLezioni(), orarioInModifica);
         for (String x : strings) {
             System.out.println("  >> NON RISOLTO: " + x);
         }
@@ -131,8 +147,6 @@ public class MotoreSostituzioneAule3 {
             final File root = new File(folder, "html/" + subName2);
             root.mkdirs();
 
-            final BitOrarioGrigliaOrario orarioStandard = !showTimetablesChanges ? orarioInModifica : MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(folderInput);
-            orarioStandard.setReadOnly(true);
 
             final NoteVariazioniBitOrarioGrigliaOrario note = NoteVariazioniBitOrarioGrigliaOrario.generateDifferenze(orarioStandard, orarioInModifica);
 

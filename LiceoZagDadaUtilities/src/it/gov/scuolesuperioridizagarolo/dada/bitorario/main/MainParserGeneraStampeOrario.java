@@ -1,5 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.main;
 
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.BitOrarioOraLezioneJSonConverter;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.output.*;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.parser.ParserDisposizioniDaRiepilogoVerticaleTXT;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.parser.ParserDisposizioniTXT;
@@ -12,8 +13,11 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EPaperFormat;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 /**
  * Created by stefano on 25/09/2017.
@@ -24,6 +28,27 @@ public class MainParserGeneraStampeOrario {
     static final String file_allocazione_aule = "Orario Allocazione Aule.txt";
     static final String file_disposizione_docenti = "Orario Ore a Disposizione.txt";
     static final String file_disposizione_da_orario_verticale_opzional = "Orario Professori Verticale.txt";
+
+    public static BitOrarioGrigliaOrario readJsonFileOrarioAuleClassi(File file) throws IOException {
+        if (file.getName().toLowerCase().trim().endsWith(".zip")) {
+
+            ZipInputStream in = new ZipInputStream(new FileInputStream(file));
+            final ZipEntry nextEntry = in.getNextEntry();
+            final BitOrarioGrigliaOrario s = BitOrarioOraLezioneJSonConverter.fromJSon(in);
+            in.close();
+            return s;
+
+
+        } else {
+            final FileInputStream s1 = new FileInputStream(file);
+            final BitOrarioGrigliaOrario s = BitOrarioOraLezioneJSonConverter.fromJSon(s1);
+            s1.close();
+            return s;
+
+
+        }
+
+    }
 
     public static BitOrarioGrigliaOrario parsingDefaultFileOrarioAuleClassi(File folderInput) throws IOException {
         return parsingDefaultFileOrarioAuleClassi(folderInput, false);

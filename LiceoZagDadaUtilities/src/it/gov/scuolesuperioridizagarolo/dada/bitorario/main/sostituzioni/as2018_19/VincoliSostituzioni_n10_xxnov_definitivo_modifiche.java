@@ -4,6 +4,7 @@ import it.gov.scuolesuperioridizagarolo.dada.bitorario.engine.FilterAule;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule3;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.*;
@@ -18,21 +19,62 @@ import java.io.IOException;
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_n08_21ott_definitivo extends AbstractVincoliSostituzioni {
+public class VincoliSostituzioni_n10_xxnov_definitivo_modifiche extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
-        final VincoliSostituzioni_n08_21ott_definitivo l = new VincoliSostituzioni_n08_21ott_definitivo();
-        final File folderInput = new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/07-2018.10.21-2019.06.10");
-        MotoreSostituzioneAule3.doTaskFromTXT(l, folderInput, new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/"), l.filtroAuleSpostamenti(), false);
+        final VincoliSostituzioni_n10_xxnov_definitivo_modifiche l = new VincoliSostituzioni_n10_xxnov_definitivo_modifiche();
+        MotoreSostituzioneAule3.doTaskFromJSon(
+                l,
+                new File("/Users/stefano/Dropbox/DROPBOX LICEO/AS 2018.19/Orario Scolastico/orario-definitivo/timetable_20181029194202_29.10.2018_09.06.2019.json.zip"),
+                new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario-modifiche"),
+                l.filtroAuleSpostamenti(), false);
     }
 
 
-
-
-
     protected void preOrarioBeforeAssignment(final BitOrarioGrigliaOrario orarioTotale) {
-
+        final BitOrarioOraLezione saccenti = orarioTotale.getLezioneConDocente(EOra.TERZA, EGiorno.MERCOLEDI, "saccenti");
+        orarioTotale.removeLezione(saccenti);
+        orarioTotale.addLezione(BitOrarioOraLezione.creaOraDisposizione("saccenti", EOra.SECONDA, EGiorno.LUNEDI));
 
         //if (true)throw new IllegalArgumentException("DEBUG");
+
+        ClassData[] BIORDI = new ClassData[]{
+                null, null, ClassData.CLASS_2H, ClassData.CLASS_2H, ClassData.CLASS_2H, ClassData.CLASS_2H,
+                ClassData.CLASS_2H, ClassData.CLASS_2H, ClassData.CLASS_2H, null, ClassData.CLASS_2H, ClassData.CLASS_2H,
+                ClassData.CLASS_2H, ClassData.CLASS_2H, ClassData.CLASS_2H, null, ClassData.CLASS_2H, null,
+                null, null, null, ClassData.CLASS_2H, ClassData.CLASS_2H, ClassData.CLASS_2H,
+                null, null, null, ClassData.CLASS_2H, ClassData.CLASS_2H, null};
+        ClassData[] BOTTEGA = new ClassData[]{
+                null, null, ClassData.CLASS_1E, ClassData.CLASS_1E, ClassData.CLASS_1A, ClassData.CLASS_1A,
+                null, null, ClassData.CLASS_1A, ClassData.CLASS_1A, ClassData.CLASS_1A, null,
+                null, ClassData.CLASS_1A, ClassData.CLASS_1A, ClassData.CLASS_1A, null, null,
+                ClassData.CLASS_1E, ClassData.CLASS_1E, ClassData.CLASS_1E, ClassData.CLASS_1E, ClassData.CLASS_1E, null,
+                ClassData.CLASS_1E, ClassData.CLASS_1A, ClassData.CLASS_1A, null, null, null};
+        ClassData[] DAMIANI = new ClassData[]{
+                ClassData.CLASS_1A, ClassData.CLASS_1A, ClassData.CLASS_1A, ClassData.CLASS_1A, ClassData.CLASS_1E, null,
+                ClassData.CLASS_1A, ClassData.CLASS_1E, null, ClassData.CLASS_1E, ClassData.CLASS_1E, ClassData.CLASS_1E,
+                ClassData.CLASS_1E, ClassData.CLASS_1E, null, ClassData.CLASS_1E, ClassData.CLASS_1E, null,
+                null, null, null, null, ClassData.CLASS_1A, ClassData.CLASS_1E,
+                null, ClassData.CLASS_1E, ClassData.CLASS_1E, null, null, null};
+
+
+        int i = 0;
+        for (EGiorno giorno : EGiorno.valuesGiorniDiLezione()) {
+            if (giorno == EGiorno.SABATO) continue;
+            for (EOra ora : EOra.valuesOreDiLezione()) {
+                System.out.println(i + " " + giorno + " " + ora);
+                if (BIORDI[i] != null) {
+                    orarioTotale.addInsegnanteSostegno(giorno, ora, BIORDI[i], "biordi");
+                }
+                if (BOTTEGA[i] != null) {
+                    orarioTotale.addInsegnanteSostegno(giorno, ora, BOTTEGA[i], "bottega");
+                }
+                if (DAMIANI[i] != null) {
+                    orarioTotale.addInsegnanteSostegno(giorno, ora, DAMIANI[i], "damiani");
+                }
+                i++;
+            }
+        }
+
     }
 
 
@@ -45,8 +87,8 @@ public class VincoliSostituzioni_n08_21ott_definitivo extends AbstractVincoliSos
         return new FilterAule[]{FilterAule.LABORATORI_MAI};
     }
 
-    public VincoliSostituzioni_n08_21ott_definitivo invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
-        dal = "21/10/2018";
+    public VincoliSostituzioni_n10_xxnov_definitivo_modifiche invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+        dal = "29/10/2018";
         al = "09/06/2019";
 
         // if (true) return this;

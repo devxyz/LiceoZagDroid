@@ -23,7 +23,7 @@ public class VincoliSostituzioni_n01_12set_15set extends AbstractVincoliSostituz
     public static void main(String[] args) throws IOException {
         final VincoliSostituzioni_n01_12set_15set l = new VincoliSostituzioni_n01_12set_15set();
         final File folderInput = new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/01-2018.09.10_2018.09.15");
-        MotoreSostituzioneAule3.doTask(l, folderInput, new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/"),l.filtroAuleSpostamenti(), false);
+        MotoreSostituzioneAule3.doTaskFromTXT(l, folderInput, new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/AS 2018.19/Orario Scolastico/orario/"),l.filtroAuleSpostamenti(), false);
 
     }
 

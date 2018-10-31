@@ -21,7 +21,7 @@ import java.util.TreeSet;
 public class VincoliSostituzioni_x07_TEST_TEST extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
         final VincoliSostituzioni_x07_TEST_TEST l = new VincoliSostituzioni_x07_TEST_TEST();
-        MotoreSostituzioneAule3.doTask(l);
+        MotoreSostituzioneAule3.doTaskFromTXT(l);
 
     }
 

@@ -196,6 +196,13 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
 
     }
 
+    //rimuove docenti non utilizzati
+    public void trim() {
+        _lezioniPerDocente.trim();
+        _lezioniPerAula.trim();
+        _lezioniPerClasse.trim();
+    }
+
     public String getTitolo() {
         return titolo;
     }
@@ -407,6 +414,26 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         for (BitOrarioOraLezione x : l) {
             addLezione(x);
         }
+    }
+
+    /**
+     * sostituisce la lezione
+     */
+    public void addInsegnanteSostegno(EGiorno g, EOra o, ClassData classe, String insegnanteSostegno) {
+        final BitOrarioOraLezione lezioneInClasse = getLezioneInClasse(o, g, classe);
+        if (lezioneInClasse == null) {
+            throw new IllegalArgumentException("lezione non presente");
+        }
+        removeLezione(lezioneInClasse);
+        final BitOrarioOraLezione l = BitOrarioOraLezione.creaOraCompresenza(lezioneInClasse.getDocentePrincipale(),
+                lezioneInClasse.getMateriaPrincipale(),
+                insegnanteSostegno, "compresenza",
+                lezioneInClasse.getAula(),
+                lezioneInClasse.getClasse(),
+                lezioneInClasse.getOra(),
+                lezioneInClasse.getGiorno()
+        );
+        addLezione(l);
     }
 
     public void addLezione(BitOrarioOraLezione l) {

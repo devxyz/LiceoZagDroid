@@ -59,7 +59,11 @@ public class HtmlOutputOrario_perClassi extends HtmlOutputOrario {
             n = "<br><span style='border:2px solid black;color:white;background-color:black'>" + n + "</span>";
         }
 
-        return "<center>" + l.getMateriaPrincipale().replaceAll("_", " ") + "<br>" + l.getDocentePrincipale() + "<b> (" + l.getAula().simpleName() + ") " + n + "</b></center>";
+        if (l.getDocenteCompresenza() != null)
+            return "<center>" + l.getMateriaPrincipale().replaceAll("_", " ") + "<br>" + l.getDocentePrincipale() + " - " + l.getDocenteCompresenza() +
+                    "<b> (" + l.getAula().simpleName() + ") " + n + "</b></center>";
+        else
+            return "<center>" + l.getMateriaPrincipale().replaceAll("_", " ") + "<br>" + l.getDocentePrincipale() + "<b> (" + l.getAula().simpleName() + ") " + n + "</b></center>";
     }
 
     @Override

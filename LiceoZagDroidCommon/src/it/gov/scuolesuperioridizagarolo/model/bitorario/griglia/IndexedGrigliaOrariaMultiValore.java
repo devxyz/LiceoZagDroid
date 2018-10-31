@@ -4,10 +4,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by stefano on 01/10/2017.
@@ -21,6 +18,16 @@ public class IndexedGrigliaOrariaMultiValore<K extends Comparable<K>> implements
         return true;
     }
 
+    public void trim(){
+        final Set<K> ks = new TreeSet<>(griglia.keySet());
+        for (K k : ks) {
+            final GrigliaOrariaMultiValore grigliaOrariaMultiValore = griglia.get(k);
+            if (grigliaOrariaMultiValore.get().size()==0){
+                griglia.remove(k);
+            }
+
+        }
+    }
 
     public IndexedGrigliaOrariaMultiValore<K> clone(){
         try {

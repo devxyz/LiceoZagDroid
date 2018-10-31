@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
@@ -156,7 +155,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
             }
             if (filtro == null) {
                 LAYOUT_OBJs.listView.setVisibility(View.INVISIBLE);
-                openDialogChooseFilter(false);
+                openDialogChooseFilter(true);
                 //filtro = getDefaultFiltrerValue();
             }
         }
@@ -520,7 +519,11 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         } else {
             textFiltro = ((getFilterAppLabel() + " " + filterToLabel(filtro)).trim());
         }
-        LAYOUT_OBJs.textViewNomeData.setText((textFiltro + ": " + textData).trim());
+
+        if (getFilterAppLabel() == null || filtro == null)
+            LAYOUT_OBJs.textViewNomeData.setText(("Nessun elemento selezionato").trim());
+        else
+            LAYOUT_OBJs.textViewNomeData.setText((textFiltro + ": " + textData).trim());
         visualizzaOraCorrente();
     }
 
