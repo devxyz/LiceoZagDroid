@@ -119,7 +119,7 @@ public class LessonConstraintContainer implements Cloneable {
             , String materiaPrincipale
             , String docenteCompresenza
             , String materiaCompresenza
-            , RoomData aula
+            , String docenteSostegno, RoomData aula
             , ClassData classe
             , EOra ora
             , EGiorno giorno
@@ -131,7 +131,7 @@ public class LessonConstraintContainer implements Cloneable {
                     , materiaPrincipale
                     , docenteCompresenza
                     , materiaCompresenza
-                    , aula
+                    , docenteSostegno, aula
                     , classe
                     , ora
                     , giorno, orario))

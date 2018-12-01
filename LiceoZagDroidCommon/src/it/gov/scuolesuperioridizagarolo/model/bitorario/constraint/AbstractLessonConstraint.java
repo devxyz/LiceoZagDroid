@@ -47,7 +47,7 @@ public abstract class AbstractLessonConstraint implements Comparable<AbstractLes
             , String materiaPrincipale
             , String docenteCompresenza
             , String materiaCompresenza
-            , RoomData aula
+            , String docenteSostegno, RoomData aula
             , ClassData classe
             , EOra ora
             , EGiorno giorno, BitOrarioGrigliaOrario orario);
@@ -57,7 +57,7 @@ public abstract class AbstractLessonConstraint implements Comparable<AbstractLes
             , String materiaPrincipale
             , String docenteCompresenza
             , String materiaCompresenza
-            , String nomeAula
+            , String docenteSostegno, String nomeAula
             , String classe
             , EOra ora
             , EGiorno giorno, BitOrarioGrigliaOrario orario) {
@@ -68,7 +68,7 @@ public abstract class AbstractLessonConstraint implements Comparable<AbstractLes
             return true;
 
         return __check(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza,
-                room, getClass(classe), ora, giorno,
+                docenteSostegno, room, getClass(classe), ora, giorno,
                 orario);
     }
 
@@ -79,7 +79,7 @@ public abstract class AbstractLessonConstraint implements Comparable<AbstractLes
 
 
         return __check(l.getDocentePrincipale(), l.getMateriaPrincipale(), l.getDocenteCompresenza(), l.getMateriaCompresenza(),
-                room, (l.getClasse()), l.getOra(), l.getGiorno(),
+                l.getDocenteSostegno(), room, (l.getClasse()), l.getOra(), l.getGiorno(),
                 orario);
     }
 

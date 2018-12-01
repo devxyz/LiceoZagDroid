@@ -4,7 +4,6 @@ import it.gov.scuolesuperioridizagarolo.dada.bitorario.engine.FilterAule;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule3;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.*;
@@ -14,25 +13,24 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_n10_xxnov_definitivo_modifiche extends AbstractVincoliSostituzioni {
+public class VincoliSostituzioni_n11_settimana_19nov extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
-        final VincoliSostituzioni_n10_xxnov_definitivo_modifiche l = new VincoliSostituzioni_n10_xxnov_definitivo_modifiche();
+        final VincoliSostituzioni_n11_settimana_19nov l = new VincoliSostituzioni_n11_settimana_19nov();
         MotoreSostituzioneAule3.doTaskFromJSon(
                 l,
-                new File("/Users/stefano/Dropbox/DROPBOX LICEO/AS 2018.19/Orario Scolastico/orario-definitivo/timetable_20181029194202_29.10.2018_09.06.2019.json.zip"),
+                new File("/Users/stefano/Dropbox/DROPBOX LICEO/AS 2018.19/Orario Scolastico/orario-definitivo/DEFINITIVO_timetable_20181114222113_12.11.2018_09.06.2019.json.zip"),
                 new File("/Users/stefano/Dropbox/DROPBOX LICEO/AS 2018.19/Orario Scolastico/orario-modifiche"),
-                l.filtroAuleSpostamenti(), false);
+                l.filtroAuleSpostamenti(), true);
     }
 
 
     protected void preOrarioBeforeAssignment(final BitOrarioGrigliaOrario orarioTotale) {
-        final BitOrarioOraLezione saccenti = orarioTotale.getLezioneConDocente(EOra.TERZA, EGiorno.MERCOLEDI, "saccenti");
+        /*final BitOrarioOraLezione saccenti = orarioTotale.getLezioneConDocente(EOra.TERZA, EGiorno.MERCOLEDI, "saccenti");
         orarioTotale.removeLezione(saccenti);
         orarioTotale.addLezione(BitOrarioOraLezione.creaOraDisposizione("saccenti", EOra.SECONDA, EGiorno.LUNEDI));
 
@@ -80,6 +78,8 @@ public class VincoliSostituzioni_n10_xxnov_definitivo_modifiche extends Abstract
         }
 
 
+        orarioTotale.addInsegnanteCompresenza(EGiorno.LUNEDI, EOra.QUARTA, ClassData.CLASS_1A, "andreozzi", "arte");
+        orarioTotale.addInsegnanteCompresenza(EGiorno.LUNEDI, EOra.QUINTA, ClassData.CLASS_1E, "andreozzi", "arte");
 
 
         {
@@ -93,9 +93,7 @@ public class VincoliSostituzioni_n10_xxnov_definitivo_modifiche extends Abstract
             for (BitOrarioOraLezione x : lezioniDaCambiare) {
                 orarioTotale.removeLezione(x);
 
-                final BitOrarioOraLezione y = BitOrarioOraLezione.creaOraCompresenzaAndSostegno("Di Gioia", x.getMateriaPrincipale(),
-                        x.getDocenteCompresenza(),x.getMateriaCompresenza(),x.getDocenteSostegno(),
-                        x.getAula(), x.getClasse(), x.getOra(), x.getGiorno());
+                final BitOrarioOraLezione y = BitOrarioOraLezione.creaOraDocenteSingolo("Di Gioia", x.getMateriaPrincipale(), x.getAula(), x.getClasse(), x.getOra(), x.getGiorno());
                 orarioTotale.addLezione(y);
             }
         }
@@ -112,11 +110,7 @@ public class VincoliSostituzioni_n10_xxnov_definitivo_modifiche extends Abstract
             for (BitOrarioOraLezione x : lezioniDaCambiare) {
                 orarioTotale.removeLezione(x);
 
-//                final BitOrarioOraLezione y = BitOrarioOraLezione.creaOraDocenteSingolo("Di Giuseppe", x.getMateriaPrincipale(), x.getAula(), x.getClasse(), x.getOra(), x.getGiorno());
-
-                final BitOrarioOraLezione y = BitOrarioOraLezione.creaOraCompresenzaAndSostegno("Di Giuseppe", x.getMateriaPrincipale(),
-                        x.getDocenteCompresenza(),x.getMateriaCompresenza(),x.getDocenteSostegno(),
-                        x.getAula(), x.getClasse(), x.getOra(), x.getGiorno());
+                final BitOrarioOraLezione y = BitOrarioOraLezione.creaOraDocenteSingolo("Di Giuseppe", x.getMateriaPrincipale(), x.getAula(), x.getClasse(), x.getOra(), x.getGiorno());
                 orarioTotale.addLezione(y);
             }
         }
@@ -124,14 +118,7 @@ public class VincoliSostituzioni_n10_xxnov_definitivo_modifiche extends Abstract
 
         orarioTotale.trim();
 
-
-        orarioTotale.addInsegnanteCompresenza(EGiorno.LUNEDI, EOra.QUARTA, ClassData.CLASS_1A, "andreozzi", "arte");
-        orarioTotale.addInsegnanteCompresenza(EGiorno.LUNEDI, EOra.QUINTA, ClassData.CLASS_1E, "andreozzi", "arte");
-        orarioTotale.addInsegnanteCompresenza(EGiorno.MARTEDI, EOra.QUINTA, ClassData.CLASS_1C, "andreozzi", "arte");
-        orarioTotale.addInsegnanteCompresenza(EGiorno.GIOVEDI, EOra.TERZA, ClassData.CLASS_2F, "andreozzi", "arte");
-        orarioTotale.addInsegnanteCompresenza(EGiorno.GIOVEDI, EOra.QUINTA, ClassData.CLASS_2G, "andreozzi", "arte");
-
-
+*/
     }
 
 
@@ -141,12 +128,16 @@ public class VincoliSostituzioni_n10_xxnov_definitivo_modifiche extends Abstract
 
     @Override
     protected FilterAule[] filtroAuleSpostamenti() {
-        return new FilterAule[]{FilterAule.LABORATORI_MAI};
+        return new FilterAule[]{
+                FilterAule.LABORATORI_MAI,
+                FilterAule.LABORATORI_SOLO_COMPATIBILI,
+                FilterAule.LABORATORI_SEMPRE,
+        };
     }
 
-    public VincoliSostituzioni_n10_xxnov_definitivo_modifiche invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
-        dal = "12/11/2018";
-        al = "09/06/2019";
+    public VincoliSostituzioni_n11_settimana_19nov invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+        dal = "25/11/2018";
+        al = "06/16/2019";
 
         // if (true) return this;
 
@@ -247,6 +238,15 @@ public class VincoliSostituzioni_n10_xxnov_definitivo_modifiche extends Abstract
                 // l.add(new LessonConstraint_AulaNonDisponibile(RoomData.B13sharp, g, EOra.values()));
             }
         }
+
+
+        //=================== VINCOLI VARI
+        //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A4_INF, EGiorno.GIOVEDI, EOra.values()));
+        //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E27, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA));
+
+
+
+
 
         //====================================================================================================================================
         // FERRIGNO

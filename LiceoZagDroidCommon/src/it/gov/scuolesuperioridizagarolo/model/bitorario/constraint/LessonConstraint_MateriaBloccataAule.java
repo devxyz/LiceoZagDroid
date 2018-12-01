@@ -44,7 +44,7 @@ public class LessonConstraint_MateriaBloccataAule extends AbstractLessonConstrai
     }
 
     @Override
-    protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
+    protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, String docenteSostegno, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
         if (classe != null && escludiClassi.contains(classe)) return true;
         if (docentePrincipale != null && escludiDocentiUpperCase.contains(docentePrincipale.toUpperCase())) return true;
         if (docenteCompresenza != null && escludiDocentiUpperCase.contains(docenteCompresenza.toUpperCase()))

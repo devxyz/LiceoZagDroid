@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class SostituzioneAuleEngine3 {
     private static final Random CASUALE = new Random(0);
-    private static final boolean FLAG_SCELTA_CASUALE = true;
+    private static final boolean FLAG_SCELTA_CASUALE = false;
 
     //???
     //private static final Random generatoreCasualeFix = new Random(0);
@@ -29,11 +29,13 @@ public class SostituzioneAuleEngine3 {
         //================================================================
         // PASSO 1: risolve i vincoli di base restituendo eventualmente le lezioni che non sono state soddisfatte
         //================================================================
-
         rimuoviAuleVincoliNonSoddisfatti(o, vincoliStandard);
+
+
         final ArrayList<BitOrarioOraLezione> lezioniCheNonRispettanoVincoli = risolveVincoliAndCambiaAula(o, vincoliStandard, estrai, ff, numerositaVincoliNonSoddisfatti);
         if (lezioniCheNonRispettanoVincoli.size() > 0) {
             System.out.println("ERRORE!!!!!  Alcune lezioni non rispettano i vincoli base: " + lezioniCheNonRispettanoVincoli.size());
+            System.err.println("ERRORE!!!!!  Alcune lezioni non rispettano i vincoli base: " + lezioniCheNonRispettanoVincoli.size());
 //            throw new IllegalArgumentException("Vedi messaggio");
             //throw new IllegalArgumentException("Programma interrotto");
         }
@@ -96,6 +98,7 @@ public class SostituzioneAuleEngine3 {
         final ArrayList<BitOrarioOraLezione> lezioni = new ArrayList<>(o.getLezioni());
         for (BitOrarioOraLezione l : lezioni) {
             if (l.getAula() == null) continue;
+            if (l.getAula() == RoomData.USCITA_DIDATTICA) continue;
             if (!vincoli.checkAll(l, o)) {
                 final BitOrarioOraLezione nuovaLez = l.clonaLezioneInAltraAula(RoomData.NON_ASSEGNATO);
                 o.removeLezione(l);
@@ -202,7 +205,7 @@ public class SostituzioneAuleEngine3 {
                 //System.out.println("===============================");
 
                 if (assegnato == null) {
-                    String s = "ATTENZIONE!!!" + (lezione.getGiorno() + "\t" + lezione.getOra().getProgressivOra() + "^ ORA\t" + lezione.getDocentePrincipale() + " - " + lezione.getMateriaPrincipale() + "\tclasse " + lezione.getClasse()) +
+                    String s = "ATTENZIONE!!!" + (lezione.getGiorno() + "\t" + lezione.getOra().getProgressivOra() + "^ ORA\t" + lezione.getClasse() + " - "+ lezione.getDocentePrincipale() + " - " + lezione.getMateriaPrincipale() + "\tclasse " + lezione.getClasse()) +
                             ("\tVecchia aula: " + lezione.getAula()) +
                             ("\tNessuna aula trovata in sostituzione\tLA SOSTITUZIONE SARA' DI NUOVO TENTATA!!!");
                     System.out.println(s);

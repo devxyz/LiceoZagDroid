@@ -39,7 +39,7 @@ public class LessonConstraint_DocenteFermoInAulaDidatticaPerOre extends Abstract
 
 
     @Override
-    protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
+    protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, String docenteSostegno, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
 
         if ((docentePrincipale != null && this.docente.equalsIgnoreCase(docentePrincipale) || (docenteCompresenza != null && this.docente.equalsIgnoreCase(docenteCompresenza))))
             if (this.giorno.contains(giorno) && this.ore.contains(ora)) {

@@ -37,7 +37,7 @@ public class LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo extends A
 
 
     @Override
-    protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
+    protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, String docenteSostegno, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
         if (this.classe == classe)
             if (this.giorno.contains(giorno) && this.ore.contains(ora)) {
                 if (aula != this.aula)

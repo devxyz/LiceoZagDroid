@@ -74,7 +74,7 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
     @Override
     protected boolean __check(String docentePrincipale, String materiaPrincipale,
                               String docenteCompresenza, String materiaCompresenza,
-                              RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
+                              String docenteSostegno, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
         if (classe == null) return true;
         if (this.classe == classe)
             if (this.giorno.equals(giorno)) {

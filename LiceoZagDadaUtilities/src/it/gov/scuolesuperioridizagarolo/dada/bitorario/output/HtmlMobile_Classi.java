@@ -91,7 +91,7 @@ public class HtmlMobile_Classi {
                                 break;
                             }
                             default: {
-                                final String docente = lezione.getDocentePrincipale() + (lezione.getDocenteCompresenza() == null ? "" : " " + lezione.getDocenteCompresenza());
+                                final String docente = lezione.getDocentiFormatted();
                                 final String aula = lezione.getAula() == null ? "-" : lezione.getAula().simpleName();
                                 String materia = Report_perClasseRidotto.abbreviazioneMateria(lezione);
 

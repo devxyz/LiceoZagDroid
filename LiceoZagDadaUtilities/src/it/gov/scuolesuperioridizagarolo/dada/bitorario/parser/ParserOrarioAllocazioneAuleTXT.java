@@ -120,11 +120,11 @@ public class ParserOrarioAllocazioneAuleTXT {
                     l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale,
                             ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
 
-                }else if (a.length == 2) {
+                } else if (a.length == 2) {
                     docentePrincipale = a[1];
 
                     materiaPrincipale = a[0];
-                    nomeAula =RoomData.NON_ASSEGNATO.roomName;
+                    nomeAula = RoomData.NON_ASSEGNATO.roomName;
                     l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale,
                             ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
 

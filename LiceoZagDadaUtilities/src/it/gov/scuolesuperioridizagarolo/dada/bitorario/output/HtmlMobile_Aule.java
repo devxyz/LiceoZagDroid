@@ -88,7 +88,7 @@ public class HtmlMobile_Aule {
                                         break;
                                     }
                                     default: {
-                                        final String docente = lezione.getDocentePrincipale() + " " + (lezione.getDocenteCompresenza() == null ? "" : " " + lezione.getDocenteCompresenza());
+                                        final String docente = lezione.getDocentiFormatted();
                                         final ClassData classe = lezione.getClasse() == null ? ClassData.CLASS_SCONOSCIUTA : lezione.getClasse();
 
                                         p.printf("" +

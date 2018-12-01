@@ -152,7 +152,7 @@ public class MotoreSostituzioneAule3 {
 
 
             new HtmlOutputOrario_perAule().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_AULE_A3" + ".html"), EPaperFormat.A3);
-            new HtmlOutputOrario_perClassi().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_A3" + ".html"), EPaperFormat.A3);
+            new HtmlOutputOrario_perClassi().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_TOTALE_A3" + ".html"), EPaperFormat.A3);
 
             //new Report_perDocentiDaConvocareRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_DA_CONVOCARE_RIDOTTO_A3" + ".html"), EPaperFormat.A3);
             new Report_perDocentiRaggruppatiPerMateria().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_PER_MATERIA_RIDOTTO_A3" + ".html"), EPaperFormat.A3);

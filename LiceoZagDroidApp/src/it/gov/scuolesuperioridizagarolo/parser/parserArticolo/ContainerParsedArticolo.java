@@ -19,7 +19,7 @@ public class ContainerParsedArticolo {
         if (t.kind == WordParserConstants.NUMERO)
             return Integer.parseInt(t.image.trim());
         if (t.kind == WordParserConstants.NUMERO_PUNTATO)
-            return Integer.parseInt(t.image.toUpperCase().replace("N.", "").trim());
+            return Integer.parseInt(t.image.toUpperCase().replace("N.", "").replace("N", "").trim());
         return null;
     }
 

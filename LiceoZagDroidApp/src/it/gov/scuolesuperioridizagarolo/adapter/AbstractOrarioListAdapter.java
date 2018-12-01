@@ -345,8 +345,8 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
                 String insegnanti;
 
 
-                if (lezione.getDocenteCompresenza() != null)
-                    insegnanti = C_TextUtil.capitalize(lezione.getDocentePrincipale() + " - " + lezione.getDocenteCompresenza());
+                if (lezione.getDocenti().size() > 0)
+                    insegnanti = C_TextUtil.capitalize(lezione.getDocentiFormatted());
                 else
                     insegnanti = C_TextUtil.capitalize(lezione.getDocentePrincipale());
 
@@ -357,7 +357,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
                             sb.append(" - ");
                         sb.append(classe);
                     }
-                    if (printInsegnante || (lezione.getDocenteCompresenza() != null && printInsegnanteSeCompresenza)) {
+                    if (printInsegnante || (lezione.getDocenti().size() > 1 && printInsegnanteSeCompresenza)) {
                         if (sb.length() > 0)
                             sb.append(" - ");
                         sb.append(insegnanti);

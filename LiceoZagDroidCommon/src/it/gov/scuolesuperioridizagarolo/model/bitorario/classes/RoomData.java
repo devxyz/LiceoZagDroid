@@ -2,9 +2,6 @@ package it.gov.scuolesuperioridizagarolo.model.bitorario.classes;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
 
-import java.util.Set;
-import java.util.TreeSet;
-
 public enum RoomData {
     NON_ASSEGNATO("(NON ASSEGNATO)", "(NON ASSEGNATO)", 0, 0, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     AULA_SCONOSCIUTA("AULA SCONOSCIUTA", "AULA SCONOSCIUTA", 0, 0, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
@@ -75,6 +72,12 @@ public enum RoomData {
             if (xx.roomName.equalsIgnoreCase(s)) return xx;
         }
         return AULA_SCONOSCIUTA;
+    }
+
+    public static void main(String[] args) {
+        for (RoomData roomData : values()) {
+            System.out.println(roomData.roomName + "\t" + roomData.location.description+"\t-");
+        }
     }
 
     public boolean flagAulaFittizia() {

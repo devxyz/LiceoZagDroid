@@ -15,7 +15,7 @@ public class LessonConstraint_OccupazioneAule_labsToo extends AbstractLessonCons
     }
 
     @Override
-    protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, RoomData aula,
+    protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, String docenteSostegno, RoomData aula,
                               ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
         if (aula==RoomData.AULA_SCONOSCIUTA)return false;
         if (aula==RoomData.NON_ASSEGNATO)return false;

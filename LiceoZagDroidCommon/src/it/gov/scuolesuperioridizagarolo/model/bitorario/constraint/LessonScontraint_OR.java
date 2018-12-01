@@ -20,10 +20,10 @@ public class LessonScontraint_OR extends AbstractLessonConstraint {
     }
 
     @Override
-    protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
+    protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, String docenteSostegno, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
         return
-                a.__check(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, aula, classe, ora, giorno, orario) ||
-                        b.__check(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, aula, classe, ora, giorno, orario);
+                a.__check(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, docenteSostegno, aula, classe, ora, giorno, orario) ||
+                        b.__check(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, docenteSostegno, aula, classe, ora, giorno, orario);
     }
 
     @Override

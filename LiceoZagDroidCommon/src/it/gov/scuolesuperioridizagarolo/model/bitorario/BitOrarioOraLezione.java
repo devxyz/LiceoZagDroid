@@ -5,6 +5,9 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by stefano on 16/09/2017.
  */
@@ -14,6 +17,7 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
     private String docentePrincipale;
     private String materiaPrincipale;
     private String docenteCompresenza;
+    private String docenteSostegno;
     private String materiaCompresenza;
     private RoomData aula;
     private ClassData classe;
@@ -24,7 +28,8 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
 
     //ora lezione
     private BitOrarioOraLezione(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza,
-                                RoomData nomeAula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioOraEnumTipoLezione t) {
+                                String docenteSostegno, RoomData nomeAula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioOraEnumTipoLezione t) {
+        this.docenteSostegno = normalize(docenteSostegno);
         this.docentePrincipale = normalize(docentePrincipale);
         this.materiaPrincipale = normalize(materiaPrincipale);
         this.docenteCompresenza = normalize(docenteCompresenza);
@@ -47,15 +52,25 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
     //gestire note
     //ora lab
     public static BitOrarioOraLezione creaOraCompresenza(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, RoomData nomeAula, ClassData classe, EOra ora, EGiorno giorno) {
-        return new BitOrarioOraLezione(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, nomeAula, classe, ora, giorno, BitOrarioOraEnumTipoLezione.LEZIONE_CON_COMPRESENZA);
+        return new BitOrarioOraLezione(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, null, nomeAula, classe, ora, giorno, BitOrarioOraEnumTipoLezione.LEZIONE_CON_COMPRESENZA);
+    }
+
+    public static BitOrarioOraLezione creaOraCompresenzaAndSostegno(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, String docenteSostegno, RoomData nomeAula, ClassData classe, EOra ora, EGiorno giorno) {
+        return new BitOrarioOraLezione(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, docenteSostegno, nomeAula, classe, ora, giorno, BitOrarioOraEnumTipoLezione.LEZIONE_CON_COMPRESENZA);
+    }
+
+    //gestire note
+    //ora lab
+    public static BitOrarioOraLezione creaOraSostegno(String docentePrincipale, String materiaPrincipale, String docenteSostegno, RoomData nomeAula, ClassData classe, EOra ora, EGiorno giorno) {
+        return new BitOrarioOraLezione(docentePrincipale, materiaPrincipale, null, null, docenteSostegno, nomeAula, classe, ora, giorno, BitOrarioOraEnumTipoLezione.LEZIONE_CON_COMPRESENZA);
     }
 
     public static BitOrarioOraLezione creaOraDocenteSingolo(String docentePrincipale, String materiaPrincipale, RoomData nomeAula, ClassData classe, EOra ora, EGiorno giorno) {
-        return new BitOrarioOraLezione(docentePrincipale, materiaPrincipale, null, null, nomeAula, classe, ora, giorno, BitOrarioOraEnumTipoLezione.LEZIONE_SINGOLA);
+        return new BitOrarioOraLezione(docentePrincipale, materiaPrincipale, null, null, null, nomeAula, classe, ora, giorno, BitOrarioOraEnumTipoLezione.LEZIONE_SINGOLA);
     }
 
     public static BitOrarioOraLezione creaOraDisposizione(String docentePrincipale, EOra ora, EGiorno giorno) {
-        return new BitOrarioOraLezione(docentePrincipale, "D", null, null, null, null, ora, giorno, BitOrarioOraEnumTipoLezione.DISPOSIZIONE);
+        return new BitOrarioOraLezione(docentePrincipale, "D", null, null, null, null, null, ora, giorno, BitOrarioOraEnumTipoLezione.DISPOSIZIONE);
     }
 
     //controlla se ha un parent
@@ -86,7 +101,7 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
         return new BitOrarioOraLezione(
                 getDocentePrincipale(), getMateriaPrincipale(),
                 getDocenteCompresenza(), getMateriaCompresenza(),
-                nuovaaula, getClasse(),
+                getDocenteSostegno(), nuovaaula, getClasse(),
                 getOra(), getGiorno(),
                 getTipoLezione());
     }
@@ -117,9 +132,9 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
                 return ora.getProgressivOra() + "° ora " + giorno + ": DISPOSIZIONE - " + getDocentePrincipale();
 
             case LEZIONE_CON_COMPRESENZA:
-                return ora.getProgressivOra() + "° ora " + giorno + ": " + getMateriaPrincipale() + " - " + getDocentePrincipale() + "/" + getDocenteCompresenza() + "(aula " + getAula() + ")";
+                return ora.getProgressivOra() + "° ora " + giorno + ": " + getClasse().className + " " + getDocentiFormatted() + "(aula " + getAula() + ")";
             case LEZIONE_SINGOLA:
-                return ora.getProgressivOra() + "° ora " + giorno + ": " + getMateriaPrincipale() + " - " + getDocentePrincipale() + "(aula " + getAula() + ")";
+                return ora.getProgressivOra() + "° ora " + giorno + ": " + getClasse().className + " " + getDocentiFormatted() + "(aula " + getAula() + ")";
             default:
                 return "???";
         }
@@ -150,12 +165,55 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
         return i;
     }
 
+    public List<String> getDocenti() {
+        List<String> ris = new ArrayList<>();
+        if (docentePrincipale != null)
+            ris.add(docentePrincipale);
+
+        if (docenteCompresenza != null)
+            ris.add(docenteCompresenza);
+
+        if (docenteSostegno != null)
+            ris.add(docenteSostegno);
+        return ris;
+    }
+
+    public String getDocentiFormatted() {
+        StringBuilder sb = new StringBuilder();
+        for (String d : getDocenti()) {
+            if (sb.length() > 0) {
+                sb.append(" - ").append(d);
+            } else {
+                sb.append(d);
+            }
+        }
+        return sb.toString().trim();
+    }
+
     public String getDocentePrincipale() {
         return docentePrincipale;
     }
 
     public String getMateriaPrincipale() {
         return materiaPrincipale;
+    }
+
+    public String getDocenteSostegno() {
+        return docenteSostegno;
+    }
+
+    public boolean containsDocenteLowerCase(String d) {
+        if (docentePrincipale != null && docentePrincipale.equalsIgnoreCase(d))
+            return true;
+
+        if (docenteCompresenza != null && docenteCompresenza.equalsIgnoreCase(d))
+            return true;
+
+        if (docenteSostegno != null && docenteSostegno.equalsIgnoreCase(d))
+            return true;
+
+        return false;
+
     }
 
     public String getDocenteCompresenza() {

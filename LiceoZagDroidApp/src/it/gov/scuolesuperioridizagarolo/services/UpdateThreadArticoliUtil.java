@@ -7,7 +7,6 @@ import it.gov.scuolesuperioridizagarolo.activity.MainMenuActivity;
 import it.gov.scuolesuperioridizagarolo.dao.*;
 import it.gov.scuolesuperioridizagarolo.dao.customType.*;
 import it.gov.scuolesuperioridizagarolo.db.ManagerArticolo;
-import it.gov.scuolesuperioridizagarolo.model.dto.C_Pair;
 import it.gov.scuolesuperioridizagarolo.parser.parserArticolo.*;
 import it.gov.scuolesuperioridizagarolo.util.C_Base64;
 import it.gov.scuolesuperioridizagarolo.util.C_XmlUtil;
@@ -24,28 +23,39 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 
 /**
  * Created by stefano on 02/02/2018.
  */
 public class UpdateThreadArticoliUtil {
+
+
     public static void updateAndSave(MainMenuActivity activity) throws Throwable {
 
-        final ScuolaAppDbHelperCallable<Integer> maxRemoteIdRunner = new ScuolaAppDbHelperCallable<Integer>() {
+        final ScuolaAppDbHelperCallable<Date> maxRemoteIdRunner = new ScuolaAppDbHelperCallable<Date>() {
             @Override
-            public Integer call(DaoSession session, Context ctx) throws Throwable {
+            public Date call(DaoSession session, Context ctx) throws Throwable {
                 ManagerArticolo m = new ManagerArticolo(session);
-                return m.getMaxRemoteId();
+                return m.getModifiedRemoteDate();
             }
         };
-        final Integer lastCurrentId = ScuolaAppDbHelper.runOneTransactionSync(activity, maxRemoteIdRunner);
-        Log.e(UpdateThreadArticoliUtil.class.getName(), "lastCurrentId=" + lastCurrentId);
+        final Date lastModifiedDate = ScuolaAppDbHelper.runOneTransactionSync(activity, maxRemoteIdRunner);
+        Log.e(UpdateThreadArticoliUtil.class.getName(), "lastModifiedDate=" + lastModifiedDate);
         //===============
 
-        final String fullUrl = activity.getResources().getString(R.string.url_article) + lastCurrentId;
+        final String fullUrl;
+        if (lastModifiedDate==null)
+            fullUrl = activity.getResources().getString(R.string.url_article) + "1970-01-01 00:00:00";
+        else {
+            SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            fullUrl = activity.getResources().getString(R.string.url_article) + sf.format(lastModifiedDate);
+        }
+
         final UpdateThreadContainer updateThreadContainer = downloadListCircolariComunicazioni(fullUrl);
         Log.e(UpdateThreadArticoliUtil.class.getName(), "Download effettuato");
 
@@ -89,6 +99,13 @@ public class UpdateThreadArticoliUtil {
 
     //http://www.scuolesuperioridizagarolo.gov.it/prova.php?id=XXXX
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, it.gov.scuolesuperioridizagarolo.parser.impl.ParseException {
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(sf.format(new Date()));
+
+        if (true)
+            return;
+
+
         final UpdateThreadContainer x = downloadListCircolariComunicazioni("http://www.scuolesuperioridizagarolo.gov.it/circolari.php?id=1000");
         System.out.println();
         System.out.println();

@@ -13,6 +13,7 @@ import it.gov.scuolesuperioridizagarolo.util.DebugUtil;
 import org.greenrobot.greendao.query.DeleteQuery;
 import org.greenrobot.greendao.query.QueryBuilder;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -38,6 +39,14 @@ public class ManagerArticolo {
         return unique.getRemoteId();
     }
 
+    public Date getModifiedRemoteDate() {
+        final ArticoloDB unique = session.getArticoloDBDao().queryBuilder().orderDesc(ArticoloDBDao.Properties.ModifiedDate).limit(1).unique();
+        if (unique == null) {
+            return null;
+        }
+        return unique.getModifiedDate();
+    }
+
     //rimuove tutti gli articoli con remoteid minore di quello specificato
     public void removeArticoliPrecedentiAdID(int minRemoteId) {
 
@@ -57,7 +66,6 @@ public class ManagerArticolo {
         if (DebugUtil.DEBUG__ManagerArticolo) {
             Log.w("ManagerArticolo", "START elencoArticoliCircolari");
         }
-
 
 
         //elenco circolari

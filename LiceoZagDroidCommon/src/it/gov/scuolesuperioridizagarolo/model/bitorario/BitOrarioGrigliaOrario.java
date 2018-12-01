@@ -194,6 +194,9 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         if (l.getDocenteCompresenza() != null)
             _lezioniPerDocente.remove(l.getDocenteCompresenza(), l);
 
+        if (l.getDocenteSostegno() != null)
+            _lezioniPerDocente.remove(l.getDocenteSostegno(), l);
+
     }
 
     //rimuove docenti non utilizzati
@@ -296,6 +299,9 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
             if (a.flagAulaFittizia())
                 continue;
 
+            if (a.maxStudents <= 0)
+                continue;
+
             final List<BitOrarioOraLezione> l = getLezioneInAula(ora, settimana, a);
             if (l.size() == 0)
                 ris.add(a);
@@ -378,7 +384,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         final ArrayList<BitOrarioOraLezione> lezioni = getLezioni();
         for (BitOrarioOraLezione lezione : lezioni) {
             if (lezione.getGiorno() != s) continue;
-            if (lezione.getDocenteCompresenza() != null && lezione.getDocenteCompresenza().equalsIgnoreCase(docente) || lezione.getDocentePrincipale().equalsIgnoreCase(docente))
+            if (lezione.containsDocenteLowerCase(docente))
                 ris.add(lezione);
         }
         return ris;
@@ -389,7 +395,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         final ArrayList<BitOrarioOraLezione> lezioni = getLezioni();
         for (BitOrarioOraLezione lezione : lezioni) {
             if (lezione.getOra() != s) continue;
-            if (lezione.getDocenteCompresenza() != null && lezione.getDocenteCompresenza().equalsIgnoreCase(docente) || lezione.getDocentePrincipale().equalsIgnoreCase(docente))
+            if (lezione.containsDocenteLowerCase(docente))
                 ris.add(lezione);
         }
         return ris;
@@ -399,7 +405,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         ArrayList<BitOrarioOraLezione> ris = new ArrayList<>();
         final ArrayList<BitOrarioOraLezione> lezioni = getLezioni();
         for (BitOrarioOraLezione lezione : lezioni) {
-            if (lezione.getDocenteCompresenza() != null && lezione.getDocenteCompresenza().equalsIgnoreCase(docente) || lezione.getDocentePrincipale().equalsIgnoreCase(docente))
+            if (lezione.containsDocenteLowerCase(docente))
                 ris.add(lezione);
         }
         return ris;
@@ -425,9 +431,46 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
             throw new IllegalArgumentException("lezione non presente");
         }
         removeLezione(lezioneInClasse);
-        final BitOrarioOraLezione l = BitOrarioOraLezione.creaOraCompresenza(lezioneInClasse.getDocentePrincipale(),
+        final BitOrarioOraLezione l = BitOrarioOraLezione.creaOraCompresenzaAndSostegno(lezioneInClasse.getDocentePrincipale(),
                 lezioneInClasse.getMateriaPrincipale(),
-                insegnanteSostegno, "compresenza",
+                lezioneInClasse.getDocenteCompresenza(), lezioneInClasse.getMateriaCompresenza(),
+                insegnanteSostegno,
+                lezioneInClasse.getAula(),
+                lezioneInClasse.getClasse(),
+                lezioneInClasse.getOra(),
+                lezioneInClasse.getGiorno()
+        );
+        addLezione(l);
+    }
+
+    public void addInsegnanteCompresenza(EGiorno g, EOra o, ClassData classe, String insegnanteCompresenza, String materiaCompresenza) {
+        final BitOrarioOraLezione lezioneInClasse = getLezioneInClasse(o, g, classe);
+        if (lezioneInClasse == null) {
+            throw new IllegalArgumentException("lezione non presente");
+        }
+        removeLezione(lezioneInClasse);
+        final BitOrarioOraLezione l = BitOrarioOraLezione.creaOraCompresenzaAndSostegno(lezioneInClasse.getDocentePrincipale(),
+                lezioneInClasse.getMateriaPrincipale(),
+                insegnanteCompresenza, materiaCompresenza,
+                lezioneInClasse.getDocenteSostegno(),
+                lezioneInClasse.getAula(),
+                lezioneInClasse.getClasse(),
+                lezioneInClasse.getOra(),
+                lezioneInClasse.getGiorno()
+        );
+        addLezione(l);
+    }
+
+    public void removeInsegnanteCompresenza(EGiorno g, EOra o, ClassData classe) {
+        final BitOrarioOraLezione lezioneInClasse = getLezioneInClasse(o, g, classe);
+        if (lezioneInClasse == null) {
+            throw new IllegalArgumentException("lezione non presente");
+        }
+        removeLezione(lezioneInClasse);
+        final BitOrarioOraLezione l = BitOrarioOraLezione.creaOraCompresenzaAndSostegno(lezioneInClasse.getDocentePrincipale(),
+                lezioneInClasse.getMateriaPrincipale(),
+                null, null,
+                lezioneInClasse.getDocenteSostegno(),
                 lezioneInClasse.getAula(),
                 lezioneInClasse.getClasse(),
                 lezioneInClasse.getOra(),
@@ -456,6 +499,9 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
 
         if (l.getDocenteCompresenza() != null)
             _lezioniPerDocente.add(l.getDocenteCompresenza(), l);
+
+        if (l.getDocenteSostegno() != null)
+            _lezioniPerDocente.add(l.getDocenteSostegno(), l);
     }
 
     @Override

@@ -52,7 +52,6 @@ public class HtmlOutputOrario_perAule extends HtmlOutputOrario {
             if (sb.length() > 0) {
                 sb.append("<br>");
             }
-            final String s1 = (l.getDocenteCompresenza() == null) ? " " : " - " + l.getDocenteCompresenza();
 
             String n = note.getNote(l);
             if (n == null) n = "";
@@ -64,7 +63,7 @@ public class HtmlOutputOrario_perAule extends HtmlOutputOrario {
             }
 
 
-            sb.append("<center style='font-size:20px'><b>" + l.getClasse() + " </b><br> " + l.getDocentePrincipale() + " " + s1 + " " + n + " <br> </center>");
+            sb.append("<center style='font-size:20px'><b>" + l.getClasse() + " </b><br> " + l.getDocentiFormatted() + " " + n + " <br> </center>");
         }
         return sb.toString();
     }

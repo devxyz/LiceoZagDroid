@@ -38,7 +38,7 @@ public class HtmlMobile_Variazioni {
         int i = 1;
         String prec = "";
         for (BitOrarioOraLezione x : lezioniModificate) {
-            String docente = (x.getDocentePrincipale() + (x.getDocenteCompresenza() != null ? " " + x.getDocenteCompresenza() : " ")).trim();
+            final String docente = x.getDocentiFormatted();
             RoomData precAula = null;
             final BitOrarioOraLezione precLezione = orarioStandard.getLezioneConDocente(x.getOra(), x.getGiorno(), x.getDocentePrincipale());
             if (precLezione != null && precLezione.getAula() != null) {

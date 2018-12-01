@@ -23,6 +23,9 @@ public class ArticoloDB {
     private java.util.Date pubDate;
 
     @NotNull
+    private java.util.Date modifiedDate;
+
+    @NotNull
     private java.util.Date insertTimestamp;
 
     @Unique
@@ -59,10 +62,11 @@ public class ArticoloDB {
     }
 
     @Generated
-    public ArticoloDB(Long id, String title, java.util.Date pubDate, java.util.Date insertTimestamp, int remoteId, int remoteCategoryId, String categoryTitle, String content, boolean flagLettura, String url, ArticoloDetails details, ArticoloType type, java.util.Date date) {
+    public ArticoloDB(Long id, String title, java.util.Date pubDate, java.util.Date modifiedDate, java.util.Date insertTimestamp, int remoteId, int remoteCategoryId, String categoryTitle, String content, boolean flagLettura, String url, ArticoloDetails details, ArticoloType type, java.util.Date date) {
         this.id = id;
         this.title = title;
         this.pubDate = pubDate;
+        this.modifiedDate = modifiedDate;
         this.insertTimestamp = insertTimestamp;
         this.remoteId = remoteId;
         this.remoteCategoryId = remoteCategoryId;
@@ -101,6 +105,16 @@ public class ArticoloDB {
     /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setPubDate(@NotNull java.util.Date pubDate) {
         this.pubDate = pubDate;
+    }
+
+    @NotNull
+    public java.util.Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setModifiedDate(@NotNull java.util.Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 
     @NotNull

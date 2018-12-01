@@ -326,8 +326,9 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         final BitOrarioOraLezione item = orarioAdapter.getItem(position).lezione;
 
 
-        final String choose_orario_docente_principale = "Orario del docente " + (item == null ? "" : item.getDocentePrincipale());
-        final String choose_orario_docente_compresenza = "Orario del docente in compresenza " + (item == null ? "" : item.getDocenteCompresenza());
+        final String choose_orario_docente_principale = "Orario del docente(1) " + (item == null ? "" : item.getDocentePrincipale());
+        final String choose_orario_docente_compresenza = "Orario del docente(2) " + (item == null ? "" : item.getDocenteCompresenza());
+        final String choose_orario_docente_sostegno = "Orario del docente(3) " + (item == null ? "" : item.getDocenteSostegno());
         final String choose_orario_classe = "Orario della classe " + (item == null ? "" : item.getClasse());
         final String choose_orario_aula = "Orario aula " + (item == null || item.getAula() == null ? "" : item.getAula());
         final String choose_informazioni_aula = "Informazioni " + (item == null || item.getAula() == null ? "sulla lezione" : "sull'aula " + item.getAula());
@@ -339,6 +340,9 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         }
         if (!this.isTimetableForTeacher() && item != null && item.getDocenteCompresenza() != null && navigateFlag) {
             funzioni.add(choose_orario_docente_compresenza);
+        }
+        if (!this.isTimetableForTeacher() && item != null && item.getDocenteSostegno() != null && navigateFlag) {
+            funzioni.add(choose_orario_docente_sostegno);
         }
         if (!this.isTimetableForStudents() && item != null && item.getClasse() != null && navigateFlag) {
             funzioni.add(choose_orario_classe);
@@ -390,6 +394,16 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
                             w.setPersistFlag(false);
                             w.setData(giornoCorrente);
                             w.setFiltro(item.getDocenteCompresenza());
+                            w.setNavigateFlag(false);
+                            getMainActivity().doAction(orarioClassi, w.getBundle());
+                        }
+                    } else if (fun[which].equals(choose_orario_docente_sostegno)) {
+                        if (item != null) {
+                            final DataMenuInfo orarioClassi = StringsMenuPrincipale.ORARIO_DOCENTI;
+                            OrarioFragmentBundleWrapper w = new OrarioFragmentBundleWrapper();
+                            w.setPersistFlag(false);
+                            w.setData(giornoCorrente);
+                            w.setFiltro(item.getDocenteSostegno());
                             w.setNavigateFlag(false);
                             getMainActivity().doAction(orarioClassi, w.getBundle());
                         }
@@ -525,6 +539,10 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         else
             LAYOUT_OBJs.textViewNomeData.setText((textFiltro + ": " + textData).trim());
         visualizzaOraCorrente();
+
+        if (!navigateFlag){
+            LAYOUT_OBJs.button_filtro.setVisibility(View.INVISIBLE);
+        }
     }
 
 

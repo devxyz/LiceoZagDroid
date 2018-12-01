@@ -5,7 +5,9 @@ include './pasw4/configuration.php'
 <?php
 error_reporting(-1);
 
-$min_id_article=1*$_GET["id"];
+
+$starting_modified=$_GET["modified"];
+
 
 //confgurazioni
 $config=new JConfig;
@@ -17,7 +19,7 @@ $prefix = $config->dbprefix;
 echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
 
 echo "\n<data>\n";
-echo "<start-article-id-request>".$min_id_article."</start-article-id-request>\n";
+echo "<start-article-starting-modified>".$starting_modified."</start-article-starting-modified>\n";
 
 //mysql_set_charset("UTF8");
 
@@ -32,7 +34,7 @@ if ($conn->connect_error) {
 $sql_subselection_id_article=
 "   SELECT c1.id".
 "   FROM jhost_content c1 inner join jhost_categories as c2 on c1.catid=c2.id  ".
-"   WHERE c1.id>". $min_id_article ." and state=1 and catid in (145,1013,1023) ";
+"   WHERE c1.modified>'". $starting_modified ."' and state=1 and catid in (145,1013,1023) ";
 
 
 //=========================================================================================
@@ -56,7 +58,7 @@ if ($result->num_rows > 0) {
 
 
 $sql =
-"SELECT c1.id, c1.title, c1.introtext, c1.fulltext, c1.created, c1.alias as alias_article, c1.catid as id_cat, c2.path as path_cat, c2.alias as alias_cat, c2.title as title_cat".
+"SELECT c1.id, c1.title, c1.introtext, c1.fulltext, c1.created, c1.alias as alias_article, c1.catid as id_cat, c2.path as path_cat, c2.alias as alias_cat, c2.title as title_cat,c1.modified as alias_modified".
 "\n FROM jhost_content c1 inner join jhost_categories as c2 on c1.catid=c2.id  ".
 "\n WHERE c1.id in (". $sql_subselection_id_article .") ".
 "\n order by c1.id desc";
@@ -74,6 +76,7 @@ if ($result->num_rows > 0) {
         echo "<article>\n";
         echo "  <article-id>" . $row["id"]. "</article-id>\n";
         echo "  <article-created>" . $row["created"]. "</article-created>\n";
+        echo "  <article-modified>" . $row["alias_modified"]. "</article-modified>\n";
         echo "  <category-id>" . $row["id_cat"]. "</category-id>\n";
         echo "  <category-title>" . $row["title_cat"]. "</category-title>\n";
 

@@ -69,4 +69,13 @@ public enum ClassData {
     public String toString() {
         return className;
     }
+
+
+    public static void main(String[] args) {
+        for (ClassData roomData : values()) {
+            System.out.println(roomData._class+roomData._section);
+        }
+    }
+
+
 }

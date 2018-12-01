@@ -50,7 +50,7 @@ public class Report_perVariazioniAule {
         int i = 1;
         String prec = "";
         for (BitOrarioOraLezione x : lezioniModificate) {
-            String docente = (x.getDocentePrincipale() + (x.getDocenteCompresenza() != null ? " " + x.getDocenteCompresenza() : " ")).trim();
+            String docente = x.getDocentiFormatted();
             RoomData precAula = null;
             final BitOrarioOraLezione precLezione = vecchioOrario.getLezioneConDocente(x.getOra(), x.getGiorno(), x.getDocentePrincipale());
 
