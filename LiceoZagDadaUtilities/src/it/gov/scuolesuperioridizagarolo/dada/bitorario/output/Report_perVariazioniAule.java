@@ -55,6 +55,7 @@ public class Report_perVariazioniAule {
             final BitOrarioOraLezione precLezione = vecchioOrario.getLezioneConDocente(x.getOra(), x.getGiorno(), x.getDocentePrincipale());
 
 
+
             if (precLezione != null && precLezione.getAula() != null) {
                 precAula = precLezione.getAula();
             }
@@ -63,6 +64,8 @@ public class Report_perVariazioniAule {
                 i++;
                 prec = x.getGiorno().getNome();
             }
+
+            if (precAula == null) continue;
 
             out.println("<tr>");
             out.println("<td style='font-size:120%;font-weight:bolder;'>" + x.getGiorno().getNome().toUpperCase() + "</td>\n");

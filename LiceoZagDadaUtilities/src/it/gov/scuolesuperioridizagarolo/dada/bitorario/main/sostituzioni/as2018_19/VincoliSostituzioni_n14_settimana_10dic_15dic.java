@@ -4,6 +4,7 @@ import it.gov.scuolesuperioridizagarolo.dada.bitorario.engine.FilterAule;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule3;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.*;
@@ -13,6 +14,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 /**
@@ -30,6 +32,23 @@ public class VincoliSostituzioni_n14_settimana_10dic_15dic extends AbstractVinco
 
 
     protected void preOrarioBeforeAssignment(final BitOrarioGrigliaOrario orarioTotale) {
+
+
+        final ArrayList<BitOrarioOraLezione> lezioniDaCambiare = new ArrayList<>();
+        final ArrayList<BitOrarioOraLezione> lezioni = orarioTotale.getLezioni();
+        for (BitOrarioOraLezione x : lezioni) {
+            if (x.getDocentePrincipale() != null && x.getDocentePrincipale().equalsIgnoreCase("abbate")) {
+                lezioniDaCambiare.add(x);
+            }
+        }
+        for (BitOrarioOraLezione x : lezioniDaCambiare) {
+            orarioTotale.removeLezione(x);
+
+            final BitOrarioOraLezione y = BitOrarioOraLezione.creaOraDocenteSingolo("Abballe", x.getMateriaPrincipale(), x.getAula(), x.getClasse(), x.getOra(), x.getGiorno());
+            orarioTotale.addLezione(y);
+        }
+        orarioTotale.trim();
+
         /*final BitOrarioOraLezione saccenti = orarioTotale.getLezioneConDocente(EOra.TERZA, EGiorno.MERCOLEDI, "saccenti");
         orarioTotale.removeLezione(saccenti);
         orarioTotale.addLezione(BitOrarioOraLezione.creaOraDisposizione("saccenti", EOra.SECONDA, EGiorno.LUNEDI));
@@ -236,6 +255,9 @@ public class VincoliSostituzioni_n14_settimana_10dic_15dic extends AbstractVinco
 
         l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(
                 false, "DI ROSA", new RoomData[]{RoomData.A1}, new EGiorno[]{EGiorno.SABATO}, EOra.values()));
+
+        l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(
+                false, "SCHIAREA", new RoomData[]{RoomData.C20}, new EGiorno[]{EGiorno.GIOVEDI}, EOra.values()));
 
         return this;
     }

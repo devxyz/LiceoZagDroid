@@ -50,6 +50,8 @@ public class HtmlMobile_Variazioni {
                 prec = x.getGiorno().getNome();
             }
 
+            if (precAula==null)continue;
+
             String color = colori[i % colori.length];
             sb.append("<tr>");
             sb.append("<td style='font-size:120%;font-weight:bolder;background-color:" + color + "'>" + x.getGiorno().getNome().toUpperCase() + "</td>\n");

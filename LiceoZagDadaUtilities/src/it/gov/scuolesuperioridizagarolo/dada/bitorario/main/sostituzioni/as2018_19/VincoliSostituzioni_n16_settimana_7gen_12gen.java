@@ -18,9 +18,9 @@ import java.io.IOException;
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_n15_settimana_17dic_22dic extends AbstractVincoliSostituzioni {
+public class VincoliSostituzioni_n16_settimana_7gen_12gen extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
-        final VincoliSostituzioni_n15_settimana_17dic_22dic l = new VincoliSostituzioni_n15_settimana_17dic_22dic();
+        final VincoliSostituzioni_n16_settimana_7gen_12gen l = new VincoliSostituzioni_n16_settimana_7gen_12gen();
         MotoreSostituzioneAule3.doTaskFromJSon(
                 l,
                 new File("/Users/stefano/Dropbox/DROPBOX LICEO/AS 2018.19/Orario Scolastico/orario-definitivo/DEFINITIVO_timetable_20181114222113_12.11.2018_09.06.2019.json.zip"),
@@ -135,9 +135,9 @@ public class VincoliSostituzioni_n15_settimana_17dic_22dic extends AbstractVinco
         };
     }
 
-    public VincoliSostituzioni_n15_settimana_17dic_22dic invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
-        dal = "17/12/2018";
-        al = "22/12/2018";
+    public VincoliSostituzioni_n16_settimana_7gen_12gen invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+        dal = "7/1/2019";
+        al = "12/1/2019";
 
         // if (true) return this;
 
@@ -226,26 +226,23 @@ public class VincoliSostituzioni_n15_settimana_17dic_22dic extends AbstractVinco
 
         //=================== VINCOLI VARI
 
-        //òunedi' giornata violenza donne circolare n.64
-        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5_DIS, EGiorno.LUNEDI, EOra.SECONDA, EOra.TERZA, EOra.QUARTA, EOra.QUINTA));
-        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A7, EGiorno.LUNEDI, EOra.values()));
+        //lunedi' giornata violenza donne circolare n.64
+        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5_DIS, EGiorno.LUNEDI, EOra.QUARTA));
+        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5_DIS, EGiorno.VENERDI, EOra.SECONDA, EOra.TERZA, EOra.QUARTA));
 
         l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(
                 false, "SCHIAREA", new RoomData[]{RoomData.C20}, new EGiorno[]{EGiorno.GIOVEDI}, EOra.values()));
 
-
-
         l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(
-                false, "DI ROSA", new RoomData[]{RoomData.A1}, new EGiorno[]{EGiorno.LUNEDI}, EOra.values()));
+                false, "SANTELLI", new RoomData[]{RoomData.C17}, new EGiorno[]{EGiorno.GIOVEDI}, new EOra[]{EOra.SESTA}));
 
 
-        orarioTotale.classeInVisitaDidattica("Incontro in aula disegno A5 - incontro prof Gaetano Piccolo sul tema Il Discernimento, imparare a decidere", ClassData.CLASS_5D, EGiorno.LUNEDI, EOra.SECONDA, EOra.TERZA);
-        orarioTotale.classeInVisitaDidattica("Incontro in aula disegno A5 - incontro prof Gaetano Piccolo sul tema Il Discernimento, imparare a decidere", ClassData.CLASS_5E, EGiorno.LUNEDI, EOra.SECONDA, EOra.TERZA);
-        orarioTotale.classeInVisitaDidattica("Incontro in aula disegno A5 - incontro prof Gaetano Piccolo sul tema Il Discernimento, imparare a decidere", ClassData.CLASS_5D, EGiorno.LUNEDI, EOra.SECONDA, EOra.TERZA);
+        orarioTotale.classeInVisitaDidattica("Incontro in aula disegno A5 - Il linguaggio non basta", ClassData.CLASS_5A, EGiorno.LUNEDI, EOra.QUARTA);
+        orarioTotale.classeInVisitaDidattica("Incontro in aula disegno A5 - Il linguaggio non basta", ClassData.CLASS_5F, EGiorno.LUNEDI, EOra.QUARTA);
 
-        orarioTotale.classeInVisitaDidattica("Incontro in aula disegno A5 - incontro prof Gaetano Piccolo sul tema Il Discernimento, imparare a decidere", ClassData.CLASS_4A, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA);
-        orarioTotale.classeInVisitaDidattica("Incontro in aula disegno A5 - incontro prof Gaetano Piccolo sul tema Il Discernimento, imparare a decidere", ClassData.CLASS_4D, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA);
-        orarioTotale.classeInVisitaDidattica("Incontro in aula disegno A5 - incontro prof Gaetano Piccolo sul tema Il Discernimento, imparare a decidere", ClassData.CLASS_4E, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA);
+        orarioTotale.classeInVisitaDidattica("Incontro in aula disegno A5 - Il linguaggio non basta", ClassData.CLASS_5A, EGiorno.VENERDI, EOra.SECONDA, EOra.TERZA, EOra.QUARTA);
+        orarioTotale.classeInVisitaDidattica("Incontro in aula disegno A5 - Il linguaggio non basta", ClassData.CLASS_5F, EGiorno.VENERDI, EOra.SECONDA, EOra.TERZA, EOra.QUARTA);
+
 
         return this;
     }

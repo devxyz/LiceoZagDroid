@@ -243,15 +243,13 @@ public class VincoliSostituzioni_n13_settimana_3dic extends AbstractVincoliSosti
         //=================== VINCOLI VARI
 
         //òunedi' giornata violenza donne circolare n.64
-        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.F31_PALESTRA, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA,EOra.SESTA));
-        for (ClassData classData : ClassData.values()) {
-            if (classData.flagClasseFittizia())
-                continue;
-            if (classData._class == 1) {
-                orarioTotale.classeInVisitaDidattica("Incontro in palestra Giornata contro violenza sulle donne - Circolare n.67",classData, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA);
-                //orarioTotale.classeInSospensioneDidattica(classData, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA, EOra.SESTA);
-            }
-        }
+        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.F31_PALESTRA, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA, EOra.SESTA));
+        orarioTotale.classeInVisitaDidattica("Incontro in palestra Giornata contro violenza sulle donne - Circolare n.67",ClassData.CLASS_1A, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA);
+        orarioTotale.classeInVisitaDidattica("Incontro in palestra Giornata contro violenza sulle donne - Circolare n.67",ClassData.CLASS_1B, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA);
+        orarioTotale.classeInVisitaDidattica("Incontro in palestra Giornata contro violenza sulle donne - Circolare n.67",ClassData.CLASS_1D, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA);
+        orarioTotale.classeInVisitaDidattica("Incontro in palestra Giornata contro violenza sulle donne - Circolare n.67",ClassData.CLASS_1E, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA);
+        //orarioTotale.classeInVisitaDidattica("Incontro in palestra Giornata contro violenza sulle donne - Circolare n.67",ClassData.CLASS_1F, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA);
+        orarioTotale.classeInVisitaDidattica("Incontro in palestra Giornata contro violenza sulle donne - Circolare n.67",ClassData.CLASS_1H, EGiorno.LUNEDI, EOra.QUARTA, EOra.QUINTA);
 
 
         for (ClassData classData : ClassData.values()) {

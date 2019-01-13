@@ -23,11 +23,9 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.Date;
 
 /**
  * Created by stefano on 02/02/2018.
@@ -37,19 +35,19 @@ public class UpdateThreadArticoliUtil {
 
     public static void updateAndSave(MainMenuActivity activity) throws Throwable {
 
-        final ScuolaAppDbHelperCallable<Date> maxRemoteIdRunner = new ScuolaAppDbHelperCallable<Date>() {
+        final ScuolaAppDbHelperCallable<Date> maxRemoteDateRunner = new ScuolaAppDbHelperCallable<Date>() {
             @Override
             public Date call(DaoSession session, Context ctx) throws Throwable {
                 ManagerArticolo m = new ManagerArticolo(session);
                 return m.getModifiedRemoteDate();
             }
         };
-        final Date lastModifiedDate = ScuolaAppDbHelper.runOneTransactionSync(activity, maxRemoteIdRunner);
+        final Date lastModifiedDate = ScuolaAppDbHelper.runOneTransactionSync(activity, maxRemoteDateRunner);
         Log.e(UpdateThreadArticoliUtil.class.getName(), "lastModifiedDate=" + lastModifiedDate);
         //===============
 
         final String fullUrl;
-        if (lastModifiedDate==null)
+        if (lastModifiedDate == null)
             fullUrl = activity.getResources().getString(R.string.url_article) + "1970-01-01 00:00:00";
         else {
             SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -100,13 +98,16 @@ public class UpdateThreadArticoliUtil {
     //http://www.scuolesuperioridizagarolo.gov.it/prova.php?id=XXXX
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, it.gov.scuolesuperioridizagarolo.parser.impl.ParseException {
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(sf.format(new Date()));
+        final String date = sf.format(new Date());
+        System.out.println(date);
 
-        if (true)
-            return;
+        final String url = "http://www.scuolesuperioridizagarolo.gov.it/circolari.php?modified=" + date;
+        System.out.println(url);
+        if (true) return;
+
+        final UpdateThreadContainer x = downloadListCircolariComunicazioni(url);
 
 
-        final UpdateThreadContainer x = downloadListCircolariComunicazioni("http://www.scuolesuperioridizagarolo.gov.it/circolari.php?id=1000");
         System.out.println();
         System.out.println();
         System.out.println();
@@ -178,6 +179,7 @@ public class UpdateThreadArticoliUtil {
             final String article_url = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-url").getTextContent().trim();
             final String article_title = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-title").getTextContent().trim();
             final String article_content = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-content").getTextContent().trim();
+            final String article_modified = C_XmlUtil.searchFirstByTagName(a.getChildNodes(), "article-modified").getTextContent().trim();
             String article_content_decode = new String(C_Base64.decode(article_content), "UTF-8");
             aa.setCategoryTitle(category_title);
             aa.setContent(article_content_decode);
@@ -188,12 +190,22 @@ public class UpdateThreadArticoliUtil {
             } catch (ParseException e) {
                 aa.setPubDate(new Date());//data corrente se mancante
             }
+            try {
+                aa.setModifiedDate(sf.parse(article_modified));
+            } catch (ParseException e) {
+                aa.setModifiedDate(new Date());//data corrente se mancante
+            }
             aa.setId(Long.parseLong(article_id));
             aa.setInsertTimestamp(new Date());
             aa.setRemoteCategoryId(Integer.parseInt(category_id));
             aa.setRemoteId(Integer.parseInt(article_id));
             aa.setTitle(article_title);
             aa.setUrl(article_url);
+
+
+            if (aa.getModifiedDate() == null) {
+                aa.setModifiedDate(new Date());
+            }
 
 
             switch (category_title.toUpperCase().trim()) {
@@ -239,6 +251,7 @@ public class UpdateThreadArticoliUtil {
                     x.oggetto = parse1.oggetto.toString();
                     x.dataAvviso = parse1.dataAvviso;
                     x.addWordsLowerCase(parse1.termini);
+
 
                     aa.setDetails(x);
                     aa.setType(ArticoloType.AVVISO);
