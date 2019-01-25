@@ -72,7 +72,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="LiceoZag_AppCompat_v7" />
+    <orderEntry type="module" module-name="LiceoZag_AppCompat_v7" exported="" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>

@@ -18,9 +18,9 @@ import java.io.IOException;
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_n16_settimana_14gen_20gen extends AbstractVincoliSostituzioni {
+public class VincoliSostituzioni_n17_settimana_21gen_26gen extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
-        final VincoliSostituzioni_n16_settimana_14gen_20gen l = new VincoliSostituzioni_n16_settimana_14gen_20gen();
+        final VincoliSostituzioni_n17_settimana_21gen_26gen l = new VincoliSostituzioni_n17_settimana_21gen_26gen();
         MotoreSostituzioneAule3.doTaskFromJSon(
                 l,
                 new File("/Users/stefano/Dropbox/DROPBOX LICEO/AS 2018.19/Orario Scolastico/orario-definitivo/DEFINITIVO_timetable_20181114222113_12.11.2018_09.06.2019.json.zip"),
@@ -135,9 +135,9 @@ public class VincoliSostituzioni_n16_settimana_14gen_20gen extends AbstractVinco
         };
     }
 
-    public VincoliSostituzioni_n16_settimana_14gen_20gen invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
-        dal = "14/1/2019";
-        al = "20/1/2019";
+    public VincoliSostituzioni_n17_settimana_21gen_26gen invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+        dal = "21/1/2019";
+        al = "27/1/2019";
 
         // if (true) return this;
 
@@ -228,7 +228,20 @@ public class VincoliSostituzioni_n16_settimana_14gen_20gen extends AbstractVinco
         //=================== VINCOLI VARI
 
         //lunedi' giornata violenza donne circolare n.64
-        //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5_DIS, EGiorno.LUNEDI, EOra.QUARTA));
+
+        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.F31_PALESTRA, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA));
+
+        orarioTotale.classeInVisitaDidattica("Giornata della memoria - Palestra", ClassData.CLASS_3C, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA);
+        orarioTotale.classeInVisitaDidattica("Giornata della memoria - Palestra", ClassData.CLASS_3E, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA);
+        orarioTotale.classeInVisitaDidattica("Giornata della memoria - Palestra", ClassData.CLASS_3G, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA);
+        orarioTotale.classeInVisitaDidattica("Giornata della memoria - Palestra", ClassData.CLASS_4B, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA);
+        orarioTotale.classeInVisitaDidattica("Giornata della memoria - Palestra", ClassData.CLASS_4C, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA);
+        orarioTotale.classeInVisitaDidattica("Giornata della memoria - Palestra", ClassData.CLASS_4D, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA);
+        orarioTotale.classeInVisitaDidattica("Giornata della memoria - Palestra", ClassData.CLASS_4E, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA);
+        orarioTotale.classeInVisitaDidattica("Giornata della memoria - Palestra", ClassData.CLASS_5A, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA);
+        orarioTotale.classeInVisitaDidattica("Giornata della memoria - Palestra", ClassData.CLASS_5C, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA);
+
+
         //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5_DIS, EGiorno.VENERDI, EOra.SECONDA, EOra.TERZA, EOra.QUARTA));
 
         l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(
@@ -236,6 +249,7 @@ public class VincoliSostituzioni_n16_settimana_14gen_20gen extends AbstractVinco
 
         l.add(new LessonConstraint_DocenteFermoInAulaDidatticaPerOre(
                 false, "SANTELLI", new RoomData[]{RoomData.C17}, new EGiorno[]{EGiorno.GIOVEDI}, new EOra[]{EOra.SESTA}));
+
 
 
        /* orarioTotale.classeInVisitaDidattica("Incontro in aula disegno A5 - Il linguaggio non basta", ClassData.CLASS_5A, EGiorno.LUNEDI, EOra.QUARTA);
