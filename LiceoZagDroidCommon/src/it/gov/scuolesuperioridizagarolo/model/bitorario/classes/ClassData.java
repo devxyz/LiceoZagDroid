@@ -1,5 +1,8 @@
 package it.gov.scuolesuperioridizagarolo.model.bitorario.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum ClassData {
     // CLASSES
     CLASS_1A("1A", 24, 1, "A"),
@@ -46,6 +49,18 @@ public enum ClassData {
     public final int _class;
     public final String _section;
 
+    public boolean isOrdinario() {
+        return !isScienzeApp();
+    }
+
+    public boolean isScienzeApp() {
+        return
+                _section.equalsIgnoreCase("B")
+                        || _section.equalsIgnoreCase("D")
+                        || _section.equalsIgnoreCase("F")
+                        || _section.equalsIgnoreCase("H");
+    }
+
     ClassData(String classname, int numberOfStudents, int aClass, String section) {
         this.className = classname;
         this.numberOfStudents = numberOfStudents;
@@ -61,6 +76,18 @@ public enum ClassData {
         return CLASS_SCONOSCIUTA;
     }
 
+    public static interface ClassDataFilter {
+        boolean accept(ClassData c);
+    }
+
+    public static List<ClassData> filter(ClassDataFilter f) {
+        List<ClassData> ris = new ArrayList<>();
+        for (ClassData x : values()) {
+            if (f.accept(x)) ris.add(x);
+        }
+        return ris;
+    }
+
     public boolean flagClasseFittizia() {
         return this == CLASS_SCONOSCIUTA;
     }
@@ -73,7 +100,7 @@ public enum ClassData {
 
     public static void main(String[] args) {
         for (ClassData roomData : values()) {
-            System.out.println(roomData._class+roomData._section);
+            System.out.println(roomData._class + roomData._section);
         }
     }
 

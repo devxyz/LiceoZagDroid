@@ -2,6 +2,9 @@ package it.gov.scuolesuperioridizagarolo.model.bitorario.classes;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum RoomData {
     NON_ASSEGNATO("(NON ASSEGNATO)", "(NON ASSEGNATO)", 0, 0, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     AULA_SCONOSCIUTA("AULA SCONOSCIUTA", "AULA SCONOSCIUTA", 0, 0, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
@@ -76,7 +79,7 @@ public enum RoomData {
 
     public static void main(String[] args) {
         for (RoomData roomData : values()) {
-            System.out.println(roomData.roomName + "\t" + roomData.location.description+"\t-");
+            System.out.println(roomData.roomName + "\t" + roomData.location.description + "\t-");
         }
     }
 
@@ -103,6 +106,19 @@ public enum RoomData {
                 this == A3_FIS ||
                 this == A4_INF ||
                 this == A5_DIS;
+    }
+
+
+    public static interface RoomDataFilter {
+        boolean accept(RoomData c);
+    }
+
+    public static List<RoomData> filter(RoomDataFilter f) {
+        List<RoomData> ris = new ArrayList<>();
+        for (RoomData x : values()) {
+            if (f.accept(x)) ris.add(x);
+        }
+        return ris;
     }
 
 

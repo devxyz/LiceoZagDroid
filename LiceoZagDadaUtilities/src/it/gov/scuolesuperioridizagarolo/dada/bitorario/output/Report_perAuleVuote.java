@@ -49,7 +49,7 @@ public class Report_perAuleVuote {
                     if (room.flagAulaFittizia()) continue;
                     if (room.maxStudents == 0) continue;
 
-                    p.print("<b>" + s + "</b> - " + (s).maxStudents + " posti <br>");
+                    p.print(" <b>" + s + "</b> - " + (s).maxStudents + " posti " + (s.flagLIM ? "LIM" : ""));
                 }
                 p.print("</td>");
 

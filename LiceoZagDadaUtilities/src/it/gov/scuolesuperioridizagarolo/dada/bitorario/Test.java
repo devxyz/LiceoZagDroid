@@ -1,32 +1,33 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario;
 
-import java.util.ArrayList;
+import javax.swing.*;
 
 /**
  * Created by stefano on 12/02/2018.
  */
 public class Test {
-    public static void main(String[] args) {
-        ArrayList<String> ss = new ArrayList<>();
-        for (char c = 'a', c2 = 'z'; c <= c2; c++, c2--) {
-            String s = "";
 
-            for (int x = 1; x <= c - 'a'; x++)
-                s += ("  ");
-
-            for (int i = 1; i <= c2 - c; i++) {
-                s += ("" + c + c2);
-            }
-            ss.add(s);
-        }
-
-
-        for (String s : ss) {
-            System.out.println(s);
-        }
-        for (int i = ss.size() - 1; i >= 0; i--) {
-            String s = ss.get(i);
-            System.out.println(s);
-        }
+   /* public static void procedura1() {
     }
+
+    public static int funzione2(int x) {....}
+
+    public static void sottoprogramma3() {
+    }
+
+    public static void main(String[] args) {
+        int s = Integer.parseInt(JOptionPane.showInputDialog("Inserire num sottoporogramma"));
+        switch (s) {
+            case 1:
+                procedura1();
+                break;
+            case 2:
+                int ris = funzione2(2);
+                System.out.println(ris);
+                break;
+            default:
+                    /*.....*/
+
+/*        }
+    }*/
 }

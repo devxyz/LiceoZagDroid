@@ -14,14 +14,25 @@ import java.util.Arrays;
  * classe bloccata in una aula per l'intera giornata
  */
 public class LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo extends AbstractLessonConstraint {
-    private final ClassData classe;
-    private final RoomData aula;
-    private final ArrayList<EGiorno> giorno;
-    private final ArrayList<EOra> ore;
+    public final ClassData classe;
+    public final RoomData aula;
+    public final ArrayList<EGiorno> giorno;
+    public final ArrayList<EOra> ore;
 
 
     public LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(String c, String aula, EGiorno giorno, EOra... ore) {
         this(ClassesAndRoomContainer.parseClass(c), ClassesAndRoomContainer.parseRoom(aula), giorno, ore);
+    }
+
+    public LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(ClassData c, RoomData aula, EGiorno[] giorno, EOra[] ore) {
+        super(false);
+        if (c == null) throw new IllegalArgumentException("Classe non specificata");
+        if (aula == null) throw new IllegalArgumentException("Aula non specificata");
+        classe = c;
+        this.aula = aula;
+        this.giorno = new ArrayList<>(Arrays.asList(giorno));
+        this.ore = new ArrayList<>(Arrays.asList(ore));
+
     }
 
     public LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(ClassData c, RoomData aula, EGiorno giorno, EOra... ore) {
