@@ -29,6 +29,7 @@ public class VincoliSostituzioni_n20_settimana_11feb_16feb extends AbstractVinco
     }
 
 
+    
     protected void preOrarioBeforeAssignment(final BitOrarioGrigliaOrario orarioTotale) {
 
 
