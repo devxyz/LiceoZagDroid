@@ -27,6 +27,13 @@ public class SimulazioneProvaQuinti {
             }
         }
 
+        ArrayList<RoomData> auleSecondoPiano = new ArrayList<>();
+        for (RoomData roomData : RoomData.values()) {
+            if (roomData.location == ERoomArea.AREA_D) {
+                auleSecondoPiano.add(roomData);
+            }
+        }
+
 
         Collections.sort(aulePrimoPiano, new Comparator<RoomData>() {
             @Override
@@ -45,7 +52,7 @@ public class SimulazioneProvaQuinti {
 
 
         System.out.println("AULE");
-        for (RoomData roomData : aulePrimoPiano) {
+        for (RoomData roomData : auleSecondoPiano) {
             System.out.println(" - " + roomData + ": max " + roomData.maxStudents);
         }
 

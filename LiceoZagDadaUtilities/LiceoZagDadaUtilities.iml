@@ -37,5 +37,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="commons-csv-1.6-sources" level="project" />
   </component>
 </module>

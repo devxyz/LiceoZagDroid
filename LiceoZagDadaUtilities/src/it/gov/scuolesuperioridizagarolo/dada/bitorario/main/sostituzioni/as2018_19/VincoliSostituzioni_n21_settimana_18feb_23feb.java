@@ -20,9 +20,9 @@ import java.util.ArrayList;
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_n20_settimana_11feb_16feb extends AbstractVincoliSostituzioni {
+public class VincoliSostituzioni_n21_settimana_18feb_23feb extends AbstractVincoliSostituzioni {
     public static void main(String[] args) throws IOException {
-        final VincoliSostituzioni_n20_settimana_11feb_16feb l = new VincoliSostituzioni_n20_settimana_11feb_16feb();
+        final VincoliSostituzioni_n21_settimana_18feb_23feb l = new VincoliSostituzioni_n21_settimana_18feb_23feb();
         MotoreSostituzioneAule3.doTaskFromJSon(
                 l,
                 new File("/Users/stefano/Dropbox/DROPBOX LICEO/AS 2018.19/Orario Scolastico/orario-definitivo/DEFINITIVO_timetable_20181114222113_12.11.2018_09.06.2019.json.zip"),
@@ -64,9 +64,9 @@ public class VincoliSostituzioni_n20_settimana_11feb_16feb extends AbstractVinco
         };
     }
 
-    public VincoliSostituzioni_n20_settimana_11feb_16feb invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
-        dal = "11/02/2019";
-        al = "16/02/2019";
+    public VincoliSostituzioni_n21_settimana_18feb_23feb invoke(final BitOrarioGrigliaOrario orarioTotale, final LessonConstraintContainer l) {
+        dal = "18/02/2019";
+        al = "23/02/2019";
 
         // if (true) return this;
 
@@ -101,6 +101,23 @@ public class VincoliSostituzioni_n20_settimana_11feb_16feb extends AbstractVinco
 
         }
 
+        //simuklazione prima prova
+        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.D22, EGiorno.MARTEDI, EOra.values()));
+        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.D23, EGiorno.MARTEDI, EOra.values()));
+        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.D24, EGiorno.MARTEDI, EOra.values()));
+        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.D25, EGiorno.MARTEDI, EOra.values()));
+        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.D26, EGiorno.MARTEDI, EOra.values()));
+
+
+        orarioTotale.classeInVisitaDidattica("Simulazione prima prova - aule D22-D26", ClassData.CLASS_5A, EGiorno.MARTEDI, EOra.values());
+        orarioTotale.classeInVisitaDidattica("Simulazione prima prova - aule D22-D26", ClassData.CLASS_5B, EGiorno.MARTEDI, EOra.values());
+        orarioTotale.classeInVisitaDidattica("Simulazione prima prova - aule D22-D26", ClassData.CLASS_5C, EGiorno.MARTEDI, EOra.values());
+        orarioTotale.classeInVisitaDidattica("Simulazione prima prova - aule D22-D26", ClassData.CLASS_5D, EGiorno.MARTEDI, EOra.values());
+        orarioTotale.classeInVisitaDidattica("Simulazione prima prova - aule D22-D26", ClassData.CLASS_5E, EGiorno.MARTEDI, EOra.values());
+        orarioTotale.classeInVisitaDidattica("Simulazione prima prova - aule D22-D26", ClassData.CLASS_5F, EGiorno.MARTEDI, EOra.values());
+
+
+
         /*
         l.add(new LessonConstraint_AulaNonDisponibile(RoomData.C14, EGiorno.SABATO, EOra.values()));
         l.add(new LessonConstraint_AulaNonDisponibile(RoomData.C15, EGiorno.SABATO, EOra.values()));
@@ -113,12 +130,6 @@ public class VincoliSostituzioni_n20_settimana_11feb_16feb extends AbstractVinco
         */
 
         l.add(new LessonConstraint_AulaNonDisponibile(RoomData.F32_SCI, EGiorno.SABATO, EOra.values()));
-        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.C19, EGiorno.VENERDI, EOra.values()));
-
-
-        l.add(new LessonConstraint_ClasseFermaInAulaDidatticaPerOre_labsToo(
-                ClassData.CLASS_3G, RoomData.D25, EGiorno.MARTEDI, EOra.TERZA, EOra.QUARTA
-        ));
 
 
         //==============================================================================================================
@@ -165,17 +176,17 @@ public class VincoliSostituzioni_n20_settimana_11feb_16feb extends AbstractVinco
 
         //lunedi' giornata violenza donne circolare n.64
 
-//        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5_DIS, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA, EOra.TERZA));
-        //      l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A6, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA, EOra.TERZA));
+        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5_DIS, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA, EOra.TERZA));
+        l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A6, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA, EOra.TERZA));
 
-        /*
+
         orarioTotale.classeInVisitaDidattica("incontro con il Prof. Gaetano Piccolo sul tema Il Discernimento, imparare a decidere",
                 ClassData.CLASS_3E, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA);
         orarioTotale.classeInVisitaDidattica("incontro con il Prof. Gaetano Piccolo sul tema Il Discernimento, imparare a decidere",
                 ClassData.CLASS_3F, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA);
         orarioTotale.classeInVisitaDidattica("incontro con il Prof. Gaetano Piccolo sul tema Il Discernimento, imparare a decidere",
                 ClassData.CLASS_3G, EGiorno.SABATO, EOra.QUINTA, EOra.QUARTA);
-*/
+
 
         //l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5_DIS, EGiorno.VENERDI, EOra.SECONDA, EOra.TERZA, EOra.QUARTA));
 
