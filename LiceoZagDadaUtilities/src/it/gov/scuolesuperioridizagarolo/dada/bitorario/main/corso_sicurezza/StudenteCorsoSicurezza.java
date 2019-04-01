@@ -9,6 +9,16 @@ public class StudenteCorsoSicurezza {
     public String idcorso;
     public String stato;
 
+    public StudenteCorsoSicurezza(String nomeStudente, String cognomeStudente, String codicefiscaleStudente, String nomeCorsoEsteso, String progresso, String idcorso, String stato) {
+        this.nomeStudente = nomeStudente;
+        this.cognomeStudente = cognomeStudente;
+        this.codicefiscaleStudente = codicefiscaleStudente;
+        this.nomeCorsoEsteso = nomeCorsoEsteso;
+        this.progresso = progresso;
+        this.idcorso = idcorso;
+        this.stato = stato;
+    }
+
     @Override
     public String toString() {
         return "StudenteCorsoSicurezza{" +
@@ -23,7 +33,7 @@ public class StudenteCorsoSicurezza {
     }
 
     public static String toExcelHeader() {
-        return "nomeStudente;" + +'\'' +
+        return "nomeStudente;" +
                 "cognomeStudente;" +
                 "codicefiscaleStudente;" +
                 "nomeCorsoEsteso;" +
