@@ -26,6 +26,7 @@ public class LeggiScrutini {
     static class Studente {
         String nome;
 
+
         @Override
         public String toString() {
             return "Studente{" +
