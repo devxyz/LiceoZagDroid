@@ -14,7 +14,7 @@ public class CheckForTeacher_AuleRipetute extends CheckForTeacher {
     protected String check(BitOrarioGrigliaOrario l, String nomeDocente) {
         StringBuilder sb = new StringBuilder();
 
-        //per ogni classe il numero di segnalazioni
+        //per ogni classe il n_classe di segnalazioni
 
         for (EGiorno e : EGiorno.values()) {
             if (!e.flagGiornoDiLezione()) continue;

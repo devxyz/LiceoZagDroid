@@ -12,6 +12,7 @@ import com.itextpdf.kernel.pdf.canvas.parser.listener.SimpleTextExtractionStrate
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by stefano on 06/07/2018.
@@ -21,13 +22,14 @@ public class LeggiRegistroClasse {
     static final boolean PRINT2 = false;
 
     public static void main(String[] args) throws IOException {
-        File fout = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/Dada-orario-utilities/src/utility/registroclasse/RegistroDiClasseTot.csv");
+        File fout = new File("/Users/stefano/Dropbox/DROPBOX LICEO/AS 2018.19/registri di classe/RegistroDiClasseTot.csv");
+        File foutsql = new File("/Users/stefano/Dropbox/DROPBOX LICEO/AS 2018.19/registri di classe/RegistroDiClasseTot.sql");
 
         final ArrayList<String> parole = new ArrayList<>();
 
 
-        File folder1 = new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/registri di classe/liceo");
-        File folder2 = new File("/Users/stefano/Dropbox/Circolari Scolastiche Liceo/registri di classe/ipia");
+        File folder1 = new File("/Users/stefano/Dropbox/DROPBOX LICEO/AS 2018.19/registri di classe/liceo");
+        File folder2 = new File("/Users/stefano/Dropbox/DROPBOX LICEO/AS 2018.19/registri di classe/ipia");
         final FileFilter filter = new FileFilter() {
             @Override
             public boolean accept(File pathname) {
@@ -71,6 +73,7 @@ public class LeggiRegistroClasse {
         String giornoData = "";
         String meseData = "";
         String scuola = "";
+        StringBuilder altro = new StringBuilder();
         for (String s : parole) {
             if (s.startsWith("CLASSE*")) {
                 classe = s.replace("CLASSE*", "").replaceAll("[ ]+", " ");
@@ -104,7 +107,8 @@ public class LeggiRegistroClasse {
                     if (xx.length > 1) {
                         nota = "[" + xx[1];
                     }
-                    final Assenze e = new Assenze(classe, scuola, ss, nota, giornoData, meseData, giornoSettimana, tipo);
+                    final Assenze e = new Assenze(classe, scuola, ss, nota, giornoData, meseData, giornoSettimana, tipo, altro);
+                    altro = new StringBuilder();
                     aa.add(e);
                     if (PRINT2) {
                         System.out.println(e);
@@ -112,17 +116,57 @@ public class LeggiRegistroClasse {
 
 
                 }
+                continue;
             }
+            if (s.startsWith("DEVONO GIUSTIFICARE:")) {
+                continue;
+            }
+            if (s.startsWith("GIUSTIFICANO:")) {
+                continue;
+            }
+            if (s.startsWith("PERIODO DAL:")) {
+                continue;
+            }
+              if (s.startsWith("A.S.:")) {
+                continue;
+            }
+            if (s.startsWith("REGISTRO DI CLASSE:")) {
+                continue;
+            }
+
+            if (!s.contains(":")) {
+                continue;
+            }
+
+            altro.append(s).append(" - ");
+
         }
+
 
         PrintStream pout = new PrintStream(new BufferedOutputStream(new FileOutputStream(fout)));
-        pout.println("classe;scuola;studente;note;data;mese;giorno-settimana;tipologia-assenza");
+        PrintStream poutsql2 = new PrintStream(new BufferedOutputStream(new FileOutputStream(foutsql)));
+        pout.println("classe;scuola;studente;note;data;mese;mese-testo;giorno-settimana;tipologia-assenza");
+        poutsql2.println("drop table if exists assenze;");
+        poutsql2.println("create table assenze(classe varchar(50),scuola varchar(20),studente varchar(50),annotazioni varchar(255),data date,tipologia varchar(50),altro varchar(255));");
         for (Assenze e : aa) {
-            pout.println(e.classe + ";" + e.scuola + ";" + e.studente + ";" + e.annotazioni + ";" + e.giornoData + ";" + e.meseData + ";" + e.giornosettimana + ";" + e.tipologia);
+            int mese = MESI.indexOf(e.meseData) + 1;
+            int anno = mese > 8 ? 2018 : 2019;
+            int giorno = Integer.parseInt(e.giornoData);
+
+            pout.printf("%s;%s;%s;%s;%s;%s;%d;%s;%s%n",
+                    e.classe, e.scuola, e.studente, e.annotazioni, e.giornoData, e.meseData,
+                    mese, e.giornosettimana, e.tipologia);
+            poutsql2.printf("insert into assenze(" +
+                            "classe,scuola,studente,annotazioni,data,tipologia,altro) values (" +
+                            "'%s','%s','%s','%s','%04d-%02d-%02d','%s','%s');%n",
+                    e.classe.replace("'", "''"), e.scuola.replace("'", "''"), e.studente.replace("'", "''"), e.annotazioni.replace("'", "''"), anno, mese, giorno, e.tipologia, e.altro.toString().replace("'", "''"));
         }
         pout.close();
+        poutsql2.close();
 
     }
+
+    private static ArrayList<String> MESI = new ArrayList<>(Arrays.asList("Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"));
 
     private static void extractParole(final ArrayList<String> parole, File f) throws IOException {
         PdfReader reader = new PdfReader(f);
@@ -151,7 +195,7 @@ public class LeggiRegistroClasse {
                         if (text.contains("SCIENTIFICO")
                                 || text.contains("OPERATORE")
                                 || text.contains("Manutenzione ed")
-                                ) {
+                        ) {
                             parole.add("CLASSE*" + text);
 
                         } else {
@@ -169,7 +213,7 @@ public class LeggiRegistroClasse {
                                     || text.trim().equals(venerdì)
                                     || text.trim().equals(sabato)
                                     || text.trim().equals(domenica)
-                                    ) {
+                            ) {
                                 parole.add("GIORNO*" +
                                         text.replace(lunedì, "1-" + lunedì).
                                                 replace(martedì, "2-" + martedì).
@@ -186,7 +230,7 @@ public class LeggiRegistroClasse {
                                             || text.startsWith("Pagina")
                                             || text.startsWith("Periodo")
 
-                                    ) {
+                            ) {
                                 parole.add(text.toUpperCase() + "*");
 
                             } else {
@@ -222,11 +266,12 @@ public class LeggiRegistroClasse {
         public final String studente;
         public final String annotazioni;
         public final String giornoData;
+        public final StringBuilder altro;
         public final String meseData;
         public final String giornosettimana;
         public final TipologiaAssenze tipologia;
 
-        Assenze(String classe, String scuola, String studente, String annotazioni, String giorno, String mese, String giornosettimana, TipologiaAssenze tipologia) {
+        Assenze(String classe, String scuola, String studente, String annotazioni, String giorno, String mese, String giornosettimana, TipologiaAssenze tipologia, StringBuilder altro) {
             this.classe = classe;
             this.scuola = scuola;
             this.studente = studente;
@@ -235,6 +280,7 @@ public class LeggiRegistroClasse {
             this.meseData = mese;
             this.giornosettimana = giornosettimana;
             this.tipologia = tipologia;
+            this.altro = altro;
         }
 
         @Override

@@ -16,7 +16,7 @@ public enum RoomData {
     A4_INF("A4_INF", "Laboratorio di Informatica", 30, 17, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     A5sharp("A5#", "Aula Didattica", 24, 22, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
     A5_DIS("A5_DIS", "Aula di Disegno", 30, 22, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
-    A6("A6", "Aula Didattica", 30, 20, ERoomArea.AREA_A, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    A6("A6", "Aula Didattica", 30, 20, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     A7("A7", "Aula Didattica", 18, 21, ERoomArea.AREA_A, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
 
     B8("B8", "Aula Didattica", 30, 10, ERoomArea.AREA_B, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
@@ -47,6 +47,7 @@ public enum RoomData {
     E28("E28", "Aula Didattica", 28, 39, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
     E29("E29", "Aula Didattica", 28, 40, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
     E30("E30", "Aula Didattica", 28, 41, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    //CORTILE("CORTILE", "Aula Didattica", 31, -1, ERoomArea.AREA_E, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
 
     F31_PALESTRA("F31_PALESTRA", "Palestra", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),
     F32_SCI("F32_SCI", "Laboratorio di Scienze", 30, 0, ERoomArea.AREA_F, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_SI);

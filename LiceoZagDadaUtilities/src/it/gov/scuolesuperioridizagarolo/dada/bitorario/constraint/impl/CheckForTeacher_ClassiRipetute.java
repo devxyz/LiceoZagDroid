@@ -19,7 +19,7 @@ public class CheckForTeacher_ClassiRipetute extends CheckForTeacher {
     protected String check(BitOrarioGrigliaOrario l, String nomeDocente) {
         StringBuilder sb = new StringBuilder();
 
-        //per ogni classe il numero di segnalazioni
+        //per ogni classe il n_classe di segnalazioni
         Map<ClassData, ArrayList<String>> ris = new TreeMap<>();
 
         for (EGiorno e : EGiorno.values()) {

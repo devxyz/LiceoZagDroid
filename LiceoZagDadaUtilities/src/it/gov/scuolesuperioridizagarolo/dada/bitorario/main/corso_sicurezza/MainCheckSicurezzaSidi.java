@@ -9,7 +9,8 @@ public class MainCheckSicurezzaSidi {
         StudenteSidiCollection sidi = ImportFromCSVSidiStudenti.parse();
         StudenteCorsoSicurezzaCollection sicurezza = ImportFromJSONSicurezza.parse();
 
-        PrintStream fout = new PrintStream(new FileOutputStream("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDadaUtilities/src/it/gov/scuolesuperioridizagarolo/dada/bitorario/main/corso_sicurezza/output_25.03.2019.csv"));
+        PrintStream fout = new PrintStream(new FileOutputStream("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDadaUtilities/src/it/gov/scuolesuperioridizagarolo/dada/bitorario/main/corso_sicurezza/" +
+                "output_09.04.2019.csv"));
         fout.print(StudenteCorsoSicurezza.toExcelHeader());
         fout.print(";");
         fout.print(StudenteSidi.toExcelHeader());

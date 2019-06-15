@@ -71,7 +71,7 @@ public class SostituzioneAuleEngine2 {
                     _cercaScambioAulaLibera(o, l, lezione, nuovaAssegnazione_DA, nuovaAssegnazione_A, filterAule, estrai);
                 }
 
-                //cerca un'aula disponibile in modo da minimizzare il numero totale di posti liberi in entrambe le aule
+                //cerca un'aula disponibile in modo da minimizzare il n_classe totale di posti liberi in entrambe le aule
                 //lo spostamento non puo' avvenire con una classe che si trova in aule attrezzate
                 if (nuovaAssegnazione_DA.size() == 0) {
                     _cercaScambio2Aule(o, l, lezione, nuovaAssegnazione_DA, nuovaAssegnazione_A, filterAule, estrai);

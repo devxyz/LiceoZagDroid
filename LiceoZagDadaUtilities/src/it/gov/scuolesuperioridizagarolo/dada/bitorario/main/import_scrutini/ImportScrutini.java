@@ -1,9 +1,9 @@
-package it.gov.scuolesuperioridizagarolo.dada.bitorario.import_scrutini;
+package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.import_scrutini;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
+@Deprecated
 public class ImportScrutini {
     public static class Studente {
         final String nome;

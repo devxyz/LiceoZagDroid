@@ -171,7 +171,7 @@ public class SostituzioneAuleEngine3 {
                         }
                     }
 
-                    //cerca un'aula disponibile in modo da minimizzare il numero totale di posti liberi in entrambe le aule
+                    //cerca un'aula disponibile in modo da minimizzare il n_classe totale di posti liberi in entrambe le aule
                     //lo spostamento non puo' avvenire con una classe che si trova in aule attrezzate
                     if (filterAule != FilterAule.LABORATORI_SOLO_SE_LIBERI) {
                         final ArrayList<RegolaCambioAula> sostituzioni = x_cercaScambio2Aule(o, vincoliStandard, lezione, filterAule, estrai, true);

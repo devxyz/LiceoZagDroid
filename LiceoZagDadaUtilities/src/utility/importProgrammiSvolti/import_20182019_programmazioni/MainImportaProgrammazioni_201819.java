@@ -1,7 +1,7 @@
-package utility.importProgrammiSvolti;
+package utility.importProgrammiSvolti.import_20182019_programmazioni;
 
-import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.MainParserGeneraStampeOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -21,7 +21,7 @@ import java.util.*;
 /**
  * Created by stefano on 03/06/2018.
  */
-public class MainImportaProgrammiSvolti_201718 {
+public class MainImportaProgrammazioni_201819 {
     static ArrayList<String> associaMaterieProgrammi(Set<String> materie, File[] programmi) {
         TreeSet<String> mat = new TreeSet<>(materie);
         TreeSet<String> prog = new TreeSet<>();
@@ -87,10 +87,15 @@ public class MainImportaProgrammiSvolti_201718 {
 
 
     public static void main(String[] args) throws IOException {
-        File f = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/Dada-orario-utilities/src/utility/importProgrammiSvolti/visforms_20180619.csv");
-        File folderOut = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/Dada-orario-utilities/data/programmi-svolti");
+        String folder = "/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDadaUtilities/src/utility/importProgrammiSvolti/import_20182019_programmazioni/";
+        File folderOut = new File("/Users/stefano/Dropbox/Circolari Scolastiche LICEO/AS 2018.19/programmazioni");
+        String BASIC_URL = "http://www.scuolesuperioridizagarolo.gov.it/pasw4/visform/programmazioni_201819/";
+        doImport(new File(folder + "visforms_20190511_IPIA.csv"), folderOut, BASIC_URL, "IPIA");
+        doImport(new File(folder + "visforms_20190511_LICEO.csv"), folderOut, BASIC_URL, "LICEO");
+        return;
+    }
 
-        String BASIC_URL = "http://www.scuolesuperioridizagarolo.gov.it/pasw4/visform/programmi_201718/";
+    public static void doImport(File f, File folderOut, String BASIC_URL, String prefix) throws IOException {
         final CSVFormat fx = CSVFormat.newFormat(';');
         final FileReader in = new FileReader(f);
         final CSVParser parse = fx.parse(in);
@@ -113,7 +118,8 @@ public class MainImportaProgrammiSvolti_201718 {
                 File ffout = new File(folderOut, scuola.toUpperCase() + "/" + classe + (sez.toUpperCase()));
                 ffout.mkdirs();
                 String url = BASIC_URL + nomefile;
-                System.out.println("=======================================");
+
+                System.out.println("======================================= " + i);
                 System.out.println("Processing " + url);
 
 
@@ -128,10 +134,10 @@ public class MainImportaProgrammiSvolti_201718 {
                 FileUtil.copyContent(remoteFile, localFile);
             }
 
-        final BitOrarioGrigliaOrario orarioTotale = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(new File(MainParserGeneraStampeOrario.DEBUG_FOLDER_INPUT));
+       /* final BitOrarioGrigliaOrario orarioTotale = MainParserGeneraStampeOrario.parsingDefaultFileOrarioAuleClassi(new File(MainParserGeneraStampeOrario.DEBUG_FOLDER_INPUT));
         final TreeSet<ClassData> classi = orarioTotale.getClassi();
         for (ClassData c : classi) {
-            File progClasse = new File(folderOut, "LICEO/" + c.className.toUpperCase());
+            File progClasse = new File(folderOut, prefix + "/" + c.className.toUpperCase());
             if (!progClasse.exists())
                 continue;
 
@@ -162,15 +168,7 @@ public class MainImportaProgrammiSvolti_201718 {
                         continue;
                     System.out.println("  > " + string);
                 }
-                /*
-                System.out.println("   >PROGRAMMI");
-                for (File file : files) {
-                    System.out.println("     > " + file.getName());
-                }
-                System.out.println("   >MATERIE");
-                for (String s : materie) {
-                    System.out.println("     > " + s);
-                }*/
+
 
             } else
                 System.out.println(" OK");
@@ -178,5 +176,6 @@ public class MainImportaProgrammiSvolti_201718 {
 
 
         in.close();
+        */
     }
 }
