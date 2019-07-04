@@ -1,5 +1,7 @@
 package utility.scrutini;
 
+import com.itextpdf.kernel.geom.LineSegment;
+import com.itextpdf.kernel.geom.Vector;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -64,6 +66,12 @@ public class LeggiScrutini {
 
     }
 
+    private static double ascissaMedia(LineSegment l) {
+        Vector startPoint = l.getStartPoint();
+        Vector endPoint = l.getEndPoint();
+        return (endPoint.get(1) + startPoint.get(1)) / 2;
+    }
+
     private static ArrayList<Studente> extractParole(final ArrayList<String> parole, File f) throws IOException {
         PdfReader reader = new PdfReader(f);
         PdfDocument p = new PdfDocument(reader);
@@ -82,7 +90,7 @@ public class LeggiScrutini {
 
                 @Override
                 public Set<EventType> getSupportedEvents() {
-                    return Collections.unmodifiableSet(new LinkedHashSet<>(Arrays.asList(EventType.RENDER_TEXT)));
+                    return Collections.unmodifiableSet(new LinkedHashSet<>(Arrays.asList(EventType.values())));
                 }
 
                 @Override
@@ -91,20 +99,22 @@ public class LeggiScrutini {
 
                     if (type == EventType.BEGIN_TEXT) {
                         TextRenderInfo renderInfo = (TextRenderInfo) data;
-                        final String text = renderInfo.getText().trim();
+//                        final String text = renderInfo.getText().trim();
                         //System.out.println("B#" + text);
 
                     }
                     if (type == EventType.END_TEXT) {
                         TextRenderInfo renderInfo = (TextRenderInfo) data;
-                        final String text = renderInfo.getText().trim();
+                        //                      final String text = renderInfo.getText().trim();
                         // System.out.println("E#" + text);
 
                     }
                     if (type == EventType.RENDER_TEXT) {
                         TextRenderInfo renderInfo = (TextRenderInfo) data;
 
-                        //      System.out.println(data);
+                        System.out.print("<" + renderInfo.getText() + ">");
+                        //System.out.println(renderInfo.getDescentLine().getStartPoint() + " --> " + renderInfo.getDescentLine().getEndPoint() + " X MEDIA: " + ascissaMedia(renderInfo.getBaseline()));
+                        System.out.println(" X MEDIA: " + ascissaMedia(renderInfo.getBaseline()));
                         //    System.out.println(renderInfo.getText());
                         // System.out.println(renderInfo.getPdfString());
                         //  System.out.println("=================================");
@@ -168,7 +178,7 @@ public class LeggiScrutini {
                     } while (!s.equals(old));
 
                     if (PRINT1)
-                    System.out.println(s);
+                        System.out.println(s);
                     String[] split1 = s.split("#");
 
                     Studente ss;
@@ -195,11 +205,11 @@ public class LeggiScrutini {
     public static void main(String[] args) throws IOException {
         ArrayList<String> parole = new ArrayList<>();
 
-        File root = new File("/Users/stefano/Downloads/");
+        File root = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDadaUtilities/src/utility/scrutini");
         File[] files = root.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
-                return pathname.getName().toUpperCase().contains(".PDF");
+                return pathname.getName().toUpperCase().contains("TABELLONE");
             }
         });
         ArrayList<Studente> studenti = new ArrayList<>();
