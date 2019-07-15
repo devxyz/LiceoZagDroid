@@ -5,17 +5,12 @@ import com.itextpdf.kernel.geom.Vector;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.canvas.parser.EventType;
 import com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor;
-import com.itextpdf.kernel.pdf.canvas.parser.data.IEventData;
 import com.itextpdf.kernel.pdf.canvas.parser.data.TextRenderInfo;
-import com.itextpdf.kernel.pdf.canvas.parser.listener.ITextExtractionStrategy;
-import com.itextpdf.kernel.pdf.canvas.parser.listener.SimpleTextExtractionStrategy;
 
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.util.*;
 
 /**
@@ -66,13 +61,70 @@ public class LeggiScrutini {
 
     }
 
-    private static double ascissaMedia(LineSegment l) {
-        Vector startPoint = l.getStartPoint();
-        Vector endPoint = l.getEndPoint();
-        return (endPoint.get(1) + startPoint.get(1)) / 2;
+    private static double getX(Vector v) {
+        return v.get(Vector.I2);
     }
 
-    private static ArrayList<Studente> extractParole(final ArrayList<String> parole, File f) throws IOException {
+    private static double getY(Vector v) {
+        return v.get(Vector.I1);
+    }
+
+    private static double getZ(Vector v) {
+        return v.get(Vector.I3);
+    }
+
+    public static void printDebugLine(TextRenderInfo l) {
+        LineSegment a = l.getAscentLine();
+        LineSegment d = l.getDescentLine();
+        Vector p1 = a.getStartPoint();
+        Vector p2 = a.getEndPoint();
+        Vector p3 = d.getStartPoint();
+        Vector p4 = d.getEndPoint();
+        System.out.println("TEXT:" + l.getText() +
+                "\n  P1_xy= " + Math.round(getX(p1)) + "\t" + Math.round(getY(p1)) +
+                "\n  P2_xy= " + Math.round(getX(p2)) + "\t" + Math.round(getY(p2)) +
+                "\n  P3_xy= " + Math.round(getX(p3)) + "\t" + Math.round(getY(p3)) +
+                "\n  P4_xy= " + Math.round(getX(p4)) + "\t" + Math.round(getY(p4))
+        );
+
+    }
+
+    public static double getAvgX(TextRenderInfo l) {
+        LineSegment a = l.getAscentLine();
+        LineSegment d = l.getDescentLine();
+        Vector p1 = a.getStartPoint();
+        Vector p2 = a.getEndPoint();
+        Vector p3 = d.getStartPoint();
+        Vector p4 = d.getEndPoint();
+        return (getX(p1) + getX(p2) + getX(p3) + getX(p4)) / 4.;
+    }
+
+    public static double getAvgY(TextRenderInfo l) {
+        LineSegment a = l.getAscentLine();
+        LineSegment d = l.getDescentLine();
+        Vector p1 = a.getStartPoint();
+        Vector p2 = a.getEndPoint();
+        Vector p3 = d.getStartPoint();
+        Vector p4 = d.getEndPoint();
+        return (getY(p1) + getY(p2) + getY(p3) + getY(p4)) / 4.;
+    }
+
+    private static ArrayList<ArrayList<LeggiScrutini_Termine>> extractParoleByRow(File f) throws IOException {
+        PdfReader reader = new PdfReader(f);
+        PdfDocument p = new PdfDocument(reader);
+        final int numberOfPages = p.getNumberOfPages();
+
+
+        LeggiScrutini_TextExtractionByRow strategy = new LeggiScrutini_TextExtractionByRow();
+        int conta = 0;
+        for (int i = 1; i <= numberOfPages; i = i + 1) {
+            final PdfPage p1 = p.getPage(i);
+            PdfTextExtractor.getTextFromPage(p1, strategy);
+        }
+        return strategy.getParole();
+    }
+
+    private static LeggiScrutini_TextExtractionStrategy extractParole(final ArrayList<String> parole, File f) throws IOException {
         PdfReader reader = new PdfReader(f);
         PdfDocument p = new PdfDocument(reader);
         final int numberOfPages = p.getNumberOfPages();
@@ -81,55 +133,20 @@ public class LeggiScrutini {
         //System.out.println(numberOfPages);
         String classe = "";
         ArrayList<Studente> studenti = new ArrayList<>();
-
+        LeggiScrutini_TextExtractionStrategy strategy = new LeggiScrutini_TextExtractionStrategy(parole);
         int conta = 0;
         for (int i = 1; i <= numberOfPages; i = i + 1) {
-
             final PdfPage p1 = p.getPage(i);
-            ITextExtractionStrategy strategy = new SimpleTextExtractionStrategy() {
-
-                @Override
-                public Set<EventType> getSupportedEvents() {
-                    return Collections.unmodifiableSet(new LinkedHashSet<>(Arrays.asList(EventType.values())));
-                }
-
-                @Override
-                public void eventOccurred(IEventData data, EventType type) {
-                    super.eventOccurred(data, type);
-
-                    if (type == EventType.BEGIN_TEXT) {
-                        TextRenderInfo renderInfo = (TextRenderInfo) data;
-//                        final String text = renderInfo.getText().trim();
-                        //System.out.println("B#" + text);
-
-                    }
-                    if (type == EventType.END_TEXT) {
-                        TextRenderInfo renderInfo = (TextRenderInfo) data;
-                        //                      final String text = renderInfo.getText().trim();
-                        // System.out.println("E#" + text);
-
-                    }
-                    if (type == EventType.RENDER_TEXT) {
-                        TextRenderInfo renderInfo = (TextRenderInfo) data;
-
-                        System.out.print("<" + renderInfo.getText() + ">");
-                        //System.out.println(renderInfo.getDescentLine().getStartPoint() + " --> " + renderInfo.getDescentLine().getEndPoint() + " X MEDIA: " + ascissaMedia(renderInfo.getBaseline()));
-                        System.out.println(" X MEDIA: " + ascissaMedia(renderInfo.getBaseline()));
-                        //    System.out.println(renderInfo.getText());
-                        // System.out.println(renderInfo.getPdfString());
-                        //  System.out.println("=================================");
-                        final String text = renderInfo.getText().trim();
-
-                        //    System.out.println("R#" + text);
-
-                        parole.add(text.toUpperCase());
-
-                    }
-
-
-                }
-            };
             String currentText = PdfTextExtractor.getTextFromPage(p1, strategy);
+            System.out.println();
+            System.out.println();
+            System.out.println("Classe:" + strategy.getClasse() + " indirizzo:" + strategy.getIndirizzo());
+            System.out.println("Materie:");
+            for (LeggiScrutini_Materia x : strategy.getIntestazione()) {
+                System.out.println("  - " + x);
+            }
+
+
             if (PRINT1)
                 System.out.println(currentText);
             String[] split = currentText.split("\n");
@@ -199,7 +216,7 @@ public class LeggiScrutini {
 
         }
         System.out.println("CLASSE " + classe + ":\n   " + conta);
-        return studenti;
+        return strategy;
     }
 
     public static void main(String[] args) throws IOException {
@@ -215,11 +232,12 @@ public class LeggiScrutini {
         ArrayList<Studente> studenti = new ArrayList<>();
         for (File f : files) {
             System.out.println("============ " + f);
-            ArrayList<Studente> xx = extractParole(parole, f);
-            studenti.addAll(xx);
+            ArrayList<ArrayList<LeggiScrutini_Termine>> xx = extractParoleByRow(f);
+
+            if (true) return;
         }
 
-        File report = new File(root, "scrutini.csv");
+/*        File report = new File(root, "scrutini.csv");
         PrintStream out = new PrintStream(report);
 
 
@@ -253,6 +271,7 @@ public class LeggiScrutini {
             out.println();
         }
         out.close();
-
+*/
     }
+
 }
