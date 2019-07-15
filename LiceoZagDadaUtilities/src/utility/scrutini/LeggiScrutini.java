@@ -229,6 +229,7 @@ public class LeggiScrutini {
                 return pathname.getName().toUpperCase().contains("TABELLONE");
             }
         });
+
         ArrayList<Studente> studenti = new ArrayList<>();
         for (File f : files) {
             System.out.println("============ " + f);
