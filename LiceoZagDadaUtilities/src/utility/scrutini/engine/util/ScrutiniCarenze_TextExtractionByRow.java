@@ -1,19 +1,23 @@
-package utility.scrutini;
+package utility.scrutini.engine.util;
 
 import com.itextpdf.kernel.pdf.canvas.parser.EventType;
 import com.itextpdf.kernel.pdf.canvas.parser.data.IEventData;
 import com.itextpdf.kernel.pdf.canvas.parser.data.TextRenderInfo;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.SimpleTextExtractionStrategy;
+import utility.scrutini.engine.data.ScrutiniCarenze_Termine;
+import utility.scrutini.engine.util.ScrutiniCarenzeUtil;
 
 import java.util.*;
 
-public class LeggiScrutini_TextExtractionByRow extends SimpleTextExtractionStrategy {
+public class ScrutiniCarenze_TextExtractionByRow extends SimpleTextExtractionStrategy {
 
-    private final ArrayList<ArrayList<LeggiScrutini_Termine>> parole;
-    private int indiceParola = 0;
-    private int indiceRiga = 0;
-    private double precY = 0;
     final static double EPSILON = 0.0000001;
+    private final ArrayList<ScrutiniCarenze_Termine> parole;
+    boolean PRINT1 = false;
+
+    public ScrutiniCarenze_TextExtractionByRow() {
+        this.parole = new ArrayList<>();
+    }
 
     /**
      * Compare two doubles within a given epsilon
@@ -33,17 +37,12 @@ public class LeggiScrutini_TextExtractionByRow extends SimpleTextExtractionStrat
         return Math.abs(a - b) < EPSILON * Math.max(Math.abs(a), Math.abs(b));
     }
 
-    public LeggiScrutini_TextExtractionByRow() {
-        this.parole = new ArrayList<>();
-    }
-
-
     @Override
     public Set<EventType> getSupportedEvents() {
         return Collections.unmodifiableSet(new LinkedHashSet<>(Arrays.asList(EventType.RENDER_TEXT)));
     }
 
-    public ArrayList<ArrayList<LeggiScrutini_Termine>> getParole() {
+    public ArrayList<ScrutiniCarenze_Termine> getParole() {
         return parole;
     }
 
@@ -65,35 +64,24 @@ public class LeggiScrutini_TextExtractionByRow extends SimpleTextExtractionStrat
 
         }
         if (type == EventType.RENDER_TEXT) {
-            indiceParola++;
 
 
             TextRenderInfo renderInfo = (TextRenderInfo) data;
-            double curY = LeggiScrutini.getAvgY(renderInfo);
+            double curY = ScrutiniCarenzeUtil.getAvgY(renderInfo);
             String testo = renderInfo.getText();
-            boolean aCapo = Math.abs(precY - curY) > 5;
-            if (aCapo) {
-                indiceRiga++;
-                parole.add(new ArrayList<>());
-            }
-            precY = curY;
 
 
-            if (aCapo) {
-                System.out.println("<<" + indiceRiga + ">> ======================================================");
+            if (PRINT1) {
+
+                System.out.print("<" + testo + ">");
+                System.out.print("\tX MEDIA: " + ScrutiniCarenzeUtil.getAvgX(renderInfo));
+                System.out.println("\tY MEDIA: " + curY);
+                ScrutiniCarenzeUtil.printDebugLine(renderInfo);
             }
 
-            parole.add(new ArrayList<>());
-            System.out.print("<" + testo + ">");
-            System.out.print("\tX MEDIA: " + LeggiScrutini.getAvgX(renderInfo));
-            System.out.println("\tY MEDIA: " + curY);
-            LeggiScrutini.printDebugLine(renderInfo);
-
-
-            ArrayList<LeggiScrutini_Termine> riga = parole.get(parole.size() - 1);
-            riga.add(new LeggiScrutini_Termine(indiceRiga,
-                    LeggiScrutini.getAvgX(renderInfo),
-                    LeggiScrutini.getAvgY(renderInfo),
+            parole.add(new ScrutiniCarenze_Termine(
+                    ScrutiniCarenzeUtil.getAvgX(renderInfo),
+                    ScrutiniCarenzeUtil.getAvgY(renderInfo),
                     testo.trim()
 
             ));
