@@ -8,9 +8,9 @@
                   android:orientation="vertical"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content" android:id="@+id/layout2"
-                  android:background="@drawable/background_pulsante_celeste_bianco"
+                  android:background="@drawable/background_pulsante_comandi_home"
                   android:gravity="center_vertical|center_horizontal" android:padding="2dp" android:minHeight="80dp"
-                  android:minWidth="80dp">
+                  android:minWidth="100dp">
 
         <ImageView
                 android:id="@+id/thumb"

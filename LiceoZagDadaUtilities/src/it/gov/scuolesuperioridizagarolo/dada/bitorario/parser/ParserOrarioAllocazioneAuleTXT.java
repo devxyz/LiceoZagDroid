@@ -58,7 +58,11 @@ public class ParserOrarioAllocazioneAuleTXT {
                 continue;
             if (line.contains("|CLASSE")) {
                 if (classe != null) {
-                    aggiungiClasse(classe, orario, ris, noAule);
+                    try {
+                        aggiungiClasse(classe, orario, ris, noAule);
+                    } catch (IllegalArgumentException e) {
+                        throw new IllegalArgumentException("Errore linea: " + line, e);
+                    }
                 }
 
                 orario = new MatriceDinamicaStringhe();
@@ -88,66 +92,80 @@ public class ParserOrarioAllocazioneAuleTXT {
         //System.out.println(orario);
         for (int ora = 1; ora < orario.getRowCount(); ora++) {
             for (int giorno = 1; giorno < orario.getColumnCount(); giorno++) {
-
-
                 final String[] a = separaStringhe(orario, ora, giorno);
-
-
                 final BitOrarioOraLezione l;
+                try {
+                    String docentePrincipale;
+                    String materiaPrincipale;
+                    String nomeAula;
 
-                String docentePrincipale;
-                String materiaPrincipale;
-                String nomeAula;
-
-                final EOra[] values = EOra.valuesOreDiLezione();
+                    final EOra[] values = EOra.valuesOreDiLezione();
                 /*if (ora>=values.length)
                     continue;*/
-                EOra oraX = values[ora - 1];
-                EGiorno giornoX = EGiorno.valuesGiorniDiLezione()[giorno - 1];
+                    EOra oraX = values[ora - 1];
+                    EGiorno giornoX = EGiorno.valuesGiorniDiLezione()[giorno - 1];
 
-                if (a.length == 0) continue;
-                if (a.length == 1) {
-                    throw new IllegalArgumentException("ERRORE " + Arrays.toString(a));
-                }
-                if (a.length == 3) {
-                    docentePrincipale = a[1];
-
-                    materiaPrincipale = a[0];
-                    nomeAula = a[2];
-                    if (nomeAula != null && noAula && !ClassesAndRoomContainer.parseRoom(nomeAula).flagAulaLaboratorioPalestra()) {
-                        nomeAula = RoomData.NON_ASSEGNATO.roomName;
+                    if (a.length == 0) continue;
+                    if (a.length == 1) {
+                        throw new IllegalArgumentException("ERRORE " + Arrays.toString(a));
                     }
-                    l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale,
-                            ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
-
-                } else if (a.length == 2) {
-                    docentePrincipale = a[1];
-
-                    materiaPrincipale = a[0];
-                    nomeAula = RoomData.NON_ASSEGNATO.roomName;
-                    l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale,
-                            ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
-
-                } else {
-                    try {
-                        materiaPrincipale = a[0];
+                    if (a.length == 3) {
                         docentePrincipale = a[1];
-                        String docenteCompresenza;
-                        String materiaCompresenza;
-                        docenteCompresenza = a[2];
-                        materiaCompresenza = "compresenza";
-                        nomeAula = a[3];
+                        if (docentePrincipale.trim().length() < 3) {
+                            throw new IllegalArgumentException("Docente errato:" + docentePrincipale + "; " + Arrays.toString(a));
+                        }
+
+                        materiaPrincipale = a[0];
+                        nomeAula = a[2];
                         if (nomeAula != null && noAula && !ClassesAndRoomContainer.parseRoom(nomeAula).flagAulaLaboratorioPalestra()) {
                             nomeAula = RoomData.NON_ASSEGNATO.roomName;
                         }
-                        l = BitOrarioOraLezione.creaOraCompresenza(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza,
+                        l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale,
                                 ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
-                    } catch (Throwable e) {
-                        throw new IllegalArgumentException("Errore in " + Arrays.toString(a) + " " + ora + " " + giorno, e);
-                    }
-                }
 
-                orarioTotale.add(l);
+                    } else if (a.length == 2) {
+                        docentePrincipale = a[1];
+                        if (docentePrincipale.trim().length() < 3) {
+                            throw new IllegalArgumentException("Docente errato:" + docentePrincipale + "; " + Arrays.toString(a));
+                        }
+
+                        materiaPrincipale = a[0];
+                        nomeAula = RoomData.NON_ASSEGNATO.roomName;
+                        l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale,
+                                ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
+
+                    } else {
+                        try {
+                            materiaPrincipale = a[0];
+                            docentePrincipale = a[1];
+
+                            if (docentePrincipale.trim().length() < 3) {
+                                throw new IllegalArgumentException("Docente errato:" + docentePrincipale + "; " + Arrays.toString(a));
+                            }
+                            String docenteCompresenza;
+                            String materiaCompresenza;
+                            docenteCompresenza = a[2];
+                            materiaCompresenza = "compresenza";
+
+                            if (docenteCompresenza.trim().length() < 3) {
+                                throw new IllegalArgumentException("Docente errato:" + docenteCompresenza + "; " + Arrays.toString(a));
+                            }
+
+                            nomeAula = a[3];
+                            if (nomeAula != null && noAula && !ClassesAndRoomContainer.parseRoom(nomeAula).flagAulaLaboratorioPalestra()) {
+                                nomeAula = RoomData.NON_ASSEGNATO.roomName;
+                            }
+                            l = BitOrarioOraLezione.creaOraCompresenza(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza,
+                                    ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
+                        } catch (Throwable e) {
+                            throw new IllegalArgumentException("Errore in " + Arrays.toString(a) + " " + ora + " " + giorno, e);
+                        }
+                    }
+
+                    orarioTotale.add(l);
+                } catch (IllegalArgumentException e) {
+                    throw new IllegalArgumentException("Errore sulla stringa " + Arrays.toString(a), e);
+                }
             }
         }
     }

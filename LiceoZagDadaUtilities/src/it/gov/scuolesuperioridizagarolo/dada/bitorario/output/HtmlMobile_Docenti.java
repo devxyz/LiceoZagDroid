@@ -82,9 +82,15 @@ public class HtmlMobile_Docenti {
                     else {
                         switch (lezione.getTipoLezione()) {
                             case DISPOSIZIONE: {
-                                p.println("<td style='padding:5px;border:1px solid black;vertical-align: middle;background-color:yellow'><center>" +
-                                        "DISP" + button_dettagli
-                                        + "</center></td>");
+                                if (lezione.isDisposizionePura())
+                                    p.println("<td style='padding:5px;border:1px solid black;vertical-align: middle;background-color:yellow'><center>" +
+                                            "D" + button_dettagli
+                                            + "</center></td>");
+                                else
+                                    p.println("<td style='padding:5px;border:1px solid black;vertical-align: middle;background-color:yellow'><center>" +
+                                            "*P*" + button_dettagli
+                                            + "</center></td>");
+
 
                                 break;
                             }

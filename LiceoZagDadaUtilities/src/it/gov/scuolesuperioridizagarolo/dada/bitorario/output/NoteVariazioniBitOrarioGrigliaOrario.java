@@ -29,6 +29,7 @@ public class NoteVariazioniBitOrarioGrigliaOrario {
         return ris;
     }
 
+
     public Map<BitOrarioOraLezione, String> getMapNote() {
         return Collections.unmodifiableMap(mapNote);
     }

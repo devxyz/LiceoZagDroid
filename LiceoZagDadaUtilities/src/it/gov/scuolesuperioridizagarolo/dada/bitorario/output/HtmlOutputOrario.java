@@ -32,16 +32,28 @@ public abstract class HtmlOutputOrario {
         return 10;
     }
 
+    protected boolean extraPagebreak(BitOrarioGrigliaOrario griglia, NoteVariazioniBitOrarioGrigliaOrario note, String gruppo) {
+        return false;
+    }
+
     public void print(BitOrarioGrigliaOrario o, NoteVariazioniBitOrarioGrigliaOrario note, File f, EPaperFormat paperFormat) throws IOException {
         PrintStream p = new PrintStream(f);
-        p.print("<html><body style='font-size:10px;'>");
+        p.print("<html><body>");
         final Collection<String> strings = raggruppaPer(o);
 
         final int printForPage = getPrintForPage(paperFormat);
         int i = 0;
-        p.print("<h1><i>" + getSubTitle() + "</i> - " + o.getTitolo() + "</h1>");
+        p.print("<h1>" + o.getTitolo() + "</h1>");
+        p.println("<h3>" + getSubTitle() + "</h3>");
         for (String gruppo : strings) {
-            i++;
+            boolean b = extraPagebreak(o, note, gruppo);
+            if (i >= printForPage || b) {
+                p.print("<div style='display: block; page-break-before: always;'></div>");
+                p.print("<h1>" + o.getTitolo() + "</h1>");
+                p.println("<h3>" + getSubTitle() + "</h3>");
+                i = 0;
+            }
+
 
             p.print("<table cellspacing=0 style='width:100%;table-layout: fixed; border:4px solid black; '>");
 
@@ -77,18 +89,13 @@ public abstract class HtmlOutputOrario {
                     else
                         p.print("<td style='border:1px solid black;vertical-align: text-top;font-size:" + defaultCellFontSize() + "px;'>" + print + "</td>");
 
-
                 }
                 p.print("</tr>");
             }
 
 
             p.print("</table><br>");
-            if (i >= printForPage) {
-                p.print("<div style='display: block; page-break-before: always;'></div>");
-                p.print("<h1><i>" + getSubTitle() + "</i> - " + o.getTitolo() + "</h1>");
-                i = 0;
-            }
+            i++;
         }
 
 

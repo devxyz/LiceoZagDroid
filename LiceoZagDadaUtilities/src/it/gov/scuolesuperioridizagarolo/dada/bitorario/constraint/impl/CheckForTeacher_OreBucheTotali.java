@@ -33,7 +33,7 @@ public class CheckForTeacher_OreBucheTotali extends CheckForTeacher {
             }
 
         }
-        if (buche >= 0) {
+        if (buche >= 3) {
             sb.append("\n- " + buche + " ore di buco settimanali");
         }
         return sb.toString();

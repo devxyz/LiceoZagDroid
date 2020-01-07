@@ -5,44 +5,48 @@ import java.util.List;
 
 public enum ClassData {
     // CLASSES
-    CLASS_1A("1A", 24, 1, "A"),
+    CLASS_1A("1A", 21, 1, "A"),
     CLASS_1B("1B", 30, 1, "B"),
-    CLASS_1C("1C", 23, 1, "C"),
-    CLASS_1D("1D", 29, 1, "D"),
-    CLASS_1E("1E", 23, 1, "E"),
-    CLASS_1F("1F", 30, 1, "F"),
-    CLASS_1H("1H", 30, 1, "H"),
+    CLASS_1C("1C", 22, 1, "C"),
+    CLASS_1D("1D", 30, 1, "D"),
+    CLASS_1E("1E", 22, 1, "E"),
+    CLASS_1F("1F", 26, 1, "F"),
+    CLASS_1G("1G", 20, 1, "G"),
+    CLASS_1H("1H", 26, 1, "H"),
 
-    CLASS_2A("2A", 23, 2, "A"),
-    CLASS_2B("2B", 21, 2, "B"),
+    CLASS_2A("2A", 20, 2, "A"),
+    CLASS_2B("2B", 24, 2, "B"),
     CLASS_2C("2C", 22, 2, "C"),
-    CLASS_2D("2D", 30, 2, "D"),
-    CLASS_2E("2E", 23, 2, "E"),
+    CLASS_2D("2D", 25, 2, "D"),
+    CLASS_2E("2E", 19, 2, "E"),
     CLASS_2F("2F", 23, 2, "F"),
-    CLASS_2G("2G", 24, 2, "G"),
-    CLASS_2H("2H", 21, 2, "H"),
+    CLASS_2H("2H", 19, 2, "H"),//19
 
-    CLASS_3A("3A", 23, 3, "A"),
-    CLASS_3B("3B", 23, 3, "B"),
-    CLASS_3C("3C", 27, 3, "C"),
-    CLASS_3D("3D", 21, 3, "D"),
-    CLASS_3E("3E", 20, 3, "E"),
-    CLASS_3F("3F", 1, 3, "F"),
-    CLASS_3G("3G", 22, 3, "G"),
+    CLASS_3A("3A", 22, 3, "A"),
+    CLASS_3B("3B", 20, 3, "B"),
+    CLASS_3C("3C", 20, 3, "C"),
+    CLASS_3D("3D", 28, 3, "D"),
+    CLASS_3E("3E", 23, 3, "E"),
+    CLASS_3F("3F", 21, 3, "F"),
+    CLASS_3G("3G", 25, 3, "G"),
+    CLASS_3H("3H", 20, 3, "H"),
 
-    CLASS_4A("4A", 21, 4, "A"),
-    CLASS_4B("4B", 17, 4, "B"),
-    CLASS_4C("4C", 19, 4, "C"),
-    CLASS_4D("4D", 21, 4, "D"),
-    CLASS_4E("4E", 17, 4, "E"),
+    CLASS_4A("4A", 22, 4, "A"),
+    CLASS_4B("4B", 21, 4, "B"),
+    CLASS_4C("4C", 22, 4, "C"),
+    CLASS_4D("4D", 17, 4, "D"),
+    CLASS_4E("4E", 20, 4, "E"),
+    CLASS_4F("4F", 16, 4, "F"),
+    CLASS_4G("4G", 16, 4, "G"),
 
-    CLASS_5A("5A", 23, 5, "A"),
-    CLASS_5B("5B", 20, 5, "B"),
-    CLASS_5C("5C", 20, 5, "C"),
+    CLASS_5A("5A", 21, 5, "A"),
+    CLASS_5B("5B", 15, 5, "B"),
+    CLASS_5C("5C", 17, 5, "C"),
     CLASS_5D("5D", 18, 5, "D"),
-    CLASS_5E("5E", 24, 5, "E"),
-    CLASS_5F("5F", 17, 5, "F"),
-    CLASS_SCONOSCIUTA("--", 0, 0, "-");
+    CLASS_5E("5E", 17, 5, "E"),
+//    CLASS_SCONOSCIUTA("--", 0, 0, "-")
+    ;
+
 
     public final String className;
     public final int numberOfStudents;
@@ -69,11 +73,12 @@ public enum ClassData {
     }
 
     public static ClassData search(String s) {
-        if (s == null) return CLASS_SCONOSCIUTA;
+        //if (s == null) return CLASS_SCONOSCIUTA;
         for (ClassData xx : values()) {
             if (xx.className.equalsIgnoreCase(s)) return xx;
         }
-        return CLASS_SCONOSCIUTA;
+        throw new IllegalArgumentException("Classe sconosciuta: " + s);
+        //return CLASS_SCONOSCIUTA;
     }
 
     public static interface ClassDataFilter {
@@ -89,7 +94,7 @@ public enum ClassData {
     }
 
     public boolean flagClasseFittizia() {
-        return this == CLASS_SCONOSCIUTA;
+        return false;/*this == CLASS_SCONOSCIUTA;*/
     }
 
     @Override

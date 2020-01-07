@@ -1,5 +1,5 @@
 <?php
-include './pasw4/configuration.php'
+include '../../httpdocs/configuration.php'
 ?>
 <?php header("Content-Type: application/xml; charset=utf-8"); ?>
 <?php

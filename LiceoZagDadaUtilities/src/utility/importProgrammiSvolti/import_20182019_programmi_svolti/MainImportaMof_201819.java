@@ -83,7 +83,7 @@ public class MainImportaMof_201819 {
 
 
     public static void main(String[] args) throws IOException {
-        File folder = new File("/Users/stefano/Dropbox/Circolari Scolastiche LICEO/AS 2018.19/mof/");
+        File folder = new File("/Users/stefano/Downloads/mof/");
         String[] nomi = new String[]{
                 "visforms_20190628_mof.csv",
         };

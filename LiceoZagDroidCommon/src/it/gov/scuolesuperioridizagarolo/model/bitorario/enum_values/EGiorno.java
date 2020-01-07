@@ -10,7 +10,8 @@ public enum EGiorno {
     GIOVEDI(4, "giovedi'"),
     VENERDI(5, "venerdi'"),
     SABATO(6, "sabato"),
-    DOMENICA(7, "domenica"),;
+    DOMENICA(7, "domenica"),
+    ;
 
 
     private final int progressivo;
@@ -83,7 +84,7 @@ public enum EGiorno {
     }
 
     public boolean flagGiornoDiLezione() {
-        return this != DOMENICA;
+        return this != DOMENICA && this != SABATO;
     }
 
     public boolean isToday() {

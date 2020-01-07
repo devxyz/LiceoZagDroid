@@ -17,7 +17,9 @@ public class ClassesAndRoomContainer {
             classi.put(c.className.toUpperCase(), c);
         }
         for (RoomData c : RoomData.values()) {
-            aule.put(c.roomName.toUpperCase(), c);
+            for (String e : c.etichetteFileOrario) {
+                aule.put(e.toUpperCase(), c);
+            }
         }
     }
 
@@ -27,8 +29,8 @@ public class ClassesAndRoomContainer {
         //final RoomData roomData = aule.get(aula.split("_")[0].toUpperCase());
         final RoomData roomData = aule.get(aula.toUpperCase());
         if (roomData == null) {
-//            throw new IllegalArgumentException("Aula " + aula + " inesistente");
-            return RoomData.AULA_SCONOSCIUTA;
+            throw new IllegalArgumentException("Aula " + aula + " inesistente");
+//            return RoomData.AULA_SCONOSCIUTA;
         }
 
         return roomData;
@@ -38,8 +40,8 @@ public class ClassesAndRoomContainer {
     public static ClassData parseClass(String classe) {
         final ClassData classData = classi.get(classe.toUpperCase());
         if (classData == null) {
-            return ClassData.CLASS_SCONOSCIUTA;
-         //   throw new IllegalArgumentException("Classe " + classe + " inesistente");
+            //return ClassData.CLASS_SCONOSCIUTA;
+            throw new IllegalArgumentException("Classe " + classe + " inesistente");
         }
         return classData;
     }

@@ -1,0 +1,2013 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<j2xml version="15.9.0">
+    <user>
+        <id>249</id>
+        <name><![CDATA[account installazione]]></name>
+        <username><![CDATA[amministratore]]></username>
+        <email><![CDATA[stefano.millozzi@istruzione.it]]></email>
+        <password><![CDATA[$2y$10$xdgg5i59e9g3zSNQ.5MKKO6HedKQbHhTjBFpicXmYsYfDNLUGALWC]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-05-16 08:19:49]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 16:59:37]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":"Europe\/Rome"}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Super Users"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>284</id>
+        <name><![CDATA[Adriana Benedetti]]></name>
+        <username><![CDATA[adrianabenedetti57@hotmail.it]]></username>
+        <email><![CDATA[adrianabenedetti57@hotmail.it]]></email>
+        <password><![CDATA[$2y$10$z5DUKcIy5y2wvpL2s2jsBeoGu/HVZIHIzVsKIVjlJeEPA9oKmH1L6]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-10-15 10:39:53]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-11 08:38:04]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-01-07 10:12:42]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>360</id>
+        <name><![CDATA[Adriana Fabroni]]></name>
+        <username><![CDATA[adrianafabroni@yahoo.it]]></username>
+        <email><![CDATA[adrianafabroni@yahoo.it]]></email>
+        <password><![CDATA[$2y$10$84jcGRvuXEmXIc1YxzKj6.6lMUPHdZHX1SRtYYa7VSt4SWdiVPRHe]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 20:01:15]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-12 14:11:14]]></lastvisitDate>
+        <activation><![CDATA[$2y$10$0/27iNAU3rWkflV94LAAGevsdHUvABWq3e/zzE9voW.Xl3SekqGja]]></activation>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2017-03-19 16:17:18]]></lastResetTime>
+        <resetCount>2</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>461</id>
+        <name><![CDATA[Alessandro Carli]]></name>
+        <username><![CDATA[alecarli04@libero.it]]></username>
+        <email><![CDATA[alecarli04@libero.it]]></email>
+        <password><![CDATA[$2y$10$ssysUFSYS16pCmSBHOvI4ur8OTP0HZ7atdE46IMR/5bNQpyoVXXpi]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:39:56]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-11 13:11:55]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>391</id>
+        <name><![CDATA[Alibrandi Antonella]]></name>
+        <username><![CDATA[antonella_alibrandi@libero.it]]></username>
+        <email><![CDATA[antonella_alibrandi@libero.it]]></email>
+        <password><![CDATA[$2y$10$4OPoXkcRH2z4AYUnd/BhAu5h2JJ1DFrD2Nehv3mLpwoafFKVfSLe6]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2017-09-07 10:44:07]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 21:31:53]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>285</id>
+        <name><![CDATA[Amalia Cerullo]]></name>
+        <username><![CDATA[suormariamalia@libero.it]]></username>
+        <email><![CDATA[suormariamalia@libero.it]]></email>
+        <password><![CDATA[$2y$10$twHv/mWqFEahrDdCo4DML.G6Qvc8lsErkeQoB9Zusujpiyuae0XbC]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-02-11 07:14:36]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 06:27:43]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-09-28 09:50:52]]></lastResetTime>
+        <resetCount>2</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>287</id>
+        <name><![CDATA[Andrea Latini]]></name>
+        <username><![CDATA[andrea.latini@istruzione.it]]></username>
+        <email><![CDATA[andrea.latini@istruzione.it]]></email>
+        <password><![CDATA[$2y$10$lEoeq6jkvy9T/HLJyY3HV.7sBtM1B.N8WPT6PIKDUKcZtvrURg60q]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-01-03 18:05:14]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-12 19:00:21]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-05-20 06:51:57]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>378</id>
+        <name><![CDATA[Anna Donati]]></name>
+        <username><![CDATA[donati.anna67@gmail.com]]></username>
+        <email><![CDATA[donati.anna67@gmail.com]]></email>
+        <password><![CDATA[$2y$10$Gv23k9eiMVHzH6lm9ouD0e7vtB1qLuhpFSbSghWp6X4taMNhu3i7m]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-11-10 20:28:02]]></registerDate>
+        <lastvisitDate><![CDATA[2019-09-14 19:57:23]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2017-09-29 18:37:07]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>433</id>
+        <name><![CDATA[Anna Guglielmotti]]></name>
+        <username><![CDATA[guglielmotti.anna@gmail.com]]></username>
+        <email><![CDATA[guglielmotti.anna@gmail.com]]></email>
+        <password><![CDATA[$2y$10$amV0ag0i2ovtDhVAONKuNOnG3d4hBW1GRRpOEu138ysAm0LT0ivT2]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-10-31 11:08:52]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 19:40:35]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>331</id>
+        <name><![CDATA[Anna Monardo]]></name>
+        <username><![CDATA[annamonardo@alice.it]]></username>
+        <email><![CDATA[annamonardo@alice.it]]></email>
+        <password><![CDATA[$2y$10$2PG1.XZOjKkvWXLP0FF57uLLDJ6qLRoy4wpTvc.LyhB/2jUVb47xC]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-05-19 11:52:45]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-10 11:07:34]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2017-09-04 07:20:35]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>419</id>
+        <name><![CDATA[Antonella De Simone]]></name>
+        <username><![CDATA[antonella.desimone7@istruzione.it]]></username>
+        <email><![CDATA[antonella.desimone7@istruzione.it]]></email>
+        <password><![CDATA[$2y$10$Y66s6kxE1F0RIqwJAkJ4V.RaEkmSVAIAEqqewCi9akEanMtl2woJi]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-09-03 11:49:17]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-12 13:43:34]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>318</id>
+        <name><![CDATA[Antonella Panepuccia]]></name>
+        <username><![CDATA[panepuccia@tin.it]]></username>
+        <email><![CDATA[panepuccia@tin.it]]></email>
+        <password><![CDATA[$2y$10$3ZWraiY5nP1uHvhndFrqFOh3dIiNQE6DKnYIoVAVteU.JVoZngCJu]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-02-27 17:32:56]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 08:03:50]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-09-24 13:04:07]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>288</id>
+        <name><![CDATA[Antonella Parisi]]></name>
+        <username><![CDATA[a.cianni@alice.it]]></username>
+        <email><![CDATA[a.cianni@alice.it]]></email>
+        <password><![CDATA[$2y$10$QTSxXiisqq9MVZn9KSWMle1BP6dKNQffPTQ/pMFrzb3JxY6DUkSxe]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-09-17 20:01:05]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 18:03:18]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-05-19 15:54:53]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>289</id>
+        <name><![CDATA[Antonello Volpi]]></name>
+        <username><![CDATA[darkstar0691@gmail.com]]></username>
+        <email><![CDATA[darkstar0691@gmail.com]]></email>
+        <password><![CDATA[$2y$10$oB1SJLNfk328eSOvaU39c.FYMqWyBtok1Gua5SoTSwb8hNr8E1ure]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-04-07 13:37:22]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-13 15:48:05]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-05-18 19:19:26]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>393</id>
+        <name><![CDATA[Atti Fernando]]></name>
+        <username><![CDATA[atti.fernando@libero.it]]></username>
+        <email><![CDATA[atti.fernando@libero.it]]></email>
+        <password><![CDATA[$2y$10$Xuzz2FtL9b7QZfPb81zS1uACdzmHvxd0AFXNALvrzHW6a6McO9fFe]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2017-09-11 08:45:42]]></registerDate>
+        <lastvisitDate><![CDATA[2019-09-06 08:51:11]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2017-09-12 07:02:41]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>464</id>
+        <name><![CDATA[Baldassarre D'Elia]]></name>
+        <username><![CDATA[baldodelia@gmail.com]]></username>
+        <email><![CDATA[baldodelia@gmail.com]]></email>
+        <password><![CDATA[$2y$10$8YfmDFBH4If6kTmtBJY5tuOxj6ByQI7PVgNDb9iu1AbNfuk0SMuC2]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:42:33]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 16:39:10]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>292</id>
+        <name><![CDATA[Barbara Liberati]]></name>
+        <username><![CDATA[barbara.liberati@istruzione.it]]></username>
+        <email><![CDATA[barbara.liberati@istruzione.it]]></email>
+        <password><![CDATA[$2y$10$k58Qra5Is2NdZM5H1thMwuCsvwG1pAaR0JeEJZLgP9NVXHS5K9ky2]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-09-11 15:46:26]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-10 10:24:17]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>457</id>
+        <name><![CDATA[Carla Caringi]]></name>
+        <username><![CDATA[carlacaringi@libero.it]]></username>
+        <email><![CDATA[carlacaringi@libero.it]]></email>
+        <password><![CDATA[$2y$10$7.F/R5ciCKO1p3noQr.dqOyk6NgHOYjFKLrZ2cErrcOWLg3ECAEqa]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:37:14]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-03 06:35:44]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>361</id>
+        <name><![CDATA[Carla Caroni]]></name>
+        <username><![CDATA[caroni.carla@gmail.com]]></username>
+        <email><![CDATA[caroni.carla@gmail.com]]></email>
+        <password><![CDATA[$2y$10$srkGLNdH2Cx9l0nmyhy/OufMQAG72ki2rKmb6UfBqAn5f.bF.cJSW]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 20:02:06]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 09:28:28]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-09-29 16:54:24]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>362</id>
+        <name><![CDATA[Carmen Anna Calabro']]></name>
+        <username><![CDATA[carmenannacalabro@gmail.com]]></username>
+        <email><![CDATA[carmenannacalabro@gmail.com]]></email>
+        <password><![CDATA[$2y$10$bm40mXDi5kG4XXYGe7mikuvQCL6lKHlV6KV2Qm0vukM.PUPC4Y.Lq]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 20:02:59]]></registerDate>
+        <lastvisitDate><![CDATA[2019-06-13 20:06:27]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>253</id>
+        <name><![CDATA[Carmine Chiedi]]></name>
+        <username><![CDATA[carmine.chiedi@libero.it]]></username>
+        <email><![CDATA[carmine.chiedi@libero.it]]></email>
+        <password><![CDATA[$2y$10$APshNbsqBX4JlIlCLIBWteSI2klvcQnrjMjyOiAO2tVrqGRctlrFO]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2014-09-19 07:23:43]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-13 06:54:27]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>385</id>
+        <name><![CDATA[Cesare Pompa]]></name>
+        <username><![CDATA[cesarepompa@yahoo.it]]></username>
+        <email><![CDATA[cesarepompa@yahoo.it]]></email>
+        <password><![CDATA[$2y$10$Z6hlUkZ7hCHzkR7el7aFKen1TD.K1bVXzaShcWxtn1/IGqVwPUc/y]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2017-02-15 12:32:12]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-07 16:17:35]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>448</id>
+        <name><![CDATA[Chiara Lodovisi]]></name>
+        <username><![CDATA[chiara.lodovisi@gmail.com]]></username>
+        <email><![CDATA[chiara.lodovisi@gmail.com]]></email>
+        <password><![CDATA[$2y$10$UPc.nBQtu0hXlFSrn2UWtOZJ7.3yGQBTOSacRP7HC4LnlvPHzRf0e]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-01-23 09:54:13]]></registerDate>
+        <lastvisitDate><![CDATA[2019-06-11 10:04:18]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-06-11 10:00:52]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>465</id>
+        <name><![CDATA[Claudia Rossi]]></name>
+        <username><![CDATA[claudia.r84@libero.it]]></username>
+        <email><![CDATA[claudia.r84@libero.it]]></email>
+        <password><![CDATA[$2y$10$5Gay/zZOd5eXxAXTjCwfI.6duMu9O8/sRWCeNPzL4XvVz.hDukKO.]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:43:18]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 13:23:36]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>463</id>
+        <name><![CDATA[Claudia Stecca]]></name>
+        <username><![CDATA[stecca.claudia@gmail.com]]></username>
+        <email><![CDATA[stecca.claudia@gmail.com]]></email>
+        <password><![CDATA[$2y$10$qgtUBFgvOPLVyxWeKcUqCO7toY743AvCcWV9oHo2VKCJYRmL.zoR6]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:41:19]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-13 13:19:58]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>294</id>
+        <name><![CDATA[Daniela Pucci]]></name>
+        <username><![CDATA[asconiop@tiscali.it]]></username>
+        <email><![CDATA[asconiop@tiscali.it]]></email>
+        <password><![CDATA[$2y$10$1NruPjLLur5pqngN9tWahePCVB1KeFdhGPge8mYW4/5wS7hEAKRJ2]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-10-04 17:12:01]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 13:08:34]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2018-11-09 11:52:41]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>295</id>
+        <name><![CDATA[Daniela Saccenti]]></name>
+        <username><![CDATA[aladine1958@libero.it]]></username>
+        <email><![CDATA[aladine1958@libero.it]]></email>
+        <password><![CDATA[$2y$10$faIjKj2TZu0jylzuqLfcnukHjfLJs1yUHfP29zYm2JC0nYOp/MeCW]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-10-11 19:49:50]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 16:07:55]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2017-09-11 08:00:38]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>437</id>
+        <name><![CDATA[Daniele Diviso]]></name>
+        <username><![CDATA[daniele.diviso@gmail.com]]></username>
+        <email><![CDATA[daniele.diviso@gmail.com]]></email>
+        <password><![CDATA[$2y$10$LpFUxIlLexYDL3.689R9e.lhWvciMzjO6NZg7PL56RmKZukibicAe]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-11-06 14:35:36]]></registerDate>
+        <lastvisitDate><![CDATA[2018-11-07 07:46:39]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>296</id>
+        <name><![CDATA[David Ferrigno]]></name>
+        <username><![CDATA[davidferrigno39@gmail.com]]></username>
+        <email><![CDATA[davidferrigno39@gmail.com]]></email>
+        <password><![CDATA[$2y$10$MRQTAa45zocT8YgHZcLxkOTQFPHMFaD5O7WzC/EvJKMAw42l.ZBEG]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-01-25 17:40:00]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-13 12:40:12]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>364</id>
+        <name><![CDATA[Davide Merolle]]></name>
+        <username><![CDATA[davide.merolle@gmail.com]]></username>
+        <email><![CDATA[davide.merolle@gmail.com]]></email>
+        <password><![CDATA[$2y$10$.T/elalnkEHm59G2Mb/SGO4R8BRdcyqXqBKVT3F49fNI26udeG1.O]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 20:06:13]]></registerDate>
+        <lastvisitDate><![CDATA[2019-06-08 17:58:28]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-06-08 17:43:23]]></lastResetTime>
+        <resetCount>2</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>425</id>
+        <name><![CDATA[Demetrio Borrello]]></name>
+        <username><![CDATA[borrellodemetrio@libero.it]]></username>
+        <email><![CDATA[borrellodemetrio@libero.it]]></email>
+        <password><![CDATA[$2y$10$6yrxobCRRnKta8kxt6AX1era.e4DLg4E17.NpGM9pe9xB.EK6SS22]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-09-06 08:30:17]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-13 18:01:30]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>332</id>
+        <name><![CDATA[Domenico Fucci]]></name>
+        <username><![CDATA[domenico-fucci@alice.it]]></username>
+        <email><![CDATA[domenico-fucci@alice.it]]></email>
+        <password><![CDATA[$2y$10$kBKzgXdM/hQVg/293rn2lOKpVACcKX2fH6aeJdndbVvoSFkfZVvjK]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-06-10 11:36:16]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-10 15:34:08]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2017-01-09 01:53:36]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>458</id>
+        <name><![CDATA[Elisa Corsi]]></name>
+        <username><![CDATA[elisacor@hotmail.it]]></username>
+        <email><![CDATA[elisacor@hotmail.it]]></email>
+        <password><![CDATA[$2y$10$qLT0keOYPnFNK82ysyWgcu3yi4EvAFmojc18InTR14cJQLzVVFJJ.]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:37:46]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 05:49:18]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-10-04 07:55:52]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>347</id>
+        <name><![CDATA[Elisabella Di Rosa]]></name>
+        <username><![CDATA[elisadirosa@yahoo.it]]></username>
+        <email><![CDATA[elisadirosa@yahoo.it]]></email>
+        <password><![CDATA[$2y$10$oL1knA1CbRXoqrzHS2Y9Ie3ggL3C98uuoT.Kpw4I3uR7hhVSqmfCe]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 19:46:08]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-12 07:48:13]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-05-17 08:50:58]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>252</id>
+        <name><![CDATA[Elisabetta Marchese]]></name>
+        <username><![CDATA[elisabetta_marchese@hotmail.it]]></username>
+        <email><![CDATA[elisabetta_marchese@hotmail.it]]></email>
+        <password><![CDATA[$2y$10$CwAfj3JjwSpu7PjuP1oFWOE2UALfOhUCF3Dcslp2WKkn3CGmwrlOK]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-01-18 15:48:27]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 15:20:06]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>415</id>
+        <name><![CDATA[Fabio Ciolli]]></name>
+        <username><![CDATA[fabio.ciolli@yahoo.it]]></username>
+        <email><![CDATA[fabio.ciolli@yahoo.it]]></email>
+        <password><![CDATA[$2y$10$ISfJ9QWZmtfv4uGI8iAKhuv0YHkIvCV163SMHeBpz6SSU6ZIdmEpK]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-07-02 11:00:57]]></registerDate>
+        <lastvisitDate><![CDATA[2019-04-04 14:46:48]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>297</id>
+        <name><![CDATA[Fabrizio Ponza]]></name>
+        <username><![CDATA[fabshin@yahoo.it]]></username>
+        <email><![CDATA[fabshin@yahoo.it]]></email>
+        <password><![CDATA[$2y$10$QggITKQilHiF/qjVnlzuyOlS/lXzTJJJs1gm4yDnYZeE443QQb94i]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-10-12 10:33:50]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-11 21:03:44]]></lastvisitDate>
+        <activation><![CDATA[$2y$10$UNpMm1JT.9NSlSQJzfOV2OLOui9wt9aFpzwcr.a5qt09cTJndIgNO]]></activation>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-12-28 08:21:21]]></lastResetTime>
+        <resetCount>2</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>299</id>
+        <name><![CDATA[Federica Alessandroni]]></name>
+        <username><![CDATA[federica.alessandroni@gmail.com]]></username>
+        <email><![CDATA[federica.alessandroni@gmail.com]]></email>
+        <password><![CDATA[$2y$10$PVCa3O7pQTfz4e8DGCDOueYQ4V2FxzbBL4AIje1FjPLwWRkpIFm8e]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-09-12 07:45:28]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 13:20:42]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-10-26 13:12:19]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>300</id>
+        <name><![CDATA[Franca Taraborrelli]]></name>
+        <username><![CDATA[francataraborrelli@yahoo.it]]></username>
+        <email><![CDATA[francataraborrelli@yahoo.it]]></email>
+        <password><![CDATA[$2y$10$wD9CWBXk7iH5o5NjRKa6leYdMTo3KkEJR1maDI5BEf03vvBWRMLQm]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-09-28 18:18:18]]></registerDate>
+        <lastvisitDate><![CDATA[2019-09-21 11:24:05]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2018-12-06 21:08:59]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>451</id>
+        <name><![CDATA[Franco Cappucci]]></name>
+        <username><![CDATA[francocappucci@gmail.com]]></username>
+        <email><![CDATA[francocappucci@gmail.com]]></email>
+        <password><![CDATA[$2y$10$5CbuhGvrieL8Ud5TvjAx8OaPkFzW4VlfnxebUdQjlzT6.tUfsEgEq]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-06-11 08:24:23]]></registerDate>
+        <lastvisitDate><![CDATA[2019-06-11 12:02:22]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>302</id>
+        <name><![CDATA[Gianni Biazzo]]></name>
+        <username><![CDATA[gianni.biazzo@alice.it]]></username>
+        <email><![CDATA[gianni.biazzo@alice.it]]></email>
+        <password><![CDATA[$2y$10$MeLhTgYnT95mhOiWN9e6TOSXfWivBgm5psmhhdlv7svKZdrmRmIs6]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-10-17 15:40:33]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 21:17:05]]></lastvisitDate>
+        <activation><![CDATA[$2y$10$UEaQgiPcI/c8RgPXiFDKhO0elYnU2O4/uBv.8zYE4dydgA1zqqUcK]]></activation>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-05-15 19:59:19]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>455</id>
+        <name><![CDATA[Gioia De Angelis]]></name>
+        <username><![CDATA[maestragioia@gmail.com]]></username>
+        <email><![CDATA[maestragioia@gmail.com]]></email>
+        <password><![CDATA[$2y$10$cGyrgCfxL5RZMiMA3VeS4uD/EZLmDDSipJ65NBYIOLZTt9ikJJ7TS]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:36:06]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 18:02:41]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>442</id>
+        <name><![CDATA[Giovanna Manna]]></name>
+        <username><![CDATA[giovanna.manna@hotmail.it]]></username>
+        <email><![CDATA[giovanna.manna@hotmail.it]]></email>
+        <password><![CDATA[$2y$10$TqhR3GJWHHdUbgRNsUm27erwzd07f2DeM1Ex/GwOMLYt6SapUZTjK]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-12-07 12:11:56]]></registerDate>
+        <lastvisitDate><![CDATA[2018-12-18 13:46:15]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>388</id>
+        <name><![CDATA[Giuseppe Scognamiglio]]></name>
+        <username><![CDATA[scognamigliohd@libero.it]]></username>
+        <email><![CDATA[scognamigliohd@libero.it]]></email>
+        <password><![CDATA[$2y$10$ReR1swPxP9t45zWq63Pgk.iBlUdsKxWefdItvloRrOLRNwDCFiUKC]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2017-09-02 08:22:45]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 21:09:36]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>452</id>
+        <name><![CDATA[Ilaria Acciai]]></name>
+        <username><![CDATA[ilaria.acciai@istruzione.it]]></username>
+        <email><![CDATA[ilaria.acciai@istruzione.it]]></email>
+        <password><![CDATA[$2y$10$Ux5JilEq4d8XPX3QtRdMueXOivb.55watkRB6b8Yib2cxwZdNHMSO]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:33:34]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 10:41:43]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-10-07 07:28:41]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>441</id>
+        <name><![CDATA[Ilaria Nardecchia]]></name>
+        <username><![CDATA[i.nardecchia@gmail.com]]></username>
+        <email><![CDATA[i.nardecchia@gmail.com]]></email>
+        <password><![CDATA[$2y$10$KB5oBUuqWb25tUSjlRxnUOfXpbAGzbdrQbPvTuoU8bF0gARInZWpi]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-12-05 10:46:25]]></registerDate>
+        <lastvisitDate><![CDATA[2018-12-07 06:28:58]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>389</id>
+        <name><![CDATA[Ilaria Schiarea]]></name>
+        <username><![CDATA[ilaria.schiarea29@libero.it]]></username>
+        <email><![CDATA[ilaria.schiarea29@libero.it]]></email>
+        <password><![CDATA[$2y$10$671fTWBzFeDkpsY6Zc/jAOyGx5iW141mw79.W8dGlD9VSR/VQ6W06]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2017-09-05 06:57:45]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 12:36:07]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2018-04-12 08:54:25]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>351</id>
+        <name><![CDATA[Irene Cortoni]]></name>
+        <username><![CDATA[irenecortoni@alice.it]]></username>
+        <email><![CDATA[irenecortoni@alice.it]]></email>
+        <password><![CDATA[$2y$10$d0I3y3.dPVHZaVIVH7Rk5O5FoZLVYsxBRhD/BN4okxT74OhplUR3y]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 19:50:29]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 12:16:40]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"it-IT","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-06-07 16:40:05]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>305</id>
+        <name><![CDATA[Isabella Fusani]]></name>
+        <username><![CDATA[isab.fus@gmail.com]]></username>
+        <email><![CDATA[isab.fus@gmail.com]]></email>
+        <password><![CDATA[$2y$10$z01digP3RY.zI0BNZAwX0.EWA.QaoEoocAMrzRYmz2KZr.02OPP8i]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-11-12 08:22:51]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 16:58:17]]></lastvisitDate>
+        <activation><![CDATA[$2y$10$BE030JjCgf2kLoTsRM/v6.31Zv6D9LojhgMZrMZax8bBYiX1hgt/i]]></activation>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-08-26 21:52:25]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>363</id>
+        <name><![CDATA[Laura Del Signore]]></name>
+        <username><![CDATA[laura.delsignore@gmail.com]]></username>
+        <email><![CDATA[laura.delsignore@gmail.com]]></email>
+        <password><![CDATA[$2y$10$DhysmXrxSR9G03fjWn5PXe37xyo0RTNDWk/N2mLfyUEp7WmOcDYjW]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 20:04:56]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-11 14:00:18]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-08-31 11:19:27]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>352</id>
+        <name><![CDATA[Laura Pagnoni]]></name>
+        <username><![CDATA[laura.pagnoni@istruzione.it]]></username>
+        <email><![CDATA[laura.pagnoni@istruzione.it]]></email>
+        <password><![CDATA[$2y$10$LENvUQY/tfvRqdAN8bqwpu.A8vyaTcq.7H0XASqbw0Yur4RGFA.F6]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 19:51:37]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 13:05:53]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"it-IT","editor":"none","helpsite":"","timezone":"Europe\/Rome"}]]></params>
+        <lastResetTime><![CDATA[2019-08-27 07:11:57]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>350</id>
+        <name><![CDATA[Lio Lillo]]></name>
+        <username><![CDATA[stdlio@tin.it]]></username>
+        <email><![CDATA[stdlio@tin.it]]></email>
+        <password><![CDATA[$2y$10$QU8uEtyfzRTy3BEGOyLc4.OwKFSvv88TTBWB1uwrT52Zg9iA/D2Me]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 19:49:22]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-11 11:11:41]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>398</id>
+        <name><![CDATA[Lolita Spaccino]]></name>
+        <username><![CDATA[lolitaspaccino@yahoo.it]]></username>
+        <email><![CDATA[lolitaspaccino@yahoo.it]]></email>
+        <password><![CDATA[$2y$10$/AyKRw3Gt8uRLo7robN2L.m0HnKLBTUJNvcGOBVwzlm6.wYldv3d.]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2017-09-14 18:21:22]]></registerDate>
+        <lastvisitDate><![CDATA[2018-06-07 07:30:51]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2018-02-04 18:13:58]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>449</id>
+        <name><![CDATA[Luca Ossino]]></name>
+        <username><![CDATA[mail.lucaossino@gmail.com]]></username>
+        <email><![CDATA[mail.lucaossino@gmail.com]]></email>
+        <password><![CDATA[$2y$10$KQXLeFEw9JtIGi45MLyEjOLqLWydjyx9JRNeB9uat8hSFCbJglEia]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-05-16 07:37:51]]></registerDate>
+        <lastvisitDate><![CDATA[2019-06-12 10:11:01]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>307</id>
+        <name><![CDATA[Manuela Cenciarini]]></name>
+        <username><![CDATA[manuela.cenciarini@istruzione.it]]></username>
+        <email><![CDATA[manuela.cenciarini@istruzione.it]]></email>
+        <password><![CDATA[$2y$10$Zg5P9rEa4i5YQ8ST38hDmePGY9ivYKYtnFDLMjCU6r/gYk.T7fRva]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-01-23 10:31:29]]></registerDate>
+        <lastvisitDate><![CDATA[2015-01-23 10:32:54]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>367</id>
+        <name><![CDATA[Marcello Zappia]]></name>
+        <username><![CDATA[marcello.zappia@tiscali.it]]></username>
+        <email><![CDATA[marcello.zappia@tiscali.it]]></email>
+        <password><![CDATA[$2y$10$TRgYRA8Sg12tZTmFuzDO9ecPZ9eEy8RC7EhRkShlGn0/JaL6dn0XK]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 20:09:41]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-12 08:31:46]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-09-09 12:57:14]]></lastResetTime>
+        <resetCount>3</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>308</id>
+        <name><![CDATA[Marco Pagliari]]></name>
+        <username><![CDATA[marcuspag04@yahoo.com]]></username>
+        <email><![CDATA[marcuspag04@yahoo.com]]></email>
+        <password><![CDATA[$2y$10$H1gSfjp0K3YxgX7BxiUdUOryRgkSQaW2Zvfcgbsaknx9xPBDkthi.]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-10-19 10:05:33]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-13 18:28:27]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-09-01 20:47:08]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>459</id>
+        <name><![CDATA[Maria Cristina Germani]]></name>
+        <username><![CDATA[mariacristina.germani@istruzione.it]]></username>
+        <email><![CDATA[mariacristina.germani@istruzione.it]]></email>
+        <password><![CDATA[$2y$10$jBMOApn.fFVFBEtEMLFF1.PSz6CkpRZlqI017EmB3y5SL3X2RpN4y]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:38:40]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 13:56:21]]></lastvisitDate>
+        <activation><![CDATA[$2y$10$RzMjMbUd9fS770yUtv4BW.2xQmOsx6JPAeIqTm71QMGXE7Zt44Zqq]]></activation>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-09-02 14:23:58]]></lastResetTime>
+        <resetCount>2</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>353</id>
+        <name><![CDATA[Maria Rita Bovino]]></name>
+        <username><![CDATA[mrbov29@gmail.com]]></username>
+        <email><![CDATA[mrbov29@gmail.com]]></email>
+        <password><![CDATA[$2y$10$nrAMcJfsWqx9PGqnyvL/Hev81Zm8UJKC170o1B88aE/WfO3iMB9la]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 19:53:08]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-11 17:05:23]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>309</id>
+        <name><![CDATA[Maria Rosaria]]></name>
+        <username><![CDATA[mrminotti@alice.it]]></username>
+        <email><![CDATA[mrminotti@alice.it]]></email>
+        <password><![CDATA[$2y$10$GHyn6bSYGXa1oHrQpBG0tu.xUhISBaKd/VowOo5mseuh8BFmV3l02]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-09-30 11:36:05]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 08:43:21]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>310</id>
+        <name><![CDATA[Marianna Matteucci]]></name>
+        <username><![CDATA[matteucci.marianna@gmail.com]]></username>
+        <email><![CDATA[matteucci.marianna@gmail.com]]></email>
+        <password><![CDATA[$2y$10$XPFKA0bM.qEClO.uOPJG/uChfMLe32TKfBznNC7ZNsDRxP/gvl7Q6]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-03-15 10:49:10]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 13:34:54]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-05-22 13:25:08]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>354</id>
+        <name><![CDATA[Massimo Andreozzi]]></name>
+        <username><![CDATA[max_andre@tiscali.it]]></username>
+        <email><![CDATA[max_andre@tiscali.it]]></email>
+        <password><![CDATA[$2y$10$uwum6phkhgpOSlJ.8D.we.ogOFm34cKwpKCr0Wt4zC9/KKLdzY0Cm]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 19:54:14]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-10 09:41:16]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>426</id>
+        <name><![CDATA[Maurizio Monego]]></name>
+        <username><![CDATA[monego61@gmail.com]]></username>
+        <email><![CDATA[monego61@gmail.com]]></email>
+        <password><![CDATA[$2y$10$gxkdC80sTUVmyTRxHJGqCORy9qJx.lnTBOYpn/WYAJe2NC8J9xX3S]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-09-07 14:32:33]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 18:40:15]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"tinymce","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-08-09 12:02:20]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>340</id>
+        <name><![CDATA[Maurizio Spezzano]]></name>
+        <username><![CDATA[mauriziospezzano@tiscali.it]]></username>
+        <email><![CDATA[mauriziospezzano@tiscali.it]]></email>
+        <password><![CDATA[$2y$10$msAFFxRc.JsrNa6xpWK6feTWNaSwb0KIxklhMyE6EIaIroYrNbv/O]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-07-29 09:04:29]]></registerDate>
+        <lastvisitDate><![CDATA[2019-09-17 16:47:16]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2018-08-31 17:17:34]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>312</id>
+        <name><![CDATA[Mauro Cerri]]></name>
+        <username><![CDATA[mauro-cerri@alice.it]]></username>
+        <email><![CDATA[mauro-cerri@alice.it]]></email>
+        <password><![CDATA[$2y$10$v6gp1bmiRzAUX1hp1fsl9OcIv9YxKsdWZhEK6GnZvs9FHbpzkiW7O]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-01-08 07:39:59]]></registerDate>
+        <lastvisitDate><![CDATA[2019-09-19 08:14:28]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-05-16 19:34:22]]></lastResetTime>
+        <resetCount>2</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>435</id>
+        <name><![CDATA[Michela Amarando]]></name>
+        <username><![CDATA[michela.amarando@libero.it]]></username>
+        <email><![CDATA[michela.amarando@libero.it]]></email>
+        <password><![CDATA[$2y$10$L9j7pkLRIdZpMLUHXwQshO36B8r6YmJVrHywjRADvOLXs83V4RTKe]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-11-06 14:34:24]]></registerDate>
+        <lastvisitDate><![CDATA[2019-04-18 11:27:40]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>456</id>
+        <name><![CDATA[Michela Paone]]></name>
+        <username><![CDATA[micsportfly@gmail.com]]></username>
+        <email><![CDATA[micsportfly@gmail.com]]></email>
+        <password><![CDATA[$2y$10$6Ba3S1963qEzrpPCNsk/A.HqSMmqUTYFp7MwNMOHkpPvHdzAFhcly]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:36:39]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 06:56:14]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"it-IT","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-09-08 13:56:20]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>438</id>
+        <name><![CDATA[Miriam Angiolilli]]></name>
+        <username><![CDATA[misiangy@gmail.com]]></username>
+        <email><![CDATA[misiangy@gmail.com]]></email>
+        <password><![CDATA[$2y$10$YoMvZPGxMholA6feMoTeaue96.5dsnoKUhOSP6afdkJgXdDQgldbm]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-11-06 14:36:48]]></registerDate>
+        <lastvisitDate><![CDATA[2019-05-07 16:21:31]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>412</id>
+        <name><![CDATA[Mirko Cerrito]]></name>
+        <username><![CDATA[mirko.cerrito@virgilio.it]]></username>
+        <email><![CDATA[mirko.cerrito@virgilio.it]]></email>
+        <password><![CDATA[$2y$10$FqduzkmnLvQKeXbU3iSn4OKTDjL6pdaKidaxbZ5hmUmlQlJwny06O]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-06-08 08:50:04]]></registerDate>
+        <lastvisitDate><![CDATA[2019-06-27 20:36:19]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>315</id>
+        <name><![CDATA[Mjriam Tassan]]></name>
+        <username><![CDATA[mjriam.tassan@virgilio.it]]></username>
+        <email><![CDATA[mjriam.tassan@virgilio.it]]></email>
+        <password><![CDATA[$2y$10$nMfC53T20PixUrgxaOeI3uBmykJpxARm6AaU0fg4yeXLuioxGHeQK]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-01-01 16:05:33]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 04:01:10]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-05-18 12:35:24]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>454</id>
+        <name><![CDATA[Monica Mattozzi]]></name>
+        <username><![CDATA[mmattozzi@gmail.com]]></username>
+        <email><![CDATA[mmattozzi@gmail.com]]></email>
+        <password><![CDATA[$2y$10$ELms2mhN85MLE17sGMm//uOJMqggwE/m2YicfdKnM1KMY68MJv69i]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:35:29]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 10:10:49]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>316</id>
+        <name><![CDATA[Natascia Mattetti]]></name>
+        <username><![CDATA[n.mattetti@libero.it]]></username>
+        <email><![CDATA[n.mattetti@libero.it]]></email>
+        <password><![CDATA[$2y$10$5R/yMMRalYHCZLf/upLtxOwlI8eUYRN//Mi0mT2TA8VdUdywK3lTK]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-12-27 12:14:53]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-10 09:47:36]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2017-11-10 14:59:18]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>317</id>
+        <name><![CDATA[Orietta Cocci]]></name>
+        <username><![CDATA[orietta.cocci@istruzione.it]]></username>
+        <email><![CDATA[orietta.cocci@istruzione.it]]></email>
+        <password><![CDATA[$2y$10$tN5nCnto8AxI5YDdr6XcNuDVbZW6a2SPPx6TpnYaz2A5FAPyx8WIK]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-09-10 22:16:00]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-11 10:07:06]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2018-05-09 07:07:05]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>460</id>
+        <name><![CDATA[Paolo Martini]]></name>
+        <username><![CDATA[pa.martini65@archiworld.it]]></username>
+        <email><![CDATA[pa.martini65@archiworld.it]]></email>
+        <password><![CDATA[$2y$10$AjKhm8rnzmpdTQ31KB4dee5xXTWavY.B4imsXSpECBdo3SeJcLu3C]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:39:21]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 08:24:31]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>453</id>
+        <name><![CDATA[Pasquale Sgro]]></name>
+        <username><![CDATA[pasquale.sgro@yahoo.it]]></username>
+        <email><![CDATA[pasquale.sgro@yahoo.it]]></email>
+        <password><![CDATA[$2y$10$5H504fKfmBLlktdJVU29Xe0iikvrFqILZCurpn9etKClvgGF6zume]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:34:41]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 03:36:52]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>466</id>
+        <name><![CDATA[Rita Grassotti]]></name>
+        <username><![CDATA[accendilestelle@gmail.com]]></username>
+        <email><![CDATA[accendilestelle@gmail.com]]></email>
+        <password><![CDATA[$2y$10$r/BjAnn6NU1PEguAzK3EPuaJvvopVhdbLRYzqpKkCnMBagfGJDeUa]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-27 18:34:15]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-07 15:02:25]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>321</id>
+        <name><![CDATA[Rosita Masella]]></name>
+        <username><![CDATA[rositamasella@gmail.com]]></username>
+        <email><![CDATA[rositamasella@gmail.com]]></email>
+        <password><![CDATA[$2y$10$gnyMDkev4MqeACVtPpsn/uTViT1kTzeUKNuo67PKlZ.s1eLx4t0VO]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-10-15 12:47:08]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 10:32:24]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>436</id>
+        <name><![CDATA[Rossella Supino]]></name>
+        <username><![CDATA[rossellasupino@virgilio.it]]></username>
+        <email><![CDATA[rossellasupino@virgilio.it]]></email>
+        <password><![CDATA[$2y$10$c.3I0Qhd/Q/L05rhBPbmZutuHNv7InOfin1BGAr0b0moFHwkb4fUW]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-11-06 14:35:02]]></registerDate>
+        <lastvisitDate><![CDATA[2019-05-06 19:43:59]]></lastvisitDate>
+        <activation><![CDATA[$2y$10$AAXZWOOOxz/5DmRMswE/MuRuAZuRROLRpx4J.bNNmDvUz4AZ0tR/K]]></activation>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-01-08 20:52:31]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>413</id>
+        <name><![CDATA[Sante Centurioni]]></name>
+        <username><![CDATA[sante.centurioni@uniroma3.it]]></username>
+        <email><![CDATA[sante.centurioni@uniroma3.it]]></email>
+        <password><![CDATA[$2y$10$yVwWImcgSiDQWJofHPDy0ek3vWyEWsa4vFA/egsGpRzDHa7Pj6Kd.]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2018-06-08 09:21:24]]></registerDate>
+        <lastvisitDate><![CDATA[2019-09-13 13:06:38]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-05-16 09:08:55]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>348</id>
+        <name><![CDATA[Santori Claudio]]></name>
+        <username><![CDATA[csantori2@gmail.com]]></username>
+        <email><![CDATA[csantori2@gmail.com]]></email>
+        <password><![CDATA[$2y$10$8CC3WVC5KuWE.1mcXQq6leoSWzqba.tcl489HxVgFcP4PsGZ3YUDS]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-01 19:46:59]]></registerDate>
+        <lastvisitDate><![CDATA[2019-09-23 09:01:46]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>445</id>
+        <name><![CDATA[Silvia Bisci]]></name>
+        <username><![CDATA[silvia.bisci@yahoo.it]]></username>
+        <email><![CDATA[silvia.bisci@yahoo.it]]></email>
+        <password><![CDATA[$2y$10$qYdnmRnx0pumBIYt1bMiqOchxgagDk4Dbn8lyy.nBAM8b/2icjxtC]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-01-08 19:55:32]]></registerDate>
+        <lastvisitDate><![CDATA[2019-04-23 16:53:32]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>396</id>
+        <name><![CDATA[Silvia Bottega]]></name>
+        <username><![CDATA[bottegasilvia@libero.it]]></username>
+        <email><![CDATA[bottegasilvia@libero.it]]></email>
+        <password><![CDATA[$2y$10$LlC37Sceh.3jFvCqIAHDeOnG5lYJb9FPjh7jN7Dd9PdnEJWTIV3bq]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2017-09-14 10:15:35]]></registerDate>
+        <lastvisitDate><![CDATA[2019-09-11 21:21:49]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-09-05 20:53:50]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>373</id>
+        <name><![CDATA[Silvia Carabella]]></name>
+        <username><![CDATA[sacagawea@tiscali.it]]></username>
+        <email><![CDATA[sacagawea@tiscali.it]]></email>
+        <password><![CDATA[$2y$10$FAfJP23cYhYPTcvTK6FekeZMnlVNLbkrID2o2Pr.QCWWaDzcofzzC]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-27 05:55:17]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-12 18:29:18]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>322</id>
+        <name><![CDATA[Simona Supino]]></name>
+        <username><![CDATA[simanto.puffi@libero.it]]></username>
+        <email><![CDATA[simanto.puffi@libero.it]]></email>
+        <password><![CDATA[$2y$10$fORjmPz0UxS/7mfDZsP2A.tp6Q54SMZBoqS/v0OEkdLHr32qN5ceS]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-11-19 14:32:33]]></registerDate>
+        <lastvisitDate><![CDATA[2019-07-04 12:04:28]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-06-03 10:36:06]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>254</id>
+        <name><![CDATA[Stefano Millozzi]]></name>
+        <username><![CDATA[stefano.millozzi@gmail.com]]></username>
+        <email><![CDATA[stefano.millozzi@gmail.com]]></email>
+        <password><![CDATA[$2y$10$YyDezpowBO0TyCEibDCicuv7AahoH848/OrimYUp0bqstDnAfAuvi]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-09-13 14:51:48]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-05 12:59:23]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2017-07-22 10:21:07]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Manager"]]]></group>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Super Users"]]]></group>
+            <group><![CDATA[["Public","Registered","Author"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+            <group><![CDATA[["Public","Registered","Studenti"]]]></group>
+            <group><![CDATA[["Public","Registered","Author","Editor"]]]></group>
+            <group><![CDATA[["Public","Registered","Author","Editor","Publisher"]]]></group>
+            <group><![CDATA[["Public","Manager","Administrator"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>462</id>
+        <name><![CDATA[Stefano Padoan]]></name>
+        <username><![CDATA[ste.padoan@gmail.com]]></username>
+        <email><![CDATA[ste.padoan@gmail.com]]></email>
+        <password><![CDATA[$2y$10$vBwtx2cfGWVpr0YSC8uMwehwQ8hJiI5EifH4mjQK1bmaQ/iv6Etle]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2019-09-02 11:40:40]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-15 09:12:26]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2019-09-13 16:55:22]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>324</id>
+        <name><![CDATA[Tilde Centracchio]]></name>
+        <username><![CDATA[tilde0708@gmail.com]]></username>
+        <email><![CDATA[tilde0708@gmail.com]]></email>
+        <password><![CDATA[$2y$10$AOyOPGAIZwY6uwInvm4PJOxBnKvrZkHEkcHq/g79KYrdAFaFbveja]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-09-16 17:42:05]]></registerDate>
+        <lastvisitDate><![CDATA[2019-09-25 11:28:49]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>371</id>
+        <name><![CDATA[Utente PROVA]]></name>
+        <username><![CDATA[prova]]></username>
+        <email><![CDATA[stefano.millozzi@uniroma1.it]]></email>
+        <password><![CDATA[$2y$10$dkcugSJ6CQt56SrNMtf2GuwA2RGuoKvi8tuAYXj51NvSXXS8DyTEy]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2016-09-13 17:10:47]]></registerDate>
+        <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+        <activation><![CDATA[$2y$10$BaQTgORZiLwEAqK93O0Nu.j/G.v0EdKD2wm.so8MtRdA14IH34S0S]]></activation>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-09-13 18:43:05]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Studenti"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>326</id>
+        <name><![CDATA[Valentina Balzarotti]]></name>
+        <username><![CDATA[vbalzarotti@alice.it]]></username>
+        <email><![CDATA[vbalzarotti@alice.it]]></email>
+        <password><![CDATA[$2y$10$LIZ6dxutKnQLZvkK3uSho.AEFpn7fLuExJsp27Lnyd4Zby0q.XW2.]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-02-27 16:16:25]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-13 16:46:36]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-05-18 13:53:42]]></lastResetTime>
+        <resetCount>1</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>329</id>
+        <name><![CDATA[Vania Martelli]]></name>
+        <username><![CDATA[vaniamartelli@tin.it]]></username>
+        <email><![CDATA[vaniamartelli@tin.it]]></email>
+        <password><![CDATA[$2y$10$MzpDs8saItACPup9a9QvjOq.W7WGi6egaBo80G4GVPB1ZnUiB2D22]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-03-03 21:08:27]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-14 18:27:16]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+        <resetCount>0</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+    <user>
+        <id>330</id>
+        <name><![CDATA[Veronica Gentile]]></name>
+        <username><![CDATA[veronica.wave@gmail.com]]></username>
+        <email><![CDATA[veronica.wave@gmail.com]]></email>
+        <password><![CDATA[$2y$10$uP9Wagswgkywa6y2B.jZn.SPbzdx.s6OQU4r9YYnGQeL8N80qxuJ2]]></password>
+        <block>0</block>
+        <sendEmail>0</sendEmail>
+        <registerDate><![CDATA[2015-09-11 16:06:29]]></registerDate>
+        <lastvisitDate><![CDATA[2019-10-13 03:46:40]]></lastvisitDate>
+        <activation/>
+        <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+        <lastResetTime><![CDATA[2016-09-07 17:45:04]]></lastResetTime>
+        <resetCount>5</resetCount>
+        <otpKey/>
+        <otep/>
+        <requireReset>0</requireReset>
+        <grouplist>
+            <group><![CDATA[["Public","Registered"]]]></group>
+            <group><![CDATA[["Public","Registered","Docente Registrato"]]]></group>
+        </grouplist>
+    </user>
+</j2xml>

@@ -26,7 +26,7 @@ public class DocentiDaNominare {
                 Set<String> classi = new TreeSet<>();
                 final ArrayList<BitOrarioOraLezione> ll = o.getLezioneConDocente(d);
                 for (BitOrarioOraLezione x : ll) {
-                    if (x.getTipoLezione() != BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
+                    if (x.getTipoLezione() != BitOrarioOraEnumTipoLezione.DISPOSIZIONE ) {
                         classi.add(x.getClasse().className + "(" + x.getMateriaPrincipale().toLowerCase() + ") ");
                     }
                 }

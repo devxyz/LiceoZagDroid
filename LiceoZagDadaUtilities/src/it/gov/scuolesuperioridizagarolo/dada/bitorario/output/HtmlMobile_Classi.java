@@ -90,6 +90,7 @@ public class HtmlMobile_Classi {
 
                                 break;
                             }
+
                             default: {
                                 final String docente = lezione.getDocentiFormatted();
                                 final String aula = lezione.getAula() == null ? "-" : lezione.getAula().simpleName();

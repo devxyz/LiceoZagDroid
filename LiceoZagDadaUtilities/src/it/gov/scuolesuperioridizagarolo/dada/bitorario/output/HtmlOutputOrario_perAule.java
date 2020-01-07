@@ -18,7 +18,7 @@ import java.util.TreeSet;
 public class HtmlOutputOrario_perAule extends HtmlOutputOrario {
     @Override
     protected String getSubTitle() {
-        return "Orario per Aule";
+        return "Orario per Aule: docente, disciplina, classe";
     }
 
     @Override
@@ -63,7 +63,7 @@ public class HtmlOutputOrario_perAule extends HtmlOutputOrario {
             }
 
 
-            sb.append("<center style='font-size:20px'><b>" + l.getClasse() + " </b><br> " + l.getDocentiFormatted() + " " + n + " <br> </center>");
+            sb.append("<center style='font-size:20px'><b>" + l.getClasse() + " </b>  <br><small>(<i>" + l.getMateriaPrincipale() + "</i>)</small><br>" + l.getDocentiFormatted() + " " + n + " <br> </center>");
         }
         return sb.toString();
     }

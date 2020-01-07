@@ -33,6 +33,7 @@ public class HtmlMobile_Aule {
 
             final RoomData room = (aule);
             if (room.flagAulaFittizia()) continue;
+            if (room.maxStudents == 0) continue;
 
             PrintStream p = new PrintStream(new File(f, aule.simpleName()));
 
@@ -87,9 +88,10 @@ public class HtmlMobile_Aule {
                                         p.println("DISP" + button_dettagli + "</center>");
                                         break;
                                     }
+
                                     default: {
                                         final String docente = lezione.getDocentiFormatted();
-                                        final ClassData classe = lezione.getClasse() == null ? ClassData.CLASS_SCONOSCIUTA : lezione.getClasse();
+                                        final ClassData classe = lezione.getClasse() == null ? null/*ClassData.CLASS_SCONOSCIUTA*/ : lezione.getClasse();
 
                                         p.printf("" +
                                                 "<center>" +

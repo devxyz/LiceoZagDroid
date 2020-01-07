@@ -4,16 +4,16 @@ import utility.scrutini.engine.data.DatiStudente;
 import utility.scrutini.engine.data.RecuperoCarenze_Intestazione;
 import utility.scrutini.engine.data.Scrutini_Intestazione;
 import utility.scrutini.engine.data.Scrutini_TipoValoreEnum;
-import utility.scrutini.engine.recupero_carenze.LeggiRiepilogoCarenze;
-import utility.scrutini.engine.scrutini.LeggiScrutini;
+import utility.scrutini.engine.parser_scrutini_carenze.ParserFileRiepilogoCarenze;
+import utility.scrutini.engine.parser_scrutini_carenze.ParserFileEsitiScrutini;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class AnalizzaFileScrutiniAndCarenze {
     private static Integer convertInteger(String s) throws NumberFormatException {
@@ -22,8 +22,9 @@ public class AnalizzaFileScrutiniAndCarenze {
     }
 
 
-    public static DatiStudente estraiDatiStudente(LinkedHashMap<Scrutini_Intestazione, String> intestazione) {
+    public static DatiStudente estraiDatiStudente(String classe, LinkedHashMap<Scrutini_Intestazione, String> intestazione) {
         DatiStudente d = new DatiStudente();
+        d.setClasse(classe);
         for (Map.Entry<Scrutini_Intestazione, String> entry : intestazione.entrySet()) {
             String etichetta = entry.getKey().materia;
             String valore = entry.getValue();
@@ -48,12 +49,17 @@ public class AnalizzaFileScrutiniAndCarenze {
                     }
                     break;
                 case SCONOSCIUTO:
-                    throw new IllegalArgumentException("Tipo sconosciuto: " + entry.getKey().tipologia);
+                    throw new IllegalArgumentException("Tipo sconosciuto: " + entry.getKey());
                 case COMPORTAMENTO:
                     d.setVoto_comportamento(convertInteger(valore));
                     break;
                 case ESITO_FINALE:
                     d.setEsito(valore);
+                    break;
+                case CREDITO:
+                    d.setCredito(valore);
+                    break;
+                case CREDITO_ANNI_PREC:
                     break;
                 default:
                     throw new IllegalArgumentException("Tipo sconosciuto: " + entry.getKey().tipologia);
@@ -62,17 +68,21 @@ public class AnalizzaFileScrutiniAndCarenze {
         return d;
     }
 
-    public static ArrayList<DatiStudente> generaReport(File scrutini, File carenze, File report) throws IOException {
-        ArrayList<LinkedHashMap<Scrutini_Intestazione, String>> datiscrutini_totali = LeggiScrutini.analizzaFileScrutini(scrutini);
+    public static ArrayList<DatiStudente> generaReport(File scrutini, File carenze) throws IOException {
+        return generaReport(scrutini, carenze, null);
+    }
 
-        ArrayList<LinkedHashMap<RecuperoCarenze_Intestazione, String>> daticarenze = LeggiRiepilogoCarenze.analizzaFileCarenze(carenze);
+    public static ArrayList<DatiStudente> generaReport(File scrutini, File carenze, File report) throws IOException {
+        ArrayList<LinkedHashMap<Scrutini_Intestazione, String>> datiscrutini_totali = ParserFileEsitiScrutini.analizzaFileScrutini(scrutini);
+        String classe = ParserFileEsitiScrutini.analizzaFileScrutiniClasse(scrutini);
+        ArrayList<LinkedHashMap<RecuperoCarenze_Intestazione, String>> daticarenze = ParserFileRiepilogoCarenze.analizzaFileCarenze(carenze);
 
 
         //le intestazioni di scrutini e carenze sono nello stesso ordine
         ArrayList<Scrutini_Intestazione> intestazioniScrutini = new ArrayList<>(datiscrutini_totali.iterator().next().keySet());
-        ArrayList<RecuperoCarenze_Intestazione> intestazioniCarenze = new ArrayList<>(daticarenze.iterator().next().keySet());
+        ArrayList<RecuperoCarenze_Intestazione> intestazioniCarenze = daticarenze.size() == 0 ? new ArrayList<>() : new ArrayList<>(daticarenze.iterator().next().keySet());
 
-        if (daticarenze.size() != datiscrutini_totali.size()) {
+        if (daticarenze.size() > 0 && daticarenze.size() != datiscrutini_totali.size()) {
             throw new IllegalArgumentException("Numero studenti non corrispondente: carenze=" + daticarenze.size() + " scrutini=" + datiscrutini_totali.size());
         }
 
@@ -88,7 +98,7 @@ public class AnalizzaFileScrutiniAndCarenze {
             }
         }
 
-        if (materie != intestazioniCarenze.size() - 1) {
+        if (intestazioniCarenze.size() > 0 && materie != intestazioniCarenze.size() - 1) {
             throw new IllegalArgumentException("Numero materie per le intestazioni differenti.\n  scrutini:" + labelIntestazioniScrutini + "\n  carenze:" + intestazioniCarenze);
         }
 
@@ -111,7 +121,7 @@ public class AnalizzaFileScrutiniAndCarenze {
 
         //STAMPA
         for (LinkedHashMap<Scrutini_Intestazione, String> a : datiscrutini_totali) {
-            ris.add(estraiDatiStudente(a));
+            ris.add(estraiDatiStudente(classe, a));
             System.out.println("=================================");
             for (Map.Entry<Scrutini_Intestazione, String> e : a.entrySet()) {
                 System.out.println("  " + e.getKey().materia + "(" + e.getKey().tipologiaEnum + ") = " + e.getValue());
@@ -123,39 +133,40 @@ public class AnalizzaFileScrutiniAndCarenze {
         for (DatiStudente datiStudente : ris) {
             System.out.println(datiStudente);
         }
+        if (report != null) {
+            PrintStream rep = new PrintStream(report);
+            rep.println("<html><body>");
 
-        PrintStream rep = new PrintStream(report);
-        rep.println("<html><body>");
+            for (DatiStudente d : ris) {
+                rep.println("<h1>" + d.getNome() + "</h1>");
+                rep.println("<table style='width=100%' >");
+                rep.println("<tr><td><b>ESITO FINALE</b></td><td>" + d.getEsito() + "</td><td></td><td></td><td></td></tr>");
+                rep.println("<tr><td><b>COMPORTAMENTO</b></td><td>" + d.getVoto_comportamento() + "</td><td></td><td></td></td></td></td></tr>");
+                rep.println("<tr>" +
+                        "<td><b style='background-color:lightgray'>Disciplina</b></td>" +
+                        "<td><b style='background-color:lightgray'>Voto</b></td>" +
+                        "<td><b style='background-color:lightgray'>Assenze</b></td>" +
+                        "<td><b style='background-color:lightgray'>Modalità di recupero</b></td>" +
+                        "<td><b style='background-color:lightgray'>Annotazioni</b></td>" +
 
-        for (DatiStudente d : ris) {
-            rep.println("<h1>" + d.getNome() + "</h1>");
-            rep.println("<table style='width=100%' >");
-            rep.println("<tr><td><b>ESITO FINALE</b></td><td>" + d.getEsito() + "</td><td></td><td></td><td></td></tr>");
-            rep.println("<tr><td><b>COMPORTAMENTO</b></td><td>" + d.getVoto_comportamento() + "</td><td></td><td></td></td></td></td></tr>");
-            rep.println("<tr>" +
-                    "<td><b style='background-color:lightgray'>Disciplina</b></td>" +
-                    "<td><b style='background-color:lightgray'>Voto</b></td>" +
-                    "<td><b style='background-color:lightgray'>Assenze</b></td>" +
-                    "<td><b style='background-color:lightgray'>Modalità di recupero</b></td>" +
-                    "<td><b style='background-color:lightgray'>Annotazioni</b></td>" +
-
-                    "</tr>");
-            for (Map.Entry<String, DatiStudente.ScrutinioMateria> m : d.getMaterie().entrySet()) {
-                DatiStudente.ScrutinioMateria infoMateria = m.getValue();
-                String nomeMateria = m.getKey();
-                rep.println("<tr >" +
-                        "<td style='border:2px solid black;font-weight:bold;color:blu;font-size:14px'>" + nomeMateria + "</td>" +
-                        "<td style='border:1px solid gray; text-align:center'>" + voto(infoMateria) + "</td>" +
-                        "<td style='border:1px solid gray; text-align:center'>" + assenze(infoMateria) + "</td>" +
-                        "<td style='border:1px solid gray;color:red;'>" + infoMateria.modalitaRecupero + "</td>" +
-                        "<td style='border:1px solid gray'> </td>" +
                         "</tr>");
+                for (Map.Entry<String, DatiStudente.ScrutinioMateria> m : d.getMaterie().entrySet()) {
+                    DatiStudente.ScrutinioMateria infoMateria = m.getValue();
+                    String nomeMateria = m.getKey();
+                    rep.println("<tr >" +
+                            "<td style='border:2px solid black;font-weight:bold;color:blu;font-size:14px'>" + nomeMateria + "</td>" +
+                            "<td style='border:1px solid gray; text-align:center'>" + voto(infoMateria) + "</td>" +
+                            "<td style='border:1px solid gray; text-align:center'>" + assenze(infoMateria) + "</td>" +
+                            "<td style='border:1px solid gray;color:red;'>" + infoMateria.modalitaRecupero + "</td>" +
+                            "<td style='border:1px solid gray'> </td>" +
+                            "</tr>");
 
+                }
+                rep.println("</table><hr><br>");
             }
-            rep.println("</table><hr><br>");
+            rep.println("</body></html>");
+            rep.close();
         }
-        rep.println("</body></html>");
-        rep.close();
         return ris;
     }
 
@@ -177,10 +188,5 @@ public class AnalizzaFileScrutiniAndCarenze {
         return "-";
     }
 
-    public static void main(String[] args) throws IOException {
-        File carenze = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDadaUtilities/src/utility/scrutini/dati/1B-TRIMESTRE/RIEPILOGO CARENZE_TRIMESTRE_1B.PDF");
-        File scrutini = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDadaUtilities/src/utility/scrutini/dati/1B-TRIMESTRE/TABELLONE SCRUTINI-TRIMESTRE_1B.PDF");
-        File report = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDadaUtilities/src/utility/scrutini/dati/1B-TRIMESTRE/REPORT_1B.html");
-        generaReport(scrutini, carenze, report);
-    }
+
 }

@@ -18,7 +18,7 @@ import java.util.TreeSet;
 public class HtmlOutputOrario_perClassi extends HtmlOutputOrario {
     @Override
     protected String getSubTitle() {
-        return "Orario per Classi";
+        return "Orario per Classi: aula, docente, disciplina";
     }
 
     @Override

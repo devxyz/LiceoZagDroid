@@ -31,13 +31,13 @@ public class Report_perDocentiRidotto {
 
         inizioTabella(p);
 
-        int count = format == EPaperFormat.A4 ? 15 : 25;
+        int count = format == EPaperFormat.A4 ? 15 : 40;
         p.println("<h1>" + o.getTitolo() + "</h1>");
-
+        p.println("<h3>Orario Docenti: aula, classe, disciplina</h3>");
         final TreeSet<String> docenti = o.getDocenti();
         for (String docente : docenti) {
             if (count <= 0) {
-                count = format == EPaperFormat.A4 ? 15 : 25;
+                count = format == EPaperFormat.A4 ? 15 : 40;
                 fineTabella(p);
                 p.println("(*) modifiche all'orario<br>");
                 p.println("<div style='display: block; page-break-before: always;'></div>");
@@ -70,21 +70,26 @@ public class Report_perDocentiRidotto {
                         p.print("<td style='border:1px solid black;border-left:" + spessore + "px solid black;background-color:gray'><b>" + "</td>");
                     else {
                         if (ll.getClasse() == null) {
-                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>" + ll.getMateriaPrincipale() + x +
-                                    "</b></span></td>");
+                            if (ll.isDisposizionePura())
+                                p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>D" + x +
+                                        "</b></span></td>");
+                            else
+                                p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>*P*" + x +
+                                        "</b></span></td>");
 
                         } else {
 
+
                             String aulaBreve = ll.getAula() != null ? ll.getAula().simpleName() : "-";
+                            String materia = Report_perClasseRidotto2.abbreviazioneMateria(ll);
+
                             final String sx = showAule ? "<br><span style=''> (" + aulaBreve + ")" + x + "</span>" : "";
                             p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center'><b>" + ll.getClasse() +
-                                    "</b>" + sx + "</td>");
+                                    "</b><br><i>" + materia + "</i>" + sx + "</td>");
                         }
                     }
                 }
                 p.print("<td style='boder:0px;border-left:5px solid black;border-right:5px solid black; text-align:center'> &nbsp; </td>");
-
-
             }
 
 

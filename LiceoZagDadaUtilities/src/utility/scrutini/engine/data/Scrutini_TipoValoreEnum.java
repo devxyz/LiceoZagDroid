@@ -16,13 +16,28 @@ public enum Scrutini_TipoValoreEnum {
     ESITO_FINALE() {
         @Override
         boolean accept(String materia, String tipologia) {
-            return materia.trim().equalsIgnoreCase("ESITO FINALE");
+            return
+                    materia.trim().equalsIgnoreCase("ESITO FINALE")||
+                    materia.trim().equalsIgnoreCase("ESITO AMMISSIONE")
+                    ;
         }
     },
     COMPORTAMENTO() {
         @Override
         boolean accept(String materia, String tipologia) {
             return materia.trim().equalsIgnoreCase("COMPORTAMENTO");
+        }
+    },
+    CREDITO() {
+        @Override
+        boolean accept(String materia, String tipologia) {
+            return materia.trim().equalsIgnoreCase("CREDITO");
+        }
+    },
+    CREDITO_ANNI_PREC() {
+        @Override
+        boolean accept(String materia, String tipologia) {
+            return materia.trim().equalsIgnoreCase("Credito anni precedenti");
         }
     },
     ALUNNO() {

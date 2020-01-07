@@ -27,7 +27,9 @@ public enum FilterAule {
     LABORATORI_SOLO_SE_LIBERI {
         @Override
         boolean accept(String materia, ClassData classe, String docente, RoomData aula, Set<CompatibilitaLaboratorio> c) {
-            return true;
+            if (!aula.flagAulaLaboratorioPalestra()) return true;
+            return c.contains(new CompatibilitaLaboratorio(classe, materia, aula));
+//            return true;
         }
     },
 

@@ -15,6 +15,8 @@ import java.util.TreeSet;
 /**
  * Created by stefano on 25/09/2017.
  */
+@Deprecated
+//utilizza n.2
 public class Report_perClasseRidotto {
     private boolean showAule = true;
 

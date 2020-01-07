@@ -59,6 +59,11 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
         return new BitOrarioOraLezione(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza, docenteSostegno, nomeAula, classe, ora, giorno, BitOrarioOraEnumTipoLezione.LEZIONE_CON_COMPRESENZA);
     }
 
+    public static BitOrarioOraLezione aggiungiInsegnanteSostegno(BitOrarioOraLezione lezione, String docenteSostegno) {
+        return new BitOrarioOraLezione(lezione.docentePrincipale, lezione.materiaPrincipale, lezione.docenteCompresenza, lezione.materiaCompresenza, docenteSostegno,
+                lezione.aula, lezione.classe, lezione.ora, lezione.giorno, BitOrarioOraEnumTipoLezione.LEZIONE_CON_COMPRESENZA);
+    }
+
     //gestire note
     //ora lab
     public static BitOrarioOraLezione creaOraSostegno(String docentePrincipale, String materiaPrincipale, String docenteSostegno, RoomData nomeAula, ClassData classe, EOra ora, EGiorno giorno) {
@@ -71,6 +76,10 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
 
     public static BitOrarioOraLezione creaOraDisposizione(String docentePrincipale, EOra ora, EGiorno giorno) {
         return new BitOrarioOraLezione(docentePrincipale, "D", null, null, null, null, null, ora, giorno, BitOrarioOraEnumTipoLezione.DISPOSIZIONE);
+    }
+
+    public static BitOrarioOraLezione creaOraProgetto(String docentePrincipale, String descrizione, EOra ora, EGiorno giorno) {
+        return new BitOrarioOraLezione(docentePrincipale, descrizione, null, null, null, null, null, ora, giorno, BitOrarioOraEnumTipoLezione.DISPOSIZIONE);
     }
 
     //controlla se ha un parent
@@ -230,6 +239,14 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
 
     public ClassData getClasse() {
         return classe;
+    }
+
+    public boolean isDisposizionePura() {
+        return tipoLezione == BitOrarioOraEnumTipoLezione.DISPOSIZIONE && getMateriaPrincipale().equalsIgnoreCase("D");
+    }
+
+    public boolean isDisposizioneProgetto() {
+        return tipoLezione == BitOrarioOraEnumTipoLezione.DISPOSIZIONE && !getMateriaPrincipale().equalsIgnoreCase("D");
     }
 
     public EOra getOra() {

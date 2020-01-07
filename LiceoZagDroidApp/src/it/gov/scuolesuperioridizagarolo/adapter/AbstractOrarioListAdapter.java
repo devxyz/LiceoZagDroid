@@ -46,11 +46,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
         this.printInsegnante = printInsegnante;
         this.printClasse = printClasse;
         this.printInsegnanteSeCompresenza = printInsegnanteSeCompresenza;
-
-
         __updateInternalData();
-
-
     }
 
     public static void coloraViewAula(TextView textViewAula, ERoomArea location, Context a) {
@@ -366,7 +362,6 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
                     o.textViewDocenteClasse.setText(sb.toString().trim());
                     o.textViewLezione.setText(C_TextUtil.capitalize(lezione.getMateriaPrincipale().replace("_", " ")));
                 }
-
 
                 //disegno aula
                 RoomData nomeAula = lezione.getAula();

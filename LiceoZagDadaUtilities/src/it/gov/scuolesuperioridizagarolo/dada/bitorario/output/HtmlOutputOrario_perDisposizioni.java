@@ -1,6 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 //import dada.bitorario.data.*;
+
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraEnumTipoLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
@@ -39,7 +40,7 @@ public class HtmlOutputOrario_perDisposizioni extends HtmlOutputOrario {
         int uscita = 0;
         for (BitOrarioOraLezione l : classi) {
 
-            if (l.getTipoLezione() == BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
+            if (l.isDisposizionePura()) {
                 if (sb.length() > 0)
                     sb.append("<br>");
                 sb.append("<b>" + l.getDocentePrincipale() + "</b>");

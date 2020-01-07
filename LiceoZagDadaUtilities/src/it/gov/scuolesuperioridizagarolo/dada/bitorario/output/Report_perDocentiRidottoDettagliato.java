@@ -1,6 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 //import dada.bitorario.data.*;
+
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
@@ -68,8 +69,12 @@ public class Report_perDocentiRidottoDettagliato {
                         p.print("<td style='border:1px solid black;border-left:" + spessore + "px solid black;background-color:gray'>" + "</td>");
                     else {
                         if (ll.getClasse() == null) {
-                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>" + ll.getMateriaPrincipale() +
-                                    "</b></span></td>");
+                            if (ll.isDisposizionePura())
+                                p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>" + ll.getMateriaPrincipale() +
+                                        "</b></span></td>");
+                            else
+                                p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>Progetto " + ll.getMateriaPrincipale() +
+                                        "</b></span></td>");
 
                         } else {
 

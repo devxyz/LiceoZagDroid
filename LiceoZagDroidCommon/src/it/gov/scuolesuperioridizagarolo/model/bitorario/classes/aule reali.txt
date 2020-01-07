@@ -1,0 +1,19 @@
+    C16("C16", "Aula Didattica", 26, 45, ERoomArea.AREA_C, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    C17("C17", "Aula Didattica", 26, 51, ERoomArea.AREA_C, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    C18("C18", "Aula Didattica", 26, 52, ERoomArea.AREA_C, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    C19("C19", "Aula Didattica", 28, 53, ERoomArea.AREA_C, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    C20("C20", "Aula Didattica", 26, 54, ERoomArea.AREA_C, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    C21("C21", "Aula Didattica", 18, 55, ERoomArea.AREA_C, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//ANNO SCORSO 22
+
+    D22("D22", "Aula Didattica", 26, 61, ERoomArea.AREA_D, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    D23("D23", "Aula Didattica", 26, 62, ERoomArea.AREA_D, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    D24("D24", "Aula Didattica", 26, 63, ERoomArea.AREA_D, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    D25("D25", "Aula Didattica", 26, 64, ERoomArea.AREA_D, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),
+    D26("D26", "Aula Didattica", 18, 65, ERoomArea.AREA_D, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//???ANNO SCORSO 22
+
+    E27("E27", "Aula Didattica", 26, 44, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE - anno scorso 26 posti
+    E28("E28", "Aula Didattica", 26, 39, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    E29("E29", "Aula Didattica", 26, 40, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    E29sharp("E29#", "Aula Didattica", 26, 40, ERoomArea.AREA_E, RoomDataConstant.LIM_SI, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    E30("E30", "Aula Didattica", 26, 41, ERoomArea.AREA_E, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE
+    E30sharp("E30#", "Aula Didattica", 0, 41, ERoomArea.AREA_E, RoomDataConstant.LIM_NO, RoomDataConstant.PRESA_CORRENTE_NO),//TODO DA INSERIRE

@@ -23,7 +23,9 @@ public class Report_perAuleVuote {
     public void print(BitOrarioGrigliaOrario o, File f) throws IOException {
         PrintStream p = new PrintStream(f);
         p.print("<html><body>");
-        p.println("<h1>Aule vuote - " + o.getTitolo() + "</h1>");
+        p.println("<h1>" + o.getTitolo() + "</h1>");
+
+        p.println("<h3>Aule non utilizzate</h3>");
         p.print("<table style='width:100%;table-layout: fixed; border:4px solid black; '>");
 
         //==============================
@@ -43,15 +45,22 @@ public class Report_perAuleVuote {
                 if (!settimana.flagGiornoDiLezione()) continue;
 
                 final TreeSet<RoomData> l = o.getAuleVuote(ora, settimana);
-                p.print("<td style='border:1px solid black; text-align:left;padding-left:5px'>");
-                for (RoomData s : l) {
-                    final RoomData room = (s);
-                    if (room.flagAulaFittizia()) continue;
-                    if (room.maxStudents == 0) continue;
+                final TreeSet<RoomData> l2 = o.getAuleUtilizzate(ora, settimana);
 
-                    p.print(" <b>" + s + "</b> - " + (s).maxStudents + " posti " + (s.flagLIM ? "LIM" : ""));
+                p.print("<td style='border:1px solid black; text-align:left;padding-left:5px'><ul>");
+                if (l2.size() == 0) {
+                    p.print("Nessuna aula utilizzata");
+                } else {
+
+                    for (RoomData s : l) {
+                        final RoomData room = (s);
+                        if (room.flagAulaFittizia()) continue;
+                        if (room.maxStudents == 0) continue;
+
+                        p.print("<li><b>" + s + "</b> - " + (s).maxStudents + " posti " + (s.flagLIM ? "LIM" : "") + "</li>");
+                    }
                 }
-                p.print("</td>");
+                p.print("</ul></td>");
 
 
             }
