@@ -19,7 +19,7 @@ public class NoteVariazioniBitOrarioGrigliaOrario {
 
         final ArrayList<BitOrarioOraLezione> lezioni = modifica.getLezioni();
         for (BitOrarioOraLezione l : lezioni) {
-            final BitOrarioOraLezione lezioneConDocente = originale.getLezioneConDocente(l.getOra(), l.getGiorno(), l.getDocentePrincipale());
+            final BitOrarioOraLezione lezioneConDocente = originale.getLezioneConDocente(l.getDocentePrincipale(), l.getGiorno(), l.getOra());
             if (!BitOrarioOraLezione.saveEquals(l, lezioneConDocente)) {
 
                 ris.mapNote.put(l, "** modificato");

@@ -43,7 +43,7 @@ public class LessonConstraint_ClasseFermaInAulaDidattica_ignoreLabs extends Abst
 
     @Override
     protected boolean __check(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza, String docenteSostegno, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
-        if (aula != null && aula.flagAulaFittizia())
+        if (aula != null && aula.isAulaFittizia())
             return true;
         if (this.classe == classe)
             if (this.giorno.contains(giorno)) {

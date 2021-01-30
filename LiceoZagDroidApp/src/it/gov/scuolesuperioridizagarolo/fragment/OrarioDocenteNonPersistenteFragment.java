@@ -15,7 +15,7 @@ public class OrarioDocenteNonPersistenteFragment extends AbstractOrarioFragment<
 
     @Override
     protected String[] getFilterValues() {
-        final TreeSet<String> docenti = new TreeSet<>(containerOrari.getDocenti());
+        final TreeSet<String> docenti = new TreeSet<>(containerOrari.getDocenti(true));
         return docenti.toArray(new String[docenti.size()]);
     }
 

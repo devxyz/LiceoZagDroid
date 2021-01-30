@@ -1,0 +1,858 @@
+First Name [Required]    ,Last Name [Required],Email Address [Required]                                                 ,Employee ID,Department
+DAVID                    ,ABUNEI              ,david.abunei.00007271@scuolesuperioridizagarolo.edu.it                   ,7271       ,4F_LICEO_2019/20
+GIULIA                   ,ACCORDINO           ,giulia.accordino.00007269@scuolesuperioridizagarolo.edu.it               ,7269       ,3E_LICEO_2019/20
+FABRIZIO                 ,ACHITEI             ,fabrizio.achitei.00007711@scuolesuperioridizagarolo.edu.it               ,7711       ,2B_LICEO_2019/20
+BEATRICE                 ,ADAMO               ,beatrice.adamo.00007118@scuolesuperioridizagarolo.edu.it                 ,7118       ,4C_LICEO_2019/20
+VALENTINA                ,AGLIETTI            ,valentina.aglietti.00007366@scuolesuperioridizagarolo.edu.it             ,7366       ,3A_LICEO_2019/20
+LUCA                     ,AGUIARI             ,luca.aguiari.00007631@scuolesuperioridizagarolo.edu.it                   ,7631       ,1D_LICEO_2019/20
+GIULIA                   ,AIFTINCAI           ,giulia.aiftincai.00007655@scuolesuperioridizagarolo.edu.it               ,7655       ,2F_LICEO_2019/20
+BEATRICE                 ,ALEANDRI            ,beatrice.aleandri.00007365@scuolesuperioridizagarolo.edu.it              ,7365       ,3C_LICEO_2019/20
+ALESSIO                  ,ALESE               ,alessio.alese.00007960@scuolesuperioridizagarolo.edu.it                  ,7960       ,1D_LICEO_2019/20
+ALESSIO                  ,ALESE               ,alessio.alese.00007960@scuolesuperioridizagarolo.edu.it                  ,7960       ,1D_LICEO_2019/20
+FEDERICO                 ,ALESE               ,federico.alese.00007953@scuolesuperioridizagarolo.edu.it                 ,7953       ,1F_LICEO_2019/20
+NICO                     ,ALESE               ,nico.alese.00007017@scuolesuperioridizagarolo.edu.it                     ,7017       ,5C_LICEO_2019/20
+MARTINA                  ,ALEXANDRU           ,martina.alexandru.00007329@scuolesuperioridizagarolo.edu.it              ,7329       ,3F_LICEO_2019/20
+MATTIA                   ,ALICATA             ,mattia.alicata.00007731@scuolesuperioridizagarolo.edu.it                 ,7731       ,2F_LICEO_2019/20
+LUNA                     ,ALOE                ,luna.aloe.00007618@scuolesuperioridizagarolo.edu.it                      ,7618       ,2B_LICEO_2019/20
+GEORGE                   ,ANDRONIC            ,george.andronic.00007155@scuolesuperioridizagarolo.edu.it                ,7155       ,4F_LICEO_2019/20
+MARTA                    ,ANDRONIC            ,marta.andronic.00007636@scuolesuperioridizagarolo.edu.it                 ,7636       ,2B_LICEO_2019/20
+FILIPPO                  ,ANGELUCCI           ,filippo.angelucci.00007319@scuolesuperioridizagarolo.edu.it              ,7319       ,3C_LICEO_2019/20
+GIULIA                   ,ANGELUCCI           ,giulia.angelucci.00007393@scuolesuperioridizagarolo.edu.it               ,7393       ,3E_LICEO_2019/20
+LEONARDO                 ,ANTONELLI           ,leonardo.antonelli.00007940@scuolesuperioridizagarolo.edu.it             ,7940       ,1C_LICEO_2019/20
+FEDERICO                 ,ANTONELLINI         ,federico.antonellini.00007768@scuolesuperioridizagarolo.edu.it           ,7768       ,5D_LICEO_2019/20
+EMANUELE                 ,ANZELLOTTI          ,emanuele.anzellotti.00006957@scuolesuperioridizagarolo.edu.it            ,6957       ,5E_LICEO_2019/20
+SILVIA                   ,ARDUINI             ,silvia.arduini.00007969@scuolesuperioridizagarolo.edu.it                 ,7969       ,1G_LICEO_2019/20
+FLAVIO VINCENZO          ,ARGIRO'             ,flaviovincenzo.argiro.00007322@scuolesuperioridizagarolo.edu.it          ,7322       ,3F_LICEO_2019/20
+DANIELE                  ,ARON                ,daniele.aron.00007675@scuolesuperioridizagarolo.edu.it                   ,7675       ,2D_LICEO_2019/20
+FLAVIO                   ,ARQUILLA            ,flavio.arquilla.00007500@scuolesuperioridizagarolo.edu.it                ,7500       ,3E_LICEO_2019/20
+GIANMARCO                ,ASCENZI             ,gianmarco.ascenzi.00007377@scuolesuperioridizagarolo.edu.it              ,7377       ,3D_LICEO_2019/20
+DESIRE'E                 ,ATTILIA             ,desiree.attilia.00007653@scuolesuperioridizagarolo.edu.it                ,7653       ,2D_LICEO_2019/20
+LORENZO                  ,AURICCHIO           ,lorenzo.auricchio.00007341@scuolesuperioridizagarolo.edu.it              ,7341       ,3B_LICEO_2019/20
+AURORA                   ,AVENI               ,aurora.aveni.00007839@scuolesuperioridizagarolo.edu.it                   ,7839       ,1C_LICEO_2019/20
+MATTEO                   ,BACCI               ,matteo.bacci.00007679@scuolesuperioridizagarolo.edu.it                   ,7679       ,2E_LICEO_2019/20
+FRANCESCO                ,BAGATTI             ,francesco.bagatti.00007036@scuolesuperioridizagarolo.edu.it              ,7036       ,5C_LICEO_2019/20
+ALESSIA                  ,BALDARI             ,alessia.baldari.00006919@scuolesuperioridizagarolo.edu.it                ,6919       ,5E_LICEO_2019/20
+MARIA LUIZA              ,BALTAG              ,marialuiza.baltag.00007260@scuolesuperioridizagarolo.edu.it              ,7260       ,3E_LICEO_2019/20
+LORENZO MARIA            ,BANGRAZI            ,lorenzomaria.bangrazi.00007603@scuolesuperioridizagarolo.edu.it          ,7603       ,2F_LICEO_2019/20
+ALESSIO                  ,BARONE              ,alessio.barone.00007826@scuolesuperioridizagarolo.edu.it                 ,7826       ,1F_LICEO_2019/20
+LORENZO                  ,BARTALINI           ,lorenzo.bartalini.00007564@scuolesuperioridizagarolo.edu.it              ,7564       ,2D_LICEO_2019/20
+BEATRICE                 ,BARTOLOMEI          ,beatrice.bartolomei.00007838@scuolesuperioridizagarolo.edu.it            ,7838       ,1C_LICEO_2019/20
+GIULIA                   ,BARTOLOMUCCI        ,giulia.bartolomucci.00007145@scuolesuperioridizagarolo.edu.it            ,7145       ,4A_LICEO_2019/20
+DENNIS ANDREI            ,BASCANDURA          ,dennisandrei.bascandura.00007882@scuolesuperioridizagarolo.edu.it        ,7882       ,1B_LICEO_2019/20
+DIEGO                    ,BASCIANI            ,diego.basciani.00007817@scuolesuperioridizagarolo.edu.it                 ,7817       ,1F_LICEO_2019/20
+ELISA                    ,BASSANI             ,elisa.bassani.00007161@scuolesuperioridizagarolo.edu.it                  ,7161       ,4E_LICEO_2019/20
+MARTINA                  ,BASTO               ,martina.basto.00007896@scuolesuperioridizagarolo.edu.it                  ,7896       ,1B_LICEO_2019/20
+ENRICO                   ,BATTAGLINI          ,enrico.battaglini.00007910@scuolesuperioridizagarolo.edu.it              ,7910       ,1G_LICEO_2019/20
+BEATRICE                 ,BATTISTELLI         ,beatrice.battistelli.00007176@scuolesuperioridizagarolo.edu.it           ,7176       ,4E_LICEO_2019/20
+MARKO                    ,BEGAJ               ,marko.begaj.00007943@scuolesuperioridizagarolo.edu.it                    ,7943       ,1A_LICEO_2019/20
+FRANCESCO                ,BELLI               ,francesco.belli.00007585@scuolesuperioridizagarolo.edu.it                ,7585       ,2H_LICEO_2019/20
+DAMIANO                  ,BELMONTE            ,damiano.belmonte.00007788@scuolesuperioridizagarolo.edu.it               ,7788       ,5C_LICEO_2019/20
+LORENZO                  ,BELTRAMI            ,lorenzo.beltrami.00007466@scuolesuperioridizagarolo.edu.it               ,7466       ,3D_LICEO_2019/20
+AGNESE                   ,BENCIVENGA          ,agnese.bencivenga.00006946@scuolesuperioridizagarolo.edu.it              ,6946       ,5C_LICEO_2019/20
+DENISE                   ,BENEGIANO           ,denise.benegiano.00006964@scuolesuperioridizagarolo.edu.it               ,6964       ,5B_LICEO_2019/20
+LEONARDO                 ,BERARDI             ,leonardo.berardi.00007737@scuolesuperioridizagarolo.edu.it               ,7737       ,2F_LICEO_2019/20
+DARIO                    ,BERLENGHI           ,dario.berlenghi.00007201@scuolesuperioridizagarolo.edu.it                ,7201       ,4E_LICEO_2019/20
+MARCO                    ,BERNARDINI          ,marco.bernardini.00007605@scuolesuperioridizagarolo.edu.it               ,7605       ,2F_LICEO_2019/20
+GABRIELE                 ,BERNASSOLA          ,gabriele.bernassola.00007136@scuolesuperioridizagarolo.edu.it            ,7136       ,4B_LICEO_2019/20
+CARLO VEDRAN MERCE'      ,BIANCO              ,carlovedranmerce.bianco.00007892@scuolesuperioridizagarolo.edu.it        ,7892       ,1H_LICEO_2019/20
+ROBERTO                  ,BIANCUCCI           ,roberto.biancucci.00007045@scuolesuperioridizagarolo.edu.it              ,7045       ,5E_LICEO_2019/20
+ALESSIO                  ,BIDETTA             ,alessio.bidetta.00007699@scuolesuperioridizagarolo.edu.it                ,7699       ,2A_LICEO_2019/20
+VALERIO                  ,BIELLI              ,valerio.bielli.00007148@scuolesuperioridizagarolo.edu.it                 ,7148       ,4F_LICEO_2019/20
+EMANUELA                 ,BIRZU               ,emanuela.birzu.00007721@scuolesuperioridizagarolo.edu.it                 ,7721       ,2F_LICEO_2019/20
+FLAVIANO                 ,BITSCH              ,flaviano.bitsch.00007108@scuolesuperioridizagarolo.edu.it                ,7108       ,3D_LICEO_2019/20
+ANASTASIA                ,BLASI               ,anastasia.blasi.00007239@scuolesuperioridizagarolo.edu.it                ,7239       ,4A_LICEO_2019/20
+MATTIA                   ,BLASI               ,mattia.blasi.00007729@scuolesuperioridizagarolo.edu.it                   ,7729       ,2A_LICEO_2019/20
+FRANCESCO                ,BOCCI               ,francesco.bocci.00007937@scuolesuperioridizagarolo.edu.it                ,7937       ,1D_LICEO_2019/20
+GABRIELE                 ,BOCCIA              ,gabriele.boccia.00007843@scuolesuperioridizagarolo.edu.it                ,7843       ,1B_LICEO_2019/20
+MICHELA                  ,BOCCIA              ,michela.boccia.00007122@scuolesuperioridizagarolo.edu.it                 ,7122       ,4G_LICEO_2019/20
+VALENTINA                ,BOCCIA              ,valentina.boccia.00007041@scuolesuperioridizagarolo.edu.it               ,7041       ,5D_LICEO_2019/20
+GIUSEPPE                 ,BONAFEDE            ,giuseppe.bonafede.00007255@scuolesuperioridizagarolo.edu.it              ,7255       ,3D_LICEO_2019/20
+SAMUELE                  ,BONAFEDE            ,samuele.bonafede.00007023@scuolesuperioridizagarolo.edu.it               ,7023       ,5A_LICEO_2019/20
+RACHELE                  ,BONANNI             ,rachele.bonanni.00007032@scuolesuperioridizagarolo.edu.it                ,7032       ,5C_LICEO_2019/20
+ILARIA                   ,BORTOLONI           ,ilaria.bortoloni.00007169@scuolesuperioridizagarolo.edu.it               ,7169       ,4F_LICEO_2019/20
+ALESSIO                  ,BRAMATI             ,alessio.bramati.00007327@scuolesuperioridizagarolo.edu.it                ,7327       ,3G_LICEO_2019/20
+GIULIA                   ,BRANDOLINI          ,giulia.brandolini.00007823@scuolesuperioridizagarolo.edu.it              ,7823       ,1E_LICEO_2019/20
+SOFIA                    ,BRAVI               ,sofia.bravi.00007115@scuolesuperioridizagarolo.edu.it                    ,7115       ,4D_LICEO_2019/20
+MARCO                    ,BROZZESI            ,marco.brozzesi.00007855@scuolesuperioridizagarolo.edu.it                 ,7855       ,1F_LICEO_2019/20
+SOFIA NICOL              ,BRUMAR              ,sofianicol.brumar.00007135@scuolesuperioridizagarolo.edu.it              ,7135       ,4C_LICEO_2019/20
+LEONARDO                 ,BRUNI               ,leonardo.bruni.00007231@scuolesuperioridizagarolo.edu.it                 ,7231       ,4F_LICEO_2019/20
+ARTUR                    ,BUHNA               ,artur.buhna.00007432@scuolesuperioridizagarolo.edu.it                    ,7432       ,3H_LICEO_2019/20
+DIEGO                    ,BULLONI             ,diego.bulloni.00007931@scuolesuperioridizagarolo.edu.it                  ,7931       ,1H_LICEO_2019/20
+MANUEL                   ,BUO                 ,manuel.buo.00007872@scuolesuperioridizagarolo.edu.it                     ,7872       ,1D_LICEO_2019/20
+SAMUELE                  ,BUSSI               ,samuele.bussi.00007932@scuolesuperioridizagarolo.edu.it                  ,7932       ,1F_LICEO_2019/20
+SARA                     ,BUTTINELLI          ,sara.buttinelli.00007825@scuolesuperioridizagarolo.edu.it                ,7825       ,1F_LICEO_2019/20
+PIERFRANCESCO            ,CAFARO              ,pierfrancesco.cafaro.00007157@scuolesuperioridizagarolo.edu.it           ,7157       ,4A_LICEO_2019/20
+RICCARDO  FRANCESCO MARIA,CAIAZZA             ,riccardofrancescomaria.caiazza.00007769@scuolesuperioridizagarolo.edu.it ,7769       ,4E_LICEO_2019/20
+CHIARA                   ,CALCAGNA            ,chiara.calcagna.00007560@scuolesuperioridizagarolo.edu.it                ,7560       ,2F_LICEO_2019/20
+SANDRA GABRIELLA         ,CALIMENT            ,sandragabriella.caliment.00007132@scuolesuperioridizagarolo.edu.it       ,7132       ,4A_LICEO_2019/20
+LUCA                     ,CALLEGARI           ,luca.callegari.00007245@scuolesuperioridizagarolo.edu.it                 ,7245       ,4D_LICEO_2019/20
+MATTEO                   ,CALOIARO            ,matteo.caloiaro.00007921@scuolesuperioridizagarolo.edu.it                ,7921       ,1D_LICEO_2019/20
+LUISA                    ,CALVANO             ,luisa.calvano.00007224@scuolesuperioridizagarolo.edu.it                  ,7224       ,4A_LICEO_2019/20
+GIULIA                   ,CAMILLONI           ,giulia.camilloni.00007844@scuolesuperioridizagarolo.edu.it               ,7844       ,1E_LICEO_2019/20
+SIMONE                   ,CAMINITI            ,simone.caminiti.00007833@scuolesuperioridizagarolo.edu.it                ,7833       ,1C_LICEO_2019/20
+LORENZO                  ,CAMPANA             ,lorenzo.campana.00006993@scuolesuperioridizagarolo.edu.it                ,6993       ,5A_LICEO_2019/20
+ALESSANDRO               ,CAMPOLI             ,alessandro.campoli.00007941@scuolesuperioridizagarolo.edu.it             ,7941       ,1E_LICEO_2019/20
+FRANCESCO                ,CAMPOLI             ,francesco.campoli.00006970@scuolesuperioridizagarolo.edu.it              ,6970       ,5B_LICEO_2019/20
+ANDREA                   ,CANDIDO             ,andrea.candido.00007503@scuolesuperioridizagarolo.edu.it                 ,7503       ,3G_LICEO_2019/20
+TIZIANO                  ,CANGINI             ,tiziano.cangini.00007570@scuolesuperioridizagarolo.edu.it                ,7570       ,2A_LICEO_2019/20
+MARIO                    ,CANTELLI            ,mario.cantelli.00006965@scuolesuperioridizagarolo.edu.it                 ,6965       ,5C_LICEO_2019/20
+LORENZO                  ,CAPODAGLIO          ,lorenzo.capodaglio.00007908@scuolesuperioridizagarolo.edu.it             ,7908       ,1F_LICEO_2019/20
+TIZIANO                  ,CAPOROSSI           ,tiziano.caporossi.00007492@scuolesuperioridizagarolo.edu.it              ,7492       ,3H_LICEO_2019/20
+ALESSANDRO               ,CAPPILLI            ,alessandro.cappilli.00007611@scuolesuperioridizagarolo.edu.it            ,7611       ,2A_LICEO_2019/20
+ANTONIO                  ,CAPPILLI            ,antonio.cappilli.00007177@scuolesuperioridizagarolo.edu.it               ,7177       ,4A_LICEO_2019/20
+CLAUDIO                  ,CARBONARI           ,claudio.carbonari.00007724@scuolesuperioridizagarolo.edu.it              ,7724       ,2F_LICEO_2019/20
+ANDREA                   ,CARBONE             ,andrea.carbone.00007914@scuolesuperioridizagarolo.edu.it                 ,7914       ,1B_LICEO_2019/20
+MATTEO                   ,CARBONE             ,matteo.carbone.00007920@scuolesuperioridizagarolo.edu.it                 ,7920       ,1B_LICEO_2019/20
+CHIARA                   ,CARDARELLI          ,chiara.cardarelli.00007620@scuolesuperioridizagarolo.edu.it              ,7620       ,2C_LICEO_2019/20
+ALESSANDRO               ,CARDONE             ,alessandro.cardone.00007660@scuolesuperioridizagarolo.edu.it             ,7660       ,2A_LICEO_2019/20
+LORENZO                  ,CARERI              ,lorenzo.careri.00007728@scuolesuperioridizagarolo.edu.it                 ,7728       ,2B_LICEO_2019/20
+ANDREA                   ,CARFORA             ,andrea.carfora.00007909@scuolesuperioridizagarolo.edu.it                 ,7909       ,1H_LICEO_2019/20
+GAIA                     ,CARLETTI            ,gaia.carletti.00007709@scuolesuperioridizagarolo.edu.it                  ,7709       ,2A_LICEO_2019/20
+GIULIA                   ,CAROSI              ,giulia.carosi.00007444@scuolesuperioridizagarolo.edu.it                  ,7444       ,3E_LICEO_2019/20
+FEDERICO                 ,CARPINETA           ,federico.carpineta.00007693@scuolesuperioridizagarolo.edu.it             ,7693       ,2H_LICEO_2019/20
+LIA                      ,CARPINETA           ,lia.carpineta.00007173@scuolesuperioridizagarolo.edu.it                  ,7173       ,4A_LICEO_2019/20
+FEDERICO                 ,CARRARINI           ,federico.carrarini.00007442@scuolesuperioridizagarolo.edu.it             ,7442       ,3H_LICEO_2019/20
+JACOPO                   ,CARRARINI           ,jacopo.carrarini.00006686@scuolesuperioridizagarolo.edu.it               ,6686       ,5D_LICEO_2019/20
+ALESSIA                  ,CARTONI             ,alessia.cartoni.00007582@scuolesuperioridizagarolo.edu.it                ,7582       ,2E_LICEO_2019/20
+IRENE                    ,CASALE              ,irene.casale.00007265@scuolesuperioridizagarolo.edu.it                   ,7265       ,4C_LICEO_2019/20
+LIVIA                    ,CASALE              ,livia.casale.00007469@scuolesuperioridizagarolo.edu.it                   ,7469       ,3H_LICEO_2019/20
+DANIEL                   ,CASTELLUCCI         ,daniel.castellucci.00007609@scuolesuperioridizagarolo.edu.it             ,7609       ,2H_LICEO_2019/20
+FLAVIO                   ,CASTRECHINI         ,flavio.castrechini.00007988@scuolesuperioridizagarolo.edu.it             ,7988       ,1F_LICEO_2019/20
+FILIPPO                  ,CATALANI            ,filippo.catalani.00007355@scuolesuperioridizagarolo.edu.it               ,7355       ,3A_LICEO_2019/20
+PAOLO                    ,CATALANI            ,paolo.catalani.00007360@scuolesuperioridizagarolo.edu.it                 ,7360       ,3G_LICEO_2019/20
+NOEMI                    ,CAVARICCI           ,noemi.cavaricci.00007680@scuolesuperioridizagarolo.edu.it                ,7680       ,2H_LICEO_2019/20
+MATTIA                   ,CECCOBELLI          ,mattia.ceccobelli.00007852@scuolesuperioridizagarolo.edu.it              ,7852       ,1D_LICEO_2019/20
+SERENA                   ,CECCOBELLI          ,serena.ceccobelli.00007596@scuolesuperioridizagarolo.edu.it              ,7596       ,2H_LICEO_2019/20
+ANDREA                   ,CECCONI             ,andrea.cecconi.00007011@scuolesuperioridizagarolo.edu.it                 ,7011       ,5C_LICEO_2019/20
+CAMILLA                  ,CECCONI             ,camilla.cecconi.00007681@scuolesuperioridizagarolo.edu.it                ,7681       ,2A_LICEO_2019/20
+CRISTINA                 ,CELLETTI            ,cristina.celletti.00007604@scuolesuperioridizagarolo.edu.it              ,7604       ,2D_LICEO_2019/20
+NICOLO'                  ,CELLINI             ,nicolo.cellini.00007219@scuolesuperioridizagarolo.edu.it                 ,7219       ,3E_LICEO_2019/20
+MARCO                    ,CENSI               ,marco.censi.00007150@scuolesuperioridizagarolo.edu.it                    ,7150       ,4F_LICEO_2019/20
+RARES CLAUDIU            ,CEPOIU              ,raresclaudiu.cepoiu.00006682@scuolesuperioridizagarolo.edu.it            ,6682       ,5D_LICEO_2019/20
+BRUNO                    ,CERACCHI            ,bruno.ceracchi.00007242@scuolesuperioridizagarolo.edu.it                 ,7242       ,3G_LICEO_2019/20
+MATTEO                   ,CERBARA             ,matteo.cerbara.00007572@scuolesuperioridizagarolo.edu.it                 ,7572       ,2H_LICEO_2019/20
+FEDERICO                 ,CERBONI             ,federico.cerboni.00007284@scuolesuperioridizagarolo.edu.it               ,7284       ,4F_LICEO_2019/20
+RACHELE                  ,CERCI               ,rachele.cerci.00007450@scuolesuperioridizagarolo.edu.it                  ,7450       ,3G_LICEO_2019/20
+NICOLO'                  ,CERESINI            ,nicolo.ceresini.00007980@scuolesuperioridizagarolo.edu.it                ,7980       ,1D_LICEO_2019/20
+GRETA                    ,CESARETTI           ,greta.cesaretti.00007334@scuolesuperioridizagarolo.edu.it                ,7334       ,3G_LICEO_2019/20
+EMMA                     ,CESAROTTI           ,emma.cesarotti.00006960@scuolesuperioridizagarolo.edu.it                 ,6960       ,5B_LICEO_2019/20
+ANDREA                   ,CETORELLI           ,andrea.cetorelli.00006924@scuolesuperioridizagarolo.edu.it               ,6924       ,5C_LICEO_2019/20
+MARTA                    ,CHECCONI            ,marta.checconi.00007734@scuolesuperioridizagarolo.edu.it                 ,7734       ,2C_LICEO_2019/20
+ERICA                    ,CHIACCHIARARELLI    ,erica.chiacchiararelli.00007866@scuolesuperioridizagarolo.edu.it         ,7866       ,1E_LICEO_2019/20
+LAVINIA                  ,CHIALASTRI          ,lavinia.chialastri.00007441@scuolesuperioridizagarolo.edu.it             ,7441       ,3E_LICEO_2019/20
+LORENZO                  ,CHIALASTRI          ,lorenzo.chialastri.00007601@scuolesuperioridizagarolo.edu.it             ,7601       ,2E_LICEO_2019/20
+PAOLO                    ,CHIAPPARELLI        ,paolo.chiapparelli.00007956@scuolesuperioridizagarolo.edu.it             ,7956       ,1B_LICEO_2019/20
+SIMONE                   ,CHIAPPARELLI        ,simone.chiapparelli.00007955@scuolesuperioridizagarolo.edu.it            ,7955       ,1B_LICEO_2019/20
+IDRISS                   ,CHRICHMI            ,idriss.chrichmi.00007791@scuolesuperioridizagarolo.edu.it                ,7791       ,2F_LICEO_2019/20
+GABRIELE                 ,CIAMPAGLIA          ,gabriele.ciampaglia.00007037@scuolesuperioridizagarolo.edu.it            ,7037       ,5A_LICEO_2019/20
+MICHELE                  ,CIANFRIGLIA         ,michele.cianfriglia.00007258@scuolesuperioridizagarolo.edu.it            ,7258       ,4B_LICEO_2019/20
+SAMUELE                  ,CIANI               ,samuele.ciani.00007820@scuolesuperioridizagarolo.edu.it                  ,7820       ,1H_LICEO_2019/20
+GIANLUCA                 ,CIAVARDINI          ,gianluca.ciavardini.00008042@scuolesuperioridizagarolo.edu.it            ,8042       ,2D_LICEO_2019/20
+SOFIA                    ,CICCOLELLA          ,sofia.ciccolella.00007841@scuolesuperioridizagarolo.edu.it               ,7841       ,1G_LICEO_2019/20
+NICOLAS                  ,CICERCHIA           ,nicolas.cicerchia.00007349@scuolesuperioridizagarolo.edu.it              ,7349       ,3D_LICEO_2019/20
+SILVIA                   ,CILIA               ,silvia.cilia.00007222@scuolesuperioridizagarolo.edu.it                   ,7222       ,4C_LICEO_2019/20
+SERENA                   ,CINILI              ,serena.cinili.00007607@scuolesuperioridizagarolo.edu.it                  ,7607       ,2C_LICEO_2019/20
+MATTEO                   ,CIPOLLETTA          ,matteo.cipolletta.00007158@scuolesuperioridizagarolo.edu.it              ,7158       ,4B_LICEO_2019/20
+MARCO                    ,CIPRIANI            ,marco.cipriani.00006982@scuolesuperioridizagarolo.edu.it                 ,6982       ,5B_LICEO_2019/20
+ERIC AMIEL               ,CIUBOTARIU          ,ericamiel.ciubotariu.00007889@scuolesuperioridizagarolo.edu.it           ,7889       ,1D_LICEO_2019/20
+GIULIA                   ,COCCIA              ,giulia.coccia.00007584@scuolesuperioridizagarolo.edu.it                  ,7584       ,2A_LICEO_2019/20
+LORENZO                  ,COCCIA              ,lorenzo.coccia.00007684@scuolesuperioridizagarolo.edu.it                 ,7684       ,2E_LICEO_2019/20
+LUCA                     ,COCCIA              ,luca.coccia.00007691@scuolesuperioridizagarolo.edu.it                    ,7691       ,2D_LICEO_2019/20
+LUIGI                    ,COCCIA              ,luigi.coccia.00007767@scuolesuperioridizagarolo.edu.it                   ,7767       ,4D_LICEO_2019/20
+ARIANNA                  ,COLAGROSSI          ,arianna.colagrossi.00007683@scuolesuperioridizagarolo.edu.it             ,7683       ,2A_LICEO_2019/20
+IACOPO                   ,COLAGROSSI          ,iacopo.colagrossi.00007142@scuolesuperioridizagarolo.edu.it              ,7142       ,4B_LICEO_2019/20
+LORENZO                  ,COLAGROSSI          ,lorenzo.colagrossi.00007454@scuolesuperioridizagarolo.edu.it             ,7454       ,3F_LICEO_2019/20
+CHIARA                   ,COLAIACOMO          ,chiara.colaiacomo.00007990@scuolesuperioridizagarolo.edu.it              ,7990       ,1C_LICEO_2019/20
+ADRIAN PAVEL             ,COMAN               ,adrianpavel.coman.00007842@scuolesuperioridizagarolo.edu.it              ,7842       ,1G_LICEO_2019/20
+WYNAY YARYNA             ,CONEJO LEMA         ,wynayyaryna.conejolema.00007649@scuolesuperioridizagarolo.edu.it         ,7649       ,1F_LICEO_2019/20
+MICHELA                  ,CONFORTI            ,michela.conforti.00007730@scuolesuperioridizagarolo.edu.it               ,7730       ,2F_LICEO_2019/20
+BENEDETTA                ,CONTE               ,benedetta.conte.00007217@scuolesuperioridizagarolo.edu.it                ,7217       ,4C_LICEO_2019/20
+VERONICA                 ,CONTI               ,veronica.conti.00007954@scuolesuperioridizagarolo.edu.it                 ,7954       ,1A_LICEO_2019/20
+NICHOLAS                 ,CORCIULO            ,nicholas.corciulo.00007840@scuolesuperioridizagarolo.edu.it              ,7840       ,1D_LICEO_2019/20
+NICOLE                   ,CORGNALE            ,nicole.corgnale.00007930@scuolesuperioridizagarolo.edu.it                ,7930       ,1H_LICEO_2019/20
+MICHELE                  ,CORRADINO           ,michele.corradino.00007782@scuolesuperioridizagarolo.edu.it              ,7782       ,2F_LICEO_2019/20
+ASIA                     ,CORRENTI            ,asia.correnti.00007399@scuolesuperioridizagarolo.edu.it                  ,7399       ,3D_LICEO_2019/20
+MIRKO                    ,COSCO               ,mirko.cosco.00007127@scuolesuperioridizagarolo.edu.it                    ,7127       ,4G_LICEO_2019/20
+FABIANA GIORGIANA        ,COSMA               ,fabianagiorgiana.cosma.00007426@scuolesuperioridizagarolo.edu.it         ,7426       ,3G_LICEO_2019/20
+SOFIA                    ,COSSERO             ,sofia.cossero.00007392@scuolesuperioridizagarolo.edu.it                  ,7392       ,3C_LICEO_2019/20
+ANDREEA ALEXANDRA        ,COSTEA              ,andreeaalexandra.costea.00007306@scuolesuperioridizagarolo.edu.it        ,7306       ,4D_LICEO_2019/20
+MATTEO                   ,CRACIUN             ,matteo.craciun.00007478@scuolesuperioridizagarolo.edu.it                 ,7478       ,3B_LICEO_2019/20
+ISABELLA                 ,CRISAN              ,isabella.crisan.00007599@scuolesuperioridizagarolo.edu.it                ,7599       ,2C_LICEO_2019/20
+FRANCESCO MATTIA         ,CRISTINO            ,francescomattia.cristino.00007568@scuolesuperioridizagarolo.edu.it       ,7568       ,2D_LICEO_2019/20
+ALESSANDRO               ,CRISTOFARI          ,alessandro.cristofari.00008001@scuolesuperioridizagarolo.edu.it          ,8001       ,1B_LICEO_2019/20
+DANIELE                  ,CRISTOFARI          ,daniele.cristofari.00007321@scuolesuperioridizagarolo.edu.it             ,7321       ,3A_LICEO_2019/20
+FEDERICO                 ,CROCENZI            ,federico.crocenzi.00007261@scuolesuperioridizagarolo.edu.it              ,7261       ,4E_LICEO_2019/20
+GIULIANO                 ,CROPPI              ,giuliano.croppi.00007190@scuolesuperioridizagarolo.edu.it                ,7190       ,4C_LICEO_2019/20
+GIOVANNI                 ,CUNTI               ,giovanni.cunti.00007900@scuolesuperioridizagarolo.edu.it                 ,7900       ,1H_LICEO_2019/20
+NICOLO'                  ,CURZI               ,nicolo.curzi.00007380@scuolesuperioridizagarolo.edu.it                   ,7380       ,3D_LICEO_2019/20
+DALILA                   ,CUSANO              ,dalila.cusano.00007876@scuolesuperioridizagarolo.edu.it                  ,7876       ,1A_LICEO_2019/20
+ANTONIO                  ,D'ALESSANDRO        ,antonio.dalessandro.00007494@scuolesuperioridizagarolo.edu.it            ,7494       ,3D_LICEO_2019/20
+GIOIA                    ,D'AMICO             ,gioia.damico.00007475@scuolesuperioridizagarolo.edu.it                   ,7475       ,3C_LICEO_2019/20
+MARGHERITA               ,D'ANDREA            ,margherita.dandrea.00007919@scuolesuperioridizagarolo.edu.it             ,7919       ,1F_LICEO_2019/20
+ANTONIO                  ,D'ANGELO            ,antonio.dangelo.00007351@scuolesuperioridizagarolo.edu.it                ,7351       ,3A_LICEO_2019/20
+GIACOMO                  ,D'ANGELO            ,giacomo.dangelo.00007385@scuolesuperioridizagarolo.edu.it                ,7385       ,3H_LICEO_2019/20
+LORENZO                  ,D'ANTONIO           ,lorenzo.dantonio.00007223@scuolesuperioridizagarolo.edu.it               ,7223       ,4A_LICEO_2019/20
+ANDREA                   ,D'ATTILIA           ,andrea.dattilia.00007848@scuolesuperioridizagarolo.edu.it                ,7848       ,1F_LICEO_2019/20
+MARTINA                  ,D'ATTILIA           ,martina.dattilia.00006944@scuolesuperioridizagarolo.edu.it               ,6944       ,5C_LICEO_2019/20
+FEDERICO MARIA           ,D'OTTAVI            ,federicomaria.dottavi.00007868@scuolesuperioridizagarolo.edu.it          ,7868       ,1H_LICEO_2019/20
+ROBERTO                  ,D'UFFIZI            ,roberto.duffizi.00007337@scuolesuperioridizagarolo.edu.it                ,7337       ,3F_LICEO_2019/20
+DYLAN                    ,DAL VECCHIO         ,dylan.dalvecchio.00007220@scuolesuperioridizagarolo.edu.it               ,7220       ,3H_LICEO_2019/20
+MATEO                    ,DANAJ               ,mateo.danaj.00007706@scuolesuperioridizagarolo.edu.it                    ,7706       ,1B_LICEO_2019/20
+MATILDA                  ,DANAJ               ,matilda.danaj.00007901@scuolesuperioridizagarolo.edu.it                  ,7901       ,1A_LICEO_2019/20
+DAMIANO                  ,DANTIMI             ,damiano.dantimi.00007624@scuolesuperioridizagarolo.edu.it                ,7624       ,2D_LICEO_2019/20
+FRANCESCO                ,DAPPI               ,francesco.dappi.00007846@scuolesuperioridizagarolo.edu.it                ,7846       ,1D_LICEO_2019/20
+FABRIZIO                 ,DE ANGELIS          ,fabrizio.deangelis.00007654@scuolesuperioridizagarolo.edu.it             ,7654       ,2H_LICEO_2019/20
+LUNA                     ,DE ANGELIS          ,luna.deangelis.00007614@scuolesuperioridizagarolo.edu.it                 ,7614       ,2C_LICEO_2019/20
+SIMONE                   ,DE ANGELIS          ,simone.deangelis.00006843@scuolesuperioridizagarolo.edu.it               ,6843       ,5A_LICEO_2019/20
+MARCO                    ,DE FRANCESCO        ,marco.defrancesco.00007608@scuolesuperioridizagarolo.edu.it              ,7608       ,2D_LICEO_2019/20
+CHIARA                   ,DE MARZI            ,chiara.demarzi.00007314@scuolesuperioridizagarolo.edu.it                 ,7314       ,3G_LICEO_2019/20
+GIORGIO                  ,DE MATTEIS          ,giorgio.dematteis.00007131@scuolesuperioridizagarolo.edu.it              ,7131       ,4C_LICEO_2019/20
+SOPHIA                   ,DE NICOLA           ,sophia.denicola.00007592@scuolesuperioridizagarolo.edu.it                ,7592       ,2C_LICEO_2019/20
+ALESSIO                  ,DE ROCCHIS          ,alessio.derocchis.00006942@scuolesuperioridizagarolo.edu.it              ,6942       ,5C_LICEO_2019/20
+ALESSANDRA               ,DE SANTIS           ,alessandra.desantis.00007228@scuolesuperioridizagarolo.edu.it            ,7228       ,4E_LICEO_2019/20
+FRANCESCO                ,DE VITO             ,francesco.devito.00007650@scuolesuperioridizagarolo.edu.it               ,7650       ,2H_LICEO_2019/20
+FEDERICA                 ,DEL DUCA            ,federica.delduca.00007233@scuolesuperioridizagarolo.edu.it               ,7233       ,4C_LICEO_2019/20
+GABRIELE                 ,DEL DUCA            ,gabriele.delduca.00007652@scuolesuperioridizagarolo.edu.it               ,7652       ,2D_LICEO_2019/20
+ALESSANDRO               ,DEL SIGNORE         ,alessandro.delsignore.00006681@scuolesuperioridizagarolo.edu.it          ,6681       ,5B_LICEO_2019/20
+MATTEO                   ,DEL VESCOVO         ,matteo.delvescovo.00006969@scuolesuperioridizagarolo.edu.it              ,6969       ,5A_LICEO_2019/20
+ALESSIA                  ,DELL'ORME           ,alessia.dellorme.00006915@scuolesuperioridizagarolo.edu.it               ,6915       ,5E_LICEO_2019/20
+GIOELE                   ,DELLA BELLA         ,gioele.dellabella.00007701@scuolesuperioridizagarolo.edu.it              ,7701       ,2F_LICEO_2019/20
+FLAVIO                   ,DELLE FRATTE        ,flavio.dellefratte.00007384@scuolesuperioridizagarolo.edu.it             ,7384       ,3D_LICEO_2019/20
+ISABELA                  ,DERVISHALIAJ        ,isabela.dervishaliaj.00007957@scuolesuperioridizagarolo.edu.it           ,7957       ,1A_LICEO_2019/20
+LUDOVICO                 ,DI BERARDINO        ,ludovico.diberardino.00007166@scuolesuperioridizagarolo.edu.it           ,7166       ,4E_LICEO_2019/20
+STEFANO                  ,DI BERNARDINI       ,stefano.dibernardini.00007029@scuolesuperioridizagarolo.edu.it           ,7029       ,5A_LICEO_2019/20
+FRANCESCA                ,DI CARLO            ,francesca.dicarlo.00007446@scuolesuperioridizagarolo.edu.it              ,7446       ,3D_LICEO_2019/20
+SIMONE                   ,DI CESARE           ,simone.dicesare.00007071@scuolesuperioridizagarolo.edu.it                ,7071       ,5B_LICEO_2019/20
+ELEONORA                 ,DI GIROLAMO         ,eleonora.digirolamo.00006980@scuolesuperioridizagarolo.edu.it            ,6980       ,5A_LICEO_2019/20
+FRANCESCO                ,DI LORETO           ,francesco.diloreto.00007320@scuolesuperioridizagarolo.edu.it             ,7320       ,3A_LICEO_2019/20
+AURORA                   ,DI NUNZIO           ,aurora.dinunzio.00007695@scuolesuperioridizagarolo.edu.it                ,7695       ,2A_LICEO_2019/20
+MARCELLO                 ,DI NUNZIO           ,marcello.dinunzio.00006926@scuolesuperioridizagarolo.edu.it              ,6926       ,5C_LICEO_2019/20
+NICCOLO'                 ,DI PIETRO           ,niccolo.dipietro.00007386@scuolesuperioridizagarolo.edu.it               ,7386       ,3B_LICEO_2019/20
+ROBERTA                  ,DI SERAFINO         ,roberta.diserafino.00006956@scuolesuperioridizagarolo.edu.it             ,6956       ,4G_LICEO_2019/20
+ROBERTA                  ,DI TULLIO           ,roberta.ditullio.00007282@scuolesuperioridizagarolo.edu.it               ,7282       ,4A_LICEO_2019/20
+SAMUELE                  ,DI VINCENZO         ,samuele.divincenzo.00007685@scuolesuperioridizagarolo.edu.it             ,7685       ,2E_LICEO_2019/20
+ANDREA                   ,DI VITO             ,andrea.divito.00007257@scuolesuperioridizagarolo.edu.it                  ,7257       ,4D_LICEO_2019/20
+ARIANNA                  ,DIGIARO             ,arianna.digiaro.00007903@scuolesuperioridizagarolo.edu.it                ,7903       ,1A_LICEO_2019/20
+MIHAI SEBASTIAN          ,DINU                ,mihaisebastian.dinu.00007074@scuolesuperioridizagarolo.edu.it            ,7074       ,3A_LICEO_2019/20
+DENISA ALEXANDRA         ,DOCAN               ,denisaalexandra.docan.00007965@scuolesuperioridizagarolo.edu.it          ,7965       ,1E_LICEO_2019/20
+CHIARA                   ,DODARO              ,chiara.dodaro.00007330@scuolesuperioridizagarolo.edu.it                  ,7330       ,3G_LICEO_2019/20
+MANUEL                   ,DODARO              ,manuel.dodaro.00006745@scuolesuperioridizagarolo.edu.it                  ,6745       ,4D_LICEO_2019/20
+BIANCA ELENA             ,DOMOS               ,biancaelena.domos.00007405@scuolesuperioridizagarolo.edu.it              ,7405       ,3H_LICEO_2019/20
+ANDREA DENISA            ,DONCA               ,andreadenisa.donca.00007167@scuolesuperioridizagarolo.edu.it             ,7167       ,3D_LICEO_2019/20
+ZAKLINA                  ,DORACI              ,zaklina.doraci.00007376@scuolesuperioridizagarolo.edu.it                 ,7376       ,3B_LICEO_2019/20
+ROBERT ANDREI            ,DRAGHIA             ,robertandrei.draghia.00007847@scuolesuperioridizagarolo.edu.it           ,7847       ,1D_LICEO_2019/20
+ILARIA                   ,DUCA                ,ilaria.duca.00007410@scuolesuperioridizagarolo.edu.it                    ,7410       ,3E_LICEO_2019/20
+DAVIDE                   ,DURASTANTI          ,davide.durastanti.00007285@scuolesuperioridizagarolo.edu.it              ,7285       ,4A_LICEO_2019/20
+DANIELE                  ,ERCOLI              ,daniele.ercoli.00007147@scuolesuperioridizagarolo.edu.it                 ,7147       ,3F_LICEO_2019/20
+MAURO                    ,ERMINI              ,mauro.ermini.00007702@scuolesuperioridizagarolo.edu.it                   ,7702       ,2F_LICEO_2019/20
+IFEOLUWA OLORUNFE        ,ESON                ,ifeoluwaolorunfe.eson.00006961@scuolesuperioridizagarolo.edu.it          ,6961       ,5E_LICEO_2019/20
+ALESSIO                  ,ESPOSITO            ,alessio.esposito.00007813@scuolesuperioridizagarolo.edu.it               ,7813       ,1B_LICEO_2019/20
+BENEDETTA                ,ESPOSITO            ,benedetta.esposito.00007364@scuolesuperioridizagarolo.edu.it             ,7364       ,3C_LICEO_2019/20
+ALESSANDRO               ,EVANGELISTA         ,alessandro.evangelista.00007460@scuolesuperioridizagarolo.edu.it         ,7460       ,3B_LICEO_2019/20
+LEONARDO                 ,FABIANI             ,leonardo.fabiani.00007227@scuolesuperioridizagarolo.edu.it               ,7227       ,4B_LICEO_2019/20
+GIULIA                   ,FACCHINI            ,giulia.facchini.00007007@scuolesuperioridizagarolo.edu.it                ,7007       ,5A_LICEO_2019/20
+EMANUELE                 ,FADDA               ,emanuele.fadda.00006977@scuolesuperioridizagarolo.edu.it                 ,6977       ,5D_LICEO_2019/20
+ILARIA PIA               ,FALCO               ,ilariapia.falco.00007345@scuolesuperioridizagarolo.edu.it                ,7345       ,3F_LICEO_2019/20
+IRENE                    ,FARAGLIA            ,irene.faraglia.00007781@scuolesuperioridizagarolo.edu.it                 ,7781       ,5C_LICEO_2019/20
+AURORA                   ,FAZI                ,aurora.fazi.00007597@scuolesuperioridizagarolo.edu.it                    ,7597       ,2H_LICEO_2019/20
+FLAVIA                   ,FAZI                ,flavia.fazi.00007254@scuolesuperioridizagarolo.edu.it                    ,7254       ,4G_LICEO_2019/20
+ANDREA                   ,FEDERICI            ,andrea.federici.00006941@scuolesuperioridizagarolo.edu.it                ,6941       ,5E_LICEO_2019/20
+GIANLUCA                 ,FEDERICI            ,gianluca.federici.00007959@scuolesuperioridizagarolo.edu.it              ,7959       ,1B_LICEO_2019/20
+GIULIA                   ,FEDERICI            ,giulia.federici.00007595@scuolesuperioridizagarolo.edu.it                ,7595       ,2C_LICEO_2019/20
+ALICE                    ,FERRACCI            ,alice.ferracci.00007486@scuolesuperioridizagarolo.edu.it                 ,7486       ,3E_LICEO_2019/20
+FEDERICO                 ,FERRACCI            ,federico.ferracci.00007501@scuolesuperioridizagarolo.edu.it              ,7501       ,3H_LICEO_2019/20
+LUDOVICA                 ,FERRACCI            ,ludovica.ferracci.00007109@scuolesuperioridizagarolo.edu.it              ,7109       ,3D_LICEO_2019/20
+ELISA                    ,FERRERA             ,elisa.ferrera.00007692@scuolesuperioridizagarolo.edu.it                  ,7692       ,2A_LICEO_2019/20
+LORENZO                  ,FERRERA             ,lorenzo.ferrera.00007966@scuolesuperioridizagarolo.edu.it                ,7966       ,1C_LICEO_2019/20
+GABRIELE                 ,FILACCHIONE         ,gabriele.filacchione.00007690@scuolesuperioridizagarolo.edu.it           ,7690       ,2B_LICEO_2019/20
+CHIARA                   ,FILOSA              ,chiara.filosa.00007183@scuolesuperioridizagarolo.edu.it                  ,7183       ,4C_LICEO_2019/20
+FEDERICA                 ,FILOSA              ,federica.filosa.00007927@scuolesuperioridizagarolo.edu.it                ,7927       ,1E_LICEO_2019/20
+MIRCO                    ,FIORE               ,mirco.fiore.00007975@scuolesuperioridizagarolo.edu.it                    ,7975       ,1H_LICEO_2019/20
+GIORGIA                  ,FIORENTINI          ,giorgia.fiorentini.00007398@scuolesuperioridizagarolo.edu.it             ,7398       ,3B_LICEO_2019/20
+MATTEO                   ,FIORETTI            ,matteo.fioretti.00007241@scuolesuperioridizagarolo.edu.it                ,7241       ,4G_LICEO_2019/20
+ELISA                    ,FISCELLA            ,elisa.fiscella.00007129@scuolesuperioridizagarolo.edu.it                 ,7129       ,4E_LICEO_2019/20
+GAIA                     ,FLORIO              ,gaia.florio.00007989@scuolesuperioridizagarolo.edu.it                    ,7989       ,1C_LICEO_2019/20
+CRISTIANO                ,FORGIONE            ,cristiano.forgione.00007154@scuolesuperioridizagarolo.edu.it             ,7154       ,3F_LICEO_2019/20
+LUDOVICA                 ,FORNARI             ,ludovica.fornari.00006934@scuolesuperioridizagarolo.edu.it               ,6934       ,5A_LICEO_2019/20
+SIMONE                   ,FORNARI             ,simone.fornari.00006985@scuolesuperioridizagarolo.edu.it                 ,6985       ,5E_LICEO_2019/20
+GABRIELE                 ,FORTUNATO           ,gabriele.fortunato.00007638@scuolesuperioridizagarolo.edu.it             ,7638       ,2D_LICEO_2019/20
+FRANCESCO                ,FOSCHI              ,francesco.foschi.00007863@scuolesuperioridizagarolo.edu.it               ,7863       ,1B_LICEO_2019/20
+DAVIDE                   ,FRATINI             ,davide.fratini.00007982@scuolesuperioridizagarolo.edu.it                 ,7982       ,1E_LICEO_2019/20
+GIULIO                   ,FRATINI             ,giulio.fratini.00007067@scuolesuperioridizagarolo.edu.it                 ,7067       ,5E_LICEO_2019/20
+REBECCA                  ,FRATTAROLA          ,rebecca.frattarola.00007665@scuolesuperioridizagarolo.edu.it             ,7665       ,2B_LICEO_2019/20
+ALESSANDRO               ,FRUSTA              ,alessandro.frusta.00007447@scuolesuperioridizagarolo.edu.it              ,7447       ,3D_LICEO_2019/20
+MICHELA                  ,FULCRI              ,michela.fulcri.00007236@scuolesuperioridizagarolo.edu.it                 ,7236       ,3C_LICEO_2019/20
+PAOLO                    ,FUNARO              ,paolo.funaro.00007429@scuolesuperioridizagarolo.edu.it                   ,7429       ,3C_LICEO_2019/20
+DAVIDE                   ,GAETANO             ,davide.gaetano.00007396@scuolesuperioridizagarolo.edu.it                 ,7396       ,3D_LICEO_2019/20
+VALERIO                  ,GAFFI               ,valerio.gaffi.00007463@scuolesuperioridizagarolo.edu.it                  ,7463       ,3E_LICEO_2019/20
+MATTIA                   ,GAGLIARDI           ,mattia.gagliardi.00007723@scuolesuperioridizagarolo.edu.it               ,7723       ,2B_LICEO_2019/20
+GABRIELE                 ,GALLO               ,gabriele.gallo.00007458@scuolesuperioridizagarolo.edu.it                 ,7458       ,3G_LICEO_2019/20
+FATIMA                   ,GALLOTTI            ,fatima.gallotti.00007111@scuolesuperioridizagarolo.edu.it                ,7111       ,4D_LICEO_2019/20
+LUDOVICA                 ,GALLUCCIO           ,ludovica.galluccio.00007883@scuolesuperioridizagarolo.edu.it             ,7883       ,1A_LICEO_2019/20
+MATTEO                   ,GALUPPI             ,matteo.galuppi.00007256@scuolesuperioridizagarolo.edu.it                 ,7256       ,4G_LICEO_2019/20
+AURORA                   ,GAMBINI             ,aurora.gambini.00007615@scuolesuperioridizagarolo.edu.it                 ,7615       ,2A_LICEO_2019/20
+GABRIEL                  ,GENTILE             ,gabriel.gentile.00007151@scuolesuperioridizagarolo.edu.it                ,7151       ,3B_LICEO_2019/20
+DIEGO                    ,GENTILI             ,diego.gentili.00007864@scuolesuperioridizagarolo.edu.it                  ,7864       ,1G_LICEO_2019/20
+MARCO DAVIDE             ,GHEORGHIU           ,marcodavide.gheorghiu.00007318@scuolesuperioridizagarolo.edu.it          ,7318       ,3D_LICEO_2019/20
+NOEMI                    ,GHERGHELUCA         ,noemi.ghergheluca.00007834@scuolesuperioridizagarolo.edu.it              ,7834       ,1C_LICEO_2019/20
+EMMA                     ,GIACCO              ,emma.giacco.00007637@scuolesuperioridizagarolo.edu.it                    ,7637       ,2C_LICEO_2019/20
+FRANCESCO                ,GIACOMOBONO         ,francesco.giacomobono.00006917@scuolesuperioridizagarolo.edu.it          ,6917       ,5D_LICEO_2019/20
+ELIA                     ,GIACOPPO            ,elia.giacoppo.00007967@scuolesuperioridizagarolo.edu.it                  ,7967       ,1C_LICEO_2019/20
+VANESSA                  ,GIANNETTI           ,vanessa.giannetti.00007704@scuolesuperioridizagarolo.edu.it              ,7704       ,2C_LICEO_2019/20
+VALENTINO                ,GIANNINI            ,valentino.giannini.00007367@scuolesuperioridizagarolo.edu.it             ,7367       ,3G_LICEO_2019/20
+RACHELE                  ,GIGLIO              ,rachele.giglio.00007378@scuolesuperioridizagarolo.edu.it                 ,7378       ,3C_LICEO_2019/20
+PIERLUIGI                ,GIONTI              ,pierluigi.gionti.00007999@scuolesuperioridizagarolo.edu.it               ,7999       ,1E_LICEO_2019/20
+MATTEO                   ,GIORDANO            ,matteo.giordano.00007344@scuolesuperioridizagarolo.edu.it                ,7344       ,3D_LICEO_2019/20
+ALESSANDRA               ,GIOVANNETTI         ,alessandra.giovannetti.00006950@scuolesuperioridizagarolo.edu.it         ,6950       ,5A_LICEO_2019/20
+SIMONE                   ,GIOVANNETTI         ,simone.giovannetti.00006986@scuolesuperioridizagarolo.edu.it             ,6986       ,5D_LICEO_2019/20
+FRANCESCA                ,GIOVANNINI          ,francesca.giovannini.00007305@scuolesuperioridizagarolo.edu.it           ,7305       ,4B_LICEO_2019/20
+DIEGO                    ,GIULIANI            ,diego.giuliani.00007821@scuolesuperioridizagarolo.edu.it                 ,7821       ,1E_LICEO_2019/20
+FEDERICA                 ,GIULIANI            ,federica.giuliani.00007504@scuolesuperioridizagarolo.edu.it              ,7504       ,3D_LICEO_2019/20
+FEDERICO                 ,GIULIANI            ,federico.giuliani.00007449@scuolesuperioridizagarolo.edu.it              ,7449       ,3E_LICEO_2019/20
+ANNA                     ,GIUSTI              ,anna.giusti.00007124@scuolesuperioridizagarolo.edu.it                    ,7124       ,3A_LICEO_2019/20
+MATTIA                   ,GLIELMI             ,mattia.glielmi.00007431@scuolesuperioridizagarolo.edu.it                 ,7431       ,3D_LICEO_2019/20
+GIORGIA                  ,GORDIANI            ,giorgia.gordiani.00007651@scuolesuperioridizagarolo.edu.it               ,7651       ,2E_LICEO_2019/20
+ERNESTO                  ,GRADOZZI            ,ernesto.gradozzi.00007970@scuolesuperioridizagarolo.edu.it               ,7970       ,1C_LICEO_2019/20
+GIULIA                   ,GRAMICCIA           ,giulia.gramiccia.00007591@scuolesuperioridizagarolo.edu.it               ,7591       ,2H_LICEO_2019/20
+SIMONE                   ,GRANATA             ,simone.granata.00006930@scuolesuperioridizagarolo.edu.it                 ,6930       ,5D_LICEO_2019/20
+MARCO                    ,GRAZIANI            ,marco.graziani.00007640@scuolesuperioridizagarolo.edu.it                 ,7640       ,2H_LICEO_2019/20
+FRANCESCO                ,GUIDI               ,francesco.guidi.00007244@scuolesuperioridizagarolo.edu.it                ,7244       ,4D_LICEO_2019/20
+ANDRIJ                   ,HAVAL               ,andrij.haval.00007383@scuolesuperioridizagarolo.edu.it                   ,7383       ,3F_LICEO_2019/20
+FIORELA                  ,HAVARAJ             ,fiorela.havaraj.00007489@scuolesuperioridizagarolo.edu.it                ,7489       ,3G_LICEO_2019/20
+CRISTIAN FABIO           ,HOZOC               ,cristianfabio.hozoc.00007140@scuolesuperioridizagarolo.edu.it            ,7140       ,4D_LICEO_2019/20
+ANDREEA LARISA           ,HRANACERU           ,andreealarisa.hranaceru.00007456@scuolesuperioridizagarolo.edu.it        ,7456       ,3A_LICEO_2019/20
+GIULIA TEODORA           ,HRISCU              ,giuliateodora.hriscu.00007648@scuolesuperioridizagarolo.edu.it           ,7648       ,2F_LICEO_2019/20
+ANDREA                   ,IADONISI            ,andrea.iadonisi.00007926@scuolesuperioridizagarolo.edu.it                ,7926       ,1G_LICEO_2019/20
+NICOLA MATTEO            ,IADONISI            ,nicolamatteo.iadonisi.00007152@scuolesuperioridizagarolo.edu.it          ,7152       ,3C_LICEO_2019/20
+NOEMI                    ,IANNI               ,noemi.ianni.00007373@scuolesuperioridizagarolo.edu.it                    ,7373       ,3E_LICEO_2019/20
+EMANUELE                 ,IANNICCARI          ,emanuele.ianniccari.00007958@scuolesuperioridizagarolo.edu.it            ,7958       ,1C_LICEO_2019/20
+GABRIELE                 ,IANNICCARI          ,gabriele.ianniccari.00007412@scuolesuperioridizagarolo.edu.it            ,7412       ,3G_LICEO_2019/20
+ROBERTA                  ,IANNICCARI          ,roberta.ianniccari.00007022@scuolesuperioridizagarolo.edu.it             ,7022       ,5C_LICEO_2019/20
+GIANLUIGI                ,IENNE               ,gianluigi.ienne.00007664@scuolesuperioridizagarolo.edu.it                ,7664       ,2B_LICEO_2019/20
+LORENZO                  ,IGIRI               ,lorenzo.igiri.00006963@scuolesuperioridizagarolo.edu.it                  ,6963       ,4D_LICEO_2019/20
+CRISTIANO                ,ILARDI              ,cristiano.ilardi.00007181@scuolesuperioridizagarolo.edu.it               ,7181       ,4E_LICEO_2019/20
+MATTEO                   ,ILARI               ,matteo.ilari.00007411@scuolesuperioridizagarolo.edu.it                   ,7411       ,3H_LICEO_2019/20
+GABRIELE                 ,IMPAVIDI            ,gabriele.impavidi.00007189@scuolesuperioridizagarolo.edu.it              ,7189       ,4E_LICEO_2019/20
+ANGELO EMANUELE          ,INGROSSO            ,angeloemanuele.ingrosso.00007336@scuolesuperioridizagarolo.edu.it        ,7336       ,3A_LICEO_2019/20
+ALESSANDRA               ,IONASCU             ,alessandra.ionascu.00007656@scuolesuperioridizagarolo.edu.it             ,7656       ,2F_LICEO_2019/20
+VALENTINA                ,IONASCU             ,valentina.ionascu.00007993@scuolesuperioridizagarolo.edu.it              ,7993       ,1A_LICEO_2019/20
+LUCREZIA                 ,IOVINO              ,lucrezia.iovino.00007902@scuolesuperioridizagarolo.edu.it                ,7902       ,1G_LICEO_2019/20
+GABRIELA                 ,ISTODE              ,gabriela.istode.00007362@scuolesuperioridizagarolo.edu.it                ,7362       ,3G_LICEO_2019/20
+BETTY                    ,JUBRIL              ,betty.jubril.00008059@scuolesuperioridizagarolo.edu.it                   ,8059       ,1H_LICEO_2019/20
+LAURA                    ,KOLA                ,laura.kola.00007831@scuolesuperioridizagarolo.edu.it                     ,7831       ,1C_LICEO_2019/20
+BARTOSZ                  ,KOZAR               ,bartosz.kozar.00007671@scuolesuperioridizagarolo.edu.it                  ,7671       ,2D_LICEO_2019/20
+DEVID                    ,KRUJA               ,devid.kruja.00007677@scuolesuperioridizagarolo.edu.it                    ,7677       ,2H_LICEO_2019/20
+GIULIA                   ,LAGANA'             ,giulia.lagana.00007628@scuolesuperioridizagarolo.edu.it                  ,7628       ,2C_LICEO_2019/20
+KAMIL KRZYSZTOF          ,LATALA              ,kamilkrzysztof.latala.00007476@scuolesuperioridizagarolo.edu.it          ,7476       ,3C_LICEO_2019/20
+CAMILLA                  ,LAURENTI            ,camilla.laurenti.00007163@scuolesuperioridizagarolo.edu.it               ,7163       ,4E_LICEO_2019/20
+LUDOVICO                 ,LEO                 ,ludovico.leo.00007929@scuolesuperioridizagarolo.edu.it                   ,7929       ,1D_LICEO_2019/20
+FRANCESCA                ,LEONE               ,francesca.leone.00007732@scuolesuperioridizagarolo.edu.it                ,7732       ,1B_LICEO_2019/20
+FRANCESCO                ,LEONI               ,francesco.leoni.00007819@scuolesuperioridizagarolo.edu.it                ,7819       ,1H_LICEO_2019/20
+CHIARA MARIA             ,LIBIANCHI           ,chiaramaria.libianchi.00006939@scuolesuperioridizagarolo.edu.it          ,6939       ,5B_LICEO_2019/20
+PAOLO                    ,LIGORI              ,paolo.ligori.00007457@scuolesuperioridizagarolo.edu.it                   ,7457       ,3D_LICEO_2019/20
+LORENZO                  ,LIPPI               ,lorenzo.lippi.00007644@scuolesuperioridizagarolo.edu.it                  ,7644       ,2E_LICEO_2019/20
+SILVIA                   ,LISI                ,silvia.lisi.00007430@scuolesuperioridizagarolo.edu.it                    ,7430       ,3H_LICEO_2019/20
+MIA                      ,LO VETERE           ,mia.lovetere.00007402@scuolesuperioridizagarolo.edu.it                   ,7402       ,3G_LICEO_2019/20
+DIEGO                    ,LOMBARDO            ,diego.lombardo.00007870@scuolesuperioridizagarolo.edu.it                 ,7870       ,1G_LICEO_2019/20
+MIRKO                    ,LOMBARDO            ,mirko.lombardo.00006921@scuolesuperioridizagarolo.edu.it                 ,6921       ,5E_LICEO_2019/20
+BEATRICE                 ,LONGO               ,beatrice.longo.00007280@scuolesuperioridizagarolo.edu.it                 ,7280       ,4B_LICEO_2019/20
+LUCA                     ,LORE'               ,luca.lore.00007428@scuolesuperioridizagarolo.edu.it                      ,7428       ,3F_LICEO_2019/20
+FEDERICA                 ,LORETI              ,federica.loreti.00006749@scuolesuperioridizagarolo.edu.it                ,6749       ,5D_LICEO_2019/20
+MARTINA                  ,LUBELLO             ,martina.lubello.00007935@scuolesuperioridizagarolo.edu.it                ,7935       ,1H_LICEO_2019/20
+FEDERICO                 ,LUCARELLI           ,federico.lucarelli.00007873@scuolesuperioridizagarolo.edu.it             ,7873       ,1G_LICEO_2019/20
+GABRIELE                 ,LUCARELLI           ,gabriele.lucarelli.00007942@scuolesuperioridizagarolo.edu.it             ,7942       ,1B_LICEO_2019/20
+LORENZO                  ,LUCIA               ,lorenzo.lucia.00007928@scuolesuperioridizagarolo.edu.it                  ,7928       ,1G_LICEO_2019/20
+GIANMARCO                ,LUCIANI             ,gianmarco.luciani.00007408@scuolesuperioridizagarolo.edu.it              ,7408       ,3F_LICEO_2019/20
+GIORGIA                  ,LUCIANI             ,giorgia.luciani.00007859@scuolesuperioridizagarolo.edu.it                ,7859       ,1F_LICEO_2019/20
+JACOPO                   ,LUCIANI             ,jacopo.luciani.00007987@scuolesuperioridizagarolo.edu.it                 ,7987       ,1F_LICEO_2019/20
+LEONARDO                 ,LULLI               ,leonardo.lulli.00007033@scuolesuperioridizagarolo.edu.it                 ,7033       ,4E_LICEO_2019/20
+VALERIO                  ,LULLO               ,valerio.lullo.00007474@scuolesuperioridizagarolo.edu.it                  ,7474       ,3B_LICEO_2019/20
+EDOARDO                  ,LUNATI              ,edoardo.lunati.00007026@scuolesuperioridizagarolo.edu.it                 ,7026       ,5B_LICEO_2019/20
+PIER GIORGIO             ,LUPI                ,piergiorgio.lupi.00007453@scuolesuperioridizagarolo.edu.it               ,7453       ,3F_LICEO_2019/20
+FRANCESCO                ,LUPICUTI            ,francesco.lupicuti.00007590@scuolesuperioridizagarolo.edu.it             ,7590       ,2A_LICEO_2019/20
+AURORA                   ,MACARRA             ,aurora.macarra.00007401@scuolesuperioridizagarolo.edu.it                 ,7401       ,3A_LICEO_2019/20
+FEDERICO                 ,MACARRA             ,federico.macarra.00007666@scuolesuperioridizagarolo.edu.it               ,7666       ,2E_LICEO_2019/20
+GIULIA                   ,MACARRA             ,giulia.macarra.00007418@scuolesuperioridizagarolo.edu.it                 ,7418       ,3H_LICEO_2019/20
+DANIELE                  ,MACCARONI           ,daniele.maccaroni.00007722@scuolesuperioridizagarolo.edu.it              ,7722       ,2B_LICEO_2019/20
+FRANCESCO                ,MADERA              ,francesco.madera.00007593@scuolesuperioridizagarolo.edu.it               ,7593       ,2A_LICEO_2019/20
+LORENZO                  ,MAGISTRI            ,lorenzo.magistri.00007027@scuolesuperioridizagarolo.edu.it               ,7027       ,4C_LICEO_2019/20
+TIZIANO                  ,MAIER               ,tiziano.maier.00007576@scuolesuperioridizagarolo.edu.it                  ,7576       ,2B_LICEO_2019/20
+IRENE                    ,MAIORANO            ,irene.maiorano.00007195@scuolesuperioridizagarolo.edu.it                 ,7195       ,4A_LICEO_2019/20
+ALESSIA                  ,MALITO              ,alessia.malito.00006914@scuolesuperioridizagarolo.edu.it                 ,6914       ,5D_LICEO_2019/20
+FILIPPO                  ,MAMMETTI            ,filippo.mammetti.00007963@scuolesuperioridizagarolo.edu.it               ,7963       ,1B_LICEO_2019/20
+ROCCO                    ,MANCA               ,rocco.manca.00007659@scuolesuperioridizagarolo.edu.it                    ,7659       ,2D_LICEO_2019/20
+GIACOMO                  ,MANCINELLI          ,giacomo.mancinelli.00007878@scuolesuperioridizagarolo.edu.it             ,7878       ,1C_LICEO_2019/20
+JACOPO                   ,MANCINELLI          ,jacopo.mancinelli.00007707@scuolesuperioridizagarolo.edu.it              ,7707       ,2D_LICEO_2019/20
+MATTEO                   ,MANCINELLI          ,matteo.mancinelli.00007274@scuolesuperioridizagarolo.edu.it              ,7274       ,4C_LICEO_2019/20
+CHRISTIAN                ,MANCINOTTI          ,christian.mancinotti.00007884@scuolesuperioridizagarolo.edu.it           ,7884       ,1B_LICEO_2019/20
+MICHAEL                  ,MANDOLFO            ,michael.mandolfo.00008063@scuolesuperioridizagarolo.edu.it               ,8063       ,3B_LICEO_2019/20
+LAURENTIU VALENTIN       ,MANEA               ,laurentiuvalentin.manea.00007612@scuolesuperioridizagarolo.edu.it        ,7612       ,2E_LICEO_2019/20
+LORENZO                  ,MANNARA             ,lorenzo.mannara.00007726@scuolesuperioridizagarolo.edu.it                ,7726       ,2F_LICEO_2019/20
+ERICA                    ,MANNI               ,erica.manni.00007549@scuolesuperioridizagarolo.edu.it                    ,7549       ,3E_LICEO_2019/20
+ALESSIA                  ,MARALDI             ,alessia.maraldi.00007735@scuolesuperioridizagarolo.edu.it                ,7735       ,2C_LICEO_2019/20
+LORENZO                  ,MARANI              ,lorenzo.marani.00007180@scuolesuperioridizagarolo.edu.it                 ,7180       ,4B_LICEO_2019/20
+ALESSANDRO               ,MARCELLI            ,alessandro.marcelli.00007875@scuolesuperioridizagarolo.edu.it            ,7875       ,1B_LICEO_2019/20
+ALESSIO                  ,MARCHETTI           ,alessio.marchetti.00007851@scuolesuperioridizagarolo.edu.it              ,7851       ,1D_LICEO_2019/20
+DANIELE                  ,MARCOTULLI          ,daniele.marcotulli.00007850@scuolesuperioridizagarolo.edu.it             ,7850       ,1E_LICEO_2019/20
+GABRIEL                  ,MARCU               ,gabriel.marcu.00006908@scuolesuperioridizagarolo.edu.it                  ,6908       ,5E_LICEO_2019/20
+DIEGO                    ,MARI                ,diego.mari.00007977@scuolesuperioridizagarolo.edu.it                     ,7977       ,1G_LICEO_2019/20
+PATRICK                  ,MARIAN              ,patrick.marian.00007010@scuolesuperioridizagarolo.edu.it                 ,7010       ,5A_LICEO_2019/20
+ALESSANDRO               ,MARIANI             ,alessandro.mariani.00007112@scuolesuperioridizagarolo.edu.it             ,7112       ,4A_LICEO_2019/20
+AZZURRA                  ,MARIANI             ,azzurra.mariani.00007634@scuolesuperioridizagarolo.edu.it                ,7634       ,2B_LICEO_2019/20
+DENNIS                   ,MARIANI             ,dennis.mariani.00007182@scuolesuperioridizagarolo.edu.it                 ,7182       ,4F_LICEO_2019/20
+FEDERICA                 ,MARIANI             ,federica.mariani.00007674@scuolesuperioridizagarolo.edu.it               ,7674       ,2E_LICEO_2019/20
+MARIO                    ,MARIGNOLI           ,mario.marignoli.00007531@scuolesuperioridizagarolo.edu.it                ,7531       ,3D_LICEO_2019/20
+BEATRICE                 ,MARINI              ,beatrice.marini.00007403@scuolesuperioridizagarolo.edu.it                ,7403       ,3G_LICEO_2019/20
+MATTEO                   ,MARINI              ,matteo.marini.00007713@scuolesuperioridizagarolo.edu.it                  ,7713       ,2C_LICEO_2019/20
+FEDERICO                 ,MARINO              ,federico.marino.00007333@scuolesuperioridizagarolo.edu.it                ,7333       ,3C_LICEO_2019/20
+IVAN                     ,MARIOTTINI          ,ivan.mariottini.00007992@scuolesuperioridizagarolo.edu.it                ,7992       ,1F_LICEO_2019/20
+MATTEO                   ,MARROCCO            ,matteo.marrocco.00006933@scuolesuperioridizagarolo.edu.it                ,6933       ,5A_LICEO_2019/20
+MARCO                    ,MARRONE             ,marco.marrone.00007276@scuolesuperioridizagarolo.edu.it                  ,7276       ,3G_LICEO_2019/20
+GIORGIA ERMINIA          ,MARSILI             ,giorgiaerminia.marsili.00007891@scuolesuperioridizagarolo.edu.it         ,7891       ,1D_LICEO_2019/20
+ALESSANDRO               ,MARTA               ,alessandro.marta.00007845@scuolesuperioridizagarolo.edu.it               ,7845       ,1D_LICEO_2019/20
+ELENA                    ,MARTA               ,elena.marta.00007670@scuolesuperioridizagarolo.edu.it                    ,7670       ,2B_LICEO_2019/20
+MATTEO                   ,MARTA               ,matteo.marta.00007867@scuolesuperioridizagarolo.edu.it                   ,7867       ,1G_LICEO_2019/20
+NICOLO'                  ,MARTINI             ,nicolo.martini.00007736@scuolesuperioridizagarolo.edu.it                 ,7736       ,2B_LICEO_2019/20
+EMANUELCARLO             ,MAS                 ,emanuelcarlo.mas.00006976@scuolesuperioridizagarolo.edu.it               ,6976       ,5B_LICEO_2019/20
+ALESSIO                  ,MASI                ,alessio.masi.00007881@scuolesuperioridizagarolo.edu.it                   ,7881       ,1H_LICEO_2019/20
+FRANCESCO                ,MASI                ,francesco.masi.00007887@scuolesuperioridizagarolo.edu.it                 ,7887       ,1E_LICEO_2019/20
+MASSIMO                  ,MASSARO             ,massimo.massaro.00007235@scuolesuperioridizagarolo.edu.it                ,7235       ,4A_LICEO_2019/20
+DIEGO ALESSIO            ,MASSIMI             ,diegoalessio.massimi.00007668@scuolesuperioridizagarolo.edu.it           ,7668       ,2B_LICEO_2019/20
+VALERIO                  ,MASTRANTONIO        ,valerio.mastrantonio.00007740@scuolesuperioridizagarolo.edu.it           ,7740       ,2D_LICEO_2019/20
+CHIARA                   ,MASTROFINI          ,chiara.mastrofini.00007473@scuolesuperioridizagarolo.edu.it              ,7473       ,3E_LICEO_2019/20
+VALERIO                  ,MASTROFINI          ,valerio.mastrofini.00007116@scuolesuperioridizagarolo.edu.it             ,7116       ,3D_LICEO_2019/20
+FRANCESCA                ,MATRIGIANI          ,francesca.matrigiani.00007170@scuolesuperioridizagarolo.edu.it           ,7170       ,4G_LICEO_2019/20
+FRANCESCO                ,MATTOGNO            ,francesco.mattogno.00006909@scuolesuperioridizagarolo.edu.it             ,6909       ,5A_LICEO_2019/20
+NICOLO'                  ,MATTOGNO            ,nicolo.mattogno.00007643@scuolesuperioridizagarolo.edu.it                ,7643       ,2C_LICEO_2019/20
+GIORGIA                  ,MATTOZZI            ,giorgia.mattozzi.00007830@scuolesuperioridizagarolo.edu.it               ,7830       ,1D_LICEO_2019/20
+FEDERICO                 ,MAURI               ,federico.mauri.00007976@scuolesuperioridizagarolo.edu.it                 ,7976       ,1H_LICEO_2019/20
+PIETRO FRANCESCO         ,MAURI               ,pietrofrancesco.mauri.00007696@scuolesuperioridizagarolo.edu.it          ,7696       ,2A_LICEO_2019/20
+FEDERICA                 ,MAZZENGA            ,federica.mazzenga.00007423@scuolesuperioridizagarolo.edu.it              ,7423       ,3H_LICEO_2019/20
+NICOLO'                  ,MAZZENGA            ,nicolo.mazzenga.00007262@scuolesuperioridizagarolo.edu.it                ,7262       ,4B_LICEO_2019/20
+KETLIN                   ,MECANI              ,ketlin.mecani.00007343@scuolesuperioridizagarolo.edu.it                  ,7343       ,3B_LICEO_2019/20
+EDUARDO                  ,MECCHIA             ,eduardo.mecchia.00006910@scuolesuperioridizagarolo.edu.it                ,6910       ,4D_LICEO_2019/20
+SIMONE                   ,MECCHIA             ,simone.mecchia.00007678@scuolesuperioridizagarolo.edu.it                 ,7678       ,2E_LICEO_2019/20
+AURORA                   ,MELLI               ,aurora.melli.00007836@scuolesuperioridizagarolo.edu.it                   ,7836       ,1A_LICEO_2019/20
+GIULIA                   ,MENASCI'            ,giulia.menasci.00007225@scuolesuperioridizagarolo.edu.it                 ,7225       ,4B_LICEO_2019/20
+DAVIDE                   ,MENCHERINI          ,davide.mencherini.00007950@scuolesuperioridizagarolo.edu.it              ,7950       ,1H_LICEO_2019/20
+DAVIDE                   ,MENGARELLI          ,davide.mengarelli.00007814@scuolesuperioridizagarolo.edu.it              ,7814       ,1F_LICEO_2019/20
+CHIARA                   ,MENICHELLI          ,chiara.menichelli.00006962@scuolesuperioridizagarolo.edu.it              ,6962       ,4A_LICEO_2019/20
+ALICE                    ,MEOLI               ,alice.meoli.00007502@scuolesuperioridizagarolo.edu.it                    ,7502       ,3H_LICEO_2019/20
+GIANLUIGI                ,MEOLI               ,gianluigi.meoli.00007323@scuolesuperioridizagarolo.edu.it                ,7323       ,3A_LICEO_2019/20
+FRANCESCO                ,MICHELESSI          ,francesco.michelessi.00007918@scuolesuperioridizagarolo.edu.it           ,7918       ,1B_LICEO_2019/20
+LUCA                     ,MICHELINI           ,luca.michelini.00006922@scuolesuperioridizagarolo.edu.it                 ,6922       ,5A_LICEO_2019/20
+MANILA                   ,MILANA              ,manila.milana.00007420@scuolesuperioridizagarolo.edu.it                  ,7420       ,3H_LICEO_2019/20
+VALERIA ALEXANDRA        ,MILEA               ,valeriaalexandra.milea.00007125@scuolesuperioridizagarolo.edu.it         ,7125       ,4G_LICEO_2019/20
+DANILO                   ,MINNA               ,danilo.minna.00007317@scuolesuperioridizagarolo.edu.it                   ,7317       ,3A_LICEO_2019/20
+MANILA                   ,MINNA               ,manila.minna.00007179@scuolesuperioridizagarolo.edu.it                   ,7179       ,4A_LICEO_2019/20
+GABRIELE                 ,MINZOCCHI           ,gabriele.minzocchi.00007249@scuolesuperioridizagarolo.edu.it             ,7249       ,3C_LICEO_2019/20
+LAURA ROMINA             ,MIRON               ,lauraromina.miron.00007580@scuolesuperioridizagarolo.edu.it              ,7580       ,2H_LICEO_2019/20
+DIEGO                    ,MISTURA             ,diego.mistura.00007880@scuolesuperioridizagarolo.edu.it                  ,7880       ,1B_LICEO_2019/20
+LUCA                     ,MIZZON              ,luca.mizzon.00007623@scuolesuperioridizagarolo.edu.it                    ,7623       ,2A_LICEO_2019/20
+DAVIDE                   ,MOCCIA              ,davide.moccia.00007606@scuolesuperioridizagarolo.edu.it                  ,7606       ,2A_LICEO_2019/20
+MARIO                    ,MONACO              ,mario.monaco.00007483@scuolesuperioridizagarolo.edu.it                   ,7483       ,3B_LICEO_2019/20
+GIORGIO                  ,MONNI               ,giorgio.monni.00008057@scuolesuperioridizagarolo.edu.it                  ,8057       ,5E_LICEO_2019/20
+EMANUELE                 ,MONTEIRO SOARES     ,emanuele.monteirosoares.00007672@scuolesuperioridizagarolo.edu.it        ,7672       ,1E_LICEO_2019/20
+ISABELLA                 ,MORETTI             ,isabella.moretti.00007574@scuolesuperioridizagarolo.edu.it               ,7574       ,2C_LICEO_2019/20
+MICHELE                  ,MORETTI             ,michele.moretti.00007472@scuolesuperioridizagarolo.edu.it                ,7472       ,3G_LICEO_2019/20
+FLAVIA                   ,MORGANTE            ,flavia.morgante.00007196@scuolesuperioridizagarolo.edu.it                ,7196       ,4G_LICEO_2019/20
+TOMMASO CLAUDIO          ,MORICONI            ,tommasoclaudio.moriconi.00007198@scuolesuperioridizagarolo.edu.it        ,7198       ,4C_LICEO_2019/20
+GIULIA                   ,MORIGA              ,giulia.moriga.00007324@scuolesuperioridizagarolo.edu.it                  ,7324       ,3E_LICEO_2019/20
+SAMUELE                  ,MOSCATELLI          ,samuele.moscatelli.00007818@scuolesuperioridizagarolo.edu.it             ,7818       ,1F_LICEO_2019/20
+MATTIA                   ,MUREDDU             ,mattia.mureddu.00007857@scuolesuperioridizagarolo.edu.it                 ,7857       ,1H_LICEO_2019/20
+ADRIANA                  ,MUZIO               ,adriana.muzio.00007508@scuolesuperioridizagarolo.edu.it                  ,7508       ,3F_LICEO_2019/20
+CAMILLA                  ,NANNI               ,camilla.nanni.00007278@scuolesuperioridizagarolo.edu.it                  ,7278       ,4E_LICEO_2019/20
+ILARIA                   ,NANNI               ,ilaria.nanni.00007498@scuolesuperioridizagarolo.edu.it                   ,7498       ,3A_LICEO_2019/20
+CAMILLA                  ,NARDI               ,camilla.nardi.00007390@scuolesuperioridizagarolo.edu.it                  ,7390       ,3A_LICEO_2019/20
+LEONARDO                 ,NARDI               ,leonardo.nardi.00006920@scuolesuperioridizagarolo.edu.it                 ,6920       ,5A_LICEO_2019/20
+MARCO                    ,NARDI               ,marco.nardi.00007251@scuolesuperioridizagarolo.edu.it                    ,7251       ,4B_LICEO_2019/20
+MICHELA                  ,NARDI               ,michela.nardi.00007938@scuolesuperioridizagarolo.edu.it                  ,7938       ,1G_LICEO_2019/20
+SIMONE                   ,NARDI               ,simone.nardi.00007912@scuolesuperioridizagarolo.edu.it                   ,7912       ,1H_LICEO_2019/20
+FEDERICO                 ,NATI                ,federico.nati.00007413@scuolesuperioridizagarolo.edu.it                  ,7413       ,3F_LICEO_2019/20
+DENIS LORENZO            ,NEAGOE              ,denislorenzo.neagoe.00007465@scuolesuperioridizagarolo.edu.it            ,7465       ,3H_LICEO_2019/20
+LUDOVICA                 ,NEGRO               ,ludovica.negro.00007979@scuolesuperioridizagarolo.edu.it                 ,7979       ,1D_LICEO_2019/20
+MARTINA                  ,NEPI                ,martina.nepi.00006953@scuolesuperioridizagarolo.edu.it                   ,6953       ,5A_LICEO_2019/20
+MATTEO                   ,NESTOLA             ,matteo.nestola.00006912@scuolesuperioridizagarolo.edu.it                 ,6912       ,5B_LICEO_2019/20
+LEONARDO                 ,NICOLAUS            ,leonardo.nicolaus.00007361@scuolesuperioridizagarolo.edu.it              ,7361       ,3D_LICEO_2019/20
+VALERIO                  ,NICOLETTI           ,valerio.nicoletti.00007922@scuolesuperioridizagarolo.edu.it              ,7922       ,1D_LICEO_2019/20
+GABRIELE                 ,NICOLOSI            ,gabriele.nicolosi.00006981@scuolesuperioridizagarolo.edu.it              ,6981       ,5B_LICEO_2019/20
+LUCA                     ,NOBILE              ,luca.nobile.00007925@scuolesuperioridizagarolo.edu.it                    ,7925       ,1B_LICEO_2019/20
+FRANCESCO                ,NOVELLI             ,francesco.novelli.00007339@scuolesuperioridizagarolo.edu.it              ,7339       ,3C_LICEO_2019/20
+IRENE                    ,NOVELLI             ,irene.novelli.00007424@scuolesuperioridizagarolo.edu.it                  ,7424       ,3C_LICEO_2019/20
+SARA                     ,NUCCI               ,sara.nucci.00008069@scuolesuperioridizagarolo.edu.it                     ,8069       ,2E_LICEO_2019/20
+NICOLAS                  ,OBERI               ,nicolas.oberi.00007283@scuolesuperioridizagarolo.edu.it                  ,7283       ,4F_LICEO_2019/20
+SAMUELE                  ,ODDI                ,samuele.oddi.00007340@scuolesuperioridizagarolo.edu.it                   ,7340       ,3H_LICEO_2019/20
+DENIS                    ,OKSHTUNI            ,denis.okshtuni.00007213@scuolesuperioridizagarolo.edu.it                 ,7213       ,4F_LICEO_2019/20
+CEZARIA LARISA           ,OLENIC              ,cezarialarisa.olenic.00007252@scuolesuperioridizagarolo.edu.it           ,7252       ,4G_LICEO_2019/20
+DENISE                   ,OLIVERIO            ,denise.oliverio.00007630@scuolesuperioridizagarolo.edu.it                ,7630       ,2F_LICEO_2019/20
+DESIRE'E                 ,OLIVERIO            ,desiree.oliverio.00007629@scuolesuperioridizagarolo.edu.it               ,7629       ,2F_LICEO_2019/20
+ERIKA                    ,OLIVERIO            ,erika.oliverio.00007114@scuolesuperioridizagarolo.edu.it                 ,7114       ,4F_LICEO_2019/20
+ALEJANDRO JOSE           ,OMANA ALTUVE        ,alejandrojose.omanaaltuve.00008043@scuolesuperioridizagarolo.edu.it      ,8043       ,2E_LICEO_2019/20
+FRANCESCO                ,ONORATI             ,francesco.onorati.00007944@scuolesuperioridizagarolo.edu.it              ,7944       ,1D_LICEO_2019/20
+TIZIANO                  ,ORLANDI             ,tiziano.orlandi.00007717@scuolesuperioridizagarolo.edu.it                ,7717       ,2D_LICEO_2019/20
+ANGELICA                 ,ORSI                ,angelica.orsi.00007904@scuolesuperioridizagarolo.edu.it                  ,7904       ,1B_LICEO_2019/20
+MARTINA                  ,PACI                ,martina.paci.00007985@scuolesuperioridizagarolo.edu.it                   ,7985       ,1C_LICEO_2019/20
+DANIELE                  ,PACIFICI            ,daniele.pacifici.00007212@scuolesuperioridizagarolo.edu.it               ,7212       ,4C_LICEO_2019/20
+MIRKO                    ,PACIFICI            ,mirko.pacifici.00007899@scuolesuperioridizagarolo.edu.it                 ,7899       ,1E_LICEO_2019/20
+VALERIO                  ,PACIFICI            ,valerio.pacifici.00006817@scuolesuperioridizagarolo.edu.it               ,6817       ,5E_LICEO_2019/20
+LUCA                     ,PACINI              ,luca.pacini.00007234@scuolesuperioridizagarolo.edu.it                    ,7234       ,3F_LICEO_2019/20
+TOMMASO                  ,PADOVANI            ,tommaso.padovani.00007911@scuolesuperioridizagarolo.edu.it               ,7911       ,1G_LICEO_2019/20
+ALESSIA                  ,PALAZZI             ,alessia.palazzi.00007829@scuolesuperioridizagarolo.edu.it                ,7829       ,1D_LICEO_2019/20
+SALVATORE MATTEO         ,PALMIERO            ,salvatorematteo.palmiero.00007567@scuolesuperioridizagarolo.edu.it       ,7567       ,2A_LICEO_2019/20
+ASIA                     ,PALOMBI             ,asia.palombi.00007787@scuolesuperioridizagarolo.edu.it                   ,7787       ,4E_LICEO_2019/20
+FRANCESCO                ,PALONE              ,francesco.palone.00007898@scuolesuperioridizagarolo.edu.it               ,7898       ,1D_LICEO_2019/20
+VALERIO                  ,PANCELLI            ,valerio.pancelli.00007008@scuolesuperioridizagarolo.edu.it               ,7008       ,5D_LICEO_2019/20
+LEONARDO                 ,PANICCIA            ,leonardo.paniccia.00007186@scuolesuperioridizagarolo.edu.it              ,7186       ,4D_LICEO_2019/20
+GABRIELE                 ,PANZIRONI           ,gabriele.panzironi.00006992@scuolesuperioridizagarolo.edu.it             ,6992       ,5C_LICEO_2019/20
+GIACOMO                  ,PAOLACCI            ,giacomo.paolacci.00007865@scuolesuperioridizagarolo.edu.it               ,7865       ,1F_LICEO_2019/20
+ALESSIO GABRIELE         ,PAPUC               ,alessiogabriele.papuc.00007978@scuolesuperioridizagarolo.edu.it          ,7978       ,1A_LICEO_2019/20
+GIOVANNI                 ,PARISI              ,giovanni.parisi.00007897@scuolesuperioridizagarolo.edu.it                ,7897       ,1E_LICEO_2019/20
+KEVIN                    ,PAROLARI            ,kevin.parolari.00007335@scuolesuperioridizagarolo.edu.it                 ,7335       ,3B_LICEO_2019/20
+THOMAS                   ,PASQUALINI          ,thomas.pasqualini.00007427@scuolesuperioridizagarolo.edu.it              ,7427       ,3A_LICEO_2019/20
+ANTONIO                  ,PASQUARIELLO        ,antonio.pasquariello.00007622@scuolesuperioridizagarolo.edu.it           ,7622       ,2F_LICEO_2019/20
+ELENA                    ,PASQUAZI            ,elena.pasquazi.00007437@scuolesuperioridizagarolo.edu.it                 ,7437       ,3B_LICEO_2019/20
+LUCA                     ,PASQUAZI            ,luca.pasquazi.00007237@scuolesuperioridizagarolo.edu.it                  ,7237       ,4E_LICEO_2019/20
+MAILA                    ,PASQUAZI            ,maila.pasquazi.00007433@scuolesuperioridizagarolo.edu.it                 ,7433       ,3C_LICEO_2019/20
+RUCSANDRA IOANA          ,PASQUAZI            ,rucsandraioana.pasquazi.00007016@scuolesuperioridizagarolo.edu.it        ,7016       ,4D_LICEO_2019/20
+NIKOLAS                  ,PASSA               ,nikolas.passa.00007205@scuolesuperioridizagarolo.edu.it                  ,7205       ,4F_LICEO_2019/20
+ALESSIO                  ,PASSERI             ,alessio.passeri.00006947@scuolesuperioridizagarolo.edu.it                ,6947       ,5A_LICEO_2019/20
+VALERIA                  ,PASSERI             ,valeria.passeri.00007192@scuolesuperioridizagarolo.edu.it                ,7192       ,4G_LICEO_2019/20
+MARIKA                   ,PASSI               ,marika.passi.00007718@scuolesuperioridizagarolo.edu.it                   ,7718       ,2C_LICEO_2019/20
+LORENZO                  ,PASTACALDI          ,lorenzo.pastacaldi.00007128@scuolesuperioridizagarolo.edu.it             ,7128       ,4E_LICEO_2019/20
+COSMIN ANDREEA           ,PAUNESCU            ,cosminandreea.paunescu.00008002@scuolesuperioridizagarolo.edu.it         ,8002       ,1D_LICEO_2019/20
+DAVID                    ,PECETTA             ,david.pecetta.00007438@scuolesuperioridizagarolo.edu.it                  ,7438       ,3A_LICEO_2019/20
+GIORGIA                  ,PEDRAZZINI          ,giorgia.pedrazzini.00007467@scuolesuperioridizagarolo.edu.it             ,7467       ,3C_LICEO_2019/20
+ISABEL                   ,PENNA               ,isabel.penna.00007886@scuolesuperioridizagarolo.edu.it                   ,7886       ,1B_LICEO_2019/20
+GABRIELE                 ,PENZA               ,gabriele.penza.00006996@scuolesuperioridizagarolo.edu.it                 ,6996       ,5E_LICEO_2019/20
+ALESSANDRO               ,PESCETELLI          ,alessandro.pescetelli.00007000@scuolesuperioridizagarolo.edu.it          ,7000       ,5B_LICEO_2019/20
+FRANCESCO                ,PETRASSI            ,francesco.petrassi.00007133@scuolesuperioridizagarolo.edu.it             ,7133       ,4D_LICEO_2019/20
+FRANCESCO MARIA          ,PETRASSI            ,francescomaria.petrassi.00007714@scuolesuperioridizagarolo.edu.it        ,7714       ,2C_LICEO_2019/20
+MATTEO                   ,PETRICCIUOLO        ,matteo.petricciuolo.00007160@scuolesuperioridizagarolo.edu.it            ,7160       ,4C_LICEO_2019/20
+ANDREA                   ,PETRIGLIA           ,andrea.petriglia.00007019@scuolesuperioridizagarolo.edu.it               ,7019       ,5D_LICEO_2019/20
+ALESSANDRO               ,PETRINCA            ,alessandro.petrinca.00007991@scuolesuperioridizagarolo.edu.it            ,7991       ,1A_LICEO_2019/20
+LEONARDO                 ,PETROLATI           ,leonardo.petrolati.00007968@scuolesuperioridizagarolo.edu.it             ,7968       ,1D_LICEO_2019/20
+LORENZO                  ,PETRUCCI            ,lorenzo.petrucci.00007106@scuolesuperioridizagarolo.edu.it               ,7106       ,4F_LICEO_2019/20
+SARA                     ,PETRUCCI            ,sara.petrucci.00007635@scuolesuperioridizagarolo.edu.it                  ,7635       ,2B_LICEO_2019/20
+FRANCESCO                ,PETTE               ,francesco.pette.00007461@scuolesuperioridizagarolo.edu.it                ,7461       ,3C_LICEO_2019/20
+FRANCESCO                ,PIAZZAI             ,francesco.piazzai.00007619@scuolesuperioridizagarolo.edu.it              ,7619       ,2B_LICEO_2019/20
+MATTEO                   ,PICARELLI           ,matteo.picarelli.00007827@scuolesuperioridizagarolo.edu.it               ,7827       ,1D_LICEO_2019/20
+DANIELE                  ,PICCIRILLI          ,daniele.piccirilli.00007375@scuolesuperioridizagarolo.edu.it             ,7375       ,2B_LICEO_2019/20
+LORENZO                  ,PICHI               ,lorenzo.pichi.00007869@scuolesuperioridizagarolo.edu.it                  ,7869       ,1D_LICEO_2019/20
+LEONARDO                 ,PIERINI             ,leonardo.pierini.00007816@scuolesuperioridizagarolo.edu.it               ,7816       ,1F_LICEO_2019/20
+ADRIANO                  ,PIERMATTEI          ,adriano.piermattei.00007720@scuolesuperioridizagarolo.edu.it             ,7720       ,2A_LICEO_2019/20
+ANNA RITA                ,PINCI               ,annarita.pinci.00007199@scuolesuperioridizagarolo.edu.it                 ,7199       ,4G_LICEO_2019/20
+EMANUELE                 ,PINCI               ,emanuele.pinci.00007209@scuolesuperioridizagarolo.edu.it                 ,7209       ,4A_LICEO_2019/20
+MARTA                    ,PINCI               ,marta.pinci.00007395@scuolesuperioridizagarolo.edu.it                    ,7395       ,3H_LICEO_2019/20
+RACHELE                  ,PINCI               ,rachele.pinci.00007459@scuolesuperioridizagarolo.edu.it                  ,7459       ,3B_LICEO_2019/20
+MAURO                    ,PIRAS               ,mauro.piras.00007328@scuolesuperioridizagarolo.edu.it                    ,7328       ,3A_LICEO_2019/20
+SOFIA                    ,PIRAS               ,sofia.piras.00007890@scuolesuperioridizagarolo.edu.it                    ,7890       ,1E_LICEO_2019/20
+DAVIDE                   ,PIRETTI             ,davide.piretti.00007856@scuolesuperioridizagarolo.edu.it                 ,7856       ,1A_LICEO_2019/20
+ANGELA                   ,PISCOPO             ,angela.piscopo.00007906@scuolesuperioridizagarolo.edu.it                 ,7906       ,1A_LICEO_2019/20
+CATERINA                 ,PIZZI               ,caterina.pizzi.00007138@scuolesuperioridizagarolo.edu.it                 ,7138       ,4C_LICEO_2019/20
+LEONARDO                 ,PIZZICONI           ,leonardo.pizziconi.00007667@scuolesuperioridizagarolo.edu.it             ,7667       ,2B_LICEO_2019/20
+SARA                     ,PIZZICONI           ,sara.pizziconi.00007126@scuolesuperioridizagarolo.edu.it                 ,7126       ,4G_LICEO_2019/20
+ALESSANDRO               ,POMPILIO            ,alessandro.pompilio.00007934@scuolesuperioridizagarolo.edu.it            ,7934       ,1D_LICEO_2019/20
+SILVIA                   ,POMPILIO            ,silvia.pompilio.00007974@scuolesuperioridizagarolo.edu.it                ,7974       ,1C_LICEO_2019/20
+MAXIMILIAN IOAN          ,POP                 ,maximilianioan.pop.00007445@scuolesuperioridizagarolo.edu.it             ,7445       ,3D_LICEO_2019/20
+CRISTIAN EDUARD          ,POPA                ,cristianeduard.popa.00007416@scuolesuperioridizagarolo.edu.it            ,7416       ,3B_LICEO_2019/20
+RAZVAN                   ,POPA                ,razvan.popa.00007657@scuolesuperioridizagarolo.edu.it                    ,7657       ,2D_LICEO_2019/20
+MATTEO                   ,PORRETTA            ,matteo.porretta.00006997@scuolesuperioridizagarolo.edu.it                ,6997       ,5E_LICEO_2019/20
+NIKITA                   ,PRETELLI            ,nikita.pretelli.00007824@scuolesuperioridizagarolo.edu.it                ,7824       ,1F_LICEO_2019/20
+BEATRICE                 ,PROIETTI            ,beatrice.proietti.00007316@scuolesuperioridizagarolo.edu.it              ,7316       ,3F_LICEO_2019/20
+JESSICA                  ,PROIETTI            ,jessica.proietti.00007425@scuolesuperioridizagarolo.edu.it               ,7425       ,3H_LICEO_2019/20
+VIOLA                    ,PROIETTI            ,viola.proietti.00007973@scuolesuperioridizagarolo.edu.it                 ,7973       ,1F_LICEO_2019/20
+ALESSANDRO               ,PUCCI               ,alessandro.pucci.00007575@scuolesuperioridizagarolo.edu.it               ,7575       ,2D_LICEO_2019/20
+MARTINA                  ,PUCCI               ,martina.pucci.00007662@scuolesuperioridizagarolo.edu.it                  ,7662       ,2E_LICEO_2019/20
+MARTINA                  ,PUCCIARELLI         ,martina.pucciarelli.00007279@scuolesuperioridizagarolo.edu.it            ,7279       ,4G_LICEO_2019/20
+MATTEO                   ,PUCCIARELLI         ,matteo.pucciarelli.00007009@scuolesuperioridizagarolo.edu.it             ,7009       ,4B_LICEO_2019/20
+ANDREA                   ,PULSONI             ,andrea.pulsoni.00007248@scuolesuperioridizagarolo.edu.it                 ,7248       ,4B_LICEO_2019/20
+GIANLUCA                 ,QUARANTA            ,gianluca.quaranta.00007381@scuolesuperioridizagarolo.edu.it              ,7381       ,3G_LICEO_2019/20
+SABINA                   ,RADU                ,sabina.radu.00007961@scuolesuperioridizagarolo.edu.it                    ,7961       ,1F_LICEO_2019/20
+ANTONIO                  ,RAGANATO            ,antonio.raganato.00007951@scuolesuperioridizagarolo.edu.it               ,7951       ,1G_LICEO_2019/20
+LUCA                     ,RANDOLFI            ,luca.randolfi.00007984@scuolesuperioridizagarolo.edu.it                  ,7984       ,1D_LICEO_2019/20
+ENRIKA                   ,RATA                ,enrika.rata.00007583@scuolesuperioridizagarolo.edu.it                    ,7583       ,1E_LICEO_2019/20
+GIORDANO                 ,RECCHIA             ,giordano.recchia.00007893@scuolesuperioridizagarolo.edu.it               ,7893       ,1C_LICEO_2019/20
+PATRIZIO                 ,REGOLI              ,patrizio.regoli.00007633@scuolesuperioridizagarolo.edu.it                ,7633       ,2E_LICEO_2019/20
+MATTIA                   ,REMIGI              ,mattia.remigi.00007042@scuolesuperioridizagarolo.edu.it                  ,7042       ,5C_LICEO_2019/20
+FEDERICA                 ,RICCARDI            ,federica.riccardi.00007948@scuolesuperioridizagarolo.edu.it              ,7948       ,1C_LICEO_2019/20
+ALESSIA                  ,RICCI               ,alessia.ricci.00006765@scuolesuperioridizagarolo.edu.it                  ,6765       ,5B_LICEO_2019/20
+COSTANTINO               ,RICCI               ,costantino.ricci.00007415@scuolesuperioridizagarolo.edu.it               ,7415       ,3C_LICEO_2019/20
+EMANUELE                 ,RICOZZI             ,emanuele.ricozzi.00007945@scuolesuperioridizagarolo.edu.it               ,7945       ,1C_LICEO_2019/20
+ELISA                    ,RIPANTI             ,elisa.ripanti.00007281@scuolesuperioridizagarolo.edu.it                  ,7281       ,4G_LICEO_2019/20
+NICOLO'                  ,ROMAGNOLI           ,nicolo.romagnoli.00007507@scuolesuperioridizagarolo.edu.it               ,7507       ,3D_LICEO_2019/20
+ALESSANDRO               ,ROMANI              ,alessandro.romani.00007350@scuolesuperioridizagarolo.edu.it              ,7350       ,3C_LICEO_2019/20
+SALVATORE                ,ROMEO               ,salvatore.romeo.00007184@scuolesuperioridizagarolo.edu.it                ,7184       ,4D_LICEO_2019/20
+CHIARA                   ,ROMERSI             ,chiara.romersi.00007164@scuolesuperioridizagarolo.edu.it                 ,7164       ,4E_LICEO_2019/20
+IRENE                    ,ROMERSI             ,irene.romersi.00007581@scuolesuperioridizagarolo.edu.it                  ,7581       ,2H_LICEO_2019/20
+ERICA                    ,RONCI               ,erica.ronci.00007353@scuolesuperioridizagarolo.edu.it                    ,7353       ,3G_LICEO_2019/20
+LUCIA                    ,ROSETTI             ,lucia.rosetti.00007404@scuolesuperioridizagarolo.edu.it                  ,7404       ,3A_LICEO_2019/20
+EMANUELE                 ,ROSICARELLI         ,emanuele.rosicarelli.00007687@scuolesuperioridizagarolo.edu.it           ,7687       ,2D_LICEO_2019/20
+MATTEO                   ,ROSICARELLI         ,matteo.rosicarelli.00007006@scuolesuperioridizagarolo.edu.it             ,7006       ,4C_LICEO_2019/20
+BENEDETTA                ,ROSSETTI            ,benedetta.rossetti.00007485@scuolesuperioridizagarolo.edu.it             ,7485       ,3E_LICEO_2019/20
+DAVIDE                   ,ROSSETTI            ,davide.rossetti.00007812@scuolesuperioridizagarolo.edu.it                ,7812       ,1E_LICEO_2019/20
+GEMMA                    ,ROSSI               ,gemma.rossi.00006973@scuolesuperioridizagarolo.edu.it                    ,6973       ,5B_LICEO_2019/20
+GIULIA                   ,ROSSI               ,giulia.rossi.00007315@scuolesuperioridizagarolo.edu.it                   ,7315       ,3G_LICEO_2019/20
+CRISTIANO                ,ROTONDI             ,cristiano.rotondi.00007907@scuolesuperioridizagarolo.edu.it              ,7907       ,1H_LICEO_2019/20
+MARCUS                   ,RUFFA               ,marcus.ruffa.00006916@scuolesuperioridizagarolo.edu.it                   ,6916       ,5D_LICEO_2019/20
+MATTEO                   ,RUGGERI             ,matteo.ruggeri.00007141@scuolesuperioridizagarolo.edu.it                 ,7141       ,3E_LICEO_2019/20
+LEONARDO                 ,RUGGERO             ,leonardo.ruggero.00007832@scuolesuperioridizagarolo.edu.it               ,7832       ,1F_LICEO_2019/20
+LORENZO                  ,RUSSO               ,lorenzo.russo.00007913@scuolesuperioridizagarolo.edu.it                  ,7913       ,1A_LICEO_2019/20
+SIMONE                   ,SABELLI             ,simone.sabelli.00007658@scuolesuperioridizagarolo.edu.it                 ,7658       ,2F_LICEO_2019/20
+GIOVANNA                 ,SABELLICO           ,giovanna.sabellico.00007888@scuolesuperioridizagarolo.edu.it             ,7888       ,1B_LICEO_2019/20
+GABRIELE                 ,SALERNO             ,gabriele.salerno.00007877@scuolesuperioridizagarolo.edu.it               ,7877       ,1E_LICEO_2019/20
+SARA                     ,SALITURO            ,sara.salituro.00007725@scuolesuperioridizagarolo.edu.it                  ,7725       ,2C_LICEO_2019/20
+CHIARA                   ,SALOMONE            ,chiara.salomone.00007400@scuolesuperioridizagarolo.edu.it                ,7400       ,3A_LICEO_2019/20
+ANDREA                   ,SALVATI             ,andrea.salvati.00007639@scuolesuperioridizagarolo.edu.it                 ,7639       ,2C_LICEO_2019/20
+RICCARDO                 ,SAMBUCINI           ,riccardo.sambucini.00008050@scuolesuperioridizagarolo.edu.it             ,8050       ,1C_LICEO_2019/20
+ASIA                     ,SANITA'             ,asia.sanita.00007797@scuolesuperioridizagarolo.edu.it                    ,7797       ,3B_LICEO_2019/20
+ILARIA                   ,SANNA               ,ilaria.sanna.00007178@scuolesuperioridizagarolo.edu.it                   ,7178       ,4D_LICEO_2019/20
+MANUEL                   ,SANTAPAOLA          ,manuel.santapaola.00007207@scuolesuperioridizagarolo.edu.it              ,7207       ,4C_LICEO_2019/20
+VALERIO                  ,SANTODONATO         ,valerio.santodonato.00007962@scuolesuperioridizagarolo.edu.it            ,7962       ,1H_LICEO_2019/20
+YURI                     ,SANTONI             ,yuri.santoni.00007499@scuolesuperioridizagarolo.edu.it                   ,7499       ,3B_LICEO_2019/20
+MATTIA                   ,SAPIENZA            ,mattia.sapienza.00006931@scuolesuperioridizagarolo.edu.it                ,6931       ,4A_LICEO_2019/20
+GABRIELE                 ,SARANDREA           ,gabriele.sarandrea.00007626@scuolesuperioridizagarolo.edu.it             ,7626       ,2D_LICEO_2019/20
+MATTIA                   ,SBARDELLA           ,mattia.sbardella.00006991@scuolesuperioridizagarolo.edu.it               ,6991       ,5E_LICEO_2019/20
+NICOLO'                  ,SBARDELLA           ,nicolo.sbardella.00007481@scuolesuperioridizagarolo.edu.it               ,7481       ,3G_LICEO_2019/20
+ANDREY                   ,SBORDONE            ,andrey.sbordone.00007632@scuolesuperioridizagarolo.edu.it                ,7632       ,2B_LICEO_2019/20
+ALESSANDRO               ,SCACCO              ,alessandro.scacco.00007916@scuolesuperioridizagarolo.edu.it              ,7916       ,1A_LICEO_2019/20
+FEDERICO                 ,SCACCO              ,federico.scacco.00007617@scuolesuperioridizagarolo.edu.it                ,7617       ,2D_LICEO_2019/20
+GIANMARCO                ,SCACCO              ,gianmarco.scacco.00007997@scuolesuperioridizagarolo.edu.it               ,7997       ,1G_LICEO_2019/20
+GIOVANNI                 ,SCACCO              ,giovanni.scacco.00007144@scuolesuperioridizagarolo.edu.it                ,7144       ,4B_LICEO_2019/20
+ANDREA                   ,SCARAMELLA          ,andrea.scaramella.00007470@scuolesuperioridizagarolo.edu.it              ,7470       ,3H_LICEO_2019/20
+BENEDETTA                ,SCARAMELLA          ,benedetta.scaramella.00007221@scuolesuperioridizagarolo.edu.it           ,7221       ,4C_LICEO_2019/20
+DIEGO                    ,SCARAMELLA          ,diego.scaramella.00007952@scuolesuperioridizagarolo.edu.it               ,7952       ,1H_LICEO_2019/20
+FEDERICO                 ,SCARAMELLA          ,federico.scaramella.00007983@scuolesuperioridizagarolo.edu.it            ,7983       ,1B_LICEO_2019/20
+LUCA                     ,SCARANO             ,luca.scarano.00007621@scuolesuperioridizagarolo.edu.it                   ,7621       ,2D_LICEO_2019/20
+ALESSANDRO               ,SCARCIOTTI          ,alessandro.scarciotti.00007577@scuolesuperioridizagarolo.edu.it          ,7577       ,2E_LICEO_2019/20
+ALESSIO                  ,SCARDELLA           ,alessio.scardella.00007828@scuolesuperioridizagarolo.edu.it              ,7828       ,1C_LICEO_2019/20
+CHIARA                   ,SCARINGI            ,chiara.scaringi.00007370@scuolesuperioridizagarolo.edu.it                ,7370       ,3F_LICEO_2019/20
+LUCA                     ,SCAROZZA            ,luca.scarozza.00007598@scuolesuperioridizagarolo.edu.it                  ,7598       ,2A_LICEO_2019/20
+LUCA                     ,SCAROZZA            ,luca.scarozza.00007480@scuolesuperioridizagarolo.edu.it                  ,7480       ,3C_LICEO_2019/20
+ENRICO                   ,SCHEMBRI            ,enrico.schembri.00006943@scuolesuperioridizagarolo.edu.it                ,6943       ,4E_LICEO_2019/20
+BEATRICE                 ,SCHIAVELLA          ,beatrice.schiavella.00007641@scuolesuperioridizagarolo.edu.it            ,7641       ,2E_LICEO_2019/20
+PIERLUCA                 ,SCHIAVELLA          ,pierluca.schiavella.00006945@scuolesuperioridizagarolo.edu.it            ,6945       ,4B_LICEO_2019/20
+GIORGIA                  ,SCHIONA             ,giorgia.schiona.00007625@scuolesuperioridizagarolo.edu.it                ,7625       ,2F_LICEO_2019/20
+MATTEO                   ,SCHIOPPA            ,matteo.schioppa.00007451@scuolesuperioridizagarolo.edu.it                ,7451       ,3D_LICEO_2019/20
+DAVIDE                   ,SCIACOVELLI         ,davide.sciacovelli.00007313@scuolesuperioridizagarolo.edu.it             ,7313       ,3F_LICEO_2019/20
+SIMONE                   ,SCIPIONI            ,simone.scipioni.00006938@scuolesuperioridizagarolo.edu.it                ,6938       ,5B_LICEO_2019/20
+LUCA                     ,SCOPA               ,luca.scopa.00007174@scuolesuperioridizagarolo.edu.it                     ,7174       ,3E_LICEO_2019/20
+GABRIEL                  ,SCRIPCA             ,gabriel.scripca.00007359@scuolesuperioridizagarolo.edu.it                ,7359       ,3E_LICEO_2019/20
+GIAMMARCO                ,SEBASTIANELLI       ,giammarco.sebastianelli.00007113@scuolesuperioridizagarolo.edu.it        ,7113       ,4A_LICEO_2019/20
+MATTEO                   ,SELLAROLI           ,matteo.sellaroli.00007482@scuolesuperioridizagarolo.edu.it               ,7482       ,3H_LICEO_2019/20
+SAM                      ,SEPEHRY             ,sam.sepehry.00007191@scuolesuperioridizagarolo.edu.it                    ,7191       ,4F_LICEO_2019/20
+ALESSANDRO               ,SERRA               ,alessandro.serra.00007462@scuolesuperioridizagarolo.edu.it               ,7462       ,3A_LICEO_2019/20
+LORENZO                  ,SERRA               ,lorenzo.serra.00007250@scuolesuperioridizagarolo.edu.it                  ,7250       ,4B_LICEO_2019/20
+ALESSANDRO               ,SERRI               ,alessandro.serri.00007197@scuolesuperioridizagarolo.edu.it               ,7197       ,4C_LICEO_2019/20
+NICOLO'                  ,SESTO               ,nicolo.sesto.00007028@scuolesuperioridizagarolo.edu.it                   ,7028       ,5A_LICEO_2019/20
+ALEX                     ,SEVERONI            ,alex.severoni.00007815@scuolesuperioridizagarolo.edu.it                  ,7815       ,1H_LICEO_2019/20
+LORENZO                  ,SGRO'               ,lorenzo.sgro.00007996@scuolesuperioridizagarolo.edu.it                   ,7996       ,1B_LICEO_2019/20
+EDOARDO                  ,SILVESTRINI         ,edoardo.silvestrini.00007837@scuolesuperioridizagarolo.edu.it            ,7837       ,1G_LICEO_2019/20
+PIERLUIGI                ,SIMONE              ,pierluigi.simone.00007275@scuolesuperioridizagarolo.edu.it               ,7275       ,3F_LICEO_2019/20
+SARA                     ,SIMONINI            ,sara.simonini.00007374@scuolesuperioridizagarolo.edu.it                  ,7374       ,3E_LICEO_2019/20
+ALESSIO                  ,SORRENTI            ,alessio.sorrenti.00006952@scuolesuperioridizagarolo.edu.it               ,6952       ,5D_LICEO_2019/20
+LAURA                    ,SPAGNULO            ,laura.spagnulo.00007780@scuolesuperioridizagarolo.edu.it                 ,7780       ,5C_LICEO_2019/20
+BEATRICE                 ,SPATARO             ,beatrice.spataro.00007689@scuolesuperioridizagarolo.edu.it               ,7689       ,2C_LICEO_2019/20
+DARIO                    ,SPERANDIO           ,dario.sperandio.00006971@scuolesuperioridizagarolo.edu.it                ,6971       ,5D_LICEO_2019/20
+FRANCESCO                ,SPINA               ,francesco.spina.00007272@scuolesuperioridizagarolo.edu.it                ,7272       ,3G_LICEO_2019/20
+MARCO                    ,SPINA               ,marco.spina.00007981@scuolesuperioridizagarolo.edu.it                    ,7981       ,1G_LICEO_2019/20
+FRANCESCO                ,SPURIO POLINI       ,francesco.spuriopolini.00008064@scuolesuperioridizagarolo.edu.it         ,8064       ,1E_LICEO_2019/20
+ALESSIO                  ,STAITI              ,alessio.staiti.00007874@scuolesuperioridizagarolo.edu.it                 ,7874       ,1D_LICEO_2019/20
+ALESSANDRA               ,STERNINI            ,alessandra.sternini.00007490@scuolesuperioridizagarolo.edu.it            ,7490       ,3F_LICEO_2019/20
+LORENZO                  ,STIVALA             ,lorenzo.stivala.00007268@scuolesuperioridizagarolo.edu.it                ,7268       ,4A_LICEO_2019/20
+MATTEO                   ,STOCCO              ,matteo.stocco.00007443@scuolesuperioridizagarolo.edu.it                  ,7443       ,3B_LICEO_2019/20
+CAMILLA                  ,TAGLIACOZZO         ,camilla.tagliacozzo.00007253@scuolesuperioridizagarolo.edu.it            ,7253       ,4C_LICEO_2019/20
+GIULIA                   ,TAGLIAFERRI         ,giulia.tagliaferri.00007226@scuolesuperioridizagarolo.edu.it             ,7226       ,4G_LICEO_2019/20
+CAMILLA                  ,TAMBURRINI          ,camilla.tamburrini.00007964@scuolesuperioridizagarolo.edu.it             ,7964       ,1A_LICEO_2019/20
+FEDERICO                 ,TAMIRO              ,federico.tamiro.00007946@scuolesuperioridizagarolo.edu.it                ,7946       ,1B_LICEO_2019/20
+LORENZO                  ,TANGO               ,lorenzo.tango.00007356@scuolesuperioridizagarolo.edu.it                  ,7356       ,3B_LICEO_2019/20
+LORENZO                  ,TARANTINO           ,lorenzo.tarantino.00007949@scuolesuperioridizagarolo.edu.it              ,7949       ,1F_LICEO_2019/20
+ELISEO                   ,TARQUINI            ,eliseo.tarquini.00007995@scuolesuperioridizagarolo.edu.it                ,7995       ,1H_LICEO_2019/20
+ORLANDO                  ,TARQUINI            ,orlando.tarquini.00007994@scuolesuperioridizagarolo.edu.it               ,7994       ,1H_LICEO_2019/20
+PAOLO                    ,TASSA               ,paolo.tassa.00007998@scuolesuperioridizagarolo.edu.it                    ,7998       ,1A_LICEO_2019/20
+ANNA                     ,TEMPESTA            ,anna.tempesta.00007862@scuolesuperioridizagarolo.edu.it                  ,7862       ,1E_LICEO_2019/20
+PAOLO                    ,TERENZI             ,paolo.terenzi.00007134@scuolesuperioridizagarolo.edu.it                  ,7134       ,4B_LICEO_2019/20
+ERIK                     ,TERRADURA           ,erik.terradura.00007895@scuolesuperioridizagarolo.edu.it                 ,7895       ,1H_LICEO_2019/20
+SAVELIE                  ,TOACA               ,savelie.toaca.00007971@scuolesuperioridizagarolo.edu.it                  ,7971       ,1C_LICEO_2019/20
+BENEDETTA                ,TOLFA               ,benedetta.tolfa.00007571@scuolesuperioridizagarolo.edu.it                ,7571       ,2D_LICEO_2019/20
+GIULIA                   ,TOLLI               ,giulia.tolli.00007613@scuolesuperioridizagarolo.edu.it                   ,7613       ,2C_LICEO_2019/20
+CLAUDIO MARKUS           ,TOLOLOI             ,claudiomarkus.tololoi.00007663@scuolesuperioridizagarolo.edu.it          ,7663       ,2B_LICEO_2019/20
+DANIELE                  ,TOMASI              ,daniele.tomasi.00007211@scuolesuperioridizagarolo.edu.it                 ,7211       ,4B_LICEO_2019/20
+DANILO                   ,TOMBOLILLO          ,danilo.tombolillo.00007947@scuolesuperioridizagarolo.edu.it              ,7947       ,1D_LICEO_2019/20
+IRINA                    ,TOPSA               ,irina.topsa.00007642@scuolesuperioridizagarolo.edu.it                    ,7642       ,2H_LICEO_2019/20
+CAMILLA                  ,TORRESAN            ,camilla.torresan.00006923@scuolesuperioridizagarolo.edu.it               ,6923       ,5E_LICEO_2019/20
+LORENZO                  ,TOSTO               ,lorenzo.tosto.00007149@scuolesuperioridizagarolo.edu.it                  ,7149       ,4E_LICEO_2019/20
+ALESSIO                  ,TRANI               ,alessio.trani.00007697@scuolesuperioridizagarolo.edu.it                  ,7697       ,2B_LICEO_2019/20
+MATTEO                   ,TRAVAGLINI          ,matteo.travaglini.00007464@scuolesuperioridizagarolo.edu.it              ,7464       ,3E_LICEO_2019/20
+CARLOTTA                 ,TRINCA              ,carlotta.trinca.00007354@scuolesuperioridizagarolo.edu.it                ,7354       ,3E_LICEO_2019/20
+LUCA                     ,TRINCHIERI          ,luca.trinchieri.00007785@scuolesuperioridizagarolo.edu.it                ,7785       ,2D_LICEO_2019/20
+ALESSIO                  ,TRIONFERA           ,alessio.trionfera.00007171@scuolesuperioridizagarolo.edu.it              ,7171       ,4A_LICEO_2019/20
+FRANCESCO                ,TRIONFERA           ,francesco.trionfera.00007168@scuolesuperioridizagarolo.edu.it            ,7168       ,4A_LICEO_2019/20
+IRENE                    ,TROVATO             ,irene.trovato.00007407@scuolesuperioridizagarolo.edu.it                  ,7407       ,3G_LICEO_2019/20
+CHRISTIAN                ,TROVO'              ,christian.trovo.00007259@scuolesuperioridizagarolo.edu.it                ,7259       ,4A_LICEO_2019/20
+VALERIA                  ,TROVO'              ,valeria.trovo.00007923@scuolesuperioridizagarolo.edu.it                  ,7923       ,1A_LICEO_2019/20
+BEATRICE                 ,TUCCI               ,beatrice.tucci.00007120@scuolesuperioridizagarolo.edu.it                 ,7120       ,4C_LICEO_2019/20
+MATTEO                   ,TUCCI               ,matteo.tucci.00007230@scuolesuperioridizagarolo.edu.it                   ,7230       ,4D_LICEO_2019/20
+CHRISTIAN                ,TULLI               ,christian.tulli.00007153@scuolesuperioridizagarolo.edu.it                ,7153       ,4B_LICEO_2019/20
+MARCO                    ,TULLI               ,marco.tulli.00007562@scuolesuperioridizagarolo.edu.it                    ,7562       ,2H_LICEO_2019/20
+CHIARA                   ,TUMMINELLO          ,chiara.tumminello.00007493@scuolesuperioridizagarolo.edu.it              ,7493       ,3A_LICEO_2019/20
+MATTIA                   ,TURIANELLI          ,mattia.turianelli.00006978@scuolesuperioridizagarolo.edu.it              ,6978       ,5A_LICEO_2019/20
+ALESSIO                  ,UGOLINI             ,alessio.ugolini.00007297@scuolesuperioridizagarolo.edu.it                ,7297       ,4B_LICEO_2019/20
+SOFIA                    ,VALENTE             ,sofia.valente.00007495@scuolesuperioridizagarolo.edu.it                  ,7495       ,3G_LICEO_2019/20
+NICOLO'                  ,VANIA               ,nicolo.vania.00006948@scuolesuperioridizagarolo.edu.it                   ,6948       ,5D_LICEO_2019/20
+EMANUELE                 ,VANNINI             ,emanuele.vannini.00007455@scuolesuperioridizagarolo.edu.it               ,7455       ,3F_LICEO_2019/20
+ELVIRA                   ,VECCHI              ,elvira.vecchi.00007646@scuolesuperioridizagarolo.edu.it                  ,7646       ,2E_LICEO_2019/20
+ANDREA                   ,VELLETRANI          ,andrea.velletrani.00007497@scuolesuperioridizagarolo.edu.it              ,7497       ,3B_LICEO_2019/20
+CHRISTIAN                ,VENDITTI            ,christian.venditti.00007352@scuolesuperioridizagarolo.edu.it             ,7352       ,3E_LICEO_2019/20
+MARCO                    ,VENERANDO           ,marco.venerando.00006780@scuolesuperioridizagarolo.edu.it                ,6780       ,5A_LICEO_2019/20
+DAMIANO                  ,VENTURINI           ,damiano.venturini.00007917@scuolesuperioridizagarolo.edu.it              ,7917       ,1E_LICEO_2019/20
+EDOARDO                  ,VERGINELLI          ,edoardo.verginelli.00007110@scuolesuperioridizagarolo.edu.it             ,7110       ,4F_LICEO_2019/20
+ALICE                    ,VERZINO             ,alice.verzino.00008048@scuolesuperioridizagarolo.edu.it                  ,8048       ,1A_LICEO_2019/20
+MATTIA                   ,VINATTIERI          ,mattia.vinattieri.00007204@scuolesuperioridizagarolo.edu.it              ,7204       ,4F_LICEO_2019/20
+LUCA                     ,VINCENZI            ,luca.vincenzi.00007661@scuolesuperioridizagarolo.edu.it                  ,7661       ,2H_LICEO_2019/20
+EDOARDO                  ,VISCONTI            ,edoardo.visconti.00008000@scuolesuperioridizagarolo.edu.it               ,8000       ,1C_LICEO_2019/20
+ROBERTA                  ,VITIELLO            ,roberta.vitiello.00007879@scuolesuperioridizagarolo.edu.it               ,7879       ,1E_LICEO_2019/20
+DAMIANO                  ,VITTUCCI            ,damiano.vittucci.00007645@scuolesuperioridizagarolo.edu.it               ,7645       ,2D_LICEO_2019/20
+KRISTI                   ,VLUSHA              ,kristi.vlusha.00007363@scuolesuperioridizagarolo.edu.it                  ,7363       ,3F_LICEO_2019/20
+FRANCESCA                ,VOLPE               ,francesca.volpe.00007610@scuolesuperioridizagarolo.edu.it                ,7610       ,2C_LICEO_2019/20
+LATIFA                   ,WEHBE               ,latifa.wehbe.00007534@scuolesuperioridizagarolo.edu.it                   ,7534       ,3D_LICEO_2019/20
+GABRIELE                 ,ZAMMARRELLI         ,gabriele.zammarrelli.00007215@scuolesuperioridizagarolo.edu.it           ,7215       ,4C_LICEO_2019/20
+DOMIZIANA                ,ZAMPATORI           ,domiziana.zampatori.00007861@scuolesuperioridizagarolo.edu.it            ,7861       ,1G_LICEO_2019/20
+LORENZO                  ,ZAPPIA              ,lorenzo.zappia.00007004@scuolesuperioridizagarolo.edu.it                 ,7004       ,5C_LICEO_2019/20
+DAVIDE                   ,ZARATTI             ,davide.zaratti.00007578@scuolesuperioridizagarolo.edu.it                 ,7578       ,2B_LICEO_2019/20
+SAMUELE                  ,ZARLENGA            ,samuele.zarlenga.00007710@scuolesuperioridizagarolo.edu.it               ,7710       ,2B_LICEO_2019/20
+AURORA                   ,ZATTINI             ,aurora.zattini.00006913@scuolesuperioridizagarolo.edu.it                 ,6913       ,5E_LICEO_2019/20
+EMILIANO                 ,ZEFI                ,emiliano.zefi.00007703@scuolesuperioridizagarolo.edu.it                  ,7703       ,2H_LICEO_2019/20
+ALESSIO                  ,ZIFFI               ,alessio.ziffi.00007686@scuolesuperioridizagarolo.edu.it                  ,7686       ,2E_LICEO_2019/20
+TOMMASO                  ,ZIMPI               ,tommaso.zimpi.00007849@scuolesuperioridizagarolo.edu.it                  ,7849       ,1B_LICEO_2019/20
+GABRIELE                 ,ZIPPO               ,gabriele.zippo.00007137@scuolesuperioridizagarolo.edu.it                 ,7137       ,4B_LICEO_2019/20
+ADRIAN DANIEL            ,ZISU                ,adriandaniel.zisu.00007123@scuolesuperioridizagarolo.edu.it              ,7123       ,4E_LICEO_2019/20
+FRANCESCO PIO            ,AMELIA              ,francescopio.amelia.00006882@scuolesuperioridizagarolo.edu.it            ,6882       ,5A_IPIA_2019/20
+MIHAI ANTONIO            ,ANDREI              ,mihaiantonio.andrei.00008039@scuolesuperioridizagarolo.edu.it            ,8039       ,1B_IPIA_2019/20
+MARIUS                   ,ANDRIESCU           ,marius.andriescu.00006896@scuolesuperioridizagarolo.edu.it               ,6896       ,5B_IPIA_2019/20
+SIMONE                   ,ANGELETTI           ,simone.angeletti.00006651@scuolesuperioridizagarolo.edu.it               ,6651       ,4A_IPIA_2019/20
+RICCARDO                 ,ASCENZI             ,riccardo.ascenzi.00007093@scuolesuperioridizagarolo.edu.it               ,7093       ,3A_IPIA_2019/20
+LEONARDO                 ,ASTOLFI             ,leonardo.astolfi.00007792@scuolesuperioridizagarolo.edu.it               ,7792       ,4A_IPIA_2019/20
+DAVIDE                   ,ATTURA              ,davide.attura.00008019@scuolesuperioridizagarolo.edu.it                  ,8019       ,1A_IPIA_2019/20
+LORENZO                  ,BASSANI             ,lorenzo.bassani.00007753@scuolesuperioridizagarolo.edu.it                ,7753       ,2A_IPIA_2019/20
+MASSIMO                  ,BASSANI             ,massimo.bassani.00007086@scuolesuperioridizagarolo.edu.it                ,7086       ,4A_IPIA_2019/20
+JOELE                    ,BORZI               ,joele.borzi.00008045@scuolesuperioridizagarolo.edu.it                    ,8045       ,1A_IPIA_2019/20
+FILIPPO                  ,BRASACCHIO          ,filippo.brasacchio.00007290@scuolesuperioridizagarolo.edu.it             ,7290       ,4A_IPIA_2019/20
+GIANLUCA                 ,BRASACCHIO          ,gianluca.brasacchio.00008035@scuolesuperioridizagarolo.edu.it            ,8035       ,1A_IPIA_2019/20
+DANIELE                  ,BROGLIO             ,daniele.broglio.00008024@scuolesuperioridizagarolo.edu.it                ,8024       ,1B_IPIA_2019/20
+NICOLO'                  ,CABULA              ,nicolo.cabula.00007751@scuolesuperioridizagarolo.edu.it                  ,7751       ,2A_IPIA_2019/20
+DANIELE                  ,CAMILLI             ,daniele.camilli.00006666@scuolesuperioridizagarolo.edu.it                ,6666       ,5A_IPIA_2019/20
+FRANCESCO                ,CAPPARELLA          ,francesco.capparella.00007808@scuolesuperioridizagarolo.edu.it           ,7808       ,2A_IPIA_2019/20
+FRANCESCO                ,CAPRI               ,francesco.capri.00007517@scuolesuperioridizagarolo.edu.it                ,7517       ,3A_IPIA_2019/20
+MARCO                    ,CARELLA             ,marco.carella.00007532@scuolesuperioridizagarolo.edu.it                  ,7532       ,2A_IPIA_2019/20
+LORENZO                  ,CARLINI             ,lorenzo.carlini.00006975@scuolesuperioridizagarolo.edu.it                ,6975       ,3A_IPIA_2019/20
+CHRISTIAN                ,CARTA               ,christian.carta.00006893@scuolesuperioridizagarolo.edu.it                ,6893       ,3A_IPIA_2019/20
+FEDERICO                 ,CHERUBINI           ,federico.cherubini.00007789@scuolesuperioridizagarolo.edu.it             ,7789       ,4A_IPIA_2019/20
+GIANLUCA                 ,CIANNELLA           ,gianluca.ciannella.00006904@scuolesuperioridizagarolo.edu.it             ,6904       ,5A_IPIA_2019/20
+FEDERICO                 ,CINELLI             ,federico.cinelli.00007084@scuolesuperioridizagarolo.edu.it               ,7084       ,4A_IPIA_2019/20
+FABIO                    ,CINTI               ,fabio.cinti.00008004@scuolesuperioridizagarolo.edu.it                    ,8004       ,1B_IPIA_2019/20
+CLAUDIU IONUT            ,CODITA              ,claudiuionut.codita.00007544@scuolesuperioridizagarolo.edu.it            ,7544       ,3A_IPIA_2019/20
+CLAUDIO                  ,COLANTONI           ,claudio.colantoni.00006887@scuolesuperioridizagarolo.edu.it              ,6887       ,4A_IPIA_2019/20
+LUCA                     ,CONTINI             ,luca.contini.00007047@scuolesuperioridizagarolo.edu.it                   ,7047       ,5A_IPIA_2019/20
+ANDREA                   ,CRIELESI            ,andrea.crielesi.00008055@scuolesuperioridizagarolo.edu.it                ,8055       ,5B_IPIA_2019/20
+CHRISTIAN                ,D'ACUTI             ,christian.dacuti.00007779@scuolesuperioridizagarolo.edu.it               ,7779       ,2A_IPIA_2019/20
+EMANUELE                 ,D'ACUTI             ,emanuele.dacuti.00008030@scuolesuperioridizagarolo.edu.it                ,8030       ,1B_IPIA_2019/20
+ALESSIO                  ,D'AMICO             ,alessio.damico.00006879@scuolesuperioridizagarolo.edu.it                 ,6879       ,5A_IPIA_2019/20
+LEONARDO                 ,DANIELE             ,leonardo.daniele.00006653@scuolesuperioridizagarolo.edu.it               ,6653       ,5B_IPIA_2019/20
+GIONATAN                 ,DAQUA               ,gionatan.daqua.00006884@scuolesuperioridizagarolo.edu.it                 ,6884       ,5B_IPIA_2019/20
+LUCA                     ,DE ANGELIS          ,luca.deangelis.00007752@scuolesuperioridizagarolo.edu.it                 ,7752       ,1A_IPIA_2019/20
+LUCA                     ,DE NARDIS           ,luca.denardis.00007533@scuolesuperioridizagarolo.edu.it                  ,7533       ,1B_IPIA_2019/20
+ALESSIO                  ,DE SANTIS           ,alessio.desantis.00008013@scuolesuperioridizagarolo.edu.it               ,8013       ,1A_IPIA_2019/20
+STEFAN MIREL             ,DECU                ,stefanmirel.decu.00007515@scuolesuperioridizagarolo.edu.it               ,7515       ,3A_IPIA_2019/20
+FABRIZIO                 ,DEL GIOVANE         ,fabrizio.delgiovane.00007049@scuolesuperioridizagarolo.edu.it            ,7049       ,5A_IPIA_2019/20
+ANDREA                   ,DI CARLO            ,andrea.dicarlo.00008025@scuolesuperioridizagarolo.edu.it                 ,8025       ,1B_IPIA_2019/20
+ALESSIO                  ,DI NATALE           ,alessio.dinatale.00007548@scuolesuperioridizagarolo.edu.it               ,7548       ,3A_IPIA_2019/20
+THOMAS                   ,DI NATALE           ,thomas.dinatale.00007081@scuolesuperioridizagarolo.edu.it                ,7081       ,3A_IPIA_2019/20
+IVAN                     ,DI NUNZIO           ,ivan.dinunzio.00008053@scuolesuperioridizagarolo.edu.it                  ,8053       ,5A_IPIA_2019/20
+MIHAIL                   ,DIAC                ,mihail.diac.00006898@scuolesuperioridizagarolo.edu.it                    ,6898       ,5A_IPIA_2019/20
+VALENTIN                 ,DINU                ,valentin.dinu.00006878@scuolesuperioridizagarolo.edu.it                  ,6878       ,5B_IPIA_2019/20
+GJERGJ                   ,DODAJ               ,gjergj.dodaj.00007527@scuolesuperioridizagarolo.edu.it                   ,7527       ,3A_IPIA_2019/20
+DANIEL                   ,DUCA                ,daniel.duca.00008022@scuolesuperioridizagarolo.edu.it                    ,8022       ,1B_IPIA_2019/20
+DAVIDE                   ,ERCOLI              ,davide.ercoli.00006900@scuolesuperioridizagarolo.edu.it                  ,6900       ,5B_IPIA_2019/20
+ALESSIO                  ,FABRIZI             ,alessio.fabrizi.00007094@scuolesuperioridizagarolo.edu.it                ,7094       ,4A_IPIA_2019/20
+CHRISTIAN                ,FARINA              ,christian.farina.00007794@scuolesuperioridizagarolo.edu.it               ,7794       ,4A_IPIA_2019/20
+SIMONE                   ,FAUCI               ,simone.fauci.00006845@scuolesuperioridizagarolo.edu.it                   ,6845       ,5B_IPIA_2019/20
+DANIELE                  ,FERREIRA CONTRERAS  ,daniele.ferreiracontreras.00008052@scuolesuperioridizagarolo.edu.it      ,8052       ,2A_IPIA_2019/20
+ADRIAN                   ,FICEK               ,adrian.ficek.00008005@scuolesuperioridizagarolo.edu.it                   ,8005       ,1B_IPIA_2019/20
+FRANCESCO                ,GANCI               ,francesco.ganci.00008056@scuolesuperioridizagarolo.edu.it                ,8056       ,2A_IPIA_2019/20
+ALESSIO                  ,GHEORGHIU           ,alessio.gheorghiu.00008012@scuolesuperioridizagarolo.edu.it              ,8012       ,1A_IPIA_2019/20
+EMANUELE                 ,GIORGI              ,emanuele.giorgi.00008008@scuolesuperioridizagarolo.edu.it                ,8008       ,1B_IPIA_2019/20
+JACOPO SAMUELE ANGELO    ,GONDAR              ,jacoposamueleangelo.gondar.00008044@scuolesuperioridizagarolo.edu.it     ,8044       ,1A_IPIA_2019/20
+TIZIANO                  ,GONDAR              ,tiziano.gondar.00006826@scuolesuperioridizagarolo.edu.it                 ,6826       ,4A_IPIA_2019/20
+MATTIA                   ,GRASSO              ,mattia.grasso.00008006@scuolesuperioridizagarolo.edu.it                  ,8006       ,1B_IPIA_2019/20
+MAURO                    ,GRILLI              ,mauro.grilli.00007558@scuolesuperioridizagarolo.edu.it                   ,7558       ,3A_IPIA_2019/20
+COZMIN                   ,HAIZENCOP           ,cozmin.haizencop.00006885@scuolesuperioridizagarolo.edu.it               ,6885       ,5A_IPIA_2019/20
+FLORIN CATALIN           ,HAIZENCOP           ,florincatalin.haizencop.00007090@scuolesuperioridizagarolo.edu.it        ,7090       ,3A_IPIA_2019/20
+CARLOS ALEJANDRO         ,HECHAVARRIA RICO    ,carlosalejandro.hechavarriarico.00008067@scuolesuperioridizagarolo.edu.it,8067       ,2A_IPIA_2019/20
+EDMONDO                  ,HYSENJI             ,edmondo.hysenji.00008054@scuolesuperioridizagarolo.edu.it                ,8054       ,5A_IPIA_2019/20
+GABRIEL                  ,IONEL               ,gabriel.ionel.00007516@scuolesuperioridizagarolo.edu.it                  ,7516       ,3A_IPIA_2019/20
+CLAUDIO                  ,KOLA                ,claudio.kola.00008007@scuolesuperioridizagarolo.edu.it                   ,8007       ,1B_IPIA_2019/20
+MIRKO                    ,LASTELLA            ,mirko.lastella.00007793@scuolesuperioridizagarolo.edu.it                 ,7793       ,4A_IPIA_2019/20
+JOSE' GUSTAVO            ,LESTA               ,josegustavo.lesta.00008015@scuolesuperioridizagarolo.edu.it              ,8015       ,1A_IPIA_2019/20
+EMANUELE                 ,LEVA                ,emanuele.leva.00007543@scuolesuperioridizagarolo.edu.it                  ,7543       ,2A_IPIA_2019/20
+LUCA                     ,LEVA                ,luca.leva.00007743@scuolesuperioridizagarolo.edu.it                      ,7743       ,2A_IPIA_2019/20
+ANTONIO ANGELO           ,LISO                ,antonioangelo.liso.00006892@scuolesuperioridizagarolo.edu.it             ,6892       ,5B_IPIA_2019/20
+GIOVANNI                 ,LIZZARDI            ,giovanni.lizzardi.00007511@scuolesuperioridizagarolo.edu.it              ,7511       ,2A_IPIA_2019/20
+GABRIELE SALVATORE       ,LO CASCIO           ,gabrielesalvatore.locascio.00008017@scuolesuperioridizagarolo.edu.it     ,8017       ,1A_IPIA_2019/20
+STEFANO                  ,LUCARELLI           ,stefano.lucarelli.00007746@scuolesuperioridizagarolo.edu.it              ,7746       ,2A_IPIA_2019/20
+DAVIDE                   ,LUCARINI            ,davide.lucarini.00007773@scuolesuperioridizagarolo.edu.it                ,7773       ,4A_IPIA_2019/20
+ALESSIO                  ,MAGNANTE            ,alessio.magnante.00007557@scuolesuperioridizagarolo.edu.it               ,7557       ,4A_IPIA_2019/20
+MANUEL                   ,MANGIAPELO          ,manuel.mangiapelo.00007755@scuolesuperioridizagarolo.edu.it              ,7755       ,2A_IPIA_2019/20
+MORENO                   ,MARI                ,moreno.mari.00008070@scuolesuperioridizagarolo.edu.it                    ,8070       ,3A_IPIA_2019/20
+DAVIDE                   ,MARIANI             ,davide.mariani.00007748@scuolesuperioridizagarolo.edu.it                 ,7748       ,1A_IPIA_2019/20
+ANTONIO                  ,MARINI              ,antonio.marini.00007003@scuolesuperioridizagarolo.edu.it                 ,7003       ,3A_IPIA_2019/20
+ALESSANDRO               ,MAZZOCCO            ,alessandro.mazzocco.00007775@scuolesuperioridizagarolo.edu.it            ,7775       ,2A_IPIA_2019/20
+DANIEL                   ,MELLAI              ,daniel.mellai.00008028@scuolesuperioridizagarolo.edu.it                  ,8028       ,1B_IPIA_2019/20
+CLAUDIO                  ,MIGLIORATI          ,claudio.migliorati.00006895@scuolesuperioridizagarolo.edu.it             ,6895       ,5B_IPIA_2019/20
+LORENZO                  ,MINOTTI             ,lorenzo.minotti.00008031@scuolesuperioridizagarolo.edu.it                ,8031       ,1B_IPIA_2019/20
+FLAVIO                   ,MORBIDELLI          ,flavio.morbidelli.00008037@scuolesuperioridizagarolo.edu.it              ,8037       ,1B_IPIA_2019/20
+CHRISTIAN                ,MORETTI             ,christian.moretti.00007802@scuolesuperioridizagarolo.edu.it              ,7802       ,5B_IPIA_2019/20
+FRANCESCO                ,MOSETTI             ,francesco.mosetti.00008018@scuolesuperioridizagarolo.edu.it              ,8018       ,1B_IPIA_2019/20
+MICHELANGELO             ,MUSICHINI           ,michelangelo.musichini.00006899@scuolesuperioridizagarolo.edu.it         ,6899       ,5B_IPIA_2019/20
+GABRIELE PIO             ,NARDONE             ,gabrielepio.nardone.00007082@scuolesuperioridizagarolo.edu.it            ,7082       ,4A_IPIA_2019/20
+GABRIELE                 ,NIEDDU              ,gabriele.nieddu.00007089@scuolesuperioridizagarolo.edu.it                ,7089       ,3A_IPIA_2019/20
+MIHAI                    ,NISTORESCU          ,mihai.nistorescu.00007096@scuolesuperioridizagarolo.edu.it               ,7096       ,3A_IPIA_2019/20
+GABRIELE                 ,NOTO                ,gabriele.noto.00007526@scuolesuperioridizagarolo.edu.it                  ,7526       ,3A_IPIA_2019/20
+ANDREA                   ,ORZILLI             ,andrea.orzilli.00008014@scuolesuperioridizagarolo.edu.it                 ,8014       ,1B_IPIA_2019/20
+DAVIDE                   ,PACIFICI            ,davide.pacifici.00008072@scuolesuperioridizagarolo.edu.it                ,8072       ,1A_IPIA_2019/20
+VALERIO                  ,PAGLIARI            ,valerio.pagliari.00008051@scuolesuperioridizagarolo.edu.it               ,8051       ,1A_IPIA_2019/20
+DANIEL                   ,PALMA               ,daniel.palma.00007758@scuolesuperioridizagarolo.edu.it                   ,7758       ,2A_IPIA_2019/20
+FRANCESCO                ,PAOLONI             ,francesco.paoloni.00007800@scuolesuperioridizagarolo.edu.it              ,7800       ,3A_IPIA_2019/20
+SAMUELE                  ,PASSA               ,samuele.passa.00008071@scuolesuperioridizagarolo.edu.it                  ,8071       ,2A_IPIA_2019/20
+DENISANDREI              ,PAVEL               ,denisandrei.pavel.00008011@scuolesuperioridizagarolo.edu.it              ,8011       ,1A_IPIA_2019/20
+DANIELE                  ,PELLICCIONI         ,daniele.pelliccioni.00007510@scuolesuperioridizagarolo.edu.it            ,7510       ,2A_IPIA_2019/20
+GIOELE                   ,PENNACCHIA          ,gioele.pennacchia.00008061@scuolesuperioridizagarolo.edu.it              ,8061       ,1B_IPIA_2019/20
+ENZO                     ,PERA                ,enzo.pera.00008026@scuolesuperioridizagarolo.edu.it                      ,8026       ,1A_IPIA_2019/20
+DARIO                    ,PERCIBALLI          ,dario.perciballi.00007092@scuolesuperioridizagarolo.edu.it               ,7092       ,3A_IPIA_2019/20
+KEVIN                    ,PIRASTRU            ,kevin.pirastru.00006894@scuolesuperioridizagarolo.edu.it                 ,6894       ,5A_IPIA_2019/20
+ALESSIO                  ,PIRRERA             ,alessio.pirrera.00008021@scuolesuperioridizagarolo.edu.it                ,8021       ,1B_IPIA_2019/20
+LUCA                     ,PIZZUTI             ,luca.pizzuti.00008034@scuolesuperioridizagarolo.edu.it                   ,8034       ,1A_IPIA_2019/20
+MIHAI LAURENTIU          ,PRECUP              ,mihailaurentiu.precup.00006890@scuolesuperioridizagarolo.edu.it          ,6890       ,4A_IPIA_2019/20
+CHRISTIAN                ,PUCCI               ,christian.pucci.00008036@scuolesuperioridizagarolo.edu.it                ,8036       ,1B_IPIA_2019/20
+ZAYED                    ,RAHMAN              ,zayed.rahman.00007521@scuolesuperioridizagarolo.edu.it                   ,7521       ,3A_IPIA_2019/20
+GIULIANO                 ,ROSATI              ,giuliano.rosati.00007742@scuolesuperioridizagarolo.edu.it                ,7742       ,2A_IPIA_2019/20
+ANTONIO                  ,RUSSO               ,antonio.russo.00007520@scuolesuperioridizagarolo.edu.it                  ,7520       ,3A_IPIA_2019/20
+FRANCESCO DOMENICO       ,SALVAGUARDIA        ,francescodomenico.salvaguardia.00007807@scuolesuperioridizagarolo.edu.it ,7807       ,3A_IPIA_2019/20
+SIMONE                   ,SALVATORI           ,simone.salvatori.00007087@scuolesuperioridizagarolo.edu.it               ,7087       ,4A_IPIA_2019/20
+MARCO                    ,SANTILLI            ,marco.santilli.00007745@scuolesuperioridizagarolo.edu.it                 ,7745       ,1B_IPIA_2019/20
+SIMONE                   ,SCACCO              ,simone.scacco.00008046@scuolesuperioridizagarolo.edu.it                  ,8046       ,1B_IPIA_2019/20
+LORENZO                  ,SCARFAGNA           ,lorenzo.scarfagna.00007546@scuolesuperioridizagarolo.edu.it              ,7546       ,5B_IPIA_2019/20
+NICHOLAS                 ,SPERANZA            ,nicholas.speranza.00007750@scuolesuperioridizagarolo.edu.it              ,7750       ,1A_IPIA_2019/20
+DANIELE                  ,STATE               ,daniele.state.00007311@scuolesuperioridizagarolo.edu.it                  ,7311       ,5B_IPIA_2019/20
+SIMONE                   ,TAFURO              ,simone.tafuro.00008009@scuolesuperioridizagarolo.edu.it                  ,8009       ,1A_IPIA_2019/20
+ANDREA                   ,TARTAGLIONE         ,andrea.tartaglione.00007080@scuolesuperioridizagarolo.edu.it             ,7080       ,4A_IPIA_2019/20
+SIMONE                   ,TAVASSO             ,simone.tavasso.00007756@scuolesuperioridizagarolo.edu.it                 ,7756       ,2A_IPIA_2019/20
+STEFANO                  ,TAVASSO             ,stefano.tavasso.00006880@scuolesuperioridizagarolo.edu.it                ,6880       ,5A_IPIA_2019/20
+LUIGI                    ,TERRIBILI           ,luigi.terribili.00008065@scuolesuperioridizagarolo.edu.it                ,8065       ,1B_IPIA_2019/20
+EMANUELE                 ,TOCCI               ,emanuele.tocci.00007100@scuolesuperioridizagarolo.edu.it                 ,7100       ,4A_IPIA_2019/20
+FRANCESCO                ,TORALTI             ,francesco.toralti.00007535@scuolesuperioridizagarolo.edu.it              ,7535       ,5B_IPIA_2019/20
+DAMIANO                  ,URSU                ,damiano.ursu.00007529@scuolesuperioridizagarolo.edu.it                   ,7529       ,3A_IPIA_2019/20
+PETRU AMOS               ,URSU                ,petruamos.ursu.00006886@scuolesuperioridizagarolo.edu.it                 ,6886       ,5A_IPIA_2019/20
+DANIELE                  ,VARGAS              ,daniele.vargas.00008038@scuolesuperioridizagarolo.edu.it                 ,8038       ,1A_IPIA_2019/20
+ALESSIO                  ,VENERI              ,alessio.veneri.00008016@scuolesuperioridizagarolo.edu.it                 ,8016       ,1A_IPIA_2019/20
+MIREL                    ,VOICU               ,mirel.voicu.00008032@scuolesuperioridizagarolo.edu.it                    ,8032       ,1A_IPIA_2019/20
+MANUELE                  ,ZOLLINO             ,manuele.zollino.00008029@scuolesuperioridizagarolo.edu.it                ,8029       ,1A_IPIA_2019/20

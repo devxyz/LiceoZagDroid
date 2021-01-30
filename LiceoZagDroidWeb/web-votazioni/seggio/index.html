@@ -1,0 +1,100 @@
+<html>
+<style>
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 20px;
+    }
+
+    label {
+        background-color: white;
+        display: block;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        font-size: 20px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    div {
+        font-size: 20px;
+    }
+
+    .div1 {
+        border-radius: 5px;
+        background-color: #faffbb;
+        padding: 20px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+
+<div class="div1">
+    <h3>Elezioni 2020 rinnovo del Consiglio d'Istituto dell'I.I.S. "Paolo Borsellino e Giovanni Falcone" per il
+        triennio 2020/2021, 2021/2022, 2022/2023</h3>
+
+
+    <h3 style="padding: 1px;text-align: center;color: blue;font-size: 30px;border-top: 2px dashed red;;border-bottom:  2px dashed red;: ">
+        Distribuzione codici di accesso al voto</h3>
+
+
+    <form action="seggio.php" method="post">
+
+        <h3>Scegli la tipologia di Elettore per visualizzare il codice da inviare</h3>
+        <select name="tipo"  >
+            <option value="scegli" disabled selected >scegliere una opzione...</option>
+            <option value="ATA" >ATA - elezione di 2 (due) rappresentanti del personale ATA</option>
+            <option value="DOCENTE" >DOCENTI - elezione di 8 (otto) rappresentanti del personale docente</option>
+            <option value="GENITORE-PADRE" >GENITORI COMPONENTE MASCHILE - elezione di 4 (quattro) rappresentanti dei
+                genitori</option>
+            <option value="GENITORE-MADRE" >GENITORI COMPONENTE FEMMINILE - elezione di 4 (quattro) rappresentanti dei
+                genitori</option>
+
+        </select>
+
+        <!--
+        <input type="radio" id="ata" name="tipo" value="ATA">
+        <label for="ata">ATA - elezione di 2 (due) rappresentanti del personale ATA</label><br>
+        <br>
+        <input type="radio" id="docente" name="tipo" value="DOCENTE">
+        <label for="docente">DOCENTI - elezione di 8 (otto) rappresentanti del personale docente</label><br>
+        <br>
+        <input type="radio" id="genitore-padre" name="tipo" value="GENITORE-PADRE">
+        <label for="genitore-padre">GENITORI COMPONENTE MASCHILE - elezione di 4 (quattro) rappresentanti dei
+            genitori</label><br>
+        <br>
+        <input type="radio" id="genitore-madre" name="tipo" value="GENITORE-MADRE">
+        <label for="genitore-madre">GENITORI COMPONENTE FEMMINILE - elezione di 4 (quattro) rappresentanti dei
+            genitori</label><br>
+            -->
+        <br>
+        <hr>
+
+        <input type="submit" value="Mostra il codice di voto" name="accesso">
+    </form>
+</div>
+
+</body>
+</html>

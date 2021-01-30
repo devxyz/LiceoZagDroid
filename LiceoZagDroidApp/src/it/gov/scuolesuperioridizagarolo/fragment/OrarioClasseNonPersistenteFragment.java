@@ -69,7 +69,7 @@ public class OrarioClasseNonPersistenteFragment extends AbstractOrarioFragment<O
 
     @Override
     protected String getFilterAppLabel() {
-        return "Classe";
+        return "";
     }
 }
 

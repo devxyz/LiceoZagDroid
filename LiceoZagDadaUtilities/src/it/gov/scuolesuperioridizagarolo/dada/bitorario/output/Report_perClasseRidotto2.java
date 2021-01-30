@@ -30,25 +30,20 @@ public class Report_perClasseRidotto2 {
         return cons.contains("" + c);
     }
 
-    public static String abbreviazioneMateria(BitOrarioOraLezione ll) {
-
-        final String materiaPrincipale = ll.getMateriaPrincipale();
-        int min = materiaPrincipale.contains(".") ? Math.min(materiaPrincipale.length(), 6) : Math.min(materiaPrincipale.length(), 3);
-        while (min > 3 && !isConsanant(materiaPrincipale.charAt(min - 1))) {
-            min--;
-        }
-        return ll.getMateriaPrincipale().substring(0, min);
+    public static void main(String[] args) {
+        System.out.println(UtilMaterie.abbreviazioneMateria("scienze motorie"));
     }
+
 
     public void print(BitOrarioGrigliaOrario o, NoteVariazioniBitOrarioGrigliaOrario note, File f, EPaperFormat format) throws IOException {
         PrintStream p = new PrintStream(f);
         p.print("<html><body>");
         EGiorno[] giorni = EGiorno.values();
-        generaTabella(o, note, format, p, new EGiorno[]{EGiorno.LUNEDI, EGiorno.MARTEDI});
+        generaTabella(o, note, format, p, new EGiorno[]{EGiorno.LUNEDI, EGiorno.MARTEDI,EGiorno.MERCOLEDI, EGiorno.GIOVEDI,EGiorno.VENERDI});
         p.println("<div style='display: block; page-break-before: always;'></div>");
-        generaTabella(o, note, format, p, new EGiorno[]{EGiorno.MERCOLEDI, EGiorno.GIOVEDI});
-        p.println("<div style='display: block; page-break-before: always;'></div>");
-        generaTabella(o, note, format, p, new EGiorno[]{EGiorno.VENERDI});
+        //generaTabella(o, note, format, p, new EGiorno[]{EGiorno.MERCOLEDI, EGiorno.GIOVEDI});
+        //p.println("<div style='display: block; page-break-before: always;'></div>");
+        //generaTabella(o, note, format, p, new EGiorno[]{EGiorno.VENERDI});
 
 
         p.print("</body></html>");
@@ -57,13 +52,13 @@ public class Report_perClasseRidotto2 {
 
     private void generaTabella(BitOrarioGrigliaOrario o, NoteVariazioniBitOrarioGrigliaOrario note, EPaperFormat format, PrintStream p, EGiorno[] giorni) {
         inizioTabella(p, giorni);
-        int count = format == EPaperFormat.A4 ? 11 : 35;
+        int count = format == EPaperFormat.A4 ? 11 : 40;
         p.println("<h1>" + o.getTitolo() + "</h1>");
         p.println("<h3>Orario Classi: aula, disciplina, insegnante</h3>");
         final TreeSet<ClassData> classi = o.getClassi();
         for (ClassData classe : classi) {
             if (count <= 0) {
-                count = format == EPaperFormat.A4 ? 11 : 35;
+                count = format == EPaperFormat.A4 ? 11 : 40;
                 fineTabella(p);
                 p.println("(*) modifiche all'orario<br>");
                 p.println("<div style='display: block; page-break-before: always;'></div>");
@@ -97,14 +92,14 @@ public class Report_perClasseRidotto2 {
                         p.print("<td style='border:1px solid black;border-left:" + spessore + "px solid black;background-color:lightgray'><b>" + "</td>");
                     else {
                         if (ll.getClasse() == null) {
-                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>" + abbreviazioneMateria(ll) + x +
+                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>" + UtilMaterie.abbreviazioneMateria(ll) + x +
                                     "</b></span></td>");
 
                         } else {
 
                             String aulaBreve = ll.getAula() != null ? ll.getAula().simpleName() : "-";
                             final String sx = showAule ? "<br><span style=''> (" + aulaBreve + ")" + x + "</span>" : "";
-                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center'><b>" + abbreviazioneMateria(ll) +
+                            p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center'><b>" + UtilMaterie.abbreviazioneMateria(ll) +
                                     "</b> <br> <i><small>" + ll.getDocentePrincipale().replace(" ", "_") +
                                     (ll.getDocenteCompresenza() != null ? " " + (ll.getDocenteCompresenza().replace(" ", "_")) : "") + " " +
                                     (ll.getDocenteSostegno() != null ? " " + (ll.getDocenteSostegno().replace(" ", "_")) : "")

@@ -2,7 +2,6 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
@@ -25,7 +24,7 @@ public class HtmlOutputOrario_perAule_con_responsabili {
         final TreeSet<RoomData> aule = o.getAule();
         for (RoomData a : aule) {
             final RoomData room = (a);
-            if (room.flagAulaFittizia()) continue;
+            if (room.isAulaFittizia()) continue;
             if (room.maxStudents == 0) continue;
 
             p.print(titolo);
@@ -46,7 +45,7 @@ public class HtmlOutputOrario_perAule_con_responsabili {
                 if (!ora.flagOraDiLezione()) continue;
 
                 p.print("<tr  style='border:1px solid black'>");
-                p.print("<td style='text-align: right;' >" + ora.printOra() + "</td>");
+                p.print("<td style='text-align: right;' >" + ora.printOraInizioPresenza() + "</td>");
                 for (EGiorno settimana : EGiorno.values()) {
                     if (!settimana.flagGiornoDiLezione()) continue;
 

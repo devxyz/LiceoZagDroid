@@ -11,7 +11,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="D"
             android:id="@+id/textView_aula" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
-            android:textStyle="bold" android:padding="7dp" android:background="@drawable/background_pulsante_violet"/>
+            android:textStyle="bold" android:padding="7dp" android:background="@drawable/background_aule_disposizione"
+            android:textColor="@color/color_white"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,11 +22,12 @@
             android:gravity="center_vertical" android:layout_alignTop="@+id/textView_aula"
             android:layout_toEndOf="@+id/textView_aula" android:textSize="20dp"/>
     <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="disposizione"
             android:id="@+id/textView5"
-            android:gravity="center_vertical|center_horizontal"
+            android:gravity="center_vertical"
             android:textStyle="bold"
-            android:layout_alignBottom="@+id/textView_aula" android:layout_alignStart="@+id/textView_docente_disp"/>
+            android:layout_alignStart="@+id/textView_docente_disp" android:layout_below="@id/textView_docente_disp"
+            android:textAlignment="gravity" android:textColor="@color/color_red_scuro"/>
 </RelativeLayout>

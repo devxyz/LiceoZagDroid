@@ -1,3 +1,5 @@
+
+
 <html>
 <head>
     <style>
@@ -6,13 +8,13 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-            font-size: 110%;
+            font-size: 1.5em;
         }
 
-        input[type=submit] {
+        input[type=submit],a {
 
-            font-size: 110%;
-            background-color: #4CAF50;
+            font-size: 1.5em;
+            background-color: #4caf50;
 
             color: white;
             padding: 5px 5px;
@@ -24,7 +26,13 @@
             margin-top: 5px;
         }
 
-        input[type=submit]:hover {
+
+
+        a{
+          margin:10px
+        }
+
+        input[type=submit]:hover,a:hover {
             background-color: #01c900;
 
         }
@@ -63,6 +71,21 @@
 <body>
 
 <?php
+
+function startsWith( $haystack, $needle ) {
+     $length = strlen( $needle );
+     return substr( $haystack, 0, $length ) === $needle;
+}
+
+function endsWith( $haystack, $needle ) {
+    $length = strlen( $needle );
+    if( !$length ) {
+        return true;
+    }
+    return substr( $haystack, -$length ) === $needle;
+}
+
+
 $nome_classe = $_GET["classe"];
 $nome_docente = $_GET["docente"];
 $aule_vuote = $_GET["aule_vuote"];
@@ -70,7 +93,24 @@ $nome_aula = $_GET["aula"];
 $variazioni = $_GET["variazioni"];
 ?>
 
+<div>
+<?php
+    $header="header.html";
+    if (strlen($header) > 0) {
+        $file = file_get_contents($header, true);
+        echo $file;
+    }
+?>
+</div>
+
 <div class="main">
+<br>
+    <div style="align:right">
+    <a href="orario2.php" target="_blank">Apri in una nuova finestra</a>
+    </div>
+    <br>
+    <br>
+    <br>
     <table>
 
         <?php
@@ -79,6 +119,7 @@ $variazioni = $_GET["variazioni"];
 
             <tr>
                 <td>
+
 
                     <form action="orario2.php" method="get">
 
@@ -89,6 +130,8 @@ $variazioni = $_GET["variazioni"];
                             $dir = "./CLASSI";
                             $files1 = scandir($dir);
                             foreach ($files1 as $key => $value) {
+                                if(startsWith($value,".")) continue;
+                                if(endsWith($value,".html")) continue;
                                 if (!in_array($value, array(".", ".."))) {
                                     if ($nome_classe == $value)
                                         echo "<option selected='selected' value='" . $value . "'>" . $value . "</option>";
@@ -118,6 +161,10 @@ $variazioni = $_GET["variazioni"];
                             $dir = "./DOCENTI";
                             $files1 = scandir($dir);
                             foreach ($files1 as $key => $value) {
+
+                                if(startsWith($value,".")) continue;
+                                if(endsWith($value,".html")) continue;
+
                                 if (!in_array($value, array(".", ".."))) {
                                     if ($nome_docente == $value)
                                         echo "<option selected='selected' value='" . $value . "'>" . $value . "</option>";
@@ -141,7 +188,7 @@ $variazioni = $_GET["variazioni"];
 
                         <input type="hidden" name="rand" value="<?php echo rand(1, 10000); ?>">
                         <select id="aula" name="aula">
-                            <option value="">Seleziona un' aula...</option>
+                            <option value="">Seleziona una aula...</option>
                             <?php
                             $dir = "./AULE";
                             $files1 = scandir($dir);
@@ -183,10 +230,11 @@ $variazioni = $_GET["variazioni"];
             <tr>
                 <td style="width: 33%">
                     <div style='align:left'>
-
                         <form action="orario2.php" method="post">
-                            <input type="submit" name="indice" value="Ritorna al menu">
+                            <input type="submit" name="indice" value="Ritorna al menu principale" target="_blank">
                         </form>
+
+
                     </div>
                 </td>
             </tr>

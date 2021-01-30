@@ -21,8 +21,8 @@ public class CheckForTeacher_AuleRipetute extends CheckForTeacher {
             for (EOra o : EOra.values()) {
                 if (!o.flagOraDiLezione()) continue;
 
-                final BitOrarioOraLezione lezione = l.getLezioneConDocente(o, e, nomeDocente);
-                final BitOrarioOraLezione lezioneSuccessiva = l.getLezioneConDocente(o.next(), e, nomeDocente);
+                final BitOrarioOraLezione lezione = l.getLezioneConDocente(nomeDocente, e, o);
+                final BitOrarioOraLezione lezioneSuccessiva = l.getLezioneConDocente(nomeDocente, e, o.next());
                 if (lezione == null || lezioneSuccessiva == null) continue;
                 if (lezione.getClasse() == null || lezioneSuccessiva.getClasse() == null) continue;
                 if (lezione.getAula() == null || lezioneSuccessiva.getAula() == null) continue;

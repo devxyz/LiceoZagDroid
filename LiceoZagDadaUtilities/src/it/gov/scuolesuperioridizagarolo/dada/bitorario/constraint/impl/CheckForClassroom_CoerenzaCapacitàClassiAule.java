@@ -22,7 +22,11 @@ public class CheckForClassroom_CoerenzaCapacitàClassiAule extends CheckForClass
 
                 final BitOrarioOraLezione lezioneClasse = l.getLezioneInClasse(o, e, nomeClasse);
                 if (lezioneClasse == null) continue;
-                if (lezioneClasse.getAula()== RoomData.USCITA_DIDATTICA)continue;
+                if (lezioneClasse.getAula() == null) continue;
+                if (lezioneClasse.getAula().isAulaFittizia()) continue;
+                if(lezioneClasse.getAula()== RoomData.DDI_da_casa){
+                    System.out.println("????");
+                }
 
                 final int stu = lezioneClasse.getClasse().numberOfStudents;
                 final int aula = lezioneClasse.getAula().maxStudents;

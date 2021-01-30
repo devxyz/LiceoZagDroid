@@ -33,13 +33,13 @@ public class StudenteCorsoSicurezza {
     }
 
     public static String toExcelHeader() {
-        return "nomeStudente;" +
-                "cognomeStudente;" +
-                "codicefiscaleStudente;" +
-                "nomeCorsoEsteso;" +
-                "progresso;" +
-                "idcorso;" +
-                "stato";
+        return "ASL_nomeStudente;" +
+                "ASL_cognomeStudente;" +
+                "ASL_codicefiscaleStudente;" +
+                "ASL_nomeCorsoEsteso;" +
+                "ASL_progresso;" +
+                "ASL_idcorso;" +
+                "ASL_stato";
     }
 
     public String toExcel() {

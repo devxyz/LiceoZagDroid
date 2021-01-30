@@ -21,20 +21,6 @@ public class Report_perClasseSoloAula {
     public Report_perClasseSoloAula() {
     }
 
-    public static boolean isConsanant(char c) {
-        String cons = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ";
-        return cons.contains("" + c);
-    }
-
-    public static String abbreviazioneMateria(BitOrarioOraLezione ll) {
-
-        final String materiaPrincipale = ll.getMateriaPrincipale();
-        int min = materiaPrincipale.contains(".") ? Math.min(materiaPrincipale.length(), 6) : Math.min(materiaPrincipale.length(), 3);
-        while (min > 3 && !isConsanant(materiaPrincipale.charAt(min - 1))) {
-            min--;
-        }
-        return ll.getMateriaPrincipale().substring(0, min);
-    }
 
     public void print(BitOrarioGrigliaOrario o, NoteVariazioniBitOrarioGrigliaOrario note, File f, EPaperFormat format) throws IOException {
         PrintStream p = new PrintStream(f);
@@ -79,7 +65,7 @@ public class Report_perClasseSoloAula {
                     else {
                         if (ll.getClasse() == null) {
                             p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>" +
-                                    abbreviazioneMateria(ll) +
+                                    UtilMaterie.abbreviazioneMateria(ll) +
                                     "</b></span></td>");
 
                         } else {

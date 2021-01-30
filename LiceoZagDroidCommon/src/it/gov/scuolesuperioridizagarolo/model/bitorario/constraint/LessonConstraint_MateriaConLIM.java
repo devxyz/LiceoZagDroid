@@ -47,7 +47,7 @@ public class LessonConstraint_MateriaConLIM extends AbstractLessonConstraint {
             return true;
 
         //skip aule speciali
-        if (ignoreLabs && aula.flagAulaLaboratorioPalestra())
+        if (ignoreLabs && aula.isAulaLaboratorioPalestra())
             return true;
 
         if (materiaPrincipale == null || !materiaPrincipale.equalsIgnoreCase(materia)) {

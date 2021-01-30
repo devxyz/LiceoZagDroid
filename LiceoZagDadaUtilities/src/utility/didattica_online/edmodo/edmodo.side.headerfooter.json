@@ -1,0 +1,19 @@
+{
+  "id": "93a64ee0-4ae2-485c-97ee-bbf98181d6d7",
+  "version": "2.0",
+  "name": "edmodo",
+  "url": "https://new.edmodo.com",
+  "tests": [
+    #####
+  ],
+  "suites": [{
+    "id": "eae5b065-5c7c-4965-8af6-7c758506ffcc",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["867c4c17-35ce-40b4-8fa6-39f90b6aa003"]
+  }],
+  "urls": ["https://new.edmodo.com/"],
+  "plugins": []
+}

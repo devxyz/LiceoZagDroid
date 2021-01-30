@@ -32,7 +32,7 @@ public class HtmlOutputOrario_perDocenti extends HtmlOutputOrario {
 
     @Override
     protected String getLezione(BitOrarioGrigliaOrario griglia, NoteVariazioniBitOrarioGrigliaOrario note, EOra o, EGiorno s, String classe) {
-        final BitOrarioOraLezione l = griglia.getLezioneConDocente(o, s, classe);
+        final BitOrarioOraLezione l = griglia.getLezioneConDocente(classe, s, o);
         if (l == null) return "";
         String n = note.getNote(l);
         if (n == null) n = "";

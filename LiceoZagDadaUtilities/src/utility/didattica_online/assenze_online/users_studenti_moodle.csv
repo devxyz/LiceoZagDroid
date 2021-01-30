@@ -1,0 +1,191 @@
+﻿N ,username                    ,password,firstname                   ,lastname                ,maildisplay,course1,email
+1 ,1b.bascandura.dennis.andrei ,65412   ,1b.bascandura.dennis.andrei ,Bascandura DennisAndrei ,0          ,1b     ,x1@127.0.0.1
+2 ,1b.basto.martina            ,63065   ,1b.basto.martina            ,Basto Martina           ,0          ,1b     ,x2@127.0.0.1
+3 ,1b.boccia.gabriele          ,42748   ,1b.boccia.gabriele          ,Boccia Gabriele         ,0          ,1b     ,x4@127.0.0.1
+4 ,1b.carbone.andrea           ,18919   ,1b.carbone.andrea           ,Carbone Andrea          ,0          ,1b     ,x5@127.0.0.1
+5 ,1b.carbone.matteo           ,14603   ,1b.carbone.matteo           ,Carbone Matteo          ,0          ,1b     ,x6@127.0.0.1
+6 ,1b.chiapparelli.paolo       ,93278   ,1b.chiapparelli.paolo       ,Chiapparelli Paolo      ,0          ,1b     ,x7@127.0.0.1
+7 ,1b.chiapparelli.simone      ,14034   ,1b.chiapparelli.simone      ,Chiapparelli Simone     ,0          ,1b     ,x8@127.0.0.1
+8 ,1b.cristofari.alessandro    ,24730   ,1b.cristofari.alessandro    ,Cristofari Alessandro   ,0          ,1b     ,x9@127.0.0.1
+9 ,1b.danaj.mateo              ,40242   ,1b.danaj.mateo              ,Danaj Mateo             ,0          ,1b     ,x10@127.0.0.1
+10,1b.esposito.alessio         ,37079   ,1b.esposito.alessio         ,Esposito Alessio        ,0          ,1b     ,x11@127.0.0.1
+11,1b.federici.gianluca        ,53387   ,1b.federici.gianluca        ,Federici Gianluca       ,0          ,1b     ,x12@127.0.0.1
+12,1b.foschi.francesco         ,53717   ,1b.foschi.francesco         ,Foschi Francesco        ,0          ,1b     ,x13@127.0.0.1
+13,1b.leone.francesca          ,30998   ,1b.leone.francesca          ,Leone Francesca         ,0          ,1b     ,x14@127.0.0.1
+14,1b.lucarelli.gabriele       ,32127   ,1b.lucarelli.gabriele       ,Lucarelli Gabriele      ,0          ,1b     ,x15@127.0.0.1
+15,1b.mammetti.filippo         ,29219   ,1b.mammetti.filippo         ,Mammetti Filippo        ,0          ,1b     ,x16@127.0.0.1
+16,1b.mancinotti.christian     ,23063   ,1b.mancinotti.christian     ,Mancinotti Christian    ,0          ,1b     ,x17@127.0.0.1
+17,1b.marcelli.alessandro      ,37268   ,1b.marcelli.alessandro      ,Marcelli Alessandro     ,0          ,1b     ,x18@127.0.0.1
+18,1b.michelessi.francesco     ,94395   ,1b.michelessi.francesco     ,Michelessi Francesco    ,0          ,1b     ,x19@127.0.0.1
+19,1b.mistura.diego            ,98025   ,1b.mistura.diego            ,Mistura Diego           ,0          ,1b     ,x20@127.0.0.1
+20,1b.nobile.luca              ,48037   ,1b.nobile.luca              ,Nobile Luca             ,0          ,1b     ,x21@127.0.0.1
+21,1b.orsi.angelica            ,63585   ,1b.orsi.angelica            ,Orsi Angelica           ,0          ,1b     ,x22@127.0.0.1
+22,1b.penna.isabel             ,51998   ,1b.penna.isabel             ,Penna Isabel            ,0          ,1b     ,x23@127.0.0.1
+23,1b.sabellico.giovanna       ,94521   ,1b.sabellico.giovanna       ,Sabellico Giovanna      ,0          ,1b     ,x24@127.0.0.1
+24,1b.scaramella.federico      ,12382   ,1b.scaramella.federico      ,Scaramella Federico     ,0          ,1b     ,x26@127.0.0.1
+25,1b.sgro.lorenzo             ,73420   ,1b.sgro.lorenzo             ,Sgro' Lorenzo           ,0          ,1b     ,x27@127.0.0.1
+26,1b.tamiro.federico          ,93548   ,1b.tamiro.federico          ,Tamiro Federico         ,0          ,1b     ,x28@127.0.0.1
+27,1b.zimpi.tommaso            ,64675   ,1b.zimpi.tommaso            ,Zimpi Tommaso           ,0          ,1b     ,x30@127.0.0.1
+1 ,2b.achitei.fabrizio         ,82540   ,2b.achitei.fabrizio         ,Achitei Fabrizio        ,0          ,2b     ,x31@127.0.0.1
+2 ,2b.aloe.luna                ,48715   ,2b.aloe.luna                ,Aloe Luna               ,0          ,2b     ,x32@127.0.0.1
+3 ,2b.andronic.marta           ,28390   ,2b.andronic.marta           ,Andronic Marta          ,0          ,2b     ,x33@127.0.0.1
+4 ,2b.careri.lorenzo           ,69768   ,2b.careri.lorenzo           ,Careri Lorenzo          ,0          ,2b     ,x36@127.0.0.1
+5 ,2b.filacchione.gabriele     ,88308   ,2b.filacchione.gabriele     ,Filacchione Gabriele    ,0          ,2b     ,x38@127.0.0.1
+6 ,2b.frattarola.rebecca       ,87606   ,2b.frattarola.rebecca       ,Frattarola Rebecca      ,0          ,2b     ,x39@127.0.0.1
+7 ,2b.gagliardi.mattia         ,66227   ,2b.gagliardi.mattia         ,Gagliardi Mattia        ,0          ,2b     ,x40@127.0.0.1
+8 ,2b.ienne.gianluigi          ,18341   ,2b.ienne.gianluigi          ,Ienne Gianluigi         ,0          ,2b     ,x41@127.0.0.1
+9 ,2b.maccaroni.daniele        ,76913   ,2b.maccaroni.daniele        ,Maccaroni Daniele       ,0          ,2b     ,x42@127.0.0.1
+10,2b.maier.tiziano            ,48369   ,2b.maier.tiziano            ,Maier Tiziano           ,0          ,2b     ,x43@127.0.0.1
+11,2b.mariani.azzurra          ,38180   ,2b.mariani.azzurra          ,Mariani Azzurra         ,0          ,2b     ,x44@127.0.0.1
+12,2b.marta.elena              ,11141   ,2b.marta.elena              ,Marta Elena             ,0          ,2b     ,x45@127.0.0.1
+13,2b.martini.nicolo           ,14864   ,2b.martini.nicolo           ,Martini Nicolo'         ,0          ,2b     ,x46@127.0.0.1
+14,2b.massimi.diego.alessio    ,79545   ,2b.massimi.diego.alessio    ,Massimi DiegoAlessio    ,0          ,2b     ,x47@127.0.0.1
+15,2b.petrucci.sara            ,12778   ,2b.petrucci.sara            ,Petrucci Sara           ,0          ,2b     ,x48@127.0.0.1
+16,2b.piazzai.francesco        ,97293   ,2b.piazzai.francesco        ,Piazzai Francesco       ,0          ,2b     ,x49@127.0.0.1
+17,2b.piccirilli.daniele       ,83806   ,2b.piccirilli.daniele       ,Piccirilli Daniele      ,0          ,2b     ,x50@127.0.0.1
+18,2b.pizziconi.leonardo       ,49319   ,2b.pizziconi.leonardo       ,Pizziconi Leonardo      ,0          ,2b     ,x51@127.0.0.1
+19,2b.sbordone.andrey          ,46082   ,2b.sbordone.andrey          ,Sbordone Andrey         ,0          ,2b     ,x52@127.0.0.1
+20,2b.tololoi.claudio.markus   ,46825   ,2b.tololoi.claudio.markus   ,Tololoi ClaudioMarkus   ,0          ,2b     ,x53@127.0.0.1
+21,2b.trani.alessio            ,41888   ,2b.trani.alessio            ,Trani Alessio           ,0          ,2b     ,x54@127.0.0.1
+22,2b.zaratti.davide           ,16090   ,2b.zaratti.davide           ,Zaratti Davide          ,0          ,2b     ,x55@127.0.0.1
+23,2b.zarlenga.samuele         ,45924   ,2b.zarlenga.samuele         ,Zarlenga Samuele        ,0          ,2b     ,x56@127.0.0.1
+1 ,2d.aron.daniele             ,79874   ,2d.aron.daniele             ,Aron Daniele            ,0          ,2d     ,x57@127.0.0.1
+2 ,2d.attilia.desiree          ,12338   ,2d.attilia.desiree          ,Attilia Desirèe         ,0          ,2d     ,x58@127.0.0.1
+3 ,2d.bartalini.lorenzo        ,25152   ,2d.bartalini.lorenzo        ,Bartalini Lorenzo       ,0          ,2d     ,x59@127.0.0.1
+4 ,2d.celletti.cristina        ,42898   ,2d.celletti.cristina        ,Celletti Cristina       ,0          ,2d     ,x60@127.0.0.1
+5 ,2d.ciavardini.gianluca      ,51439   ,2d.ciavardini.gianluca      ,Ciavardini Gianluca     ,0          ,2d     ,x61@127.0.0.1
+6 ,2d.coccia.luca              ,65570   ,2d.coccia.luca              ,Coccia Luca             ,0          ,2d     ,x62@127.0.0.1
+7 ,2d.cristino.francesco.mattia,56515   ,2d.cristino.francesco.mattia,Cristino FrancescoMattia,0          ,2d     ,x63@127.0.0.1
+8 ,2d.dantimi.damiano          ,32937   ,2d.dantimi.damiano          ,Dantimi Damiano         ,0          ,2d     ,x64@127.0.0.1
+9 ,2d.de.francesco.marco       ,95358   ,2d.de.francesco.marco       ,DeFrancesco Marco       ,0          ,2d     ,x65@127.0.0.1
+10,2d.del.duca.gabriele        ,30011   ,2d.del.duca.gabriele        ,DelDuca Gabriele        ,0          ,2d     ,x66@127.0.0.1
+11,2d.fortunato.gabriele       ,32081   ,2d.fortunato.gabriele       ,Fortunato Gabriele      ,0          ,2d     ,x67@127.0.0.1
+12,2d.kozar.bartosz            ,32784   ,2d.kozar.bartosz            ,Kozar Bartosz           ,0          ,2d     ,x68@127.0.0.1
+13,2d.manca.rocco              ,28522   ,2d.manca.rocco              ,Manca Rocco             ,0          ,2d     ,x69@127.0.0.1
+14,2d.mancinelli.jacopo        ,17970   ,2d.mancinelli.jacopo        ,Mancinelli Jacopo       ,0          ,2d     ,x70@127.0.0.1
+15,2d.mastrantonio.valerio     ,85228   ,2d.mastrantonio.valerio     ,Mastrantonio Valerio    ,0          ,2d     ,x71@127.0.0.1
+16,2d.orlandi.tiziano          ,53896   ,2d.orlandi.tiziano          ,Orlandi Tiziano         ,0          ,2d     ,x72@127.0.0.1
+17,2d.popa.razvan              ,46922   ,2d.popa.razvan              ,Popa Razvan             ,0          ,2d     ,x73@127.0.0.1
+18,2d.pucci.alessandro         ,30987   ,2d.pucci.alessandro         ,Pucci Alessandro        ,0          ,2d     ,x74@127.0.0.1
+19,2d.rosicarelli.emanuele     ,26818   ,2d.rosicarelli.emanuele     ,Rosicarelli Emanuele    ,0          ,2d     ,x75@127.0.0.1
+20,2d.sarandrea.gabriele       ,38662   ,2d.sarandrea.gabriele       ,Sarandrea Gabriele      ,0          ,2d     ,x76@127.0.0.1
+21,2d.scacco.federico          ,30462   ,2d.scacco.federico          ,Scacco Federico         ,0          ,2d     ,x77@127.0.0.1
+22,2d.scarano.luca             ,19850   ,2d.scarano.luca             ,Scarano Luca            ,0          ,2d     ,x78@127.0.0.1
+23,2d.tolfa.benedetta          ,69761   ,2d.tolfa.benedetta          ,Tolfa Benedetta         ,0          ,2d     ,x79@127.0.0.1
+24,2d.trinchieri.luca          ,38273   ,2d.trinchieri.luca          ,Trinchieri Luca         ,           ,2d     ,x80@127.0.0.1
+25,2d.vittucci.damiano         ,26770   ,2d.vittucci.damiano         ,Vittucci Damiano        ,           ,2d     ,x81@127.0.0.1
+1 ,3b.auricchio.lorenzo        ,52253   ,3b.auricchio.lorenzo        ,Auricchio Lorenzo       ,           ,3b     ,x82@127.0.0.1
+2 ,3b.craciun.matteo           ,54130   ,3b.craciun.matteo           ,Craciun Matteo          ,           ,3b     ,x83@127.0.0.1
+3 ,3b.dpietro.niccolo          ,47849   ,3b.dpietro.niccolo          ,DiPietro Niccolo'       ,           ,3b     ,x84@127.0.0.1
+4 ,3b.doraci.zaklina           ,73415   ,3b.doraci.zaklina           ,Doraci Zaklina          ,           ,3b     ,x85@127.0.0.1
+5 ,3b.evangelista.alessandro   ,57134   ,3b.evangelista.alessandro   ,Evangelista Alessandro  ,           ,3b     ,x86@127.0.0.1
+6 ,3b.fiorentini.giorgia       ,96932   ,3b.fiorentini.giorgia       ,Fiorentini Giorgia      ,           ,3b     ,x87@127.0.0.1
+7 ,3b.gentile.gabriel          ,22807   ,3b.gentile.gabriel          ,Gentile Gabriel         ,           ,3b     ,x88@127.0.0.1
+8 ,3b.lullo.valerio            ,21306   ,3b.lullo.valerio            ,Lullo Valerio           ,           ,3b     ,x89@127.0.0.1
+9 ,3b.mecani.ketlin            ,27068   ,3b.mecani.ketlin            ,Mecani Ketlin           ,           ,3b     ,x90@127.0.0.1
+10,3b.mandolfo.michael         ,74861   ,3b.mandolfo.michael         ,Mandolfo Michael        ,           ,3b     ,x9000@127.0.0.1
+11,3b.monaco.mario             ,40421   ,3b.monaco.mario             ,Monaco Mario            ,           ,3b     ,x91@127.0.0.1
+12,3b.parolari.kevin           ,51225   ,3b.parolari.kevin           ,Parolari Kevin          ,           ,3b     ,x92@127.0.0.1
+13,3b.pasquazi.elena           ,46016   ,3b.pasquazi.elena           ,Pasquazi Elena          ,           ,3b     ,x93@127.0.0.1
+14,3b.pinci.rachele            ,13684   ,3b.pinci.rachele            ,Pinci Rachele           ,           ,3b     ,x94@127.0.0.1
+15,3b.popa.cristian.eduard     ,25922   ,3b.popa.cristian.eduard     ,Popa CristianEduard     ,           ,3b     ,x95@127.0.0.1
+16,3b.sanita.asia              ,33562   ,3b.sanita.asia              ,Sanita' Asia            ,           ,3b     ,x96@127.0.0.1
+17,3b.santoni.yuri             ,95921   ,3b.santoni.yuri             ,Santoni Yuri            ,           ,3b     ,x97@127.0.0.1
+18,3b.stocco.matteo            ,30764   ,3b.stocco.matteo            ,Stocco Matteo           ,           ,3b     ,x98@127.0.0.1
+19,3b.tango.lorenzo            ,66869   ,3b.tango.lorenzo            ,Tango Lorenzo           ,           ,3b     ,x99@127.0.0.1
+20,3b.velletrani.andrea        ,26537   ,3b.velletrani.andrea        ,Velletrani Andrea       ,           ,3b     ,x100@127.0.0.1
+1 ,3d.ascenzi.gianmarco        ,17316   ,3d.ascenzi.gianmarco        ,Ascenzi Gianmarco       ,           ,3d     ,x101@127.0.0.1
+2 ,3d.beltrami.lorenzo         ,39284   ,3d.beltrami.lorenzo         ,Beltrami Lorenzo        ,           ,3d     ,x102@127.0.0.1
+3 ,3d.bitsch.flaviano          ,67695   ,3d.bitsch.flaviano          ,Bitsch Flaviano         ,           ,3d     ,x103@127.0.0.1
+4 ,3d.bonafede.giuseppe        ,38699   ,3d.bonafede.giuseppe        ,Bonafede Giuseppe       ,           ,3d     ,x104@127.0.0.1
+5 ,3d.cicerchia.nicolas        ,34284   ,3d.cicerchia.nicolas        ,Cicerchia Nicolas       ,           ,3d     ,x105@127.0.0.1
+6 ,3d.correnti.asia            ,22633   ,3d.correnti.asia            ,Correnti Asia           ,           ,3d     ,x106@127.0.0.1
+7 ,3d.curzi.nicolo             ,62131   ,3d.curzi.nicolo             ,Curzi Nicolo'           ,           ,3d     ,x107@127.0.0.1
+8 ,3d.dalessandro.antonio      ,49335   ,3d.dalessandro.antonio      ,DAlessandro Antonio     ,           ,3d     ,x108@127.0.0.1
+9 ,3d.delle.fratte.flavio      ,82648   ,3d.delle.fratte.flavio      ,DelleFratte Flavio      ,           ,3d     ,x109@127.0.0.1
+10,3d.di.carlo.francesca       ,78062   ,3d.di.carlo.francesca       ,DiCarlo Francesca       ,           ,3d     ,x110@127.0.0.1
+11,3d.donca.andrea.denisa      ,59317   ,3d.donca.andrea.denisa      ,Donca AndreaDenisa      ,           ,3d     ,x111@127.0.0.1
+12,3d.ferracci.ludovica        ,16799   ,3d.ferracci.ludovica        ,Ferracci Ludovica       ,           ,3d     ,x112@127.0.0.1
+13,3d.frusta.alessandro        ,65584   ,3d.frusta.alessandro        ,Frusta Alessandro       ,           ,3d     ,x113@127.0.0.1
+14,3d.gaetano.davide           ,52025   ,3d.gaetano.davide           ,Gaetano Davide          ,           ,3d     ,x114@127.0.0.1
+15,3d.gheorghiu.marco.davide   ,92095   ,3d.gheorghiu.marco.davide   ,Gheorghiu MarcoDavide   ,           ,3d     ,x115@127.0.0.1
+16,3d.giordano.matteo          ,36505   ,3d.giordano.matteo          ,Giordano Matteo         ,           ,3d     ,x116@127.0.0.1
+17,3d.giuliani.federica        ,23045   ,3d.giuliani.federica        ,Giuliani Federica       ,           ,3d     ,x117@127.0.0.1
+18,3d.glielmi.mattia           ,50796   ,3d.glielmi.mattia           ,Glielmi Mattia          ,           ,3d     ,x118@127.0.0.1
+19,3d.ligori.paolo             ,75523   ,3d.ligori.paolo             ,Ligori Paolo            ,           ,3d     ,x120@127.0.0.1
+20,3d.marignoli.mario          ,36282   ,3d.marignoli.mario          ,Marignoli Mario         ,           ,3d     ,x121@127.0.0.1
+21,3d.mastrofini.valerio       ,11001   ,3d.mastrofini.valerio       ,Mastrofini Valerio      ,           ,3d     ,x122@127.0.0.1
+22,3d.nicolaus.leonardo        ,75450   ,3d.nicolaus.leonardo        ,Nicolaus Leonardo       ,           ,3d     ,x123@127.0.0.1
+23,3d.pop.maximilian.ioan      ,18394   ,3d.pop.maximilian.ioan      ,Pop MaximilianIoan      ,           ,3d     ,x124@127.0.0.1
+24,3d.romagnoli.nicolo         ,51914   ,3d.romagnoli.nicolo         ,Romagnoli Nicolo'       ,           ,3d     ,x125@127.0.0.1
+25,3d.schioppa.matteo          ,78495   ,3d.schioppa.matteo          ,Schioppa Matteo         ,           ,3d     ,x127@127.0.0.1
+26,3d.wehbe.latifa             ,89112   ,3d.wehbe.latifa             ,Wehbe Latifa            ,           ,3d     ,x128@127.0.0.1
+1 ,4b.bernassola.gabriele      ,80711   ,4b.bernassola.gabriele      ,Bernassola Gabriele     ,           ,4b     ,x129@127.0.0.1
+2 ,4b.cianfriglia.michele      ,88503   ,4b.cianfriglia.michele      ,Cianfriglia Michele     ,           ,4b     ,x130@127.0.0.1
+3 ,4b.cipolletta.matteo        ,67941   ,4b.cipolletta.matteo        ,Cipolletta Matteo       ,           ,4b     ,x131@127.0.0.1
+4 ,4b.colagrossi.iacopo        ,32490   ,4b.colagrossi.iacopo        ,Colagrossi Iacopo       ,           ,4b     ,x132@127.0.0.1
+5 ,4b.fabiani.leonardo         ,58006   ,4b.fabiani.leonardo         ,Fabiani Leonardo        ,           ,4b     ,x133@127.0.0.1
+6 ,4b.giovannini.francesca     ,54474   ,4b.giovannini.francesca     ,Giovannini Francesca    ,           ,4b     ,x134@127.0.0.1
+7 ,4b.longo.beatrice           ,82384   ,4b.longo.beatrice           ,Longo Beatrice          ,           ,4b     ,x135@127.0.0.1
+8 ,4b.marani.lorenzo           ,45964   ,4b.marani.lorenzo           ,Marani Lorenzo          ,           ,4b     ,x136@127.0.0.1
+9 ,4b.mazzenga.nicolo          ,97320   ,4b.mazzenga.nicolo          ,Mazzenga Nicolo'        ,           ,4b     ,x137@127.0.0.1
+10,4b.menasci.giulia           ,33818   ,4b.menasci.giulia           ,Menasci' Giulia         ,           ,4b     ,x138@127.0.0.1
+11,4b.nardi.marco              ,38672   ,4b.nardi.marco              ,Nardi Marco             ,           ,4b     ,x139@127.0.0.1
+12,4b.pucciarelli.matteo       ,66651   ,4b.pucciarelli.matteo       ,Pucciarelli Matteo      ,           ,4b     ,x140@127.0.0.1
+13,4b.pulsoni.andrea           ,87424   ,4b.pulsoni.andrea           ,Pulsoni Andrea          ,           ,4b     ,x141@127.0.0.1
+14,4b.scacco.giovanni          ,59509   ,4b.scacco.giovanni          ,Scacco Giovanni         ,           ,4b     ,x142@127.0.0.1
+15,4b.schiavella.pierluca      ,23577   ,4b.schiavella.pierluca      ,Schiavella Pierluca     ,           ,4b     ,x143@127.0.0.1
+16,4b.serra.lorenzo            ,84673   ,4b.serra.lorenzo            ,Serra Lorenzo           ,           ,4b     ,x144@127.0.0.1
+17,4b.terenzi.paolo            ,55352   ,4b.terenzi.paolo            ,Terenzi Paolo           ,           ,4b     ,x145@127.0.0.1
+18,4b.tomasi.daniele           ,88774   ,4b.tomasi.daniele           ,Tomasi Daniele          ,           ,4b     ,x146@127.0.0.1
+19,4b.tulli.christian          ,77132   ,4b.tulli.christian          ,Tulli Christian         ,           ,4b     ,x147@127.0.0.1
+20,4b.ugolini.alessio          ,18814   ,4b.ugolini.alessio          ,Ugolini Alessio         ,           ,4b     ,x148@127.0.0.1
+21,4b.zippo.gabriele           ,42289   ,4b.zippo.gabriele           ,Zippo Gabriele          ,           ,4b     ,x149@127.0.0.1
+1 ,4d.bravi.sofia              ,34964   ,4d.bravi.sofia              ,Bravi Sofia             ,           ,4d     ,x150@127.0.0.1
+2 ,4d.callegari.luca           ,80681   ,4d.callegari.luca           ,Callegari Luca          ,           ,4d     ,x151@127.0.0.1
+3 ,4d.coccia.luigi             ,73032   ,4d.coccia.luigi             ,Coccia Luigi            ,           ,4d     ,x152@127.0.0.1
+4 ,4d.costea.andreea.alexandra ,91861   ,4d.costea.andreea.alexandra ,Costea AndreeaAlexandra ,           ,4d     ,x153@127.0.0.1
+5 ,4d.divito.andrea            ,98719   ,4d.divito.andrea            ,DiVito Andrea           ,           ,4d     ,x154@127.0.0.1
+6 ,4d.dodaro.manuel            ,98727   ,4d.dodaro.manuel            ,Dodaro Manuel           ,           ,4d     ,x155@127.0.0.1
+7 ,4d.gallotti.fatima          ,81742   ,4d.gallotti.fatima          ,Gallotti Fatima         ,           ,4d     ,x156@127.0.0.1
+8 ,4d.guidi.francesco          ,44637   ,4d.guidi.francesco          ,Guidi Francesco         ,           ,4d     ,x157@127.0.0.1
+9 ,4d.hozoc.cristian.fabio     ,13612   ,4d.hozoc.cristian.fabio     ,Hozoc CristianFabio     ,           ,4d     ,x158@127.0.0.1
+10,4d.igiri.lorenzo            ,49449   ,4d.igiri.lorenzo            ,Igiri Lorenzo           ,           ,4d     ,x159@127.0.0.1
+11,4d.mecchia.eduardo          ,92638   ,4d.mecchia.eduardo          ,Mecchia Eduardo         ,           ,4d     ,x160@127.0.0.1
+12,4d.paniccia.leonardo        ,28143   ,4d.paniccia.leonardo        ,Paniccia Leonardo       ,           ,4d     ,x161@127.0.0.1
+13,4d.pasquazi.rucsandra.ioana ,75475   ,4d.pasquazi.rucsandra.ioana ,Pasquazi RucsandraIoana ,           ,4d     ,x162@127.0.0.1
+14,4d.petrassi.francesco       ,83159   ,4d.petrassi.francesco       ,Petrassi Francesco      ,           ,4d     ,x163@127.0.0.1
+15,4d.romeo.salvatore          ,63010   ,4d.romeo.salvatore          ,Romeo Salvatore         ,           ,4d     ,x164@127.0.0.1
+16,4d.sanna.ilaria             ,56992   ,4d.sanna.ilaria             ,Sanna Ilaria            ,           ,4d     ,x165@127.0.0.1
+17,4d.tucci.matteo             ,18145   ,4d.tucci.matteo             ,Tucci Matteo            ,           ,4d     ,x167@127.0.0.1
+1 ,5b.benegiano.denise         ,91637   ,5b.benegiano.denise         ,Benegiano Denise        ,           ,5b     ,x168@127.0.0.1
+2 ,5b.campoli.francesco        ,24393   ,5b.campoli.francesco        ,Campoli Francesco       ,           ,5b     ,x169@127.0.0.1
+3 ,5b.cesarotti.emma           ,24674   ,5b.cesarotti.emma           ,Cesarotti Emma          ,           ,5b     ,x170@127.0.0.1
+4 ,5b.cipriani.marco           ,34696   ,5b.cipriani.marco           ,Cipriani Marco          ,           ,5b     ,x171@127.0.0.1
+5 ,5b.delsignore.alessandro    ,52064   ,5b.delsignore.alessandro    ,DelSignore Alessandro   ,           ,5b     ,x172@127.0.0.1
+6 ,5b.dcesare.simone           ,76716   ,5b.dcesare.simone           ,DiCesare Simone         ,           ,5b     ,x173@127.0.0.1
+7 ,5b.libianchi.chiara.maria   ,16986   ,5b.libianchi.chiara.maria   ,Libianchi ChiaraMaria   ,           ,5b     ,x174@127.0.0.1
+8 ,5b.lunati.edoardo           ,58403   ,5b.lunati.edoardo           ,Lunati Edoardo          ,           ,5b     ,x175@127.0.0.1
+9 ,5b.mas.emanuelcarlo         ,25355   ,5b.mas.emanuelcarlo         ,Mas Emanuelcarlo        ,           ,5b     ,x176@127.0.0.1
+10,5b.nestola.matteo           ,24715   ,5b.nestola.matteo           ,Nestola Matteo          ,           ,5b     ,x177@127.0.0.1
+11,5b.nicolosi.gabriele        ,65974   ,5b.nicolosi.gabriele        ,Nicolosi Gabriele       ,           ,5b     ,x178@127.0.0.1
+12,5b.pescetelli.alessandro    ,83498   ,5b.pescetelli.alessandro    ,Pescetelli Alessandro   ,           ,5b     ,x179@127.0.0.1
+13,5b.ricci.alessia            ,64702   ,5b.ricci.alessia            ,Ricci Alessia           ,           ,5b     ,x180@127.0.0.1
+14,5b.rossi.gemma              ,37109   ,5b.rossi.gemma              ,Rossi Gemma             ,           ,5b     ,x181@127.0.0.1
+15,5b.scipioni.simone          ,69824   ,5b.scipioni.simone          ,Scipioni Simone         ,           ,5b     ,x182@127.0.0.1
+1 ,5d.antonellini.federico     ,83000   ,5d.antonellini.federico     ,Antonellini Federico    ,           ,5d     ,x183@127.0.0.1
+2 ,5d.boccia.valentina         ,98063   ,5d.boccia.valentina         ,Boccia Valentina        ,           ,5d     ,x185@127.0.0.1
+3 ,5d.carrarini.jacopo         ,62034   ,5d.carrarini.jacopo         ,Carrarini Jacopo        ,           ,5d     ,x186@127.0.0.1
+4 ,5d.cepoiu.rares.claudiu     ,45599   ,5d.cepoiu.rares.claudiu     ,Cepoiu RaresClaudiu     ,           ,5d     ,x187@127.0.0.1
+5 ,5d.fadda.emanuele           ,32475   ,5d.fadda.emanuele           ,Fadda Emanuele          ,           ,5d     ,x188@127.0.0.1
+6 ,5d.giacomobono.francesco    ,24019   ,5d.giacomobono.francesco    ,Giacomobono Francesco   ,           ,5d     ,x189@127.0.0.1
+7 ,5d.giovannetti.simone       ,86746   ,5d.giovannetti.simone       ,Giovannetti Simone      ,           ,5d     ,x190@127.0.0.1
+8 ,5d.granata.simone           ,37274   ,5d.granata.simone           ,Granata Simone          ,           ,5d     ,x191@127.0.0.1
+9 ,5d.loreti.federica          ,70521   ,5d.loreti.federica          ,Loreti Federica         ,           ,5d     ,x192@127.0.0.1
+10,5d.malito.alessia           ,14923   ,5d.malito.alessia           ,Malito Alessia          ,           ,5d     ,x193@127.0.0.1
+11,5d.pancelli.valerio         ,52229   ,5d.pancelli.valerio         ,Pancelli Valerio        ,           ,5d     ,x195@127.0.0.1
+12,5d.petriglia.andrea         ,91778   ,5d.petriglia.andrea         ,Petriglia Andrea        ,           ,5d     ,x196@127.0.0.1
+13,5d.ruffa.marcus             ,64651   ,5d.ruffa.marcus             ,Ruffa Marcus            ,           ,5d     ,x197@127.0.0.1
+14,5d.sorrenti.alessio         ,28041   ,5d.sorrenti.alessio         ,Sorrenti Alessio        ,           ,5d     ,x198@127.0.0.1
+15,5d.sperandio.dario          ,67329   ,5d.sperandio.dario          ,Sperandio Dario         ,           ,5d     ,x199@127.0.0.1
+16,5d.vania.nicolo             ,88285   ,5d.vania.nicolo             ,Vania Nicolo'           ,           ,5d     ,x200@127.0.0.1

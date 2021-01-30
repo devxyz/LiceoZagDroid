@@ -5,7 +5,8 @@ public class StudenteSidi {
     public String CodiceFiscale;
     public String Cognome;
     public String Nome;
-    public String AnnoCorso;
+    public int AnnoCorso;
+    public String AnnoCorsoString;
     public String Sezione;
     public String Scuola;
     public String Sede;
@@ -29,7 +30,8 @@ public class StudenteSidi {
         CodiceFiscale = codiceFiscale;
         Cognome = cognome;
         Nome = nome;
-        AnnoCorso = annoCorso;
+        AnnoCorso = Integer.parseInt(annoCorso.trim());
+        AnnoCorsoString = annoCorso.trim();
         Sezione = sezione;
         Scuola = scuola;
         Sede = sede;
@@ -38,15 +40,15 @@ public class StudenteSidi {
 
 
     public static String toExcelHeader() {
-        return "CodiceFiscale;"  +
-                "CodiceAlunno;" +
-                "Nome;" +
-                "Cognome;" +
-                "AnnoCorso;" +
-                "Sezione;" +
-                "Scuola;" +
-                "Sede;"+
-                "StatoAlunno"
+        return "SIDI_CodiceFiscale;"  +
+                "SIDI_CodiceAlunno;" +
+                "SIDI_Nome;" +
+                "SIDI_Cognome;" +
+                "SIDI_AnnoCorso;" +
+                "SIDI_Sezione;" +
+                "SIDI_Scuola;" +
+                "SIDI_Sede;"+
+                "SIDI_StatoAlunno"
                 ;
     }
 

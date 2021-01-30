@@ -49,7 +49,7 @@ public class HtmlOutputOrario_perAulePerAree extends HtmlOutputOrario {
         TreeSet<String> ris = new TreeSet<>();
         for (RoomData a : aule) {
             final RoomData room = (a);
-            if (room.flagAulaFittizia()) continue;
+            if (room.isAulaFittizia() && !room.isDDI()) continue;
             if (room.maxStudents == 0) continue;
             ris.add(a.roomName);
         }
@@ -59,7 +59,7 @@ public class HtmlOutputOrario_perAulePerAree extends HtmlOutputOrario {
 
     @Override
     protected String getLezione(BitOrarioGrigliaOrario griglia, NoteVariazioniBitOrarioGrigliaOrario note, EOra o, EGiorno s, String classe) {
-        final List<BitOrarioOraLezione> lezioni = griglia.getLezioneInAula(o, s, ClassesAndRoomContainer.parseRoom(classe));
+        final List<BitOrarioOraLezione> lezioni = griglia.getLezioneInAula(o, s, ClassesAndRoomContainer.parseRoom(classe),true);
         if (lezioni == null || lezioni.size() == 0) return "";
         StringBuilder sb = new StringBuilder();
         for (BitOrarioOraLezione l : lezioni) {
@@ -77,7 +77,10 @@ public class HtmlOutputOrario_perAulePerAree extends HtmlOutputOrario {
             }
 
 
-            sb.append("<center style='font-size:20px'><b>" + l.getClasse() + " </b>  <br><small>(<i>" + l.getMateriaPrincipale() + "</i>)</small><br>" + l.getDocentiFormatted() + " " + n + " <br> </center>");
+            if (l.getAula().isDDI())
+                sb.append("<center style='font-size:20px'><b> ** DDI ** <br>" + l.getClasse() + " </b>  <br><small>(<i>" + l.getMateriaPrincipale() + "</i>)</small><br>" + l.getDocentiFormatted() + " " + n + " <br> </center>");
+            else
+                sb.append("<center style='font-size:20px'><b>" + l.getClasse() + " </b>  <br><small>(<i>" + l.getMateriaPrincipale() + "</i>)</small><br>" + l.getDocentiFormatted() + " " + n + " <br> </center>");
         }
         return sb.toString();
     }

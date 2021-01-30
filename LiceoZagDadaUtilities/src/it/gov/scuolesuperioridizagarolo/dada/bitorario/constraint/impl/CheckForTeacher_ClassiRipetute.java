@@ -25,7 +25,7 @@ public class CheckForTeacher_ClassiRipetute extends CheckForTeacher {
         for (EGiorno e : EGiorno.values()) {
 
             if (!e.flagGiornoDiLezione()) continue;
-            final ArrayList<BitOrarioOraLezione> lezioneConDocente = l.getLezioneConDocente(e, nomeDocente);
+            final ArrayList<BitOrarioOraLezione> lezioneConDocente = l.getLezioneConDocente(nomeDocente, e);
             int count = 0;
             Map<ClassData, Integer> lezioniPerClasse = new TreeMap<>();
             for (int i = 0; i < lezioneConDocente.size(); i++) {

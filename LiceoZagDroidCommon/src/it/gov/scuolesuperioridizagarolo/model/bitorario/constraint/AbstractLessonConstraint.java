@@ -50,8 +50,10 @@ public abstract class AbstractLessonConstraint implements Comparable<AbstractLes
             , String docenteSostegno, RoomData aula
             , ClassData classe
             , EOra ora
-            , EGiorno giorno, BitOrarioGrigliaOrario orario);
+            , EGiorno giorno,
+            BitOrarioGrigliaOrario orario);
 
+/*    @Deprecated
     public final boolean __check(
             String docentePrincipale
             , String materiaPrincipale
@@ -71,10 +73,10 @@ public abstract class AbstractLessonConstraint implements Comparable<AbstractLes
                 docenteSostegno, room, getClass(classe), ora, giorno,
                 orario);
     }
-
+*/
     public final boolean __check(BitOrarioOraLezione l, BitOrarioGrigliaOrario orario) {
         final RoomData room = (l.getAula());
-        if (ignoreLabs && room != null && room.flagAulaLaboratorioPalestra())
+        if (ignoreLabs && room != null && room.isAulaLaboratorioPalestra())
             return true;
 
 

@@ -22,32 +22,16 @@ public class ImportFromCSVSidiStudenti {
     private static final String STATO_ALUNNO = "Stato Alunno";
 
 
-    public static File f1 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDadaUtilities/src/it/gov/scuolesuperioridizagarolo/dada/bitorario/main/corso_sicurezza/EsportazioneDati_FAT_RMPS07701G_2018.csv");
-    public static File f2 = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDadaUtilities/src/it/gov/scuolesuperioridizagarolo/dada/bitorario/main/corso_sicurezza/EsportazioneDati_FAT_RMRI07701R_2018.csv");
 
-    public static void main(String[] args) throws IOException {
-
-        ArrayList<StudenteSidi> studenti = new ArrayList<>();
-
-        _parse(f1, studenti);
-        _parse(f2, studenti);
-
-        for (StudenteSidi studenteSidi : studenti) {
-            System.out.println(studenteSidi);
-        }
-
-
+    public static StudenteSidiCollection parse(File f1_liceo, File f2_ipia) throws IOException {
+        return parseStudents(f1_liceo, f2_ipia);
     }
 
-    public static StudenteSidiCollection parse() throws IOException {
-        return _parse(f1, f2);
-    }
-
-    private static StudenteSidiCollection _parse(File... f) throws IOException {
+    private static StudenteSidiCollection parseStudents(File... f) throws IOException {
         StudenteSidiCollection ris = new StudenteSidiCollection();
         for (File file : f) {
             ArrayList<StudenteSidi> studenti = new ArrayList<>();
-            _parse(file, studenti);
+            parseStudents(file, studenti);
             ris.add(studenti);
         }
         return ris;
@@ -55,7 +39,7 @@ public class ImportFromCSVSidiStudenti {
 
     ;
 
-    private static void _parse(File f, ArrayList<StudenteSidi> studenti) throws IOException {
+    public static void parseStudents(File f, ArrayList<StudenteSidi> studenti) throws IOException {
         BufferedReader in = new BufferedReader(new FileReader(f));
 
         String s = in.readLine();

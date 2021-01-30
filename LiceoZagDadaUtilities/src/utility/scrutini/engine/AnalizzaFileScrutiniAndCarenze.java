@@ -18,6 +18,8 @@ import java.util.Map;
 public class AnalizzaFileScrutiniAndCarenze {
     private static Integer convertInteger(String s) throws NumberFormatException {
         if (s == null || s.trim().length() == 0) return null;
+        if (s.trim().toUpperCase().equalsIgnoreCase("NC")) return null;
+        if (s.trim().toUpperCase().equalsIgnoreCase("N.C.")) return null;
         return Integer.parseInt(s);
     }
 
@@ -118,10 +120,13 @@ public class AnalizzaFileScrutiniAndCarenze {
             }
         }
         ArrayList<DatiStudente> ris = new ArrayList<>();
-
-        //STAMPA
         for (LinkedHashMap<Scrutini_Intestazione, String> a : datiscrutini_totali) {
             ris.add(estraiDatiStudente(classe, a));
+        }
+
+        //STAMPA
+        /*
+        for (LinkedHashMap<Scrutini_Intestazione, String> a : datiscrutini_totali) {
             System.out.println("=================================");
             for (Map.Entry<Scrutini_Intestazione, String> e : a.entrySet()) {
                 System.out.println("  " + e.getKey().materia + "(" + e.getKey().tipologiaEnum + ") = " + e.getValue());
@@ -132,7 +137,7 @@ public class AnalizzaFileScrutiniAndCarenze {
         System.out.println();
         for (DatiStudente datiStudente : ris) {
             System.out.println(datiStudente);
-        }
+        }*/
         if (report != null) {
             PrintStream rep = new PrintStream(report);
             rep.println("<html><body>");

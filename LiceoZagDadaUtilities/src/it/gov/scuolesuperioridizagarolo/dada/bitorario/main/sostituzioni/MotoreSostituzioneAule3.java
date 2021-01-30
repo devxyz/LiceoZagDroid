@@ -15,12 +15,10 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstra
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_OreConsecutiveStessaAula;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EPaperFormat;
 import it.gov.scuolesuperioridizagarolo.util.C_DateUtil;
+import utility.copertura_classi.ControlloCoperturaClassi_COVID;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -59,12 +57,51 @@ public class MotoreSostituzioneAule3 {
 */
 
     public static void doTaskFromTXT(AbstractVincoliSostituzioni l,
-                                     File fileAllocazioneAule, File file_disposizione_docenti, File file_disposizione_da_orario_orizzontale_opzional,
+                                     File fileAllocazioneAule,
+                                     File file_disposizione_docenti,
+                                     File file_disposizione_da_orario_orizzontale_opzional,
                                      File fileSostegnoOrizzontale, File fileProgetti, File folderOutput, FilterAule[] ff,
                                      boolean showTimetablesChanges, boolean vincoliOreConsecutive) throws IOException {
         String titolo = "Orario Liceo Scientifico";
         final BitOrarioGrigliaOrario orarioInModifica = MainParserGeneraStampeOrario.parsingFileOrarioAuleClassi(titolo, fileAllocazioneAule, file_disposizione_docenti, file_disposizione_da_orario_orizzontale_opzional, fileSostegnoOrizzontale, fileProgetti, false);
         final BitOrarioGrigliaOrario orarioStandard = MainParserGeneraStampeOrario.parsingFileOrarioAuleClassi(titolo, fileAllocazioneAule, file_disposizione_docenti, file_disposizione_da_orario_orizzontale_opzional, fileSostegnoOrizzontale, fileProgetti, false);
+        orarioStandard.setReadOnly(true);
+
+        _doTask(l, folderOutput, ff, orarioInModifica, orarioStandard, vincoliOreConsecutive, showTimetablesChanges);
+    }
+
+    public static void doTaskFromTXT_CSV(AbstractVincoliSostituzioni l,
+                                         File fileAllocazioneAule_TXT,
+                                         File fileOrarioDocenti_CSV,
+                                         File fileSostegnoOrizzontale_TXT,
+                                         File fileProgetti,
+                                         File folderOutput,
+                                         FilterAule[] ff,
+                                         boolean showTimetablesChanges, boolean vincoliOreConsecutive) throws IOException {
+        String titolo = "Orario Liceo Scientifico";
+        final BitOrarioGrigliaOrario orarioInModifica = MainParserGeneraStampeOrario.parsingFileOrarioAuleClassi_TXT_CSV_EXCEL(
+                titolo, fileAllocazioneAule_TXT, fileOrarioDocenti_CSV, fileSostegnoOrizzontale_TXT, fileProgetti, null, false, null);
+        final BitOrarioGrigliaOrario orarioStandard = MainParserGeneraStampeOrario.parsingFileOrarioAuleClassi_TXT_CSV_EXCEL(
+                titolo, fileAllocazioneAule_TXT, fileOrarioDocenti_CSV, fileSostegnoOrizzontale_TXT, fileProgetti, null, false, null);
+        orarioStandard.setReadOnly(true);
+
+        _doTask(l, folderOutput, ff, orarioInModifica, orarioStandard, vincoliOreConsecutive, showTimetablesChanges);
+    }
+
+    public static void doTaskFromTXT_CSV_EXCEL(AbstractVincoliSostituzioni l,
+                                               File fileAllocazioneAule_TXT,
+                                               File fileOrarioDocenti_CSV,
+                                               File fileDocentiExtra_EXCEL,
+                                               File folderOutput,
+                                               FilterAule[] ff,
+                                               boolean showTimetablesChanges,
+                                               boolean vincoliOreConsecutive,
+                                               MainParserGeneraStampeOrario.MainParserGeneraStampeOrarioListener listener) throws IOException {
+        String titolo = "Orario Liceo Scientifico";
+        final BitOrarioGrigliaOrario orarioInModifica = MainParserGeneraStampeOrario.parsingFileOrarioAuleClassi_TXT_CSV_EXCEL(
+                titolo, fileAllocazioneAule_TXT, fileOrarioDocenti_CSV, null, null, fileDocentiExtra_EXCEL, false, listener);
+        final BitOrarioGrigliaOrario orarioStandard = MainParserGeneraStampeOrario.parsingFileOrarioAuleClassi_TXT_CSV_EXCEL(
+                titolo, fileAllocazioneAule_TXT, fileOrarioDocenti_CSV, null, null, fileDocentiExtra_EXCEL, false, listener);
         orarioStandard.setReadOnly(true);
 
         _doTask(l, folderOutput, ff, orarioInModifica, orarioStandard, vincoliOreConsecutive, showTimetablesChanges);
@@ -96,6 +133,7 @@ public class MotoreSostituzioneAule3 {
         l.invoke(orarioInModifica, l1);
         String dal = l.getDal();
         String al = l.getAl();
+        String progressivo = l.progressivo.length() < 1 ? "0" + l.progressivo : "" + l.progressivo;
 
 
         final String[] dalSplit = dal.split("/");
@@ -154,6 +192,10 @@ public class MotoreSostituzioneAule3 {
         }
 
 
+        //cancella nomi docenti vuoti
+        orarioInModifica.cleanUpDocenti();
+
+
         final String s2 = C_DateUtil.toYYYYMMDDhhmmss(new Date());
         final String subName2 = "";//dalSplit[2] + "." + dalSplit[1] + "." + dalSplit[0] + "_" + alSplit[2] + "." + alSplit[1] + "." + alSplit[0];
 
@@ -176,17 +218,17 @@ public class MotoreSostituzioneAule3 {
             if (false) {
                 final File rootoriginale = new File(folder, "originale/" + subName2);
                 rootoriginale.mkdirs();
-                generaFileOutput(orarioStandard, orarioStandard, subName2, note, rootoriginale);
+                generaFileOutput(orarioStandard, orarioStandard, subName2, note, rootoriginale, l);
             }
 
 
             {
-                final File rootmodificato = new File(folder, "html" + dal.replace("/", ".").replace("-", ".") + "-" + al.replace("/", ".").replace("-", ".") + "/" + subName2);
+                final File rootmodificato = new File(folder, progressivo + "_html" + dal.replace("/", ".").replace("-", ".") + "-" + al.replace("/", ".").replace("-", ".") + "/" + subName2);
                 rootmodificato.mkdirs();
                 if (showTimetablesChanges)
-                    generaFileOutput(orarioInModifica, orarioStandard, subName2, note, rootmodificato);
+                    generaFileOutput(orarioInModifica, orarioStandard, subName2, note, rootmodificato, l);
                 else
-                    generaFileOutput(orarioInModifica, orarioInModifica, subName2, note, rootmodificato);
+                    generaFileOutput(orarioInModifica, orarioInModifica, subName2, note, rootmodificato, l);
             }
 
 
@@ -232,7 +274,31 @@ public class MotoreSostituzioneAule3 {
         Desktop.getDesktop().open(folder);
     }
 
-    private static void generaFileOutput(BitOrarioGrigliaOrario orarioInModifica, BitOrarioGrigliaOrario orarioStandard, String subName2, NoteVariazioniBitOrarioGrigliaOrario note, File root) throws IOException {
+    public static void generaFileOutput(BitOrarioGrigliaOrario orarioInModifica, BitOrarioGrigliaOrario orarioStandard, String subName2,
+                                        NoteVariazioniBitOrarioGrigliaOrario note, File root,
+                                        AbstractVincoliSostituzioni l
+    ) throws IOException {
+
+
+        //report quarantene
+        if (l != null) {
+            Map<ClassData, ControlloCoperturaClassi_COVID.CoperturaClasse_COVID> report = l.reportQuarantene(orarioInModifica);
+            if (report.size() > 0) {
+                PrintStream out = null;
+                try {
+                    out = new PrintStream(new File(root, subName2 + "Report Quarantene Docenti" + ".csv"));
+                } catch (FileNotFoundException e) {
+                    throw new IllegalArgumentException(e);
+                }
+
+                out.println(report.get(report.keySet().iterator().next()).headerReportPerGiorno());
+                for (ClassData classData : report.keySet()) {
+                    out.println(report.get(classData).reportPerGiorno());
+                }
+                out.close();
+            }
+        }
+
         //OK
         new HtmlOutputOrario_perAule().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_AULE_DETTAGLIATO.A3" + ".html"), EPaperFormat.A3);
         new HtmlOutputOrario_perAulePerAree().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_AULE_DETTAGLIATO_PER_AREE.A3" + ".html"), EPaperFormat.A3);
@@ -240,11 +306,13 @@ public class MotoreSostituzioneAule3 {
         new HtmlOutputOrario_perClassi().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_DETTAGLIATO.A3" + ".html"), EPaperFormat.A3);
 
         //new Report_perDocentiDaConvocareRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_DA_CONVOCARE_RIDOTTO_A3" + ".html"), EPaperFormat.A3);
-        new Report_perDocentiRaggruppatiPerMateria().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_PER_MATERIA_RIDOTTO_A3" + ".html"), EPaperFormat.A3);
+        //new Report_perDocentiRaggruppatiPerMateria().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_PER_MATERIA_RIDOTTO_A3" + ".html"), EPaperFormat.A3);
 
         //OK
+        new Report_perDocentiRidottoInPresenza().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_PRESENZA.A3" + ".html"), EPaperFormat.A3);
         new Report_perDocentiRidotto().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_RIDOTTO.A3" + ".html"), EPaperFormat.A3);
         new Report_perDocentiRidottoTestuale().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_RIDOTTO" + ".txt"), EPaperFormat.A3);
+        new Report_perClassiInDDI().print(orarioInModifica, note, new File(root, subName2 + "_CLASSI_IN_DDI" + ".txt"), EPaperFormat.A3);
 
         new Report_perDocentiRidotto(false).print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_DOCENTI_RIDOTTO_NO_AULE.A3" + ".html"), EPaperFormat.A3);
         new Report_perClasseRidotto2().print(orarioInModifica, note, new File(root, subName2 + "_ORARIO_CLASSI_RIDOTTO.A3" + ".html"), EPaperFormat.A3);
@@ -259,10 +327,21 @@ public class MotoreSostituzioneAule3 {
 
 
         new Report_perVariazioniAule().print(orarioInModifica, orarioStandard, new File(root, subName2 + "_VARIAZIONI" + ".html"));
+        new Report_perVariazioniAule(true).print(orarioInModifica, orarioStandard, new File(root, subName2 + "_VARIAZIONI_USCITE" + ".html"));
 
         FileWriter w4 = new FileWriter(new File(root, "qrcode.html"));
         w4.write(printQCODEClassi());
         w4.close();
+
+        //intestazione file orario
+
+        String dal = l.getDal();
+        String al = l.getAl();
+
+        FileWriter header = new FileWriter(new File(root, "header.html"));
+        header.write("<h2>Orario delle lezioni LICEO SCIENTIFICO</h2>");
+        header.write("<h3>Orario valido dal " + dal + " al " + al + "</h3>");
+        header.close();
 
 
         final File folder_docenti = new File(root, "DOCENTI");

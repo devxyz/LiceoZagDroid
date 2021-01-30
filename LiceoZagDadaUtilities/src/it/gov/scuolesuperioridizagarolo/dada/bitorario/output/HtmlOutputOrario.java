@@ -78,7 +78,7 @@ public abstract class HtmlOutputOrario {
                 if (!ora.flagOraDiLezione()) continue;
 
                 p.print("<tr  style='border:1px solid black'>");
-                p.print("<td style='text-align: right;'><span style='font-size:18px'>" + ora.getProgressivOra() + "</span> (dalle ore " + ora.printOra() + ")</td>");
+                p.print("<td style='text-align: right;'><span style='font-size:18px'>" + ora.getProgressivOra() + "</span> (dalle ore " + ora.printOraInizioPresenza() + ")</td>");
                 for (EGiorno settimana : EGiorno.values()) {
                     if (!settimana.flagGiornoDiLezione()) {
                         continue;

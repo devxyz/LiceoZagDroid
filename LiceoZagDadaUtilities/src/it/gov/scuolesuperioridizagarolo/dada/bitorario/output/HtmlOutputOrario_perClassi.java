@@ -46,6 +46,11 @@ public class HtmlOutputOrario_perClassi extends HtmlOutputOrario {
         return ris;
     }
 
+    private String ifNotNUll(String s){
+        if(s==null)return "";
+        return s;
+    }
+
     @Override
     protected String getLezione(BitOrarioGrigliaOrario griglia, NoteVariazioniBitOrarioGrigliaOrario note, EOra o, EGiorno s, String classe) {
         final BitOrarioOraLezione l = griglia.getLezioneInClasse(o, s, ClassesAndRoomContainer.parseClass(classe));

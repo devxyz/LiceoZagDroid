@@ -21,7 +21,7 @@ public class ReportDocentiAssenti {
         for (String a : assenti) {
             for (EOra value : EOra.values()) {
                 if (value.flagOraDiLezione()) {
-                    BitOrarioOraLezione lezione = orarioTotale.getLezioneConDocente(value, giorno, a);
+                    BitOrarioOraLezione lezione = orarioTotale.getLezioneConDocente(a, giorno, value);
                     if (lezione != null && lezione.getTipoLezione() != BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
                         lezioniDaCoprire.get(value).add(lezione);
                     }

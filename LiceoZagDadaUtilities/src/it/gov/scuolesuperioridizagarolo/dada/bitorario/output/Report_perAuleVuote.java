@@ -1,7 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
@@ -40,7 +39,7 @@ public class Report_perAuleVuote {
             if (ora == EOra.USCITA) continue;
             if (ora == EOra.ENTRATA) continue;
             p.print("<tr  style='border:1px solid black'>");
-            p.print("<td style='text-align: center;font-size:120%;' >" + ora.getProgressivOra() + "^ora<br>" + ora.printOra() + "</td>");
+            p.print("<td style='text-align: center;font-size:120%;' >" + ora.getProgressivOra() + "^ora<br>" + ora.printOraInizioPresenza() + "</td>");
             for (EGiorno settimana : EGiorno.values()) {
                 if (!settimana.flagGiornoDiLezione()) continue;
 
@@ -54,7 +53,7 @@ public class Report_perAuleVuote {
 
                     for (RoomData s : l) {
                         final RoomData room = (s);
-                        if (room.flagAulaFittizia()) continue;
+                        if (room.isAulaFittizia()) continue;
                         if (room.maxStudents == 0) continue;
 
                         p.print("<li><b>" + s + "</b> - " + (s).maxStudents + " posti " + (s.flagLIM ? "LIM" : "") + "</li>");

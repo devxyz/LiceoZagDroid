@@ -57,7 +57,7 @@ public class Report_perDocentiRaggruppatiPerMateria {
                     for (EOra ox : EOra.values()) {
 
                         if (!ox.flagOraDiLezione()) continue;
-                        final BitOrarioOraLezione ll = o.getLezioneConDocente(ox, st, docente);
+                        final BitOrarioOraLezione ll = o.getLezioneConDocente(docente, st, ox);
 
                         String x = "";
                         if (note.getNote(ll) != null)

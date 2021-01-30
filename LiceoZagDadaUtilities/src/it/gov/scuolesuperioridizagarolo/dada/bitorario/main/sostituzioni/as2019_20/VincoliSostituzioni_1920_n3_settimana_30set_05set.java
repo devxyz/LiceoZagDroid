@@ -150,7 +150,7 @@ public class VincoliSostituzioni_1920_n3_settimana_30set_05set extends AbstractV
 
         //lunedi' giornata violenza donne circolare n.64
 
-
+/*
         //====================================================================================================================================
         // FERRIGNO
         //====================================================================================================================================
@@ -169,7 +169,7 @@ public class VincoliSostituzioni_1920_n3_settimana_30set_05set extends AbstractV
             l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E30sharp, value, EOra.values()));
         }
 
-
+*/
 
 
 

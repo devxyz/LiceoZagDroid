@@ -39,7 +39,7 @@ public class StudenteSidiCollection {
         return searchAll(new StudenteSidiFilter() {
             @Override
             public boolean accept(StudenteSidi s) {
-                return s.AnnoCorso.trim().equalsIgnoreCase(_anno);
+                return (s.AnnoCorso+"").trim().equalsIgnoreCase(_anno);
             }
         });
     }

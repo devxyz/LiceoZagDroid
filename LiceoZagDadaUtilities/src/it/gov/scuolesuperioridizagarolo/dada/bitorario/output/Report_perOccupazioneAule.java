@@ -2,7 +2,6 @@ package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
@@ -36,7 +35,7 @@ public class Report_perOccupazioneAule {
             p.print("<td style='width:5%' > </td>");
             for (EOra s : EOra.values()) {
                 if (s == EOra.USCITA) continue;
-                p.print("<td style='width:15%;font-size:20px'><b>" + s.printOra() + "</b></td>");
+                p.print("<td style='width:15%;font-size:20px'><b>" + s.printOraInizioPresenza() + "</b></td>");
             }
             p.print("</tr>");
 
@@ -54,7 +53,7 @@ public class Report_perOccupazioneAule {
                 for (RoomData a : aule) {
 
                     final RoomData room = (a);
-                    if (room.flagAulaFittizia()) continue;
+                    if (room.isAulaFittizia()) continue;
                     if (room.maxStudents == 0) continue;
 
 

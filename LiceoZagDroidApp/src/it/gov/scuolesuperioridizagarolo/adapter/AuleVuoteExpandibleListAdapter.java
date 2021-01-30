@@ -12,8 +12,6 @@ import android.widget.BaseExpandableListAdapter;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_classivuote_detail_xml;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_classivuote_header_xml;
-import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_disposizionidocenti_detail_xml;
-import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_listview_disposizionidocenti_header_xml;
 import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
 import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
@@ -21,13 +19,10 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
     protected BitOrarioGrigliaOrarioContainer containerOrari;
-    protected TreeMap<BitOrarioGrigliaOrario.GiornoOra, Set<String>> disposizioni;
     protected OnlyDate giorno;
     private BitOrarioGrigliaOrario orario;
     private EOra[] ore;
@@ -123,7 +118,7 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
 
         LayoutObjs_listview_classivuote_header_xml obj = new LayoutObjs_listview_classivuote_header_xml(convertView);
         obj.textView_ora.setText(ora.getProgressivOra() + "°ora");
-        obj.textView_fascia.setText(ora.fascia());
+        obj.textView_fascia.setText(ora.fasciaPresenza());
         obj.textView5.setText(auleVuote.size() + " aule");
         return convertView;
     }

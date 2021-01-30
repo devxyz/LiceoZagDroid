@@ -39,6 +39,7 @@ public class RegolaCambioAula {
         }
 
         for (BitOrarioOraLezione x : nuoveLezioniDaAggiungere) {
+            //x.appendNote(regola);
             o.addLezione(x);
         }
 

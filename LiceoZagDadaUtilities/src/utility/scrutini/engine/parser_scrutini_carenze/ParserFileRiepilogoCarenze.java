@@ -21,7 +21,12 @@ public class ParserFileRiepilogoCarenze {
     public static ArrayList<RecuperoCarenze_Intestazione> ricava_intestazione(ArrayList<ArrayList<ScrutiniCarenze_Termine>> termini) {
 
         int riga = ScrutiniCarenzeUtil.cercaRigaCheIniziaPer(termini, "alunni");
-        if (riga < 0) throw new IllegalArgumentException("Riga alunni non trovata");
+        if (riga < 0) {
+            //controlla se solo riga totali
+            if (ScrutiniCarenzeUtil.cercaRigaCheIniziaPer(termini, "totali") >= 0 && termini.size() == 1)
+                return new ArrayList<>();
+            throw new IllegalArgumentException("Riga alunni non trovata");
+        }
 
         ArrayList<ScrutiniCarenze_Termine> materie = termini.get(riga);
 
@@ -77,10 +82,17 @@ public class ParserFileRiepilogoCarenze {
             int da = ScrutiniCarenzeUtil.cercaRigaCheIniziaPer(xx, "ALUNNI");
             int a = ScrutiniCarenzeUtil.cercaRigaCheIniziaPer(xx, "TOTALI");
             //se ci sono piu' pagine la scritta TOTALI compare solo all'ultima pagina
+            if (da < 0) {
+                //solo totali skip
+                if (a >= 0) {
+                    continue;
+                }
+                throw new IllegalArgumentException("Alunni o Totali non trovati");
+            }
             if (a < 0) {
                 a = xx.size();
             }
-            if (da < 0) throw new IllegalArgumentException("Alunni o Totali non trovati");
+
             for (int i = da + 1; i < a; i++) {
                 LinkedHashMap<RecuperoCarenze_Intestazione, String> studente = new LinkedHashMap<>();
                 for (RecuperoCarenze_Intestazione x : intestazione) {

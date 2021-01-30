@@ -10,9 +10,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EPaperFormat;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -26,6 +24,7 @@ public class MainParserGeneraStampeOrario {
     static final String file_allocazione_aule = "Orario Allocazione Aule.txt";
     static final String file_disposizione_docenti = "Orario Ore a Disposizione.txt";
     static final String file_disposizione_da_orario_verticale_opzional = "Orario Professori Verticale.txt";
+
 
     public static BitOrarioGrigliaOrario readJsonFileOrarioAuleClassi(File file) throws IOException {
         if (file.getName().toLowerCase().trim().endsWith(".zip")) {
@@ -67,14 +66,15 @@ public class MainParserGeneraStampeOrario {
         return orarioTotale;
     }
 
+    @Deprecated
     public static BitOrarioGrigliaOrario parsingFileOrarioAuleClassi(String titolo,
-                                                                     File fileAllocazioneAule, File file_disposizione_docenti,
+                                                                     File fileAllocazioneAule_TXT, File file_disposizione_docenti,
                                                                      File file_disposizione_da_orario_orizzontale_opzional,
                                                                      File fileSostegnoOrizzontale,
                                                                      File file_progettiOrizzontale, boolean noAule) throws IOException {
 
-        if (!fileAllocazioneAule.exists()) {
-            throw new IllegalArgumentException("File orario " + fileAllocazioneAule.getName() + " non trovato");
+        if (!fileAllocazioneAule_TXT.exists()) {
+            throw new IllegalArgumentException("File orario " + fileAllocazioneAule_TXT.getName() + " non trovato");
         }
         /*
         if (file_disposizione_da_orario_orizzontale_opzional==null||!file_disposizione_da_orario_orizzontale_opzional.exists() && !file_disposizione_docenti.exists()) {
@@ -87,7 +87,7 @@ public class MainParserGeneraStampeOrario {
 
         final BitOrarioGrigliaOrario orarioTotale = new BitOrarioGrigliaOrario(titolo);
 
-        final List<BitOrarioOraLezione> l1 = ParserOrarioAllocazioneAuleTXT.parsingFileOrarioAuleClassi(fileAllocazioneAule, noAule);
+        final List<BitOrarioOraLezione> l1 = ParserOrarioAllocazioneAuleTXT.parsingFileOrarioAuleClassi(fileAllocazioneAule_TXT, noAule);
         orarioTotale.addLezione(l1);
 
 
@@ -109,6 +109,153 @@ public class MainParserGeneraStampeOrario {
         if (file_progettiOrizzontale != null) {
             final List<BitOrarioOraLezione> l = ParserProgetto_DaFileOrizzontaleTXT.parsingProgettoDocenti(file_progettiOrizzontale);
             orarioTotale.addLezione(l);
+        }
+
+        return orarioTotale;
+    }
+
+    @Deprecated
+    //legge orario da _ORARIO_DOCENTI_RIDOTTO.txt
+    public static BitOrarioGrigliaOrario parsingFileOrarioRiepilogo_TXT(String titolo,
+                                                                        File file_TXT
+    ) throws IOException {
+        final BitOrarioGrigliaOrario orarioTotale = new BitOrarioGrigliaOrario(titolo);
+        BufferedReader in = new BufferedReader(new FileReader(file_TXT));
+
+        //salta intestazione
+        in.readLine();
+        in.readLine();
+        String docente = null;
+        EGiorno giorno = null;
+        EOra ora = null;
+        String line;
+        while (null != (line = in.readLine())) {
+            line = in.readLine().trim();
+            if (line.length() == 0) {
+                continue;
+            } else if (line.contains("LUNEDI")) {
+                giorno = EGiorno.LUNEDI;
+                continue;
+            } else if (line.contains("MARTEDI")) {
+                giorno = EGiorno.MARTEDI;
+                continue;
+            } else if (line.contains("MERCOLEDI")) {
+                giorno = EGiorno.MERCOLEDI;
+                continue;
+            } else if (line.contains("GIOVEDI")) {
+                giorno = EGiorno.GIOVEDI;
+                continue;
+            } else if (line.contains("VENERDI")) {
+                giorno = EGiorno.VENERDI;
+                continue;
+            } else if (line.contains("SABATO")) {
+                giorno = EGiorno.SABATO;
+                continue;
+            } else if (line.contains("DOMENICA")) {
+                giorno = EGiorno.DOMENICA;
+                continue;
+            } else {
+                if (line.startsWith("PRIMA:")) {
+                    ora = EOra.PRIMA;
+                } else if (line.startsWith("SECONDA:")) {
+                    ora = EOra.SECONDA;
+                } else if (line.startsWith("TERZA:")) {
+                    ora = EOra.TERZA;
+                } else if (line.startsWith("QUARTA:")) {
+                    ora = EOra.QUARTA;
+                } else if (line.startsWith("QUINTA:")) {
+                    ora = EOra.QUINTA;
+                } else if (line.startsWith("SESTA:")) {
+                    ora = EOra.SESTA;
+                }
+                String[] split = line.split("[ ]+");
+
+
+            }
+        }
+
+
+        in.close();
+        return orarioTotale;
+    }
+
+    public static abstract class MainParserGeneraStampeOrarioListener {
+        public void _1_startParsing(BitOrarioGrigliaOrario orarioTotale) {
+        }
+
+        public void _2_after_ParserOrarioAllocazioneAuleTXT(BitOrarioGrigliaOrario orarioTotale) {
+        }
+
+        public void _3_after_ParserDisposizioni_DaFileOrarioGlobaleCSV(BitOrarioGrigliaOrario orarioTotale) {
+        }
+
+        public void _4_after_ParserSostegno_DaFileOrizzontaleTXT(BitOrarioGrigliaOrario orarioTotale) {
+        }
+
+        public void _5_after_ParserDisposizioni_DaFileDocenti_EXCEL(BitOrarioGrigliaOrario orarioTotale) {
+        }
+
+        public void _6_after_ParserProgetto_DaFileOrizzontaleTXT(BitOrarioGrigliaOrario orarioTotale) {
+        }
+
+        public void _7_endParsing(BitOrarioGrigliaOrario orarioTotale) {
+        }
+    }
+
+    public static BitOrarioGrigliaOrario parsingFileOrarioAuleClassi_TXT_CSV_EXCEL(String titolo,
+                                                                                   File fileAllocazioneAule_TXT,
+                                                                                   File fileOrarioDocenti_CSV,
+                                                                                   File fileSostegnoOrizzontale_TXT,
+                                                                                   File file_progettiOrizzontale_TXT,
+                                                                                   File file_docentiExtra_EXCEL,
+                                                                                   boolean noAule,
+                                                                                   MainParserGeneraStampeOrarioListener listener) throws IOException {
+
+        if (!fileAllocazioneAule_TXT.exists()) {
+            throw new IllegalArgumentException("File orario " + fileAllocazioneAule_TXT.getName() + " non trovato");
+        }
+
+        /*
+        if (file_disposizione_da_orario_orizzontale_opzional==null||!file_disposizione_da_orario_orizzontale_opzional.exists() && !file_disposizione_docenti.exists()) {
+            throw new IllegalArgumentException("Nessun file disposizioni trovato");
+        }*/
+
+
+        final BitOrarioGrigliaOrario orarioTotale = new BitOrarioGrigliaOrario(titolo);
+
+        if (listener == null) listener = new MainParserGeneraStampeOrarioListener() {
+        };
+
+        listener._1_startParsing(orarioTotale);
+
+        {
+            final List<BitOrarioOraLezione> l1 = ParserOrarioAllocazioneAuleTXT.parsingFileOrarioAuleClassi(fileAllocazioneAule_TXT, noAule);
+            orarioTotale.addLezione(l1);
+            listener._2_after_ParserOrarioAllocazioneAuleTXT(orarioTotale);
+        }
+
+        if (fileOrarioDocenti_CSV != null) {
+            final List<BitOrarioOraLezione> l = ParserDisposizioni_DaFileOrarioGlobaleCSV.parsingDisposizioniDocenti(fileOrarioDocenti_CSV);
+            orarioTotale.addLezione(l);
+            listener._3_after_ParserDisposizioni_DaFileOrarioGlobaleCSV(orarioTotale);
+        }
+
+
+        if (fileSostegnoOrizzontale_TXT != null) {
+            ParserSostegno_DaFileOrizzontaleTXT.parsingOreSostegnoDocenti(fileSostegnoOrizzontale_TXT, orarioTotale);
+            listener._4_after_ParserSostegno_DaFileOrizzontaleTXT(orarioTotale);
+        }
+
+        if (file_docentiExtra_EXCEL != null) {
+            ParserDisposizioni_DaFileDocenti_EXCEL.parsingExtraDocenti(file_docentiExtra_EXCEL, orarioTotale);
+            listener._5_after_ParserDisposizioni_DaFileDocenti_EXCEL(orarioTotale);
+        }
+
+
+        if (file_progettiOrizzontale_TXT != null) {
+            final List<BitOrarioOraLezione> l = ParserProgetto_DaFileOrizzontaleTXT.parsingProgettoDocenti(file_progettiOrizzontale_TXT);
+            orarioTotale.addLezione(l);
+            listener._6_after_ParserProgetto_DaFileOrizzontaleTXT(orarioTotale);
         }
 
         return orarioTotale;

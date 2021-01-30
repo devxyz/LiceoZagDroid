@@ -35,7 +35,7 @@ public class AnalisiBusinessIntell {
                     final ClassData aClass = l.getClasse();
                     min = Math.min(min, aClass.numberOfStudents);
                     max = Math.max(max, aClass.numberOfStudents);
-                    if (!l.getAula().flagAulaLaboratorioPalestra())
+                    if (!l.getAula().isAulaLaboratorioPalestra())
                         ore++;
                 }
             }

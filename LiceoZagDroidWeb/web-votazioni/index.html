@@ -1,0 +1,135 @@
+<html>
+<style>
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 20px;
+    }
+
+    label {
+        background-color: white;
+        display: block;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        font-size: 20px;
+        background-color: #673ab7;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #673ab7;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    div {
+        font-size: 20px;
+    }
+
+    body{
+        background-color: #ede7f6;
+    }
+
+    .div2{
+        background-color: #ede7f6;
+        height: 20px;
+        width: 100%;
+    }
+
+
+    .div1 {
+        border-radius: 5px;
+        background-color: white;
+        padding: 20px;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+
+<div class="div1">
+    <h3>Elezioni 2020 rinnovo del Consiglio d'Istituto dell'I.I.S. "Paolo Borsellino e Giovanni Falcone" per il
+        triennio 2020/2021, 2021/2022, 2022/2023</h3>
+    <hr>
+    Elezioni di:<br>
+    <ul>
+        <li>4 (quattro) rappresentanti dei genitori</li>
+        <li>4 (quattro) rappresentanti alunni</li>
+        <li>8 (otto) rappresentanti del personale docente</li>
+        <li>2 (due) rappresentanti del personale ATA
+        </li>
+    </ul>
+    per il rinnovo del Consiglio d'Istituto dell'I.I.S. "Paolo Borsellino e Giovanni Falcone" per il triennio
+    2020/2021, 2021/2022, 2022/2023
+
+    <hr>
+    <div style="background-color: white;padding: 10px">
+        Per accedere alle operazioni di voto e' necessario registrarsi tramite piattaforma Meet presso il seggio
+        assegnato (e' stata inviata una email all'indirizzo istituzionale con le istruzioni).<br>
+        Al termine dell'operazione di riconoscimento vi verra' dato un codice univoco ANONIMO che permette l'accesso
+        alle operazioni di voto. Il codice dovra' essere trascritto qui di seguito. <br><span style="color: red">Si prega di prestare la massima
+        attenzione nella        trascrizione.</span>
+
+    </div>
+
+    <h3 style="padding: 1px;text-align: center;color: #673ab7;font-size: 30px;border-top: 2px solid #673ab7;border-bottom:  2px solid #673ab7 ">
+        Accesso alla piattaforma di voto</h3>
+
+
+    <form action="votazione.php" method="post">
+        <h3>Codice di voto ANONIMO fornito dal seggio al momento della registrazione</h3>
+        <input type="text" id="codice" name="codice"
+               placeholder="Inserire il codice di voto fornito ...">
+
+        <h3>Tipologia Elettore</h3>
+        <select name="tipo"  >
+            <option value="scegli" disabled selected >scegliere una opzione...</option>
+            <option value="ATA" >ATA - elezione di 2 (due) rappresentanti del personale ATA</option>
+            <option value="DOCENTE" >DOCENTI - elezione di 8 (otto) rappresentanti del personale docente</option>
+            <option value="GENITORE-PADRE" >GENITORI COMPONENTE MASCHILE - elezione di 4 (quattro) rappresentanti dei
+                genitori</option>
+            <option value="GENITORE-MADRE" >GENITORI COMPONENTE FEMMINILE - elezione di 4 (quattro) rappresentanti dei
+                genitori</option>
+
+        </select>
+
+        <!--
+        <input type="radio" id="ata" name="tipo" value="ATA">
+        <label for="ata">ATA - elezione di 2 (due) rappresentanti del personale ATA</label><br>
+        <br>
+        <input type="radio" id="docente" name="tipo" value="DOCENTE">
+        <label for="docente">DOCENTI - elezione di 8 (otto) rappresentanti del personale docente</label><br>
+        <br>
+        <input type="radio" id="genitore-padre" name="tipo" value="GENITORE-PADRE">
+        <label for="genitore-padre">GENITORI COMPONENTE MASCHILE - elezione di 4 (quattro) rappresentanti dei
+            genitori</label><br>
+        <br>
+        <input type="radio" id="genitore-madre" name="tipo" value="GENITORE-MADRE">
+        <label for="genitore-madre">GENITORI COMPONENTE FEMMINILE - elezione di 4 (quattro) rappresentanti dei
+            genitori</label><br>
+            -->
+        <br>
+        <hr>
+        <div>Si ricorda che e' possibile effettuare una sola operazione di voto per la categoria di appartenenza.</div>
+
+        <input type="submit" value="Verifica il codice" name="accesso">
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
+                xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+
+    <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp" android:id="@+id/xLayout7x"
+            android:background="@drawable/background_toolbar_fragment"
+            >
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&lt;"
+                android:id="@+id/buttonPrev"
+                android:background="@drawable/background_pulsante_bianco"
+                android:layout_alignParentTop="false"
+                style="?android:attr/buttonStyleSmall" android:layout_marginLeft="5dp" android:textStyle="bold"
+                android:textSize="40dp" android:layout_marginRight="5dp" android:layout_alignParentBottom="false"
+                android:layout_alignParentEnd="false" android:layout_alignParentLeft="false"/>
+        <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">"
+                android:id="@+id/buttonNext"
+                android:background="@drawable/background_pulsante_bianco" android:textSize="40dp"
+                android:textStyle="bold" android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+                android:layout_centerVertical="true" android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true" android:layout_alignParentTop="true"/>
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giorno"
+                android:id="@+id/button_giorno"
+                android:drawableLeft="@drawable/button_calendario_48x48"
+                android:layout_alignParentEnd="false"
+                android:background="@drawable/background_pulsante_bianco" android:paddingLeft="10dp"
+                android:paddingRight="10dp" android:paddingBottom="5dp" android:paddingTop="5dp"
+                android:layout_toLeftOf="@id/buttonNext" android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="false" android:layout_alignParentStart="false"
+                android:layout_alignParentTop="false" android:layout_toRightOf="@id/buttonPrev"/>
+
+
+    </RelativeLayout>
 
 
     <ExpandableListView
@@ -16,43 +60,8 @@
 
             android:layout_alignParentStart="true"
             android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:layout_marginBottom="5dp"
-            android:layout_below="@+id/linearLayout7">
+            android:layout_below="@id/xLayout7x">
+
 
     </ExpandableListView>
-    <RelativeLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" android:padding="10dp" android:id="@+id/linearLayout7"
-            android:background="@color/color_blue_scurissimo">
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Giorno"
-                android:id="@+id/button_giorno"
-                android:drawableLeft="@drawable/button_calendario_48x48"
-                android:layout_alignParentTop="true" android:layout_alignParentEnd="true"
-                android:background="@drawable/background_pulsante_celeste_bianco" android:paddingLeft="10dp"
-                android:paddingRight="10dp" android:paddingBottom="5dp" android:paddingTop="5dp"/>
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button_ora" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
-                android:background="@drawable/background_pulsante_celeste_bianco" android:paddingLeft="10dp"
-                android:paddingRight="10dp" android:paddingBottom="5dp" android:paddingTop="5dp"
-                android:drawableLeft="@drawable/icon_info_48x48"
-        />
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Disposizioni\nDocenti"
-                android:id="@+id/textView13" android:layout_alignParentBottom="false"
-                android:layout_toStartOf="@+id/button_giorno" android:layout_toRightOf="@+id/button_ora"
-                android:layout_alignBottom="@+id/button_giorno" android:layout_alignTop="@+id/button_ora"
-                android:gravity="center_vertical|center_horizontal" android:textStyle="bold"
-                android:textColor="@color/color_white"/>
-    </RelativeLayout>
-
-
 </RelativeLayout>

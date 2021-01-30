@@ -141,8 +141,10 @@ public class MainMenuActivity extends AbstractActivity {
                 showDetails = !showDetails;
 
                 if (showDetails) {
-                    LAYOUT_OBJs.toggleButton_dettagli_form.setBackground(getResources().getDrawable(R.drawable.background_pulsante_tema));
+                    LAYOUT_OBJs.toggleButton_dettagli_form.setText("+");
+                    LAYOUT_OBJs.toggleButton_dettagli_form.setBackground(getResources().getDrawable(R.drawable.background_pulsante_yellow));
                 } else {
+                    LAYOUT_OBJs.toggleButton_dettagli_form.setText("-");
                     LAYOUT_OBJs.toggleButton_dettagli_form.setBackground(getResources().getDrawable(R.drawable.background_pulsante_red));
                 }
 
@@ -775,6 +777,7 @@ public class MainMenuActivity extends AbstractActivity {
         if (getActionBar() != null) {
             getActionBar().setTitle(currentFragmentTitle);
         }
+        LAYOUT_OBJs.textViewTitolo.setText(title);
     }
 
     public void setIcon(Drawable d) {

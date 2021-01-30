@@ -67,7 +67,12 @@ public class ParserSostegno_DaFileOrizzontaleTXT {
                 EGiorno g = EGiorno.LUNEDI;
                 for (int i = 2; i < r.length; i++) {
                     String s = r[i].trim();
-                    if (s.length() > 0) {
+                    if (s.equalsIgnoreCase("D")) {
+                        BitOrarioOraLezione nuovaLezione = BitOrarioOraLezione.creaOraDisposizione(nomeDocente, o, g);
+                        orario.addLezione(nuovaLezione);
+
+                    }
+                    else if (s.length() > 0) {
                         ClassData classe = ClassData.search(s);
                         BitOrarioOraLezione lezioneInClasse = orario.getLezioneInClasse(o, g, classe);
                         if (lezioneInClasse == null) {

@@ -8,9 +8,12 @@ import android.widget.AdapterView;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.adapter.MenuHomeListAdapter;
 import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
+import it.gov.scuolesuperioridizagarolo.db.BitOrrioGrigliaOrarioContainerSingleton;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_home_xml;
-import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.menu.DataMenuInfo;
+import it.gov.scuolesuperioridizagarolo.util.C_DateUtil;
+
+import java.util.Date;
 
 public class HomeFragment extends AbstractFragment {
 
@@ -35,6 +38,7 @@ public class HomeFragment extends AbstractFragment {
         return R.drawable.help_home_fragment;
     }
 
+
     @Override
     public View onCreateViewImpl(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState, Bundle p) {
@@ -46,7 +50,10 @@ public class HomeFragment extends AbstractFragment {
         LAYOUT_OBJs = new LayoutObjs_fragment_home_xml(rootView);
         //**************************
         //**************************
-        LAYOUT_OBJs.textViewTipoUtente.setText(getMainActivity().getSharedPreferences().getUserType().getDescrizione());
+        Date lastDataUpdate = getMainActivity().getSharedPreferences().getLastDataUpdate();
+        String lastUpdate = C_DateUtil.toDDMMYYY_HHMMSS(lastDataUpdate);
+        LAYOUT_OBJs.textViewTipoUtente.setText(getMainActivity().getSharedPreferences().getUserType().getDescrizione() + "\n  Aggiornamento:" + lastUpdate);
+
 
         //Bitmap b = ScreenUtil.getResourceAsBitmap(this.getMainActivity(), R.drawable.logo_fermi_150x150);
         //LAYOUT_OBJs.imageView.setImageBitmap(ScreenUtil.scaleAndAdapt(b, 300, 300));
@@ -64,11 +71,17 @@ public class HomeFragment extends AbstractFragment {
             }
         });
 
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                BitOrrioGrigliaOrarioContainerSingleton.getInstance(getMainActivity());
+            }
+        });
+        t.start();
 
         //Ist.+Tec.+Stat.+E.+Fermi/@41.956178,12.806626
         return rootView;
     }
-
 
 
 }

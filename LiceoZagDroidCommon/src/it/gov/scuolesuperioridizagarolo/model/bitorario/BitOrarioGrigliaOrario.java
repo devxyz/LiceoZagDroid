@@ -24,6 +24,203 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
     private transient boolean readOnly = false;
     private String titolo;
     private transient TreeMap<GiornoOra, Set<String>> oreDisposizione = null;
+    private transient TreeMap<GiornoOra, Set<InfoDocente_DisposizioneCompresenzaProgetto>> oreDisposizioneCompresenzeProgetti = null;
+
+    public TreeSet<String> getConsiglioDiClasse_Docente(ClassData classe) {
+        TreeSet<String> ris = new TreeSet<>();
+        TreeMap<String, String> cc = getConsiglioDiClasse_Materia_Docente(classe);
+        ris.addAll(cc.values());
+        return ris;
+    }
+
+    public void cleanUpDocenti() {
+        _lezioniPerDocente.cleanupUnusedKeys();
+    }
+
+    public boolean isFullDDI(String docente, EGiorno g, boolean ignoreDisposizioni) {
+        ArrayList<BitOrarioOraLezione> lezioniGiornaliere = getLezioneConDocente(docente, g);
+        for (BitOrarioOraLezione l : lezioniGiornaliere) {
+            if (l.getTipoLezione() == BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
+                if (!ignoreDisposizioni) return false;
+                else continue;
+            }
+            if (!l.aula.isDDI()) return false;
+        }
+        return true;
+    }
+
+    //ora inizio didattica a scuola, ora fine didattica a scuola
+    public EOra[] intervalloDidatticaScuola__conTrasferimento(String docente, EGiorno g) {
+        EOra ultimaOraBuco = EOra.USCITA;
+        {
+            ArrayList<EOra> oraDallUltimaAllaPrima = new ArrayList<>(Arrays.asList(EOra.valuesOreDiLezione()));
+            Collections.sort(oraDallUltimaAllaPrima, new Comparator<EOra>() {
+                @Override
+                public int compare(EOra o1, EOra o2) {
+                    return -o1.compareTo(o2);
+                }
+            });
+
+
+            for (EOra eOra : oraDallUltimaAllaPrima) {
+                BitOrarioOraLezione l = getLezioneConDocente(docente, g, eOra);
+                if (l == null) {
+                    ultimaOraBuco = eOra;
+                    continue;
+                }
+                if (l.getTipoLezione() == BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
+                    break;
+                }
+                if (!l.getAula().isDDI()) {
+                    break;
+                }
+                if (eOra == EOra.PRIMA) {
+                    ultimaOraBuco = EOra.PRIMA;
+                    break;
+                }
+            }
+        }
+
+        EOra primaOraBuco = EOra.ENTRATA;
+        {
+            ArrayList<EOra> oraDallaPrimaAllUltima = new ArrayList<>(Arrays.asList(EOra.valuesOreDiLezione()));
+
+            for (EOra eOra : oraDallaPrimaAllUltima) {
+                BitOrarioOraLezione l = getLezioneConDocente(docente, g, eOra);
+                if (l == null) {
+                    primaOraBuco = eOra;
+                    continue;
+                }
+                if (l.getTipoLezione() == BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
+                    break;
+                }
+                if (!l.getAula().isDDI()) {
+                    break;
+                }
+                if (eOra == EOra.SESTA) {
+                    primaOraBuco = EOra.SESTA;
+                    break;
+                }
+                //se raggiunge l'altro lato...
+                if (eOra == ultimaOraBuco) {
+                    break;
+                }
+            }
+
+        }
+
+        return new EOra[]{primaOraBuco, ultimaOraBuco};
+    }
+
+    public TreeMap<String, ArrayList<String>> getConsiglioDiClasse_Docente_materie(ClassData classe) {
+        TreeMap<String, ArrayList<String>> ris = new TreeMap<>();
+        TreeMap<String, String> cc = getConsiglioDiClasse_Materia_Docente(classe);
+        for (Map.Entry<String, String> e : cc.entrySet()) {
+            String materia = e.getKey();
+            String docente = e.getValue();
+            ArrayList<String> materie = ris.get(docente);
+            if (materie == null) {
+                materie = new ArrayList<>();
+                ris.put(docente, materie);
+            }
+            materie.add(materia);
+        }
+
+        return ris;
+    }
+
+    public TreeMap<String, String> getConsiglioDiClasse_Materia_Docente(ClassData classe) {
+        TreeMap<String, String> ris = new TreeMap<>();
+        List<BitOrarioOraLezione> lezioni = getLezioni(classe);
+        for (BitOrarioOraLezione l : lezioni) {
+            String docente;
+            String materia;
+            materia = l.getMateriaPrincipale();
+            docente = l.getDocentePrincipale();
+            if (docente != null) {
+                ris.put(materia, docente);
+            }
+
+            materia = l.getMateriaCompresenza();
+            docente = l.getDocenteCompresenza();
+            if (docente != null) {
+                ris.put(materia + "(compresenza)", docente);
+            }
+
+
+            docente = l.getDocenteSostegno();
+            if (docente != null) {
+                ris.put("sostegno", docente);
+            }
+        }
+
+
+        return ris;
+    }
+
+    public static class InfoDocente_DisposizioneCompresenzaProgetto implements Comparable<InfoDocente_DisposizioneCompresenzaProgetto> {
+        public static InfoDocente_DisposizioneCompresenzaProgetto disposizione(String docente) {
+            return new InfoDocente_DisposizioneCompresenzaProgetto(docente, "Disposizione", InfoDocente_DisposizioneCompresenzaProgetto.DISPOSIZIONE);
+        }
+
+        public static InfoDocente_DisposizioneCompresenzaProgetto progetto(String docente, String descrizione) {
+            return new InfoDocente_DisposizioneCompresenzaProgetto(docente, "Progetto: " + descrizione, InfoDocente_DisposizioneCompresenzaProgetto.PROGETTO);
+        }
+
+        public static InfoDocente_DisposizioneCompresenzaProgetto compresenza(String docente, String descrizione) {
+            return new InfoDocente_DisposizioneCompresenzaProgetto(docente, "Compresenza: " + descrizione, InfoDocente_DisposizioneCompresenzaProgetto.COMPRESENZA);
+        }
+
+        public static InfoDocente_DisposizioneCompresenzaProgetto sostegno(String docente, String descrizione) {
+            return new InfoDocente_DisposizioneCompresenzaProgetto(docente, "Sostegno: " + descrizione, InfoDocente_DisposizioneCompresenzaProgetto.SOSTEGNO);
+        }
+
+        public static final int DISPOSIZIONE = 1;
+        public static final int PROGETTO = 2;
+        public static final int COMPRESENZA = 3;
+        public static final int SOSTEGNO = 4;
+        public final String docente;
+        public final String descrizione;
+        public final int tipo;
+
+
+        private InfoDocente_DisposizioneCompresenzaProgetto(String docente, String descrizione, int tipo) {
+            this.docente = docente;
+            this.descrizione = descrizione;
+            this.tipo = tipo;
+        }
+
+        public boolean isDisposizione() {
+            return tipo == DISPOSIZIONE;
+        }
+
+        public boolean isCompresenza() {
+            return tipo == COMPRESENZA;
+        }
+
+        public boolean isProgetto() {
+            return tipo == PROGETTO;
+        }
+
+        public boolean isSostegno() {
+            return tipo == SOSTEGNO;
+        }
+
+        @Override
+        public int compareTo(InfoDocente_DisposizioneCompresenzaProgetto o) {
+            int i1;
+            i1 = Integer.compare(this.tipo, o.tipo);
+            if (i1 != 0) return i1;
+            i1 = this.docente.compareTo(o.docente);
+            if (i1 != 0) return i1;
+            i1 = this.descrizione.compareTo(o.descrizione);
+            return i1;
+        }
+    }
+
+    public BitOrarioOraLezione testLezione() {
+        return getLezioneInClasse(EOra.SESTA, EGiorno.VENERDI, ClassData.CLASS_1D);
+    }
 
     public TreeSet<String> getDocenti(ClassData classe) {
         TreeSet<String> r = new TreeSet<>();
@@ -83,7 +280,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         final ArrayList<BitOrarioOraLezione> ll = getLezioni();
         for (BitOrarioOraLezione l : ll) {
             final BitOrarioOraEnumTipoLezione tipoLezione = l.getTipoLezione();
-            if (tipoLezione == BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
+            if (l.isDisposizionePura()) {
                 GiornoOra g = new GiornoOra(l.getGiorno(), l.getOra());
                 Set<String> docenti = oreDisposizione.get(g);
                 if (docenti == null) {
@@ -99,6 +296,45 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         }
         return oreDisposizione;
     }
+
+    /**
+     * docenti impegnati in disposizioni, progetti, compresenze
+     *
+     * @return
+     */
+    public TreeMap<GiornoOra, Set<InfoDocente_DisposizioneCompresenzaProgetto>> getDocentiDisposizioneProgettiCompresenze() {
+        if (oreDisposizioneCompresenzeProgetti != null) return oreDisposizioneCompresenzeProgetti;
+        oreDisposizioneCompresenzeProgetti = new TreeMap<>();
+        final ArrayList<BitOrarioOraLezione> ll = getLezioni();
+        for (BitOrarioOraLezione l : ll) {
+
+            GiornoOra g = new GiornoOra(l.getGiorno(), l.getOra());
+            final BitOrarioOraEnumTipoLezione tipoLezione = l.getTipoLezione();
+            Set<InfoDocente_DisposizioneCompresenzaProgetto> docenti = oreDisposizioneCompresenzeProgetti.get(g);
+            if (docenti == null) {
+                docenti = new TreeSet<>();
+                oreDisposizioneCompresenzeProgetti.put(g, docenti);
+            }
+
+            if (l.isDisposizionePura()) {
+                if (l.getDocentePrincipale() != null)
+                    docenti.add(InfoDocente_DisposizioneCompresenzaProgetto.disposizione(l.getDocentePrincipale()));
+            } else {
+                if (l.isDisposizioneProgetto()) {
+                    if (l.getDocentePrincipale() != null)
+                        docenti.add(InfoDocente_DisposizioneCompresenzaProgetto.progetto(l.getDocentePrincipale(), l.getMateriaPrincipale()));
+                } else {
+                    //compresenza o sostegno
+                    if (l.getDocenteCompresenza() != null)
+                        docenti.add(InfoDocente_DisposizioneCompresenzaProgetto.compresenza(l.getDocenteCompresenza(), l.toStringClasseAulaDocente()));
+                    if (l.getDocenteSostegno() != null)
+                        docenti.add(InfoDocente_DisposizioneCompresenzaProgetto.compresenza(l.getDocenteSostegno(), l.toStringClasseAulaDocente()));
+                }
+            }
+        }
+        return oreDisposizioneCompresenzeProgetti;
+    }
+
 
     /**
      * elenco materie
@@ -349,7 +585,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         TreeSet<RoomData> ris = new TreeSet<>();
 
         for (RoomData a : getAule()) {
-            if (a.flagAulaFittizia())
+            if (a.isAulaFittizia())
                 continue;
 
             if (a.maxStudents <= 0)
@@ -366,7 +602,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         TreeSet<RoomData> ris = new TreeSet<>();
 
         for (RoomData a : getAule()) {
-            if (a.flagAulaFittizia())
+            if (a.isAulaFittizia())
                 continue;
 
             if (a.maxStudents <= 0)
@@ -384,7 +620,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
 
         for (RoomData a : getAule()) {
 
-            if (a.flagAulaFittizia())
+            if (a.isAulaFittizia())
                 continue;
 
             final List<BitOrarioOraLezione> l = getLezioneInAula(ora, settimana, a);
@@ -408,6 +644,31 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         return ris;
     }
 
+    public List<BitOrarioOraLezione> getLezioneInAula(EOra o, EGiorno s, RoomData aula, boolean flagIncludeDDI) {
+        final ArrayList<BitOrarioOraLezione> lezioni = getLezioni(o, s);
+        List<BitOrarioOraLezione> ris = new ArrayList<>();
+
+
+        for (BitOrarioOraLezione lezione : lezioni) {
+            if (lezione.getAula() == null) continue;
+            if (lezione.getAula().equals(aula))
+                ris.add(lezione);
+            else if (flagIncludeDDI && lezione.getAula().isDDI() && lezione.getAula().getDDI_linkedRoom() == aula) {
+                ris.add(lezione);
+            }
+
+        }
+        return ris;
+    }
+
+    public BitOrarioOraLezione getLezionePrimaInClasse(EGiorno s, ClassData classe) {
+        for (EOra eOra : EOra.valuesOreDiLezione()) {
+            BitOrarioOraLezione l = getLezioneInClasse(eOra, s, classe);
+            if (l != null) return l;
+        }
+        return null;
+    }
+
     public BitOrarioOraLezione getLezioneInClasse(EOra o, EGiorno s, ClassData classe) {
         final ArrayList<BitOrarioOraLezione> lezioni = getLezioni(o, s);
         for (BitOrarioOraLezione lezione : lezioni) {
@@ -417,13 +678,23 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         return null;
     }
 
-    public BitOrarioOraLezione getLezioneConDocente(EOra o, EGiorno s, String docente) {
+    public BitOrarioOraLezione getLezioneConDocente(String docente, EGiorno s, EOra o) {
         final ArrayList<BitOrarioOraLezione> lezioni = getLezioneConDocente(docente);
         for (BitOrarioOraLezione lezione : lezioni) {
             if (lezione.getOra() == o && lezione.getGiorno() == s)
                 return lezione;
         }
         return null;
+    }
+
+    public boolean isOraBucoDocente(String docente, EGiorno s, EOra o) {
+        if (o == EOra.PRIMA) return false;
+        if (o == EOra.SESTA) return false;
+        BitOrarioOraLezione l = getLezioneConDocente(docente, s, o);
+        if (l != null) return false;
+        BitOrarioOraLezione l_next = getLezioneConDocente(docente, s, o.next());
+        BitOrarioOraLezione l_prec = getLezioneConDocente(docente, s, o.prev());
+        return l_next != null && l_prec != null;
     }
 
     public int getOreTotaliDocenteClasseMateria(String docente, String materia, String classe) {
@@ -448,8 +719,8 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         return count;
     }
 
-    @Deprecated
-    public ArrayList<BitOrarioOraLezione> getLezioneConDocente(EGiorno s, String docente) {
+
+    public ArrayList<BitOrarioOraLezione> getLezioneConDocente(String docente, EGiorno s) {
         ArrayList<BitOrarioOraLezione> ris = new ArrayList<>();
         final ArrayList<BitOrarioOraLezione> lezioni = getLezioni();
         for (BitOrarioOraLezione lezione : lezioni) {
@@ -460,7 +731,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         return ris;
     }
 
-    public ArrayList<BitOrarioOraLezione> getLezioneConDocente(EOra s, String docente) {
+    public ArrayList<BitOrarioOraLezione> getLezioneConDocente(String docente, EOra s) {
         ArrayList<BitOrarioOraLezione> ris = new ArrayList<>();
         final ArrayList<BitOrarioOraLezione> lezioni = getLezioni();
         for (BitOrarioOraLezione lezione : lezioni) {
@@ -563,7 +834,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
 
         if (l.getDocentePrincipale() != null) {
             String docente = l.getDocentePrincipale();
-            BitOrarioOraLezione ris = getLezioneConDocente(l.getOra(), l.getGiorno(), docente);
+            BitOrarioOraLezione ris = getLezioneConDocente(docente, l.getGiorno(), l.getOra());
             if (ris != null) {
                 throw new IllegalArgumentException("Lezione per il docente " + docente + " " + l.getOra() + " " + l.getGiorno() + " duplicata. Vecchia lezione:" + ris + ", Nuova lezione:" + l);
             }
@@ -571,15 +842,15 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
 
         if (l.getDocenteCompresenza() != null) {
             String docente = l.getDocenteCompresenza();
-            BitOrarioOraLezione ris = getLezioneConDocente(l.getOra(), l.getGiorno(), docente);
+            BitOrarioOraLezione ris = getLezioneConDocente(docente, l.getGiorno(), l.getOra());
             if (ris != null) {
-                throw new IllegalArgumentException("Lezione per il docente " + docente + " " + l.getOra() + " " + l.getGiorno() + " duplicata. Vecchia lezione:" + ris + ", Nuova lezione:" + l);
+                throw new IllegalArgumentException("Lezione per il docente " + docente + " " + l.getOra() + " " + l.getGiorno() + " duplicata.\nVecchia lezione:" + ris + ",\nNuova lezione:" + l);
             }
         }
 
         if (l.getDocenteSostegno() != null) {
             String docente = l.getDocenteSostegno();
-            BitOrarioOraLezione ris = getLezioneConDocente(l.getOra(), l.getGiorno(), docente);
+            BitOrarioOraLezione ris = getLezioneConDocente(docente, l.getGiorno(), l.getOra());
             if (ris != null) {
                 throw new IllegalArgumentException("Lezione per il docente " + docente + " " + l.getOra() + " " + l.getGiorno() + " duplicata. Vecchia lezione:" + ris + ", Nuova lezione:" + l);
             }
@@ -627,6 +898,14 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         return new TreeSet<>(_lezioniPerDocente.keys());
     }
 
+    public TreeSet<String> getDocentiUppercase() {
+        TreeSet<String> ris = new TreeSet<>();
+        for (String s : getDocenti()) {
+            ris.add(s.toUpperCase().trim());
+        }
+        return ris;
+    }
+
     public TreeSet<ClassData> getClassi() {
         return new TreeSet<>(_lezioniPerClasse.keys());
     }
@@ -635,7 +914,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         //elenco di tutte le aule disponibili sia presenti nell'orario che nell'ENUM
         final TreeSet<RoomData> ris = new TreeSet<>();//new TreeSet<>(_lezioniPerAula.keys());
         for (RoomData r : RoomData.values()) {
-            if (r.flagAulaFittizia()) continue;
+            if (r.isAulaFittizia() && !r.isDDI()) continue;
             ris.add(r);
         }
 
@@ -653,7 +932,7 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
             sb.append(s).append("\n");
             for (EOra o : EOra.values()) {
                 sb.append(o.getOraInizio()).append(":").append(o.getMinutiInizio()).append(": ");
-                sb.append("\n   - " + getLezioneConDocente(o, s, docente));
+                sb.append("\n   - " + getLezioneConDocente(docente, s, o));
                 sb.append("\n");
             }
         }

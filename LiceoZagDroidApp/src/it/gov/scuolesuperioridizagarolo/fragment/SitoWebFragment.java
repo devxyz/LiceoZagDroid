@@ -6,7 +6,7 @@ package it.gov.scuolesuperioridizagarolo.fragment;
 
 import it.gov.scuolesuperioridizagarolo.R;
 
-
+@Deprecated
 public class SitoWebFragment extends AbstractWebpageFragment {
 
 

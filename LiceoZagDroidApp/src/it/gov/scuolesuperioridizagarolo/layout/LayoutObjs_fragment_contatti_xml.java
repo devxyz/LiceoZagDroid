@@ -12,7 +12,6 @@ public class LayoutObjs_fragment_contatti_xml{
   public final TextView textView;
   public final ImageButton imageButtonWWW;
   public final ImageButton imageButtonMap;
-  public final TextView textViewContattiScuola;
 
 public LayoutObjs_fragment_contatti_xml(Fragment f){
   View view=f.getView();
@@ -23,7 +22,6 @@ public LayoutObjs_fragment_contatti_xml(Fragment f){
   textView= (TextView)view.findViewById(R.id.textView);
   imageButtonWWW= (ImageButton)view.findViewById(R.id.imageButtonWWW);
   imageButtonMap= (ImageButton)view.findViewById(R.id.imageButtonMap);
-  textViewContattiScuola= (TextView)view.findViewById(R.id.textViewContattiScuola);
 }
 public LayoutObjs_fragment_contatti_xml(Activity view){
     linearLayout= (LinearLayout)view.findViewById(R.id.linearLayout);
@@ -33,7 +31,6 @@ public LayoutObjs_fragment_contatti_xml(Activity view){
   textView= (TextView)view.findViewById(R.id.textView);
   imageButtonWWW= (ImageButton)view.findViewById(R.id.imageButtonWWW);
   imageButtonMap= (ImageButton)view.findViewById(R.id.imageButtonMap);
-  textViewContattiScuola= (TextView)view.findViewById(R.id.textViewContattiScuola);
 
 }
 public LayoutObjs_fragment_contatti_xml(View view){
@@ -44,7 +41,6 @@ public LayoutObjs_fragment_contatti_xml(View view){
   textView= (TextView)view.findViewById(R.id.textView);
   imageButtonWWW= (ImageButton)view.findViewById(R.id.imageButtonWWW);
   imageButtonMap= (ImageButton)view.findViewById(R.id.imageButtonMap);
-  textViewContattiScuola= (TextView)view.findViewById(R.id.textViewContattiScuola);
 
 }
 public LayoutObjs_fragment_contatti_xml(Dialog view){
@@ -55,7 +51,6 @@ public LayoutObjs_fragment_contatti_xml(Dialog view){
   textView= (TextView)view.findViewById(R.id.textView);
   imageButtonWWW= (ImageButton)view.findViewById(R.id.imageButtonWWW);
   imageButtonMap= (ImageButton)view.findViewById(R.id.imageButtonMap);
-  textViewContattiScuola= (TextView)view.findViewById(R.id.textViewContattiScuola);
 
 }
 }

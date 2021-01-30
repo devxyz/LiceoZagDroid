@@ -13,7 +13,7 @@
 
         <item>Sito WEB</item>
         <item>IIS Borsellino Falcone - Zagarolo</item>
-        <item>it.gov.scuolesuperioridizagarolo.fragment.SitoWebFragment</item>
+        <item><item>it.gov.scuolesuperioridizagarolo.action.SitoWEBAction</item></item>
         <item>@drawable/_menu_web_48x48</item>
         <item></item>
         <item>END-ITEM</item>

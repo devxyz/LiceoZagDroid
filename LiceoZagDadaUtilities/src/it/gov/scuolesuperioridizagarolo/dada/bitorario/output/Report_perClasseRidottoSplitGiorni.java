@@ -27,20 +27,6 @@ public class Report_perClasseRidottoSplitGiorni {
     public Report_perClasseRidottoSplitGiorni() {
     }
 
-    public static boolean isConsanant(char c) {
-        String cons = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ";
-        return cons.contains("" + c);
-    }
-
-    public static String abbreviazioneMateria(BitOrarioOraLezione ll) {
-
-        final String materiaPrincipale = ll.getMateriaPrincipale();
-        int min = materiaPrincipale.contains(".") ? Math.min(materiaPrincipale.length(), 6) : Math.min(materiaPrincipale.length(), 3);
-        while (min > 3 && !isConsanant(materiaPrincipale.charAt(min - 1))) {
-            min--;
-        }
-        return ll.getMateriaPrincipale().substring(0, min);
-    }
 
     public void print(BitOrarioGrigliaOrario o, NoteVariazioniBitOrarioGrigliaOrario note, File f, EPaperFormat format) throws IOException {
         PrintStream p = new PrintStream(f);
@@ -79,14 +65,14 @@ public class Report_perClasseRidottoSplitGiorni {
                             p.print("<td style='border:1px solid black;border-left:" + spessore + "px solid black;background-color:lightgray'><b>" + "</td>");
                         else {
                             if (ll.getClasse() == null) {
-                                p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>" + abbreviazioneMateria(ll) + x +
+                                p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center;color:black;background-color:yellow'><b>" + UtilMaterie.abbreviazioneMateria(ll) + x +
                                         "</b></span></td>");
 
                             } else {
 
                                 String aulaBreve = ll.getAula() != null ? ll.getAula().simpleName() : "-";
                                 final String sx = showAule ? "<br><span style=''> (" + aulaBreve + ")" + x + "</span>" : "";
-                                p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center'><b style='font-size:20px'>" + abbreviazioneMateria(ll) +
+                                p.print("<td style='border:1px solid black; border-left:" + spessore + "px solid black; text-align:center'><b style='font-size:20px'>" + UtilMaterie.abbreviazioneMateria(ll) +
                                         "</b>" + sx + "</td>");
                             }
                         }

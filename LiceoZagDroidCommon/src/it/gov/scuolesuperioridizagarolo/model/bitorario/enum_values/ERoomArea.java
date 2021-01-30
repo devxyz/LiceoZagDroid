@@ -10,6 +10,7 @@ public enum ERoomArea {
     AREA_D("Piano Secondo (Area ROSSA)"),
     AREA_E("Piano Primo (Area GIALLA)"),
     AREA_F("Piano Seminterrato (Area GRIGIA)"),
+    AREA_DDI("Didattica a distanza"),
     ;
 
     public final String description;

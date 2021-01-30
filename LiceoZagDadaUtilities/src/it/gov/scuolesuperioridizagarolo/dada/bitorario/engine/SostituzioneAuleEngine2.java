@@ -412,7 +412,7 @@ public class SostituzioneAuleEngine2 {
                 final int i = Integer.valueOf(o1.maxStudents).compareTo(o2.maxStudents);
                 if (i != 0)
                     return i;
-                return (o1.flagAulaLaboratorioPalestra() + "").compareToIgnoreCase(o2.flagAulaLaboratorioPalestra() + "");
+                return (o1.isAulaLaboratorioPalestra() + "").compareToIgnoreCase(o2.isAulaLaboratorioPalestra() + "");
             }
         });
 
@@ -434,7 +434,7 @@ public class SostituzioneAuleEngine2 {
                 final int i = Integer.valueOf(o1.maxStudents).compareTo(o2.maxStudents);
                 if (i != 0)
                     return i;
-                return (o1.flagAulaLaboratorioPalestra() + "").compareToIgnoreCase(o2.flagAulaLaboratorioPalestra() + "");
+                return (o1.isAulaLaboratorioPalestra() + "").compareToIgnoreCase(o2.isAulaLaboratorioPalestra() + "");
             }
         });
 

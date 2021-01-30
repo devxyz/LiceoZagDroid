@@ -1,7 +1,6 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.output;
 
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
-import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassesAndRoomContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
@@ -60,14 +59,14 @@ public class HtmlMobile_AuleVuote {
 
                 final TreeSet<RoomData> aule = o.getAuleVuote(ora, settimana);
                 p.println("<td style='border:1px solid black; text-align:left;vertical-align: text-top;padding-left:5px'>");
-                p.println("<b style='color:red;width:100%;padding:5px'>" + ora.getProgressivOra() + "^ ora dalle " + ora.printOra() + "</b><td>");
+                p.println("<b style='color:red;width:100%;padding:5px'>" + ora.getProgressivOra() + "^ ora dalle " + ora.printOraInizioPresenza() + "</b><td>");
 
                 p.println("<td style='border:1px solid black; text-align:left;vertical-align: text-top;padding-left:5px'>");
                 int count = 0;
                 for (RoomData s : aule) {
                     final RoomData room = (s);
-                    if (room.flagAulaFittizia()) continue;
-                    p.println("<b style='font-size:150%;color:blue'>" + s.roomName + (s.flagAulaLaboratorioPalestra() ? "*" : "") + "</b> " + s.maxStudents + " posti " + (s.flagLIM ? "LIM" : ""));
+                    if (room.isAulaFittizia()) continue;
+                    p.println("<b style='font-size:150%;color:blue'>" + s.roomName + (s.isAulaLaboratorioPalestra() ? "*" : "") + "</b> " + s.maxStudents + " posti " + (s.flagLIM ? "LIM" : ""));
                     if (count++ > 200) {
                         p.println("<hr><b style='font-size:150%;color:blue'>... ALTRO (" + (aule.size() - count) + ")</b>");
                         break;

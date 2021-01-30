@@ -51,7 +51,7 @@ public class LessonConstraint_MateriaBloccataAule extends AbstractLessonConstrai
             return true;
 
         //skip aule speciali
-        if (ignoreLabs && aula.flagAulaLaboratorioPalestra())
+        if (ignoreLabs && aula.isAulaLaboratorioPalestra())
             return true;
 
         if (materiaPrincipale == null || !materiaPrincipale.equalsIgnoreCase(materia)) {

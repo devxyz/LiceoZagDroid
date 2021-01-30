@@ -2,6 +2,7 @@ package it.gov.scuolesuperioridizagarolo.services;
 
 import android.content.Intent;
 import android.util.Log;
+import it.gov.scuolesuperioridizagarolo.db.BitOrrioGrigliaOrarioContainerSingleton;
 import it.gov.scuolesuperioridizagarolo.util.ThreadUtil;
 
 /**
@@ -51,6 +52,9 @@ class UpdateThreadService implements Runnable {
 
                 //aggiorna l'interfaccia grafica, se possibile
                 sendMessageToMainActivity("Aggiornamento completato: " + num + " file scaricati", true);
+                //cancella ram e ricarica dati
+                BitOrrioGrigliaOrarioContainerSingleton.forceReloadData();
+
             } else {
                 sendMessageToMainActivity("Nessun nuovo aggiornamento trovato", true);
             }

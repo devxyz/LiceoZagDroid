@@ -9,10 +9,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstra
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 /**
  * Created by stefano on 01/08/2018.
@@ -74,7 +71,7 @@ public class SostituzioneAuleEngine3Util {
                 continue;
 
             //salta lezioni laboratori
-            if (x.getAula().flagAulaLaboratorioPalestra())
+            if (x.getAula().isAulaLaboratorioPalestra())
                 continue;
 
             lezioni.add(x);
@@ -118,11 +115,13 @@ public class SostituzioneAuleEngine3Util {
         return lezioni;
     }
 
-    static ArrayList<BitOrarioOraLezione> estraiLezioniOrdinateCrescentePerOccupazioneAula(BitOrarioGrigliaOrario o, EOra ora, EGiorno giorno) {
+    static ArrayList<BitOrarioOraLezione> estraiLezioniOrdinateCrescentePerOccupazioneAula(BitOrarioGrigliaOrario o, EOra ora, EGiorno giorno, FilterAule f, Set<CompatibilitaLaboratorio> c) {
         final ArrayList<BitOrarioOraLezione> lezioni1 = o.getLezioni(ora, giorno);
         final ArrayList<BitOrarioOraLezione> lezioniParallele = new ArrayList<>();
         for (BitOrarioOraLezione xl : lezioni1) {
-            if (xl.getAula() != null)
+            if (xl.getAula() == null || xl.getAula().isAulaFittizia())
+                continue;
+            if (f.accept(xl, c))
                 lezioniParallele.add(xl);
         }
 
@@ -137,7 +136,7 @@ public class SostituzioneAuleEngine3Util {
                 final int i = Integer.valueOf(o1.maxStudents).compareTo(o2.maxStudents);
                 if (i != 0)
                     return i;
-                return (o1.flagAulaLaboratorioPalestra() + "").compareToIgnoreCase(o2.flagAulaLaboratorioPalestra() + "");
+                return (o1.isAulaLaboratorioPalestra() + "").compareToIgnoreCase(o2.isAulaLaboratorioPalestra() + "");
             }
         });
 
@@ -159,7 +158,7 @@ public class SostituzioneAuleEngine3Util {
                 final int i = Integer.valueOf(o1.maxStudents).compareTo(o2.maxStudents);
                 if (i != 0)
                     return i;
-                return (o1.flagAulaLaboratorioPalestra() + "").compareToIgnoreCase(o2.flagAulaLaboratorioPalestra() + "");
+                return (o1.isAulaLaboratorioPalestra() + "").compareToIgnoreCase(o2.isAulaLaboratorioPalestra() + "");
             }
         });
 

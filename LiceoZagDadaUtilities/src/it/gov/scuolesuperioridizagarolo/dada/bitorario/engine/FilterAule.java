@@ -13,7 +13,7 @@ public enum FilterAule {
     LABORATORI_MAI {
         @Override
         boolean accept(String materia, ClassData classe, String docente, RoomData aula, Set<CompatibilitaLaboratorio> c) {
-            return !aula.flagAulaLaboratorioPalestra();
+            return !aula.isAulaLaboratorioPalestra();
         }
     },
 
@@ -27,7 +27,7 @@ public enum FilterAule {
     LABORATORI_SOLO_SE_LIBERI {
         @Override
         boolean accept(String materia, ClassData classe, String docente, RoomData aula, Set<CompatibilitaLaboratorio> c) {
-            if (!aula.flagAulaLaboratorioPalestra()) return true;
+            if (!aula.isAulaLaboratorioPalestra()) return true;
             return c.contains(new CompatibilitaLaboratorio(classe, materia, aula));
 //            return true;
         }
@@ -36,7 +36,7 @@ public enum FilterAule {
     LABORATORI_SOLO_COMPATIBILI {
         @Override
         boolean accept(String materia, ClassData classe, String docente, RoomData aula, Set<CompatibilitaLaboratorio> c) {
-            if (!aula.flagAulaLaboratorioPalestra()) return true;
+            if (!aula.isAulaLaboratorioPalestra()) return true;
             return c.contains(new CompatibilitaLaboratorio(classe, materia, aula));
             //return true;
         }

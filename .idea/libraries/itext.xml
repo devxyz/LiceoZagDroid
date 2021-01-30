@@ -1,31 +1,31 @@
 <component name="libraryTable">
   <library name="itext">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/barcodes-7.0.7.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/forms-7.0.7.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/io-7.0.7.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/kernel-7.0.7.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/layout-7.0.7.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/pdfa-7.0.7.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/pdftest-7.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/barcodes-7.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/forms-7.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/io-7.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/kernel-7.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/layout-7.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/pdfa-7.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/pdftest-7.0.7.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/barcodes-7.0.7-javadoc.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/forms-7.0.7-javadoc.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/io-7.0.7-javadoc.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/kernel-7.0.7-javadoc.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/layout-7.0.7-javadoc.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/pdfa-7.0.7-javadoc.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/pdftest-7.0.7-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/barcodes-7.0.7-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/forms-7.0.7-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/io-7.0.7-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/kernel-7.0.7-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/layout-7.0.7-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/pdfa-7.0.7-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/pdftest-7.0.7-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/barcodes-7.0.7-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/forms-7.0.7-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/io-7.0.7-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/kernel-7.0.7-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/layout-7.0.7-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/pdfa-7.0.7-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../Dada-orario-utilities/libs/itext/pdftest-7.0.7-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/barcodes-7.0.7-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/forms-7.0.7-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/io-7.0.7-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/kernel-7.0.7-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/layout-7.0.7-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/pdfa-7.0.7-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LiceoZagDadaUtilities/libs/itext/pdftest-7.0.7-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

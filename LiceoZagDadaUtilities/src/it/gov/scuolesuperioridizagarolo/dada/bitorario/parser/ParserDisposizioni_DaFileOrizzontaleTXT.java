@@ -34,11 +34,11 @@ public class ParserDisposizioni_DaFileOrizzontaleTXT {
                 testoFormattato = new ArrayList<>();
             } else {
                 final String[] split = line.split("[|]");
-                final String[] split2 = new String[split.length];
-                for (int i = 0; i < split.length; i++) {
-                    split2[i] = split[i].trim();
+                final ArrayList<String> split2 = new ArrayList<>();
+                for (int i = 0, j = 0; i < split.length; i += 2, j++) {
+                    split2.add(split[i].trim());
                 }
-                testoFormattato.add(split2);
+                testoFormattato.add(split2.toArray(new String[split2.size()]));
             }
         }
         if (testoFormattato.size() > 0) {
@@ -61,7 +61,7 @@ public class ParserDisposizioni_DaFileOrizzontaleTXT {
             for (String[] r : docente) {
 
                 EGiorno g = EGiorno.LUNEDI;
-                for (int i = 2; i < r.length; i++) {
+                for (int i = 1; i < r.length; i++) {
                     String s = r[i];
                     if (s.equals("D")) {
                         final BitOrarioOraLezione e = BitOrarioOraLezione.creaOraDisposizione(nomeDocente, o, g);

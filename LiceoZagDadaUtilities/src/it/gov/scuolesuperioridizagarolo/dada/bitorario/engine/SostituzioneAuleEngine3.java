@@ -17,7 +17,7 @@ import java.util.*;
 public class SostituzioneAuleEngine3 {
     private static final Random CASUALE = new Random(0);
     private static final boolean FLAG_SCELTA_CASUALE = true;
-
+    private static int numProgressivoRegola = 0;
     //???
     //private static final Random generatoreCasualeFix = new Random(0);
 
@@ -36,19 +36,30 @@ public class SostituzioneAuleEngine3 {
 
         final ArrayList<BitOrarioOraLezione> lezioniCheNonRispettanoVincoli = risolveVincoliAndCambiaAula(o, vincoliStandard, estrai, ff, numerositaVincoliNonSoddisfatti);
         if (lezioniCheNonRispettanoVincoli.size() > 0) {
+
             System.out.println("ERRORE!!!!!  Alcune lezioni non rispettano i vincoli base: " + lezioniCheNonRispettanoVincoli.size());
             System.err.println("ERRORE!!!!!  Alcune lezioni non rispettano i vincoli base: " + lezioniCheNonRispettanoVincoli.size());
+            for (BitOrarioOraLezione lezioni : lezioniCheNonRispettanoVincoli) {
+                System.err.println(" --->> " + lezioni.toStringComplete());
+            }
+
 //            throw new IllegalArgumentException("Vedi messaggio");
-            //throw new IllegalArgumentException("Programma interrotto");
+            System.out.flush();
+            System.err.flush();
+            throw new IllegalArgumentException("Programma interrotto");
         }
 
         //================================================================
         // PASSO 2: risolve vincoli ore consecutive
         //================================================================
+        if (!vincoliOreConsecutive) {
+            System.out.println("IGNORA VINCOLI ORE CONSECUTIVE");
+            return;
+        }
         System.out.println("RISOLUZIONE VINCOLI ORE CONSECUTIVE");
         //lezioni in aula da controllare
         final ArrayList<BitOrarioOraLezione> lezioniInAulaOrdinato = SostituzioneAuleEngine3Util.estraiLezioniInAulaOrdinato(o);
-        if (!vincoliOreConsecutive) return;
+
 
         //vincoli complessivi verificati
         final LessonConstraintContainer vincoliFinali = new LessonConstraintContainer();
@@ -128,8 +139,14 @@ public class SostituzioneAuleEngine3 {
         do {
             iterazioni++;
 
+            System.out.println();
+            System.out.println("===========================================================================================================");
+            System.out.println("  ITERAZIONE: " + iterazioni);
+            System.out.println("===========================================================================================================");
+
             //aggiorna
             prevLezioniDaModificare = lezioniDaModificare;
+            riordinaLezioniCheViolanoVincoli(lezioniDaModificare);
 
             System.out.println(iterazioni + "> ANALIZZA LE LEZIONI CHE VIOLANO VINCOLI. TROVATE " + lezioniDaModificare.size() + ", PRECEDENTI: " + prevLezioniDaModificare.size());
 
@@ -203,6 +220,19 @@ public class SostituzioneAuleEngine3 {
                         }
                     }
 
+                    //cerco scambio su quattro classi evitando aule attrezzate
+                    if (filterAule != FilterAule.LABORATORI_SOLO_SE_LIBERI) {
+                        final ArrayList<RegolaCambioAula> sostituzioni = x_cercaAula4Scambi(o, vincoliStandard, lezione, filterAule, estrai, true);
+                        if (sostituzioni.size() > 0) {
+                            final RegolaCambioAula regolaCambioAula = scegliRegola(sostituzioni);
+
+                            assegnato = regolaCambioAula;
+                            //applica sostituzione
+                            regolaCambioAula.apply(o);
+                            break;
+                        }
+                    }
+
                 }
 
 
@@ -215,13 +245,13 @@ public class SostituzioneAuleEngine3 {
                             ("\tNessuna aula trovata in sostituzione\tLA SOSTITUZIONE SARA' DI NUOVO TENTATA!!!");
                     System.out.println(s);
                 } else {
-                    System.out.println("Trovato cambio: " + assegnato);
+                    System.out.println("Trovato ed applicato cambio: " + assegnato);
                 }
             }
 
             //riepilogo vincoli violati
             System.out.println();
-            System.out.println("============= RIEPILOGO VINCOLI NON SODDISFATTI ====================");
+            System.out.println("============= STATISTICHE VINCOLI NON SODDISFATTI NEL TEMPO ====================");
             ArrayList<Map.Entry<AbstractLessonConstraint, Integer>> rr = new ArrayList<>(numerositaVincoliNonSoddisfatti.entrySet());
             Collections.sort(rr, new Comparator<Map.Entry<AbstractLessonConstraint, Integer>>() {
                 @Override
@@ -238,11 +268,6 @@ public class SostituzioneAuleEngine3 {
                     break;
                 }
             }
-            System.out.println("====================================================================");
-            System.out.println("====================================================================");
-            System.out.println("ITERAZIONI: " + iterazioni);
-            System.out.println("====================================================================");
-            System.out.println("====================================================================");
 
             //RICALCOLA LEZIONI
 
@@ -264,6 +289,7 @@ public class SostituzioneAuleEngine3 {
 
         }
         while (lezioniDaModificare.size() > 0 && prevLezioniDaModificare.size() > lezioniDaModificare.size() && iterazioni < 5);
+        System.out.println("N. lezioni rimaste da modificare: " + lezioniDaModificare.size());
         return lezioniDaModificare;
     }
 
@@ -273,169 +299,326 @@ public class SostituzioneAuleEngine3 {
 
         ArrayList<RegolaCambioAula> ris = new ArrayList<>();
 
-        String regolaApplicata;
         final EOra ora = lezione.getOra();
         final EGiorno giorno = lezione.getGiorno();
 
 
         //aule disponibili per la lezione corrente (quella attuale e quelle vuote)
         final ArrayList<RoomData> auleDisponibiliPerLezioneCorrente = SostituzioneAuleEngine3Util.toRoomData(o.getAuleVuote(ora, giorno));
-        auleDisponibiliPerLezioneCorrente.add(lezione.getAula());
-        SostituzioneAuleEngine3Util.sortByOccupacyASC(auleDisponibiliPerLezioneCorrente);
+        //SostituzioneAuleEngine3Util.sortByOccupacyASC(auleDisponibiliPerLezioneCorrente);
 
         //lezioni parallele con cui scambiare
-        final ArrayList<BitOrarioOraLezione> lezioniParallele = SostituzioneAuleEngine3Util.estraiLezioniOrdinateCrescentePerOccupazioneAula(o, ora, giorno);
+        final ArrayList<BitOrarioOraLezione> lezioniParallele = SostituzioneAuleEngine3Util.estraiLezioniOrdinateCrescentePerOccupazioneAula(o, ora, giorno, s, c);
 
-        final RoomData aula0 = lezione.getAula();
+        BitOrarioOraLezione l1 = lezione;
+        for (int i1 = 0; i1 < lezioniParallele.size(); i1++) {
+            BitOrarioOraLezione l2 = lezioniParallele.get(i1);
+            if (l1 == l2) continue;
+            for (int i2 = 0; i2 < lezioniParallele.size(); i2++) {
+                BitOrarioOraLezione l3 = lezioniParallele.get(i2);
+                if (l1 == l3) continue;
+                if (l2 == l3) continue;
+                RegolaCambioAula scambioPossibile = scambioPossibile_3lezioni(o, l, s, c, l1, l2, l3, auleDisponibiliPerLezioneCorrente);
+                if (scambioPossibile != null) {
+                    ris.add(scambioPossibile);
+                    if (stopOnFirstMatch)
+                        return ris;
+                }
 
-        for (RoomData x : auleDisponibiliPerLezioneCorrente) {
-            final RoomData aula1 = x;
+            }
+        }
 
-            for (BitOrarioOraLezione altraLezione : lezioniParallele) {
+        return ris;
+    }
 
-                //salta lezioni in lab o non in aula
-                final RoomData aula2 = altraLezione.getAula();
+    private static ArrayList<RegolaCambioAula> x_cercaAula4Scambi(
+            BitOrarioGrigliaOrario o, LessonConstraintContainer l, BitOrarioOraLezione lezione,
+            FilterAule s, Set<CompatibilitaLaboratorio> c, boolean stopOnFirstMatch) {
 
-                if (aula2 == null || aula1.equals(aula2))
-                    continue;
+        ArrayList<RegolaCambioAula> ris = new ArrayList<>();
 
-                for (BitOrarioOraLezione altraLezione2 : new ArrayList<>(lezioniParallele)) {
-
-                    //salta lezioni in lab o non in aula
-                    final RoomData aula3 = altraLezione2.getAula();
-                    //if (aula3 == null || skipAuleSpeciali && altraLezione2.getAula().flagAulaLaboratorioPalestra())
-
-                    if (aula3 == null || aula1.equals(aula3) || aula2.equals(aula3) || aula0.equals(aula3))
-                        continue;
-
-                    RoomData[] aule = new RoomData[]{aula1, aula2, aula3};
-
-                    for (int i1 = 0; i1 < aule.length; i1++) {
-                        for (int i2 = 0; i2 < aule.length; i2++) {
-
-                            for (int i3 = 0; i3 < aule.length; i3++) {
-                                if (i1 == i2 || i1 == i3 || i2 == i3)
-                                    continue;
-
-                                /*
-                                if (aule[i1].equals(aule[i2]) || Objects.equals(aule[i1], aule[i3]) || Objects.equals(aule[i2], aule[i3]))
-                                    continue;
-                                    */
-
-                                //  System.out.println("PROVA " + aule[i1] + " " + aule[i2] + " " + aule[i3]);
-                                final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(aule[i1]);
-                                final BitOrarioOraLezione nuovaAltraLezione = altraLezione.clonaLezioneInAltraAula(aule[i2]);
-                                final BitOrarioOraLezione nuovaAltraLezione2 = altraLezione2.clonaLezioneInAltraAula(aule[i3]);
-                                if (
-                                        l.checkAll(nuovaLezione, o) && l.checkAll(nuovaAltraLezione, o) && l.checkAll(nuovaAltraLezione2, o) &&
-                                                s.accept(nuovaLezione, c) && s.accept(nuovaAltraLezione, c) && s.accept(nuovaAltraLezione2, c)
-
-                                ) {
-                                    //System.out.println("\tCapienza aula: " + occupazioneMigliore + " posti, num. studenti:" + numStudenti);
-
-                                    regolaApplicata = String.format("regola >>> cambio a 3 aule >>> \n  > %-60s  ->  %s\n  > %-60s  ->  %s\n  > %-60s  ->  %s -- FILTRO %s",
-                                            lezione.toStringComplete(), nuovaLezione.toStringComplete(),
-                                            altraLezione.toStringComplete(), nuovaAltraLezione.toStringComplete(),
-                                            altraLezione2.toStringComplete(), nuovaAltraLezione2.toStringComplete(),
-                                            s
-                                    );
-
-                                    final RegolaCambioAula e = new RegolaCambioAula(regolaApplicata);
-                                    ris.add(e);
-
-                                    e.removeLezione(lezione);
-                                    e.addLezione(nuovaLezione);
-                                    //aggiungo cambiamenti DA --> A
+        final EOra ora = lezione.getOra();
+        final EGiorno giorno = lezione.getGiorno();
 
 
-                                    e.removeLezione(altraLezione);
-                                    e.addLezione(nuovaAltraLezione);
-                                    //aggiungo cambiamenti DA --> A
+        //aule disponibili per la lezione corrente (quella attuale e quelle vuote)
+        final ArrayList<RoomData> auleDisponibiliPerLezioneCorrente = SostituzioneAuleEngine3Util.toRoomData(o.getAuleVuote(ora, giorno));
+        //SostituzioneAuleEngine3Util.sortByOccupacyASC(auleDisponibiliPerLezioneCorrente);
 
-                                    e.removeLezione(altraLezione2);
-                                    e.addLezione(nuovaAltraLezione2);
+        //lezioni parallele con cui scambiare
+        final ArrayList<BitOrarioOraLezione> lezioniParallele = SostituzioneAuleEngine3Util.estraiLezioniOrdinateCrescentePerOccupazioneAula(o, ora, giorno, s, c);
 
-                                    //aggiungo cambiamenti DA --> A
-                                    if (stopOnFirstMatch)
-                                        return ris;
-
-                                }
-
-                            }
-                        }
-
+        BitOrarioOraLezione l1 = lezione;
+        for (int i1 = 0; i1 < lezioniParallele.size(); i1++) {
+            BitOrarioOraLezione l2 = lezioniParallele.get(i1);
+            if (l2 == l1) continue;
+            for (int i2 = i1 + 1; i2 < lezioniParallele.size(); i2++) {
+                BitOrarioOraLezione l3 = lezioniParallele.get(i2);
+                if (l3 == l1) continue;
+                if (l3 == l2) continue;
+                for (int i3 = i2 + 1; i3 < lezioniParallele.size(); i3++) {
+                    BitOrarioOraLezione l4 = lezioniParallele.get(i3);
+                    if (l4 == l1) continue;
+                    if (l4 == l2) continue;
+                    RegolaCambioAula scambioPossibile = scambioPossibile_4lezioni(o, l, s, c, l1, l2, l3, l4, auleDisponibiliPerLezioneCorrente);
+                    if (scambioPossibile != null) {
+                        ris.add(scambioPossibile);
+                        if (stopOnFirstMatch)
+                            return ris;
                     }
                 }
             }
         }
+
         return ris;
     }
 
     private static ArrayList<RegolaCambioAula> x_cercaScambio2Aule(
             BitOrarioGrigliaOrario o, LessonConstraintContainer l, BitOrarioOraLezione lezione,
             FilterAule s, Set<CompatibilitaLaboratorio> c, boolean stopOnFirstMatch) {
-
         ArrayList<RegolaCambioAula> ris = new ArrayList<>();
-        String regolaApplicata;
         final EOra ora = lezione.getOra();
         final EGiorno giorno = lezione.getGiorno();
 
         //aule disponibili per la lezione corrente (quella attuale e quelle vuote)
         final ArrayList<RoomData> auleDisponibiliPerLezioneCorrente = SostituzioneAuleEngine3Util.toRoomData(o.getAuleVuote(ora, giorno));
-        auleDisponibiliPerLezioneCorrente.add(lezione.getAula());
-        SostituzioneAuleEngine3Util.sortByOccupacyASC(auleDisponibiliPerLezioneCorrente);
 
         //lezioni parallele con cui scambiare
-        final ArrayList<BitOrarioOraLezione> lezioniParallele = SostituzioneAuleEngine3Util.estraiLezioniOrdinateCrescentePerOccupazioneAula(o, ora, giorno);
-
-        for (RoomData auleLezione : auleDisponibiliPerLezioneCorrente) {
+        final ArrayList<BitOrarioOraLezione> lezioniParallele = SostituzioneAuleEngine3Util.estraiLezioniOrdinateCrescentePerOccupazioneAula(o, ora, giorno, s, c);
 
 
-            for (BitOrarioOraLezione altraLezione : lezioniParallele) {
+        for (BitOrarioOraLezione altraLezione : lezioniParallele) {
+            RegolaCambioAula scambioPossibile = scambioPossibile_2lezioni(o, l, s, c, lezione, altraLezione, auleDisponibiliPerLezioneCorrente);
+            if (scambioPossibile != null) {
+                ris.add(scambioPossibile);
+                if (stopOnFirstMatch)
+                    return ris;
+            }
 
-                //salta lezioni in lab o non in aula
-                if (altraLezione.getAula() == null)
-                    continue;
+        }
+        return ris;
+    }
 
-                final RoomData aula1 = auleLezione;
-                final RoomData aula2 = altraLezione.getAula();
+    private static RegolaCambioAula scambioPossibile_2lezioni(
+            BitOrarioGrigliaOrario o, LessonConstraintContainer l, FilterAule s, Set<CompatibilitaLaboratorio> c,
+            BitOrarioOraLezione l1, BitOrarioOraLezione l2, Collection<RoomData> auleLibere) {
 
+        debug_checkVincolo(o, l, l1, l2);
 
-                final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(aula2);
-                final BitOrarioOraLezione nuovaAltraLezione = altraLezione.clonaLezioneInAltraAula(aula1);
+        //aule che si possono usare (libere e liberate dalle lezioni)
+        List<RoomData> aule = new ArrayList<>(auleLibere.size() + 2);
 
-                //    System.out.println("PROVA " + aula2 + " " + aula1);
+        if (l1.getAula() != null)
+            aule.add(l1.getAula());
+        if (l2.getAula() != null)
+            aule.add(l2.getAula());
+        aule.addAll(auleLibere);
+
+        for (RoomData a1 : aule) {
+            //se non cambia aula skip
+            if (l1.getAula() == a1) continue;
+
+            for (RoomData a2 : aule) {
+                if (a1 == a2) continue;
+
+                //se non cambia aula skip
+                if (l2.getAula() == a2) continue;
+
+                final BitOrarioOraLezione nuovaL1 = l1.clonaLezioneInAltraAula(a1);
+                final BitOrarioOraLezione nuovaL2 = l2.clonaLezioneInAltraAula(a2);
+
                 if (
-                        l.checkAll(nuovaLezione, o) && l.checkAll(nuovaAltraLezione, o) &&
-                                s.accept(nuovaLezione, c) && s.accept(nuovaAltraLezione, c)
+                        l.checkAll(nuovaL1, o) && l.checkAll(nuovaL2, o) &&
+                                s.accept(nuovaL1, c) && s.accept(nuovaL2, c)
                 ) {
                     //aggiungo cambiamenti DA --> A
-                    regolaApplicata = String.format("regola >>> cambio a 2 aule >>> \n  > %-60s  ->  %s\n  > %-60s  ->  %s -- FILTRO %s",
-                            lezione.toStringComplete(), nuovaLezione.toStringComplete(),
-                            altraLezione.toStringComplete(), nuovaAltraLezione.toStringComplete(), s);
+                    String regolaApplicata = (numProgressivoRegola++) + ") " + String.format("regola scambio a 2 lezioni >\n  # %-60s->%s\n  # %-60s->%s -- FILTRO %s",
+                            l1.toStringClasseAulaDocente(), nuovaL1.toStringAula(),
+                            l2.toStringClasseAulaDocente(), nuovaL2.toStringAula(), s);
 
 
                     final RegolaCambioAula e = new RegolaCambioAula(regolaApplicata);
-                    e.vecchieLezioniDaRimuovere.add(lezione);
-                    e.vecchieLezioniDaRimuovere.add(altraLezione);
-                    e.nuoveLezioniDaAggiungere.add(nuovaLezione);
-                    e.nuoveLezioniDaAggiungere.add(nuovaAltraLezione);
+                    e.vecchieLezioniDaRimuovere.add(l1);
+                    e.vecchieLezioniDaRimuovere.add(l2);
+                    e.nuoveLezioniDaAggiungere.add(nuovaL1);
+                    e.nuoveLezioniDaAggiungere.add(nuovaL2);
+                    return e;
+                }
+            }
+        }
+        return null;
+    }
 
-                    //o.removeLezione(lezione);
-                    //o.addLezione(nuovaLezione);
+
+    private static RegolaCambioAula scambioPossibile_3lezioni(
+            BitOrarioGrigliaOrario o, LessonConstraintContainer l, FilterAule s, Set<CompatibilitaLaboratorio> c,
+            BitOrarioOraLezione l1, BitOrarioOraLezione l2, BitOrarioOraLezione l3, Collection<RoomData> auleLibere) {
+
+        debug_checkVincolo(o, l, l1, l2, l3);
+        //aule che si possono usare (libere e liberate dalle lezioni)
+        List<RoomData> aule = new ArrayList<>(auleLibere.size() + 3);
+
+        if (l1.getAula() != null && !l1.getAula().isAulaFittizia())
+            aule.add(l1.getAula());
+
+        if (l2.getAula() != null && !l2.getAula().isAulaFittizia())
+            aule.add(l2.getAula());
+
+        if (l3.getAula() != null && !l3.getAula().isAulaFittizia())
+            aule.add(l3.getAula());
+
+        aule.addAll(auleLibere);
+
+        for (RoomData a1 : aule) {
+            //se non cambia aula skip
+            if (l1.getAula() == a1) continue;
+
+            for (RoomData a2 : aule) {
+                if (a1 == a2) continue;
+                //se non cambia aula skip
+                if (l2.getAula() == a2) continue;
+
+                for (RoomData a3 : aule) {
+                    if (a1 == a3) continue;
+                    if (a2 == a3) continue;
+                    //se non cambia aula skip
+                    if (l3.getAula() == a3) continue;
+
+                    final BitOrarioOraLezione nuovaL1 = l1.clonaLezioneInAltraAula(a1);
+                    final BitOrarioOraLezione nuovaL2 = l2.clonaLezioneInAltraAula(a2);
+                    final BitOrarioOraLezione nuovaL3 = l3.clonaLezioneInAltraAula(a3);
+                    if (
+                            l.checkAll(nuovaL1, o) && l.checkAll(nuovaL2, o) && l.checkAll(nuovaL3, o) &&
+                                    s.accept(nuovaL1, c) && s.accept(nuovaL2, c) && s.accept(nuovaL3, c)
+
+                    ) {
+                        //System.out.println("\tCapienza aula: " + occupazioneMigliore + " posti, num. studenti:" + numStudenti);
+
+                        String regolaApplicata = (numProgressivoRegola++) + ") " + String.format("regola scambio a 3 lezioni > \n  # %-60s->%s\n  # %-60s->%s\n  # %-60s->%s -- FILTRO %s",
+                                l1.toStringClasseAulaDocente(), nuovaL1.toStringAula(),
+                                l2.toStringClasseAulaDocente(), nuovaL2.toStringAula(),
+                                l3.toStringClasseAulaDocente(), nuovaL3.toStringAula(),
+                                s
+                        );
+
+                        final RegolaCambioAula e = new RegolaCambioAula(regolaApplicata);
 
 
-                    //o.removeLezione(altraLezione);
-                    //o.addLezione(nuovaAltraLezione);
+                        e.removeLezione(l1);
+                        e.addLezione(nuovaL1);
+                        //aggiungo cambiamenti DA --> A
 
 
-                    ris.add(e);
-                    if (stopOnFirstMatch) return ris;
+                        e.removeLezione(l2);
+                        e.addLezione(nuovaL2);
+                        //aggiungo cambiamenti DA --> A
+
+                        e.removeLezione(l3);
+                        e.addLezione(nuovaL3);
+
+                        return e;
+                    }
 
                 }
             }
         }
-        return ris;
+        return null;
+    }
+
+    private static RegolaCambioAula scambioPossibile_4lezioni(
+            BitOrarioGrigliaOrario o, LessonConstraintContainer l, FilterAule s, Set<CompatibilitaLaboratorio> c,
+            BitOrarioOraLezione l1, BitOrarioOraLezione l2, BitOrarioOraLezione l3, BitOrarioOraLezione l4, Collection<RoomData> auleLibere) {
+
+        debug_checkVincolo(o, l, l1, l2, l3, l4);
+        //aule che si possono usare (libere e liberate dalle lezioni)
+        List<RoomData> aule = new ArrayList<>(auleLibere.size() + 4);
+
+        if (l1.getAula() != null && !l1.getAula().isAulaFittizia())
+            aule.add(l1.getAula());
+
+        if (l2.getAula() != null && !l2.getAula().isAulaFittizia())
+            aule.add(l2.getAula());
+
+        if (l3.getAula() != null && !l3.getAula().isAulaFittizia())
+            aule.add(l3.getAula());
+
+        if (l4.getAula() != null && !l4.getAula().isAulaFittizia())
+            aule.add(l4.getAula());
+
+        aule.addAll(auleLibere);
+
+        for (RoomData a1 : aule) {
+            //se non cambia aula skip
+            if (l1.getAula() == a1) continue;
+
+            for (RoomData a2 : aule) {
+                if (a2 == a1) continue;
+                //se non cambia aula skip
+                if (l2.getAula() == a2) continue;
+
+                for (RoomData a3 : aule) {
+                    if (a3 == a1) continue;
+                    if (a3 == a2) continue;
+                    //se non cambia aula skip
+                    if (l3.getAula() == a3) continue;
+
+
+                    for (RoomData a4 : aule) {
+                        if (a4 == a1) continue;
+                        if (a4 == a2) continue;
+                        if (a4 == a3) continue;
+                        //se non cambia aula skip
+                        if (l4.getAula() == a4) continue;
+
+                        final BitOrarioOraLezione nuovaL1 = l1.clonaLezioneInAltraAula(a1);
+                        final BitOrarioOraLezione nuovaL2 = l2.clonaLezioneInAltraAula(a2);
+                        final BitOrarioOraLezione nuovaL3 = l3.clonaLezioneInAltraAula(a3);
+                        final BitOrarioOraLezione nuovaL4 = l4.clonaLezioneInAltraAula(a4);
+                        if (
+                                l.checkAll(nuovaL1, o) && l.checkAll(nuovaL2, o) && l.checkAll(nuovaL3, o) && l.checkAll(nuovaL4, o) &&
+                                        s.accept(nuovaL1, c) && s.accept(nuovaL2, c) && s.accept(nuovaL3, c) && s.accept(nuovaL4, c)
+
+                        ) {
+                            //System.out.println("\tCapienza aula: " + occupazioneMigliore + " posti, num. studenti:" + numStudenti);
+
+                            String regolaApplicata = (numProgressivoRegola++) + ") " + String.format("regola scambio a 4 lezioni > \n" +
+                                            "  # %-60s->%s\n" +
+                                            "  # %-60s->%s\n" +
+                                            "  # %-60s->%s\n" +
+                                            "  # %-60s->%s -- FILTRO %s",
+                                    l1.toStringClasseAulaDocente(), nuovaL1.toStringAula(),
+                                    l2.toStringClasseAulaDocente(), nuovaL2.toStringAula(),
+                                    l3.toStringClasseAulaDocente(), nuovaL3.toStringAula(),
+                                    l4.toStringClasseAulaDocente(), nuovaL4.toStringAula(),
+                                    s
+                            );
+
+                            final RegolaCambioAula e = new RegolaCambioAula(regolaApplicata);
+
+
+                            e.removeLezione(l1);
+                            e.addLezione(nuovaL1);
+                            //aggiungo cambiamenti DA --> A
+
+
+                            e.removeLezione(l2);
+                            e.addLezione(nuovaL2);
+                            //aggiungo cambiamenti DA --> A
+
+                            e.removeLezione(l3);
+                            e.addLezione(nuovaL3);
+
+                            e.removeLezione(l4);
+                            e.addLezione(nuovaL4);
+
+                            return e;
+                        }
+
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     private static ArrayList<RegolaCambioAula> x_cercaScambioAulaLibera(
@@ -443,24 +626,40 @@ public class SostituzioneAuleEngine3 {
             FilterAule s, Set<CompatibilitaLaboratorio> c, boolean stopOnFirstMatch) {
         String regolaApplicata;
         final ArrayList<RoomData> auleVuoteX = SostituzioneAuleEngine3Util.toRoomData(o.getAuleVuote(lezione.getOra(), lezione.getGiorno()));
-        SostituzioneAuleEngine3Util.sortByOccupacyASC(auleVuoteX);
+        // SostituzioneAuleEngine3Util.sortByOccupacyASC(auleVuoteX);
+
+        debug_checkVincolo(o, l, lezione);
 
         ArrayList<RegolaCambioAula> ris = new ArrayList<>();
 
-        for (RoomData a : auleVuoteX) {
-            if (a == null) continue;
-            final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(a);
+        for (RoomData a1 : auleVuoteX) {
+            if (a1 == null) continue;
+
+            //se non cambia aula skip
+            if (lezione.getAula() == a1) continue;
+
+            final BitOrarioOraLezione nuovaLezione = lezione.clonaLezioneInAltraAula(a1);
             if (l.checkAll(nuovaLezione, o) && s.accept(nuovaLezione, c)) {
-                regolaApplicata = String.format("regola >>> cambio con aula libera >>> \n  > %-60s  ->  %s -- FILTRO %s", lezione.toStringComplete(), nuovaLezione.toStringComplete(), s);
+                regolaApplicata = (numProgressivoRegola++) + ") " + String.format("regola scambio aula libera > \n  # %-60s->%s -- FILTRO %s", lezione.toStringClasseAulaDocente(), nuovaLezione.toStringClasseAulaDocente(), s);
                 final RegolaCambioAula e = new RegolaCambioAula(regolaApplicata);
                 e.vecchieLezioniDaRimuovere.add(lezione);
                 e.nuoveLezioniDaAggiungere.add(nuovaLezione);
                 ris.add(e);
-                if (stopOnFirstMatch) return ris;
+                if (stopOnFirstMatch)
+                    return ris;
 
             }
         }
         return ris;
+    }
+
+    private static final boolean debug_checkVincolo = true;
+
+    private static void debug_checkVincolo(BitOrarioGrigliaOrario o, LessonConstraintContainer l, BitOrarioOraLezione... lezione) {
+        if (debug_checkVincolo) return;
+        List<String> strings = l.checkAllNotPassed(Arrays.asList(lezione), o);
+        if (strings.size() == 0)
+            throw new IllegalArgumentException("Invalid constraint: all lesson passed." + Arrays.asList(lezione));
     }
 
     //riordina casualmente le lezioni che violano i vincoli oppure no in base al flag

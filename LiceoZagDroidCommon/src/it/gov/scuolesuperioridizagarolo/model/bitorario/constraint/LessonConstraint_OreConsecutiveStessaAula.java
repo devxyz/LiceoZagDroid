@@ -58,8 +58,8 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
                     if (l.getAula() == null) continue;
                     if (lnext == null) continue;
                     if (lnext.getAula() == null) continue;
-                    if (lnext.getAula().flagAulaLaboratorioPalestra()) continue;
-                    if (l.getAula().flagAulaLaboratorioPalestra()) continue;
+                    if (lnext.getAula().isAulaLaboratorioPalestra()) continue;
+                    if (l.getAula().isAulaLaboratorioPalestra()) continue;
                     if (l.getMateriaPrincipale().equals(lnext.getMateriaPrincipale())) {
                         ris.add(new LessonConstraint_OreConsecutiveStessaAula(classeD, giorno, ora, ora.next(), l.getMateriaPrincipale() + " " + l.getDocentePrincipale()));
 
@@ -77,7 +77,7 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
                               String docenteCompresenza, String materiaCompresenza,
                               String docenteSostegno, RoomData aula, ClassData classe, EOra ora, EGiorno giorno, BitOrarioGrigliaOrario orario) {
         if (classe == null) return true;
-        if (aula == null || aula.flagAulaFittizia()) return true;
+        if (aula == null || aula.isAulaFittizia()) return true;
 
         if (this.classe == classe)
             if (this.giorno.equals(giorno)) {
@@ -85,7 +85,7 @@ public class LessonConstraint_OreConsecutiveStessaAula extends AbstractLessonCon
                     final BitOrarioOraLezione altraLezione = orario.getLezioneInClasse(ora2, giorno, classe);
                     if (altraLezione != null) {
                         final RoomData altraAula = altraLezione.getAula();
-                        if (altraAula != null && !altraAula.flagAulaFittizia()) {
+                        if (altraAula != null && !altraAula.isAulaFittizia()) {
                             if (!altraAula.equals(aula))
                                 return false;
                         }

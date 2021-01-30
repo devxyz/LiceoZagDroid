@@ -36,7 +36,7 @@ public class LessonConstraint_AuleDidatticheConLIM_IgnoreLabs extends AbstractLe
 
         if (this.classe == classe)
             if (this.giorno.contains(giorno)) {
-                if (!aula.flagLIM && !aula.flagAulaLaboratorioPalestra())
+                if (!aula.flagLIM && !aula.isAulaLaboratorioPalestra())
                     return false;
             }
         return true;

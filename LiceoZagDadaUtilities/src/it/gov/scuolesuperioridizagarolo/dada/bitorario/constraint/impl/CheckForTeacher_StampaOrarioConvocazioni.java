@@ -7,7 +7,6 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -25,7 +24,7 @@ public class CheckForTeacher_StampaOrarioConvocazioni extends CheckForTeacher {
         for (EGiorno e : EGiorno.values()) {
 
             if (!e.flagGiornoDiLezione()) continue;
-            final ArrayList<BitOrarioOraLezione> lezioneConDocente = l.getLezioneConDocente(e, nomeDocente);
+            final ArrayList<BitOrarioOraLezione> lezioneConDocente = l.getLezioneConDocente(nomeDocente, e);
 
             Map<ClassData, Integer> lezioniPerClasse = new TreeMap<>();
             for (int i = 0; i < lezioneConDocente.size(); i++) {

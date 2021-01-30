@@ -1,6 +1,7 @@
 package it.gov.scuolesuperioridizagarolo.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +12,10 @@ import com.google.zxing.integration.android.IntentResult;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.api.AbstractActivity;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_activity_login_xml;
+import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
 import it.gov.scuolesuperioridizagarolo.model.AppUserType;
-import it.gov.scuolesuperioridizagarolo.util.DialogUtil;
-import it.gov.scuolesuperioridizagarolo.util.SharedPreferenceWrapper;
-import it.gov.scuolesuperioridizagarolo.util.ZXingIntentIntegration;
+import it.gov.scuolesuperioridizagarolo.util.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -221,9 +221,26 @@ public class LoginActivity extends AbstractActivity {
 
     }
 
+    static long minutiLimiteUpdate = 6 * 60;//6 ore
+
     private void startApplication() {
-        MainMenuActivity.startMainActivity(getActivity());
-        LoginActivity.this.finish();
+        Date lastDataUpdate = this.getSharedPreferences().getLastDataUpdate();
+        if (lastDataUpdate == null || C_DateUtil.differenzaInMinuti(lastDataUpdate, new Date()) > minutiLimiteUpdate) {
+            long oreTrascorse = lastDataUpdate == null ? -1 : C_DateUtil.differenzaInMinuti(lastDataUpdate, new Date()) / 60;
+            obj.sfondo.setVisibility(View.INVISIBLE);
+            DialogUtil.openInfoDialog(LoginActivity.this.getActivity(), "Aggiornamento dati",
+                    "Attenzione i dati non sono aggiornati (" + oreTrascorse + " ore).\nPremendo OK verrà avviata la procedura di download dei nuovi orari.\nVerificare di avere una connessione dati attiva.", new OnClickListenerDialogErrorCheck(LoginActivity.this) {
+                        @Override
+                        protected void onClickImpl(DialogInterface dialog, int which) throws Throwable {
+                            MainMenuActivity.startMainActivity(getActivity());
+                            LoginActivity.this.finish();
+                        }
+                    });
+
+        } else {
+            MainMenuActivity.startMainActivity(getActivity());
+            LoginActivity.this.finish();
+        }
     }
 
     private AppUserType getSelectedAppUserType() {

@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<j2xml version="15.9.0">
+  <user>
+    <id>526</id>
+    <name><![CDATA[ALFONSO VINCENZO FANELLI]]></name>
+    <username><![CDATA[MASSIMO.SEMENTILLI@LIBERO.IT]]></username>
+    <email><![CDATA[MASSIMO.SEMENTILLI@LIBERO.IT]]></email>
+    <password><![CDATA[$2y$10$p7c0kD.QNlhwlTY.LOiByeFNmcvwb8hAjzcQb0tno2E3AJqciVQk.]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-10-15 10:00:02]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>1</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>522</id>
+    <name><![CDATA[AMORE FABIO]]></name>
+    <username><![CDATA[fabioamore80@hotmail.com]]></username>
+    <email><![CDATA[fabioamore80@hotmail.com]]></email>
+    <password><![CDATA[$2y$10$F1A053wBRBEZ9f0CZ5wzAeJBcRUs/pzwItjWJJBurfNgNYFZHdTiy]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-10-15 09:55:57]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>1</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>528</id>
+    <name><![CDATA[AUGUSTO NECCI]]></name>
+    <username><![CDATA[augusto.necci@virgilio.it]]></username>
+    <email><![CDATA[augusto.necci@virgilio.it]]></email>
+    <password><![CDATA[$2y$10$EtfVVlSWHAoHkEFDgeraEORTHU.s9SMcxN802NCNuKfO0/MNi2oKm]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-10-15 10:02:15]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>1</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>495</id>
+    <name><![CDATA[Fabio Antico]]></name>
+    <username><![CDATA[fabio.antico@posta.istruzione.it]]></username>
+    <email><![CDATA[fabio.antico@posta.istruzione.it]]></email>
+    <password><![CDATA[$2y$10$zrw6fWk5JZ6RVoNHKalApewtiRskW1CUtBIquGZ/W3pkmVeWB878K]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-09-17 09:08:55]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>0</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>497</id>
+    <name><![CDATA[Francesco Zordan]]></name>
+    <username><![CDATA[zordanf@tin.it]]></username>
+    <email><![CDATA[zordanf@tin.it]]></email>
+    <password><![CDATA[$2y$10$YyNLN509CstRxf3QCv4FKuUpzVAqajk0G18YYX92WkmbmfGlq4Tuy]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-09-17 09:09:33]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation><![CDATA[$2y$10$XtMU6aiduvbBFgAplBClM.1Hf/6/zgBxsMViQNl1888Boyeq1D4o2]]></activation>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[2020-09-29 07:37:43]]></lastResetTime>
+    <resetCount>1</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>1</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>498</id>
+    <name><![CDATA[Franco Tabarroni]]></name>
+    <username><![CDATA[franco.tabarroni.147@posta.istruzione.it]]></username>
+    <email><![CDATA[franco.tabarroni.147@posta.istruzione.it]]></email>
+    <password><![CDATA[$2y$10$Viqq22t0/zjwgCk7DO93ke2snf/7UN..uJDztqXbqZ3017sHh7/CK]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-09-17 09:09:50]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>0</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>529</id>
+    <name><![CDATA[GELSOMINA TROIANO]]></name>
+    <username><![CDATA[gelsomina.troiano@gmail.com]]></username>
+    <email><![CDATA[gelsomina.troiano@gmail.com]]></email>
+    <password><![CDATA[$2y$10$HAPnmMCeV5RPnbtTvVSuhu4cMg4rpQvmjKRzA.XxS3F7TWu3lEjz.]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-10-15 10:03:24]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>1</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>527</id>
+    <name><![CDATA[GIULIA NARDI]]></name>
+    <username><![CDATA[giulia.nardi1990@libero.it]]></username>
+    <email><![CDATA[giulia.nardi1990@libero.it]]></email>
+    <password><![CDATA[$2y$10$g6zqP38RXNqg7RpLEUt81ulPi1594gsplLv8Ob2uoC23s087ydANi]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-10-15 10:01:39]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>1</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>525</id>
+    <name><![CDATA[LAURA DIANA]]></name>
+    <username><![CDATA[LAURA.DIANA20@VIRGILIO.IT]]></username>
+    <email><![CDATA[LAURA.DIANA20@VIRGILIO.IT]]></email>
+    <password><![CDATA[$2y$10$GC2VIrzblkWVp1uwSJThFeeVU..Em8LxGbXvGOtz3VuZYRgvK5U.C]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-10-15 09:58:50]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>1</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>504</id>
+    <name><![CDATA[Luigi Rondinella]]></name>
+    <username><![CDATA[rondinellaluigi@libero.it]]></username>
+    <email><![CDATA[rondinellaluigi@libero.it]]></email>
+    <password><![CDATA[$2y$10$9TvmRjBtwJbvZTK2r2I7DecvlIESPa2DKSnOhpoxhHjGI4WYD7mlO]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-09-17 09:16:11]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>1</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>506</id>
+    <name><![CDATA[Maria Consiglia Sapochetti]]></name>
+    <username><![CDATA[mariaconigliasapochetti@virgilio.it]]></username>
+    <email><![CDATA[mariaconigliasapochetti@virgilio.it]]></email>
+    <password><![CDATA[$2y$10$Zd/ICwB.gyEEOIETcLhsEeqSx14mySFUtu641eMNAzfFj0Kp7eb7e]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-09-17 09:17:15]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>1</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>507</id>
+    <name><![CDATA[Mario Coda]]></name>
+    <username><![CDATA[claudiadepaolis@tiscali.it]]></username>
+    <email><![CDATA[claudiadepaolis@tiscali.it]]></email>
+    <password><![CDATA[$2y$10$acoa1F64nKpd5H2ES65nVexfllS0NftW9djja1T9Vr6gHvhDfZxtC]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-09-17 09:17:30]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>1</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>509</id>
+    <name><![CDATA[Michela Lunghi]]></name>
+    <username><![CDATA[mlunghi1@gmail.com]]></username>
+    <email><![CDATA[mlunghi1@gmail.com]]></email>
+    <password><![CDATA[$2y$10$RV6D/oRqJXoqfYecp8kgOODIXV5BjXDklZmU816INLSZxUQaZYNk2]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-09-17 09:19:24]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>0</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>510</id>
+    <name><![CDATA[Monica Rueca]]></name>
+    <username><![CDATA[monica_rueca@virgilio.it]]></username>
+    <email><![CDATA[monica_rueca@virgilio.it]]></email>
+    <password><![CDATA[$2y$10$ZIo1a4xmTXjZxhzYDRT.ae4uM0qXoa1/5ic1PRjVrzWOt0ZFK0RHS]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-09-17 09:19:40]]></registerDate>
+    <lastvisitDate><![CDATA[2020-09-19 06:45:38]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[2020-09-19 06:41:59]]></lastResetTime>
+    <resetCount>1</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>0</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>512</id>
+    <name><![CDATA[Roberto Tabarroni]]></name>
+    <username><![CDATA[roberto.tabarroni@posta.istruzione.it]]></username>
+    <email><![CDATA[roberto.tabarroni@posta.istruzione.it]]></email>
+    <password><![CDATA[$2y$10$0R9pvaCJO3Hr/Zxgyo.D3.9986dNyTgo3AWoVbnIbBNi/qAbpQFy2]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-09-17 09:21:14]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[2020-10-15 07:05:52]]></lastResetTime>
+    <resetCount>1</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>0</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>524</id>
+    <name><![CDATA[ROMINA DE CAPRIO]]></name>
+    <username><![CDATA[ROMY.DE@LIBERO.IT]]></username>
+    <email><![CDATA[ROMY.DE@LIBERO.IT]]></email>
+    <password><![CDATA[$2y$10$jpe/0mUORdnw4Ju5CbemMe95YxSrxEMRQC7eqTSdUiUTnVTR.gYly]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-10-15 09:58:03]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>1</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+  <user>
+    <id>523</id>
+    <name><![CDATA[STEFANO D'AQUILIO]]></name>
+    <username><![CDATA[stefano.daquilio@gmail.com]]></username>
+    <email><![CDATA[stefano.daquilio@gmail.com]]></email>
+    <password><![CDATA[$2y$10$Py6Jkn4dCsDvnYo0XQLMrOYZvdQJE9EAnKPkqCYTh0xX/dIfpvQxi]]></password>
+    <block>0</block>
+    <sendEmail>0</sendEmail>
+    <registerDate><![CDATA[2020-10-15 09:57:21]]></registerDate>
+    <lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+    <activation/>
+    <params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","timezone":""}]]></params>
+    <lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+    <resetCount>0</resetCount>
+    <otpKey/>
+    <otep/>
+    <requireReset>1</requireReset>
+    <grouplist>
+      <group><![CDATA[["Public","Registered"]]]></group>
+      <group><![CDATA[["Public","Registered","ATA Registrato"]]]></group>
+    </grouplist>
+  </user>
+</j2xml>

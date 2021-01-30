@@ -52,15 +52,15 @@ public class DisposizioniDocentiExpandibleListAdapter extends BaseExpandableList
     }
 
     @Override
-    public String getChild(int groupPosition, int childPosititon) {
+    public BitOrarioGrigliaOrario.InfoDocente_DisposizioneCompresenzaProgetto getChild(int groupPosition, int childPosititon) {
         final EOra ora = getGroup(groupPosition);
-        Set<String> docentiDispo = orario.getDocentiDisposizione().get(new BitOrarioGrigliaOrario.GiornoOra(giorno.getGiorno(), ora));
+        Set<BitOrarioGrigliaOrario.InfoDocente_DisposizioneCompresenzaProgetto> docentiDispo = orario.getDocentiDisposizioneProgettiCompresenze().get(new BitOrarioGrigliaOrario.GiornoOra(giorno.getGiorno(), ora));
         if (docentiDispo == null) {
             docentiDispo = new TreeSet<>();
         }
 
 
-        final ArrayList<String> docenti = new ArrayList<>(docentiDispo);
+        final ArrayList<BitOrarioGrigliaOrario.InfoDocente_DisposizioneCompresenzaProgetto> docenti = new ArrayList<>(docentiDispo);
         return docenti.get(childPosititon);
     }
 
@@ -72,17 +72,44 @@ public class DisposizioniDocentiExpandibleListAdapter extends BaseExpandableList
     @Override
     public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
-        final String nomeDocente = getChild(groupPosition, childPosition);
+        final BitOrarioGrigliaOrario.InfoDocente_DisposizioneCompresenzaProgetto infoDocente = getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(a);
             convertView = layoutInflater.inflate(R.layout.listview_disposizionidocenti_detail, parent, false);
         }
         LayoutObjs_listview_disposizionidocenti_detail_xml obj = new LayoutObjs_listview_disposizionidocenti_detail_xml(convertView);
-        obj.textView_aula.setText("DISP");
-        obj.textView_docente_disp.setText(nomeDocente);
-        obj.textView5.setText("Disposizione");
-        obj.textView_aula.setTextColor(a.getResources().getColor(R.color.color_yellow));
+        switch (infoDocente.tipo) {
+            case BitOrarioGrigliaOrario.InfoDocente_DisposizioneCompresenzaProgetto.DISPOSIZIONE: {
+                obj.textView_aula.setText("DISP");
+                obj.textView_aula.setTextColor(a.getResources().getColor(R.color.color_yellow));
+                break;
+            }
+            case BitOrarioGrigliaOrario.InfoDocente_DisposizioneCompresenzaProgetto.SOSTEGNO: {
+                obj.textView_aula.setTextColor(a.getResources().getColor(R.color.color_black));
+                obj.textView_aula.setText("SOST");
+                break;
+            }
+            case BitOrarioGrigliaOrario.InfoDocente_DisposizioneCompresenzaProgetto.COMPRESENZA: {
+                obj.textView_aula.setTextColor(a.getResources().getColor(R.color.color_black));
+                obj.textView_aula.setText("COMP");
+                break;
+            }
+            case BitOrarioGrigliaOrario.InfoDocente_DisposizioneCompresenzaProgetto.PROGETTO: {
+                obj.textView_aula.setTextColor(a.getResources().getColor(R.color.color_black));
+                obj.textView_aula.setText("PROG");
+                break;
+            }
+            default: {
+
+                break;
+            }
+        }
+
+
+        obj.textView_docente_disp.setText(infoDocente.docente);
+        obj.textView5.setText(infoDocente.descrizione);
+
         return convertView;
     }
 
@@ -91,7 +118,7 @@ public class DisposizioniDocentiExpandibleListAdapter extends BaseExpandableList
     public int getChildrenCount(int groupPosition) {
         //ok
         final EOra ora = getGroup(groupPosition);
-        Set<String> docentiDispo = orario.getDocentiDisposizione().get(new BitOrarioGrigliaOrario.GiornoOra(giorno.getGiorno(), ora));
+        Set<BitOrarioGrigliaOrario.InfoDocente_DisposizioneCompresenzaProgetto> docentiDispo = orario.getDocentiDisposizioneProgettiCompresenze().get(new BitOrarioGrigliaOrario.GiornoOra(giorno.getGiorno(), ora));
         if (docentiDispo == null) {
             return 0;
         }
@@ -123,7 +150,7 @@ public class DisposizioniDocentiExpandibleListAdapter extends BaseExpandableList
         final EOra ora = ore[groupPosition];
 
 
-        Set<String> docentiDispo = orario.getDocentiDisposizione().get(new BitOrarioGrigliaOrario.GiornoOra(giorno.getGiorno(), ora));
+        Set<BitOrarioGrigliaOrario.InfoDocente_DisposizioneCompresenzaProgetto> docentiDispo = orario.getDocentiDisposizioneProgettiCompresenze().get(new BitOrarioGrigliaOrario.GiornoOra(giorno.getGiorno(), ora));
         if (docentiDispo == null) {
             docentiDispo = new TreeSet<>();
         }
@@ -135,7 +162,7 @@ public class DisposizioniDocentiExpandibleListAdapter extends BaseExpandableList
 
         LayoutObjs_listview_disposizionidocenti_header_xml obj = new LayoutObjs_listview_disposizionidocenti_header_xml(convertView);
         obj.textView_ora.setText(ora.getProgressivOra() + "°ora");
-        obj.textView_fascia.setText(ora.fascia());
+        obj.textView_fascia.setText(ora.fasciaPresenza());
         obj.textView5.setText(docentiDispo.size() + " docenti");
         return convertView;
     }

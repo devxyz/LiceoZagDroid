@@ -29,8 +29,8 @@ public class ClassesAndRoomContainer {
         //final RoomData roomData = aule.get(aula.split("_")[0].toUpperCase());
         final RoomData roomData = aule.get(aula.toUpperCase());
         if (roomData == null) {
-            throw new IllegalArgumentException("Aula " + aula + " inesistente");
-//            return RoomData.AULA_SCONOSCIUTA;
+            //throw new IllegalArgumentException("Aula " + aula + " inesistente");
+            return RoomData.AULA_SCONOSCIUTA;
         }
 
         return roomData;
@@ -62,7 +62,7 @@ public class ClassesAndRoomContainer {
     public static ArrayList<RoomData> getAllValidRooms() {
         final ArrayList<RoomData> ris = new ArrayList<>();
         for (RoomData x : getAllRooms()) {
-            if (x.flagAulaFittizia()) continue;
+            if (x.isAulaFittizia()) continue;
             ris.add(x);
         }
         return ris;

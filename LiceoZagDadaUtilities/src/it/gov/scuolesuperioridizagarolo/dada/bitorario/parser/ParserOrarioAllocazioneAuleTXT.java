@@ -38,7 +38,9 @@ public class ParserOrarioAllocazioneAuleTXT {
             line = line.trim();
 
             //se ci sono aule non assegnate, salta il resto del file
-            if (line.startsWith("|(non assegnato)     |Giorno              |       Ora|DOCENTE             |")) {
+            //System.out.println(line);
+            if (line.startsWith("|(non assegnato)")) {
+                //throw new IllegalArgumentException("???");
                 break;
             }
 
@@ -56,7 +58,7 @@ public class ParserOrarioAllocazioneAuleTXT {
             }
             if (line.startsWith("Ora|"))
                 continue;
-            if (line.contains("|CLASSE")) {
+            if (line.toUpperCase().contains("|CLASSE")) {
                 if (classe != null) {
                     try {
                         aggiungiClasse(classe, orario, ris, noAule);
@@ -117,11 +119,17 @@ public class ParserOrarioAllocazioneAuleTXT {
 
                         materiaPrincipale = a[0];
                         nomeAula = a[2];
-                        if (nomeAula != null && noAula && !ClassesAndRoomContainer.parseRoom(nomeAula).flagAulaLaboratorioPalestra()) {
+                        if (nomeAula != null && noAula && !ClassesAndRoomContainer.parseRoom(nomeAula).isAulaLaboratorioPalestra()) {
                             nomeAula = RoomData.NON_ASSEGNATO.roomName;
                         }
-                        l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale,
-                                ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
+
+                        if (materiaPrincipale.equalsIgnoreCase("DISPOSIZIONE")) {
+                            l = BitOrarioOraLezione.creaOraDisposizione(docentePrincipale, oraX, giornoX);
+
+                        } else {
+                            l = BitOrarioOraLezione.creaOraDocenteSingolo(docentePrincipale, materiaPrincipale,
+                                    ClassesAndRoomContainer.parseRoom(nomeAula), ClassesAndRoomContainer.parseClass(classe), oraX, giornoX);
+                        }
 
                     } else if (a.length == 2) {
                         docentePrincipale = a[1];
@@ -152,7 +160,7 @@ public class ParserOrarioAllocazioneAuleTXT {
                             }
 
                             nomeAula = a[3];
-                            if (nomeAula != null && noAula && !ClassesAndRoomContainer.parseRoom(nomeAula).flagAulaLaboratorioPalestra()) {
+                            if (nomeAula != null && noAula && !ClassesAndRoomContainer.parseRoom(nomeAula).isAulaLaboratorioPalestra()) {
                                 nomeAula = RoomData.NON_ASSEGNATO.roomName;
                             }
                             l = BitOrarioOraLezione.creaOraCompresenza(docentePrincipale, materiaPrincipale, docenteCompresenza, materiaCompresenza,

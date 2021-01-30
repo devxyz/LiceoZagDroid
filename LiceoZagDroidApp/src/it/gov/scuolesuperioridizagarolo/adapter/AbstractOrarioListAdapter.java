@@ -86,6 +86,11 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
                 textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_f_foreground));
                 break;
             }
+            case AREA_DDI: {
+                textViewAula.setBackground(a.getResources().getDrawable(R.drawable.background_aule_ddi));
+                textViewAula.setTextColor(a.getResources().getColor(R.color.color_aule_ddi_foreground));
+                break;
+            }
             default: {
                 break;
             }
@@ -284,7 +289,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
             //NON ORA DI LEZIONE ma inizio/fine giornata
 
 
-            o.textViewLezione.setText("" + ora.name() + " alle ore " + ora.printOra());
+            o.textViewLezione.setText("" + ora.name() + " alle ore " + ora.printOraInizioPresenza());
             o.textViewLezione.setTextColor(a.getResources().getColor(R.color.color_red));
 
             o.textViewDocenteClasse.setVisibility(View.GONE);
@@ -305,7 +310,9 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
                 //se ora NULLA
                 o.textViewOra.setText(ora.getProgressivOra() + "° ora");
-                o.textViewFasciaOraria.setText(ora.fascia());
+
+                o.textViewFasciaOraria.setText(ora.fasciaPresenza());
+
                 o.textViewAula.setBackgroundColor(a.getResources().getColor(R.color.color_transparent));
 
             } else if (lezione.getTipoLezione() == BitOrarioOraEnumTipoLezione.DISPOSIZIONE) {
@@ -316,7 +323,7 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
                 //SE ORA DISPOSIZIONE
                 o.textViewOra.setText(ora.getProgressivOra() + "° ora");
-                o.textViewFasciaOraria.setText(ora.fascia());
+                o.textViewFasciaOraria.setText(ora.fasciaPresenza());
 
                 o.textViewDocenteClasse.setText("");
                 o.textViewLezione.setText(C_TextUtil.capitalize("Disposizione"));
@@ -334,7 +341,12 @@ public abstract class AbstractOrarioListAdapter extends BaseAdapter {
 
                 //ORA NORMALE
                 o.textViewOra.setText(ora.getProgressivOra() + "° ora");
-                o.textViewFasciaOraria.setText(ora.fascia());
+                if (lezione.getAula() != null && lezione.getAula().location == ERoomArea.AREA_DDI) {
+                    o.textViewFasciaOraria.setText(ora.fasciaDDI());
+                }
+                else {
+                    o.textViewFasciaOraria.setText(ora.fasciaPresenza());
+                }
 
 
                 ClassData classe = lezione.getClasse();

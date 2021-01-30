@@ -1,0 +1,135 @@
+=============================
+{nome-studente}
+BASTO MARTINA
+{email}
+chellphone@outlook.it;matildevitagliano@icloud.com
+{materie}
+italiano, inglese, storia/geografia, matematica, scienze, disegno storia dell'arte
+
+=============================
+{nome-studente}
+Carbone Andrea
+{email}
+s.d.carbone@gmail.com;borzialessandra@gmail.com
+{materie}
+storia/geografia, matematica, scienze, disegno storia dell'arte, scienze motorie
+
+=============================
+{nome-studente}
+Carbone Matteo
+{email}
+s.d.carbone@gmail.com;borzialessandra@gmail.com
+{materie}
+Matematica, Scienze, arte, scienze motorie
+
+=============================
+{nome-studente}
+Cristofari Alessandro
+{email}
+silviamommy@libero.it
+{materie}
+inglese, storia/geografia, arte, scienze motorie, matematica
+
+=============================
+{nome-studente}
+Danaj Mateo
+{email}
+jensilajessi82@gmail.com
+{materie}
+italiano, inglese, matematica, fisica, scienze, arte
+
+=============================
+{nome-studente}
+Federici Gianluca
+{email}
+luisamarchett1969@gmail.com
+{materie}
+inglese, scienze, arte, scienze motorie
+
+=============================
+{nome-studente}
+Foschi Francesco
+{email}
+max70638@gmail.com
+{materie}
+italiano, inglese, storia/geografia, arte
+
+=============================
+{nome-studente}
+Leone Francesca
+{email}
+mlxena1@gmail.com;clarice.fazioli@gmail.com
+{materie}
+inglese, matematica, fisica, arte, scienze motorie
+
+=============================
+{nome-studente}
+Lucarelli Gabriele
+{email}
+lucarelli.e@gmail.com;annamariarosicarelli@gmail.com
+{materie}
+italiano, inglese, storia/geografia, matematica, arte, scienze motorie
+
+=============================
+{nome-studente}
+mammetti filippo
+{email}
+claudio.mammetti@alice.it;claudio.mammetti@gmail.com
+{materie}
+inglese, matematica, arte, scienze motorie
+
+=============================
+{nome-studente}
+Mancinotti Christian
+{email}
+mancinotti39@gmail.com;marzia.mm66@gmail.com
+{materie}
+inglese, matematica, arte
+
+=============================
+{nome-studente}
+Marcelli Alessandro
+{email}
+pasquaziclaudia@gmail.com
+{materie}
+inglese, matematica, scienze, arte
+
+=============================
+{nome-studente}
+Michelessi Francesco
+{email}
+RAFFAELEMICHELESSI@GMAIL.COM;rafang7377@gmail.com
+{materie}
+italiano, inglese, matematica,storia/geografia, scienze, arte, scienze motorie
+
+=============================
+{nome-studente}
+Mistura Diego
+{email}
+stefaniandme@gmail.com
+{materie}
+inglese, storia/geografia, matematica, arte, scienze motorie
+
+=============================
+{nome-studente}
+Sabellico Giovanna
+{email}
+auroradimaria263@gmail.com,mariagraziabini.99@gmail.com
+{materie}
+italiano, inglese, informatica, storia/geografia, fisica, arte
+
+=============================
+{nome-studente}
+Sgro' Lorenzo
+{email}
+antoninosgro@gmail.com
+{materie}
+italiano, inglese, storia/geografia, matematica, scienze, arte, scienze motorie
+
+=============================
+{nome-studente}
+Zimpi Tommaso
+{email}
+zimpi.agronomo@tin.it
+{materie}
+matematica, arte, scienze motorie

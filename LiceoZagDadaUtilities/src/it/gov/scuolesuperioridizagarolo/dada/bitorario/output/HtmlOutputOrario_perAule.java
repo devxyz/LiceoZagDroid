@@ -35,7 +35,7 @@ public class HtmlOutputOrario_perAule extends HtmlOutputOrario {
         TreeSet<String> ris = new TreeSet<>();
         for (RoomData a : aule) {
             final RoomData room = (a);
-            if (room.flagAulaFittizia()) continue;
+            if (room.isAulaFittizia() && !room.isDDI()) continue;
             if (room.maxStudents == 0) continue;
             ris.add(a.roomName);
         }
@@ -44,13 +44,13 @@ public class HtmlOutputOrario_perAule extends HtmlOutputOrario {
     }
 
     @Override
-    protected String getLezione(BitOrarioGrigliaOrario griglia, NoteVariazioniBitOrarioGrigliaOrario note, EOra o, EGiorno s, String classe) {
-        final List<BitOrarioOraLezione> lezioni = griglia.getLezioneInAula(o, s, ClassesAndRoomContainer.parseRoom(classe));
+    protected String getLezione(BitOrarioGrigliaOrario griglia, NoteVariazioniBitOrarioGrigliaOrario note, EOra o, EGiorno s, String aula) {
+        final List<BitOrarioOraLezione> lezioni = griglia.getLezioneInAula(o, s, ClassesAndRoomContainer.parseRoom(aula), true);
         if (lezioni == null || lezioni.size() == 0) return "";
         StringBuilder sb = new StringBuilder();
         for (BitOrarioOraLezione l : lezioni) {
             if (sb.length() > 0) {
-                sb.append("<br>");
+                sb.append("<hr>");
             }
 
             String n = note.getNote(l);
@@ -62,8 +62,10 @@ public class HtmlOutputOrario_perAule extends HtmlOutputOrario {
                 n = "<br><span style='border:2px solid black;color:white;background-color:black'>" + n + "</span>";
             }
 
-
-            sb.append("<center style='font-size:20px'><b>" + l.getClasse() + " </b>  <br><small>(<i>" + l.getMateriaPrincipale() + "</i>)</small><br>" + l.getDocentiFormatted() + " " + n + " <br> </center>");
+            if (l.getAula().isDDI())
+                sb.append("<center style='font-size:20px'><b> ** DDI ** <br>" + l.getClasse() + " </b>  <br><small>(<i>" + l.getMateriaPrincipale() + "</i>)</small><br>" + l.getDocentiFormatted() + " " + n + " <br> </center>");
+            else
+                sb.append("<center style='font-size:20px'><b>" + l.getClasse() + " </b>  <br><small>(<i>" + l.getMateriaPrincipale() + "</i>)</small><br>" + l.getDocentiFormatted() + " " + n + " <br> </center>");
         }
         return sb.toString();
     }

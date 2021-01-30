@@ -227,7 +227,7 @@ public class VincoliSostituzioni_1920_n4_prove extends AbstractVincoliSostituzio
 
         //lunedi' giornata violenza donne circolare n.64
 
-
+/*
         //====================================================================================================================================
         // FERRIGNO
         //====================================================================================================================================
@@ -246,7 +246,7 @@ public class VincoliSostituzioni_1920_n4_prove extends AbstractVincoliSostituzio
             l.add(new LessonConstraint_AulaNonDisponibile(RoomData.E30sharp, value, EOra.values()));
         }
 
-
+*/
 
 
 

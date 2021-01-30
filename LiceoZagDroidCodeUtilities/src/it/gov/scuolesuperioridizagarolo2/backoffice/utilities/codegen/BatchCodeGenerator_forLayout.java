@@ -21,8 +21,9 @@ import java.util.TreeSet;
  */
 public class BatchCodeGenerator_forLayout {
     public static void main(String[] args) throws Exception {
-        File sourceDir = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/res/layout");
-        File destDir = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/src/it/gov/scuolesuperioridizagarolo/layout");
+        File commonRoot = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDroidApp/");
+        File sourceDir = new File(commonRoot,"/res/layout");
+        File destDir = new File(commonRoot,"/src/it/gov/scuolesuperioridizagarolo/layout");
         String _package = "it.gov.scuolesuperioridizagarolo.layout";
         for (File file : destDir.listFiles()) {
             if (file.getName().toLowerCase().endsWith(".java"))

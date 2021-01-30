@@ -135,7 +135,7 @@ public class MotoreSostituzioneAule2 {
             for (BitOrarioOraLezione x : lezioniModificate) {
                 String docente = x.getDocentiFormatted();
                 RoomData precAula = null;
-                final BitOrarioOraLezione precLezione = orarioStandard.getLezioneConDocente(x.getOra(), x.getGiorno(), x.getDocentePrincipale());
+                final BitOrarioOraLezione precLezione = orarioStandard.getLezioneConDocente(x.getDocentePrincipale(), x.getGiorno(), x.getOra());
                 if (precLezione != null && precLezione.getAula() != null) {
                     precAula = precLezione.getAula();
                 }

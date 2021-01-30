@@ -32,13 +32,10 @@ public abstract class CheckForClass {
 
     public void printReport(BitOrarioGrigliaOrario l) {
         onStart(l);
-        System.out.println("\n\n\n==========================================================================================");
-        System.out.println(" " + getClass().getSimpleName());
-        System.out.println("==========================================================================================");
+        System.out.println("Test "+getClass().getSimpleName());
         final Map<ClassData, String> check = check(l);
         for (Map.Entry<ClassData, String> e : check.entrySet()) {
-            System.out.println(e.getKey() + ":\n" + e.getValue().trim());
-            System.out.println("============================================");
+            System.out.println(" > "+e.getKey() + ":\n" + e.getValue().trim());
         }
         onFinish(l);
     }

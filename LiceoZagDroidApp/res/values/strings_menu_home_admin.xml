@@ -14,7 +14,7 @@
 
         <item>Sito\nWEB</item>
         <item>IIS Borsellino Falcone - Zagarolo</item>
-        <item>it.gov.scuolesuperioridizagarolo.fragment.SitoWebFragment</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.SitoWEBAction</item>
         <item>@drawable/_menu_web_48x48</item>
         <item></item>
         <item>END-ITEM</item>
@@ -40,6 +40,14 @@
         <item>Orario\nDocenti</item>
         <item>Orario\nDocenti</item>
         <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteNonPersistenteFragment</item>
+        <item>@drawable/_menu_teaching_48x48</item>
+        <item>SUB_ITEM</item>
+        <item>END-ITEM</item>
+
+
+        <item>Orario\nDocenti (TOTALI)</item>
+        <item>Orario\nDocenti (TOTALI)</item>
+        <item>it.gov.scuolesuperioridizagarolo.fragment.OrarioDocenteTotaleNonPersistenteFragment</item>
         <item>@drawable/_menu_teaching_48x48</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>
@@ -75,7 +83,7 @@
 
         <item>Orario\nWEB</item>
         <item>Orario WEB</item>
-        <item>it.gov.scuolesuperioridizagarolo.fragment.SitoOrarioFragment</item>
+        <item>it.gov.scuolesuperioridizagarolo.action.SitoOrarioAction</item>
         <item>@drawable/_menu_orari_48x48</item>
         <item>SUB_ITEM</item>
         <item>END-ITEM</item>

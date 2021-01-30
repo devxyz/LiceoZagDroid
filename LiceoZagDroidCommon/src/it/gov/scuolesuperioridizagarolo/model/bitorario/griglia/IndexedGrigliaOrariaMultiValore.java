@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * Created by stefano on 01/10/2017.
  */
-public class IndexedGrigliaOrariaMultiValore<K extends Comparable<K>> implements Cloneable{
+public class IndexedGrigliaOrariaMultiValore<K extends Comparable<K>> implements Cloneable {
     private final TreeMap<K, GrigliaOrariaMultiValore> griglia = new TreeMap<>();
 
     public boolean add(K key) {
@@ -18,20 +18,34 @@ public class IndexedGrigliaOrariaMultiValore<K extends Comparable<K>> implements
         return true;
     }
 
-    public void trim(){
+    /**
+     * cancella chiavi non usate
+     */
+    public void cleanupUnusedKeys() {
+        for (Iterator<Map.Entry<K, GrigliaOrariaMultiValore>> iterator = griglia.entrySet().iterator(); iterator.hasNext(); ) {
+            Map.Entry<K, GrigliaOrariaMultiValore> e = iterator.next();
+            GrigliaOrariaMultiValore value = e.getValue();
+            List<BitOrarioOraLezione> bitOrarioOraLeziones = value.get();
+            if (bitOrarioOraLeziones.size() == 0) {
+                iterator.remove();
+            }
+        }
+    }
+
+    public void trim() {
         final Set<K> ks = new TreeSet<>(griglia.keySet());
         for (K k : ks) {
             final GrigliaOrariaMultiValore grigliaOrariaMultiValore = griglia.get(k);
-            if (grigliaOrariaMultiValore.get().size()==0){
+            if (grigliaOrariaMultiValore.get().size() == 0) {
                 griglia.remove(k);
             }
 
         }
     }
 
-    public IndexedGrigliaOrariaMultiValore<K> clone(){
+    public IndexedGrigliaOrariaMultiValore<K> clone() {
         try {
-            return (IndexedGrigliaOrariaMultiValore<K>)super.clone();
+            return (IndexedGrigliaOrariaMultiValore<K>) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalArgumentException(e);
         }

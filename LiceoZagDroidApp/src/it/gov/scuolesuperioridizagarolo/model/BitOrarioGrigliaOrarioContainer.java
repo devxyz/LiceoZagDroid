@@ -16,29 +16,49 @@ public class BitOrarioGrigliaOrarioContainer {
 
     public static void main(String[] args) {
         BitOrarioGrigliaOrarioItem g = new BitOrarioGrigliaOrarioItem(new OnlyDate(8, 1, 2018), new OnlyDate(13, 1, 2018), 32, null);
+
         System.out.println(g.isValid(new OnlyDate(11, 1, 2018)));
     }
 
-    public Set<RoomData> getAule() {
+    public Set<RoomData> getAule(boolean soloOrarioPiuRecente) {
         Set<RoomData> ris = new TreeSet<>();
-        for (BitOrarioGrigliaOrarioItem x : sortByremoteIdDesc) {
-            ris.addAll(x.orario.getAule());
+        if (soloOrarioPiuRecente) {
+            if (sortByremoteIdDesc.size() > 0) {
+                ris.addAll(sortByremoteIdDesc.get(0).orario.getAule());
+            }
+        } else {
+            for (BitOrarioGrigliaOrarioItem x : sortByremoteIdDesc) {
+                ris.addAll(x.orario.getAule());
+            }
+
         }
         return ris;
     }
 
-    public Set<ClassData> getClassi() {
+    public Set<ClassData> getClassi(boolean soloOrarioPiuRecente) {
         Set<ClassData> ris = new TreeSet<>();
-        for (BitOrarioGrigliaOrarioItem x : sortByremoteIdDesc) {
-            ris.addAll(x.orario.getClassi());
+        if (soloOrarioPiuRecente) {
+            if (sortByremoteIdDesc.size() > 0) {
+                ris.addAll(sortByremoteIdDesc.get(0).orario.getClassi());
+            }
+        } else {
+            for (BitOrarioGrigliaOrarioItem x : sortByremoteIdDesc) {
+                ris.addAll(x.orario.getClassi());
+            }
         }
         return ris;
     }
 
-    public Set<String> getDocenti() {
+    public Set<String> getDocenti(boolean soloOrarioPiuRecente) {
         Set<String> ris = new TreeSet<>();
-        for (BitOrarioGrigliaOrarioItem x : sortByremoteIdDesc) {
-            ris.addAll(x.orario.getDocenti());
+        if (soloOrarioPiuRecente) {
+            if (sortByremoteIdDesc.size() > 0) {
+                ris.addAll(sortByremoteIdDesc.get(0).orario.getDocenti());
+            }
+        } else {
+            for (BitOrarioGrigliaOrarioItem x : sortByremoteIdDesc) {
+                ris.addAll(x.orario.getDocenti());
+            }
         }
         return ris;
     }
@@ -99,7 +119,7 @@ public class BitOrarioGrigliaOrarioContainer {
                 @Override
                 public int compare(BitOrarioGrigliaOrarioItem a, BitOrarioGrigliaOrarioItem b) {
 
-                    return -new Long(a.remoteId).compareTo(b.remoteId);
+                    return -Long.compare(a.remoteId, b.remoteId);
                 }
             });
             sort = true;

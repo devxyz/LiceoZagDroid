@@ -24,9 +24,9 @@ public class VincoliSostituzioni_1920_n1_settimana_16set_20set extends AbstractV
         final VincoliSostituzioni_1920_n1_settimana_16set_20set l = new VincoliSostituzioni_1920_n1_settimana_16set_20set();
         MotoreSostituzioneAule3.doTaskFromTXT(
                 l,
-                new File("/Users/stefano/Dropbox/Circolari Scolastiche LICEO/orario20192020/02/Orario Allocazione Aule.txt"),
+                new File("/Users/stefano/Dropbox/Circolari Scolastiche LICEO/orario20192020/Orario Allocazione Aule.txt"),
                 null,
-                new File("/Users/stefano/Dropbox/Circolari Scolastiche LICEO/orario20192020/02/Orario Professori Orizzontale Semplice.txt"),
+                new File("/Users/stefano/Dropbox/Circolari Scolastiche LICEO/orario20192020/Orario Professori Orizzontale Semplice.txt"),
                 null, null, new File("/Users/stefano/Dropbox/Circolari Scolastiche LICEO/orario20192020/02/output"),
                 l.filtroAuleSpostamenti(), false, true);
     }
@@ -151,7 +151,7 @@ public class VincoliSostituzioni_1920_n1_settimana_16set_20set extends AbstractV
 
         //lunedi' giornata violenza donne circolare n.64
 
-
+/*
         //====================================================================================================================================
         // FERRIGNO
         //====================================================================================================================================
@@ -163,7 +163,7 @@ public class VincoliSostituzioni_1920_n1_settimana_16set_20set extends AbstractV
 
         l.add(new LessonConstraint_ClasseBloccataInArea(true, ClassData.CLASS_2E, new ERoomArea[]{ERoomArea.AREA_C}, EGiorno.values()));
         l.add(new LessonConstraint_ClasseBloccataInArea(true, ClassData.CLASS_2A, new ERoomArea[]{ERoomArea.AREA_C}, EGiorno.values()));
-
+*/
 
         List<RoomData> auleNonDisponibiliLunMar = RoomData.filter(new RoomData.RoomDataFilter() {
             @Override
@@ -173,7 +173,7 @@ public class VincoliSostituzioni_1920_n1_settimana_16set_20set extends AbstractV
                                 c.location == ERoomArea.AREA_D;
             }
         });
-
+/*
         l.add(new LessonConstraint_AulaNonDisponibile(RoomData.F31_PALESTRA, EGiorno.LUNEDI, EOra.PRIMA, EOra.SECONDA));
         l.add(new LessonConstraint_AulaNonDisponibile(RoomData.F32_CHIMICA, EGiorno.LUNEDI, EOra.values()));
         l.add(new LessonConstraint_AulaNonDisponibile(RoomData.F32_CHIMICA, EGiorno.MARTEDI, EOra.values()));
@@ -182,7 +182,7 @@ public class VincoliSostituzioni_1920_n1_settimana_16set_20set extends AbstractV
         l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5sharp, EGiorno.MERCOLEDI, EOra.values()));
         l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5sharp, EGiorno.GIOVEDI, EOra.values()));
         l.add(new LessonConstraint_AulaNonDisponibile(RoomData.A5sharp, EGiorno.VENERDI, EOra.values()));
-
+*/
 
         for (RoomData roomData : auleNonDisponibiliLunMar) {
             l.add(new LessonConstraint_AulaNonDisponibile(roomData, EGiorno.LUNEDI, EOra.values()));

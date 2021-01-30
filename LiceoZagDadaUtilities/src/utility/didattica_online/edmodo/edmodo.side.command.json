@@ -1,0 +1,143 @@
+{
+  "id": "867c4c17-35ce-40b4-8fa6-39f90b6aa003",
+  "name": "#nome-test#",
+  "commands": [{
+    "id": "b9c2b0c8-0558-42f3-a62e-4b211fb6db21",
+    "comment": "",
+    "command": "open",
+    "target": "/home",
+    "targets": [],
+    "value": ""
+  }, {
+    "id": "dbc0a49f-b275-4196-b820-603e7cc49f79",
+    "comment": "",
+    "command": "setWindowSize",
+    "target": "925x1177",
+    "targets": [],
+    "value": ""
+  }, {
+    "id": "272bba29-d279-4ac1-824a-daebdf4dec3e",
+    "comment": "",
+    "command": "click",
+    "target": "css=.qa-test-class-options-dropdown > .group-options-ellipsis",
+    "targets": [
+      ["css=.qa-test-class-options-dropdown > .group-options-ellipsis", "css:finder"]
+    ],
+    "value": ""
+  }, {
+    "id": "5033a33d-aeec-40b6-86fc-b7a9c2b1c0f0",
+    "comment": "",
+    "command": "click",
+    "target": "css=.qa-test-class-create-menu-item > span",
+    "targets": [
+      ["css=.qa-test-class-create-menu-item > span", "css:finder"],
+      ["xpath=//div[@id='home-page-view-port']/div/div/div/div[2]/div/div[2]/div[2]/ul/li/span", "xpath:idRelative"],
+      ["xpath=//div[2]/div[2]/ul/li/span", "xpath:position"],
+      ["xpath=//span[contains(.,'Crea una Classe')]", "xpath:innerText"]
+    ],
+    "value": ""
+  }, {
+    "id": "00d86d72-2e2c-43c0-82b4-2692211a8cb7",
+    "comment": "",
+    "command": "click",
+    "target": "name=groupName",
+    "targets": [
+      ["name=groupName", "name"],
+      ["css=.qa-test-group-title", "css:finder"],
+      ["xpath=//input[@name='groupName']", "xpath:attributes"],
+      ["xpath=//form/div/div/input", "xpath:position"]
+    ],
+    "value": ""
+  }, {
+    "id": "b1097070-6e18-4936-bbee-03baa5490b04",
+    "comment": "",
+    "command": "type",
+    "target": "name=groupName",
+    "targets": [
+      ["name=groupName", "name"],
+      ["css=.qa-test-group-title", "css:finder"],
+      ["xpath=//input[@name='groupName']", "xpath:attributes"],
+      ["xpath=//form/div/div/input", "xpath:position"]
+    ],
+    "value": "#nome-classe#"
+  }, {
+    "id": "718b4995-8001-4aaa-bc6f-4e0e3c6c033e",
+    "comment": "",
+    "command": "type",
+    "target": "name=groupDescription",
+    "targets": [
+      ["name=groupDescription", "name"],
+      ["css=.groupDescription", "css:finder"],
+      ["xpath=//textarea[@name='groupDescription']", "xpath:attributes"],
+      ["xpath=//textarea", "xpath:position"]
+    ],
+    "value": "#descrizione-classe#"
+  }, {
+    "id": "1fa2ea2a-c055-47ea-b7e8-b25112efd355",
+    "comment": "",
+    "command": "click",
+    "target": "name=selectGrade",
+    "targets": [
+      ["name=selectGrade", "name"],
+      ["css=.qa-test-group-grade", "css:finder"],
+      ["xpath=//select[@name='selectGrade']", "xpath:attributes"],
+      ["xpath=//select", "xpath:position"]
+    ],
+    "value": ""
+  }, {
+    "id": "c2e87a6f-3986-4e53-a5cd-548aa6895305",
+    "comment": "",
+    "command": "select",
+    "target": "name=selectGrade",
+    "targets": [],
+    "value": "label=Nessuno"
+  }, {
+    "id": "c11bdf70-0391-405a-b6d1-d3a3bce41974",
+    "comment": "",
+    "command": "click",
+    "target": "name=selectSubjectArea",
+    "targets": [
+      ["name=selectSubjectArea", "name"],
+      ["css=.qa-test-group-subject", "css:finder"],
+      ["xpath=//select[@name='selectSubjectArea']", "xpath:attributes"],
+      ["xpath=//div[4]/div/div/select", "xpath:position"]
+    ],
+    "value": ""
+  }, {
+    "id": "d4dc69e8-f21e-4b37-a726-9131f607c2aa",
+    "comment": "",
+    "command": "select",
+    "target": "name=selectSubjectArea",
+    "targets": [],
+    "value": "label=Tutti"
+  }, {
+    "id": "dc68ac6d-2091-4445-b830-92fe123a1f35",
+    "comment": "",
+    "command": "click",
+    "target": "name=selectSubjectCourse",
+    "targets": [
+      ["name=selectSubjectCourse", "name"],
+      ["css=.qa-test-group-subsubject", "css:finder"],
+      ["xpath=//select[@name='selectSubjectCourse']", "xpath:attributes"],
+      ["xpath=//div[5]/div/div/select", "xpath:position"]
+    ],
+    "value": ""
+  }, {
+    "id": "6d981e6c-854e-48b9-80f6-cad47d435728",
+    "comment": "",
+    "command": "select",
+    "target": "name=selectSubjectCourse",
+    "targets": [],
+    "value": "label=Tutto"
+  }, {
+    "id": "c2c78760-e853-4cc1-890b-fc7beffa48dc",
+    "comment": "",
+    "command": "click",
+    "target": "css=.qa-test-group-create > span",
+    "targets": [
+      ["css=.qa-test-group-create > span", "css:finder"],
+      ["xpath=//div[2]/div/button[2]/span", "xpath:position"]
+    ],
+    "value": ""
+  }]
+}

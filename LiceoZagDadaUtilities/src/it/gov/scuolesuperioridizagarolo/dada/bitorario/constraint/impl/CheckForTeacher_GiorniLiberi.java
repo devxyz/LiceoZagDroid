@@ -32,7 +32,7 @@ public class CheckForTeacher_GiorniLiberi extends CheckForTeacher {
         for (EGiorno g : EGiorno.values()) {
 
             if (!g.flagGiornoDiLezione()) continue;
-            final ArrayList<BitOrarioOraLezione> lezioneConDocente = l.getLezioneConDocente(g, nomeDocente);
+            final ArrayList<BitOrarioOraLezione> lezioneConDocente = l.getLezioneConDocente(nomeDocente, g);
             if (lezioneConDocente.size() == 0) {
                 conta++;
                 sb.append("\n- giorno libero " + g);

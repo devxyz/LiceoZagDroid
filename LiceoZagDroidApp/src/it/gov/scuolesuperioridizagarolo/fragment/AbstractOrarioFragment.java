@@ -8,6 +8,7 @@ import android.view.*;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.Toast;
 import it.gov.scuolesuperioridizagarolo.R;
 import it.gov.scuolesuperioridizagarolo.adapter.AbstractOrarioListAdapter;
 import it.gov.scuolesuperioridizagarolo.api.AbstractBundleWrapper;
@@ -15,6 +16,7 @@ import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelperCallable;
+import it.gov.scuolesuperioridizagarolo.db.BitOrrioGrigliaOrarioContainerSingleton;
 import it.gov.scuolesuperioridizagarolo.db.ManagerTimetables;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_orario_classe_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerDialogErrorCheck;
@@ -80,10 +82,10 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
     @Override
     public void showDetails(boolean show) {
         if (show) {
-            LAYOUT_OBJs.linearLayout6.setVisibility(View.VISIBLE);
+            LAYOUT_OBJs.xLayout6.setVisibility(View.VISIBLE);
 
         } else {
-            LAYOUT_OBJs.linearLayout6.setVisibility(View.GONE);
+            LAYOUT_OBJs.xLayout6.setVisibility(View.GONE);
         }
     }
 
@@ -110,7 +112,9 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         //**************************
         //**************************
 
+        long start = System.currentTimeMillis();
         _loadData();
+        Toast.makeText(getMainActivity(), "Dati orario caricati in " + (System.currentTimeMillis() - start) + " millis", Toast.LENGTH_SHORT).show();
 
         //**************************
         //caricamento dati
@@ -428,20 +432,7 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
     }
 
     private void _loadData() {
-        final ScuolaAppDbHelper db = new ScuolaAppDbHelper(getMainActivity());
-        containerOrari = new BitOrarioGrigliaOrarioContainer();
-        try {
-            containerOrari = db.runInTransaction(new ScuolaAppDbHelperCallable<BitOrarioGrigliaOrarioContainer>() {
-                @Override
-                public BitOrarioGrigliaOrarioContainer call(DaoSession session, Context ctx) throws Throwable {
-                    return new ManagerTimetables(session).loadBitOrarioGrigliaOrarioContainer();
-                }
-            });
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-
-        db.close();
+        containerOrari = BitOrrioGrigliaOrarioContainerSingleton.getInstance(getMainActivity());
     }
 
     private void visualizzaOraCorrente() {
@@ -535,12 +526,12 @@ public abstract class AbstractOrarioFragment<A extends AbstractOrarioListAdapter
         }
 
         if (getFilterAppLabel() == null || filtro == null)
-            LAYOUT_OBJs.textViewNomeData.setText(("Nessun elemento selezionato").trim());
+            LAYOUT_OBJs.textViewNomeData.setText((getFilterAppLabel() + ": nessuna selezione").trim());
         else
             LAYOUT_OBJs.textViewNomeData.setText((textFiltro + ": " + textData).trim());
         visualizzaOraCorrente();
 
-        if (!navigateFlag){
+        if (!navigateFlag) {
             LAYOUT_OBJs.button_filtro.setVisibility(View.INVISIBLE);
         }
     }

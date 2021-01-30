@@ -2,7 +2,9 @@
 <resources>
 
 
-    <color name="colorPrimary">#FD4A08</color>
+    <color name="colorHome_background">#D8D8D8</color>
+
+    <color name="colorPrimary">#3F51B5</color>
     <color name="colorLightGray">#D8D8D8</color>
 
 
@@ -27,16 +29,16 @@
     <color name="menu_counter_text_color">#c5c4c4</color>
 
 
-    <color name="color_blue_scurissimo">#FF184680</color>
-    <color name="color_blue_scuro">#ff157fff</color>
-    <color name="color_blue">#0000ff</color>
+    <color name="color_blue_scurissimo">#184680</color>
+    <color name="color_blue_scuro">#157FFF</color>
+    <color name="color_blue">#0000FF</color>
     <color name="color_light_blue">#ff157fff</color>
     <color name="color_red">#ffff0000</color>
-    <color name="color_blue_chiaro">#ff72a7ff</color>
+    <color name="color_blue_chiaro">#72A7FF</color>
     <color name="color_light_yellow">#79fffe60</color>
-    <color name="color_yellow">#ffff00</color>
+    <color name="color_yellow">#FFFF00</color>
     <color name="color_ora_corrente">#ddff84</color>
-    <color name="color_light_gray">#c0c0c0</color>
+    <color name="color_light_gray">#C0C0C0</color>
     <color name="color_gray">#aaaaaa</color>
     <color name="color_red_scuro">#992416</color>
     <color name="color_black">#000000</color>
@@ -47,6 +49,7 @@
     <color name="color_aule_d_foreground">#000000</color>
     <color name="color_aule_e_foreground">#000000</color>
     <color name="color_aule_f_foreground">#000000</color>
+    <color name="color_aule_ddi_foreground">#FFEB3B</color>
 
     <color name="color_aule_a_background">#ff157fff</color>
     <color name="color_aule_b_background">#ffb700</color>
@@ -54,6 +57,8 @@
     <color name="color_aule_d_background">#ff0000</color>
     <color name="color_aule_e_background">#ffff00</color>
     <color name="color_aule_f_background">#c0c0c0</color>
+    <color name="color_aule_ddi_background">#673AB7</color>
+    <color name="color_aule_disp_background">#651FFF</color>
 
 
     <color name="color_fragment_background">#ffffffff</color>
@@ -62,7 +67,7 @@
     <color name="default_activity_background">#ffffff</color>
 
     <color name="color_action_bar">#ffffffff</color>
-    <color name="color_white">#ffffffff</color>
+    <color name="color_white">#FFFFFF</color>
     <color name="color_white_transparent">#D0ffffff</color>
     <color name="color_transparent">#00000000</color>
 

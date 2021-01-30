@@ -12,19 +12,19 @@ import java.util.List;
  * Created by stefano on 16/09/2017.
  */
 //todo DA TERMINARE, sostituendo enum
-public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
+public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione>, Cloneable {
     protected transient BitOrarioGrigliaOrario _parent;
-    private String docentePrincipale;
-    private String materiaPrincipale;
-    private String docenteCompresenza;
-    private String docenteSostegno;
-    private String materiaCompresenza;
-    private RoomData aula;
-    private ClassData classe;
-    private EOra ora;
-    private EGiorno giorno;
-    private String note;
-    private BitOrarioOraEnumTipoLezione tipoLezione;
+    protected String docentePrincipale;
+    protected String materiaPrincipale;
+    protected String docenteCompresenza;
+    protected String docenteSostegno;
+    protected String materiaCompresenza;
+    protected RoomData aula;
+    protected ClassData classe;
+    protected EOra ora;
+    protected EGiorno giorno;
+    protected String note;
+    protected BitOrarioOraEnumTipoLezione tipoLezione;
 
     //ora lezione
     private BitOrarioOraLezione(String docentePrincipale, String materiaPrincipale, String docenteCompresenza, String materiaCompresenza,
@@ -115,6 +115,33 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
                 getTipoLezione());
     }
 
+    public BitOrarioOraLezione clonaLezioneConAltroDocentePrincipale(String docente) {
+        return new BitOrarioOraLezione(
+                docente, getMateriaPrincipale(),
+                getDocenteCompresenza(), getMateriaCompresenza(),
+                getDocenteSostegno(), getAula(), getClasse(),
+                getOra(), getGiorno(),
+                getTipoLezione());
+    }
+
+    public BitOrarioOraLezione clonaLezioneConAltroDocenteCompresente(String docente,String nomeMateriaCompresente) {
+        return new BitOrarioOraLezione(
+                getDocentePrincipale(), getMateriaPrincipale(),
+                docente, nomeMateriaCompresente,
+                getDocenteSostegno(), getAula(), getClasse(),
+                getOra(), getGiorno(),
+                getTipoLezione());
+    }
+
+    public BitOrarioOraLezione clonaLezioneConAltroDocenteSostegno(String docente) {
+        return new BitOrarioOraLezione(
+                getDocentePrincipale(), getMateriaPrincipale(),
+                getDocenteCompresenza(), getMateriaCompresenza(),
+                docente, getAula(), getClasse(),
+                getOra(), getGiorno(),
+                getTipoLezione());
+    }
+
     private String normalize(String docentePrincipale) {
         return docentePrincipale == null ? null : docentePrincipale.trim().toUpperCase();
     }
@@ -144,6 +171,33 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
                 return ora.getProgressivOra() + "° ora " + giorno + ": " + getClasse().className + " " + getDocentiFormatted() + "(aula " + getAula() + ")";
             case LEZIONE_SINGOLA:
                 return ora.getProgressivOra() + "° ora " + giorno + ": " + getClasse().className + " " + getDocentiFormatted() + "(aula " + getAula() + ")";
+            default:
+                return "???";
+        }
+    }
+
+    public String toStringClasseAulaDocente() {
+        switch (tipoLezione) {
+            case DISPOSIZIONE:
+                return "DISP:" + getDocentePrincipale();
+
+            case LEZIONE_CON_COMPRESENZA:
+                return "LEZ: " + getClasse() + " " + getDocentiFormatted() + " " + getAula().name();
+            case LEZIONE_SINGOLA:
+                return "LEZ: " + getClasse() + " " + getDocentiFormatted() + " " + getAula().name();
+            default:
+                return "???";
+        }
+    }
+
+    public String toStringAula() {
+        switch (tipoLezione) {
+            case DISPOSIZIONE:
+                return "DISP";
+            case LEZIONE_CON_COMPRESENZA:
+                return getAula().name();
+            case LEZIONE_SINGOLA:
+                return getAula().name();
             default:
                 return "???";
         }
@@ -282,6 +336,17 @@ public class BitOrarioOraLezione implements Comparable<BitOrarioOraLezione> {
         if (giorno != that.giorno) return false;
         return tipoLezione == that.tipoLezione;
 
+    }
+
+    @Override
+    protected BitOrarioOraLezione clone() {
+        try {
+            BitOrarioOraLezione clone = (BitOrarioOraLezione) super.clone();
+            clone._parent = null;
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
     @Override

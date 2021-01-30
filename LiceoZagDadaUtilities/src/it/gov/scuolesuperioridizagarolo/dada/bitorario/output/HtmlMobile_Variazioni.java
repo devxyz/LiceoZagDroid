@@ -40,7 +40,7 @@ public class HtmlMobile_Variazioni {
         for (BitOrarioOraLezione x : lezioniModificate) {
             final String docente = x.getDocentiFormatted();
             RoomData precAula = null;
-            final BitOrarioOraLezione precLezione = orarioStandard.getLezioneConDocente(x.getOra(), x.getGiorno(), x.getDocentePrincipale());
+            final BitOrarioOraLezione precLezione = orarioStandard.getLezioneConDocente(x.getDocentePrincipale(), x.getGiorno(), x.getOra());
             if (precLezione != null && precLezione.getAula() != null) {
                 precAula = precLezione.getAula();
             }
@@ -51,6 +51,7 @@ public class HtmlMobile_Variazioni {
             }
 
             if (precAula==null)continue;
+            if (x.getAula()==RoomData.USCITA_DIDATTICA)continue;
 
             String color = colori[i % colori.length];
             sb.append("<tr>");

@@ -7,20 +7,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/listView4" android:layout_alignParentLeft="true"
-            android:horizontalSpacing="2dp"
+            android:horizontalSpacing="1dp"
             android:choiceMode="none" android:clickable="true"
-            android:numColumns="3" android:layout_alignParentBottom="true" android:gravity="top"
-            android:layout_below="@+id/textViewTipoUtente" android:focusable="true" android:layout_marginTop="0dp"
-            android:background="@color/color_blue_scurissimo"
-    >
+            android:numColumns="2" android:layout_alignParentBottom="true"
+            android:gravity="top"
+            android:layout_below="@+id/textViewTipoUtente" android:focusable="true"
+            android:layout_marginTop="0dp"
+            android:paddingLeft="30dp">
     </GridView>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="TIPO UTENTE"
-            android:id="@+id/textViewTipoUtente" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
-            android:background="@color/color_blue_scurissimo" android:textColor="@color/color_white"
-            android:textStyle="bold" android:paddingLeft="10dp"/>
+            android:id="@+id/textViewTipoUtente" android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/color_black"
+            android:textSize="14dp" android:textStyle="italic" android:padding="5dp"/>
 
 </RelativeLayout>

@@ -58,7 +58,7 @@ public class Report_perDocentiRidottoDettagliato {
                 for (EOra ox : EOra.values()) {
 
                     if (!ox.flagOraDiLezione()) continue;
-                    final BitOrarioOraLezione ll = o.getLezioneConDocente(ox, st, docente);
+                    final BitOrarioOraLezione ll = o.getLezioneConDocente(docente, st, ox);
 
                     int spessore;
                     if (ox.ordinal() == 0) {

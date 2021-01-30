@@ -47,7 +47,7 @@ public class LessonConstraint_AulaSoloPerMateria extends AbstractLessonConstrain
             return true;
 
         //skip aule speciali
-        if (ignoreLabs && aula.flagAulaLaboratorioPalestra())
+        if (ignoreLabs && aula.isAulaLaboratorioPalestra())
             return true;
 
         if (!materie.contains(materiaPrincipale)) {

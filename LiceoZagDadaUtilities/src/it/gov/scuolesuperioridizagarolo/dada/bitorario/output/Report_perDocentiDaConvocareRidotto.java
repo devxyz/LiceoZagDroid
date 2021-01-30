@@ -9,7 +9,6 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EPaperFormat
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -63,7 +62,7 @@ public class Report_perDocentiDaConvocareRidotto {
                 for (EOra ox : EOra.values()) {
 
                     if (!ox.flagOraDiLezione()) continue;
-                    final BitOrarioOraLezione ll = o.getLezioneConDocente(ox, st, docente);
+                    final BitOrarioOraLezione ll = o.getLezioneConDocente(docente, st, ox);
 
                     String x = "";
                     if (note.getNote(ll) != null)

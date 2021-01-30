@@ -1,0 +1,20 @@
+set recipientName to "#to-name"
+set recipientAddress to "#to-address"
+set theSubject to "#subject"
+set theContent to "#content"
+
+tell application "Mail"
+
+	##Create the message
+	set theMessage to make new outgoing message with properties {subject:theSubject, content:theContent, visible:true}
+
+	##Set a recipient
+	tell theMessage
+		make new to recipient with properties {name:recipientName, address:recipientAddress}
+
+		##Send the Message
+		##send
+
+	end tell
+end tell
+

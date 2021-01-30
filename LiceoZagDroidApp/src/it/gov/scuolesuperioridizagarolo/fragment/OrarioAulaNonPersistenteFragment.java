@@ -17,7 +17,7 @@ public class OrarioAulaNonPersistenteFragment extends AbstractOrarioFragment<Ora
     protected RoomData[] getFilterValues() {
         final TreeSet<RoomData> aule = new TreeSet<>();
         for (RoomData x : ClassesAndRoomContainer.getAllValidRooms()) {
-            if (!x.flagAulaFittizia())
+            if (!x.isAulaFittizia())
                 aule.add(x);
         }
         return aule.toArray(new RoomData[aule.size()]);

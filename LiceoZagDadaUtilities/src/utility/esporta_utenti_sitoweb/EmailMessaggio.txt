@@ -1,0 +1,12 @@
+Gentile {nome} {cognome} si comunica che è possibile accedere all'area riservata del sito d'Istituto www.scuolesuperioridizagarolo.edu.it utilizzando la seguente procedura.
+
+Accedere al sito web http://www.scuolesuperioridizagarolo.edu.it/ nella sezione area riservata (presente in alto a destra nella pagina);
+cliccare quindi la scritta 'Hai dimenticato la tua password'.
+Inserire il proprio indirizzo email {email} e cliccare INVIA.
+Sulla propria email arriverà un messaggio con le istruzioni per impostare la password.
+
+In alternativa e' possibile accedere all'indirizzo www.scuolesuperioridizagarolo.edu.it/index.php/modifica-il-tuo-profilo?view=reset
+Inserire il proprio indirizzo email {email} e cliccare INVIA.
+Sulla propria email arriverà un messaggio con le istruzioni per impostare la password.
+
+In caso di difficoltà si prega di scrivere all'indirizzo email stefano.millozzi@scuolesuperioridizagarolo.edu.it

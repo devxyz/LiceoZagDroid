@@ -1,0 +1,217 @@
+1B
+[01] Baiocchi Alessio
+	[02] Brecci Federico
+	[03] Brenda Cristian
+	[04] Brini Lucrezia
+	[05] Camilloni Gabriele
+	[06] Cardarelli Sara
+	[07] Casaroli Giordano
+	[08] Cerboni Flavio
+	[09] Cicerchia Andrea
+	[10] Colazingari Alessandro
+	[11] Craciun Luca
+	[12] De Santis Emma
+	[13] Di Carlo Matteo
+	[14] Faraone Matteo
+	[15] Garzotto Daniel
+	[16] Grocianu Bianca Maria
+	[17] Mari Sabin Gabriele
+	[18] Massaro Daniele
+	[19] Protani Samuele
+	[20] Puliti Tommaso
+	[21] Radu Maria Francesca
+	[22] Ronci Alessandro
+	[23] Rudaj Nikolas
+	[24] Stefan Lorenzo Constantin
+	[25] Terzoni Davide
+	[26] Tomasi Gabriele
+1D
+[01] Anzalone Sara
+	[02] Blushi Sara
+	[03] Borzi Zoe
+	[04] Carosi Elena
+	[05] Casaburi Alexander
+	[06] Cicerchia Emanuele
+	[09] De Paola Lorenzo
+	[10] Di Cesare Alessandro
+	[11] Di Leonardo Ludovico
+	[12] Di Loreto Andrea
+	[13] Favale Sophia
+	[14] Irimia Eduardvalentin
+	[15] Macchi Viola
+	[16] Marchenko Mykola
+	[17] Marchetti Tommaso
+	[18] Mocci Adriano
+	[19] Morici Mario
+	[20] Rossi Gabriele
+	[21] Spina Daniel
+	[22] Tomei Flavio
+	[23] Tronti Leonardo
+	[24] Merlo Deborah
+	[25] Petruzzelli Raffaello
+	[26] Gouda Cherif
+2B
+[01] Bascandura Dennis Andrei
+	[02] Basto Martina
+	[03] Boccia Gabriele
+	[04] Carbone Andrea
+	[05] Carbone Matteo
+	[06] Chiapparelli Paolo
+	[07] Chiapparelli Simone
+	[08] Cristofari Alessandro
+	[09] Danaj Mateo
+	[10] Esposito Alessio
+	[11] Federici Gianluca
+	[12] Foschi Francesco
+	[13] Leone Francesca
+	[14] Lucarelli Gabriele
+	[15] Mammetti Filippo
+	[16] Mancinotti Christian
+	[17] Marcelli Alessandro
+	[18] Michelessi Francesco
+	[19] Mistura Diego
+	[20] Nobile Luca
+	[21] Orsi Angelica
+	[22] Penna Isabel
+	[23] Sabellico Giovanna
+	[25] Scaramella Federico
+	[26] Sgro' Lorenzo
+	[27] Tamiro Federico
+	[28] Zimpi Tommaso
+	3B
+[01] Achitei Fabrizio
+	[02] Aloe Luna
+	[03] Andronic Marta
+	[04] Careri Lorenzo
+	[06] Filacchione Gabriele
+	[07] Frattarola Rebecca
+	[09] Ienne Gianluigi
+	[10] Maccaroni Daniele
+	[11] Maier Tiziano
+	[12] Mariani Azzurra
+	[13] Marta Elena
+	[14] Martini Nicolo'
+	[15] Massimi Diego Alessio
+	[16] Petrucci Sara
+	[17] Piazzai Francesco
+	[18] Piccirilli Daniele
+	[19] Pizziconi Leonardo
+	[20] Sbordone Andrey
+	[21] Tololoi Claudio Markus
+	[22] Trani Alessio
+	[23] Zaratti Davide
+	[24] Zarlenga Samuele
+	[25] Lato Riccardo
+	3D
+[01] Aron Daniele
+	[02] Attilia Desire'E
+	[03] Bartalini Lorenzo
+	[04] Celletti Cristina
+	[05] Ciavardini Gianluca
+	[06] Coccia Luca
+	[07] Cristino Francesco Mattia
+	[08] Dantimi Damiano
+	[09] De Francesco Marco
+	[10] Del Duca Gabriele
+	[11] Fortunato Gabriele
+	[12] Kozar Bartosz
+	[13] Manca Rocco
+	[14] Mancinelli Jacopo
+	[15] Mastrantonio Valerio
+	[16] Orlandi Tiziano
+	[17] Popa Razvan
+	[18] Pucci Alessandro
+	[19] Rosicarelli Emanuele
+	[20] Sarandrea Gabriele
+	[21] Scacco Federico
+	[22] Scarano Luca
+	[23] Tolfa Benedetta
+	[24] Trinchieri Luca
+	[25] Vittucci Damiano
+	4B
+[01] Auricchio Lorenzo
+	[02] Craciun Matteo
+	[03] Di Pietro Niccolo'
+	[04] Doraci Zaklina
+	[05] Evangelista Alessandro
+	[06] Fiorentini Giorgia
+	[07] Gentile Gabriel
+	[08] Lullo Valerio
+	[09] Mandolfo Michael
+	[10] Mecani Ketlin
+	[11] Monaco Mario
+	[12] Parolari Kevin
+	[13] Pasquazi Elena
+	[14] Pinci Rachele
+	[15] Popa Cristian Eduard
+	[16] Sanita' Asia
+	[17] Santoni Yuri
+	[18] Stocco Matteo
+	[19] Tango Lorenzo
+	[20] Velletrani Andrea
+	4D
+	[01] Ascenzi Gianmarco
+	[02] Beltrami Lorenzo
+	[03] Bitsch Flaviano
+	[04] Bonafede Giuseppe
+	[05] Cicerchia Nicolas
+	[06] Correnti Asia
+	[07] Curzi Nicolo'
+	[08] D'Alessandro Antonio
+	[09] Delle Fratte Flavio
+	[10] Di Carlo Francesca
+	[11] Donca Andrea Denisa
+	[12] Ferracci Ludovica
+	[13] Frusta Alessandro
+	[14] Gaetano Davide
+	[15] Gheorghiu Marco Davide
+	[16] Giordano Matteo
+	[17] Giuliani Federica
+	[18] Glielmi Mattia
+	[19] Ligori Paolo
+	[20] Marignoli Mario
+	[21] Mastrofini Valerio
+	[22] Nicolaus Leonardo
+	[23] Pop Maximilian Ioan
+	[24] Romagnoli Nicolo'
+	[25] Schioppa Matteo
+	[26] Wehbe Latifa
+	5B
+	[01] Bernassola Gabriele
+	[02] Cianfriglia Michele
+	[03] Cipolletta Matteo
+	[04] Colagrossi Iacopo
+	[05] Fabiani Leonardo
+	[06] Giovannini Francesca
+	[07] Longo Beatrice
+	[08] Marani Lorenzo
+	[09] Mazzenga Nicolo'
+	[10] Menasci' Giulia
+	[11] Nardi Marco
+	[12] Pucciarelli Matteo
+	[13] Pulsoni Andrea
+	[14] Scacco Giovanni
+	[15] Schiavella Pierluca
+	[16] Serra Lorenzo
+	[17] Terenzi Paolo
+	[18] Tomasi Daniele
+	[19] Tulli Christian
+	[20] Ugolini Alessio
+	[21] Zippo Gabriele
+	5D
+	[01] Bravi Sofia
+	[02] Callegari Luca
+	[03] Coccia Luigi
+	[04] Costea Andreea Alexandra
+	[05] Di Vito Andrea
+	[06] Dodaro Manuel
+	[07] Gallotti Fatima
+	[08] Guidi Francesco
+	[09] Hozoc Cristian Fabio
+	[10] Igiri Lorenzo
+	[12] Paniccia Leonardo
+	[13] Pasquazi Rucsandra Ioana
+	[14] Petrassi Francesco
+	[15] Romeo Salvatore
+	[16] Sanna Ilaria
+	[17] Tucci Matteo

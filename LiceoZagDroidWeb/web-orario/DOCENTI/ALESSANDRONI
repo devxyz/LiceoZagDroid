@@ -1,61 +1,64 @@
 <table cellspacing=0 style='width:100%;table-layout: fixed; border:4px solid black; '>
 <tr style='border:1px solid clack' >
-<td style='border:1px solid black; background-color:blue;color:yellow' colspan='7'>
-<center>Modifiche aule dal 19/02/2018 al 24/02/2018<br><span style='font-size:200%'><b>ALESSANDRONI</b></span></center>
+<td style='border:1px solid black; background-color:blue;color:yellow' colspan='6'>
+<center style='font-size:20px'>Orario LICEO SCIENTIFICO dal 30/11/2020 al 25/12/2020<br><span style='font-size:200%'><b>ALESSANDRONI</b></span></center>
 </td>
 </tr>
 <tr>
 <td style='width:5%' > </td>
-<td style='width:15%;font-size:16px;'><center><b>LUNEDI</b></center></td>
-<td style='width:15%;font-size:16px;'><center><b>MARTEDI</b></center></td>
-<td style='width:15%;font-size:16px;'><center><b>MERCOLEDI</b></center></td>
-<td style='width:15%;font-size:16px;'><center><b>GIOVEDI</b></center></td>
-<td style='width:15%;font-size:16px;'><center><b>VENERDI</b></center></td>
-<td style='width:15%;font-size:16px;'><center><b>SABATO</b></center></td>
+<td style='width:15%;font-size:16px;'><center><b>LUN</b></center></td>
+<td style='width:15%;font-size:16px;'><center><b>MAR</b></center></td>
+<td style='width:15%;font-size:16px;'><center><b>MER</b></center></td>
+<td style='width:15%;font-size:16px;'><center><b>GIO</b></center></td>
+<td style='width:15%;font-size:16px;'><center><b>VEN</b></center></td>
 </tr>
 <tr  style='border:1px solid black'>
-<td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>1<br></span> (08:10)</b></td>
+<td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>1<br></span> (08:00)</b></td>
 <td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
 <td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2H</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>1E</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
 <td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>4E</b></span><br><span style='font-size:150%'>Aula <b>D25</b></span></center></td>
-<td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>1E</b></span><br><span style='font-size:150%'>Aula <b>D22</b></span></center></td>
 </tr>
 <tr  style='border:1px solid black'>
-<td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>2<br></span> (09:10)</b></td>
+<td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>2<br></span> (09:00)</b></td>
 <td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
-<td style='padding:5px;border:1px solid black;vertical-align: middle;background-color:yellow'><center>DISPOSIZIONE</center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2H</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2E</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>1E</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
 <td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>4E</b></span><br><span style='font-size:150%'>Aula <b>D25</b></span></center></td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2E</b></span><br><span style='font-size:150%'>Aula <b>E29</b></span></center></td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>1E</b></span><br><span style='font-size:150%'>Aula <b>D22</b></span></center></td>
 </tr>
 <tr  style='border:1px solid black'>
-<td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>3<br></span> (10:10)</b></td>
+<td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>3<br></span> (10:00)</b></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2H</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
+<td style='padding:5px;border:1px solid black;vertical-align: middle;background-color:white'><center>D</center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2E</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
 <td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
 <td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2E</b></span><br><span style='font-size:150%'>Aula <b>C21</b></span></center></td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>1E</b></span><br><span style='font-size:150%'>Aula <b>D22</b></span></center></td>
-<td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2E</b></span><br><span style='font-size:150%'>Aula <b>C21</b></span></center></td>
 </tr>
 <tr  style='border:1px solid black'>
-<td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>4<br></span> (11:10)</b></td>
+<td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>4<br></span> (11:00)</b></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2H</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>1E</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
 <td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>1E</b></span><br><span style='font-size:150%'>Aula <b>C16</b></span></center></td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2E</b></span><br><span style='font-size:150%'>Aula <b>C21</b></span></center></td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>1E</b></span><br><span style='font-size:150%'>Aula <b>D22</b></span></center></td>
-<td style='padding:5px;border:1px solid black;vertical-align: middle;background-color:yellow'><center>DISPOSIZIONE</center></td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2E</b></span><br><span style='font-size:150%'>Aula <b>C21</b></span></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2E</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>1E</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
 </tr>
 <tr  style='border:1px solid black'>
-<td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>5<br></span> (12:10)</b></td>
+<td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>5<br></span> (12:00)</b></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>1E</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2E</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>1E</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2E</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2H</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
+</tr>
+<tr  style='border:1px solid black'>
+<td style='background-color:yellow ;text-align: center;border-bottom:2px solid red; border-top:2px solid red'><span style='font-size:200%'><b>6<br></span> (13:00)</b></td>
 <td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2E</b></span><br><span style='font-size:150%'>Aula <b>C16</b></span></center></td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>1E</b></span><br><span style='font-size:150%'>Aula <b>C19</b></span></center></td>
 <td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>4E</b></span><br><span style='font-size:150%'>Aula <b>B12</b></span><br><input onclick="javascript:document.getElementById('msg_33').style.display='block' " type='button' style="border:3px solid red; font-size:120% ;padding:5px; margin:5px; background-color:yellow   " value='Dettagli' ><div id ='msg_33' style=' display: none;border:2px solid red;background-color:pink'><hr><i>Orario modificato rispetto all'orario standard MATEMATICA-ALESSANDRONI (E29) classe:4E</i></i></div></center></td>
-<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>4E</b></span><br><span style='font-size:150%'>Aula <b>B10</b></span></center></td>
+<td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
+<td style='border:1px solid black;background-color:lightgray;vertical-align: middle;'><center> - </ce</td>
+<td style='padding:10px;border:1px solid black;vertical-align: middle;background-color:white'><center><span style='color:blue;font-size:200%'><b>2E</b></span><br><span style='font-size:110%'>MAT <b>DDI</b></span></center></td>
 </tr>
 </table>
+<h3>L'Indicazione DDI indica lezioni svolte in Didattica Digitale Integrata. <br>La lezione viene svolta a distanza mediante piattaforma GSuite (Classroom/Meet). Gli studenti restano a casa e si collegano in remoto, il docente si collega, di norma, dalle postazioni predisposte a scuola</h3>

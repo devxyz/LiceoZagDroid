@@ -12,6 +12,7 @@ import it.gov.scuolesuperioridizagarolo.api.AbstractFragment;
 import it.gov.scuolesuperioridizagarolo.dao.DaoSession;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelper;
 import it.gov.scuolesuperioridizagarolo.dao.ScuolaAppDbHelperCallable;
+import it.gov.scuolesuperioridizagarolo.db.BitOrrioGrigliaOrarioContainerSingleton;
 import it.gov.scuolesuperioridizagarolo.db.ManagerTimetables;
 import it.gov.scuolesuperioridizagarolo.layout.LayoutObjs_fragment_classi_vuote_xml;
 import it.gov.scuolesuperioridizagarolo.listener.OnClickListenerViewErrorCheck;
@@ -34,10 +35,10 @@ public class AuleVuoteFragment extends AbstractFragment {
     @Override
     public void showDetails(boolean show) {
         if (show) {
-            LAYOUT_OBJs.linearLayout7.setVisibility(View.VISIBLE);
+            LAYOUT_OBJs.xLayout7.setVisibility(View.VISIBLE);
 
         } else {
-            LAYOUT_OBJs.linearLayout7.setVisibility(View.GONE);
+            LAYOUT_OBJs.xLayout7.setVisibility(View.GONE);
         }
     }
 
@@ -106,6 +107,26 @@ public class AuleVuoteFragment extends AbstractFragment {
 
         gridView.setAdapter(orarioAdapter);
 
+        final OnClickListenerViewErrorCheck clickGiornoPrev = new OnClickListenerViewErrorCheck(getMainActivity()) {
+
+            @Override
+            protected void onClickImpl(View v) throws Throwable {
+                giornoCorrente = giornoCorrente.prevDay();
+                updateOrarioCorrente();
+                updateView();
+
+            }
+        };
+        final OnClickListenerViewErrorCheck clickGiornoNext = new OnClickListenerViewErrorCheck(getMainActivity()) {
+
+            @Override
+            protected void onClickImpl(View v) throws Throwable {
+                giornoCorrente = giornoCorrente.nextDay();
+                updateOrarioCorrente();
+                updateView();
+            }
+        };
+
         final OnClickListenerViewErrorCheck clickGiorno = new OnClickListenerViewErrorCheck(getMainActivity()) {
             @Override
             protected void onClickImpl(View v) throws Throwable {
@@ -124,6 +145,8 @@ public class AuleVuoteFragment extends AbstractFragment {
             }
         };
         LAYOUT_OBJs.button_giorno.setOnClickListener(clickGiorno);
+        LAYOUT_OBJs.buttonPrev.setOnClickListener(clickGiornoPrev);
+        LAYOUT_OBJs.buttonNext.setOnClickListener(clickGiornoNext);
 
 
         LAYOUT_OBJs.listView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
@@ -195,23 +218,6 @@ public class AuleVuoteFragment extends AbstractFragment {
             }
         });
 
-        LAYOUT_OBJs.button_ora.setOnClickListener(new OnClickListenerViewErrorCheck(getMainActivity()) {
-            @Override
-            protected void onClickImpl(View v) throws Throwable {
-                collapseAll();
-                final EOra[] values = EOra.values();
-                int i = 0;
-                for (EOra c : values) {
-                    if (!c.flagOraDiLezione())
-                        continue;
-
-                    if (c.isNowHour()) {
-                        LAYOUT_OBJs.listView.expandGroup(i);
-                    }
-                    i++;
-                }
-            }
-        });
 
         LAYOUT_OBJs.listView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -233,20 +239,7 @@ public class AuleVuoteFragment extends AbstractFragment {
 
 
     private void _loadData() {
-        final ScuolaAppDbHelper db = new ScuolaAppDbHelper(getMainActivity());
-        containerOrari = new BitOrarioGrigliaOrarioContainer();
-        try {
-            containerOrari = db.runInTransaction(new ScuolaAppDbHelperCallable<BitOrarioGrigliaOrarioContainer>() {
-                @Override
-                public BitOrarioGrigliaOrarioContainer call(DaoSession session, Context ctx) throws Throwable {
-                    return new ManagerTimetables(session).loadBitOrarioGrigliaOrarioContainer();
-                }
-            });
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-
-        db.close();
+        containerOrari = BitOrrioGrigliaOrarioContainerSingleton.getInstance(getMainActivity());
     }
 
     private void visualizzaOraCorrente() {

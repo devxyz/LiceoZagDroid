@@ -9,10 +9,10 @@
     <string name="nome_scuola_tipologia">Liceo Scientifico - IPIA</string>
     <string name="nome_scuola_denominazione_lunga">""I.I.S. Paolo Borsellino e Giovanni Falcone" di Zagarolo (RM)</string>
     <string name="nome_scuola_denominazione_breve">""P.Borsellino G.Falcone Zagarolo (RM)"</string>
-    <string name="nome_scuola">IIS "P.Borsellino G.Falcone \nAS 2019-20"</string>
+    <string name="nome_scuola">IIS "P.Borsellino G.Falcone"</string>
     <string name="nome_scuola_comune">"Zagarolo (RM)"</string>
     <string name="url_website_scuola">http://www.scuolesuperioridizagarolo.edu.it</string>
-    <string name="url_website_orario">http://www.scuolesuperioridizagarolo.gov.it/orario/orario2.php</string>
+    <string name="url_website_orario">http://www2.scuolesuperioridizagarolo.edu.it/orario/orario2.php</string>
     <string name="contatto_scuola">
         #I#Via Colle dei Frati, 5 - Zagarolo (RM)#I#\n
         \n
@@ -45,15 +45,15 @@
 
 
 
-    <string name="url_re_docenti">https://re23.axioscloud.it/Secret/REStart.aspx?Customer_ID=93015960581</string>
+    <string name="url_re_docenti">https://www.sissiweb.it/SwStart.aspx?Customer_ID=93015960581</string>
     <string name="url_re_famiglie">https://family.axioscloud.it/Secret/REStart.aspx?Customer_ID=93015960581</string>
 
     <string name="url_rss_feed_circolari">http://www.scuolesuperioridizagarolo.edu.it/index.php/circolari2?format=feed&amp;type=rss&amp;limitstart=XXX</string>
 
 
     <string name="url_article">http://www.scuolesuperioridizagarolo.edu.it/circolari.php?modified=</string>
-    <string name="url_timetable_index">http://www2.scuolesuperioridizagarolo.edu.it/orario/JSON/timetables.txt</string>
-    <string name="url_timetable_prefix">http://www2.scuolesuperioridizagarolo.edu.it/orario/JSON/</string>
+    <string name="url_timetable_index">http://www2.scuolesuperioridizagarolo.edu.it/orario/JSON-TEST/timetables.txt</string>
+    <string name="url_timetable_prefix">http://www2.scuolesuperioridizagarolo.edu.it/orario/JSON-TEST/</string>
 
 
     <!--Tempo in secondi di scadenza della cache-->

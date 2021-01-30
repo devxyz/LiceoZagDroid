@@ -16,7 +16,7 @@ public class CheckForTeacher_5oreAlGiorno extends CheckForTeacher {
         StringBuilder sb = new StringBuilder();
         for (EGiorno e : EGiorno.values()) {
             if (!e.flagGiornoDiLezione()) continue;
-            final ArrayList<BitOrarioOraLezione> lezioneConDocente = l.getLezioneConDocente(e, nomeDocente);
+            final ArrayList<BitOrarioOraLezione> lezioneConDocente = l.getLezioneConDocente(nomeDocente, e);
             int count = 0;
             for (BitOrarioOraLezione x : lezioneConDocente) {
                 if (x.getClasse() != null)

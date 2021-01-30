@@ -105,6 +105,35 @@ public enum EGiorno {
         return values()[ordinal() + 1];
     }
 
+
+    /**
+     * ritorna il giorno 1-> LUN, 2 MAR ecc
+     *
+     * @param n
+     * @return
+     */
+    public static EGiorno getByNumber_LUN_DOM(int n) {
+        return values()[n - 1];
+    }
+
+
+    public EGiorno nextGiornoLezione() {
+        switch (this) {
+            case LUNEDI:
+                return MARTEDI;
+            case MARTEDI:
+                return MERCOLEDI;
+            case MERCOLEDI:
+                return GIOVEDI;
+            case GIOVEDI:
+                return VENERDI;
+            case VENERDI:
+                return LUNEDI;
+            default:
+                return LUNEDI;
+        }
+    }
+
     public EGiorno prev() {
         if (ordinal() == 0)
             return values()[values().length - 1];

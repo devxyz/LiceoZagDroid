@@ -17,7 +17,7 @@ public class CheckForTeacher_OreBucheTotali extends CheckForTeacher {
         int buche = 0;
         for (EGiorno e : EGiorno.values()) {
             if (!e.flagGiornoDiLezione()) continue;
-            final ArrayList<BitOrarioOraLezione> lezioneConDocente = l.getLezioneConDocente(e, nomeDocente);
+            final ArrayList<BitOrarioOraLezione> lezioneConDocente = l.getLezioneConDocente(nomeDocente, e);
             int count = 0;
             BitOrarioOraLezione prec = null;
             for (BitOrarioOraLezione x : lezioneConDocente) {
