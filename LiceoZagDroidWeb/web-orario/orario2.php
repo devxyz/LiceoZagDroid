@@ -193,6 +193,9 @@ $variazioni = $_GET["variazioni"];
                             $dir = "./AULE";
                             $files1 = scandir($dir);
                             foreach ($files1 as $key => $value) {
+                                if(startsWith($value,".")) continue;
+                                if(endsWith($value,".html")) continue;
+
                                 if (!in_array($value, array(".", ".."))) {
                                     if ($nome_aula == $value)
                                         echo "<option selected='selected' value='" . $value . "'>" . $value . "</option>";

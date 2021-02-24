@@ -4,7 +4,7 @@ import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 
 import java.util.*;
-
+@Deprecated
 public class ConsigliDiClasseEngine {
     static boolean docentiInComune(TreeSet<String> d1, TreeSet<String> d2) {
         for (String s1 : d1) {

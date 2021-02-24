@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:paddingLeft="40dp" android:paddingTop="10dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="40dp"
+                android:paddingTop="10dp"
                 android:paddingBottom="10dp">
 
     <TextView
@@ -24,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Massimo 25 studenti"
-            android:id="@+id/textView5"
+            android:id="@+id/textView_materie"
             android:gravity="center_vertical|center_horizontal"
             android:textStyle="bold"
             android:layout_alignBottom="@+id/textView_aula" android:layout_alignStart="@+id/textView_location"/>

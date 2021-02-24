@@ -108,7 +108,7 @@ public class DisposizioniDocentiExpandibleListAdapter extends BaseExpandableList
 
 
         obj.textView_docente_disp.setText(infoDocente.docente);
-        obj.textView5.setText(infoDocente.descrizione);
+        obj.textView_materie.setText(infoDocente.descrizione);
 
         return convertView;
     }
@@ -163,7 +163,7 @@ public class DisposizioniDocentiExpandibleListAdapter extends BaseExpandableList
         LayoutObjs_listview_disposizionidocenti_header_xml obj = new LayoutObjs_listview_disposizionidocenti_header_xml(convertView);
         obj.textView_ora.setText(ora.getProgressivOra() + "°ora");
         obj.textView_fascia.setText(ora.fasciaPresenza());
-        obj.textView5.setText(docentiDispo.size() + " docenti");
+        obj.textView_materie.setText(docentiDispo.size() + " docenti");
         return convertView;
     }
 

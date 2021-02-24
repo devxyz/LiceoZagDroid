@@ -40,7 +40,12 @@ public class ParserDisposizioni_DaFileDocenti_EXCEL {
                 throw new IllegalArgumentException("Nome docente mancante in " + sheet.getSheetName());
             }
 
-            if (tipo.equalsIgnoreCase("educazione civica") || tipo.equalsIgnoreCase("sostegno")) {
+            if (tipo.equalsIgnoreCase("educazione civica") ||
+                    tipo.equalsIgnoreCase("sostegno") ||
+                    tipo.equalsIgnoreCase("irc")||
+                    tipo.equalsIgnoreCase("clil")
+
+            ) {
                 //compresenze - ed civica
                 for (int riga_ora = 3; riga_ora <= 10; riga_ora++) {
                     EOra ora = EOra.getByNumber(riga_ora - 2);//1 --> PRIMA
@@ -49,6 +54,13 @@ public class ParserDisposizioni_DaFileDocenti_EXCEL {
                         XSSFCell cell = getCell(sheet, riga_ora, colonna_giorno);
                         String classeValue = cell.getStringCellValue();
                         if (classeValue != null && classeValue.trim().length() > 0) {
+                            //se ora di disposizione....
+                            if(classeValue.equalsIgnoreCase("D")){
+                                orario.addLezione(BitOrarioOraLezione.creaOraDisposizione(nomeDocente,ora,giorno));
+                                continue;
+                            }
+
+
                             ClassData classe = ClassData.search(classeValue);
                             BitOrarioOraLezione lezione = orario.getLezioneInClasse(ora, giorno, classe);
                             if (lezione == null) {
@@ -56,7 +68,7 @@ public class ParserDisposizioni_DaFileDocenti_EXCEL {
                             }
 
                             BitOrarioOraLezione nuovaLezione = null;
-                            if (tipo.equalsIgnoreCase("educazione civica")) {
+                            if (tipo.equalsIgnoreCase("educazione civica")||tipo.equalsIgnoreCase("clil")) {
                                 nuovaLezione = lezione.clonaLezioneConAltroDocenteCompresente(nomeDocente, tipo);
                                 //controlla se il docente aveva ora di disposizione (se no da errore)
                                 BitOrarioOraLezione lezioneConDocente = orario.getLezioneConDocente(nomeDocente, giorno, ora);
@@ -68,6 +80,9 @@ public class ParserDisposizioni_DaFileDocenti_EXCEL {
                             }
                             if (tipo.equalsIgnoreCase("sostegno")) {
                                 nuovaLezione = lezione.clonaLezioneConAltroDocenteSostegno(nomeDocente);
+                            }
+                            if (tipo.equalsIgnoreCase("irc")) {
+                                nuovaLezione = lezione.clonaLezioneConAltroDocenteCompresente(nomeDocente,"Attivita' Alternativa IRC");
                             }
                             orario.removeLezione(lezione);
                             orario.addLezione(nuovaLezione);

@@ -101,7 +101,7 @@ public class MainPIanificazioneAule_V2 {
                 ArrayList<Aula202021> aule = RipartizioneAuleClassiData.singleton().aule();
 
 
-                AssegnazioneClasseAulaGiornaliera202021 assegnazioni = RipartizioneAuleClassiEngine.assegnaClassiAule(aule, presente, ggiorno);
+                AssegnazioneClasseAulaGiornaliera202021 assegnazioni = RipartizioneAuleClassiEngine.assegnaClassiAule(aule, presente, ggiorno, null);
                 int nonAssegnate = (assegnazioni.assegnazioniNonEffettuate().size());
                 totNonAssegnate += nonAssegnate;
                 if (PRINT1) {

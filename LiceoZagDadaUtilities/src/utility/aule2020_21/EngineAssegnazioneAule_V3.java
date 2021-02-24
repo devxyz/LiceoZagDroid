@@ -65,7 +65,7 @@ public class EngineAssegnazioneAule_V3 {
         Random r = new Random(13);
 
 
-        ArrayList<AssegnazioneClasseAulaGiornaliera202021> assegnazioneMigliore = calcolaAssegnazioneGiornaliera(giorno, num_tentativi, classiInPresenza, auleNonUtilizzabili, r);
+        ArrayList<AssegnazioneClasseAulaGiornaliera202021> assegnazioneMigliore = calcolaAssegnazioneGiornaliera(giorno, num_tentativi, classiInPresenza, auleNonUtilizzabili, r, null);
 
 
         System.out.println();
@@ -98,7 +98,7 @@ public class EngineAssegnazioneAule_V3 {
             int num_tentativi,
             Map<EGiorno, ArrayList<ClassData>> classiInPresenza,
             Map<EGiorno, Set<RoomData>> auleNonUtilizzabili,
-            Random r) {
+            Random r, RipartizioneAuleClassiEngine.FilterRipartizioneAuleClassiEngine filter) {
 
         Set<EGiorno> giorni = new TreeSet<>();
         giorni.addAll(classiInPresenza.keySet());
@@ -112,7 +112,7 @@ public class EngineAssegnazioneAule_V3 {
 
             Set<RoomData> au = auleNonUtilizzabili.get(g);
             if (au == null) au = new TreeSet<>();
-            ArrayList<AssegnazioneClasseAulaGiornaliera202021> a = calcolaAssegnazioneGiornaliera(g, num_tentativi, cp, au, r);
+            ArrayList<AssegnazioneClasseAulaGiornaliera202021> a = calcolaAssegnazioneGiornaliera(g, num_tentativi, cp, au, r, filter);
             if (a == null) {
                 throw new IllegalArgumentException("Assegnazione non trovata per " + g);
                 //return null;
@@ -122,7 +122,7 @@ public class EngineAssegnazioneAule_V3 {
         return ris;
     }
 
-    public static ArrayList<AssegnazioneClasseAulaGiornaliera202021> calcolaAssegnazioneSettimanale_resetSeed(
+    /*public static ArrayList<AssegnazioneClasseAulaGiornaliera202021> calcolaAssegnazioneSettimanale_resetSeed(
             int num_tentativi,
             Map<EGiorno, ArrayList<ClassData>> classiInPresenza,
             Map<EGiorno, Set<RoomData>> auleNonUtilizzabili,
@@ -149,9 +149,17 @@ public class EngineAssegnazioneAule_V3 {
             ris.addAll(a);
         }
         return ris;
+    }*/
+
+    /*filtro che permette di accettare o scartare l'eventuale assegnazione*/
+    public static interface FilterResultEngineAssegnazioneAule_V3 {
+        public boolean accept(ArrayList<AssegnazioneClasseAulaGiornaliera202021> aa);
     }
 
-    public static ArrayList<AssegnazioneClasseAulaGiornaliera202021> calcolaAssegnazioneGiornaliera(EGiorno giorno, int num_tentativi, ArrayList<ClassData> classiInPresenza, Set<RoomData> auleNonUtilizzabili, Random r) {
+    public static ArrayList<AssegnazioneClasseAulaGiornaliera202021> calcolaAssegnazioneGiornaliera(
+            EGiorno giorno, int num_tentativi, ArrayList<ClassData> classiInPresenza, Set<RoomData> auleNonUtilizzabili, Random r,
+            RipartizioneAuleClassiEngine.FilterRipartizioneAuleClassiEngine filter
+    ) {
         ArrayList<AssegnazioneClasseAulaGiornaliera202021> assegnazioneMigliore = null;
         boolean soluzioneTrovata;
         int pesoOttimo = Integer.MIN_VALUE;
@@ -184,9 +192,11 @@ public class EngineAssegnazioneAule_V3 {
                 }
 
 
-                AssegnazioneClasseAulaGiornaliera202021 assegnazioni = RipartizioneAuleClassiEngine.assegnaClassiAuleCasuale(r, aule, presente, giorno, Math.max(1000, num_tentativi));
+                AssegnazioneClasseAulaGiornaliera202021 assegnazioni = RipartizioneAuleClassiEngine.assegnaClassiAuleCasuale(r, aule, presente, giorno, Math.max(1000, num_tentativi),filter);
                 if (assegnazioni == null)
                     continue;
+
+
                 int nonAssegnate = (assegnazioni.assegnazioniNonEffettuate().size());
                 totNonAssegnate += nonAssegnate;
                 if (PRINT1) {
@@ -198,6 +208,7 @@ public class EngineAssegnazioneAule_V3 {
                 }
                 assegnazioniSettimana.add(assegnazioni);
             }
+
 
             //********************
             // ricerca soluzione migliore

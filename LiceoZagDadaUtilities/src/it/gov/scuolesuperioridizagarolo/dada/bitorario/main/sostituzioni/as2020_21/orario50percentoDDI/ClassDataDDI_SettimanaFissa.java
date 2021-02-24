@@ -181,7 +181,7 @@ public class ClassDataDDI_SettimanaFissa implements IClassDataDDI {
         //ordina dalla piu' grande alla piu' piccola
         for (EGiorno g : EGiorno.valuesGiorniDiLezione()) {
             //System.out.println("GIORNO: " + g);
-            AssegnazioneClasseAulaGiornaliera202021 r = RipartizioneAuleClassiEngine.assegnaClassiAule(new ArrayList<>(aule202021), new ArrayList<>(classi202021), g);
+            AssegnazioneClasseAulaGiornaliera202021 r = RipartizioneAuleClassiEngine.assegnaClassiAule(new ArrayList<>(aule202021), new ArrayList<>(classi202021), g, null);
             //System.out.println(r.assegnazioni);
             assegnazioni.addAll(r.toUtilizzoClassi());
 

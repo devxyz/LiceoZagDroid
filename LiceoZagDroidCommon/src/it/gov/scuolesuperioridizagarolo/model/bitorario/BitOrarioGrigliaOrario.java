@@ -26,13 +26,6 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
     private transient TreeMap<GiornoOra, Set<String>> oreDisposizione = null;
     private transient TreeMap<GiornoOra, Set<InfoDocente_DisposizioneCompresenzaProgetto>> oreDisposizioneCompresenzeProgetti = null;
 
-    public TreeSet<String> getConsiglioDiClasse_Docente(ClassData classe) {
-        TreeSet<String> ris = new TreeSet<>();
-        TreeMap<String, String> cc = getConsiglioDiClasse_Materia_Docente(classe);
-        ris.addAll(cc.values());
-        return ris;
-    }
-
     public void cleanUpDocenti() {
         _lezioniPerDocente.cleanupUnusedKeys();
     }
@@ -112,25 +105,17 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
         return new EOra[]{primaOraBuco, ultimaOraBuco};
     }
 
-    public TreeMap<String, ArrayList<String>> getConsiglioDiClasse_Docente_materie(ClassData classe) {
-        TreeMap<String, ArrayList<String>> ris = new TreeMap<>();
-        TreeMap<String, String> cc = getConsiglioDiClasse_Materia_Docente(classe);
-        for (Map.Entry<String, String> e : cc.entrySet()) {
-            String materia = e.getKey();
-            String docente = e.getValue();
-            ArrayList<String> materie = ris.get(docente);
-            if (materie == null) {
-                materie = new ArrayList<>();
-                ris.put(docente, materie);
-            }
-            materie.add(materia);
+    public static class InsegnamentiDocente {
+        public InsegnamentiDocente(String docente) {
+            this.docente = docente;
         }
 
-        return ris;
+        public final String docente;
+        public final TreeSet<String> materie = new TreeSet<>();
     }
 
-    public TreeMap<String, String> getConsiglioDiClasse_Materia_Docente(ClassData classe) {
-        TreeMap<String, String> ris = new TreeMap<>();
+    public TreeMap<String, InsegnamentiDocente> getConsiglioDiClasse(ClassData classe) {
+        TreeMap<String, InsegnamentiDocente> ris = new TreeMap<>();
         List<BitOrarioOraLezione> lezioni = getLezioni(classe);
         for (BitOrarioOraLezione l : lezioni) {
             String docente;
@@ -138,19 +123,24 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
             materia = l.getMateriaPrincipale();
             docente = l.getDocentePrincipale();
             if (docente != null) {
-                ris.put(materia, docente);
+                if (ris.get(docente) == null)
+                    ris.put(docente, new InsegnamentiDocente(docente));
+                ris.get(docente).materie.add(materia);
             }
 
             materia = l.getMateriaCompresenza();
             docente = l.getDocenteCompresenza();
             if (docente != null) {
-                ris.put(materia + "(compresenza)", docente);
+                if (ris.get(docente) == null)
+                    ris.put(docente, new InsegnamentiDocente(docente));
+                ris.get(docente).materie.add(materia + "(compresenza)");
             }
-
 
             docente = l.getDocenteSostegno();
             if (docente != null) {
-                ris.put("sostegno", docente);
+                if (ris.get(docente) == null)
+                    ris.put(docente, new InsegnamentiDocente(docente));
+                ris.get(docente).materie.add("sostegno");
             }
         }
 
@@ -592,6 +582,31 @@ public class BitOrarioGrigliaOrario implements Cloneable, Externalizable {
                 continue;
 
             final List<BitOrarioOraLezione> l = getLezioneInAula(ora, settimana, a);
+            if (l.size() == 0)
+                ris.add(a);
+        }
+        return ris;
+    }
+
+
+    /**
+     * aule vuote considerando anche l'occupazione della DDI
+     *
+     * @param ora
+     * @param settimana
+     * @return
+     */
+    public TreeSet<RoomData> getAuleVuoteIncludeDDI(EOra ora, EGiorno settimana) {
+        TreeSet<RoomData> ris = new TreeSet<>();
+
+        for (RoomData a : getAule()) {
+            if (a.isAulaFittizia())
+                continue;
+
+            if (a.maxStudents <= 0)
+                continue;
+
+            final List<BitOrarioOraLezione> l = getLezioneInAula(ora, settimana, a, true);
             if (l.size() == 0)
                 ris.add(a);
         }

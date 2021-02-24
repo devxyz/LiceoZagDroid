@@ -3,7 +3,9 @@ package it.gov.scuolesuperioridizagarolo.fragment;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.*;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.ExpandableListView;
 import it.gov.scuolesuperioridizagarolo.R;
@@ -101,10 +103,8 @@ public class AuleVuoteFragment extends AbstractFragment {
             updateOrarioCorrente();
         }
 
-        orarioAdapter = new AuleVuoteExpandibleListAdapter(getMainActivity(), containerOrari, giornoCorrente);
+        orarioAdapter = new AuleVuoteExpandibleListAdapter(getMainActivity(), containerOrari, giornoCorrente, LAYOUT_OBJs.checkBox_DDI.isSelected());
         final ExpandableListView gridView = LAYOUT_OBJs.listView;
-
-
         gridView.setAdapter(orarioAdapter);
 
         final OnClickListenerViewErrorCheck clickGiornoPrev = new OnClickListenerViewErrorCheck(getMainActivity()) {
@@ -158,6 +158,16 @@ public class AuleVuoteFragment extends AbstractFragment {
                         LAYOUT_OBJs.listView.collapseGroup(i);
                 }
 
+            }
+        });
+
+        LAYOUT_OBJs.checkBox_DDI.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                orarioAdapter = new AuleVuoteExpandibleListAdapter(getMainActivity(), containerOrari, giornoCorrente, LAYOUT_OBJs.checkBox_DDI.isChecked());
+                Log.e("XXXXX =============================== ", "Valore checkbox:" + LAYOUT_OBJs.checkBox_DDI.isChecked());
+                LAYOUT_OBJs.listView.setAdapter(orarioAdapter);
+                updateView();
             }
         });
 

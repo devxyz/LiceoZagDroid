@@ -32,6 +32,7 @@ public class HtmlMobile_Classi {
 
 
         for (ClassData classe : strings) {
+
             File f1 = new File(f, classe.className);
             PrintStream p = new PrintStream(f1);
 
@@ -61,9 +62,9 @@ public class HtmlMobile_Classi {
             }
             p.println("</tr>");
             int id = 0;
-            boolean ddi = false;
-            Set<RoomData> auleUtilizzate = new TreeSet<>();
 
+            Set<RoomData> auleUtilizzate = new TreeSet<>();
+            boolean qualcheGiornoDDI = false;
             for (EOra ora : EOra.values()) {
 
                 if (!ora.flagOraDiLezione()) continue;
@@ -116,12 +117,18 @@ public class HtmlMobile_Classi {
                                 final String docente = lezione.getDocentiFormatted();
                                 final String aula = lezione.getAula() == null ? "-" : lezione.getAula().simpleName();
                                 String materia = UtilMaterie.abbreviazioneMateria(lezione);
-                                if (lezione.getAula() != null && lezione.getAula().isDDI())
+                                boolean ddi = false;
+                                if (lezione.getAula() != null && lezione.getAula().isDDI()) {
+                                    qualcheGiornoDDI=true;
                                     ddi = true;
+                                }
 
-                                if (ddi)
+                                if (ddi) {
+                                    if (classe == ClassData.CLASS_4F) {
+                                        System.out.println("DEBUG!!!" + lezione.getAula());
+                                    }
                                     auleUtilizzate.add(RoomData.DDI_da_casa);
-                                else
+                                } else
                                     auleUtilizzate.add(lezione.getAula());
 
                                 if (ddi) {
@@ -149,8 +156,8 @@ public class HtmlMobile_Classi {
 
 
             p.println("</table>");
-            if (ddi)
-                p.println("<h3>L'Indicazione DDI rappresenta la Didattica Digitale Integrata ed è svolta solo un giorno a settimana. <br>La lezione viene svolta a distanza mediante piattaforma GSuite (Classroom/Meet). " +
+            if (qualcheGiornoDDI)
+                p.println("<h3>L'Indicazione DDI rappresenta la Didattica Digitale Integrata. <br>La lezione viene svolta a distanza mediante piattaforma GSuite (Classroom/Meet). " +
                         "Gli studenti restano a casa e si collegano in remoto, il docente si collega dalle postazioni predisposte a scuola</h3>");
 
             p.println("<h3 style='color:red'>Elenco aule utilizzate:</h3>");

@@ -135,7 +135,7 @@ public class VincoliSostituzioni_2021_n16_settimana_1feb_5feb_50_PERCENTO_LU_VE_
     }
 
     private List<RoomData> aulePerDDI(EGiorno g, final BitOrarioGrigliaOrario orarioTotale, int num) {
-        Set<RoomData> skipDDI = new TreeSet<>(Arrays.asList(RoomData.DDI_aula_A2));
+        Set<RoomData> skipDDI = new TreeSet<>(Arrays.asList(RoomData.DDI_aula_A2, RoomData.DDI_aula_C7));
 
         List<RoomData> ris = new ArrayList<>();
         while (ris.size() < num) {
@@ -320,7 +320,7 @@ public class VincoliSostituzioni_2021_n16_settimana_1feb_5feb_50_PERCENTO_LU_VE_
 
         //tutte le giornate utilizza le stesse classi
         ArrayList<AssegnazioneClasseAulaGiornaliera202021> assegnazioneMigliore =
-                EngineAssegnazioneAule_V3.calcolaAssegnazioneSettimanale_resetSeed(num_tentativi, classiInPresenzaMap, auleNonUtilizzabiliMap, 13);
+                EngineAssegnazioneAule_V3.calcolaAssegnazioneSettimanale(num_tentativi, classiInPresenzaMap, auleNonUtilizzabiliMap, new Random(13),null);
         if (assegnazioneMigliore == null) {
             throw new IllegalArgumentException("Assegnazione non trovata.");
         }
@@ -344,11 +344,18 @@ public class VincoliSostituzioni_2021_n16_settimana_1feb_5feb_50_PERCENTO_LU_VE_
 
     @Override
     protected void postOrarioBeforeFinalCheck(BitOrarioGrigliaOrario orarioTotale, LessonConstraintContainer l) {
+        {
+            TreeSet<RoomData> auleVuoteIncludeDDI = orarioTotale.getAuleVuoteIncludeDDI(EOra.TERZA, EGiorno.LUNEDI);
+            System.out.println(auleVuoteIncludeDDI);
+        }
 
-/*
+        {
+            TreeSet<RoomData> auleVuoteIncludeDDI = orarioTotale.getAuleVuote(EOra.TERZA, EGiorno.LUNEDI);
+            System.out.println(auleVuoteIncludeDDI);
+        }
         if (true)
             throw new IllegalArgumentException("STOP");
-*/
+
     }
 
     @Override

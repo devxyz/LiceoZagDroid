@@ -65,7 +65,7 @@ public class RipartizioneAuleClassiEngine {
 
         ArrayList<Aula202021> aule = RipartizioneAuleClassiData.singleton().aule();
         ArrayList<Classe202021> classi = RipartizioneAuleClassiData.singleton().classi();
-        AssegnazioneClasseAulaGiornaliera202021 assegnazioni = assegnaClassiAule(aule, classi, EGiorno.LUNEDI);
+        AssegnazioneClasseAulaGiornaliera202021 assegnazioni = assegnaClassiAule(aule, classi, EGiorno.LUNEDI, null);
 
         System.out.println(assegnazioni);
 
@@ -74,7 +74,8 @@ public class RipartizioneAuleClassiEngine {
     public static AssegnazioneClasseAulaGiornaliera202021 assegnaClassiAule(
             ArrayList<Aula202021> aule,
             ArrayList<Classe202021> classi,
-            EGiorno giorno) {
+            EGiorno giorno,
+            FilterRipartizioneAuleClassiEngine filter) {
 
         sortAuleCrescenti(aule);
         sortClassiCrescenti(classi);
@@ -88,7 +89,7 @@ public class RipartizioneAuleClassiEngine {
             for (int i = 0; i < aule.size(); i++) {
                 Aula202021 a = aule.get(i);
                 if (a == null) continue;
-                if (!accetta(c, a)) {
+                if (!accetta(c, a, giorno, filter)) {
                     continue;
                 }
                 if (a.capienza >= c.numerosita) {
@@ -121,7 +122,8 @@ public class RipartizioneAuleClassiEngine {
             ArrayList<Aula202021> aule,
             ArrayList<Classe202021> classi,
             EGiorno giorno,
-            int tentativi
+            int tentativi,
+            FilterRipartizioneAuleClassiEngine filter
     ) {
 
 
@@ -144,7 +146,7 @@ public class RipartizioneAuleClassiEngine {
                 Aula202021 a;
                 do {
                     a = aule.get(r.nextInt(aule.size()));
-                    if (!accetta(c, a)) {
+                    if (!accetta(c, a, giorno, filter)) {
                         a = null;
                     }
                     count++;
@@ -172,36 +174,20 @@ public class RipartizioneAuleClassiEngine {
         return new AssegnazioneClasseAulaGiornaliera202021(assegnazioni);
     }
 
-    private static boolean accetta(Classe202021 c, Aula202021 a) {
+    public static interface FilterRipartizioneAuleClassiEngine {
+        boolean accept(Classe202021 c, Aula202021 a, EGiorno giorno);
+
+    }
+
+    private static boolean accetta(Classe202021 c, Aula202021 a, EGiorno giorno, FilterRipartizioneAuleClassiEngine filter) {
         RoomData roomData = a.toRoomData();
         ClassData classData = c.toClassData();
+        if (roomData.maxStudents < classData.numberOfStudents)
+            return false;
 
-        if (roomData.maxStudents < classData.numberOfStudents) return false;
-
-        if (roomData == RoomData.F2) {
-
-            //centracchio
-            if (classData == ClassData.CLASS_5C) return false;
-            if (classData == ClassData.CLASS_1B) return false;
-            if (classData == ClassData.CLASS_4B) return false;
-            if (classData == ClassData.CLASS_3B) return false;
-            if (classData == ClassData.CLASS_2C) return false;
-
-            if (classData._section.equals("D")) return false;
-            if (classData._section.equals("B")) return false;
-            if (classData._section.equals("F")) return false;
-            if (classData._section.equals("H")) return false;
+        if (filter != null) {
+            return filter.accept(c, a, giorno);
         }
-
-        if (classData._section.equals("D") ||
-                (classData._section.equals("B")) ||
-                (classData._section.equals("F")) ||
-                (classData._section.equals("H"))) {
-            //if (roomData.location == ERoomArea.AREA_D) return false;
-            //if (roomData.location == ERoomArea.AREA_F) return false;
-            //if (roomData.location == ERoomArea.AREA_A) return false;
-        }
-
         return true;
     }
 

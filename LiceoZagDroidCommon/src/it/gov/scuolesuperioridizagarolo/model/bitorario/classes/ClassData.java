@@ -143,6 +143,14 @@ public enum ClassData {
     }
 
     public static void main(String[] args) {
+
+        for (ClassData xx : values()) {
+            if(xx._class==5)
+                System.out.println(xx.className+"\t"+xx.numberOfStudents);
+        }
+
+
+
         for (ClassData value : ClassData.values()) {
             System.out.println(value.className+" (Liceo Scientifico)");
         }

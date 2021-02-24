@@ -295,7 +295,7 @@ public class VincoliSostituzioni_2021_n14B_IPOTESI_settimana_18gen_22gen_50_PERC
 
         ArrayList<AssegnazioneClasseAulaGiornaliera202021> assegnazioneMigliore =
                 EngineAssegnazioneAule_V3.
-                        calcolaAssegnazioneSettimanale(num_tentativi, classiInPresenzaMap, auleNonUtilizzabiliMap, r);
+                        calcolaAssegnazioneSettimanale(num_tentativi, classiInPresenzaMap, auleNonUtilizzabiliMap, r,null);
         if (assegnazioneMigliore == null) {
             throw new IllegalArgumentException("Assegnazione non trovata.");
         }

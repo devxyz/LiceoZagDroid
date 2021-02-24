@@ -1,19 +1,20 @@
 package it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.as2020_21;
 
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.engine.FilterAule;
+import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.MainParserGeneraStampeOrario;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.AbstractVincoliSostituzioni;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.MotoreSostituzioneAule3;
 import it.gov.scuolesuperioridizagarolo.dada.bitorario.main.sostituzioni.as2020_21.ddi.AssegnaPostazioniDDIOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioOraLezione;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.ClassData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraintContainer;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.constraint.LessonConstraint_OccupazioneAule_labsToo;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
-import utility.aule2020_21.AssegnazioneClasseAulaGiornaliera202021;
-import utility.aule2020_21.EngineAssegnazioneAule_V3;
-import utility.aule2020_21.UtilizzoClassi;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.ERoomArea;
+import utility.aule2020_21.*;
 import utility.copertura_classi.ControlloCoperturaClassi_COVID;
 
 import java.io.File;
@@ -24,7 +25,7 @@ import java.util.*;
 /**
  * Created by stefano on 27/04/2018.
  */
-public class VincoliSostituzioni_2021_n15_settimana_25gen_29gen_50_PERCENTO_LU_VE_DAD_2_settimane extends AbstractVincoliSostituzioni {
+public class VincoliSostituzioni_2021_n20_settimana_1mar_5mar_50_PERCENTO_LU_VE_DAD_2_settimane_settimana1_INVALSI extends AbstractVincoliSostituzioni {
 
     static final File root = new File("/Users/stefano/DATA/scuola/insegnamento/scuola-AS-2017-18/FalconeBorsellino-Zagarolo-17-18/Development/LiceoZagDroid/LiceoZagDadaUtilities/src/it/gov/" +
             "scuolesuperioridizagarolo/dada/bitorario/main/sostituzioni/as2020_21/dati_orario/");
@@ -33,120 +34,124 @@ public class VincoliSostituzioni_2021_n15_settimana_25gen_29gen_50_PERCENTO_LU_V
     public static void main(String[] args) throws IOException {
 
 
-        final VincoliSostituzioni_2021_n15_settimana_25gen_29gen_50_PERCENTO_LU_VE_DAD_2_settimane l = new VincoliSostituzioni_2021_n15_settimana_25gen_29gen_50_PERCENTO_LU_VE_DAD_2_settimane();
+        final VincoliSostituzioni_2021_n20_settimana_1mar_5mar_50_PERCENTO_LU_VE_DAD_2_settimane_settimana1_INVALSI l = new VincoliSostituzioni_2021_n20_settimana_1mar_5mar_50_PERCENTO_LU_VE_DAD_2_settimane_settimana1_INVALSI();
 
         //if (true) throw new IllegalArgumentException("STOP DEBUG");
-        String prefix = "14B-18.01-LU-VE-50percento_2settimane";
+        String prefix = "19-18.01-LU-VE-50percento_2settimane";
         MotoreSostituzioneAule3.doTaskFromTXT_CSV_EXCEL(
                 l,
                 new File(root, prefix + "/Orario Classi Completo.txt"),
                 new File(root, prefix + "/Orario Tabella Globale.csv"),
                 new File(root, prefix + "/docenti-extra.xlsx"),
                 new File(root, "01-output"),
-                l.filtroAuleSpostamenti(), false, true, null);
+                l.filtroAuleSpostamenti(), false, true,
+                new MainParserGeneraStampeOrario.MainParserGeneraStampeOrarioListener() {
+                    @Override
+                    public void _2_after_ParserOrarioAllocazioneAuleTXT(BitOrarioGrigliaOrario orarioTotale) {
+
+                        //RINOMINA
+                        Map<String, String> map = new TreeMap<>();
+                        map.put("CERULLO", "MARGUCCIO");
+                        map.put("STRACQUALURSI", "GATTO [STRACQUALURSI*]");
+                        map.put("FERRIGNO", "MASTROCESARE [FERRIGNO*]");
+                        map.put("CONCA [TASSAN*]", "BORGIA C.");
+                        map.put("SUPINO", "SUPINO S.");
+                        renameDocente(orarioTotale, map);
+
+                        spostaDisposizioni(orarioTotale, "CARABELLA", EGiorno.VENERDI, EOra.SECONDA, EGiorno.VENERDI, EOra.QUINTA);
+                        spostaDisposizioni(orarioTotale, "SACCENTI", EGiorno.LUNEDI, EOra.QUARTA, EGiorno.LUNEDI, EOra.SETTIMA);
+
+                        //rimuovi dispo
+                        rimuoviDisposizioni(orarioTotale, "QUARESIMA", EGiorno.LUNEDI, EOra.PRIMA);
+                        rimuoviDisposizioni(orarioTotale, "QUARESIMA", EGiorno.LUNEDI, EOra.SECONDA);
+                        rimuoviDisposizioni(orarioTotale, "QUARESIMA", EGiorno.LUNEDI, EOra.QUINTA);
+                        rimuoviDisposizioni(orarioTotale, "QUARESIMA", EGiorno.MARTEDI, EOra.PRIMA);
+                        rimuoviDisposizioni(orarioTotale, "QUARESIMA", EGiorno.GIOVEDI, EOra.PRIMA);
+                        rimuoviDisposizioni(orarioTotale, "QUARESIMA", EGiorno.GIOVEDI, EOra.SECONDA);
+                        spostaDisposizioni(orarioTotale, "QUARESIMA", EGiorno.MERCOLEDI, EOra.QUINTA, EGiorno.MERCOLEDI, EOra.TERZA);
+
+                        //fisse
+                        //rimuoviDisposizioni(orarioTotale, "MATTEUCCI", EGiorno.MARTEDI, EOra.QUARTA);
+                        spostaDisposizioni(orarioTotale, "MATTEUCCI", EGiorno.MARTEDI, EOra.QUARTA, EGiorno.LUNEDI, EOra.SETTIMA);
+                        spostaDisposizioni(orarioTotale, "MATTEUCCI", EGiorno.VENERDI, EOra.QUARTA, EGiorno.VENERDI, EOra.TERZA);
+                        spostaDisposizioni(orarioTotale, "DE ANGELIS", EGiorno.VENERDI, EOra.TERZA, EGiorno.GIOVEDI, EOra.QUINTA);
+
+
+                        //rimuove le disposizioni di rosini che le ha cambiate
+                        {
+                            ArrayList<BitOrarioOraLezione> lezz = new ArrayList<>(orarioTotale.getLezioneConDocente("ROSINI"));
+                            for (BitOrarioOraLezione l : lezz) {
+                                if (l.isDisposizionePura()) {
+                                    orarioTotale.removeLezione(l);
+                                }
+                            }
+                        }
+
+
+                        //rimuove le disposizioni di rosini che le ha cambiate
+                        {
+                            ArrayList<BitOrarioOraLezione> lezz = new ArrayList<>(orarioTotale.getLezioneConDocente("PAGNONI"));
+                            for (BitOrarioOraLezione l : lezz) {
+                                if (l.isDisposizionePura()) {
+                                    orarioTotale.removeLezione(l);
+                                }
+                            }
+                        }
+
+
+                    }
+                }
+        );
     }
 
 
     protected void preOrarioBeforeAssignment(final BitOrarioGrigliaOrario orarioTotale) {
-        Map<String, String> map = new TreeMap<>();
-        map.put("CERULLO", "MARGUCCIO");
-        //map.put("MILLOZZI", "MILLOZZI S.");
-        //map.put("A011_PART TIME", "*SUPPL A011");
-        //map.put("A011_RESIDUE/CEDUTE*", "BIONDI (provvisoria)");//elisa biondi - completa con tivoli - annuale
-        //map.put("A019_PART_TIME_3E*", "*SUPPL1 A019");
-        //map.put("A019_PART_TIME_4G*", "*SUPPL2 A019");
-        //map.put("A027_PART TIME", "CARA");
-        //map.put("A048_RESIDUE", "*SUPPL A048");
-/*        map.put("BIONDI", "BIONDI E.");
-        map.put("FERRIGNO", "MASTROCESARE [FERRIGNO*]");
-        map.put("CERULLO", "MARGUCCIO [CERULLO*]");
-        //map.put("QUARESIMA", "GATTO [QUARESIMA*]");
-        map.put("A050_PART TIME", "LEGGERI");
-        map.put("EX_BIONDI", "BIONDI M.");
-        //map.put("EX_LATINI", "MILLOZZI C.");
-        //map.put("EX_LIBERATI", "TURRIZIANI");//valeria.turriziani@scuolesuperioridizagarolo.edu.it - annuale
-        map.put("EX_MARTINI", "SABUCCI");
-        //map.put("FERRIGNO", "MASTROCESARE [FERRIGNO*]");
-        //map.put("MARCHESE>SUPPL", "MARCHESE**");
-        //map.put("TASSAN>SUPPL", "TASSAN**");
-
- */
-
-
-        spostaDisposizioni(orarioTotale, "QUARESIMA", EGiorno.MERCOLEDI, EOra.QUINTA, EGiorno.MERCOLEDI, EOra.TERZA);
-        spostaDisposizioni(orarioTotale, "DE ANGELIS", EGiorno.VENERDI, EOra.TERZA, EGiorno.GIOVEDI, EOra.QUINTA);
-        spostaDisposizioni(orarioTotale, "PAGNONI", EGiorno.VENERDI, EOra.SETTIMA, EGiorno.MARTEDI, EOra.QUARTA);
-        spostaDisposizioni(orarioTotale, "PAGNONI", EGiorno.VENERDI, EOra.QUINTA, EGiorno.GIOVEDI, EOra.QUARTA);
-        renameDocente(orarioTotale, map);
         ArrayList<UtilizzoClassi> assegnaule = assegnazioni();
 
-        //aggiunge aule non assegnate
-/*        EGiorno[] giorni = new EGiorno[]{
-                EGiorno.LUNEDI,
-                EGiorno.MARTEDI,
-                EGiorno.MERCOLEDI,
-        };
-        for (EGiorno g : giorni) {
-            for (ClassData c : ClassData.values()) {
-                UtilizzoClassi e = new UtilizzoClassi(RoomData.USCITA_DIDATTICA, c, g);
-                assegnaule.add(e);
-            }
-        }
-*/
+
+        //QUARANTENA
+        //
+        //quarantena(assegnaule, ClassData.CLASS_4F, EGiorno.LUNEDI, EGiorno.MARTEDI);
+
         assegnaAuleAdOrario(orarioTotale, assegnaule);
+
 
         Map<EGiorno, List<RoomData>> postazioniDDiUtilizzabili = new HashMap<>();
         for (EGiorno g : EGiorno.valuesGiorniDiLezione()) {
-            postazioniDDiUtilizzabili.put(g, aulePerDDI(g, orarioTotale, 30));
+            postazioniDDiUtilizzabili.put(g, aulePerDDI(g, orarioTotale, 20));
         }
-        //
-        //System.out.println(auleLibere(EGiorno.LUNEDI, orarioTotale));
-        //System.out.println(aulePerDDI(EGiorno.LUNEDI, orarioTotale));
-        //if (true) throw new IllegalArgumentException("STOP");
-/*
-        TreeSet<String> consiglioDiClasse_docente = orarioTotale.getConsiglioDiClasse_Docente(ClassData.CLASS_4G);
-        for (String d : consiglioDiClasse_docente) {
-            BitOrarioOraLezione lezioneConDocente = orarioTotale.getLezioneConDocente(d, EGiorno.MARTEDI, EOra.SETTIMA);
-            if (lezioneConDocente != null)
-                System.out.println(d + ": " + lezioneConDocente);
-            lezioneConDocente = orarioTotale.getLezioneConDocente(d, EGiorno.MARTEDI, EOra.OTTAVA);
-            if (lezioneConDocente != null)
-                System.out.println(d + ": " + lezioneConDocente);
-        }
-        //if (true) throw new IllegalArgumentException("????");
-*/
 
         Random r = new Random(13);
         AssegnaPostazioniDDIOrario.assegnaVers2(orarioTotale, postazioniDDiUtilizzabili, r, 10000);
 
+
     }
 
     private List<RoomData> aulePerDDI(EGiorno g, final BitOrarioGrigliaOrario orarioTotale, int num) {
+        //Set<RoomData> skipDDI = new TreeSet<>(Arrays.asList(RoomData.DDI_aula_A2, RoomData.DDI_aula_C7));
 
         List<RoomData> ris = new ArrayList<>();
         while (ris.size() < num) {
-            for (RoomData r : auleLibere(g, orarioTotale)) {
+            for (RoomData r : auleLibere_UtilizzabiliDDIdocenti(g, orarioTotale)) {
                 if (ris.size() >= num) return ris;
-                ris.add(RoomData.searchDDILinkedRoom(r));
+                RoomData e = RoomData.searchDDILinkedRoom(r);
+                //      if (skipDDI.contains(e)) continue;
+                ris.add(e);
             }
-            RoomData[] rr = new RoomData[]{
-                    RoomData.DDI_corridoio_AREA_AC,
-                    RoomData.DDI_corridoio_AREA_AC,
-                    RoomData.DDI_corridoio_AREA_AC,
-                    RoomData.DDI_corridoio_AREA_B,
-                    RoomData.DDI_corridoio_AREA_C,
-                    RoomData.DDI_corridoio_AREA_D};
+            /*RoomData[] rr = new RoomData[]{
+                    RoomData.DDI_corridoio_AREA_AC};
 
             for (RoomData r : rr) {
                 if (ris.size() >= num) return ris;
+            //    if (skipDDI.contains(r)) continue;
                 ris.add(r);
-            }
+            }*/
         }
 
         return ris;
     }
 
-    private List<RoomData> auleLibere(EGiorno g, final BitOrarioGrigliaOrario orarioTotale) {
+    private List<RoomData> auleLibere_UtilizzabiliDDIdocenti(EGiorno g, final BitOrarioGrigliaOrario orarioTotale) {
 
         List<RoomData> elencoAuleUtilizzabili = RoomData.filter(new RoomData.RoomDataFilter() {
             @Override
@@ -157,11 +162,14 @@ public class VincoliSostituzioni_2021_n15_settimana_25gen_29gen_50_PERCENTO_LU_V
                 if (c == RoomData.F2) return false;
                 if (c == RoomData.A4) return false;
                 if (c == RoomData.A7) return false;
+                if (c == RoomData.A6) return false;//INVALSI
                 if (c == RoomData.PAL1) return false;
                 if (c == RoomData.PAL2) return false;
+
                 if (c == RoomData.DDI_corridoio_AREA_C) return false;
                 if (c == RoomData.DDI_corridoio_AREA_B) return false;
                 if (c == RoomData.DDI_corridoio_AREA_D) return false;
+                if (c == RoomData.DDI_aula_A2) return false;//vicino DSGA
                 return true;
             }
         });
@@ -247,24 +255,14 @@ public class VincoliSostituzioni_2021_n15_settimana_25gen_29gen_50_PERCENTO_LU_V
                         " 5F\t|\tP08\tP10\tP10\tP08\tP08\t|\tDAD\tDAD\tDAD\tDAD\tDAD\n" +
                         " 5G\t|\tDAD\tDAD\tDAD\tDAD\tDAD\t|\tP10\tP08\tP08\tP08\tP08";
 
-        int indexSettimana = 2;
+        int indexSettimana = 1;
         int num_tentativi = 1000;
 
         //SELEZIONA LE AULE DA UTILIZZARE: seleziona quelle piu' piccole fino a lasciare attive 36/2 aule (quelle corrispondenti alle classi)
         Set<RoomData> auleNonUtilizzabili = new TreeSet<>();
         {
-            //elenco le aule utilizzabili
-            ArrayList<RoomData> auleUtilizzabili = new ArrayList<>();
-            for (RoomData r : RoomData.values()) {
-                if (r.isAulaFittizia()) continue;
-                if (r == RoomData.F1) continue;//palestra
-                if (r == RoomData.F2) continue;//scienze
-                if (r == RoomData.PAL1) continue;//aule palestre
-                if (r == RoomData.PAL2) continue;//aule palestre
-                if (r == RoomData.A4) continue;//informatica
-                if (r == RoomData.A3) continue;//fisica
-                auleUtilizzabili.add(r);
-            }
+            //elenco le aule utilizzabili per le classi
+            ArrayList<RoomData> auleUtilizzabili = auleUtilizzabiliPerClassi();
 
             if (auleUtilizzabili.size() < 18) throw new IllegalArgumentException("Aule insuff (18)");
 
@@ -300,8 +298,20 @@ public class VincoliSostituzioni_2021_n15_settimana_25gen_29gen_50_PERCENTO_LU_V
         }
 
         //tutte le giornate utilizza le stesse classi
+        RipartizioneAuleClassiEngine.FilterRipartizioneAuleClassiEngine filter = new RipartizioneAuleClassiEngine.FilterRipartizioneAuleClassiEngine() {
+            @Override
+            public boolean accept(Classe202021 c, Aula202021 a, EGiorno giorno) {
+                if (c.toClassData() == ClassData.CLASS_4H && a.toRoomData() != RoomData.E2) return false;
+                if (c.toClassData() == ClassData.CLASS_5G && a.toRoomData() != RoomData.E3) return false;
+                if (c.toClassData()._section.equals("B") && a.toRoomData().location == ERoomArea.AREA_D) return false;
+                if (c.toClassData()._section.equals("D") && a.toRoomData().location == ERoomArea.AREA_D) return false;
+                return true;
+            }
+        };
+
+
         ArrayList<AssegnazioneClasseAulaGiornaliera202021> assegnazioneMigliore =
-                EngineAssegnazioneAule_V3.calcolaAssegnazioneSettimanale(num_tentativi, classiInPresenzaMap, auleNonUtilizzabiliMap, new Random(13), null);
+                EngineAssegnazioneAule_V3.calcolaAssegnazioneSettimanale(num_tentativi, classiInPresenzaMap, auleNonUtilizzabiliMap, new Random(13), filter);
         if (assegnazioneMigliore == null) {
             throw new IllegalArgumentException("Assegnazione non trovata.");
         }
@@ -315,6 +325,24 @@ public class VincoliSostituzioni_2021_n15_settimana_25gen_29gen_50_PERCENTO_LU_V
         return u;
     }
 
+    private ArrayList<RoomData> auleUtilizzabiliPerClassi() {
+        ArrayList<RoomData> auleUtilizzabili = new ArrayList<>();
+        for (RoomData r : RoomData.values()) {
+            if (r.isAulaFittizia()) continue;
+            if (r == RoomData.F1) continue;//palestra
+            if (r == RoomData.F2) continue;//scienze
+            if (r == RoomData.PAL1) continue;//aule palestre
+            if (r == RoomData.PAL2) continue;//aule palestre
+            if (r == RoomData.A4) continue;//informatica
+            if (r == RoomData.A3) continue;//fisica
+            if (r == RoomData.A2) continue;//vicino DSGA
+            if (r == RoomData.B6) continue;//finestra rotta
+            if (r == RoomData.A6) continue;//INVALSI
+            auleUtilizzabili.add(r);
+        }
+        return auleUtilizzabili;
+    }
+
 
     @Override
     public Map<ClassData, ControlloCoperturaClassi_COVID.CoperturaClasse_COVID> reportQuarantene(BitOrarioGrigliaOrario orarioTotale) {
@@ -326,10 +354,8 @@ public class VincoliSostituzioni_2021_n15_settimana_25gen_29gen_50_PERCENTO_LU_V
     @Override
     protected void postOrarioBeforeFinalCheck(BitOrarioGrigliaOrario orarioTotale, LessonConstraintContainer l) {
 
-/*
-        if (true)
-            throw new IllegalArgumentException("STOP");
-*/
+
+        //if (true) throw new IllegalArgumentException("STOP");
     }
 
     @Override
@@ -341,11 +367,11 @@ public class VincoliSostituzioni_2021_n15_settimana_25gen_29gen_50_PERCENTO_LU_V
         };
     }
 
-    public VincoliSostituzioni_2021_n15_settimana_25gen_29gen_50_PERCENTO_LU_VE_DAD_2_settimane invoke(final BitOrarioGrigliaOrario orarioTotale,
-                                                                                                       final LessonConstraintContainer l) {
-        dal = "25/01/2021";
-        al = "29/01/2021";
-        progressivo = "15";
+    public VincoliSostituzioni_2021_n20_settimana_1mar_5mar_50_PERCENTO_LU_VE_DAD_2_settimane_settimana1_INVALSI invoke(final BitOrarioGrigliaOrario orarioTotale,
+                                                                                                                        final LessonConstraintContainer l) {
+        dal = "01/03/2021";
+        al = "05/03/2021";
+        progressivo = "20_INVALSI";
 
         // if (true) return this;
 

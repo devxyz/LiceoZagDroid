@@ -16,6 +16,7 @@ import it.gov.scuolesuperioridizagarolo.model.BitOrarioGrigliaOrarioContainer;
 import it.gov.scuolesuperioridizagarolo.model.OnlyDate;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.BitOrarioGrigliaOrario;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.classes.RoomData;
+import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EGiorno;
 import it.gov.scuolesuperioridizagarolo.model.bitorario.enum_values.EOra;
 
 import java.util.ArrayList;
@@ -23,15 +24,17 @@ import java.util.TreeSet;
 
 public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
     protected BitOrarioGrigliaOrarioContainer containerOrari;
+    private boolean includeDDI;
     protected OnlyDate giorno;
     private BitOrarioGrigliaOrario orario;
     private EOra[] ore;
 
     private Context a;
 
-    public AuleVuoteExpandibleListAdapter(Context context, BitOrarioGrigliaOrarioContainer containerOrari, OnlyDate giorno) {
+    public AuleVuoteExpandibleListAdapter(Context context, BitOrarioGrigliaOrarioContainer containerOrari, OnlyDate giorno, boolean includeDDI) {
         this.a = context;
         this.containerOrari = containerOrari;
+        this.includeDDI = includeDDI;
         this.orario = containerOrari.getOrario(giorno);
         this.giorno = giorno;
         ore = EOra.valuesOreDiLezione();
@@ -52,7 +55,8 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
     @Override
     public RoomData getChild(int groupPosition, int childPosititon) {
         final EOra group = getGroup(groupPosition);
-        final ArrayList<RoomData> auleVuote = new ArrayList<>(orario.getAuleVuote(group, giorno.getGiorno()));
+
+        final ArrayList<RoomData> auleVuote = new ArrayList<>(getAuleVuote(group, giorno.getGiorno()));
         return auleVuote.get(childPosititon);
     }
 
@@ -66,6 +70,7 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
                              boolean isLastChild, View convertView, ViewGroup parent) {
         final RoomData item = getChild(groupPosition, childPosition);
 
+
         if (convertView == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(a);
             convertView = layoutInflater.inflate(R.layout.listview_classivuote_detail, parent, false);
@@ -73,7 +78,7 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
         LayoutObjs_listview_classivuote_detail_xml obj = new LayoutObjs_listview_classivuote_detail_xml(convertView);
         obj.textView_aula.setText(item.simpleName());
         obj.textView_location.setText(item.location.description + (item.flagLIM ? " con LIM" : ""));
-        obj.textView5.setText(item.usage + " - " + item.maxStudents + " posti");
+        obj.textView_materie.setText(item.usage + " - " + item.maxStudents + " posti");
         AbstractOrarioListAdapter.coloraViewAula(obj.textView_aula, item.location, a);
         return convertView;
     }
@@ -83,7 +88,7 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
     public int getChildrenCount(int groupPosition) {
         //ok
         final EOra ora = getGroup(groupPosition);
-        return orario.getAuleVuote(ora, giorno.getGiorno()).size();
+        return getAuleVuote(ora, giorno.getGiorno()).size();
     }
 
     @Override
@@ -109,7 +114,8 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
                              View convertView, ViewGroup parent) {
         //ok
         final EOra ora = ore[groupPosition];
-        final TreeSet<RoomData> auleVuote = orario.getAuleVuote(ora, giorno.getGiorno());
+        EGiorno giorno = this.giorno.getGiorno();
+        final TreeSet<RoomData> auleVuote = getAuleVuote(ora, giorno);
 
         if (convertView == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(a);
@@ -119,8 +125,15 @@ public class AuleVuoteExpandibleListAdapter extends BaseExpandableListAdapter {
         LayoutObjs_listview_classivuote_header_xml obj = new LayoutObjs_listview_classivuote_header_xml(convertView);
         obj.textView_ora.setText(ora.getProgressivOra() + "°ora");
         obj.textView_fascia.setText(ora.fasciaPresenza());
-        obj.textView5.setText(auleVuote.size() + " aule");
+        obj.textView_materie.setText(auleVuote.size() + " aule");
         return convertView;
+    }
+
+    public TreeSet<RoomData> getAuleVuote(EOra ora, EGiorno giorno) {
+        if (includeDDI)
+            return orario.getAuleVuoteIncludeDDI(ora, giorno);
+        else
+            return orario.getAuleVuote(ora, giorno);
     }
 
     @Override

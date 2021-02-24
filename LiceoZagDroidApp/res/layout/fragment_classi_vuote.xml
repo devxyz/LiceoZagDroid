@@ -10,13 +10,25 @@
             android:padding="10dp" android:id="@+id/xLayout7"
             android:background="@drawable/background_toolbar_fragment"
             >
+
+        <CheckBox
+                android:text="Includi\nDDI"
+                android:layout_width="wrap_content"
+                android:layout_height="53dp" android:id="@+id/checkBox_DDI"
+
+                android:background="@drawable/background_pulsante_yellow"/>
+
+
         <Button
+                android:layout_toRightOf="@id/checkBox_DDI"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="&lt;"
                 android:id="@+id/buttonPrev"
                 android:background="@drawable/background_pulsante_bianco"
+
                 android:layout_alignParentTop="false"
+
                 style="?android:attr/buttonStyleSmall" android:layout_marginLeft="5dp" android:textStyle="bold"
                 android:textSize="40dp" android:layout_marginRight="5dp" android:layout_alignParentBottom="false"
                 android:layout_alignParentEnd="false" android:layout_alignParentLeft="false"/>

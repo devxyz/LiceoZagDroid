@@ -91,8 +91,8 @@ public class VincoliSostituzioni_1920_nYY_TEST extends AbstractVincoliSostituzio
         //al = "13/06/2020";
 
 
-        for (ClassData classData : orarioTotale.getClassi()) {
-            TreeMap<String, ArrayList<String>> docenti = orarioTotale.getConsiglioDiClasse_Docente_materie(classData);
+/*        for (ClassData classData : orarioTotale.getClassi()) {
+            TreeMap<String, ArrayList<String>> docenti = orarioTotale.getConsiglioDiClasse(classData);
             for (Map.Entry<String, ArrayList<String>> e : docenti.entrySet()) {
                 String nominativo = e.getKey();
                 int beginIndex = nominativo.lastIndexOf(" ");
@@ -112,7 +112,7 @@ public class VincoliSostituzioni_1920_nYY_TEST extends AbstractVincoliSostituzio
 
 
         }
-
+*/
 
         if (true) throw new IllegalArgumentException("NOOO");
 
